@@ -1,0 +1,156 @@
+.TH "Ezanvakti" "1" "2012\-xx\-xx" "Ezanvakti 6\&.0" "Ezanvakti Kullanım Yönergeleri"
+.SH "AD"
+Ezanvakti 6\.0 \- GNU/Linux için Ezan Vakti Bildirici
+.SH "KULLANIM ŞEKLİ"
+.B ezanvakti
+.RI [ seçenek ]
+.SH AÇIKLAMA
+Diyanet İşleri Başkanlığı sitesinden 
+.B (http://ur1.ca/0xfkr)
+bulunduğunuz ülke ve şehre ait haftalık ya da aylık namaz vakitleri
+çizelgesini kaydettiğiniz dosyayı kullanarak, zamanı geldiğinde ezan
+okuyan ve bildirim veren bir uygulamadır. Ayrıca istenilen zaman ezan
+ve çevrimiçi kuran dinleme, ezan vakitlerine ne kadar süre kaldığını
+gösterme, günlük rastgele bir ayet seçerek gösterme gibi ek özellikleri
+vardır. Kullanılan dosyaları yapılandırma dosyasından okuduğundan
+kullanıcıya daha fazla özelleştirme sunar.
+.SH SEÇENEKLER
+.TP
+.B \-v, \-\-vakitler
+Toplu olarak günlük ezan vakitlerini görüntüler ve vakitlere ne kadar süre
+kaldığını  gösterir ve çıkar. Eğer vakit geçmişse "OKUNDU" olarak görünür.
+.PP
+\fIek olarak\fP :
+.TP 5
+.B \      -s, \-\-sabah
+Sabah vaktine ne kadar süre kaldığını gösterir ve çıkar.
+.TP 5
+.B \      -o, \-\-ogle, \-\-öğle
+Öğle vaktine ne kadar süre kaldığını gösterir ve çıkar.
+.TP 5
+.B \      -i, \-\-ikindi
+İkindi vaktine ne kadar süre kaldığını gösterir ve çıkar.
+.TP 5
+.B \      -a, \-\-aksam, \-\-akşam
+Akşam vaktine ne kadar süre kaldığını gösterir ve çıkar.
+.TP 5
+.B \      -y, \-\-yatsi, \-\-yatsı
+Yatsı vaktine ne kadar süre kaldığını gösterir ve çıkar.
+.TP 5
+.B \      7, \-\-haftalik, \-\-haftalık
+7 günlük vakitleri listeler ve çıkar.
+.TP 5
+.B \      30, \-\-aylik, \-\-aylık
+30 günlük vakitleri listeler ve çıkar.
+.TP 5
+.B \     \-\-osd, \-\-bildirim
+Vakitler çıktısını uçbirim yerine bildirim baloncuğuna yönlendirir.
+.TP
+.B \-\-kuran \fI[ek_seçenek]\fP
+Çevrimiçi olarak ya da yerel dizinden kuran dinletir. Çevrimiçi kuran dinleme
+için quranlisten.com sitesi kullanılmaktadır. Kuran dinlemek
+için ek olarak aşağıdakilerden uygun seçeneği de girmeniz
+gereklidir.
+.TP 5
+.B \      -s, \-\-secim, \-\-seçim
+Değişken olarak \fI<sure_kodu>\fP verildiğinde o kodla ilişik sureyi dinletir.
+.TP 5
+.B \      -r, \-\-rastgele
+1-114 arası rastgele bir sure seçer ve dinletir.
+.TP 5
+.B \      -h, \-\-hatim
+1'den 114'e kadar tüm sureleri sırayla okur.
+.TP 5
+.B \      -g, \-\-gunluk
+\'ayarlar' dosyasında SURELER için girilen numaralara ait sureleri dinletir ve çıkar.
+.TP
+.B \-\-sureler
+Sureleri dinlemek için gerekli olan kod numaralarını ve sure adlarını görüntüler ve çıkar.
+.TP
+.B \-\-ayet
+Rastgele bir kuran ayeti seçerek Türkçe anlamını bildirim baloncuğunda gösterir.
+.PP
+\fIek olarak\fP
+.TP 5
+.B \      -u, \-t, --ucbirim, \-\-uçbirim, \-\-terminal
+Ayeti bildirim baloncuğu yerine uçbirimden görüntüler ve çıkar.
+.TP
+.B \-\-ramazan
+Sadece iftar ve imsak vakitleri için ezan okunur.
+.TP
+.B \-\-iftar
+İftar vaktine ne kadar süre kaldığını görüntüler ve çıkar.
+.TP
+.B \-\-conky
+Conky alanına günlük ezan vakitlerini eklemek isteyenler için renksiz
+ve kısa çıktı verir.
+.TP
+.B \-\-conky\-iftar
+Conky alanında iftar vaktine ne kadar süre kaldığını görmek isteyenler için
+renksiz ve kısa çıktı verir.
+.TP
+.B \-\-dinle \fI[ek_seçenek]\fP
+istediğiniz zaman istediğiniz vakite ait ezanı dinletir. Dinlemek istediğiniz
+vakit için girmeniz gereken ek seçenekler:
+.TP 5
+.B \      -s, \-\-sabah
+Sabah ezanını dinletir.
+.TP 5
+.B \      -o, \-\-ogle, \-\-öğle
+Öğle ezanını dinletir.
+.TP 5
+.B \      -i, \-\-ikindi
+İkindi ezanını dinletir.
+.TP 5
+.B \      -a, \-\-aksam, \-\-akşam
+Akşam ezanını dinletir.
+.TP 5
+.B \      -y, \-\-yatsi, \-\-yatsı
+Yatsı ezanını dinletir.
+.TP
+.B \-\-hadis
+40 hadisten rastgele bir hadis seçerek bildirim
+baloncuğunda gösterir.
+.PP
+\fIek olarak\fP
+.TP 5
+.B \      -u, \-t, --ucbirim, \-\-uçbirim, \-\-terminal
+Hadisi bildirim baloncuğu yerine; uçbirimden görüntüler ve çıkar.
+.TP
+.B \-\-esma
+Esma-ül Hüsna olarak adlandırılan Allah'ın güzel adlarından 99 tane içinden
+rastgele bir seçim yapar ve seçileni \fIyalnızca\fP uçbirimde gösterir.
+.TP
+.B \-\-bilgi
+Diyanet sitesinden alınan "Bunları biliyor musunuz?" adlı içerikten rastgele
+bir soru seçerek, sorunun yanıtıyla beraber, bildirim baloncuğunda gösterir.
+.PP
+\fIek olarak\fP
+.TP 5
+.B \      -u, \-t, --ucbirim, \-\-uçbirim, \-\-terminal
+Soru ve yanıtı bildirim baloncuğu yerine uçbirimden görüntüler ve çıkar.
+.TP
+.B \-\-gunler, \-\-günler
+İçinde bulunduğunuz yıla ait dini günler ve geceleri liste halinde görüntüler ve çıkar.
+.TP
+.B \ -\-guncelle, \-\-güncelle
+Ezanveri dosyasını 30 günlük vakitleri içerecek şekilde günceller/ oluşturur.
+Mevcut ezanveri dosyanızın adını ve konumunu ayrıca bulunduğunuz ülke ve şehri 'ayarlar'
+dosyasından okur ve günceller. Ülke ve şehir olarak girilen değerler güncellenme için kullanılan
+dosyalardaki gibi yazılmamışsa, ekrana bulunduğunuz ülke ve şehri soran pencereler çıkar
+ve seçilen ülke ve şehre göre işlem yapar. Aynı zamanda bir sonraki güncelleme işlemlerini
+kolaylaştırmak adına 'ayarlar' dosyanıza seçtiğiniz ülke ve şehir adını işler.
+
+
+Veriler diyanet.gov.tr sitesi üzerinden alınmaktadır.
+.TP
+.B  \-\-arayuz, \-\-arayüz, \-\-gui
+Ezanvakti gelişmiş arayüz bileşenini başlatır.
+.TP
+.B  \-\-arayuz2, \-\-arayüz2, \-\-gui2
+Ezanvakti basit arayüz bileşenini başlatır.
+.LP
+.SH YAZAR
+	Fatih Bostancı <faopera@gmail.com>
+
+	distroguide.wordpress.com

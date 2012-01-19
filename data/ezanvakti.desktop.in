@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Ezanvakti
+Comment=GNU/Linux için Ezan vakti bildirici
+Icon=@datadir@/ezanvakti/simgeler/ezanvakti2.png
+Exec=@bindir@/ezanvakti --arayuz
+Terminal=false
+Type=Application
+Categories=GTK;Application;Utility;

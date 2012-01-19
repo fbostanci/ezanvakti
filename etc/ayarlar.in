@@ -1,0 +1,183 @@
+# Ezanvakti @surum@ yapılandırma dosyası
+# Bu dosya üzerinde değişiklik yaparak kişisel
+# özelleştirmelerinizi yapabilirsiniz.
+# Eğer, ekleyeceğiniz değerler boşluk içeriyorsa
+# tırnak içerisine alarak ekleme yapın.
+# Özelleştirme hakkında daha fazla bilgi için:
+# 'man ezanvakti' komutunu kullanın.
+
+
+#                           #
+#*****Ezanveri Ayarları*****#
+#                           #
+
+
+# Ezanveri dosyasının bulunduğu dizin
+EZANVERI_DIZINI='$HOME/.config/ezanvakti'
+
+# Ezanveri dosyasının adı
+EZANVERI_ADI=ezanveri
+
+# Bulunduğunuz ülke
+ULKE=Bilinmeyen
+
+# Bulunduğunuz şehir
+KONUM=Bilinmeyen
+
+# Ezanveri otomatik güncelleme (Güncelleme yapılması için 1; yapılmaması için 0)
+GUNCELLEME_YAP=1
+
+#                           #
+#*******Sure Ayarları*******#
+#                           #
+
+
+# Kullanıcı tefsir dosyalarının bulunduğu dizin
+KULLANICI_TEFSIR_DIZINI=Bilinmeyen
+
+# Ayet gösteriminde kullanılmasını istediğiniz tefsir
+TEFSIR_SAHIBI=diyanet
+
+# Kuran dinlemek için, yerel sure dizini
+YEREL_SURE_DIZINI=Bilinmeyen
+
+# Kuran okuyan
+OKUYAN=AlGhamdi
+
+# Günlük değişkeni için seçilen sureler
+SURELER='67 44 55 36 59 1 6'
+
+#                           #
+#*****Bildirim Ayarları*****#
+#                           #
+
+
+#*/ Ezan okunurken bildirimin gösterilme süresi (saniye olarak)
+EZAN_BILDIRIM_SURESI=60
+
+#*/ Ayet bildirim baloncuğunun gösterilme süresi (saniye olarak)
+AYET_BILDIRIM_SURESI=30
+
+#*/ Hadis bildirim baloncuğunun gösterilme süresi (saniye olarak)
+HADIS_BILDIRIM_SURESI=25
+
+#*/ Diyanet bilgi bildirim baloncuğu gösterilme süresi (saniye olarak)
+BILGI_BILDIRIM_SURESI=20
+
+#*/ Ezanveri dosyasının son 7 gün çıkan, güncelleme anımsatması bildirim süresi (saniye olarak)
+GUNCELLEME_BILDIRIM_SURESI=15
+
+#*/ Dini günler ve geceler için önceden bildirim yapılması
+# yapılmaması için 0 girin.
+# yapılması için 0'dan büyük bir sayı girin.
+# Gireceğeniz sayı aynı zamanda bildirimin ekranda bekleme süresidir. (saniye olarak)
+GUN_ANIMSAT=15
+
+# Girilen dakika için ezan okunmadan önce  bildirim baloncuğuyla yaklaşan vakti anımsatır.
+# Bildirim yapılmaması için değeri 0 olarak girin.
+VAKIT_ANIMSAT=15
+
+# Mplayer ses seviyesi (0-100 arası)
+SES=100
+
+# Desteklenen oynatıcıyı ezan okunması bitene kadar duraklatma
+# duraklatılması için 1; duraklatılmaması için 0
+OYNATICI_DURAKLAT=0
+
+# BİLGİ: '*/' olarak işaretlenen ayarlar Ubuntu GNOME ortamında, öntanımlı olarak etkisizdir.
+# Yamalanmış sürüm işlemleri için man dosyasına bakın.
+
+#                           #
+#*******Ezan Ayarları*******#
+#                           #
+
+
+# Ezanlardan sonra Türkçe ezan duası (okunması için 1; okunmaması için 0)
+EZAN_DUASI_OKU=1
+
+# Ezanların vaktinden önce ya da sonra okunma süresi (saniye olarak)
+EZAN_OKUNMA_SURESI_FARKI=0
+
+# Ezan okuyan
+EZAN_OKUYAN='İsmail COŞAR'
+
+# Sabah ezanı ses dosyası
+SABAH_EZANI=@sounddir@/ezanvakti/sabah_saba.ogg
+
+# Öğle ezanı ses dosyası
+OGLE_EZANI=@sounddir@/ezanvakti/ogle_rast.ogg
+
+# İkindi ezanı ses dosyası
+IKINDI_EZANI=@sounddir@/ezanvakti/ikindi_hicaz.ogg
+
+# Akşam ezanı ses dosyası
+AKSAM_EZANI=@sounddir@/ezanvakti/aksam_segah.ogg
+
+# Yatsı ezanı ses dosyası
+YATSI_EZANI=@sounddir@/ezanvakti/yatsi_ussak.ogg
+
+# Ezan duası ses dosyası
+EZAN_DUASI=@sounddir@/ezanvakti/ezan_duasi.ogg
+
+#                           #
+#******Renk Ayarları******#
+#                           #
+
+# Uçbirim çıktıları için renk kullanılması (kullanılması için 1; kullanılmaması için 0)
+RENK_KULLAN=1
+
+# Rengi sıfırla
+RENK0='\033[0m'
+
+# Kırmızı
+RENK1='\033[1;31m'
+
+# Yeşil
+RENK2='\033[1;32m'
+
+# Sarı
+RENK3='\033[1;33m'
+
+# Sarı hareketli
+RENK4='\033[1;33;5m'
+
+# Türk mavisi
+RENK5='\033[1;36m'
+
+# Türk mavisi altı çizgili
+RENK6='\033[4;1;36m'
+
+# Renk artalanı (siyah)
+RENK7='\033[40m'
+
+# Beyaz
+RENK8='\033[0;1m'
+
+# Metin kutusu arka plan rengi
+ARKAPLAN_RENGI='#000000'
+
+# Metin kutusu yazı rengi
+YAZI_RENGI='#FFBD4D'
+
+
+#                           #
+#*****Gelişmiş Ayarlar******#
+#                           #
+
+# Ezanvakti günlük vakit bildirimleri yöntemi
+EZANVAKTI_YONTEM=sleep
+
+# Printf arayuz yazı biçimi
+GELISMIS_ARAYUZ_BICIMI='%-62s%s\n%s\n%s\n\t\t\t\t%s\n%s\n\n%s\n\n\t\t\t %s\n\t\t\t %s'
+
+# Printf conky çıktısı biçimi
+CONKY_BICIMI='%-14s%s\n%-15s%s\n%-17s%s\n%-17s%s\n%-14s%s\n%-17s%s\n'
+
+# Printf arayüzlerdeki vakit çıktısı biçimi
+VAKIT_BICIMI='\t\t\t%-14s%s\n\t\t\t%-16s%s\n\t\t\t%-18s%s\n\t\t\t%-18s%s\n\t\t\t%-14s%s\n\t\t\t%-18s%s'
+
+# Arayüz çizgi simgesi
+CIZGI_SIMGESI='@'
+
+# Arayüz çizgi karakter uzunluğu
+CIZGI_UZUNLUGU=26
