@@ -1,0 +1,252 @@
+#!/bin/bash
+#
+#
+#
+#                           Ezanvakti Sleep Yöntemi  Bileşeni 1.0
+#
+
+EZANVAKTI_DIZINI="$HOME"/.config/ezanvakti
+EZANVAKTI_AYAR="${EZANVAKTI_DIZINI}"/ayarlar
+
+BILESEN_DIZINI=@libdir@/ezanvakti
+VERI_DIZINI=@datadir@/ezanvakti
+
+# Öntanımlı ayarları al.
+. @sysconfdir@/ezanvakti/ayarlar
+
+#  Öntanımlı ayarlardan gelen değerlerin üzerine yazılacak.
+#
+# Kullanıcı ayarlarını al.
+. "${EZANVAKTI_AYAR}"
+
+# Bileşenleri çalışma sürecine dahil ediyoruz.
+. ${BILESEN_DIZINI}/guncelleyici.bash
+. ${BILESEN_DIZINI}/ortak.bash
+. ${BILESEN_DIZINI}/oynatici_duraklat.bash
+
+# Vakit bildirimleri için ezan dinletiminin yanında
+# diğer bildirimleri de düzenleyen fonksiyon
+function ezanoku() {
+  clear
+  printf '%b%b\n' \
+    "${RENK7}${RENK3}${KONUM}${RENK2} " \
+    "için ${RENK3}${simdiki}${RENK2} namazı vakti${RENK5} $vakit_saati${RENK0}"
+
+  notify-send "${KONUM} için" "${simdiki} namazı vakti\n$vakit_saati" \
+    -i ${VERI_DIZINI}/simgeler/ezanvakti.png -t $EZAN_BILDIRIM_SURESI"000"
+
+  # Oynatıcı duraklatma etkin mi ezan okumadan değeri
+  # denetle ve fonksiyonu çağır.
+  (( OYNATICI_DURAKLAT )) && {
+    oynatici_islem
+  } || {
+    ezandinlet
+  }; clear
+}
+
+# Vakit ezanı okunmadan önce  anımsatma
+function vakit_animsat() {
+  local dakika_saniye animsatici_saniye
+
+  # Kullanıcı anımsatma değerini sıfır olarak belirlememişse
+  (( VAKIT_ANIMSAT )) && {
+    dakika_saniye=$((VAKIT_ANIMSAT*60))
+    animsatici_saniye=$((bekle-dakika_saniye))
+
+    # Eğer betik vakit ezanına animsatma dakikasından
+    # daha az bir süre kala çalıştırılırsa bekleme değeri
+    # eksiye düşüyor.
+    # Sadece değer sıfırdan büyükse anımsatma yap.
+    (( animsatici_saniye > 0 )) && {
+      sleep $animsatici_saniye
+      notify-send "Ezanvakti ${SURUM}" "$VAKIT_ANIMSAT dakika sonra $simdiki ezanı okunacak" \
+      -t $EZAN_BILDIRIM_SURESI"000" -i ${VERI_DIZINI}/simgeler/ezanvakti.png
+    }
+  }
+}
+
+# Dini günler için anımsatıcı
+function gun_animsat() {
+  local ozel_ileti
+
+  # Eğer GUN_ANIMSAT değeri sıfır değilse girilen saniye değerini
+  # bildirimin bekleme süresi olarak kullan.
+  (( GUN_ANIMSAT )) && {
+    if grep -q $(date +%d.%m.%Y) ${VERI_DIZINI}/veriler/gunler
+    then
+        ozel_ileti="\n\nBugün:  <b>$(grep $(date +%d.%m.%Y) ${VERI_DIZINI}/veriler/gunler | cut -d ' ' -f2-)</b>"
+    elif grep -q $(date -d 'tomorrow' +%d.%m.%Y) ${VERI_DIZINI}/veriler/gunler
+    then
+        ozel_ileti="\n\nYarın:  <b>$(grep $(date -d 'tomorrow' +%d.%m.%Y) ${VERI_DIZINI}/veriler/gunler | cut -d ' ' -f2-)</b>"
+    else
+        ozel_ileti=''
+    fi
+
+    # eğer ozel_ileti boş (null) dönmemişse bildirimi gönder.
+    [[ -n ${ozel_ileti} ]] && {
+      notify-send "Ezanvakti $SURUM" "${ozel_ileti}" -t $GUN_ANIMSAT"000" \
+        -i ${VERI_DIZINI}/simgeler/ezanvakti.png
+    }
+  }
+}
+
+# --ramazan için özel bildirim veren ezan okutma fonksiyonu.
+function ramazan_ezanoku() {
+  clear
+  printf '%b\n%b\n' \
+    "${RENK7}${RENK3} ${KONUM}${RENK2} " \
+    "için ${RENK3}${simdiki}${RENK2} vakti${RENK5} $vakit_saati${RENK0}"
+
+  notify-send "${KONUM} için" "${simdiki} vakti \n$vakit_saati" \
+    -i ${VERI_DIZINI}/simgeler/ezanvakti.png -t $EZAN_BILDIRIM_SURESI"000"
+
+  (( OYNATICI_DURAKLAT )) && {
+    oynatici_islem
+  } || {
+    ezandinlet
+  }; clear
+}
+
+# Vakitlerde ezan okunmasının ve bildirimin yönetildiği ana döngüsel fonksiyon.
+function ezanlar() {
+  denetle; bugun
+
+  [ $SAAT -le $sabah ] && {
+    simdiki=Sabah
+    vakit_ezani="${SABAH_EZANI}"
+    vakit_saati=$sabah_n
+
+    # Eğer betik sabah vakti dakikası içerisinde
+    # çalıştırılırsa saniyeyi önemseme, ezan okut.
+    [ $SAAT -eq $sabah ] && { ezanoku; ezanlar; }
+    printf "${RENK7}${RENK4}Sabah ezanı için bekleniyor...${RENK0}\n"
+
+    bekleme_suresi $sabah_n; vakit_animsat &
+    sleep $bekle; ezanoku; ezanlar
+  } ||
+
+  [ $SAAT -le $ogle ] && {
+    simdiki=Öğle
+    vakit_ezani="${OGLE_EZANI}"
+    vakit_saati=$ogle_n
+
+    [ $SAAT -eq $ogle ] && { ezanoku; ezanlar; }
+    printf "${RENK7}${RENK4}Öğle ezanı için bekleniyor...${RENK0}\n"
+
+    bekleme_suresi $ogle_n; vakit_animsat &
+    sleep $bekle; ezanoku; ezanlar
+  } ||
+
+  [ $SAAT -le $ikindi ] && {
+    simdiki=İkindi
+    vakit_ezani="${IKINDI_EZANI}"
+    vakit_saati=$ikindi_n
+
+    [ $SAAT -eq $ikindi ] && { ezanoku; ezanlar; }
+    printf "${RENK7}${RENK4}İkindi ezanı için bekleniyor...${RENK0}\n"
+
+    bekleme_suresi $ikindi_n; vakit_animsat &
+    sleep $bekle; ezanoku; ezanlar
+  } ||
+
+  [ $SAAT -le $aksam ] && {
+    simdiki=Akşam
+    vakit_ezani="${AKSAM_EZANI}"
+    vakit_saati=$aksam_n
+
+    [ $SAAT -eq $aksam ] && { ezanoku; ezanlar; }
+    printf "${RENK7}${RENK4}Akşam ezanı için bekleniyor...${RENK0}\n"
+
+    bekleme_suresi $aksam_n; vakit_animsat &
+    sleep $bekle; ezanoku; ezanlar
+  } ||
+
+  [ $SAAT -le $yatsi ] && {
+    simdiki=Yatsı
+    vakit_ezani="${YATSI_EZANI}"
+    vakit_saati=$yatsi_n
+
+    [ $SAAT -eq $yatsi ] && { ezanoku; ezanlar; }
+    printf "${RENK7}${RENK4}Yatsı ezanı için bekleniyor...${RENK0}\n"
+
+    bekleme_suresi $yatsi_n; vakit_animsat &
+    sleep $bekle; ezanoku; ezanlar
+  } ||
+
+  [ $SAAT -le 2359 ] && {
+    printf "${RENK7}${RENK4}Yeni gün için bekleniyor...${RENK0}\n"
+
+    bekleme_suresi "23:59"; sleep $((bekle+60))
+    gun_animsat & ezanlar
+  }
+}
+
+# Ramazan ezan bildiriminin yönetildiği ana özyinelemeli fonksiyon.
+function iftarimsak() {
+  denetle; bugun
+
+  # bugun fonksiyonuna gerek yok. Sadece sabah ve akşam vakitlerini al.
+  export $(gawk 'BEGIN{tarih2 = strftime("%d.%m.%Y")} {if($1 ~ tarih2) \
+    {printf "sabah=%s%s\naksam=%s%s", $2,$3,$10,$11}}' "${EZANVERI}")
+
+  [ $SAAT -le $sabah ] && {
+    simdiki=İmsak
+    vakit_ezani="${SABAH_EZANI}"
+    vakit_saati=$sabah_n
+
+    [ $SAAT -eq $sabah ] && { ramazan_ezanoku; iftarimsak; }
+    printf "${RENK7}${RENK4}İmsak vakti için bekleniyor...${RENK0}\n"
+
+    bekleme_suresi $sabah_n; vakit_animsat &
+    sleep $bekle; ramazan_ezanoku; iftarimsak
+  } ||
+
+  [ $SAAT -le $aksam ] && {
+    simdiki=İftar
+    vakit_ezani="${AKSAM_EZANI}"
+    vakit_saati=$aksam_n
+
+    [ $SAAT -eq $aksam ] && { ramazan_ezanoku; iftarimsak; }
+    printf "${RENK7}${RENK4}İftar vakti için bekleniyor...${RENK0}\n"
+
+    bekleme_suresi $aksam_n; vakit_animsat &
+    sleep $bekle; ramazan_ezanoku; iftarimsak
+  } ||
+
+  # Yeni güne ait hesaplamayı yapmak için saat 00:00 olana kadar
+  # bekleme uyarısı ver.
+  [ $SAAT -le 2359 ] && {
+    printf "${RENK7}${RENK4}Yeni gün için bekleniyor...${RENK0}\n"
+
+    bekleme_suresi "23:59"; sleep $((bekle+60))
+    gun_animsat & iftarimsak
+  }
+}
+
+function cikis_yap() {
+  kill 0
+  echo
+  exit 1
+}
+
+# SIGHUP, SIGINT, SIGQUIT ve ERR sinyallerini yakala..
+#
+# Sinyal yakalandığında cikis_yap() fonk. çağır.
+trap cikis_yap 1 2 3  ERR
+
+# Bileşen burdan yönetiliyor.
+# Ana betikten gelen değere ($1 = $degisken) göre ilgili fonksiyonu çağır.
+#
+# 1: normal vakit ezanları
+# 2: Vakit ezanları için ramazan kipi. (--ramazan)
+if (( $1 == 2 ))
+then
+    gun_animsat &
+    iftarimsak
+elif (( $1 == 1 ))
+then
+    gun_animsat &
+    ezanlar
+fi
+
+# vim: set ft=sh ts=2 sw=2 et:

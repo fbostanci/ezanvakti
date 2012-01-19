@@ -1,0 +1,223 @@
+
+
+/×××××××××××××××××××××××××××××
+× 5.7 - 06.09.2011
+×××××××××××××××××××××××××××××/
+
+ *  Uygulama geneli uçbirim çıktıları için renk kullanma/kullanmama seçimi yapılabilmesi
+ *  Renk kodları artık yapılandırma dosyasından okunuyor ve renk özelleştirmeleri yapılabilir.
+ *  Renk kodları için özel betik eklendi. (/usr/share/ezanvakti/bilesenler/renk_ogren)
+ *  Gelişmiş arayüzle tümleşik çalışan özel Kuran dinleme penceresi eklendi. (Kuran dinle listesi 000-Özel Pencere girdisi ile başlatılıyor.)
+ *  Yapılandırma yöneticisi çeşitli geliştirme ve yeniliklerle yeni sürüme yükseltildi.
+ *  Aylık ve haftalık vakitlerin listelenebilmesi (--vakitler --aylik/30 ve --vakitler --haftalik/7 )
+ *  Artık root dizininden de ayarlar dosyası okunduğu için sürümler arası geçişlerde ayarlar dosyasi silinmesi zorunlu değil.
+     Eksik ayarlar için öntanımlı değerler kullanılacak.
+ *  Unity menü desteği
+ *  Uygulama launchpad deposuna taşındı. (https://launchpad.net/~fbostanci/+archive/distroguide)
+ *  Man dosyası güncellendi.
+
+/×××××××××××××××××××××××××××××
+× 5.6 - 18.08.2011
+×××××××××××××××××××××××××××××/
+
+ *  Dini günler ve geceler için anımsatıcı
+ *  --gunler ile içinde bulunduğunuz yıla ait dini günlerin listesi
+ *  Gelişmiş arayüz üzerinde geliştirmeler
+ *  Veri dosyalarında birçok yazım hatası düzeltildi.
+
+
+/×××××××××××××××××××××××××××××
+× 5.5 - 07.08.2011
+×××××××××××××××××××××××××××××/
+
+ *  Ezanveri güncelleme sorunu çözüldü.
+ *  html2text bağımlılığı yerine artık perl-html-tree kullanılıyor.
+ *  --yardım çıktısı daha görsel hale getirildi.
+ *  Mevcut betik sürümünü gösteren --version/--surum değişkenler eklendi.
+ *  Ayet gösterimleri artık rastgele seçilen ayetin sure ve surenin kaçıncı ayeti
+    olduğu bilgisi ile birlikte gösteriliyor.
+ *  Ezan vaktinden önce masaüstüne bildirim baloncuğuyla anımsatma
+     özelliği eklendi. (VAKIT_ANIMSAT değeri)
+ *  Man dosyası ve bash tamamlama betiği güncellendi.
+
+
+/×××××××××××××××××××××××××××××
+× 5.4 - 09.06.2011
+×××××××××××××××××××××××××××××/
+
+ *  Mplayer denetimi; artık sadece hedef mplayer kopyası sonlandırılıyor.
+ *  Tekli vakit gösteriminde artık vakit saatleri de gösteriliyor.
+ *  Güncelleyici bileşeni YAD için de (diğerleri KDialog, Zenity) destekleniyor.
+ *  Hatalı kullanımlarda artık yardım çıktısı yerine bilgilendirici uyarı gösteriliyor.
+ *  /usr/share/ezanvakti/bilesenler/config dosyası yapilandirma olarak adlandırıldı.
+ *  Ana betik üzerinde çeşitli düzenlemeler ve geliştirmeler yapıldı.
+ *  Mkdeb daha kullanıcı dostu hale getirildi.
+
+
+/×××××××××××××××××××××××××××××
+× 5.3 - 06.04.2011
+×××××××××××××××××××××××××××××/
+
+ *  Diyanetin sitesinde yaptığı değişiklik sonucu oluşan güncelleme hatası giderildi.
+ *  Vakit ezanlarında oynatıcı duraklatma desteği moc, qmmp, cmus için de eklendi.
+ *  Bash tamamlama (completion) desteği
+ *  Kullanıcı ayarlarının arayüz yardımı ile de yapılabilmesi için yapılandırma yöneticisi eklendi.
+ *  Gelişmiş arayüz düzenlemeleri
+ *  Gelişmiş arayüz, conky çıktıları artık yapılandırma dosyasından okunuyor.
+ *  Öntanımlı ezanveri dosya dizini artık ~/.config/ezanvakti
+ *  Kaynak kod paylaşımı için gitorious.org/ezanvakti adresi kullanılmaya başlandı.
+ *  Archlinux paketlemesi için PKGBUILD dosya paylaşımı
+ *  Ubuntu için kaynak kodu indirip paketleyen betik
+ *  Birçok kod geliştirmeleri
+
+
+/×××××××××××××××××××××××××××××
+× 5.2 - 31.01.2011
+×××××××××××××××××××××××××××××/
+
+ *  Vakit ezanları okunurken, betiğin tanıdığı oynatıcıları duraklatma. Öntanımlı olarak kapalı gelmekte.
+    desteklenenler: ( Amarok, Audacious, Aqualunq, Banshee, Clementine, Deadbeef, Exaile, Rhythmbox )
+ *  Betik  kurulumla birlikte otomatik olarak  başlangıca ekleniyor.
+ *  Arayüzlerde Güneş doğuş vakti gösterimi
+ *  Otomatik ezanveri güncelleme artık açık geliyor. Ayrıca ezanveri dosyasının olmadığı ya da güncel olmadığı durumlar için de destekleniyor.
+ *  Conky çıktısı düzenlemeleri
+ *  Çevrimiçi kuran dinletiminde kullanılan sitenin yaptığı sunucu değişikliği betiğe uygulandı.
+ *  Kod geliştirmeleri ve küçük hataların düzeltimi
+
+
+/×××××××××××××××××××××××××××××
+× 5.1 - 16.12.2010
+×××××××××××××××××××××××××××××/
+
+ *  Gelişmiş arayüz geliştirmeleri
+ *  Çeşitli renk düzenlemeleri
+ *  “Ezan okuyan” değişkeni
+ *  Güncel man dosyası
+
+
+/×××××××××××××××××××××××××××××
+× 5.0 - 11.12.2010
+×××××××××××××××××××××××××××××/
+
+ *  Gelişmiş ve basit arayüz
+ *  Gelişmiş arayüz için menü başlatıcı
+ *  Güncel man dosyası
+ *  Çeşitli düzenlemeler 
+
+
+/×××××××××××××××××××××××××××××
+× 4.5 - 09.12.2010
+×××××××××××××××××××××××××××××/
+
+ *  Diyanet sitesindeki tüm ülkeler için ezanveri güncelleme desteği
+ *  Geç ezan okuma değişkeni
+ *  Yeni simge
+ *  Güncel man dosyası
+
+
+/×××××××××××××××××××××××××××××
+× 4.1 - 14.11.2010
+×××××××××××××××××××××××××××××/
+
+ *  Otomatik ezanveri dosyası güncelleme (öntanımlı kapalı gelmekte)
+ *  Kullanıcı tefsir dizini
+ *  Yerel sure dizini 
+ *  Öntanımlı ses ayarı
+ *  Bildirim baloncuğu bekleme süreleri değiştirebilme
+ *  Ezan duasının isteğe bağlı okunması
+ *  Ezan ses dosyalarını değiştirebilme
+ *  Güncel man dosyası
+
+
+/×××××××××××××××××××××××××××××
+× 4.0 - 06.11.2010
+×××××××××××××××××××××××××××××/
+
+ *  Günlük ezan vakitlerini kalan sürelerle birlikte görüntüleme
+ *  Kuran' ın Türkçe çevirilerini kullanarak rastgele bir ayet gösterme
+ *  Diyanet sitesindeki "Bunları biliyor musunuz?" bölümünden rastgele bir soru ve sorunun yanıtını gösterme
+ *  40 hadis ten rastgele bir hadis seçerek gösterme
+ *  Esma-ül Hüsna' dan rastgele bir ad seçip gösterme
+ *  Ezanlar artık saniyesi saniyesine okuyor.
+ *  Ayrıntılı bir man dosyası
+ *  Ezan vakitlerinin yer aldığı dosyayı, diyanet in sitesine bağlanarak aylık bazda içeriği alarak kendini güncelleme
+ *  Yapılandırma dosyasından ayarları okuma ve çeşitli özelleştirmeler
+ *  Çevrimiçi kuran dinletimi için artık quranlisten.com sitesini kullanıyor.
+ *  Kuran dinletiminde rastgele sure ve hatim kipi
+
+
+/×××××××××××××××××××××××××××××
+× 3.3 - 01.10.2010
+×××××××××××××××××××××××××××××/
+
+ *  Kod geliştirme & temizlik
+ *  Küçük yazım hataları giderildi.
+
+
+/×××××××××××××××××××××××××××××
+× 3.2 - 30.09.2010
+×××××××××××××××××××××××××××××/
+
+ *  Ezanveri dosyasının güncellenmesi için son 7 gün( her gün)  uyarı verme özelliği
+ *  Çeşitli düzenlemeler
+
+
+/×××××××××××××××××××××××××××××
+× 3.1 - 29.08.2010
+×××××××××××××××××××××××××××××/
+
+ *  Sure numaralarında sıfır ekleme zorunluluğunu kaldırdım. Betik girilen sayıya göre sıfır ekliyor.
+ *  Çeşitli kod iyileştirmeleri
+
+
+/×××××××××××××××××××××××××××××
+× 3.0 - 04.08.2010
+×××××××××××××××××××××××××××××/
+
+ *  GNOME bağımlılıklarını kaldırdım. Betik artık KDE ve XFCE  üzerinde de çalışabilir.
+ *  Ses oynatımında mplayer kullanıyor artık.
+ *  Uçbirimden kuran sureleri dinleme desteği. (-k, –kuran  <sure_kodu>)
+ *  Sure kodlarını öğrenmek için özel değişken (–sureler değişkeni)
+
+
+/×××××××××××××××××××××××××××××
+× 2.2 - 01.08.2010
+×××××××××××××××××××××××××××××/
+
+ *  denetle(), ve yardim() fonk. geliştirmeleri
+ *  Küçük hatalar düzeltildi.
+
+
+/×××××××××××××××××××××××××××××
+× 2.1 - 31.07.2010
+×××××××××××××××××××××××××××××/
+
+ *  Ezanveri denetimi geliştirildi.
+
+
+/×××××××××××××××××××××××××××××
+× 2.0 - 31.07.2010
+×××××××××××××××××××××××××××××/
+
+ *  İftar saati ve iftara kalan süreyi gösterme desteği eklendi.
+ *  Ramazan ayı için sadece imsak ve iftar da bildirim yapan özel bir kip eklendi.
+ *  Conky için de iftar saatini ve iftara kalan süreyi gösterme eklendi. 
+
+
+/×××××××××××××××××××××××××××××
+× 1.6 - 30.07.2010
+×××××××××××××××××××××××××××××/
+
+ *  Her vakit için vaktin makamına uygun ezan.
+ *  Ezandan sonra Türkçe ezan duası
+ *  İstediğiniz herhangi bir zamanda, istediğiniz makamın ezanını dinleme özelliği eklendi.
+ *  Yardım bölümü eklendi.
+ *  Conky profilinde günlük vakitlerin gösterimi için özel çıktı
+
+
+/×××××××××××××××××××××××××××××
+× 1.0 - 27.07.2010
+×××××××××××××××××××××××××××××/
+
+ *  Hello World!
+

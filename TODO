@@ -1,0 +1,23 @@
+# TODO:
+
+# ana betiği böl.  ###TAMAM###
+# ezanlar ve iftarimsak fonksiyonları için crontab yazdırmalı yeni hesaplama fonksiyonu geliştir.
+# Archlinux için 2'li paketleme yap. Ses dosyaları için yeni paketleme. ###TAMAM###
+# ses dosyalarını yeni depoya al (?) ###TAMAM###
+# debian paketleme dosyalarını yeni depo açarak paylaşıma aç.
+# ezanlar ve iftarimsak fonk. için çoklu çalışmayı engelleyen denetim ekle. ###TAMAM###
+# gelişmiş arayüz e son özelikleri(dini günler; aylık,haftalık vakitler) ekle.
+# oynatici_duraklat için uygulama durumunu denetleme geliştir.
+# yapılandırma yöneticisini yeni pencerelere böl. Kapsamını arttır. Önce CB ile pencereleri listele.
+# --vakitler/-v için birleşik komut kullanımı desteği sağla. (ezanvakti -vi gibi)
+# makefile geliştir. ( dist oluşturma , tane tane dosya kurulumu ) ###TAMAM###
+# ayarları oluşturma için sed ile ayarlar dosyasını yazarken düzenleme yaptır. ###TAMAM###
+# kuran dinle için hatalı seçimleri yakalama geliştir.  ###TAMAM###
+# ilçeleri de ekle.
+# yapilandirma yöneticisi bileşenini son duruma göre güncelle. ###TAMAM###
+# --surum çıktısı için daha fazla bilgi  ###TAMAM ###
+# renk özelleştirmelerini daha kolaylaştır. Renkler için kod yerine rengin adının kullanılmasını sağla..
+# man dosyasını 2 ye böl. (1. ve 5. bölümler) ###TAMAM###
+# man dosyasını güncelle.
+# ayarlar dosyası ve ana betik üzerindeki yorum içeriklerini daha geniş kapsamlı olarak ele al.
+# Ubuntu yamalarını güncelle.

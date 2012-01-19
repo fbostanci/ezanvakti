@@ -1,0 +1,256 @@
+.TH "Ezanvakti" "5" "2012\-xx\-xx" "Ezanvakti 6\&.0" "Ezanvakti Kullanım Yönergeleri"
+.LP
+.SH AYARLAR Dosyası İşlemleri
+Betik ilk çalıştırmada \fI~/.config/ezanvakti\fP dizinini \-eğer yoksa\- oluşturmaktadır.
+Dosya içeriğine ayrıca öntanımlı ayarların bulunduğu 'ayarlar' dosyasını yazmaktadır.
+Bu dosyayı düzenleyerek betik üzerinde düzenlemeler yapmaya gereksinim duymadan kendi
+özelleştirmelerinizi yapabilirsiniz. Betik açılışta bu dosyadaki değerlere göre
+çalışacaktır.
+.TP
+.B EZANVERI_DIZINI
+Ezanveri dosyanızı istediğiniz konuma taşıyabilirsiniz. Konum öntanımlı olarak ev
+dizinidir. Farklı bir konum için bu değeri düzenleyin.
+.TP
+.B EZANVERI_ADI
+Ezanveri dosyanız için farklı bir ad kullanmak istiyorsanız bu değere yeni adı girin.
+.TP
+.B ULKE
+Ezanveri dosyanızı güncelleme işleminde taban olarak kullanılacak ülke adıdır.
+.TP
+.B KONUM
+Betik bildirimlerinde bulunduğunuz şehri göstermek ayrıca ezanveri dosyanızı güncelleme
+işleminde taban olarak kullanılacak şehir adıdır.
+.TP
+.B GUNCELLEME_YAP
+Ezanveri dosyasının güncel kalması için, son 7 gün bildirim baloncuğu ile uyarı yapılmaktadır.
+5.2 sürümünden beri artık ezanveri dosyanızın olmadığı ya da güncel olmadığı durumlar için de
+otomatik güncelleme özelliği eklenmiştir.
+Eğer, güncelleme işleminin otomatik olarak yapılmasını istiyorsanız bu değeri 0; yapılmaması
+için değeri 1 yapın. Öntanımlı olarak, otomatik güncelleme açık gelmektedir.
+.TP
+.B KULLANICI_TEFSIR_DIZINI
+Türkçe kuran ayetleri gösteriminde kullanılacak tefsir dosyaları için, ek olarak
+kullanıcının belirleyeceği dizine de bakması için kullanılacak bilgidir. Kullanılacak tefsir
+için betik iki dizine de bakar. (diğer dizin root kullanıcısı üzerindedir.)
+.TP
+.B TEFSIR_SAHIBI
+Tefsir dizinlerindeki hangi dosyanın kullanılacağını belirten değerdir. Öntanımlı olarak
+diyanet gelmektedir.
+
+Ek seçenekler olarak 'diyanet' değeri yerine;
+
+Yaşar Nuri Öztürk için 'ozturk' değeri,
+
+Süleyman Ateş için 'ates' değeri,
+
+Elmalılı Hamdi Yazır için 'yazir' değeri,
+
+T.C. Diyanet İşleri için 'diyanet' değeri
+
+ekleyebilirsiniz.
+
+Daha fazlası için zekr.org sitesini ziyaret edin.
+.TP
+.B YEREL_SURE_DIZINI
+Kuran dinlemek için internet yerine, kendi dosyalarınızı kullanmak
+istiyorsanız, dosyalarınızın bulunduğu konumu buraya girin. Sure ses dosyaları
+\-\-sureler
+(bkz.
+.B \-\-sureler
+seçeneği.)
+değişkeni ile görüntüleyeceğiniz listedeki gibi numaralarla adlandırılmalıdır.
+Betik eğer istenen sureyi, belirttiğiniz dizinde bulamazsa, çevrimiçi olarak
+dinletmeyi deneyecektir.
+.TP
+.B OKUYAN
+Çevrimiçi ya da yerel dizinden kuran dinleme işleminde farklı bir kuran
+okuyucusu seçebilirsiniz. Öntanımlı değer Saad el Ghamdi' dir.
+
+Çevrimiçi kuran dinleme işlemi için değeri
+
+As Shatry için 'AsShatree'
+
+Ahmad el Ajmy için 'AlAjmy'
+
+Saad el Ghamdi için 'AlGhamdi'
+
+olarak düzenleyebilirsiniz.
+.TP
+.B SURELER
+Seçime bağlı sureleri dinleme işlemi için dizi halinde girilen
+sayıları, ilişik olan sureye göre sırayla okur ve çıkar. Sure kodları için
+(bkz.
+.B \-\-sureler
+seçeneği.) Sayıları tek tırnak içerisinde olacak şekilde girin. İsterseniz sure
+kodlarındaki 0 ile başlayan sureler için ör: 001 yerine 1 de kullanabilirsiniz.
+.TP
+.B EZAN_BILDIRIM_SURESI
+Ezan okunurken, bildirim baloncuğuyla yapılan uyarının ekrandaki bekleme
+süresidir. Öntanımlı değer 60 saniyedir. Ubuntu GNOME ortamındaki,
+Notify-OSD için bekleme süresi belirleme öntanımlı olarak kapalı gelmektedir.
+Yamalanmış Notify-OSD sürümüyle bu sorun aşılmaktadır.
+
+UBUNTU kullanıcıları öntanımlı süreyi değiştirmek için aşağıdaki komutlarla
+yamalanmış sürümü sistemlerine kurabilirler.
+
+.B sudo add-apt-repository ppa:leolik/leolik
+
+.B sudo apt-get update && sudo apt-get upgrade
+
+.B pkill notify-osd
+
+.TP
+.B AYET_BILDIRIM_SURESI
+Türkçe ayet gösterimi için kulanılan bildirim baloncuğunun ekrandaki bekleme
+süresidir. Öntanımlı değer 30 saniyedir.
+.TP
+.B HADIS_BILDIRIM_SURESI
+40 hadis' ten rastgele bir hadis gösterimi için kulanılan bildirim baloncuğunun
+ekrandaki bekleme süresidir. Öntanımlı değer 25 saniyedir.
+.TP
+.B BILGI_BILDIRIM_SURESI
+Rastgele bir soru ve sorunun yanıtı gösterimi için kulanılan bildirim baloncuğunun
+ekrandaki bekleme süresidir. Öntanımlı değer 20 saniyedir.
+.TP
+.B GUNCELLEME_BILDIRIM_SURESI
+Ezanveri dosyasının son 7 gün güncellik anımsatmasında, ve otomatik güncelleme
+işlemi sonrası durumu kullanıcıya bildirmek amaçlı çıkan bildirim baloncuklarının
+ekrandaki bekleme süresidir. Öntanımlı değer 15 saniyedir.
+.TP
+.B GUN_ANIMSAT
+Dini günler ve geceler için masaüstüne bildirim baloncuğu açar.  Girilen sayı bildirimin
+masaüstünde bekleme süresidir. Eğer bildirim yapılmasını istemiyorsanız değeri 0 olarak girin.
+Öntanımlı bu bu özellik açık gelmektedir ve değeri 15 saniyedir.
+.TP
+.B VAKIT_ANIMSAT
+Eğer ezan okunmadan önce vaktin yaklaştığıyla ilgili anımsatma bildirimi almak
+istiyorsanız dakika cinsinden olmak şartıyla istediğiniz değeri girin. Öntanımlı bu özellik
+açık gelmektedir ve değeri 15 dakikadır.
+.TP
+.B SES
+Ezan okuma/dinletme ve kuran dinleme işlemleri için kullanılan Mplayer
+uygulaması için kullanılacak ses değeridir. Öntanımlı 100'dür.
+.TP
+.B OYNATICI_DURAKLAT
+Vakit ezanı okunacağı zaman, betiğin tanıdığı oynatıcıları ezan okunurken duraklatıp;
+ezan bitimiyle oynatıcının devam etmesini sağlayan değerdir. Öntanımlı bu özellik kapalı gelmektedir.
+Duraklatmayı açmak için 0; kapatmak için 1 değerini girin. Bu özellik sadece vakitlerde okunan
+ezanlar içindir. Ezan dinleme işleminde etkisizdir.
+
+Desteklenen oynatıcılar: DeadBeeF, Clementine, Amarok, Audacious, Aqualunq, Banshee, Exaile,
+Rhythmbox, Cmus, Qmmp, Moc
+.TP
+.B EZAN_DUASI_OKU
+Ezan okuma işleminden sonra,  Türkçe ezan duası da okunmasını belirleyen değerdir.
+Öntanımlı olarak okunma açık gelmektedir. (0 değeri.) Eğer okunmamasını istiyorsanız
+değeri 1 olarak belirleyin.
+.TP
+.B EZAN_OKUNMA_SURESI_FARKI
+Eğer ezanların vaktinden önce ya da sonra okunmasını istiyorsanız, bu değeri
+saniye cinsinden olmak şartıyla değiştirebilirsiniz. Öntanımlı değer
+\'0' dır, Yani ezanı tam vaktinde okur. ör: Ezanların 2 dk önce
+okunması için -120  değerini girin. Eğer ezanların 2 dk sonra
+okunmasını istiyorsanız 120 değerini girin. Önüne \'+' işareti koymayın.
+Ezanveri dosyanızdaki asıl vakit saatleri değişmemektedir.
+Dolayısıyla gösterilen vakit saatleri de değişmez. Değişen
+sadece ezanın okunma saati ve ezana kalan sürelerdir.
+.TP
+.B EZAN_OKUYAN
+Ezan okunurken yapılacak bildirim için, ezanı okuyan kişinin adıdır.
+.TP
+.B SABAH_EZANI
+Sabah ezanının okunması için kullanılacak ses dosyasının
+bulunduğu dizindir. Eğer farklı bir ses dosyası kullanmak
+istiyorsanız; bu değere, ses dosyasının konumunu girin.
+.TP
+.B OGLE_EZANI
+Öğle ezanının okunması için kullanılacak ses dosyasının
+bulunduğu dizindir. Eğer farklı bir ses dosyası kullanmak
+istiyorsanız; bu değere, ses dosyasının konumunu girin.
+.TP
+.B IKINDI_EZANI
+İkindi ezanının okunması için kullanılacak ses dosyasının
+bulunduğu dizindir. Eğer farklı bir ses dosyası kullanmak
+istiyorsanız; bu değere, ses dosyasının konumunu girin.
+.TP
+.B AKSAM_EZANI
+Akşam ezanının okunması için kullanılacak ses dosyasının
+bulunduğu dizindir. Eğer farklı bir ses dosyası kullanmak
+istiyorsanız; bu değere, ses dosyasının konumunu girin.
+.TP
+.B YATSI_EZANI
+Yatsı ezanının okunması için kullanılacak ses dosyasının
+bulunduğu dizindir. Eğer farklı bir ses dosyası kullanmak
+istiyorsanız; bu değere, ses dosyasının konumunu girin.
+.TP
+.B EZAN_DUASI
+Ezan okumadan sonra, dinletilecek ezan duası için
+kullanılacak ses dosyasının bulunduğu dizindir. Eğer
+farklı bir ses dosyası kullanmak istiyorsanız; bu değere,
+ses dosyasının konumunu girin.
+.LP
+.SH GELiŞMiŞ AYARLAR
+Arayüzlerde ve Conky uygulamasında değişik yazı tipi ve
+boyutlarında düzensiz görünümler ortaya çıkmaktadır.
+Daha güzel görünüm elde edebilmek için betik üzerinde
+düzenleme yapmak yerine bu bölümdeki değerleri düzenleyerek
+istediğiniz görünüme kavuşabilirsiniz. Değerler printf uygulamasıyla
+gösterilmektedir.
+.TP
+.B GELISMIS_ARAYUZ_BICIMI
+Gelişmiş arayüz uygulamasına ait yazıların düzen değeridir. Her
+\'%s' değeri arayüzün bir bölümünü ifade etmektedir.
+
+1. %s : Tarih değeridir. - ile aldığı değer saat ile arasındaki
+boşluk miktarıdır.
+
+2. %s : Saat değeridir.
+
+3. %s : Ülke şehir değeridir.
+
+4. %s : Üst çizgi değeridir.
+
+5. %s : Gösterilen şu anki vakittir.
+
+6. %s : Alt çizgi değeridir.
+
+7. %s : Gösterilen vakitlerin değeridir.
+
+8. %s : Bir sonraki vaktin bildirildiği yazının değerdir.
+
+9. %s: Bir sonraki vakte ne kadar kaldığını gösteren sürenin değeridir.
+.TP
+.B CONKY_BICIMI
+Conky vakit çıktısına ait değerdir. %s değerleri sıralı vakit adı-vakit saati
+ikililerini temsil etmektedir.
+.TP
+.B VAKIT_BICIMI
+Arayüzlerde gösterilen vakitlere ait değerdir.  %s değerleri sıralı vakit adı-vakit saati
+ikililerini temsil etmektedir.
+.TP
+.B CIZGI_SIMGESI
+Gelişmiş arayüzde gösterilen şerit bantların simge değeridir. Öntanımlı değer '@' simgesidir.
+.TP
+.B CIZGI_UZUNLUGU
+Şerit bantta kaç adet simgenin gösterileceğini belirten değerdir. Alt ve üst şeritler aynı sayıda oluşur.
+.TP
+.B RENK_KULLAN
+Uçbirim çıktıları için rengin kullanılması/kullanılmaması işlemini belirleyen değerdir.
+Renk kullanmak için 0; renksiz çıktılar için 1 değerini girin.
+İşlem uygulama geneli tüm uçbirim çıktılarına uygulanır.
+.TP
+.B RENK KODLARI
+Uçbirim çıktılarında kullanılan renkleri isterseniz değiştirebilirsiniz.
+Renk kodlarını öğrenmek için
+
+.B /usr/share/ezanvakti/bilesenler/renk_ogren
+
+betiğini çalıştırın. Uçbirim şemanıza uygun renklerin kodlarını uçbirime renkli olarak
+verir.
+.TP
+.B ARKAPLAN_RENGI
+Gelişmiş arayüzdeki seçim göster bölümünde yapılan istek için içeriği gösteren kutucuğun arka plan renk
+değeridir.
+.TP
+.B YAZI_RENGI
+Gösterilen kutucuktaki içerik için yazı tipi renk değeridir.

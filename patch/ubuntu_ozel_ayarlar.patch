@@ -1,0 +1,26 @@
+diff -aur a/data/veriler/ayarlar.in b/data/veriler/ayarlar.in
+--- a/data/veriler/ayarlar.in	2011-11-13 15:11:38.000000000 +0200
++++ b/data/veriler/ayarlar.in	2011-11-17 21:39:56.963796060 +0200
+@@ -125,19 +125,19 @@
+ #                           #
+ 
+ # Printf arayuz yazı biçimi
+-GELISMIS_ARAYUZ_BICIMI='%-62s%s\n%s\n%s\n\t\t\t\t%s\n%s\n\n%s\n\n\t\t\t %s\n\t\t\t %s'
++GELISMIS_ARAYUZ_BICIMI='%-69s%s\n%s\n%s\n\t\t\t\t\t%s\n%s\n\n%s\n\n\t\t\t\t%s\n\t\t\t\t%s'
+ 
+ # Printf conky çıktısı biçimi
+ CONKY_BICIMI='%-14s%s\n%-15s%s\n%-17s%s\n%-17s%s\n%-14s%s\n%-17s%s\n'
+ 
+ # Printf arayüzlerdeki vakit çıktısı biçimi
+-VAKIT_BICIMI='\t\t\t%-14s%s\n\t\t\t%-16s%s\n\t\t\t%-18s%s\n\t\t\t%-18s%s\n\t\t\t%-14s%s\n\t\t\t%-18s%s'
++VAKIT_BICIMI='\t\t\t\t%-13s%s\n\t\t\t\t%-15s%s\n\t\t\t\t%-17s%s\n\t\t\t\t%-16s%s\n\t\t\t\t%-12s%s\n\t\t\t\t%-17s%s'
+ 
+ # Arayüz çizgi simgesi
+ CIZGI_SIMGESI='@'
+ 
+ # Arayüz çizgi karakter uzunluğu
+-CIZGI_UZUNLUGU=26
++CIZGI_UZUNLUGU=22
+ 
+ # Uçbirim çıktıları için renk kullanılması (kullanılması için 1; kullanılmaması için 0)
+ RENK_KULLAN=1

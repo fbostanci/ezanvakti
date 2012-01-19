@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=Ezanvakti
+Comment=GNU/Linux icin ezan vakti bildirici
+Exec=@bindir@/ezanvakti
+Terminal=false
+Type=Application
+Categories=
+GenericName=
+
