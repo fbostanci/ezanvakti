@@ -60,8 +60,8 @@ function denetle() {
   }
 
   # ezanveri dosyasından tarih bloğunu ayıklayıp son tarih satır no dan bugünkünü çıkardık.
-	ksatir=$(gawk -v tarih=${TARIH} '/^[0-9][0-9]\.[0-9]*\.[0-9]*/ {if($1 ~ tarih) bsatir = NR}; \
-	  /^[0-9][0-9]\.[0-9]*\.[0-9]*/ {} END {tsatir = NR}; END {print(tsatir-bsatir)}' "${EZANVERI}")
+  ksatir=$(gawk -v tarih=${TARIH} '/^[0-9][0-9]\.[0-9]*\.[0-9]*/ {if($1 ~ tarih) bsatir = NR}; \
+    /^[0-9][0-9]\.[0-9]*\.[0-9]*/ {} END {tsatir = NR}; END {print(tsatir-bsatir)}' "${EZANVERI}")
   let ksatir++
 
   (( ksatir <= 7 )) && { # sonuç 7 ya da 7'den küçükse
@@ -86,7 +86,7 @@ function denetle() {
 
 # Bugünün ezan vakitlerini ayıkla ve değerleri vakit değişkenlerine ata.
 function bugun() {
-  export $(gawk 'BEGIN{tarih = strftime("%d.%m.%Y")} {if($1 == tarih) \
+  export $(gawk 'BEGIN{tarih = strftime("%d.%m.%Y")} {if($1 ~ tarih) \
     {printf "sabah=%s%s\ngunes=%s%s\nogle=%s%s\nikindi=%s%s\naksam=%s%s\
     \nyatsi=%s%s\nsabah_n=0%s:%s\ngunes_n=0%s:%s\nogle_n=%s:%s\nikindi_n=%s:%s\naksam_n=%s:%s\nyatsi_n=%s:%s"\
     , $2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13}}' "${EZANVERI}")
