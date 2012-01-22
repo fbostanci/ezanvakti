@@ -387,8 +387,8 @@ case $1 in
     [ $SAAT -lt $aksam ] && {
       bekleme_suresi $aksam_n; kalan
 
-      (echo "İftar : $aksam_n"
-       echo "Kalan : $kalan_sure") | sed 's:saat:sa:;s:dakika:dk:;s:saniye:sn:'
+      echo -e "İftar : $aksam_n\nKalan : $kalan_sure" |\
+        sed 's:saat:sa:;s:dakika:dk:;s:saniye:sn:'
     } || {
 
       [ $SAAT -ge $aksam ] && {
@@ -396,8 +396,8 @@ case $1 in
           <(grep $(date -d 'tomorrow' +%d.%m.%Y) "${EZANVERI}"))
         bekleme_suresi_yarin $aksam_n; kalan
 
-        (echo "İftar : $aksam_n (Yarın)"
-         echo "Kalan : $kalan_sure") | sed 's:saat:sa:;s:dakika:dk:;s:saniye:sn:'
+        echo -e "İftar : $aksam_n (Yarın)\nKalan : $kalan_sure" |\
+          sed 's:saat:sa:;s:dakika:dk:;s:saniye:sn:'
       }
     } ;;
  --hadis)
@@ -457,7 +457,7 @@ case $1 in
     guncelleme_yap ;;
   --g[uü]nler)
     printf "${RENK7}${RENK3}\n$(date +%Y)${RENK2} yılı için dini günler ve geceler\n\n"
-    sed  -n "s:\([0-9].*$(date +%Y)\)\(.*\):$(printf "${RENK7}${RENK3}\1\t${RENK2}\2${RENK0}\n"):p" \
+    sed  -n "s:\([0-9].*$(date +%Y)\)\(.*\):$(echo -e "${RENK7}${RENK3}\1\t${RENK2}\2${RENK0}\n"):p" \
       <${VERI_DIZINI}/veriler/gunler
     ;;
   --gui|--aray[uü]z)
