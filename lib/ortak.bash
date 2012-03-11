@@ -12,6 +12,8 @@ MPLAYER="mplayer -really-quiet -volume $SES"
 # RENK null ise ayarlar dosyasından okunan RENK_KULLAN değerini kullanacak.
 #
 # Renk kullan sıfırsa renkleri sıfırla.
+
+# HACK: fonksiyon olarak düzenle.
 (( ! ${RENK:-RENK_KULLAN} )) && {
   RENK0=''
   RENK1=''

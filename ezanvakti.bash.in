@@ -48,8 +48,7 @@ sed "s:\$HOME:$HOME:" < @sysconfdir@/ezanvakti/ayarlar > "${EZANVAKTI_AYAR}"
 function yontem_calistir() {
   local yontem degisken ez
 
-  degisken=1
-  [[ $1 = ramazan ]] && degisken=2
+  [[ $1 = ramazan ]] && degisken=2 || degisken=1
 
   case ${EZANVAKTI_YONTEM} in
     [Ss]*)

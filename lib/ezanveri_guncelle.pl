@@ -17,6 +17,7 @@
 #
 #
 
+# TODO: ilçeler için destek eklenecek.
 
 use WWW::Mechanize;
 

@@ -4,6 +4,8 @@
 #
 #
 
+# TODO: ilçeler için destek eklenecek
+
 function guncelleme_yap() {
   local arayuz ulke sehir varsayilan_sehir
 
@@ -97,6 +99,7 @@ unset IFS
 
 printf "${RENK7}${RENK3}${EZANVERI_ADI} dosyanız güncelleniyor..${RENK0}\n"
 
+# HACK: internet bağlantı sınaması yöntemini değiştir.
 if ! { ping -q -w 1 -c 1 `ip r | grep default | cut -d ' ' -f 3` &> /dev/null; }
 then
     printf '%s\n%s\n' \
@@ -119,6 +122,7 @@ echo -e "\
     mv -f /tmp/ezanveri-$$ "${EZANVERI}"
     printf "${RENK7}${RENK2}Başarılı..${RENK0}\n"
     . "${EZANVAKTI_AYAR}"
+    ## FIXME: Buraya renk denetimi eklenecek
     notify-send "Ezanvakti $SURUM" "${EZANVERI_ADI} dosyası başarıyla güncellendi." \
       -i ${VERI_DIZINI}/simgeler/ezanvakti.png -t $GUNCELLEME_BILDIRIM_SURESI"000"
       :> /tmp/eznvrgncldntle_$(date +%d%m%y)
