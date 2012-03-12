@@ -114,10 +114,10 @@ then
     sed -i "s:\(EZAN_DUASI_OKU=\).*:\1$_EZAN_DUASI_OKU:" "${EZANVAKTI_AYAR}"
 fi
 
-_EZAN_BILDIRIM=$(sed 's:\([0-9]*\)[,|.].*:\1:' <<<${list[6]})
-_SURE_FARKI=$(sed 's:\([0-9]*\)[,|.].*:\1:' <<<${list[7]})
-_SES_SEVIYE=$(sed 's:\([0-9]*\)[,|.].*:\1:' <<<${list[8]})
-_VAKIT_ANIMSAT=$(sed 's:\([0-9]*\)[,|.].*:\1:' <<<${list[9]})
+_EZAN_BILDIRIM=$(sed -n 's:[,|.].*::p' <<<${list[6]})
+_SURE_FARKI=$(sed -n 's:[,|.].*::p' <<<${list[7]})
+_SES_SEVIYE=$(sed -n 's:[,|.].*::p' <<<${list[8]})
+_VAKIT_ANIMSAT=$(sed -n 's:[,|.].*::p' <<<${list[9]})
 
 if [[ $EZAN_BILDIRIM_SURESI -ne $_EZAN_BILDIRIM ]]
 then
