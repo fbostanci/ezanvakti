@@ -19,6 +19,7 @@
 
 # TODO: ilçeler için destek eklenecek.
 
+use encoding "utf-8";
 use WWW::Mechanize;
 
 my $ulke = $ARGV[0];
