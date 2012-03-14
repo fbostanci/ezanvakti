@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 #
-#                          Ezanveri Güncelle 1.3
+#                          Ezanveri Güncelle 1.4
 #
 ##
 ##          Copyright (c) 2010-2012 Fatih Bostancı  <faopera@gmail.com>
@@ -17,13 +17,14 @@
 #
 #
 
-# TODO: ilçeler için destek eklenecek.
 
 use encoding "utf-8";
 use WWW::Mechanize;
 
 my $ulke = $ARGV[0];
 my $sehir = $ARGV[1];
+my $ilce = $ARGV[2];
+
 
 my $mech = WWW::Mechanize->new();
 #$mech->agent_alias( 'Linux Mozilla' );
@@ -35,7 +36,10 @@ $mech->field(ulkeler => $ulke);
 $mech->submit('document.benimformum.submit');
 
 $mech->form_name(hesapformu);
-$mech->field(sehirler => $sehir);
+$mech->field(eyalet => $sehir);
+
+$mech->form_name(hesapformu);
+$mech->field(sehirler => $ilce);
 
 $mech->set_visible( [ radio => 'AYLIK' ] );
 $mech->click_button(value => 'Hesapla');
