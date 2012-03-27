@@ -22,7 +22,10 @@ EZANVERI_ADI=ezanveri
 ULKE=Bilinmeyen
 
 # Bulunduğunuz şehir
-KONUM=Bilinmeyen
+SEHIR=Bilinmeyen
+
+# Bulunduğunuz ilçe
+ILCE=Bilinmeyen
 
 # Ezanveri otomatik güncelleme (Güncelleme yapılması için 1; yapılmaması için 0)
 GUNCELLEME_YAP=1
