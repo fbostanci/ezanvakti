@@ -85,7 +85,7 @@ IFS="
             (( $? == 1 )) && exit 1
   elif (( arayuz == 2 ))
   then
-      sehir=`kdialog --combobox 'Bulunduğunuz şehri seçin' --title 'Sehir belirleme' \
+      sehir=`kdialog --combobox 'Bulunduğunuz şehri seçin' --title 'Şehir belirleme' \
             --default ${varsayilan_sehir} $( < ${VERI_DIZINI}/ulkeler/${ulke})`
             (( $? == 1 )) && exit 1
   elif (( arayuz == 3 ))
