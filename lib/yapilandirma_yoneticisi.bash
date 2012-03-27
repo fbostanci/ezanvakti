@@ -77,9 +77,9 @@ if [[ "${list[1]}" != "${ULKE}" ]]
 then
     sed -i "s:\(ULKE=\).*:\1\'${list[1]}\':" "${EZANVAKTI_AYAR}"
 fi
-if [[ "${list[2]}" != "${KONUM}" ]]
+if [[ "${list[2]}" != "${SEHIR}" ]]
 then
-    sed -i "s:\(KONUM=\).*:\1\'${list[2]}\':" "${EZANVAKTI_AYAR}"
+    sed -i "s:\(SEHIR=\).*:\1\'${list[2]}\':" "${EZANVAKTI_AYAR}"
 fi
 if [[ "${list[3]}" != "TRUE" ]]
 then

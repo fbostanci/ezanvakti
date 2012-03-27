@@ -11,9 +11,9 @@ fi
 
 elx=''
 for ((i=1; i<=$CIZGI_UZUNLUGU; i++))
-do
+{
   elx+="${CIZGI_SIMGESI}"
-done
+}
 
 (( GUN_ANIMSAT )) && {
   if grep -q $(date +%d.%m.%Y) ${VERI_DIZINI}/veriler/gunler
@@ -50,7 +50,7 @@ yad --form --separator=' ' --title="Ezanvakti $SURUM" --text "${mplayer_ileti}" 
 
   case $? in
     127)
-      echo stop > /tmp/mplayer.pipe 2>/dev/null;sleep 0.3
+      echo stop > /tmp/mplayer.pipe 2>/dev/null;sleep .4
       echo stop > /tmp/mplayer.pipe2 2>/dev/null
       rm -f /tmp/mplayer.pipe{,2} &>/dev/null
       ;;
