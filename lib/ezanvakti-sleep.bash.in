@@ -29,7 +29,7 @@ VERI_DIZINI=@datadir@/ezanvakti
 function ezanoku() {
   clear
   printf '%b%b\n' \
-    "${RENK7}${RENK3}${KONUM}${RENK2} " \
+    "${RENK7}${RENK3}${ILCE}${RENK2} " \
     "için ${RENK3}${simdiki}${RENK2} namazı vakti${RENK5} $vakit_saati${RENK0}"
 
   notify-send "${KONUM} için" "${simdiki} namazı vakti\n$vakit_saati" \
@@ -74,10 +74,10 @@ function gun_animsat() {
   (( GUN_ANIMSAT )) && {
     if grep -q $(date +%d.%m.%Y) ${VERI_DIZINI}/veriler/gunler
     then
-        ozel_ileti="\n\nBugün:  <b>$(grep $(date +%d.%m.%Y) ${VERI_DIZINI}/veriler/gunler | cut -d ' ' -f2-)</b>"
+        ozel_ileti="\n\nBugün:  <b>$(grep $(date +%d.%m.%Y) ${VERI_DIZINI}/veriler/gunler | cut -d' ' -f2-)</b>"
     elif grep -q $(date -d 'tomorrow' +%d.%m.%Y) ${VERI_DIZINI}/veriler/gunler
     then
-        ozel_ileti="\n\nYarın:  <b>$(grep $(date -d 'tomorrow' +%d.%m.%Y) ${VERI_DIZINI}/veriler/gunler | cut -d ' ' -f2-)</b>"
+        ozel_ileti="\n\nYarın:  <b>$(grep $(date -d 'tomorrow' +%d.%m.%Y) ${VERI_DIZINI}/veriler/gunler | cut -d' ' -f2-)</b>"
     else
         ozel_ileti=''
     fi
@@ -94,10 +94,10 @@ function gun_animsat() {
 function ramazan_ezanoku() {
   clear
   printf '%b\n%b\n' \
-    "${RENK7}${RENK3} ${KONUM}${RENK2} " \
+    "${RENK7}${RENK3} ${ILCE}${RENK2} " \
     "için ${RENK3}${simdiki}${RENK2} vakti${RENK5} $vakit_saati${RENK0}"
 
-  notify-send "${KONUM} için" "${simdiki} vakti \n$vakit_saati" \
+  notify-send "${ILCE} için" "${simdiki} vakti \n$vakit_saati" \
     -i ${VERI_DIZINI}/simgeler/ezanvakti.png -t $EZAN_BILDIRIM_SURESI"000"
 
   (( OYNATICI_DURAKLAT )) && {
@@ -107,7 +107,7 @@ function ramazan_ezanoku() {
   }; clear
 }
 
-# Vakitlerde ezan okunmasının ve bildirimin yönetildiği ana döngüsel fonksiyon.
+# Vakitlerde ezan okunmasının ve bildirimin yönetildiği özyinelemeli ana fonksiyon.
 function ezanlar() {
   denetle; bugun
 

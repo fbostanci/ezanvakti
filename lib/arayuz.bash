@@ -15,6 +15,8 @@ for ((i=1; i<=$CIZGI_UZUNLUGU; i++))
   elx+="${CIZGI_SIMGESI}"
 }
 
+export RENK=0
+
 (( GUN_ANIMSAT )) && {
   if grep -q $(date +%d.%m.%Y) ${VERI_DIZINI}/veriler/gunler
   then
@@ -182,9 +184,9 @@ function arayuz() {
   fi
 
 strng=`yad --form --text "$(printf "${GELISMIS_ARAYUZ_BICIMI}" "${TARIH}" "$(date +%H:%M:%S)" \
-  "${KONUM} / ${ULKE}" "${elx}" "${vakit_bilgisi}${ozel_ileti}" "${elx}" \
+  "${ILCE} / ${ULKE}" "${elx}" "${vakit_bilgisi}${ozel_ileti}" "${elx}" \
   "$("${ezanvakti_xc}" --arayuzlericin)" "${ileti}" \
-  "$(sed -e 's/\x1b\[[0-9]\{1,2\}\(;[0-9]\{1,2\}\)\{0,2\}m//g' -e 's/[^:]*: [0-9]*:[0-9][0-9]//' -e 's/[ ]*//' <<<${v_kalan})")" \
+  "$(cut -d' ' -f5- <<<${v_kalan})")" \
 --field='Ezan dinle:CB' \
 '!Sabah!Öğle!İkindi!Akşam!Yatsı' \
 --field='Kuran dinle:CB' \
