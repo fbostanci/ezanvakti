@@ -109,7 +109,7 @@ unset IFS
 printf "${RENK7}${RENK3}${EZANVERI_ADI} dosyanız güncelleniyor..${RENK0}\n"
 
 # HACK: internet bağlantı sınaması yöntemini değiştir.
-if ! { ping -q -w 1 -c 1 `ip r | grep default | cut -d ' ' -f 3` &> /dev/null; }
+if ! { ping -q -w 1 -c 1 `ip r | grep default | cut -d' ' -f 3` &> /dev/null; }
 then
     printf '%s\n%s\n' \
       "${RENK7}${RENK3}İnternet erişiminiz algılanamadı." \

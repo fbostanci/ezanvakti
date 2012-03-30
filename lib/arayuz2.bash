@@ -9,6 +9,8 @@ then
     exit 1
 fi
 
+export RENK=0
+
 function arayuz2() {
   denetle; bugun
 
@@ -38,8 +40,8 @@ then
     v_kalan=
 fi
 
-yad --title "Ezanvakti $SURUM" --text "$("${ezanvakti_xc}" --arayuzlericin | sed 's:\t::g')\n\n${ileti}\n$(sed -e \
-  's/\x1b\[[0-9]\{1,2\}\(;[0-9]\{1,2\}\)\{0,2\}m//g' -e 's/[^:]*: [0-9]*:[0-9][0-9]//' -e 's/[ ]*//' <<<${v_kalan})" \
+yad --title "Ezanvakti $SURUM" \
+--text "$("${ezanvakti_xc}" --arayuzlericin | sed 's:\t::g')\n\n${ileti}\n$(cut -d' ' -f5- <<<${v_kalan})" \
 --button="gtk-refresh:172" --button="gtk-close:173" \
 --image=${VERI_DIZINI}/simgeler/ezanvakti.png --window-icon=${VERI_DIZINI}/simgeler/ezanvakti2.png \
 --mouse --fixed --sticky

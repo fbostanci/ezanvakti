@@ -237,7 +237,7 @@ case $1 in
     # Betiğe ikinci bir değişken verilmemişse
     (( ! ${#2} )) && {
       printf '%b%b%b%b%b%b\n' \
-        "${RENK7}${RENK3}\n${KONUM}${RENK5} için ezan vakitleri (${TARIH} $(date +%H:%M:%S))\n\n" \
+        "${RENK7}${RENK3}\n${ILCE}${RENK5} için ezan vakitleri (${TARIH} $(date +%H:%M:%S))\n\n" \
         "${RENK2}Sabah ezanı  ${RENK3}: $sabah_n   $sabah_kalan\n" \
         "${RENK2}Öğle ezanı   ${RENK3}: $ogle_n   $ogle_kalan\n" \
         "${RENK2}İkindi ezanı ${RENK3}: $ikindi_n   $ikindi_kalan\n" \
@@ -263,10 +263,11 @@ case $1 in
             , renk7,renk3,$1,renk2,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,renk0}' "${EZANVERI}" ;;
         7|--haftal[ıi]k)
           hafta=$(date -d 'next week' +%d.%m.%Y)
-          [[ -z $(grep -o $hafta "${EZANVERI}") ]] && {
-            printf "${RENK3}7 günlük veri bulunmuyor..${RENK0}\n"
-            exit 1
-          }
+          if `grep -qo $hafta "${EZANVERI}"`
+          then
+               printf "${RENK3}7 günlük veri bulunmuyor..${RENK0}\n"
+               exit 1
+          fi
 
           printf "\n${RENK7}${RENK6}Tarih        Sabah   Güneş   Öğle    İkindi  Akşam   Yatsı${RENK0}\n"
 
