@@ -15,7 +15,7 @@ geldiğinde ezan okuyan ve bildirim veren bir uygulamadır.
 Ayrıca ayet gösterimi, ezan ve kuran dinletimi, ezan okunurken oynatıcı
 duraklatma gibi birçok gelişmiş özelliğe sahiptir. Kullandığı dosyaları ve
 ayarları yapılandırma dosyasından okuduğundan kullanıcıya geniş
-özelliştirme desteği sunar.
+özelleştirme desteği sunar.
 
 
 ###
@@ -30,7 +30,7 @@ BAĞIMLILIKLAR
 
 EK ÖZELLİKLERİN KULLANIMI  İÇİN GEREKLİ (kullanmak isteniyorsa) BAĞIMLILIKLAR
 
- *  perl-www-mechanize (Ezanveri güncelleme desteği)
+ *  perl-www-mechanize  (Ezanveri güncelleme desteği)
  *  perl-html-tree  (Ezanveri güncelleme desteği)
  *  bash-completion  (Bash tamamlama desteği)
  *  yad (>= 0.14.2+r388)  (Arayüz desteği)
@@ -39,13 +39,13 @@ EK ÖZELLİKLERİN KULLANIMI  İÇİN GEREKLİ (kullanmak isteniyorsa) BAĞIMLIL
 ###
 KURULUM ve KALDIRMA
 
-** Archlinux için kurulum
+** Archlinux için kurulum:
 
 PKGBUILD dosyasının bulunduğu dizinde makepkg -si komutunu girin.
 
 **
 
-** Ubuntu için launchpad PPA üzerinden kurulum
+** Ubuntu için Launchpad PPA üzerinden kurulum:
 
 sudo add-apt-repository ppa:fbostanci/distroguide
 sudo apt-get update
@@ -53,7 +53,7 @@ sudo apt-get install ezanvakti
 
 **
 
-Diğer dağitimlar için kurulum:
+** Diğer dağitimlar için kurulum:
 
 make install
 
@@ -64,7 +64,7 @@ kaldırma için:
 make uninstall
 
 komutunu girin.
-
+**
 
 ###
 AYARLAR ve YAPILANDIRMA

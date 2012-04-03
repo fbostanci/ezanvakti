@@ -18,7 +18,7 @@
 #
 
 
-EZANVAKTI_DIZINI="$HOME"/.config/ezanvakti
+EZANVAKTI_DIZINI="${XDG_CONFIG_HOME:-$HOME/.config}/ezanvakti"
 EZANVAKTI_AYAR="${EZANVAKTI_DIZINI}"/ayarlar
 
 BILESEN_DIZINI=@libdir@/ezanvakti
@@ -199,7 +199,7 @@ case $1 in
       RENK1=''; RENK2=''
     }
 
-   [ $SAAT -lt $sabah ] && {
+    [ $SAAT -lt $sabah ] && {
       bekleme_suresi $sabah_n; kalan
       sabah_kalan="${RENK2} $kalan_sure"
     } || {
@@ -246,15 +246,15 @@ case $1 in
     } || {
       case $2 in
         -s|--sabah)
-          printf "${RENK7}${RENK2}\nSabah ezanı  ${RENK3}: $sabah_n $sabah_kalan\n${RENK0}\n" ;;
+          printf "${RENK7}${RENK2}\nSabah ezanı  ${RENK3}: $sabah_n $sabah_kalan${RENK0}\n\n" ;;
         -o|--[oö][gğ]le)
-          printf "${RENK7}${RENK2}\nÖğle ezanı   ${RENK3}: $ogle_n $ogle_kalan\n${RENK0}\n" ;;
+          printf "${RENK7}${RENK2}\nÖğle ezanı   ${RENK3}: $ogle_n $ogle_kalan${RENK0}\n\n" ;;
         -i|--ikindi)
-          printf "${RENK7}${RENK2}\nİkindi ezanı ${RENK3}: $ikindi_n $ikindi_kalan\n${RENK0}\n" ;;
+          printf "${RENK7}${RENK2}\nİkindi ezanı ${RENK3}: $ikindi_n $ikindi_kalan${RENK0}\n\n" ;;
         -a|--ak[sş]am)
-          printf "${RENK7}${RENK2}\nAkşam ezanı  ${RENK3}: $aksam_n $aksam_kalan\n${RENK0}\n" ;;
+          printf "${RENK7}${RENK2}\nAkşam ezanı  ${RENK3}: $aksam_n $aksam_kalan${RENK0}\n\n" ;;
         -y|--yats[ıi])
-          printf "${RENK7}${RENK2}\nYatsı ezanı  ${RENK3}: $yatsi_n $yatsi_kalan\n${RENK0}\n" ;;
+          printf "${RENK7}${RENK2}\nYatsı ezanı  ${RENK3}: $yatsi_n $yatsi_kalan${RENK0}\n\n" ;;
         30|--ayl[ıi]k)
           printf "\n${RENK7}${RENK6}Tarih        Sabah   Güneş   Öğle    İkindi  Akşam   Yatsı${RENK0}\n"
           gawk -v renk0=${RENK0} -v renk2=${RENK2} -v renk3=${RENK3} -v renk7=${RENK7} \
@@ -292,7 +292,7 @@ case $1 in
     # Arayüzlerin hızlı çalışması için vakitleri almada ayrı değişken kullanıldı.
     # Tek başına kullanılmaz.
     printf "${VAKIT_BICIMI}" 'Sabah' "$sabah_n" 'Güneş' \
-      "$gunes_n" 'Öğle' "$ogle_n"  'İkindi' "$ikindi_n" 'Akşam' \
+      "$gunes_n" 'Öğle' "$ogle_n" 'İkindi' "$ikindi_n" 'Akşam' \
       "$aksam_n" 'Yatsı' "$yatsi_n" ;;
   --kuran)
     case $2 in
@@ -301,10 +301,10 @@ case $1 in
         kuran_dinle ;;
       -h|--hatim)
         for ((i=1; i<=114; i++))
-        do
+        {
           girdi=$i
           kuran_dinle; sleep 1
-        done ;;
+        } ;;
       -r|--rastgele)
         girdi=$((RANDOM%114))
         (( ! girdi )) && girdi=114
@@ -360,7 +360,7 @@ case $1 in
       "$aksam_n" 'Yatsı' "$yatsi_n" ;;
   --iftar)
     denetle; bugun
-    export $(grep ${TARIH} "${EZANVERI}" | gawk '{print "\naksam="$10$11}')
+
     # Eğer şu anki saat aksam değerinden küçükse
     [ $SAAT -lt $aksam ] && {
       bekleme_suresi $aksam_n; kalan
@@ -382,7 +382,6 @@ case $1 in
     };;
   --conky-iftar)
     denetle; bugun
-    export $(grep ${TARIH} "${EZANVERI}" | gawk '{print "\naksam="$10$11}')
 
     [ $SAAT -lt $aksam ] && {
       bekleme_suresi $aksam_n; kalan
@@ -400,26 +399,26 @@ case $1 in
           sed 's:saat:sa:;s:dakika:dk:;s:saniye:sn:'
       }
     } ;;
- --hadis)
-   icerik_al=${VERI_DIZINI}/veriler/kirk-hadis
-   secim_yap 40
+  --hadis)
+    icerik_al=${VERI_DIZINI}/veriler/kirk-hadis
+    secim_yap 40
 
-   case $2 in
-     -u|-t|--u[cç]birim|--terminal)
-       (( ! RENK_KULLAN )) && {
-        echo  "${alinan_yanit}" | tr -d '\\' | \
-          sed -r -e 's:\[([0-9]{1,2}(;[0-9]{1,2})?)?[m]::g' -e 's:033::g'
-	      exit 0
-       } || {
-        printf "${alinan_yanit}${RENK0}\n"
-	      exit 0
-       } ;;
-     ?*)
-       hatali_kullanim $2 ;;
-   esac
+    case $2 in
+      -u|-t|--u[cç]birim|--terminal)
+        (( ! ${RENK:-RENK_KULLAN} )) && {
+          echo  "${alinan_yanit}" | tr -d '\\' | \
+            sed -r -e 's:\[([0-9]{1,2}(;[0-9]{1,2})?)?[m]::g' -e 's:033::g'
+          exit 0
+        } || {
+          printf "${alinan_yanit}${RENK0}\n"
+          exit 0
+        } ;;
+      ?*)
+        hatali_kullanim $2 ;;
+    esac
 
-   notify-send "$secilen. hadis" "$(sed '1d' <<<"${alinan_yanit}")" -t $HADIS_BILDIRIM_SURESI"000"
-   exit 0 ;;
+    notify-send "$secilen. hadis" "$(sed '1d' <<<"${alinan_yanit}")" -t $HADIS_BILDIRIM_SURESI"000"
+    exit 0 ;;
   --bilgi)
     icerik_al=${VERI_DIZINI}/veriler/bilgiler
     secim_yap 157
@@ -429,10 +428,10 @@ case $1 in
         (( ! ${RENK:-RENK_KULLAN} )) && {
           echo  "\*${alinan_yanit}" | tr -d '\\' | \
             sed -r -e 's:\[([0-9]{1,2}(;[0-9]{1,2})?)?[m]::g' -e 's:033::g'
-	        exit 0
+          exit 0
         } || {
           printf "${alinan_yanit}${RENK0}\n"
-	        exit 0
+          exit 0
         } ;;
       ?*)
         hatali_kullanim $2 ;;
@@ -445,19 +444,19 @@ case $1 in
     icerik_al=${VERI_DIZINI}/veriler/esma
     secim_yap 99
 
-        (( ! ${RENK:-RENK_KULLAN} )) && {
-          echo  "${alinan_yanit}" | tr -d '\\' | \
-            sed -r -e 's:\[([0-9]{1,2}(;[0-9]{1,2})?)?[m]::g' -e 's:033::g'
-	        exit 0
-        } || {
-          printf "${alinan_yanit}${RENK0}\n"
-	        exit 0
-        } ;;
-   --g[uü]ncelle)
+    (( ! ${RENK:-RENK_KULLAN} )) && {
+      echo  "${alinan_yanit}" | tr -d '\\' | \
+        sed -r -e 's:\[([0-9]{1,2}(;[0-9]{1,2})?)?[m]::g' -e 's:033::g'
+      exit 0
+    } || {
+      printf "${alinan_yanit}${RENK0}\n"
+      exit 0
+    } ;;
+  --g[uü]ncelle)
     guncelleme_yap ;;
   --g[uü]nler)
     printf "${RENK7}${RENK3}\n$(date +%Y)${RENK2} yılı için dini günler ve geceler\n\n"
-    sed  -n "s:\([0-9].*$(date +%Y)\)\(.*\):$(echo -e "${RENK7}${RENK3}\1\t${RENK2}\2${RENK0}\n"):p" \
+    sed -n "s:\([0-9].*$(date +%Y)\)\(.*\):$(echo -e "${RENK7}${RENK3}\1\t${RENK2}\2${RENK0}\n"):p" \
       <${VERI_DIZINI}/veriler/gunler
     ;;
   --gui|--aray[uü]z)
@@ -470,12 +469,12 @@ case $1 in
     . ${BILESEN_DIZINI}/arayuz2.bash ;;
   -V|--s[uü]r[uü]m|--version)
     printf '%s\n\n%s\n\n%s\n%s\n%s\n%s\n' \
-    "Ezanvakti $SURUM derleme: $DERLEME"\
-    'Copyright (c) 2010-2012 Fatih Bostancı'\
-    'Bu uygulama bir özgür yazılımdır: yeniden dağıtabilirsiniz ve/veya'\
-    'Özgür Yazılım Vakfı (FSF) tarafından yayımlanan (GPL)  Genel  kamu'\
-    'lisansı sürüm 3  veya daha yeni bir sürümünde belirtilen  şartlara'\
-    'uymak kaydıyla, üzerinde değişiklik yapabilirsiniz.' ;;
+      "Ezanvakti $SURUM derleme: $DERLEME"\
+      'Copyright (c) 2010-2012 Fatih Bostancı'\
+      'Bu uygulama bir özgür yazılımdır: yeniden dağıtabilirsiniz ve/veya'\
+      'Özgür Yazılım Vakfı (FSF) tarafından yayımlanan (GPL)  Genel  kamu'\
+      'lisansı sürüm 3  veya daha yeni bir sürümünde belirtilen  şartlara'\
+      'uymak kaydıyla, üzerinde değişiklik yapabilirsiniz.' ;;
   -h|--help|--yard[iı]m)
     betik_kullanimi ;;
   ?*)
