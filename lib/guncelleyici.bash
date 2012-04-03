@@ -106,13 +106,13 @@ IFS="
 
 unset IFS
 
-printf "${RENK7}${RENK3}${EZANVERI_ADI} dosyanız güncelleniyor..${RENK0}\n"
+printf "${RENK7}${RENK3}${EZANVERI_ADI} dosyası güncelleniyor..${RENK0}\n"
 
 # HACK: internet bağlantı sınaması yöntemini değiştir.
 if ! { ping -q -w 1 -c 1 `ip r | grep default | cut -d' ' -f 3` &> /dev/null; }
 then
     printf '%s\n%s\n' \
-      "${RENK7}${RENK3}İnternet erişiminiz algılanamadı." \
+      "${RENK7}${RENK3}İnternet erişimi algılanamadı." \
       "Çıkılıyor....${RENK0}"
     exit 1
 fi
@@ -123,7 +123,7 @@ sed -e 's:[[:alpha:]]::g' -e 's:[^[:blank:]]*\.:\n&:2g' | sed -e '1,4d' -e 's: 
 echo -e "\
 \n\n\n# BİLGİ: ${ilce} / ${sehir} / ${ulke} için 30 günlük namaz vakitleridir. Çizelge,
 # 'http://www.diyanet.gov.tr/turkish/namazvakti/vakithes_namazvakti.asp'
-# adresinden ezanvakti uygulaması  tarafından istenerek oluşturulmuştur.
+# adresinden ezanvakti uygulaması tarafından istenerek oluşturulmuştur.
 
 # Son güncelleme : $(date +%c)" >> /tmp/ezanveri-$$
 

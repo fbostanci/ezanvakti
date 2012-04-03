@@ -185,10 +185,6 @@ function ezanlar() {
 function iftarimsak() {
   denetle; bugun
 
-  # bugun fonksiyonuna gerek yok. Sadece sabah ve akşam vakitlerini al.
-  export $(gawk 'BEGIN{tarih2 = strftime("%d.%m.%Y")} {if($1 ~ tarih2) \
-    {printf "sabah=%s%s\naksam=%s%s", $2,$3,$10,$11}}' "${EZANVERI}")
-
   [ $SAAT -le $sabah ] && {
     simdiki=İmsak
     vakit_ezani="${SABAH_EZANI}"
