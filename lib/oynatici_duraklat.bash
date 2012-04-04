@@ -1,10 +1,30 @@
 #
 #
-#                           Ezanvakti Oynatıcı Duraklatma Bileşeni 1.3
+#                           Ezanvakti Oynatıcı Duraklatma Bileşeni 1.4
+#
 #
 
 function oynatici_islem() {
-  OYNATICILAR=( deadbeef clementine amarok rhythmbox aqualung audacious banshee exaile cmus moc qmmp )
+  local -a OYNATICILAR DURDURULAN
+  local oynatici
+
+  OYNATICILAR=( deadbeef clementine amarok rhythmbox
+                aqualung audacious banshee exaile cmus
+                moc qmmp )
+
+  function qdbus_sorgu() {
+    local komut
+
+    komut=$(qdbus org.mpris.MediaPlayer2.$1 /org/mpris/MediaPlayer2 \
+             org.freedesktop.DBus.Properties.Get org.mpris.MediaPlayer2.Player PlaybackStatus)
+    if [[ ${komut} = Playing ]]
+    then
+        return 0
+    else
+        return 1
+    fi
+  }
+
 
   for oynatici in ${OYNATICILAR[@]}
   do
@@ -12,45 +32,67 @@ function oynatici_islem() {
       if [ ${oynatici} = deadbeef ]
       then
           deadbeef --pause > /dev/null 2>&1
+          DURDURULAN+=('deadbeef')
       elif [ ${oynatici} = clementine ]
       then
-          clementine --pause > /dev/null 2>&1
+          if `qdbus_sorgu clementine`;
+          then
+              clementine --pause > /dev/null 2>&1
+              DURDURULAN+=('clementine')
+          fi
       elif [ ${oynatici} = amarok ]
       then
-          amarok --pause  > /dev/null 2>&1
+          if `qdbus_sorgu amarok`;
+          then
+              amarok --pause  > /dev/null 2>&1
+              DURDURULAN+=('amarok')
+          fi
       elif [ ${oynatici} = rhythmbox ]
       then
           rhythmbox-client --pause  > /dev/null 2>&1
+          DURDURULAN+=('rhytmbox')
       elif [ ${oynatici} = aqulung ]
       then
           aqualung --pause > /dev/null 2>&1
+          DURDURULAN+=('aqualung')
       elif [ ${oynatici} = audacious ]
       then
           audacious --pause > /dev/null 2>&1
+          DURDURULAN+=('audacious')
       elif [ ${oynatici} = banshee ]
       then
           banshee --pause > /dev/null 2>&1
+          DURDURULAN+=('banshee')
       elif [ ${oynatici} = exaile ]
       then
           exaile --play-pause > /dev/null 2>&1
+          DURDURULAN+=('exaile')
       elif [ ${oynatici} = moc ]
       then
           moc --pause > /dev/null 2>&1
+          DURDURULAN+=('moc')
       elif [ ${oynatici} = cmus ]
       then
-          cmus-remote --pause > /dev/null 2>&1
+          if [[ $(cmus-remote -C status | head -1) = status\ playing ]]
+          then
+              cmus-remote --pause > /dev/null 2>&1
+              DURDURULAN+=('cmus')
+          fi
       elif [ ${oynatici} = qmmp ]
       then
-          qmmp --pause > /dev/null 2>&1
+          if `qdbus_sorgu qmmp`;
+          then
+              qmmp --pause > /dev/null 2>&1
+              DURDURULAN+=('qmmp')
+          fi
       fi
     }
   done
 
-ezandinlet
 
-  for oynatici in ${OYNATICILAR[@]}
+  ezandinlet
+  for oynatici in ${DURDURULAN[@]}
   do
-    [ `pgrep ${oynatici}` ] && {
       if [ ${oynatici} = deadbeef ]
       then
           deadbeef --play > /dev/null 2>&1
@@ -85,10 +127,7 @@ ezandinlet
       then
           qmmp --play > /dev/null 2>&1
       fi
-    }
   done
-
-unset oynatici
 }
 
 # vim: set ft=sh ts=2 sw=2 et:

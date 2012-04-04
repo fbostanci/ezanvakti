@@ -11,7 +11,7 @@
 # henüz hazır değil..
 exit 0
 #####################################
-EZANVAKTI_DIZINI="$HOME"/.config/ezanvakti
+EZANVAKTI_DIZINI="${XDG_CONFIG_HOME:-$HOME/.config}"/ezanvakti
 EZANVAKTI_AYAR="${EZANVAKTI_DIZINI}"/ayarlar
 
 BILESEN_DIZINI=@libdir@/ezanvakti
