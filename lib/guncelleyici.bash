@@ -133,12 +133,12 @@ echo -e "\
     . "${EZANVAKTI_AYAR}"
     ## TODO: Buraya renk denetimi eklenecek
     notify-send "Ezanvakti $SURUM" "${EZANVERI_ADI} dosyası başarıyla güncellendi." \
-      -i ${VERI_DIZINI}/simgeler/ezanvakti.png -t $GUNCELLEME_BILDIRIM_SURESI"000"
+      -i ${VERI_DIZINI}/simgeler/ezanvakti.png -t $GUNCELLEME_BILDIRIM_SURESI"000" -h int:transient:1
       :> /tmp/eznvrgncldntle_$(date +%d%m%y)
   } || {
     printf "${RENK7}${RENK3}Başarısız..${RENK0}\n"
     notify-send "Ezanvakti $SURUM" "${EZANVERI_ADI} dosyasının güncellenmesi başarısız oldu." \
-      -i ${VERI_DIZINI}/simgeler/ezanvakti.png -t $GUNCELLEME_BILDIRIM_SURESI"000"
+      -i ${VERI_DIZINI}/simgeler/ezanvakti.png -t $GUNCELLEME_BILDIRIM_SURESI"000" -h int:transient:1
     exit 1
   }
 }

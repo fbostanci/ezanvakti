@@ -38,7 +38,7 @@ function denetle() {
 
   [ ! -f "${EZANVERI}" ] && { # ezanveri dosyası yoksa
     (( GUNCELLEME_YAP )) && { # otomatik güncelleme etkinse
-      guncelleme_yap # ilgili fonksiyonu çağır ve ezanveri dosyasını oluştur.
+      guncelleme_yap; unset -f guncelleme_yap # ilgili fonksiyonu çağır ve ezanveri dosyasını oluştur.
     } || { # otomatik güncelleme kapalıysa..
       printf '%b%b\n%b\n' \
         "${RENK7}${RENK2}${EZANVERI}" \
@@ -51,7 +51,7 @@ function denetle() {
   # Bugüne ait tarih ezanveri dosyasında yoksa
   [[ -z $(grep -o ${TARIH} "${EZANVERI}") ]] && {
     (( GUNCELLEME_YAP )) && {
-      guncelleme_yap
+      guncelleme_yap; unset -f guncelleme_yap
     } || {
       printf '%b%b\n%b\n' \
         "${RENK7}${RENK2}${EZANVERI_ADI}" \
@@ -68,7 +68,7 @@ function denetle() {
 
   (( ksatir <= 7 )) && { # sonuç 7 ya da 7'den küçükse
     (( GUNCELLEME_YAP )) && {
-      guncelleme_yap
+      guncelleme_yap; unset -f guncelleme_yap
     }
 
     # Betiğin mevcut oturum boyunca sadece ilk çalışmada bildirim vermesi
@@ -76,7 +76,7 @@ function denetle() {
     # ayrıca dosyaya tarih uzantısı da ekledik.
     [ ! -f /tmp/eznvrgncldntle_$(date +%d%m%y) ] && {
       notify-send "Ezanvakti $SURUM" "${EZANVERI_ADI} dosyanız\n\t$ksatir gün\nsonra güncelliğini yitirecek." \
-        -i ${VERI_DIZINI}/simgeler/ezanvakti.png -t $GUNCELLEME_BILDIRIM_SURESI"000"
+        -i ${VERI_DIZINI}/simgeler/ezanvakti.png -t $GUNCELLEME_BILDIRIM_SURESI"000" -h int:transient:1
       :> /tmp/eznvrgncldntle_$(date +%d%m%y)
     }
   }
