@@ -283,7 +283,7 @@ case $1 in
             "İkindi   $ikindi_n    $ikindi_kalan" \
             "Akşam  $aksam_n    $aksam_kalan" \
             "Yatsı     $yatsi_n    $yatsi_kalan" | sed 's:saat:sa:;s:dakika:dk:;s:saniye:sn:')" \
-            -t $BILGI_BILDIRIM_SURESI"000" ;;
+            -t $BILGI_BILDIRIM_SURESI"000" -h int:transient:1 ;;
         *)
           hatali_kullanim $2 ;;
       esac
@@ -349,7 +349,7 @@ case $1 in
     esac
 
     notify-send "Günlük Ayet  ($(sed -n "$satir p" ${VERI_DIZINI}/veriler/sureler_ayetler))" \
-      "$(sed -n "$satir p" "${TEFSIR}")" -t $AYET_BILDIRIM_SURESI"000"
+      "$(sed -n "$satir p" "${TEFSIR}")" -t $AYET_BILDIRIM_SURESI"000" -h int:transient:1
     exit 0 ;;
   --ramazan)
     yontem_calistir ramazan ;;
@@ -417,7 +417,8 @@ case $1 in
         hatali_kullanim $2 ;;
     esac
 
-    notify-send "$secilen. hadis" "$(sed '1d' <<<"${alinan_yanit}")" -t $HADIS_BILDIRIM_SURESI"000"
+    notify-send "$secilen. hadis" "$(sed '1d' <<<"${alinan_yanit}")" \
+     -t $HADIS_BILDIRIM_SURESI"000" -h int:transient:1
     exit 0 ;;
   --bilgi)
     icerik_al=${VERI_DIZINI}/veriler/bilgiler
@@ -438,7 +439,8 @@ case $1 in
     esac
 
     notify-send "Bunları biliyor musunuz?" "$(echo  "\*${alinan_yanit}" | tr -d '\\' | sed \
-      -r -e 's:\[([0-9]{1,2}(;[0-9]{1,2})?)?[m]::g' -e 's:033::g')" -t $BILGI_BILDIRIM_SURESI"000"
+      -r -e 's:\[([0-9]{1,2}(;[0-9]{1,2})?)?[m]::g' -e 's:033::g')" \
+      -t $BILGI_BILDIRIM_SURESI"000" -h int:transient:1
     exit 0 ;;
   --esma)
     icerik_al=${VERI_DIZINI}/veriler/esma

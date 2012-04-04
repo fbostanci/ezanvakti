@@ -35,14 +35,14 @@ function oynatici_islem() {
           DURDURULAN+=('deadbeef')
       elif [ ${oynatici} = clementine ]
       then
-          if `qdbus_sorgu clementine`;
+          if qdbus_sorgu clementine;
           then
               clementine --pause > /dev/null 2>&1
               DURDURULAN+=('clementine')
           fi
       elif [ ${oynatici} = amarok ]
       then
-          if `qdbus_sorgu amarok`;
+          if qdbus_sorgu amarok;
           then
               amarok --pause  > /dev/null 2>&1
               DURDURULAN+=('amarok')
@@ -80,7 +80,7 @@ function oynatici_islem() {
           fi
       elif [ ${oynatici} = qmmp ]
       then
-          if `qdbus_sorgu qmmp`;
+          if qdbus_sorgu qmmp;
           then
               qmmp --pause > /dev/null 2>&1
               DURDURULAN+=('qmmp')
