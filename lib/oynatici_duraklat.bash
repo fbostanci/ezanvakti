@@ -28,7 +28,7 @@ function oynatici_islem() {
 
   for oynatici in ${OYNATICILAR[@]}
   do
-    [ `pgrep ${oynatici}` ] && {
+    [ $(pgrep ${oynatici}) ] && {
       if [ ${oynatici} = deadbeef ]
       then
           deadbeef --pause > /dev/null 2>&1

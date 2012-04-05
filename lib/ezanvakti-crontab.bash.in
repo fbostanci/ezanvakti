@@ -101,7 +101,7 @@ function ramazan_ezanoku() {
     -i ${VERI_DIZINI}/simgeler/ezanvakti.png -t $EZAN_BILDIRIM_SURESI"000" -h int:transient:1
 
   (( OYNATICI_DURAKLAT )) && {
-    oynatici_islem; unset -f oynatici_islem
+    oynatici_islem
   } || {
     ezandinlet
   }; clear

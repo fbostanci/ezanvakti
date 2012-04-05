@@ -22,7 +22,9 @@ VERI_DIZINI=@datadir@/ezanvakti
 # Bileşenleri çalışma sürecine dahil ediyoruz.
 . ${BILESEN_DIZINI}/guncelleyici.bash
 . ${BILESEN_DIZINI}/ortak.bash
-. ${BILESEN_DIZINI}/oynatici_duraklat.bash
+(( OYNATICI_DURAKLAT )) && {
+  . ${BILESEN_DIZINI}/oynatici_duraklat.bash
+}
 
 # Vakit bildirimleri için ezan dinletiminin yanında
 # diğer bildirimleri de düzenleyen fonksiyon
@@ -32,8 +34,9 @@ function ezanoku() {
     "${RENK7}${RENK3}${ILCE}${RENK2} " \
     "için ${RENK3}${simdiki}${RENK2} namazı vakti${RENK5} $vakit_saati${RENK0}"
 
-  notify-send "${KONUM} için" "${simdiki} namazı vakti\n$vakit_saati" \
-    -i ${VERI_DIZINI}/simgeler/ezanvakti.png -t $EZAN_BILDIRIM_SURESI"000" -h int:transient:1
+    notify-send "<font size=6 color=#D5F65E>${ILCE}<font size=6 color=white> için</font></font>" \
+      "<font size=6 color=white><font size=6 color=#CAA7EA>${simdiki}</font> namazı vakti\n$vakit_saati</font>" \
+      -i ${VERI_DIZINI}/simgeler/ezanvakti.png -t $EZAN_BILDIRIM_SURESI"000" -h int:transient:1
 
   # Oynatıcı duraklatma etkin mi ezan okumadan değeri
   # denetle ve fonksiyonu çağır.

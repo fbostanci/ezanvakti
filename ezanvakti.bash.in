@@ -263,7 +263,7 @@ case $1 in
             , renk7,renk3,$1,renk2,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,renk0}' "${EZANVERI}" ;;
         7|--haftal[ıi]k)
           hafta=$(date -d 'next week' +%d.%m.%Y)
-          if `grep -qo $hafta "${EZANVERI}"`
+          if grep -qo $hafta "${EZANVERI}";
           then
                printf "${RENK3}7 günlük veri bulunmuyor..${RENK0}\n"
                exit 1
@@ -348,7 +348,7 @@ case $1 in
         hatali_kullanim $2 ;;
     esac
 
-    notify-send "Günlük Ayet  ($(sed -n "$satir p" ${VERI_DIZINI}/veriler/sureler_ayetler))" \
+    notify-send "Günlük Ayet ($(sed -n "$satir p" ${VERI_DIZINI}/veriler/sureler_ayetler))" \
       "$(sed -n "$satir p" "${TEFSIR}")" -t $AYET_BILDIRIM_SURESI"000" -h int:transient:1
     exit 0 ;;
   --ramazan)
