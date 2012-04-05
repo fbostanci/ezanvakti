@@ -38,7 +38,7 @@ function denetle() {
 
   [ ! -f "${EZANVERI}" ] && { # ezanveri dosyası yoksa
     (( GUNCELLEME_YAP )) && { # otomatik güncelleme etkinse
-      guncelleme_yap; unset -f guncelleme_yap # ilgili fonksiyonu çağır ve ezanveri dosyasını oluştur.
+      guncelleme_yap # ilgili fonksiyonu çağır ve ezanveri dosyasını oluştur.
     } || { # otomatik güncelleme kapalıysa..
       printf '%b%b\n%b\n' \
         "${RENK7}${RENK2}${EZANVERI}" \
@@ -51,7 +51,7 @@ function denetle() {
   # Bugüne ait tarih ezanveri dosyasında yoksa
   [[ -z $(grep -o ${TARIH} "${EZANVERI}") ]] && {
     (( GUNCELLEME_YAP )) && {
-      guncelleme_yap; unset -f guncelleme_yap
+      guncelleme_yap
     } || {
       printf '%b%b\n%b\n' \
         "${RENK7}${RENK2}${EZANVERI_ADI}" \
@@ -68,7 +68,7 @@ function denetle() {
 
   (( ksatir <= 7 )) && { # sonuç 7 ya da 7'den küçükse
     (( GUNCELLEME_YAP )) && {
-      guncelleme_yap; unset -f guncelleme_yap
+      guncelleme_yap
     }
 
     # Betiğin mevcut oturum boyunca sadece ilk çalışmada bildirim vermesi
