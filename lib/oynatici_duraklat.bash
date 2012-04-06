@@ -1,6 +1,6 @@
 #
 #
-#                           Ezanvakti Oynatıcı Duraklatma Bileşeni 1.4
+#                           Ezanvakti Oynatıcı Duraklatma Bileşeni 1.5
 #
 #
 
@@ -18,6 +18,19 @@ function oynatici_islem() {
     komut=$(qdbus org.mpris.MediaPlayer2.$1 /org/mpris/MediaPlayer2 \
              org.freedesktop.DBus.Properties.Get org.mpris.MediaPlayer2.Player PlaybackStatus)
     if [[ ${komut} = Playing ]]
+    then
+        return 0
+    else
+        return 1
+    fi
+  }
+
+  function dbus_sorgu() {
+    local komut
+
+    komut="dbus-send --print-reply --session --dest=org.mpris.$1 \
+           /Player org.freedesktop.MediaPlayer.GetStatus | grep -Eq 'int32 [1|2]'"
+    if ! eval ${komut}
     then
         return 0
     else
@@ -57,8 +70,11 @@ function oynatici_islem() {
           DURDURULAN+=('aqualung')
       elif [ ${oynatici} = audacious ]
       then
-          audacious --pause > /dev/null 2>&1
-          DURDURULAN+=('audacious')
+          if dbus_sorgu audacious;
+          then
+              audacious --pause > /dev/null 2>&1
+              DURDURULAN+=('audacious')
+          fi
       elif [ ${oynatici} = banshee ]
       then
           banshee --pause > /dev/null 2>&1
