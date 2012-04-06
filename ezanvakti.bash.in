@@ -263,7 +263,7 @@ case $1 in
             , renk7,renk3,$1,renk2,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,renk0}' "${EZANVERI}" ;;
         7|--haftal[ıi]k)
           hafta=$(date -d 'next week' +%d.%m.%Y)
-          if grep -qo $hafta "${EZANVERI}";
+          if ! grep -qo $hafta "${EZANVERI}";
           then
                printf "${RENK3}7 günlük veri bulunmuyor..${RENK0}\n"
                exit 1

@@ -1,6 +1,6 @@
 #
 #
-#		Ezanvakti 6.0 Makefile
+#               Ezanvakti 6.0 Makefile
 #
 #
 
@@ -37,7 +37,7 @@ clean:
 		@rm -f data/ezanvakti.desktop 2>/dev/null
 		@rm -f etc/autostart/ezanvakti.desktop 2>/dev/null
 
-config:clean
+config: clean
 		@$(SED) -e 's:@derleme@:$(derleme):' \
 			-e 's:@datadir@:$(datadir):' \
 			-e 's:@libdir@:$(libdir):' \
@@ -65,7 +65,7 @@ config:clean
 		@$(SED) 's:@bindir@:$(bindir):' \
 			etc/autostart/ezanvakti.desktop.in > etc/autostart/ezanvakti.desktop
 
-install:config
+install: config
 		$(INSTALL) -vDm644 etc/ayarlar $(DESTDIR)$(sysconfdir)/ezanvakti/ayarlar
 		$(INSTALL) -vDm644 etc/bash_completion/ezanvakti $(DESTDIR)$(completiondir)/ezanvakti
 		$(INSTALL) -vDm644 etc/autostart/ezanvakti.desktop $(DESTDIR)$(sysconfdir)/xdg/autostart/ezanvakti.desktop
@@ -127,5 +127,6 @@ dist:
 		@echo "Kaynak kod paketi oluşturuluyor. Lütfen bekleyiniz..."
 		@git archive master | xz > ezanvakti-devel-$(surum).$(derleme).tar.xz
 		@echo "İşlem tamamlandı. ----------> ezanvakti-devel-$(surum).$(derleme).tar.xz"
+
 
 .PHONY: all clean config dist install uninstall
