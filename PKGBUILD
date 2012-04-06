@@ -45,7 +45,7 @@ package_ezanvakti-ses() {
   pkgver="$pkgver"
   pkgrel="$pkgrel"
   url="http://www.ismailcosar.com.tr/"
-  license=('custom')
+  license=('unknown')
   depends=()
   optdepends=()
   conflicts=()
