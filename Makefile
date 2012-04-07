@@ -8,8 +8,8 @@ SHELL = /bin/bash
 surum = $(shell sed -n 's:SURUM=::p' ezanvakti.bash.in)
 derleme = $(shell git log -1 --pretty=format:'%ad' --abbrev-commit --date=short 2>/dev/null | tr -d -- '-')
 
-INSTALL = /bin/install
-SED = /bin/sed
+INSTALL = install
+SED = sed
 
 PREFIX = /usr/local
 
