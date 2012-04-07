@@ -1,13 +1,12 @@
 #
 #
-#                           Ezanvakti Güncelleme  Bileşeni 1.8
+#                           Ezanvakti Güncelleme  Bileşeni 1.9
 #
 #
 
-# TODO: ilçeler için destek eklenecek
 
 function guncelleme_yap() {
-  local arayuz ulke sehir varsayilan_sehir
+  local arayuz ulke sehir ilce varsayilan_sehir
 
   test x"${ULKE}" = x && {
     ULKE=yok_boyle_bir_yer
@@ -40,6 +39,11 @@ function arayuz_denetle() {
 
 IFS="
 "
+
+######################################################################
+#                         ÜLKE İŞLEMLERİ                             #
+######################################################################
+
 [[ -z $(grep -w ${ULKE} ${VERI_DIZINI}/ulkeler/AAA-ULKELER) ]] && {
   arayuz_denetle
 
@@ -65,6 +69,9 @@ IFS="
   ulke=${ULKE}
 }
 
+######################################################################
+#                         ŞEHİR İŞLEMLERİ                            #
+######################################################################
 
 # Şehir bilgisi şehirler dosyasındakine uygun girilmiş mi?
 # Uygunsa bilgiyi kullan, uygun değilse kullanıcıdan al.
@@ -100,8 +107,10 @@ IFS="
   sehir=${SEHIR}
 }
 
+######################################################################
+#                         İLÇE İŞLEMLERİ                             #
+######################################################################
 
-# Uygunsa bilgiyi kullan, uygun değilse kullanıcıdan al.
 if [[ ${ulke} = TURKIYE ]]
 then
     [[ -z $(grep -w ${ILCE} ${VERI_DIZINI}/ulkeler/TURKIYE_ilceler/${sehir}) ]] && {
@@ -117,17 +126,17 @@ then
               (( $? == 1 )) && exit 1
           elif (( arayuz == 2 ))
           then
-              sehir=$(kdialog --combobox 'Bulunduğunuz ilçeyi seçin' --title 'İlçe belirleme' \
+              ilce=$(kdialog --combobox 'Bulunduğunuz ilçeyi seçin' --title 'İlçe belirleme' \
                       --default ${sehir} $( < ${VERI_DIZINI}/ulkeler/TURKIYE_ilceler/${sehir}))
               (( $? == 1 )) && exit 1
           elif (( arayuz == 3 ))
           then
-              sehir=$(zenity --entry --entry-text ${sehir} $( < ${VERI_DIZINI}/ulkeler/TURKIYE_ilceler/${sehir}) \
+              ilce=$(zenity --entry --entry-text ${sehir} $( < ${VERI_DIZINI}/ulkeler/TURKIYE_ilceler/${sehir}) \
                       --title 'İlçe belirleme' --text 'Bulunduğunuz ilçeyi seçin')
               (( $? == 1 )) && exit 1
           fi
       fi
-      sed -i "s:\(ILCE=\).*:\1\'${sehir}\':" "${EZANVAKTI_AYAR}"
+      sed -i "s:\(ILCE=\).*:\1\'${ilce}\':" "${EZANVAKTI_AYAR}"
     } || {
       ilce=${ILCE}
     }
@@ -141,13 +150,13 @@ unset IFS
 printf "${RENK7}${RENK3}${EZANVERI_ADI} dosyası güncelleniyor..${RENK0}\n"
 
 # HACK: internet bağlantı sınaması yöntemini değiştir.
-if ! { ping -q -w 1 -c 1 `ip r | grep default | cut -d' ' -f 3` &> /dev/null; }
-then
-    printf '%s\n%s\n' \
-      "${RENK7}${RENK3}İnternet erişimi algılanamadı." \
-      "Çıkılıyor....${RENK0}"
-    exit 1
-fi
+#if ! { ping -q -w 1 -c 1 `ip r | grep default | cut -d' ' -f 3` &> /dev/null; }
+#then
+#    printf '%s\n%s\n' \
+#      "${RENK7}${RENK3}İnternet erişimi algılanamadı." \
+#      "Çıkılıyor....${RENK0}"
+#    exit 1
+#fi
 
 ${BILESEN_DIZINI}/ezanveri_guncelle.pl "${ulke}" "${sehir}" "${ilce}" | \
 sed -e 's:[[:alpha:]]::g' -e 's:[^[:blank:]]*\.:\n&:2g' | sed -e '1,4d' -e 's: : :g' > /tmp/ezanveri-$$
