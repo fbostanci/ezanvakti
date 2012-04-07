@@ -1,7 +1,7 @@
 #
 #
 #
-#                           Ezanvakti Ortak Fonksiyonlar  Bileşeni
+#                           Ezanvakti Ortak Fonksiyonlar  Bileşeni 1.0
 #
 
 
@@ -106,23 +106,23 @@ function bekleme_suresi_yarin() {
 
 # Vakit ezanları ve kullanıcı isteğine bağlı ezan dinletimi için.
 function ezandinlet() {
-  printf '%b%b\n' \
+  printf '%b\n%b\n' \
     "${RENK7}${RENK2}" \
     "Okuyan : ${RENK3}${EZAN_OKUYAN}${RENK0}"
 
   # Arayüzlerde mplayer çalışırken iptal düğmesine basıldığında
   # sadece bizim yönettiğimiz kopyayı sonlandır. Pid denetimi yerine
   # boru (pipe) üzerinden yönetim sağlandı.
-  rm -f /tmp/mplayer.pipe{,2} 2>/dev/null
-  mkfifo /tmp/mplayer.pipe
-  $MPLAYER -slave -input file=/tmp/mplayer.pipe "${vakit_ezani}" 2> /dev/null
+  rm -f /tmp/mplayer-$$.pipe{,2} 2>/dev/null
+  mkfifo /tmp/mplayer-$$.pipe
+  $MPLAYER -slave -input file=/tmp/mplayer-$$.pipe "${vakit_ezani}" 2> /dev/null
 
   # Ezan duası isteniyorsa
   (( EZAN_DUASI_OKU )) && {
-    mkfifo /tmp/mplayer.pipe2
-    $MPLAYER -slave -input file=/tmp/mplayer.pipe2 "${EZAN_DUASI}" 2> /dev/null
+    mkfifo /tmp/mplayer-$$.pipe2
+    $MPLAYER -slave -input file=/tmp/mplayer-$$.pipe2 "${EZAN_DUASI}" 2> /dev/null
   }
-  rm -f /tmp/mplayer.pipe{,2} 2>/dev/null
+  rm -f /tmp/mplayer-$$.pipe{,2} 2>/dev/null
 }
 
 # vim: set ft=sh ts=2 sw=2 et:
