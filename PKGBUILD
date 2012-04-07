@@ -2,7 +2,7 @@
 
 pkgbase="ezanvakti-devel"
 pkgname=('ezanvakti-devel' 'ezanvakti-ses')
-pkgver=20111230
+pkgver=20120406
 pkgrel=1
 pkgdesc="GNU/Linux icin Ezan Vakti Bildirici"
 arch=('any')
