@@ -100,9 +100,41 @@ IFS="
   sehir=${SEHIR}
 }
 
-###### TODO:
-####ILCE İŞLEMLERİ
-###### TODO:
+
+# Uygunsa bilgiyi kullan, uygun değilse kullanıcıdan al.
+if [[ ${ulke} = TURKIYE ]]
+then
+    [[ -z $(grep -w ${ILCE} ${VERI_DIZINI}/ulkeler/TURKIYE_ilceler/${sehir}) ]] && {
+      if [[ $(wc -l < ${VERI_DIZINI}/ulkeler/TURKIYE_ilceler/${sehir}) -eq 1 ]]
+      then
+          ilce=$( < ${VERI_DIZINI}/ulkeler/TURKIYE_ilceler/${sehir})
+      else
+          arayuz_denetle
+          if (( arayuz == 1 ))
+          then
+              ilce=$(yad --entry --entry-text ${sehir} $( < ${VERI_DIZINI}/ulkeler/TURKIYE_ilceler/${sehir}) \
+                     --title 'İlçe belirleme' --text 'Bulunduğunuz ilçeyi seçin')
+              (( $? == 1 )) && exit 1
+          elif (( arayuz == 2 ))
+          then
+              sehir=$(kdialog --combobox 'Bulunduğunuz ilçeyi seçin' --title 'İlçe belirleme' \
+                      --default ${sehir} $( < ${VERI_DIZINI}/ulkeler/TURKIYE_ilceler/${sehir}))
+              (( $? == 1 )) && exit 1
+          elif (( arayuz == 3 ))
+          then
+              sehir=$(zenity --entry --entry-text ${sehir} $( < ${VERI_DIZINI}/ulkeler/TURKIYE_ilceler/${sehir}) \
+                      --title 'İlçe belirleme' --text 'Bulunduğunuz ilçeyi seçin')
+              (( $? == 1 )) && exit 1
+          fi
+      fi
+      sed -i "s:\(ILCE=\).*:\1\'${sehir}\':" "${EZANVAKTI_AYAR}"
+    } || {
+      ilce=${ILCE}
+    }
+else
+    ilce=${sehir}
+    sed -i "s:\(ILCE=\).*:\1\'${sehir}\':" "${EZANVAKTI_AYAR}"
+fi
 
 unset IFS
 
