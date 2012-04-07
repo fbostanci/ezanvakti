@@ -76,7 +76,7 @@ install: config
 		$(INSTALL) -vDm644 ezanvakti_man/ezanvakti.1 $(DESTDIR)$(mandir)/man1/ezanvakti.1
 		$(INSTALL) -vDm644 ezanvakti_man/ezanvakti-ayarlar.5 $(DESTDIR)$(mandir)/man5/ezanvakti-ayarlar.5
 
-		$(INSTALL) -vd $(DESTDIR)$(datadir)/ezanvakti/{veriler,tefsirler,simgeler,ulkeler}
+		$(INSTALL) -vd $(DESTDIR)$(datadir)/ezanvakti/{veriler,tefsirler,simgeler,ulkeler{,/TURKIYE_ilceler}}
 		$(INSTALL) -vd $(DESTDIR)$(libdir)/ezanvakti
 
 
@@ -101,7 +101,13 @@ install: config
 			i_dosya="$$(basename "$$i")"; \
 			$(INSTALL) -vm644 "$$i" $(DESTDIR)$(datadir)/ezanvakti/ulkeler/"$$i_dosya"; \
 		done
-
+		
+		for s in  data/ulkeler/TURKIYE_ilceler/*; \
+		do \
+			s_dosya="$$(basename "$$s")"; \
+			$(INSTALL) -vm644 "$$s" $(DESTDIR)$(datadir)/ezanvakti/ulkeler/TURKIYE_ilceler/"$$s_dosya"; \
+		done
+		
 		for t in  data/tefsirler/*; \
 		do \
 			t_dosya=$$(basename $$t); \
