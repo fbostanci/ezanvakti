@@ -32,7 +32,7 @@ function arayuz_denetle() {
       printf '%b\n%b\n%b\n' \
         "${RENK7}${RENK3}Bu özellik YAD, Zenity ya da Kdialog ile çalışmaktadır." \
         "Sisteminizde istenen uygulamalar bulunamadı." \
-        "Konum bilgilerinizi ayarlar dosyasına elle girip yeniden deneyin${RENK0}"
+        "Konum bilgilerinizi ayarlar dosyasına elle girip yeniden deneyin.${RENK0}"
       exit 1
   fi
 }
@@ -127,12 +127,12 @@ then
           elif (( arayuz == 2 ))
           then
               ilce=$(kdialog --combobox 'Bulunduğunuz ilçeyi seçin' --title 'İlçe belirleme' \
-                      --default ${sehir} $( < ${VERI_DIZINI}/ulkeler/TURKIYE_ilceler/${sehir}))
+                     --default ${sehir} $( < ${VERI_DIZINI}/ulkeler/TURKIYE_ilceler/${sehir}))
               (( $? == 1 )) && exit 1
           elif (( arayuz == 3 ))
           then
               ilce=$(zenity --entry --entry-text ${sehir} $( < ${VERI_DIZINI}/ulkeler/TURKIYE_ilceler/${sehir}) \
-                      --title 'İlçe belirleme' --text 'Bulunduğunuz ilçeyi seçin')
+                     --title 'İlçe belirleme' --text 'Bulunduğunuz ilçeyi seçin')
               (( $? == 1 )) && exit 1
           fi
       fi
@@ -159,7 +159,8 @@ printf "${RENK7}${RENK3}${EZANVERI_ADI} dosyası güncelleniyor..${RENK0}\n"
 #fi
 
 ${BILESEN_DIZINI}/ezanveri_guncelle.pl "${ulke}" "${sehir}" "${ilce}" | \
-sed -e 's:[[:alpha:]]::g' -e 's:[^[:blank:]]*\.:\n&:2g' | sed -e '1,4d' -e 's: : :g' > /tmp/ezanveri-$$
+  sed -e 's:[[:alpha:]]::g' -e 's:[^[:blank:]]*\.:\n&:2g' | \
+  sed -e '1,4d' -e 's: : :g' -e 's:[[:space:]]*$::g' > /tmp/ezanveri-$$
 
 echo -e "\
 \n\n\n# BİLGİ: ${ilce} / ${sehir} / ${ulke} için 30 günlük namaz vakitleridir. Çizelge,
