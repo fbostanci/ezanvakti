@@ -46,7 +46,7 @@ function ezanoku() {
     oynatici_islem
     } || {
       ezandinlet
-      }; clear
+    }; clear
 }
 
 # Vakit ezanı okunmadan önce  anımsatma
