@@ -20,10 +20,10 @@ export RENK=0
 (( GUN_ANIMSAT )) && {
   if grep -q $(date +%d.%m.%Y) ${VERI_DIZINI}/veriler/gunler
   then
-      ozel_ileti="\n\nBugün:  <b>$(grep $(date +%d.%m.%Y) ${VERI_DIZINI}/veriler/gunler | cut -d ' ' -f2-)</b>"
+      ozel_ileti="\n\nBugün:  <b>$(grep $(date +%d.%m.%Y) ${VERI_DIZINI}/veriler/gunler | cut -d' ' -f2-)</b>"
   elif grep -q $(date -d 'tomorrow' +%d.%m.%Y) ${VERI_DIZINI}/veriler/gunler
   then
-      ozel_ileti="\n\nYarın:  <b>$(grep $(date -d 'tomorrow' +%d.%m.%Y) ${VERI_DIZINI}/veriler/gunler | cut -d ' ' -f2-)</b>"
+      ozel_ileti="\n\nYarın:  <b>$(grep $(date -d 'tomorrow' +%d.%m.%Y) ${VERI_DIZINI}/veriler/gunler | cut -d' ' -f2-)</b>"
 
   else
       ozel_ileti=''
@@ -99,7 +99,7 @@ case $donus in
     arayuz ;;
   152)
     [[ -z $str2 ]] && ozel_pencere
-    sure=$(echo "$str2" | cut -d'-' -f1)
+    sure=$(cut -d'-' -f1 <<<"$str2")
 
      if [ "${str}" = "Saad el Ghamdi" ]
      then
@@ -125,12 +125,12 @@ case $donus in
     else
         dinletilecek_sure="http://www.listen2quran.com/listen/${okuyucu}/$sure.mp3"
     fi
-    rm -f /tmp/mplayer.pipe 2>/dev/null
-    mkfifo /tmp/mplayer.pipe
+    rm -f /tmp/mplayer-$$.pipe 2>/dev/null
+    mkfifo /tmp/mplayer-$$.pipe
     mplayer_ileti="$(grep -w $sure ${VERI_DIZINI}/veriler/sureler | gawk '{print $2}') suresi dinletiliyor..\
     \n\n Okuyan : ${str}"
     pencere_bilgi &
-    $MPLAYER -slave -input file=/tmp/mplayer.pipe "${dinletilecek_sure}" 2> /dev/null; clear
+    $MPLAYER -slave -input file=/tmp/mplayer-$$.pipe "${dinletilecek_sure}" 2> /dev/null; clear
     pkill yad &>/dev/null
     ozel_pencere;;
   153)

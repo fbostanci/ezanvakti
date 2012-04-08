@@ -17,6 +17,8 @@
 #
 #
 
+#set -n
+#set -x
 
 EZANVAKTI_DIZINI="${XDG_CONFIG_HOME:-$HOME/.config}"/ezanvakti
 EZANVAKTI_AYAR="${EZANVAKTI_DIZINI}"/ayarlar
