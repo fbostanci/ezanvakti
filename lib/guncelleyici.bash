@@ -162,12 +162,17 @@ ${BILESEN_DIZINI}/ezanveri_guncelle.pl "${ulke}" "${sehir}" "${ilce}" | \
   sed -e 's:[[:alpha:]]::g' -e 's:[^[:blank:]]*\.:\n&:2g' | \
   sed -e '1,4d' -e 's: : :g' -e 's:[[:space:]]*$::g' > /tmp/ezanveri-$$
 
-echo -e "\
-\n\n\n# BİLGİ: ${ilce} / ${sehir} / ${ulke} için 30 günlük namaz vakitleridir. Çizelge,
+cat << SON >> /tmp/ezanveri-$$
+
+
+
+# BİLGİ: ${ilce} / ${sehir} / ${ulke} için 30 günlük namaz vakitleridir. Çizelge,
 # 'http://www.diyanet.gov.tr/turkish/namazvakti/vakithes_namazvakti.asp'
 # adresinden ezanvakti uygulaması tarafından istenerek oluşturulmuştur.
 
-# Son güncelleme : $(date +%c)" >> /tmp/ezanveri-$$
+# Son güncelleme : $(date +%c)
+SON
+
 
   (( $(wc -l < /tmp/ezanveri-$$) >= 20 )) && {
     mv -f /tmp/ezanveri-$$ "${EZANVERI}"
