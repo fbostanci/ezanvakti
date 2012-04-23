@@ -20,17 +20,17 @@
 #set -n
 #set -x
 
-EZANVAKTI_DIZINI="${XDG_CONFIG_HOME:-$HOME/.config}"/ezanvakti
-EZANVAKTI_AYAR="${EZANVAKTI_DIZINI}"/ayarlar
+export EZANVAKTI_DIZINI="${XDG_CONFIG_HOME:-$HOME/.config}"/ezanvakti
+export EZANVAKTI_AYAR="${EZANVAKTI_DIZINI}"/ayarlar
 
-BILESEN_DIZINI=@libdir@/ezanvakti
-VERI_DIZINI=@datadir@/ezanvakti
+export BILESEN_DIZINI=@libdir@/ezanvakti
+export VERI_DIZINI=@datadir@/ezanvakti
 
 SURUM=6.0
 DERLEME=@derleme@
 
 [ ! -d "${EZANVAKTI_DIZINI}" ] && mkdir -p "${EZANVAKTI_DIZINI}"
-[ ! -f "${EZANVAKTI_AYAR}" ] && \
+[ ! -f "${EZANVAKTI_AYAR}"   ] && \
 sed "s:\$HOME:$HOME:" < @sysconfdir@/ezanvakti/ayarlar > "${EZANVAKTI_AYAR}"
 
 # Öntanımlı ayarları al.
@@ -48,41 +48,35 @@ sed "s:\$HOME:$HOME:" < @sysconfdir@/ezanvakti/ayarlar > "${EZANVAKTI_AYAR}"
 . ${BILESEN_DIZINI}/ortak.bash
 
 function yontem_calistir() {
-  local yontem degisken ez
+  local degisken
 
   [[ $1 = ramazan ]] && degisken=2 || degisken=1
 
   case ${EZANVAKTI_YONTEM} in
     [Ss]*)
-      yontem=sleep ;;
-    [Cc]*)
-      #crontab hazır değil.
-      yontem=sleep ;;
+      if { ps ax | grep -v grep | grep -w "ezanvakti-sleep.bash [1-2]$" &>/dev/null; }
+      then
+          printf '%b%b\n' \
+            "${RENK3}Ezanvakti artalan bileşeni " \
+            "(ezanvakti-sleep.bash) zaten çalışıyor...${RENK0}"
+          exit 1
+      fi
+      exec ${BILESEN_DIZINI}/ezanvakti-sleep.bash $degisken ;;
+#    [Cc]*)
+#      #crontab hazır değil.
+#
     *)
       printf '%b%b\n' \
         "${RENK3}Girilen ezanvakti yöntemi: " \
         "${EZANVAKTI_YONTEM} tanımlı değil.${RENK0}"
       exit 1 ;;
   esac
-
-  for ez in 'ezanvakti-crontab.bash' 'ezanvakti-sleep.bash'
-  do
-    if { ps ax | grep -v grep | grep -w "${ez}" &>/dev/null; }
-    then
-        printf '%b\n%b\n' \
-          "${RENK3}Başka bir ezanvakti artalan bileşeni " \
-          "(ezanvakti-${yontem}.bash) zaten çalışıyor...${RENK0}"
-        exit 1
-    fi
-  done
-
-  exec ${BILESEN_DIZINI}/ezanvakti-${yontem}.bash $degisken
 }
 
 # bekleme süresi fonksiyonlarından gelen bekle değerini
 # saat, dakika ve saniyeye çeviren fonksiyon
 function kalan() {
-  kalan_sure=$(printf '%02d saat'' : ''%02d dakika'' : ''%02d saniye' \
+  kalan_sure=$(printf '%02d saat : %02d dakika : %02d saniye' \
     $((bekle/3600)) $((bekle%3600/60)) $((bekle%60)))
 }
 
@@ -136,11 +130,11 @@ function kuran_dinle() {
     okuyan='Yerel Okuyucu'
   } || {
           # Seçilen okuyucu koduna göre okuyucunun tam adını yeni değere ata.
-          [ ${OKUYAN} = AlGhamdi ] &&  okuyan='Saad el Ghamdi' \
+          [ ${OKUYAN} = AlGhamdi  ] &&  okuyan='Saad el Ghamdi' \
           || {
           [ ${OKUYAN} = AsShatree ] && okuyan='As Shatry'
           } || {
-          [ ${OKUYAN} = AlAjmy ] && okuyan='Ahmad el Ajmy'
+          [ ${OKUYAN} = AlAjmy    ] && okuyan='Ahmad el Ajmy'
           }
 
     dinletilecek_sure="http://www.listen2quran.com/listen/${OKUYAN}/$sure.mp3"
@@ -237,60 +231,56 @@ case $1 in
       yatsi_kalan="${RENK1} OKUNDU"
     }
 
-    # Betiğe ikinci bir değişken verilmemişse
-    (( ! ${#2} )) && {
-      printf '%b%b%b%b%b%b\n' \
-        "${RENK7}${RENK3}\n${ILCE}${RENK5} için ezan vakitleri (${TARIH} $(date +%H:%M:%S))\n\n" \
-        "${RENK2}Sabah ezanı  ${RENK3}: $sabah_n   $sabah_kalan\n" \
-        "${RENK2}Öğle ezanı   ${RENK3}: $ogle_n   $ogle_kalan\n" \
-        "${RENK2}İkindi ezanı ${RENK3}: $ikindi_n   $ikindi_kalan\n" \
-        "${RENK2}Akşam ezanı  ${RENK3}: $aksam_n   $aksam_kalan\n" \
-        "${RENK2}Yatsı ezanı  ${RENK3}: $yatsi_n   $yatsi_kalan${RENK0}\n"
-    } || {
-      case $2 in
-        -s|--sabah)
-          printf "${RENK7}${RENK2}\nSabah ezanı  ${RENK3}: $sabah_n $sabah_kalan${RENK0}\n\n" ;;
-        -o|--[oö][gğ]le)
-          printf "${RENK7}${RENK2}\nÖğle ezanı   ${RENK3}: $ogle_n $ogle_kalan${RENK0}\n\n" ;;
-        -i|--ikindi)
-          printf "${RENK7}${RENK2}\nİkindi ezanı ${RENK3}: $ikindi_n $ikindi_kalan${RENK0}\n\n" ;;
-        -a|--ak[sş]am)
-          printf "${RENK7}${RENK2}\nAkşam ezanı  ${RENK3}: $aksam_n $aksam_kalan${RENK0}\n\n" ;;
-        -y|--yats[ıi])
-          printf "${RENK7}${RENK2}\nYatsı ezanı  ${RENK3}: $yatsi_n $yatsi_kalan${RENK0}\n\n" ;;
-        30|--ayl[ıi]k)
-          printf "\n${RENK7}${RENK6}Tarih        Sabah   Güneş   Öğle    İkindi  Akşam   Yatsı${RENK0}\n"
-          gawk -v renk0=${RENK0} -v renk2=${RENK2} -v renk3=${RENK3} -v renk7=${RENK7} \
-            '/^[0-9][0-9]\.[0-9]*\.[0-9]*/ \
-            {printf "%s%s%s%s   0%s:%s   0%s:%s   %s:%s   %s:%s   %s:%s   %s:%s%s\n"\
-            , renk7,renk3,$1,renk2,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,renk0}' "${EZANVERI}" ;;
-        7|--haftal[ıi]k)
-          hafta=$(date -d 'next week' +%d.%m.%Y)
-          if ! grep -qo $hafta "${EZANVERI}";
-          then
-               printf "${RENK3}7 günlük veri bulunmuyor..${RENK0}\n"
-               exit 1
-          fi
+    case $2 in
+      -s|--sabah)
+        printf "${RENK7}${RENK2}\nSabah ezanı  ${RENK3}: $sabah_n $sabah_kalan${RENK0}\n\n" ;;
+      -o|--[oö][gğ]le)
+        printf "${RENK7}${RENK2}\nÖğle ezanı   ${RENK3}: $ogle_n $ogle_kalan${RENK0}\n\n" ;;
+      -i|--ikindi)
+        printf "${RENK7}${RENK2}\nİkindi ezanı ${RENK3}: $ikindi_n $ikindi_kalan${RENK0}\n\n" ;;
+      -a|--ak[sş]am)
+        printf "${RENK7}${RENK2}\nAkşam ezanı  ${RENK3}: $aksam_n $aksam_kalan${RENK0}\n\n" ;;
+      -y|--yats[ıi])
+        printf "${RENK7}${RENK2}\nYatsı ezanı  ${RENK3}: $yatsi_n $yatsi_kalan${RENK0}\n\n" ;;
+      30|--ayl[ıi]k)
+        printf "\n${RENK7}${RENK6}Tarih        Sabah   Güneş   Öğle    İkindi  Akşam   Yatsı${RENK0}\n"
+        gawk -v renk0=${RENK0} -v renk2=${RENK2} -v renk3=${RENK3} -v renk7=${RENK7} \
+          '/^[0-9][0-9]\.[0-9]*\.[0-9]*/ \
+          {printf "%s%s%s%s   0%s:%s   0%s:%s   %s:%s   %s:%s   %s:%s   %s:%s%s\n"\
+          , renk7,renk3,$1,renk2,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,renk0}' "${EZANVERI}" ;;
+      7|--haftal[ıi]k)
+        if ! grep -qo $(date -d 'next week' +%d.%m.%Y) "${EZANVERI}"
+        then
+            printf "${RENK3}7 günlük veri bulunmuyor..${RENK0}\n"
+            exit 1
+        fi
 
-          printf "\n${RENK7}${RENK6}Tarih        Sabah   Güneş   Öğle    İkindi  Akşam   Yatsı${RENK0}\n"
+        printf "\n${RENK7}${RENK6}Tarih        Sabah   Güneş   Öğle    İkindi  Akşam   Yatsı${RENK0}\n"
 
-          grep '^[0-9][0-9]\.[0-9]*\.[0-9]*' "${EZANVERI}" | grep -B7 $hafta | gawk \
-            -v renk0=${RENK0} -v renk2=${RENK2} -v renk3=${RENK3} -v renk7=${RENK7} \
-            '{printf "%s%s%s%s   0%s:%s   0%s:%s   %s:%s   %s:%s   %s:%s   %s:%s%s\n"\
-            , renk7,renk3,$1,renk2,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,renk0}' ;;
-        --osd|--bildirim)
-          notify-send "Ezanvakti ${SURUM} - vakitler" \
-            "$(printf '%s\n%s\n%s\n%s\n%s' \
-            "Sabah   $sabah_n   $sabah_kalan" \
-            "Öğle    $ogle_n    $ogle_kalan" \
-            "İkindi   $ikindi_n    $ikindi_kalan" \
-            "Akşam  $aksam_n    $aksam_kalan" \
-            "Yatsı     $yatsi_n    $yatsi_kalan" | sed 's:saat:sa:;s:dakika:dk:;s:saniye:sn:')" \
-            -t $BILGI_BILDIRIM_SURESI"000" -h int:transient:1 ;;
-        *)
-          hatali_kullanim $2 ;;
-      esac
-    } ;;
+        grep '^[0-9][0-9]\.[0-9]*\.[0-9]*' "${EZANVERI}" | grep -B7 $hafta | gawk \
+          -v renk0=${RENK0} -v renk2=${RENK2} -v renk3=${RENK3} -v renk7=${RENK7} \
+          '{printf "%s%s%s%s   0%s:%s   0%s:%s   %s:%s   %s:%s   %s:%s   %s:%s%s\n"\
+          , renk7,renk3,$1,renk2,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,renk0}' ;;
+      --osd|--bildirim)
+        notify-send "Ezanvakti ${SURUM} - vakitler" \
+          "$(printf '%s\n%s\n%s\n%s\n%s' \
+          "Sabah   $sabah_n   $sabah_kalan" \
+          "Öğle    $ogle_n    $ogle_kalan" \
+          "İkindi   $ikindi_n    $ikindi_kalan" \
+          "Akşam  $aksam_n    $aksam_kalan" \
+          "Yatsı     $yatsi_n    $yatsi_kalan" | sed 's:saat:sa:;s:dakika:dk:;s:saniye:sn:')" \
+          -t $BILGI_BILDIRIM_SURESI"000" -h int:transient:1 ;;
+      '')
+        printf '%b%b%b%b%b%b\n' \
+          "${RENK7}${RENK3}\n${ILCE}${RENK5} için ezan vakitleri (${TARIH} $(date +%H:%M:%S))\n\n" \
+          "${RENK2}Sabah ezanı  ${RENK3}: $sabah_n   $sabah_kalan\n" \
+          "${RENK2}Öğle ezanı   ${RENK3}: $ogle_n   $ogle_kalan\n" \
+          "${RENK2}İkindi ezanı ${RENK3}: $ikindi_n   $ikindi_kalan\n" \
+          "${RENK2}Akşam ezanı  ${RENK3}: $aksam_n   $aksam_kalan\n" \
+          "${RENK2}Yatsı ezanı  ${RENK3}: $yatsi_n   $yatsi_kalan${RENK0}\n" ;;
+      *)
+        hatali_kullanim ${2:-null} ;;
+    esac ;;
   --arayuzlericin)
     # Arayüzlerin hızlı çalışması için vakitleri almada ayrı değişken kullanıldı.
     # Tek başına kullanılmaz.

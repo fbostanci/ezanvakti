@@ -21,8 +21,8 @@ package_ezanvakti-devel() {
   license=('GPL3')
   depends=('bash' 'sed' 'gawk' 'grep' 'libnotify' 'mplayer' 'ezanvakti-ses>=20111229')
   optdepends=('perl-html-tree: Ezanveri güncelleme işlemi için'
-            'perl-www-mechanize: Ezanveri güncelleme işlemi için'
-            'bash-completion: Bash tamamlama desteği için')
+              'perl-www-mechanize: Ezanveri güncelleme işlemi için'
+              'bash-completion: Bash tamamlama desteği için')
   conflicts=('ezanvakti')
 
   msg "Gitorious GIT sunucusuna bağlanılıyor..."

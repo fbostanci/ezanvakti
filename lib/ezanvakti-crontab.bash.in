@@ -11,11 +11,6 @@
 # henüz hazır değil..
 exit 0
 #####################################
-EZANVAKTI_DIZINI="${XDG_CONFIG_HOME:-$HOME/.config}"/ezanvakti
-EZANVAKTI_AYAR="${EZANVAKTI_DIZINI}"/ayarlar
-
-BILESEN_DIZINI=@libdir@/ezanvakti
-VERI_DIZINI=@datadir@/ezanvakti
 
 # Öntanımlı ayarları al.
 . @sysconfdir@/ezanvakti/ayarlar

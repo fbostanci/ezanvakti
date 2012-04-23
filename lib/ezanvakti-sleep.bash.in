@@ -5,12 +5,6 @@
 #                           Ezanvakti Sleep Yöntemi  Bileşeni 1.0
 #
 
-EZANVAKTI_DIZINI="${XDG_CONFIG_HOME:-$HOME/.config}"/ezanvakti
-EZANVAKTI_AYAR="${EZANVAKTI_DIZINI}"/ayarlar
-
-BILESEN_DIZINI=@libdir@/ezanvakti
-VERI_DIZINI=@datadir@/ezanvakti
-
 # Öntanımlı ayarları al.
 . @sysconfdir@/ezanvakti/ayarlar
 
@@ -22,9 +16,8 @@ VERI_DIZINI=@datadir@/ezanvakti
 # Bileşenleri çalışma sürecine dahil ediyoruz.
 . ${BILESEN_DIZINI}/guncelleyici.bash
 . ${BILESEN_DIZINI}/ortak.bash
-(( OYNATICI_DURAKLAT )) && {
+(( OYNATICI_DURAKLAT )) && \
   . ${BILESEN_DIZINI}/oynatici_duraklat.bash
-}
 
 # Vakit bildirimleri için ezan dinletiminin yanında
 # diğer bildirimleri de düzenleyen fonksiyon
@@ -34,9 +27,9 @@ function ezanoku() {
     "${RENK7}${RENK3}${ILCE}${RENK2} " \
     "için ${RENK3}${simdiki}${RENK2} namazı vakti${RENK5} $vakit_saati${RENK0}"
 
-    notify-send "<font size=6 color=#D5F65E>${ILCE}<font size=6 color=white> için</font></font>" \
-      "<font size=6 color=white><font size=6 color=#CAA7EA>${simdiki}</font> namazı vakti\n$vakit_saati</font>" \
-      -i ${VERI_DIZINI}/simgeler/ezanvakti.png -t $EZAN_BILDIRIM_SURESI"000" -h int:transient:1
+  notify-send "<font size=6 color=#D5F65E>${ILCE}<font size=6 color=white> için</font></font>" \
+    "<font size=6 color=white><font size=6 color=#CAA7EA>${simdiki}</font> namazı vakti\n$vakit_saati</font>" \
+    -i ${VERI_DIZINI}/simgeler/ezanvakti.png -t $EZAN_BILDIRIM_SURESI"000" -h int:transient:1
 
   # Oynatıcı duraklatma etkin mi ezan okumadan değeri
   # denetle ve fonksiyonu çağır.
@@ -109,6 +102,19 @@ function ramazan_ezanoku() {
     ezandinlet
   }; clear
 }
+
+#function kalan_sure_say() {
+#  local kalan=$1
+#  (( KALAN_SURE_SAY )) && {
+#    while (( kalan ))
+#    do
+#      printf "${RENK7}${RENK3}Kalan süre: ${RENK4}%02d saat : %02d dakika : %02d saniye${RENK0}\r" \
+#        $((kalan/3600)) $((kalan%3600/60)) $((kalan%60))
+#      ((kalan--))
+#      sleep 1
+#    done
+#  } || sleep $kalan
+#}
 
 # Vakitlerde ezan okunmasının ve bildirimin yönetildiği özyinelemeli ana fonksiyon.
 function ezanlar() {
