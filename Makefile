@@ -44,14 +44,10 @@ config: clean
 			-e 's:@sysconfdir@:$(sysconfdir):' \
 			ezanvakti.bash.in > ezanvakti
 
-		@$(SED) -e 's:@datadir@:$(datadir):' \
-			-e 's:@libdir@:$(libdir):' \
-			-e 's:@sysconfdir@:$(sysconfdir):' \
+		@$(SED) -e 's:@sysconfdir@:$(sysconfdir):' \
 			lib/ezanvakti-sleep.bash.in > lib/ezanvakti-sleep.bash
 
-		@$(SED) -e 's:@datadir@:$(datadir):' \
-			-e 's:@libdir@:$(libdir):' \
-			-e 's:@sysconfdir@:$(sysconfdir):' \
+		@$(SED) -e 's:@sysconfdir@:$(sysconfdir):' \
 			lib/ezanvakti-crontab.bash.in > lib/ezanvakti-crontab.bash
 
 		@$(SED) -e 's:@surum@:$(surum):' \

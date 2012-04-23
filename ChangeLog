@@ -174,7 +174,7 @@
 × 3.0 - 04.08.2010
 ×××××××××××××××××××××××××××××/
 
- *  GNOME bağımlılıklarını kaldırdım. Betik artık KDE ve XFCE  üzerinde de çalışabilir.
+ *  GNOME bağımlılıklarını kaldırıldı. Betik artık KDE ve XFCE  üzerinde de çalışabilir.
  *  Ses oynatımında mplayer kullanıyor artık.
  *  Uçbirimden kuran sureleri dinleme desteği. (-k, –kuran  <sure_kodu>)
  *  Sure kodlarını öğrenmek için özel değişken (–sureler değişkeni)
