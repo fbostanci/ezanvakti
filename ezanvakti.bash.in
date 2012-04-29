@@ -130,7 +130,7 @@ function kuran_dinle() {
     okuyan='Yerel Okuyucu'
   } || {
           # Seçilen okuyucu koduna göre okuyucunun tam adını yeni değere ata.
-          [ ${OKUYAN} = AlGhamdi  ] &&  okuyan='Saad el Ghamdi' \
+          [ ${OKUYAN} = AlGhamdi  ] && okuyan='Saad el Ghamdi' \
           || {
           [ ${OKUYAN} = AsShatree ] && okuyan='As Shatry'
           } || {

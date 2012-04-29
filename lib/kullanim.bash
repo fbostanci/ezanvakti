@@ -9,7 +9,7 @@ function betik_kullanimi() {
   B=$(tput bold)
   R=$(tput sgr0)
 
-  (( ! RENK_KULLAN )) && {
+  (( ! ${RENK:-RENK_KULLAN} )) && {
     B=''
     R=''
   }
