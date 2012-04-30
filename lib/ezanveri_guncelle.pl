@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 #
-#                          Ezanveri Güncelle 1.4
+#                          Ezanveri Güncelle 1.5
 #
 ##
 ##          Copyright (c) 2010-2012 Fatih Bostancı  <faopera@gmail.com>
@@ -17,7 +17,8 @@
 #
 #
 
-
+use strict;
+use warnings;
 use encoding "utf-8";
 use WWW::Mechanize;
 
@@ -25,17 +26,22 @@ my $ulke = $ARGV[0];
 my $sehir = $ARGV[1];
 my $ilce = $ARGV[2];
 
+my $baglanti = "http://www.diyanet.gov.tr/turkish/namazvakti/vakithes_namazvakti.asp";
+my $cizelge1 = "benimformum";
+my $cizelge2 = "hesapformu";
+my $sonuc;
+
 
 my $mech = WWW::Mechanize->new();
 #$mech->agent_alias( 'Linux Mozilla' );
 
-$mech->get('http://www.diyanet.gov.tr/turkish/namazvakti/vakithes_namazvakti.asp');
-$mech->form_name(benimformum);
+$mech->get($baglanti);
+$mech->form_name($cizelge1);
 
 $mech->field(ulkeler => $ulke);
 $mech->submit('document.benimformum.submit');
 
-$mech->form_name(hesapformu);
+$mech->form_name($cizelge2);
 
 $mech->field(eyalet => $sehir);
 $mech->field(sehirler => $ilce);
@@ -43,5 +49,5 @@ $mech->field(sehirler => $ilce);
 $mech->set_visible( [ radio => 'AYLIK' ] );
 $mech->click_button(value => 'Hesapla');
 
-$sonuc = $mech->content(format => 'text');
+$sonuc = $mech->content( format => 'text' );
 print $sonuc;
