@@ -16,7 +16,7 @@ function oynatici_islem() {
     local komut
 
     komut=$(qdbus org.mpris.MediaPlayer2.$1 /org/mpris/MediaPlayer2 \
-             org.freedesktop.DBus.Properties.Get org.mpris.MediaPlayer2.Player PlaybackStatus)
+            org.freedesktop.DBus.Properties.Get org.mpris.MediaPlayer2.Player PlaybackStatus)
     if [[ ${komut} = Playing ]]
     then
         return 0

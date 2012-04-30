@@ -36,9 +36,8 @@ $mech->field(ulkeler => $ulke);
 $mech->submit('document.benimformum.submit');
 
 $mech->form_name(hesapformu);
-$mech->field(eyalet => $sehir);
 
-$mech->form_name(hesapformu);
+$mech->field(eyalet => $sehir);
 $mech->field(sehirler => $ilce);
 
 $mech->set_visible( [ radio => 'AYLIK' ] );

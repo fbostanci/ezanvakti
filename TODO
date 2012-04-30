@@ -12,6 +12,7 @@
 # makefile geliştir. ( dist oluşturma , tane tane dosya kurulumu ) ###TAMAM###
 # kuran dinle için hatalı seçimleri yakalama geliştir.  ###TAMAM###
 # ilçeleri de ekle. ###TAMAM###
+# kendiliğinden çalışmayı yapılandırma dosyasından denetlenebilir yap.
 # --surum çıktısı için daha fazla bilgi  ###TAMAM ###
 # renk özelleştirmelerini daha kolaylaştır. Renkler için kod yerine rengin adının kullanılmasını sağla..
 # man dosyasını 2 ye böl. (1. ve 5. bölümler) ###TAMAM###
