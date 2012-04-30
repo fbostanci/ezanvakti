@@ -94,7 +94,7 @@ function bugun() {
     , $2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13}}' "${EZANVERI}")
 }
 
-# Eğer hedef süre bugün içerindeyse bu fonksiyon kullanılacak.
+# Eğer hedef süre bugün içerisindeyse bu fonksiyon kullanılacak.
 function bekleme_suresi() {
   bekle=$(($(date -d "$1" +%s) - $(date +%s) + EZAN_OKUNMA_SURESI_FARKI))
 }

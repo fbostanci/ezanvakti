@@ -10,7 +10,7 @@ then
 fi
 
 elx=''
-for ((i=1; i<=$CIZGI_UZUNLUGU; i++))
+for ((i=1; i<=CIZGI_UZUNLUGU; i++))
 {
   elx+="${CIZGI_SIMGESI}"
 }
