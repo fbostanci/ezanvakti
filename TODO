@@ -10,6 +10,7 @@
 # yapılandırma yöneticisini yeni pencerelere böl. Kapsamını arttır. Önce CB ile pencereleri listele.
 # --vakitler/-v için birleşik komut kullanımı desteği sağla. (ezanvakti -vi gibi)
 # makefile geliştir. ( dist oluşturma , tane tane dosya kurulumu ) ###TAMAM###
+# gelişmiş arayüz bileşeninin ana betik gereksinimini olabildiğince azalt.
 # kuran dinle için hatalı seçimleri yakalama geliştir.  ###TAMAM###
 # ilçeleri de ekle. ###TAMAM###
 # kendiliğinden çalışmayı yapılandırma dosyasından denetlenebilir yap.
