@@ -8,15 +8,10 @@
 function guncelleme_yap() {
   local arayuz ulke sehir ilce varsayilan_sehir
 
-  test x"${ULKE}" = x && {
-    ULKE=yok_boyle_bir_yer
-  }
-  test x"${SEHIR}" = x && {
-    SEHIR=yok_boyle_bir_yer
-  }
-  test x"${ILCE}" = x && {
-    ILCE=yok_boyle_bir_yer
-  }
+  test x"${ULKE}"  = x && ULKE=yok_boyle_bir_yer
+  test x"${SEHIR}" = x && SEHIR=yok_boyle_bir_yer
+  test x"${ILCE}"  = x && ILCE=yok_boyle_bir_yer
+
 function arayuz_denetle() {
 
   if test -x "$(which yad 2>/dev/null)"
@@ -65,9 +60,9 @@ IFS="
   fi
 
   sed -i "s:\(ULKE=\).*:\1\'${ulke}\':" "${EZANVAKTI_AYAR}"
-} || {
-  ulke=${ULKE}
-}
+} || ulke=${ULKE}
+
+
 
 ######################################################################
 #                         ŞEHİR İŞLEMLERİ                            #
@@ -103,9 +98,9 @@ IFS="
   fi
 
   sed -i "s:\(SEHIR=\).*:\1\'${sehir}\':" "${EZANVAKTI_AYAR}"
-} || {
-  sehir=${SEHIR}
-}
+} || sehir=${SEHIR}
+
+
 
 ######################################################################
 #                         İLÇE İŞLEMLERİ                             #
@@ -137,9 +132,8 @@ then
           fi
       fi
       sed -i "s:\(ILCE=\).*:\1\'${ilce}\':" "${EZANVAKTI_AYAR}"
-    } || {
-      ilce=${ILCE}
-    }
+    } || ilce=${ILCE}
+
 else
     ilce=${sehir}
     sed -i "s:\(ILCE=\).*:\1\'${sehir}\':" "${EZANVAKTI_AYAR}"

@@ -49,5 +49,5 @@ $mech->field(sehirler => $ilce);
 $mech->set_visible( [ radio => 'AYLIK' ] );
 $mech->click_button(value => 'Hesapla');
 
-$sonuc = $mech->content( format => 'text' );
+$sonuc = $mech->content( format => 'text');
 print $sonuc;

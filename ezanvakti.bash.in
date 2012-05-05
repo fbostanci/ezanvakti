@@ -20,6 +20,7 @@
 #set -n
 #set -x
 
+
 export EZANVAKTI_DIZINI="${XDG_CONFIG_HOME:-$HOME/.config}"/ezanvakti
 export EZANVAKTI_AYAR="${EZANVAKTI_DIZINI}"/ayarlar
 
@@ -185,7 +186,7 @@ case $1 in
         vakit_ezani="${YATSI_EZANI}"
         ezandinlet ;;
       *)
-        hatali_kullanim $2 ;;
+        hatali_kullanim ${2:-null} ;;
     esac
   ;;
   -v|--vakitler)
@@ -243,6 +244,12 @@ case $1 in
       -y|--yats[ıi])
         printf "${RENK7}${RENK2}\nYatsı ezanı  ${RENK3}: $yatsi_n $yatsi_kalan${RENK0}\n\n" ;;
       30|--ayl[ıi]k)
+        if ! grep -qo $(date -d 'next week' +%d.%m.%Y) "${EZANVERI}"
+        then
+            printf "${RENK3}7 günlük veri bulunmuyor..${RENK0}\n"
+            exit 1
+        fi
+
         printf "\n${RENK7}${RENK6}Tarih        Sabah   Güneş   Öğle    İkindi  Akşam   Yatsı${RENK0}\n"
         gawk -v renk0=${RENK0} -v renk2=${RENK2} -v renk3=${RENK3} -v renk7=${RENK7} \
           '/^[0-9][0-9]\.[0-9]*\.[0-9]*/ \
@@ -279,7 +286,7 @@ case $1 in
           "${RENK2}Akşam ezanı  ${RENK3}: $aksam_n   $aksam_kalan\n" \
           "${RENK2}Yatsı ezanı  ${RENK3}: $yatsi_n   $yatsi_kalan${RENK0}\n" ;;
       *)
-        hatali_kullanim ${2:-null} ;;
+        hatali_kullanim $2 ;;
     esac ;;
   --arayuzlericin)
     # Arayüzlerin hızlı çalışması için vakitleri almada ayrı değişken kullanıldı.
@@ -334,8 +341,8 @@ case $1 in
       -u|-t|--u[cç]birim|--terminal)
         printf '%b%b%b\n' \
           "${RENK3}\nGünlük Ayet ${RENK2}(${RENK8}" \
-          "$(sed -n "$satir p" ${VERI_DIZINI}/veriler/sureler_ayetler) $satir/6236${RENK2})${RENK8}\n\n" \
-          "$(sed -n "$satir p" "${TEFSIR}")${RENK0}"
+          "$(sed -n "${satir}p" ${VERI_DIZINI}/veriler/sureler_ayetler) $satir/6236${RENK2})${RENK8}\n\n" \
+          "$(sed -n "${satir}p" "${TEFSIR}")${RENK0}"
         exit 0 ;;
       ?*)
         hatali_kullanim $2 ;;
