@@ -52,9 +52,9 @@ yad --form --separator=' ' --title="Ezanvakti $SURUM" --text "${mplayer_ileti}" 
 
   case $? in
     127)
-      echo stop > /tmp/mplayer.pipe 2>/dev/null;sleep .4
-      echo stop > /tmp/mplayer.pipe2 2>/dev/null
-      rm -f /tmp/mplayer.pipe{,2} &>/dev/null
+      echo stop > /tmp/mplayer-$$.pipe 2>/dev/null;sleep .4
+      echo stop > /tmp/mplayer-$$.pipe2 2>/dev/null
+      rm -f /tmp/mplayer-$$.pipe{,2} &>/dev/null
       ;;
   esac
 }
@@ -81,14 +81,14 @@ GPL 3 ile lisanslanmıştır.\n" \
 function ozel_pencere() {
   local strng donus str str2
 
-strng=`yad --form \
+strng=$(yad --form \
 --field=Okuyucu:CB \
 '!Saad el Ghamdi!As Shatry!Ahmad el Ajmy!Yerel Okuyucu' \
 --field=Sure:CB \
 "${sure_listesi}" \
 --button='gtk-go-back:151' --button='gtk-media-play:152' --button='gtk-quit:153' \
 --image=${VERI_DIZINI}/simgeler/ezanvakti.png --window-icon=${VERI_DIZINI}/simgeler/ezanvakti2.png \
---title "Ezanvakti $SURUM" --sticky --center --fixed`
+--title "Ezanvakti $SURUM" --sticky --center --fixed)
 
 donus=$(echo $?)
 
@@ -183,19 +183,19 @@ function arayuz() {
       vakit_bilgisi='<b>Şimdi Yatsı Vakti</b>'
   fi
 
-strng=`yad --form --text "$(printf "${GELISMIS_ARAYUZ_BICIMI}" "${TARIH}" "$(date +%H:%M:%S)" \
+strng=$(yad --form --text "$(printf "${GELISMIS_ARAYUZ_BICIMI}" "${TARIH}" "$(date +%H:%M:%S)" \
   "${ILCE} / ${ULKE}" "${elx}" "${vakit_bilgisi}${ozel_ileti}" "${elx}" \
   "$("${ezanvakti_xc}" --arayuzlericin)" "${ileti}" \
   "$(cut -d' ' -f5- <<<${v_kalan})")" \
---field='Ezan dinle:CB' \
+--field='Ezanlar:CB' \
 '!Sabah!Öğle!İkindi!Akşam!Yatsı' \
---field='Kuran dinle:CB' \
+--field='Sureler:CB' \
 "!000-Özel Pencere$sure_listesi" \
---field='Seçim göster:CB' \
+--field='Seçimler:CB' \
 '!Ayet!Hadis!Bilgi!Esma-ül Hüsna' \
 --button="gtk-about:160" --button="gtk-properties:170" --button='gtk-ok:150' --button="gtk-quit:121" \
 --image=${VERI_DIZINI}/simgeler/ezanvakti.png --window-icon=${VERI_DIZINI}/simgeler/ezanvakti2.png \
---title "Ezanvakti $SURUM" --sticky --center --fixed`
+--title "Ezanvakti $SURUM" --sticky --center --fixed)
 
 donus=$(echo $?)
 
