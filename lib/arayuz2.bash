@@ -9,7 +9,11 @@ then
     exit 1
 fi
 
+# düz komut çıktıları için rengi sıfırla.
 export RENK=0
+
+# TODO: denetle öncelikle.
+ezanvakti_xc="$(type -p ezanvakti)"
 
 function arayuz2() {
   denetle; bugun

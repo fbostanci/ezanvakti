@@ -3,11 +3,25 @@
 #                           Ezanvakti Gelişmiş Arayüz  Bileşeni 1.7
 #
 
+# TODO: 2.0 için yapılacaklar
+# haftalık ve aylık vakitler çıktılarını göstermeyi ekle. 
+# dini günler gösterimini ekle.
+# ana betik bağımlığını azalt . Ortak yeni fonksiyonlar yaz.
+# Çoklu çalışmayı engelle.
+# sistem tepsisi desteği .(?)
+# arayüzde html kod denemeleri.
+
 if ! [ -x "$(which yad 2>/dev/null)" ]
 then
     printf "Bu özellik YAD gerektirmektedir...\n" >&2
     exit 1
 fi
+
+# düz komut çıktıları için rengi sıfırla.
+export RENK=0
+
+# TODO: denetle öncelikle.
+ezanvakti_xc="$(type -p ezanvakti)"
 
 elx=''
 for ((i=1; i<=CIZGI_UZUNLUGU; i++))
@@ -15,7 +29,6 @@ for ((i=1; i<=CIZGI_UZUNLUGU; i++))
   elx+="${CIZGI_SIMGESI}"
 }
 
-export RENK=0
 
 (( GUN_ANIMSAT )) && {
   if grep -q $(date +%d.%m.%Y) ${VERI_DIZINI}/veriler/gunler
@@ -242,19 +255,19 @@ then
         arayuz
     elif [ "$str" = "Ayet" ]
     then
-        "${ezanvakti_xc}" --ayet -u | sed 's/\x1b\[[0-9]\{1,2\}\(;[0-9]\{1,2\}\)\{0,2\}m//g' > /tmp/ezanvakti-6
+        "${ezanvakti_xc}" --ayet -u > /tmp/ezanvakti-6
         secim_goster;arayuz
     elif [ "$str" = "Hadis" ]
     then
-        "${ezanvakti_xc}" --hadis -u | sed 's/\x1b\[[0-9]\{1,2\}\(;[0-9]\{1,2\}\)\{0,2\}m//g' > /tmp/ezanvakti-6
+        "${ezanvakti_xc}" --hadis -u > /tmp/ezanvakti-6
         secim_goster;arayuz
     elif [ "$str" = "Esma-ül Hüsna" ]
     then
-        "${ezanvakti_xc}" --esma | sed 's/\x1b\[[0-9]\{1,2\}\(;[0-9]\{1,2\}\)\{0,2\}m//g' > /tmp/ezanvakti-6
+        "${ezanvakti_xc}" --esma > /tmp/ezanvakti-6
         secim_goster;arayuz
     elif [ "$str" = "Bilgi" ]
     then
-        "${ezanvakti_xc}" --bilgi -u | sed 's/\x1b\[[0-9]\{1,2\}\(;[0-9]\{1,2\}\)\{0,2\}m//g' > /tmp/ezanvakti-6
+        "${ezanvakti_xc}" --bilgi -u > /tmp/ezanvakti-6
         secim_goster;arayuz
     elif [ `echo $str | grep [0-9]` ]
     then
