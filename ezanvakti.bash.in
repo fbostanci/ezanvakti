@@ -32,7 +32,7 @@ DERLEME=@derleme@
 
 [ ! -d "${EZANVAKTI_DIZINI}" ] && mkdir -p "${EZANVAKTI_DIZINI}"
 [ ! -f "${EZANVAKTI_AYAR}"   ] && \
-sed "s:\$HOME:$HOME:" < @sysconfdir@/ezanvakti/ayarlar > "${EZANVAKTI_AYAR}"
+  sed "s:\$HOME:$HOME:" < @sysconfdir@/ezanvakti/ayarlar > "${EZANVAKTI_AYAR}"
 
 # Öntanımlı ayarları al.
 . @sysconfdir@/ezanvakti/ayarlar
@@ -153,9 +153,9 @@ function kuran_dinle() {
   rm -f /tmp/mplayer-$$.pipe 2>/dev/null
 }
 
-# Hadis, bilgi ve esma için 1 ile verilen sayı arasında
+# Hadis, bilgi ve esma için 1 ile verilen sayı($1) arasında
 # rastgele bir sayı seç. Seçilen sayı için içerik_al ile gelen
-# dosya üzerinde işlem yapıp içeriği değişkene ata.
+# dosya üzerinde işlem yapıp içeriği alinan_yanit değişkenine ata.
 function secim_yap() {
   secilen=$((RANDOM%$1))
   (( ! secilen )) && secilen=$1
@@ -200,37 +200,27 @@ case $1 in
     [ $SAAT -lt $sabah ] && {
       bekleme_suresi $sabah_n; kalan
       sabah_kalan="${RENK2} $kalan_sure"
-    } || {
-      sabah_kalan="${RENK1} OKUNDU"
-    }
+    } || sabah_kalan="${RENK1} OKUNDU"
 
     [ $SAAT -lt $ogle ] && {
       bekleme_suresi $ogle_n; kalan
       ogle_kalan="${RENK2} $kalan_sure"
-    } || {
-      ogle_kalan="${RENK1} OKUNDU"
-    }
+    } || ogle_kalan="${RENK1} OKUNDU"
 
     [ $SAAT -lt $ikindi ] && {
       bekleme_suresi $ikindi_n; kalan
       ikindi_kalan="${RENK2} $kalan_sure"
-    } || {
-      ikindi_kalan="${RENK1} OKUNDU"
-    }
+    } || ikindi_kalan="${RENK1} OKUNDU"
 
     [ $SAAT -lt $aksam ] && {
       bekleme_suresi $aksam_n; kalan
       aksam_kalan="${RENK2} $kalan_sure"
-    } || {
-      aksam_kalan="${RENK1} OKUNDU"
-    }
+    } || aksam_kalan="${RENK1} OKUNDU"
 
     [ $SAAT -lt $yatsi ] && {
       bekleme_suresi $yatsi_n; kalan
       yatsi_kalan="${RENK2} $kalan_sure"
-    } || {
-      yatsi_kalan="${RENK1} OKUNDU"
-    }
+    } || yatsi_kalan="${RENK1} OKUNDU"
 
     case $2 in
       -s|--sabah)
@@ -462,12 +452,10 @@ case $1 in
       <${VERI_DIZINI}/veriler/gunler
     ;;
   --gui|--aray[uü]z)
-    ezanvakti_xc="$(type -p ezanvakti)"
     # arayuz fonksiyonunu başlat.
     . ${BILESEN_DIZINI}/arayuz.bash
     exit 0 ;;
   --gui2|--aray[uü]z2)
-    ezanvakti_xc="$(type -p ezanvakti)"
     . ${BILESEN_DIZINI}/arayuz2.bash ;;
   -V|--s[uü]r[uü]m|--version)
     printf '%s\n\n%s\n\n%s\n%s\n%s\n%s\n' \

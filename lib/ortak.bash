@@ -33,13 +33,11 @@ function denetle() {
   local ksatir
   # ezanlar ve iftarimsak fonksiyonları özyinelemeli çalıştığı için
   # gün değişiminde tarihi güncellemek için tarih, denetle fonksiyonu içine alındı.
-  TARIH=`date +%d.%m.%Y`
-  SAAT=`date +%H%M`
+  TARIH=$(date +%d.%m.%Y)
+  SAAT=$(date +%H%M)
 
   [ ! -f "${EZANVERI}" ] && { # ezanveri dosyası yoksa
-    (( GUNCELLEME_YAP )) && { # otomatik güncelleme etkinse
-      guncelleme_yap # ilgili fonksiyonu çağır ve ezanveri dosyasını oluştur.
-    } || { # otomatik güncelleme kapalıysa..
+    (( GUNCELLEME_YAP )) && guncelleme_yap || {
       printf '%b%b\n%b\n' \
         "${RENK7}${RENK2}${EZANVERI}" \
         "${RENK3} dosyası bulunamadı." \
@@ -50,9 +48,7 @@ function denetle() {
 
   # Bugüne ait tarih ezanveri dosyasında yoksa
   [[ -z $(grep -o ${TARIH} "${EZANVERI}") ]] && {
-    (( GUNCELLEME_YAP )) && {
-      guncelleme_yap
-    } || {
+    (( GUNCELLEME_YAP )) && guncelleme_yap || {
       printf '%b%b\n%b\n' \
         "${RENK7}${RENK2}${EZANVERI_ADI}" \
         "${RENK3} dosyası güncel değil." \
@@ -67,9 +63,7 @@ function denetle() {
   let ksatir++
 
   (( ksatir <= 7 )) && { # sonuç 7 ya da 7'den küçükse
-    (( GUNCELLEME_YAP )) && {
-      guncelleme_yap
-    }
+    (( GUNCELLEME_YAP )) && guncelleme_yap
 
     # Betiğin mevcut oturum boyunca sadece ilk çalışmada bildirim vermesi
     # için çerez dosya denetimi ekledik. Gün değişimi durumu için (mevcut oturum devam ediyorsa)
