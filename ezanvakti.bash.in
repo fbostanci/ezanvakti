@@ -338,8 +338,8 @@ case $1 in
         hatali_kullanim $2 ;;
     esac
 
-    notify-send "Günlük Ayet ($(sed -n "$satir p" ${VERI_DIZINI}/veriler/sureler_ayetler))" \
-      "$(sed -n "$satir p" "${TEFSIR}")" -t $AYET_BILDIRIM_SURESI"000" -h int:transient:1
+    notify-send "Günlük Ayet ($(sed -n "${satir}p" ${VERI_DIZINI}/veriler/sureler_ayetler))" \
+      "$(sed -n "${satir}p" "${TEFSIR}")" -t $AYET_BILDIRIM_SURESI"000" -h int:transient:1
     exit 0 ;;
   --ramazan)
     yontem_calistir ramazan ;;

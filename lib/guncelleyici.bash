@@ -14,10 +14,10 @@ function guncelleme_yap() {
 
 function arayuz_denetle() {
 
-  if test -x "$(which yad 2>/dev/null)"
+  if test -x "$(which kdialog 2>/dev/null)"
   then
       arayuz=1
-  elif test -x "$(which kdialog 2>/dev/null)"
+  elif test -x "$(which yad 2>/dev/null)"
   then
       arayuz=2
   elif test -x "$(which zenity 2>/dev/null)"
@@ -44,19 +44,21 @@ IFS="
 
   if (( arayuz == 1 ))
   then
-      ulke=$(yad --entry --entry-text 'TURKIYE' $( < ${VERI_DIZINI}/ulkeler/AAA-ULKELER) \
-             --title 'Ülke belirleme'  --text 'Bulunduğunuz ülkeyi seçin')
-           (( $? == 1 )) && exit 1
-  elif (( arayuz == 2 ))
-  then
       ulke=$(kdialog --combobox 'Bulunduğunuz ülkeyi seçin'  --title 'Ülke belirleme' \
              --default 'TURKIYE' $( < ${VERI_DIZINI}/ulkeler/AAA-ULKELER))
-           (( $? == 1 )) && exit 1
+      (( $? == 1 )) && exit 1
+
+  elif (( arayuz == 2 ))
+  then
+      ulke=$(yad --entry --entry-text 'TURKIYE' $( < ${VERI_DIZINI}/ulkeler/AAA-ULKELER) \
+             --title 'Ülke belirleme'  --text 'Bulunduğunuz ülkeyi seçin')
+      (( $? == 1 )) && exit 1
+
   elif (( arayuz == 3 ))
   then
       ulke=$(zenity --entry --entry-text 'TURKIYE' $( < ${VERI_DIZINI}/ulkeler/AAA-ULKELER) \
              --title 'Ülke belirleme' --text 'Bulunduğunuz ülkeyi seçin')
-           (( $? == 1 )) && exit 1
+      (( $? == 1 )) && exit 1
   fi
 
   sed -i "s:\(ULKE=\).*:\1\'${ulke}\':" "${EZANVAKTI_AYAR}"
@@ -82,19 +84,21 @@ IFS="
 
   if (( arayuz == 1 ))
   then
-      sehir=$(yad --entry --entry-text ${varsayilan_sehir} $( < ${VERI_DIZINI}/ulkeler/${ulke}) \
-              --title 'Şehir belirleme' --text 'Bulunduğunuz şehri seçin')
-            (( $? == 1 )) && exit 1
-  elif (( arayuz == 2 ))
-  then
       sehir=$(kdialog --combobox 'Bulunduğunuz şehri seçin' --title 'Şehir belirleme' \
               --default ${varsayilan_sehir} $( < ${VERI_DIZINI}/ulkeler/${ulke}))
-            (( $? == 1 )) && exit 1
+      (( $? == 1 )) && exit 1
+
+  elif (( arayuz == 2 ))
+  then
+      sehir=$(yad --entry --entry-text ${varsayilan_sehir} $( < ${VERI_DIZINI}/ulkeler/${ulke}) \
+              --title 'Şehir belirleme' --text 'Bulunduğunuz şehri seçin')
+      (( $? == 1 )) && exit 1
+
   elif (( arayuz == 3 ))
   then
       sehir=$(zenity --entry --entry-text ${varsayilan_sehir} $( < ${VERI_DIZINI}/ulkeler/${ulke}) \
               --title 'Şehir belirleme' --text 'Bulunduğunuz şehri seçin')
-            (( $? == 1 )) && exit 1
+      (( $? == 1 )) && exit 1
   fi
 
   sed -i "s:\(SEHIR=\).*:\1\'${sehir}\':" "${EZANVAKTI_AYAR}"
@@ -114,16 +118,19 @@ then
           ilce=$( < ${VERI_DIZINI}/ulkeler/TURKIYE_ilceler/${sehir})
       else
           arayuz_denetle
+
           if (( arayuz == 1 ))
-          then
-              ilce=$(yad --entry --entry-text ${sehir} $( < ${VERI_DIZINI}/ulkeler/TURKIYE_ilceler/${sehir}) \
-                     --title 'İlçe belirleme' --text 'Bulunduğunuz ilçeyi seçin')
-              (( $? == 1 )) && exit 1
-          elif (( arayuz == 2 ))
           then
               ilce=$(kdialog --combobox 'Bulunduğunuz ilçeyi seçin' --title 'İlçe belirleme' \
                      --default ${sehir} $( < ${VERI_DIZINI}/ulkeler/TURKIYE_ilceler/${sehir}))
               (( $? == 1 )) && exit 1
+
+          elif (( arayuz == 2 ))
+          then
+              ilce=$(yad --entry --entry-text ${sehir} $( < ${VERI_DIZINI}/ulkeler/TURKIYE_ilceler/${sehir}) \
+                     --title 'İlçe belirleme' --text 'Bulunduğunuz ilçeyi seçin')
+              (( $? == 1 )) && exit 1
+
           elif (( arayuz == 3 ))
           then
               ilce=$(zenity --entry --entry-text ${sehir} $( < ${VERI_DIZINI}/ulkeler/TURKIYE_ilceler/${sehir}) \
