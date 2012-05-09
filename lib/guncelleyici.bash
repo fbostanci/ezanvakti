@@ -51,6 +51,7 @@ IFS="
   elif (( arayuz == 2 ))
   then
       ulke=$(yad --entry --entry-text 'TURKIYE' $( < ${VERI_DIZINI}/ulkeler/AAA-ULKELER) \
+             --width=240 --sticky --window-icon=${VERI_DIZINI}/simgeler/ezanvakti2.png \
              --title 'Ülke belirleme'  --text 'Bulunduğunuz ülkeyi seçin')
       (( $? == 1 )) && exit 1
 
@@ -91,6 +92,7 @@ IFS="
   elif (( arayuz == 2 ))
   then
       sehir=$(yad --entry --entry-text ${varsayilan_sehir} $( < ${VERI_DIZINI}/ulkeler/${ulke}) \
+              --width=240 --sticky --window-icon=${VERI_DIZINI}/simgeler/ezanvakti2.png \
               --title 'Şehir belirleme' --text 'Bulunduğunuz şehri seçin')
       (( $? == 1 )) && exit 1
 
@@ -128,6 +130,7 @@ then
           elif (( arayuz == 2 ))
           then
               ilce=$(yad --entry --entry-text ${sehir} $( < ${VERI_DIZINI}/ulkeler/TURKIYE_ilceler/${sehir}) \
+                     --width=240 --sticky --window-icon=${VERI_DIZINI}/simgeler/ezanvakti2.png \
                      --title 'İlçe belirleme' --text 'Bulunduğunuz ilçeyi seçin')
               (( $? == 1 )) && exit 1
 
@@ -182,7 +185,7 @@ SON
     ## TODO: Buraya renk denetimi eklenecek
     notify-send "Ezanvakti $SURUM" "${EZANVERI_ADI} dosyası başarıyla güncellendi." \
       -i ${VERI_DIZINI}/simgeler/ezanvakti.png -t $GUNCELLEME_BILDIRIM_SURESI"000" -h int:transient:1
-      :> /tmp/eznvrgncldntle_$(date +%d%m%y)
+    :> /tmp/eznvrgncldntle_$(date +%d%m%y)
   } || {
     printf "${RENK7}${RENK3}Başarısız..${RENK0}\n"
     notify-send "Ezanvakti $SURUM" "${EZANVERI_ADI} dosyasının güncellenmesi başarısız oldu." \

@@ -17,8 +17,8 @@
 #
 #
 
-(( SADECEOKU )) && set -n
-(( AYRINTIVER )) && set -x
+#set -n
+#set -x
 
 
 export EZANVAKTI_DIZINI="${XDG_CONFIG_HOME:-$HOME/.config}"/ezanvakti
