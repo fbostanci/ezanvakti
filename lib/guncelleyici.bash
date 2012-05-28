@@ -6,7 +6,8 @@
 
 
 function guncelleme_yap() {
-  local arayuz ulke sehir ilce varsayilan_sehir
+  local arayuz ulke sehir ilce varsayilan_sehir pm e dn
+  local -a pmler
 
   test x"${ULKE}"  = x && ULKE=yok_boyle_bir_yer
   test x"${SEHIR}" = x && SEHIR=yok_boyle_bir_yer
@@ -31,28 +32,6 @@ function arayuz_denetle() {
       exit 1
   fi
 }
-
-# Perl bileşenlerini denetle.
-if [ $(perl -MWWW::Mechanize -e 1 2>/dev/null) -ne 0 ]
-then
-    printf '%b\n%b\n'
-      "${RENK7}${RENK3}Güncelleme işlemi için gerekli olan \`perl-www-mechanize' bileşeni bulanamadı."
-      "Çıkılıyor...${RENK0}"
-    notify-send "Ezanvakti $SURUM" \
-      "Güncelleme işlemi için gerekli olan \`perl-www-mechanize' bileşeni bulanamadı." \
-      -i ${VERI_DIZINI}/simgeler/ezanvakti.png -t $GUNCELLEME_BILDIRIM_SURESI"000" -h int:transient:1
-    exit 1
-
-if [ $(perl -MHTML::TreeBuilder -e 1 2>/dev/null) -ne 0 ]
-then
-    printf '%b\n%b\n'
-      "${RENK7}${RENK3}Güncelleme işlemi için gerekli olan \`perl-html-tree' bileşeni bulanamadı."
-      "Çıkılıyor...${RENK0}"
-    notify-send "Ezanvakti $SURUM" \
-      "Güncelleme işlemi için gerekli olan \`perl-html-tree' bileşeni bulanamadı." \
-      -i ${VERI_DIZINI}/simgeler/ezanvakti.png -t $GUNCELLEME_BILDIRIM_SURESI"000" -h int:transient:1
-    exit 1
-fi
 
 IFS="
 "
@@ -173,7 +152,39 @@ fi
 
 unset IFS
 
-printf "${RENK7}${RENK3}${EZANVERI_ADI} dosyası güncelleniyor..${RENK0}\n"
+printf "${RENK7}${RENK8}Perl bileşenleri denetleniyor..${RENK0}"
+
+# Perl bileşenlerini denetle.
+pmler=()
+for pm in 'WWW::Mechanize' 'HTML::TreeBuilder'
+do
+    perl -M${pm} -e 1 2>/dev/null
+    dn=$(echo $?)
+    if [[ $dn -ne 0 ]]
+    then
+        pmler+=("$pm")
+    fi
+done
+
+(( ${#pmler[@]} )) && {
+  printf '\n%b%b\n' \
+    "${RENK7}${RENK3}Aşağıdaki perl bileşen(ler)i bulunamadı.${RENK0}"
+  e=0
+  for pm in ${pmler[@]}
+  do
+    printf '%b\n' \
+      "${RENK7}${RENK1} ->${RENK8} ${pmler[$e]}${RENK0}"
+    ((e++))
+  done
+  exit 1
+}
+
+printf "${RENK7}${RENK8} [${RENK2}TAMAM${RENK8}]${RENK0}\n"
+#notify-send "Ezanvakti $SURUM" \
+#"Güncelleme işlemi için gerekli olan \`perl-www-mechanize' bileşeni bulanamadı." \
+#-i ${VERI_DIZINI}/simgeler/ezanvakti.png -t $GUNCELLEME_BILDIRIM_SURESI"000" -h int:transient:1
+#exit 1
+#fi
 
 # HACK: internet bağlantı sınaması yöntemini değiştir.
 #if ! { ping -q -w 1 -c 1 `ip r | grep default | cut -d' ' -f 3` &> /dev/null; }
@@ -184,17 +195,20 @@ printf "${RENK7}${RENK3}${EZANVERI_ADI} dosyası güncelleniyor..${RENK0}\n"
 #    exit 1
 #fi
 
+printf "${RENK7}${RENK8}İnternet erişimi denetleniyor..${RENK0}"
 # internet erişimini denetle.
 wget -t 3 -T 10 www.google.com -O /tmp/baglantisina &>/dev/null
 if ! [ -s /tmp/baglantisina ]
 then
-    printf '%s\n%s\n' \
+    printf '\n%s\n%s\n' \
       "${RENK7}${RENK3}İnternet erişimi algılanamadı." \
       "Çıkılıyor...${RENK0}"
     exit 1
 fi
+printf "${RENK7}${RENK8} [${RENK2}TAMAM${RENK8}]${RENK0}\n"
+printf "${RENK7}${RENK8}${EZANVERI_ADI} dosyası güncelleniyor..${RENK0}"
 
-${BILESEN_DIZINI}/ezanveri_istemci.pl "${ulke}" "${sehir}" "${ilce}" | \
+${BILESEN_DIZINI}/ezanveri_istemci.pl "${ulke}" "${sehir}" "${ilce}" 2>/dev/null | \
   sed -e 's:[[:alpha:]]::g' -e 's:[^[:blank:]]*\.:\n&:2g' | \
   sed -e '1,4d' -e 's: : :g' -e 's:[[:space:]]*$::g' > /tmp/ezanveri-$$
 
@@ -212,14 +226,14 @@ SON
 
   (( $(wc -l < /tmp/ezanveri-$$) >= 20 )) && {
     mv -f /tmp/ezanveri-$$ "${EZANVERI}"
-    printf "${RENK7}${RENK2}Başarılı..${RENK0}\n"
+    printf "${RENK7}${RENK8} [${RENK2}TAMAM${RENK8}]${RENK0}\n"
     . "${EZANVAKTI_AYAR}"
     ## TODO: Buraya renk denetimi eklenecek
     notify-send "Ezanvakti $SURUM" "${EZANVERI_ADI} dosyası başarıyla güncellendi." \
       -i ${VERI_DIZINI}/simgeler/ezanvakti.png -t $GUNCELLEME_BILDIRIM_SURESI"000" -h int:transient:1
     :> /tmp/eznvrgncldntle_$(date +%d%m%y)
   } || {
-    printf "${RENK7}${RENK3}Başarısız..${RENK0}\n"
+    printf "${RENK7}${RENK8} [${RENK1}HATA${RENK8}]${RENK0}\n"
     notify-send "Ezanvakti $SURUM" "${EZANVERI_ADI} dosyasının güncellenmesi başarısız oldu." \
       -i ${VERI_DIZINI}/simgeler/ezanvakti.png -t $GUNCELLEME_BILDIRIM_SURESI"000" -h int:transient:1
     exit 1
