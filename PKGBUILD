@@ -48,7 +48,7 @@ package_ezanvakti-ses() {
   license=('unknown')
   depends=()
   optdepends=()
-  conflicts=()
+  conflicts=('ezanvakti')
 
   msg "Gitorious GIT sunucusuna bağlanılıyor..."
 

@@ -32,6 +32,28 @@ function arayuz_denetle() {
   fi
 }
 
+# Perl bileşenlerini denetle.
+if [ $(perl -MWWW::Mechanize -e 1 2>/dev/null) -ne 0 ]
+then
+    printf '%b\n%b\n'
+      "${RENK7}${RENK3}Güncelleme işlemi için gerekli olan \`perl-www-mechanize' bileşeni bulanamadı."
+      "Çıkılıyor...${RENK0}"
+    notify-send "Ezanvakti $SURUM" \
+      "Güncelleme işlemi için gerekli olan \`perl-www-mechanize' bileşeni bulanamadı." \
+      -i ${VERI_DIZINI}/simgeler/ezanvakti.png -t $GUNCELLEME_BILDIRIM_SURESI"000" -h int:transient:1
+    exit 1
+
+if [ $(perl -MHTML::TreeBuilder -e 1 2>/dev/null) -ne 0 ]
+then
+    printf '%b\n%b\n'
+      "${RENK7}${RENK3}Güncelleme işlemi için gerekli olan \`perl-html-tree' bileşeni bulanamadı."
+      "Çıkılıyor...${RENK0}"
+    notify-send "Ezanvakti $SURUM" \
+      "Güncelleme işlemi için gerekli olan \`perl-html-tree' bileşeni bulanamadı." \
+      -i ${VERI_DIZINI}/simgeler/ezanvakti.png -t $GUNCELLEME_BILDIRIM_SURESI"000" -h int:transient:1
+    exit 1
+fi
+
 IFS="
 "
 
@@ -162,7 +184,17 @@ printf "${RENK7}${RENK3}${EZANVERI_ADI} dosyası güncelleniyor..${RENK0}\n"
 #    exit 1
 #fi
 
-${BILESEN_DIZINI}/ezanveri_guncelle.pl "${ulke}" "${sehir}" "${ilce}" | \
+# internet erişimini denetle.
+wget -t 3 -T 10 www.google.com -O /tmp/baglantisina &>/dev/null
+if ! [ -s /tmp/baglantisina ]
+then
+    printf '%s\n%s\n' \
+      "${RENK7}${RENK3}İnternet erişimi algılanamadı." \
+      "Çıkılıyor...${RENK0}"
+    exit 1
+fi
+
+${BILESEN_DIZINI}/ezanveri_istemci.pl "${ulke}" "${sehir}" "${ilce}" | \
   sed -e 's:[[:alpha:]]::g' -e 's:[^[:blank:]]*\.:\n&:2g' | \
   sed -e '1,4d' -e 's: : :g' -e 's:[[:space:]]*$::g' > /tmp/ezanveri-$$
 

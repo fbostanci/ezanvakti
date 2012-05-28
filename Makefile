@@ -82,7 +82,7 @@ install: config
 			$(INSTALL) -vm755 $$l $(DESTDIR)$(libdir)/ezanvakti/$$l_dosya; \
 		done
 
-		$(INSTALL) -vm755 lib/ezanveri_guncelle.pl $(DESTDIR)$(libdir)/ezanvakti/ezanveri_guncelle.pl
+		$(INSTALL) -vm755 lib/ezanveri_istemci.pl $(DESTDIR)$(libdir)/ezanvakti/ezanveri_istemci.pl
 
 		$(INSTALL) -vm644 data/veriler/bilgiler $(DESTDIR)$(datadir)/ezanvakti/veriler/bilgiler
 		$(INSTALL) -vm644 data/veriler/esma $(DESTDIR)$(datadir)/ezanvakti/veriler/esma
