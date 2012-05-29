@@ -64,7 +64,7 @@ IFS="
       ulke=$(kdialog --combobox 'Bulunduğunuz ülkeyi seçin'  --title 'Ülke belirleme' \
              --default 'TURKIYE' $( < ${VERI_DIZINI}/ulkeler/AAA-ULKELER))
       (( $? == 1 )) && exit 1
-      printf "${RENK7}${RENK3} ->${RENK8} Seçilen ülke:${RENK2} ${ulke}${RENK0}\n"
+      printf "${RENK7}${RENK3} ->${RENK8} Seçilen ülke:${RENK2}  ${ulke}${RENK0}\n"
 
   elif (( arayuz == 2 ))
   then
@@ -72,7 +72,7 @@ IFS="
              --width=240 --sticky --window-icon=${VERI_DIZINI}/simgeler/ezanvakti2.png \
              --title 'Ülke belirleme'  --text 'Bulunduğunuz ülkeyi seçin')
       (( $? == 1 )) && exit 1
-      printf "${RENK7}${RENK3} ->${RENK8} Seçilen ülke:${RENK2} ${ulke}${RENK0}\n"
+      printf "${RENK7}${RENK3} ->${RENK8} Seçilen ülke:${RENK2}  ${ulke}${RENK0}\n"
 
   elif (( arayuz == 3 ))
   then
@@ -150,7 +150,7 @@ then
               ilce=$(kdialog --combobox 'Bulunduğunuz ilçeyi seçin' --title 'İlçe belirleme' \
                      --default ${sehir} $( < ${VERI_DIZINI}/ulkeler/TURKIYE_ilceler/${sehir}))
               (( $? == 1 )) && exit 1
-              printf "${RENK7}${RENK3} ->${RENK8} Seçilen ilçe:${RENK2} ${ilce}${RENK0}\n"
+              printf "${RENK7}${RENK3} ->${RENK8} Seçilen ilçe:${RENK2}  ${ilce}${RENK0}\n"
 
           elif (( arayuz == 2 ))
           then
@@ -158,7 +158,7 @@ then
                      --width=240 --sticky --window-icon=${VERI_DIZINI}/simgeler/ezanvakti2.png \
                      --title 'İlçe belirleme' --text 'Bulunduğunuz ilçeyi seçin')
               (( $? == 1 )) && exit 1
-              printf "${RENK7}${RENK3} ->${RENK8} Seçilen ilçe:${RENK2} ${ilce}${RENK0}\n"
+              printf "${RENK7}${RENK3} ->${RENK8} Seçilen ilçe:${RENK2}  ${ilce}${RENK0}\n"
 
           elif (( arayuz == 3 ))
           then
@@ -193,6 +193,7 @@ do
 done
 
 (( ${#pmler[@]} )) && {
+  printf "${RENK7}${RENK8} [${RENK1}BAŞARISIZ${RENK8}]${RENK0}\n"
   printf '\n%b%b\n' \
     "${RENK7}${RENK3}Aşağıdaki perl bileşen(ler)i bulunamadı.${RENK0}"
 
