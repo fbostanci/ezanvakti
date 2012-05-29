@@ -5,45 +5,40 @@
 #
 
 
-function guncelleme_yap() {
-  local arayuz ulke sehir ilce varsayilan_sehir pm e dn z=0 k=0
+function guncelleme_yap() { ### Ana fonksiyon {{{
+  local arayuz ulke sehir ilce varsayilan_sehir pm dn e=0 denetim=0
   local -a pmler
 
   test x"${ULKE}"  = x && ULKE=yok_boyle_bir_yer
   test x"${SEHIR}" = x && SEHIR=yok_boyle_bir_yer
   test x"${ILCE}"  = x && ILCE=yok_boyle_bir_yer
 
-function arayuz_denetle() {
-  ! (( z )) && { printf '%-60b' \
-       "${RENK7}${RENK8}Arayüz uygulaması denetleniyor..${RENK0}"; z=1; }
+function arayuz_denetle() { ### Arayüz denetle {{{
+  (( denetim )) && return 0
+  printf '%-60b' \
+    "${RENK7}${RENK8}Arayüz uygulaması denetleniyor..${RENK0}"
 
   if test -x "$(which kdialog 2>/dev/null)"
   then
       arayuz=1
-      ! (( k )) && {
-        printf "${RENK7}${RENK8} [${RENK2}BAŞARILI${RENK8}]${RENK0}\n"
-        printf '%b\n' \
-          "${RENK7}${RENK3} ->${RENK8} Kullanılacak uygulama:${RENK2} Kdialog${RENK0}"
-        k=1
-      }
+      printf "${RENK7}${RENK8} [${RENK2}BAŞARILI${RENK8}]${RENK0}\n"
+      printf '%b\n' \
+        "${RENK7}${RENK3} ->${RENK8} Kullanılacak uygulama:${RENK2} Kdialog${RENK0}"
+      denetim=1
   elif test -x "$(which yad 2>/dev/null)"
   then
       arayuz=2
-      ! (( k )) && {
-        printf "${RENK7}${RENK8} [${RENK2}BAŞARILI${RENK8}]${RENK0}\n"
-        printf '%b\n' \
-          "${RENK7}${RENK3} ->${RENK8} Kullanılacak uygulama:${RENK2} Yad${RENK0}"
-        k=1
-      }
+      printf "${RENK7}${RENK8} [${RENK2}BAŞARILI${RENK8}]${RENK0}\n"
+      printf '%b\n' \
+        "${RENK7}${RENK3} ->${RENK8} Kullanılacak uygulama:${RENK2} Yad${RENK0}"
+      denetim=1
   elif test -x "$(which zenity 2>/dev/null)"
   then
       arayuz=3
-      ! (( k )) && {
-        printf "${RENK7}${RENK8} [${RENK2}BAŞARILI${RENK8}]${RENK0}\n"
-        printf '%b\n' \
-          "${RENK7}${RENK3} ->${RENK8} Kullanılacak uygulama:${RENK2} Zenity${RENK0}"
-        k=1
-      }
+      printf "${RENK7}${RENK8} [${RENK2}BAŞARILI${RENK8}]${RENK0}\n"
+      printf '%b\n' \
+        "${RENK7}${RENK3} ->${RENK8} Kullanılacak uygulama:${RENK2} Zenity${RENK0}"
+      denetim=1
   else
       printf "${RENK7}${RENK8} [${RENK1}BAŞARISIZ${RENK8}]${RENK0}\n"
       printf '\n%b\n%b\n%b\n' \
@@ -53,10 +48,10 @@ function arayuz_denetle() {
       exit 1
   fi
 }
-
+#}}}
 IFS="
 "
-
+### Ülke işlemleri {{{
 ######################################################################
 #                         ÜLKE İŞLEMLERİ                             #
 ######################################################################
@@ -84,14 +79,14 @@ IFS="
       ulke=$(zenity --entry --entry-text 'TURKIYE' $( < ${VERI_DIZINI}/ulkeler/AAA-ULKELER) \
              --title 'Ülke belirleme' --text 'Bulunduğunuz ülkeyi seçin')
       (( $? == 1 )) && exit 1
-      printf "${RENK7}${RENK3} ->${RENK8} Seçilen ülke:${RENK2} ${ulke}${RENK0}\n"
+      printf "${RENK7}${RENK3} ->${RENK8} Seçilen ülke:${RENK2}  ${ulke}${RENK0}\n"
   fi
 
   sed -i "s:\(ULKE=\).*:\1\'${ulke}\':" "${EZANVAKTI_AYAR}"
 } || ulke=${ULKE}
+#}}}
 
-
-
+### Şehir işlemleri {{{
 ######################################################################
 #                         ŞEHİR İŞLEMLERİ                            #
 ######################################################################
@@ -133,9 +128,9 @@ IFS="
 
   sed -i "s:\(SEHIR=\).*:\1\'${sehir}\':" "${EZANVAKTI_AYAR}"
 } || sehir=${SEHIR}
+#}}}
 
-
-
+### İlçe işlemleri {{{
 ######################################################################
 #                         İLÇE İŞLEMLERİ                             #
 ######################################################################
@@ -170,7 +165,7 @@ then
               ilce=$(zenity --entry --entry-text ${sehir} $( < ${VERI_DIZINI}/ulkeler/TURKIYE_ilceler/${sehir}) \
                      --title 'İlçe belirleme' --text 'Bulunduğunuz ilçeyi seçin')
               (( $? == 1 )) && exit 1
-              printf "${RENK7}${RENK3} ->${RENK8} Seçilen ilçe:${RENK2} ${ilce}${RENK0}\n"
+              printf "${RENK7}${RENK3} ->${RENK8} Seçilen ilçe:${RENK2}  ${ilce}${RENK0}\n"
           fi
       fi
       sed -i "s:\(ILCE=\).*:\1\'${ilce}\':" "${EZANVAKTI_AYAR}"
@@ -180,14 +175,13 @@ else
     ilce=${sehir}
     sed -i "s:\(ILCE=\).*:\1\'${sehir}\':" "${EZANVAKTI_AYAR}"
 fi
-
+#}}}
 unset IFS
-
+### Perl denetleme {{{
 printf '%-59b' \
   "${RENK7}${RENK8}Perl bileşenleri denetleniyor..${RENK0}"
 
 # Perl bileşenlerini denetle.
-pmler=()
 for pm in 'WWW::Mechanize' 'HTML::TreeBuilder'
 do
     perl -M${pm} -e 1 2>/dev/null
@@ -201,7 +195,7 @@ done
 (( ${#pmler[@]} )) && {
   printf '\n%b%b\n' \
     "${RENK7}${RENK3}Aşağıdaki perl bileşen(ler)i bulunamadı.${RENK0}"
-  e=0
+
   for pm in ${pmler[@]}
   do
     printf '%b\n' \
@@ -217,7 +211,8 @@ printf "${RENK7}${RENK8} [${RENK2}BAŞARILI${RENK8}]${RENK0}\n"
 #-i ${VERI_DIZINI}/simgeler/ezanvakti.png -t $GUNCELLEME_BILDIRIM_SURESI"000" -h int:transient:1
 #exit 1
 #fi
-
+#}}}
+### İnternet denetimi {{{
 # HACK: internet bağlantı sınaması yöntemini değiştir.
 #if ! { ping -q -w 1 -c 1 `ip r | grep default | cut -d' ' -f 3` &> /dev/null; }
 #then
@@ -239,7 +234,10 @@ then
       "Çıkılıyor...${RENK0}"
     exit 1
 fi
+rm -f /tmp/baglantisina &>/dev/null
 printf "${RENK7}${RENK8} [${RENK2}BAŞARILI${RENK8}]${RENK0}\n"
+#}}}
+### Güncelleme işlemi {{{
 printf '%-60b' \
   "${RENK7}${RENK8}${EZANVERI_ADI} dosyası güncelleniyor..${RENK0}"
 
@@ -251,8 +249,8 @@ cat << SON >> /tmp/ezanveri-$$
 
 
 
-# BİLGİ: ${ilce} / ${sehir} / ${ulke} için 30 günlük namaz vakitleridir. Çizelge,
-# 'http://www.diyanet.gov.tr/turkish/namazvakti/vakithes_namazvakti.asp'
+# BİLGİ: ${ilce} / ${sehir} / ${ulke} için 30 günlük namaz vakitleridir.
+# Çizelge, 'http://www.diyanet.gov.tr/turkish/namazvakti/vakithes_namazvakti.asp'
 # adresinden ezanvakti uygulaması tarafından istenerek oluşturulmuştur.
 
 # Son güncelleme : $(date +%c)
@@ -271,8 +269,9 @@ SON
     printf "${RENK7}${RENK8} [${RENK1}BAŞARISIZ${RENK8}]${RENK0}\n"
     notify-send "Ezanvakti $SURUM" "${EZANVERI_ADI} dosyasının güncellenmesi başarısız oldu." \
       -i ${VERI_DIZINI}/simgeler/ezanvakti.png -t $GUNCELLEME_BILDIRIM_SURESI"000" -h int:transient:1
+    rm -f /tmp/ezanveri-$$ &>/dev/null
     exit 1
-  }
-}
+  } #}}}
+} #}}}
 
 # vim: set ft=sh ts=2 sw=2 et:
