@@ -33,7 +33,7 @@ my $sonuc;
 
 
 my $mech = WWW::Mechanize->new();
-#$mech->agent_alias( 'Linux Mozilla' );
+$mech->agent_alias( 'Linux Mozilla' );
 
 $mech->get($baglanti);
 $mech->form_name($cizelge1);
