@@ -13,6 +13,42 @@ function guncelleme_yap() { ### Ana fonksiyon {{{
   test x"${SEHIR}" = x && SEHIR=yok_boyle_bir_yer
   test x"${ILCE}"  = x && ILCE=yok_boyle_bir_yer
 
+### Perl denetleme {{{
+printf '%-59b' \
+  "${RENK7}${RENK8}Perl bileşenleri denetleniyor..${RENK0}"
+
+# Perl bileşenlerini denetle.
+for pm in 'WWW::Mechanize' 'HTML::TreeBuilder'
+do
+    perl -M${pm} -e 1 2>/dev/null
+    dn=$(echo $?)
+    if [[ $dn -ne 0 ]]
+    then
+        pmler+=("$pm")
+    fi
+done
+
+(( ${#pmler[@]} )) && {
+  printf "${RENK7}${RENK8} [${RENK1}BAŞARISIZ${RENK8}]${RENK0}\n"
+  printf '\n%b%b\n' \
+    "${RENK7}${RENK3}Aşağıdaki perl bileşen(ler)i bulunamadı.${RENK0}"
+
+  for pm in ${pmler[@]}
+  do
+      printf '%b\n' \
+        "${RENK7}${RENK1} ->${RENK8} ${pmler[$e]}${RENK0}"
+      ((e++))
+  done
+  exit 1
+}
+
+printf "${RENK7}${RENK8} [${RENK2}BAŞARILI${RENK8}]${RENK0}\n"
+#notify-send "Ezanvakti $SURUM" \
+#"Güncelleme işlemi için gerekli olan \`perl-www-mechanize' bileşeni bulanamadı." \
+#-i ${VERI_DIZINI}/simgeler/ezanvakti.png -t $GUNCELLEME_BILDIRIM_SURESI"000" -h int:transient:1
+#exit 1
+#fi
+#}}}
 function arayuz_denetle() { ### Arayüz denetle {{{
   (( denetim )) && return 0
   printf '%-60b' \
@@ -177,42 +213,7 @@ else
 fi
 #}}}
 unset IFS
-### Perl denetleme {{{
-printf '%-59b' \
-  "${RENK7}${RENK8}Perl bileşenleri denetleniyor..${RENK0}"
 
-# Perl bileşenlerini denetle.
-for pm in 'WWW::Mechanize' 'HTML::TreeBuilder'
-do
-    perl -M${pm} -e 1 2>/dev/null
-    dn=$(echo $?)
-    if [[ $dn -ne 0 ]]
-    then
-        pmler+=("$pm")
-    fi
-done
-
-(( ${#pmler[@]} )) && {
-  printf "${RENK7}${RENK8} [${RENK1}BAŞARISIZ${RENK8}]${RENK0}\n"
-  printf '\n%b%b\n' \
-    "${RENK7}${RENK3}Aşağıdaki perl bileşen(ler)i bulunamadı.${RENK0}"
-
-  for pm in ${pmler[@]}
-  do
-    printf '%b\n' \
-      "${RENK7}${RENK1} ->${RENK8} ${pmler[$e]}${RENK0}"
-    ((e++))
-  done
-  exit 1
-}
-
-printf "${RENK7}${RENK8} [${RENK2}BAŞARILI${RENK8}]${RENK0}\n"
-#notify-send "Ezanvakti $SURUM" \
-#"Güncelleme işlemi için gerekli olan \`perl-www-mechanize' bileşeni bulanamadı." \
-#-i ${VERI_DIZINI}/simgeler/ezanvakti.png -t $GUNCELLEME_BILDIRIM_SURESI"000" -h int:transient:1
-#exit 1
-#fi
-#}}}
 ### İnternet denetimi {{{
 # HACK: internet bağlantı sınaması yöntemini değiştir.
 #if ! { ping -q -w 1 -c 1 `ip r | grep default | cut -d' ' -f 3` &> /dev/null; }
