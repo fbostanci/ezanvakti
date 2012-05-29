@@ -132,11 +132,11 @@ IFS="
 [[ -z $(grep -w ${SEHIR} ${VERI_DIZINI}/ulkeler/${ulke}) ]] && {
   arayuz_denetle
 
-  if [ "${ulke}" = "TURKIYE" ]
+  if [[ ${ulke} = TURKIYE ]]
   then
       varsayilan_sehir=ISTANBUL
   else
-      varsayilan_sehir="$(head -1 ${VERI_DIZINI}/ulkeler/${ulke})"
+      varsayilan_sehir=$(head -1 ${VERI_DIZINI}/ulkeler/${ulke})
   fi
 
   if (( arayuz == 1 ))
@@ -177,7 +177,7 @@ then
       if [[ $(wc -l < ${VERI_DIZINI}/ulkeler/TURKIYE_ilceler/${sehir}) -eq 1 ]]
       then
           ilce=$( < ${VERI_DIZINI}/ulkeler/TURKIYE_ilceler/${sehir})
-          printf "${RENK7}${RENK3} ->${RENK8} Seçilen ilçe:${RENK2} ${ilce}${RENK3} (tek ilçe)${RENK0}\n"
+          printf "${RENK7}${RENK3} ->${RENK8} Seçilen ilçe:${RENK2}  ${ilce}${RENK3} (tek ilçe)${RENK0}\n"
       else
           arayuz_denetle
 
