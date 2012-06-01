@@ -50,7 +50,7 @@ printf "${RENK7}${RENK8} [${RENK2}BAŞARILI${RENK8}]${RENK0}\n"
 #fi
 #}}}
 function arayuz_denetle() { ### Arayüz denetle {{{
-  (( denetim )) && return 0
+  (( denetim )) && return 0 || denetim=1
   printf '%-60b' \
     "${RENK7}${RENK8}Arayüz uygulaması denetleniyor..${RENK0}"
 
@@ -60,21 +60,18 @@ function arayuz_denetle() { ### Arayüz denetle {{{
       printf "${RENK7}${RENK8} [${RENK2}BAŞARILI${RENK8}]${RENK0}\n"
       printf '%b\n' \
         "${RENK7}${RENK3} ->${RENK8} Kullanılacak uygulama:${RENK2} Kdialog${RENK0}"
-      denetim=1
   elif test -x "$(which yad 2>/dev/null)"
   then
       arayuz=2
       printf "${RENK7}${RENK8} [${RENK2}BAŞARILI${RENK8}]${RENK0}\n"
       printf '%b\n' \
         "${RENK7}${RENK3} ->${RENK8} Kullanılacak uygulama:${RENK2} Yad${RENK0}"
-      denetim=1
   elif test -x "$(which zenity 2>/dev/null)"
   then
       arayuz=3
       printf "${RENK7}${RENK8} [${RENK2}BAŞARILI${RENK8}]${RENK0}\n"
       printf '%b\n' \
         "${RENK7}${RENK3} ->${RENK8} Kullanılacak uygulama:${RENK2} Zenity${RENK0}"
-      denetim=1
   else
       printf "${RENK7}${RENK8} [${RENK1}BAŞARISIZ${RENK8}]${RENK0}\n"
       printf '\n%b\n%b\n%b\n' \
