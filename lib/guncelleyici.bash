@@ -267,7 +267,7 @@ SON
     :> /tmp/eznvrgncldntle_$(date +%d%m%y)
   } || {
     printf "${RENK7}${RENK8} [${RENK1}BAŞARISIZ${RENK8}]${RENK0}\n"
-    printf "${RENK7}${RENK3}\n$( < /tmp/perl-hata-$$)${RENK0}\n"
+    printf "${RENK7}${RENK3}\n$( < /tmp/ezv-perl-hata-$$)${RENK0}\n"
     rm -f /tmp/ezv-perl-hata-$$ &>/dev/null
     notify-send "Ezanvakti $SURUM" "${EZANVERI_ADI} dosyasının güncellenmesi başarısız oldu." \
       -i ${VERI_DIZINI}/simgeler/ezanvakti.png -t $GUNCELLEME_BILDIRIM_SURESI"000" -h int:transient:1
