@@ -30,7 +30,7 @@ done
 
 (( ${#pmler[@]} )) && {
   printf "${RENK7}${RENK8} [${RENK1}BAŞARISIZ${RENK8}]${RENK0}\n"
-  printf '\n%b%b\n' \
+  printf '\n%b\n' \
     "${RENK7}${RENK3}Aşağıdaki perl bileşen(ler)i bulunamadı.${RENK0}"
 
   for pm in ${pmler[@]}
