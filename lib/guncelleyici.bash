@@ -240,7 +240,7 @@ printf "${RENK7}${RENK8} [${RENK2}BAŞARILI${RENK8}]${RENK0}\n"
 printf '%-60b' \
   "${RENK7}${RENK8}${EZANVERI_ADI} dosyası güncelleniyor..${RENK0}"
 
-${BILESEN_DIZINI}/ezanveri_istemci.pl "${ulke}" "${sehir}" "${ilce}" 2>/dev/null | \
+${BILESEN_DIZINI}/ezanveri_istemci.pl "${ulke}" "${sehir}" "${ilce}" 2>/tmp/ezv-perl-hata-$$ | \
   sed -e 's:[[:alpha:]]::g' -e 's:[^[:blank:]]*\.:\n&:2g' | \
   sed -e '1,4d' -e 's: : :g' -e 's:[[:space:]]*$::g' > /tmp/ezanveri-$$
 
@@ -259,6 +259,7 @@ SON
   (( $(wc -l < /tmp/ezanveri-$$) >= 20 )) && {
     mv -f /tmp/ezanveri-$$ "${EZANVERI}"
     printf "${RENK7}${RENK8} [${RENK2}BAŞARILI${RENK8}]${RENK0}\n"
+    rm -f /tmp/ezv-perl-hata-$$ &>/dev/null
     . "${EZANVAKTI_AYAR}"
     ## TODO: Buraya renk denetimi eklenecek
     notify-send "Ezanvakti $SURUM" "${EZANVERI_ADI} dosyası başarıyla güncellendi." \
@@ -266,6 +267,8 @@ SON
     :> /tmp/eznvrgncldntle_$(date +%d%m%y)
   } || {
     printf "${RENK7}${RENK8} [${RENK1}BAŞARISIZ${RENK8}]${RENK0}\n"
+    printf "${RENK7}${RENK3}\n$( < /tmp/perl-hata-$$)${RENK0}\n"
+    rm -f /tmp/ezv-perl-hata-$$ &>/dev/null
     notify-send "Ezanvakti $SURUM" "${EZANVERI_ADI} dosyasının güncellenmesi başarısız oldu." \
       -i ${VERI_DIZINI}/simgeler/ezanvakti.png -t $GUNCELLEME_BILDIRIM_SURESI"000" -h int:transient:1
     rm -f /tmp/ezanveri-$$ &>/dev/null
