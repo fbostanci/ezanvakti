@@ -9,9 +9,9 @@ function guncelleme_yap() { ### Ana fonksiyon {{{
   local arayuz ulke sehir ilce varsayilan_sehir pm dn e=0 denetim=0
   local -a pmler
 
-  test x"${ULKE}"  = x && ULKE=yok_boyle_bir_yer
-  test x"${SEHIR}" = x && SEHIR=yok_boyle_bir_yer
-  test x"${ILCE}"  = x && ILCE=yok_boyle_bir_yer
+  test x"${ULKE}"  = x"" && ULKE=yok_boyle_bir_yer
+  test x"${SEHIR}" = x"" && SEHIR=yok_boyle_bir_yer
+  test x"${ILCE}"  = x"" && ILCE=yok_boyle_bir_yer
 
 ### Perl denetleme {{{
 printf '%-59b' \

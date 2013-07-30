@@ -1,8 +1,9 @@
 
 
 /×××××××××××××××××××××××××××××
-× 5.7 - 06.09.2011
+× Ezanvakti 5.7
 ×××××××××××××××××××××××××××××/
+2011-09-06 Fatih BOSTANCI <faopera@gmail.com>
 
  *  Uygulama geneli uçbirim çıktıları için renk kullanma/kullanmama seçimi yapılabilmesi
  *  Renk kodları artık yapılandırma dosyasından okunuyor ve renk özelleştirmeleri yapılabilir.
@@ -17,8 +18,9 @@
  *  Man dosyası güncellendi.
 
 /×××××××××××××××××××××××××××××
-× 5.6 - 18.08.2011
+× Ezanvakti 5.6
 ×××××××××××××××××××××××××××××/
+2011-08-18 Fatih BOSTANCI <faopera@gmail.com>
 
  *  Dini günler ve geceler için anımsatıcı
  *  --gunler ile içinde bulunduğunuz yıla ait dini günlerin listesi
@@ -27,8 +29,9 @@
 
 
 /×××××××××××××××××××××××××××××
-× 5.5 - 07.08.2011
+× Ezanvakti 5.5
 ×××××××××××××××××××××××××××××/
+2011-08-07 Fatih BOSTANCI <faopera@gmail.com>
 
  *  Ezanveri güncelleme sorunu çözüldü.
  *  html2text bağımlılığı yerine artık perl-html-tree kullanılıyor.
@@ -42,8 +45,9 @@
 
 
 /×××××××××××××××××××××××××××××
-× 5.4 - 09.06.2011
+× Ezanvakti 5.4
 ×××××××××××××××××××××××××××××/
+2011-06-09 Fatih BOSTANCI <faopera@gmail.com>
 
  *  Mplayer denetimi; artık sadece hedef mplayer kopyası sonlandırılıyor.
  *  Tekli vakit gösteriminde artık vakit saatleri de gösteriliyor.
@@ -55,8 +59,9 @@
 
 
 /×××××××××××××××××××××××××××××
-× 5.3 - 06.04.2011
+× Ezanvakti 5.3
 ×××××××××××××××××××××××××××××/
+2011-04-06 Fatih BOSTANCI <faopera@gmail.com>
 
  *  Diyanetin sitesinde yaptığı değişiklik sonucu oluşan güncelleme hatası giderildi.
  *  Vakit ezanlarında oynatıcı duraklatma desteği moc, qmmp, cmus için de eklendi.
@@ -72,8 +77,9 @@
 
 
 /×××××××××××××××××××××××××××××
-× 5.2 - 31.01.2011
+× Ezanvakti 5.2
 ×××××××××××××××××××××××××××××/
+2011-01-31 Fatih BOSTANCI <faopera@gmail.com>
 
  *  Vakit ezanları okunurken, betiğin tanıdığı oynatıcıları duraklatma. Öntanımlı olarak kapalı gelmekte.
     desteklenenler: ( Amarok, Audacious, Aqualunq, Banshee, Clementine, Deadbeef, Exaile, Rhythmbox )
@@ -86,8 +92,9 @@
 
 
 /×××××××××××××××××××××××××××××
-× 5.1 - 16.12.2010
+× Ezanvakti 5.1
 ×××××××××××××××××××××××××××××/
+2010-12-16 Fatih BOSTANCI <faopera@gmail.com>
 
  *  Gelişmiş arayüz geliştirmeleri
  *  Çeşitli renk düzenlemeleri
@@ -96,8 +103,9 @@
 
 
 /×××××××××××××××××××××××××××××
-× 5.0 - 11.12.2010
+× Ezanvakti 5.0
 ×××××××××××××××××××××××××××××/
+2010-12-11 Fatih BOSTANCI <faopera@gmail.com>
 
  *  Gelişmiş ve basit arayüz
  *  Gelişmiş arayüz için menü başlatıcı
@@ -106,8 +114,9 @@
 
 
 /×××××××××××××××××××××××××××××
-× 4.5 - 09.12.2010
+× Ezanvakti 4.5
 ×××××××××××××××××××××××××××××/
+2010-12-09 Fatih BOSTANCI <faopera@gmail.com>
 
  *  Diyanet sitesindeki tüm ülkeler için ezanveri güncelleme desteği
  *  Geç ezan okuma değişkeni
@@ -116,8 +125,9 @@
 
 
 /×××××××××××××××××××××××××××××
-× 4.1 - 14.11.2010
+× Ezanvakti 4.1
 ×××××××××××××××××××××××××××××/
+2010-11-14 Fatih BOSTANCI <faopera@gmail.com>
 
  *  Otomatik ezanveri dosyası güncelleme (öntanımlı kapalı gelmekte)
  *  Kullanıcı tefsir dizini
@@ -130,8 +140,9 @@
 
 
 /×××××××××××××××××××××××××××××
-× 4.0 - 06.11.2010
+× Ezanvakti 4.0
 ×××××××××××××××××××××××××××××/
+2010-11-06 Fatih BOSTANCI <faopera@gmail.com>
 
  *  Günlük ezan vakitlerini kalan sürelerle birlikte görüntüleme
  *  Kuran' ın Türkçe çevirilerini kullanarak rastgele bir ayet gösterme
@@ -147,32 +158,36 @@
 
 
 /×××××××××××××××××××××××××××××
-× 3.3 - 01.10.2010
+× Ezanvakti 3.3
 ×××××××××××××××××××××××××××××/
+2010-10-01 Fatih BOSTANCI <faopera@gmail.com>
 
  *  Kod geliştirme & temizlik
  *  Küçük yazım hataları giderildi.
 
 
 /×××××××××××××××××××××××××××××
-× 3.2 - 30.09.2010
+× Ezanvakti 3.2
 ×××××××××××××××××××××××××××××/
+2010-09-30 Fatih BOSTANCI <faopera@gmail.com>
 
  *  Ezanveri dosyasının güncellenmesi için son 7 gün( her gün)  uyarı verme özelliği
  *  Çeşitli düzenlemeler
 
 
 /×××××××××××××××××××××××××××××
-× 3.1 - 29.08.2010
+× Ezanvakti 3.1
 ×××××××××××××××××××××××××××××/
+2010-08-29 Fatih BOSTANCI <faopera@gmail.com>
 
- *  Sure numaralarında sıfır ekleme zorunluluğunu kaldırdım. Betik girilen sayıya göre sıfır ekliyor.
+ *  Sure numaralarında sıfır ekleme zorunluluğu kaldırıldı. Betik girilen sayıya göre sıfır ekliyor.
  *  Çeşitli kod iyileştirmeleri
 
 
 /×××××××××××××××××××××××××××××
-× 3.0 - 04.08.2010
+× Ezanvakti 3.0
 ×××××××××××××××××××××××××××××/
+2010-08-04 Fatih BOSTANCI <faopera@gmail.com>
 
  *  GNOME bağımlılıklarını kaldırıldı. Betik artık KDE ve XFCE  üzerinde de çalışabilir.
  *  Ses oynatımında mplayer kullanıyor artık.
@@ -181,23 +196,26 @@
 
 
 /×××××××××××××××××××××××××××××
-× 2.2 - 01.08.2010
+× Ezanvakti 2.2
 ×××××××××××××××××××××××××××××/
+2010-08-01 Fatih BOSTANCI <faopera@gmail.com>
 
  *  denetle(), ve yardim() fonk. geliştirmeleri
  *  Küçük hatalar düzeltildi.
 
 
 /×××××××××××××××××××××××××××××
-× 2.1 - 31.07.2010
+× Ezanvakti 2.1
 ×××××××××××××××××××××××××××××/
+2011-07-31 Fatih BOSTANCI <faopera@gmail.com>
 
  *  Ezanveri denetimi geliştirildi.
 
 
 /×××××××××××××××××××××××××××××
-× 2.0 - 31.07.2010
+× Ezanvakti 2.0
 ×××××××××××××××××××××××××××××/
+2010-07-31 Fatih BOSTANCI <faopera@gmail.com>
 
  *  İftar saati ve iftara kalan süreyi gösterme desteği eklendi.
  *  Ramazan ayı için sadece imsak ve iftar da bildirim yapan özel bir kip eklendi.
@@ -205,19 +223,21 @@
 
 
 /×××××××××××××××××××××××××××××
-× 1.6 - 30.07.2010
+× Ezanvakti 1.6
 ×××××××××××××××××××××××××××××/
+2010-07-30 Fatih BOSTANCI <faopera@gmail.com>
 
  *  Her vakit için vaktin makamına uygun ezan.
  *  Ezandan sonra Türkçe ezan duası
  *  İstediğiniz herhangi bir zamanda, istediğiniz makamın ezanını dinleme özelliği eklendi.
  *  Yardım bölümü eklendi.
  *  Conky profilinde günlük vakitlerin gösterimi için özel çıktı
-
+  
 
 /×××××××××××××××××××××××××××××
-× 1.0 - 27.07.2010
+× Ezanvakti 1.0
 ×××××××××××××××××××××××××××××/
+2010-07-27 Fatih BOSTANCI <faopera@gmail.com>
 
  *  Hello World!
 
