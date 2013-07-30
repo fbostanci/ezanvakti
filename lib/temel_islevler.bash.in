@@ -1,0 +1,290 @@
+#
+#
+#
+#                           Ezanvakti Temel İşlevler Bileşeni 1.0
+#
+
+SURUM=6.0
+DERLEME=@derleme@
+
+BILESEN_DIZINI=@libdir@/ezanvakti
+VERI_DIZINI=@datadir@/ezanvakti
+
+EZANVAKTI_DIZINI="${XDG_CONFIG_HOME:-$HOME/.config}"/ezanvakti
+EZANVAKTI_AYAR="${EZANVAKTI_DIZINI}"/ayarlar
+
+
+
+[ ! -d "${EZANVAKTI_DIZINI}" ] && mkdir -p "${EZANVAKTI_DIZINI}"
+[ ! -f "${EZANVAKTI_AYAR}"   ] &&
+  sed "s:\$HOME:$HOME:" < @sysconfdir@/ezanvakti/ayarlar > "${EZANVAKTI_AYAR}"
+
+
+
+# Öntanımlı ayarları al.
+. @sysconfdir@/ezanvakti/ayarlar
+
+#  Öntanımlı ayarlardan gelen değerlerin üzerine yazılacak.
+#
+# Kullanıcı ayarlarını al.
+. "${EZANVAKTI_AYAR}" || \
+  { printf "${EZANVAKTI_AYAR} dosyası okunabilir değil.\n Çıkılıyor...\n"; exit 1; }
+
+EZANVERI=${EZANVAKTI_DIZINI}/${EZANVERI_ADI}
+MPLAYER="mplayer -really-quiet -volume $SES"
+
+declare -A YUKLENEN_BILESENLER
+
+bilesen_yukle() {
+  while [[ $1 ]]
+  do
+    (( YUKLENEN_BILESENLER[$1] )) && return 0
+    if [[ ! -r "${BILESEN_DIZINI}/$1.bash" ]]
+    then
+        printf "$1.bash dosyası bulunamadı.\n"
+        exit 1
+    fi
+    . "${BILESEN_DIZINI}/$1.bash" || printf "$1.bash bileşeninde sorun var.\n"
+    YUKLENEN_BILESENLER[$1]=1
+    shift
+  done
+} 
+
+function hatali_kullanim() {
+  echo "${0##*/}: \`$1' geçerli değil. Yardım için --yardim kullanın." >&2
+  exit 1
+}
+
+function betik_kullanimi() {
+  local  B R
+
+  B=$(tput bold)
+  R=$(tput sgr0)
+
+  (( ! ${RENK:-RENK_KULLAN} )) && {
+    B=''
+    R=''
+  }
+
+  echo -e "
+    ${B}--dinle${R} [-s,-o,-i,-a,-y]
+        İstediğiniz zaman, istediğiniz vakite ait ezanı dinletir.
+
+    ${B}-v, --vakitler${R}
+        Toplu olarak günlük ezan vakitlerini görüntüler.
+
+        [-s,-o,-i,-a,-y]
+            Sadece bir vakit için görüntüleme yapar.
+
+        [7,30]
+            7/30 günlük vakitleri görüntüler.
+
+        [--bildirim]
+            Vakit çıktılarını uçbirim yerine bildirim baloncuğuna yönlendirir.
+
+    ${B}--kuran${R} [-s <sure_kodu>, -r, -g, -h]
+        Çevrimiçi olarak ya da yerel dizinden kuran dinletir.
+
+    ${B}--sureler${R}
+        Sureleri dinlemek için gerekli olan kod numaralarını
+        ve sure adlarını görüntüler.
+
+    ${B}--ayet${R}
+        Rastgele bir Kuran ayeti seçerek Türkçe anlamını
+        bildirim baloncuğunda gösterir.
+
+    ${B}--hadis${R}
+        40 hadisten rastgele bir hadis seçerek bildirim
+        baloncuğunda gösterir.
+
+    ${B}--bilgi${R}
+        Diyanetin sitesinden alınan "Bunları biliyor musunuz?"
+        kısmından bir soru ve sorunun yanıtını bildirim
+        baloncuğunda gösterir.
+
+    ${B}--esma${R}
+        Esma-ül Hüsna dan Allah ın bir adını gösterir.
+
+    ${B}--guncelle${R}
+        Ezanveri dosyasını 30 günlük vakitleri içerecek
+        şekilde günceller/oluşturur.
+
+    ${B}--iftar${R}
+        İftar vaktine ne kadar süre kaldığını görüntüler.
+
+    ${B}--ramazan${R}
+        Ramazan ayında isteğe bağlı olarak sadece iftar
+        ve imsak vakitleri için ezan okunur.
+
+    ${B}--conky${R}
+        Conky alanında günlük ezan vakitlerini eklemek
+        isteyenler için renksiz ve kısa çıktı verir.
+
+    ${B}--conky-iftar${R}
+        Conky alanında iftar vaktine ne kadar süre kaldığını
+        görmek isteyenler için renksiz ve kısa çıktı verir.
+
+    ${B}--gunler${R}
+        İçinde bulunulan yıla ait dini günleri ve geceleri gösterir.
+
+    ${B}--arayuz${R}
+        Gelişmiş arayüz penceresini başlatır.
+
+    ${B}--arayuz2${R}
+        Basit arayüz penceresini başlatır.
+
+    ${B}-V, --surum, --version${R}
+        Betiğin sürüm numarasını gösterir ve çıkar.
+
+    ${B}-h, --help, --yardim, --yardım${R}
+        Bu yardım sayfasını görüntüler ve çıkar.
+
+
+  Çıkmak için 'q' tuşuna basınız.
+         "  | less -R; exit 0
+}
+
+function yontem_calistir() {
+  local degisken
+
+  [[ $1 = ramazan ]] && degisken=2 || degisken=1
+
+  case ${EZANVAKTI_YONTEM} in
+    [Ss]*)
+      if { ps ax | grep -v grep | grep -w "ezanvakti-sleep.bash [1-2]$" &>/dev/null; }
+      then
+          printf '%b%b\n' \
+            "${RENK3}Ezanvakti artalan bileşeni " \
+            "(ezanvakti-sleep.bash) zaten çalışıyor...${RENK0}"
+          exit 1
+      fi
+      exec ${BILESEN_DIZINI}/ezanvakti-sleep.bash $degisken ;;
+#    [Cc]*)
+#      #crontab hazır değil.
+#
+    *)
+      printf '%b%b\n' \
+        "${RENK3}Girilen ezanvakti yöntemi: " \
+        "${EZANVAKTI_YONTEM} tanımlı değil.${RENK0}"
+      exit 1 ;;
+  esac
+}
+
+function surum_goster() {
+  printf '%s\n\n%s\n\n%s\n%s\n%s\n%s\n' \
+    "Ezanvakti $SURUM derleme: $DERLEME"\
+    'Copyright (c) 2010-2013 Fatih Bostancı'\
+    'Bu uygulama bir özgür yazılımdır: yeniden dağıtabilirsiniz ve/veya'\
+    'Özgür Yazılım Vakfı (FSF) tarafından yayımlanan (GPL)  Genel  kamu'\
+    'lisansı sürüm 3  veya daha yeni bir sürümünde belirtilen  şartlara'\
+    'uymak kaydıyla, üzerinde değişiklik yapabilirsiniz.'
+}
+
+# Karar verme önceliği env olarak tanımlıysa RENK değişkenine verildi.
+# RENK null ise ayarlar dosyasından okunan RENK_KULLAN değerini kullanacak.
+#
+# Renk kullan sıfırsa renkleri sıfırla.
+
+# HACK: fonksiyon olarak düzenle.
+function renk_denetle() {
+  (( ! ${RENK:-RENK_KULLAN} )) && {
+    RENK0=''
+    RENK1=''
+    RENK2=''
+    RENK3=''
+    RENK4=''
+    RENK5=''
+    RENK6=''
+    RENK7=''
+    RENK8=''
+  }
+}
+# Ezanveri dosyası gerektiren işlemlerde ilk önce bu fonksiyon çağrılacak.
+#
+# ezanveri dosyasının kullanıldığı işlemler için olumsuz durumları denetle.
+function denetle() {
+  local ksatir
+  # ezanlar ve iftarimsak fonksiyonları özyinelemeli çalıştığı için
+  # gün değişiminde tarihi güncellemek için tarih, denetle fonksiyonu içine alındı.
+  TARIH=$(date +%d.%m.%Y)
+  SAAT=$(date +%H%M)
+
+  [[ ! -f ${EZANVERI} ]] && { # ezanveri dosyası yoksa
+    (( GUNCELLEME_YAP )) && guncelleme_yap || {
+      printf '%b%b\n%b\n' \
+        "${RENK7}${RENK2}${EZANVERI}" \
+        "${RENK3} dosyası bulunamadı." \
+        "Çıkılıyor...${RENK0}"
+      exit 1
+    }
+  }
+
+  # Bugüne ait tarih ezanveri dosyasında yoksa
+  [[ -z $(grep -o ${TARIH} "${EZANVERI}") ]] && {
+    (( GUNCELLEME_YAP )) && guncelleme_yap || {
+      printf '%b%b\n%b\n' \
+        "${RENK7}${RENK2}${EZANVERI_ADI}" \
+        "${RENK3} dosyası güncel değil." \
+        "Çıkılıyor...${RENK0}"
+      exit 1
+    }
+  }
+
+  # ezanveri dosyasından tarih bloğunu ayıklayıp son tarih satır no dan bugünkünü çıkardık.
+  ksatir=$(gawk -v tarih=${TARIH} '/^[0-9][0-9]\.[0-9]*\.[0-9]*/ {if($1 ~ tarih) bsatir = NR}; \
+    /^[0-9][0-9]\.[0-9]*\.[0-9]*/ {} END {tsatir = NR}; END {print(tsatir-bsatir)}' "${EZANVERI}")
+  let ksatir++
+
+  (( ksatir <= 7 )) && { # sonuç 7 ya da 7'den küçükse
+    (( GUNCELLEME_YAP )) && guncelleme_yap
+
+    # Betiğin mevcut oturum boyunca sadece ilk çalışmada bildirim vermesi
+    # için çerez dosya denetimi ekledik. Gün değişimi durumu için (mevcut oturum devam ediyorsa)
+    # ayrıca dosyaya tarih uzantısı da ekledik.
+    [[ ! -f /tmp/eznvrgncldntle_$(date +%d%m%y) ]] && {
+      notify-send "Ezanvakti $SURUM" "${EZANVERI_ADI} dosyanız\n\t$ksatir gün\nsonra güncelliğini yitirecek." \
+        -i ${VERI_DIZINI}/simgeler/ezanvakti.png -t $GUNCELLEME_BILDIRIM_SURESI"000" -h int:transient:1
+      :> /tmp/eznvrgncldntle_$(date +%d%m%y)
+    }
+  }
+}
+
+################################################
+# HACK: bugun ile bugun_noktali' yi birleştir. #
+################################################
+
+# Bugünün ezan vakitlerini ayıkla ve değerleri vakit değişkenlerine ata.
+function bugun() {
+  export $(gawk 'BEGIN{tarih = strftime("%d.%m.%Y")} {if($1 ~ tarih) \
+    {printf "sabah=%s%s\ngunes=%s%s\nogle=%s%s\nikindi=%s%s\naksam=%s%s\
+    \nyatsi=%s%s\nsabah_n=0%s:%s\ngunes_n=0%s:%s\nogle_n=%s:%s\nikindi_n=%s:%s\naksam_n=%s:%s\nyatsi_n=%s:%s"\
+    , $2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13}}' "${EZANVERI}")
+}
+
+# Eğer hedef süre bugün içerisindeyse bu fonksiyon kullanılacak.
+function bekleme_suresi() {
+  bekle=$(($(date -d "$1" +%s) - $(date +%s) + EZAN_OKUNMA_SURESI_FARKI))
+}
+
+#  Eğer hedef süre yarına aitse bu fonksiyon kullanılacak.
+function bekleme_suresi_yarin() {
+  bekle=$((86400 - $(date +%s) + $(date -d "$1" +%s) + EZAN_OKUNMA_SURESI_FARKI))
+}
+
+# bekleme süresi fonksiyonlarından gelen bekle değerini
+# saat, dakika ve saniyeye çeviren fonksiyon
+function kalan() {
+  kalan_sure=$(printf '%02d saat : %02d dakika : %02d saniye' \
+    $((bekle/3600)) $((bekle%3600/60)) $((bekle%60)))
+}
+
+# Hadis, bilgi ve esma için 1 ile verilen sayı($1) arasında
+# rastgele bir sayı seç. Seçilen sayı için içerik_al ile gelen
+# dosya üzerinde işlem yapıp içeriği alinan_yanit değişkenine ata.
+function secim_yap() {
+  secilen=$((RANDOM%$1))
+  (( ! secilen )) && secilen=$1
+  alinan_yanit="$(sed -n "/#$secilen<#/,/#>$secilen#/p" ${icerik_al} | sed '1d;$d')"
+}
+
+# vim: set ft=sh ts=2 sw=2 et:
