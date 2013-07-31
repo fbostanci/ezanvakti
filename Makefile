@@ -29,6 +29,7 @@ endif
 all:
 		@echo "Nothing to make, use 'make install' to perform an installation."
 
+
 clean:
 		@rm -f ezanvakti 2>/dev/null
 		@rm -f lib/temel_islevler.bash 2>/dev/null
@@ -38,19 +39,23 @@ clean:
 		@rm -f data/ezanvakti.desktop 2>/dev/null
 		@rm -f etc/autostart/ezanvakti.desktop 2>/dev/null
 
+
 config: clean
 		@$(SED) -e 's:@derleme@:$(derleme):' \
-			      -e 's:@datadir@:$(datadir):' \
-			      -e 's:@libdir@:$(libdir):' \
-			      -e 's:@sysconfdir@:$(sysconfdir):' \
+						-e 's:@datadir@:$(datadir):' \
+						-e 's:@libdir@:$(libdir):' \
+						-e 's:@sysconfdir@:$(sysconfdir):' \
 			lib/temel_islevler.bash.in > lib/temel_islevler.bash
 
+		@$(SED) 's:@libdir@:$(libdir):' \
+			ezanvakti.bash.in > ezanvakti
+
 		@$(SED) -e 's:@surum@:$(surum):' \
-			      -e 's:@sounddir@:$(sounddir):' \
+						-e 's:@sounddir@:$(sounddir):' \
 			etc/ayarlar.in > etc/ayarlar
 
 		@$(SED) -e 's:@bindir@:$(bindir):' \
-			      -e 's:@datadir@:$(datadir):' \
+						-e 's:@datadir@:$(datadir):' \
 			data/ezanvakti.desktop.in > data/ezanvakti.desktop
 
 		@$(SED) 's:@bindir@:$(bindir):' \

@@ -23,8 +23,7 @@
 [[ $1 =~ --@(gui|aray[uü]z)   ]] && exec @libdir@/ezanvakti/arayuz.bash
 [[ $1 =~ --@(gui2|aray[uü]z2) ]] && exec @libdir@/ezanvakti/arayuz2.bash
 
-. @libdir@/temel_islevler.bash
-yapilandirmayi_oku
+. @libdir@/ezanvakti/temel_islevler.bash
 
 case $1 in
   -v|--v|--vakitler)
@@ -99,7 +98,7 @@ case $1 in
       -u|-t|--u[cç]birim|--terminal) ayet_goster ucbirim ;;
       ?*) hatali_kullanim $2 ;;
       '') ayet_goster bildirim ;;
-    esac
+    esac ;;
   --ramazan)
     yontem_calistir ramazan ;;
   --conky)
@@ -204,7 +203,7 @@ case $1 in
       exit 0
     } ;;
   --g[uü]ncelle)
-    guncelleme_yap ;;
+    bilesen_yukle guncelleyici; guncelleme_yap ;;
   --g[uü]nler)
     printf "${RENK7}${RENK3}\n$(date +%Y)${RENK2} yılı için dini günler ve geceler\n\n"
     sed -n "s:\([0-9].*$(date +%Y)\)\(.*\):$(echo -e "${RENK7}${RENK3}\1\t${RENK2}\2${RENK0}\n"):p" \

@@ -1,14 +1,16 @@
 #
 #
-#                           Ezanvakti Güncelleme  Bileşeni 2.0
+#                           Ezanvakti Güncelleme  Bileşeni 2.1
 #
 #
 
 
 function guncelleme_yap() { ### Ana fonksiyon {{{
-  local arayuz ulke sehir ilce varsayilan_sehir pm dn e=0 denetim=0
+  local arayuz ulke sehir ilce varsayilan_sehir pm dn sure 
+  local e=0 denetim=0
   local -a pmler
-
+  
+  sure="${SECONDS}"
   test x"${ULKE}"  = x"" && ULKE=yok_boyle_bir_yer
   test x"${SEHIR}" = x"" && SEHIR=yok_boyle_bir_yer
   test x"${ILCE}"  = x"" && ILCE=yok_boyle_bir_yer
@@ -269,11 +271,15 @@ SON
     printf "${RENK7}${RENK8} [${RENK1}BAŞARISIZ${RENK8}]${RENK0}\n"
     printf "${RENK7}${RENK3}\n$( < /tmp/ezv-perl-hata-$$)${RENK0}\n"
     rm -f /tmp/ezv-perl-hata-$$ &>/dev/null
+    printf "${RENK7}${RENK4}\n!!! YENIDEN DENEYIN !!!${RENK0}\n"
     notify-send "Ezanvakti $SURUM" "${EZANVERI_ADI} dosyasının güncellenmesi başarısız oldu." \
       -i ${VERI_DIZINI}/simgeler/ezanvakti.png -t $GUNCELLEME_BILDIRIM_SURESI"000" -h int:transient:1
     rm -f /tmp/ezanveri-$$ &>/dev/null
     exit 1
   } #}}}
+printf '%-60b%b' \
+  "${RENK7}${RENK8}Güncelleme için geçen süre: " \
+  "${RENK2}$((${SECONDS}-${sure})) saniye${RENK0}\n"  
 } #}}}
 
 # vim: set ft=sh ts=2 sw=2 et:
