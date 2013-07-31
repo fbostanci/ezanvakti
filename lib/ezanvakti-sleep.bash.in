@@ -5,19 +5,9 @@
 #                           Ezanvakti Sleep Yöntemi  Bileşeni 1.0
 #
 
-# Öntanımlı ayarları al.
-. @sysconfdir@/ezanvakti/ayarlar
+. @libdir@/temel_islevler.bash
 
-#  Öntanımlı ayarlardan gelen değerlerin üzerine yazılacak.
-#
-# Kullanıcı ayarlarını al.
-. "${EZANVAKTI_AYAR}"
-
-# Bileşenleri çalışma sürecine dahil ediyoruz.
-. ${BILESEN_DIZINI}/guncelleyici.bash
-. ${BILESEN_DIZINI}/ortak.bash
-(( OYNATICI_DURAKLAT )) && \
-  . ${BILESEN_DIZINI}/oynatici_duraklat.bash
+(( OYNATICI_DURAKLAT )) && bilesen_yukle oynatici_duraklat
 
 # Vakit bildirimleri için ezan dinletiminin yanında
 # diğer bildirimleri de düzenleyen fonksiyon

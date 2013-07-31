@@ -14,28 +14,27 @@ EZANVAKTI_DIZINI="${XDG_CONFIG_HOME:-$HOME/.config}"/ezanvakti
 EZANVAKTI_AYAR="${EZANVAKTI_DIZINI}"/ayarlar
 
 
+function yapilandirmayi_oku()
+  [[ ! -d "${EZANVAKTI_DIZINI}" ]] && mkdir -p "${EZANVAKTI_DIZINI}"
+  [[ ! -f "${EZANVAKTI_AYAR}"   ]] &&
+    sed "s:\$HOME:$HOME:" < @sysconfdir@/ezanvakti/ayarlar > "${EZANVAKTI_AYAR}"
 
-[ ! -d "${EZANVAKTI_DIZINI}" ] && mkdir -p "${EZANVAKTI_DIZINI}"
-[ ! -f "${EZANVAKTI_AYAR}"   ] &&
-  sed "s:\$HOME:$HOME:" < @sysconfdir@/ezanvakti/ayarlar > "${EZANVAKTI_AYAR}"
+  # Öntanımlı ayarları al.
+  . @sysconfdir@/ezanvakti/ayarlar
 
-
-
-# Öntanımlı ayarları al.
-. @sysconfdir@/ezanvakti/ayarlar
-
-#  Öntanımlı ayarlardan gelen değerlerin üzerine yazılacak.
-#
-# Kullanıcı ayarlarını al.
-. "${EZANVAKTI_AYAR}" || \
-  { printf "${EZANVAKTI_AYAR} dosyası okunabilir değil.\n Çıkılıyor...\n"; exit 1; }
+  #  Öntanımlı ayarlardan gelen değerlerin üzerine yazılacak.
+  #
+  # Kullanıcı ayarlarını al.
+  . "${EZANVAKTI_AYAR}" || \
+    { printf "${EZANVAKTI_AYAR} dosyası okunabilir değil.\n Çıkılıyor...\n"; exit 1; }
+}
 
 EZANVERI=${EZANVAKTI_DIZINI}/${EZANVERI_ADI}
 MPLAYER="mplayer -really-quiet -volume $SES"
 
 declare -A YUKLENEN_BILESENLER
 
-bilesen_yukle() {
+function bilesen_yukle() {
   while [[ $1 ]]
   do
     (( YUKLENEN_BILESENLER[$1] )) && return 0
