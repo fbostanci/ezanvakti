@@ -1,6 +1,10 @@
+#
+#
+#
+#
+#
 
-
-function vakitleri_goster() {
+function vakitleri_goster() { # {{{
   denetle; bugun
   
   local istek="$1"
@@ -86,4 +90,6 @@ function vakitleri_goster() {
         "${RENK2}Akşam ezanı  ${RENK3}: $aksam_n   $aksam_kalan\n" \
         "${RENK2}Yatsı ezanı  ${RENK3}: $yatsi_n   $yatsi_kalan${RENK0}\n" ;;
     esac
-}
+} # }}}
+
+# vim: set ft=sh ts=2 sw=2 et:

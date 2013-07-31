@@ -24,6 +24,7 @@
 [[ $1 =~ --@(gui2|aray[uü]z2) ]] && exec @libdir@/ezanvakti/arayuz2.bash
 
 . @libdir@/temel_islevler.bash
+yapilandirmayi_oku
 
 case $1 in
   -v|--v|--vakitler)
@@ -74,70 +75,31 @@ case $1 in
         hatali_kullanim ${2:-null} ;;
     esac
   ;;
-  --arayuzlericin)
-    # Arayüzlerin hızlı çalışması için vakitleri almada ayrı değişken kullanıldı.
-    # Tek başına kullanılmaz.
-    printf "${VAKIT_BICIMI}" 'Sabah' "$sabah_n" 'Güneş' \
-      "$gunes_n" 'Öğle' "$ogle_n" 'İkindi' "$ikindi_n" 'Akşam' \
-      "$aksam_n" 'Yatsı' "$yatsi_n" ;;
-  --kuran)
-    case $2 in
-      -s|--se[cç]im)
-        girdi=$3
-        kuran_dinle ;;
-      -h|--hatim)
-        for ((i=1; i<=114; i++))
-        {
-          girdi=$i
-          kuran_dinle; sleep 1.5
-        } ;;
-      -r|--rastgele)
-        girdi=$((RANDOM%114))
-        (( ! girdi )) && girdi=114
-        kuran_dinle ;;
-      -g|--g[uü]nl[uü]k)
-        read -ra sureler <<<$SURELER
-        for i in ${sureler[@]}
-        do
-          girdi=$i
-          kuran_dinle; sleep 1.5
-        done ;;
-      *)
-        hatali_kullanim ${2:-null} ;;
+  -k|--kuran)
+    bilesen_yukle kuran_dinletici; shift
+    case $1 in
+      -r|--rastgele) kuran_dinlet rastgele ;;
+      -h|--hatim) kuran_dinlet hatim ;;
+      -g|--g[uü]nl[uü]k) kuran_dinlet gunluk ;;
+      -s|--se[cç]im) kuran_dinlet secim; shift; girdi="$1" ;;
+      *) hatali_kullanim ${1:-null} ;;
     esac ;;
+  -kr|--kr) bilesen_yukle kuran_dinletici; kuran_dinlet rastgele ;;
+  -kh|--kh) bilesen_yukle kuran_dinletici; kuran_dinlet hatim ;; 
+  -kg|--kg) bilesen_yukle kuran_dinletici; kuran_dinlet gunler ;;
+  -ks|--ks) bilesen_yukle kuran_dinletici; kuran_dinlet secim; shift; girdi="$1" ;;
   --sureler)
     clear
     gawk -v renk0=${RENK0} -v renk2=${RENK2} -v renk3=${RENK3} -v renk7=${RENK7} \
       '{printf "%s%s%s\t%s%s%s%s\n", renk7,renk3,$1,renk2,$2,renk3,$3,renk0}' \
       ${VERI_DIZINI}/veriler/sureler | less -R ;;
   --ayet)
-    [ -f "${KULLANICI_TEFSIR_DIZINI}/${TEFSIR_SAHIBI}" ] && {
-      TEFSIR="${KULLANICI_TEFSIR_DIZINI}/${TEFSIR_SAHIBI}"
-    } || {
-    [ -f "${VERI_DIZINI}/tefsirler/${TEFSIR_SAHIBI}" ] && \
-      TEFSIR="${VERI_DIZINI}/tefsirler/${TEFSIR_SAHIBI}"
-    } || {
-    printf "${RENK3}${TEFSIR_SAHIBI} dosyası bulunamadı.${RENK0}\n"
-    exit 1
-    }
-
-    satir=$((RANDOM%6236))
-    (( ! satir )) && satir=6236
-
+    bilesen_yukle ayet_goster
     case $2 in
-      -u|-t|--u[cç]birim|--terminal)
-        printf '%b%b%b\n' \
-          "${RENK3}\nGünlük Ayet ${RENK2}(${RENK8}" \
-          "$(sed -n "${satir}p" ${VERI_DIZINI}/veriler/sureler_ayetler) $satir/6236${RENK2})${RENK8}\n\n" \
-          "$(sed -n "${satir}p" "${TEFSIR}")${RENK0}"
-        exit 0 ;;
-      ?*)
-        hatali_kullanim $2 ;;
+      -u|-t|--u[cç]birim|--terminal) ayet_goster ucbirim ;;
+      ?*) hatali_kullanim $2 ;;
+      '') ayet_goster bildirim ;;
     esac
-
-    notify-send "Günlük Ayet ($(sed -n "${satir}p" ${VERI_DIZINI}/veriler/sureler_ayetler))" \
-      "$(sed -n "${satir}p" "${TEFSIR}")" -t $AYET_BILDIRIM_SURESI"000" -h int:transient:1
-    exit 0 ;;
   --ramazan)
     yontem_calistir ramazan ;;
   --conky)

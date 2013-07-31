@@ -4,6 +4,7 @@
 #                           Ezanvakti Temel İşlevler Bileşeni 1.0
 #
 
+AD=ezanvakti
 SURUM=6.0
 DERLEME=@derleme@
 
