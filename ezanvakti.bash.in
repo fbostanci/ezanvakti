@@ -20,8 +20,8 @@
 #set -n
 #set -x
 
-[[ $1 =~ --@(gui|aray[uü]z)   ]] && exec @libdir@/ezanvakti/arayuz.bash
-[[ $1 =~ --@(gui2|aray[uü]z2) ]] && exec @libdir@/ezanvakti/arayuz2.bash
+[[ $1 = --@(gui|aray[uü]z)   ]] && exec @libdir@/ezanvakti/arayuz.bash
+[[ $1 = --@(gui2|aray[uü]z2) ]] && exec @libdir@/ezanvakti/arayuz2.bash
 
 . @libdir@/ezanvakti/temel_islevler.bash
 
@@ -74,19 +74,19 @@ case $1 in
         hatali_kullanim ${2:-null} ;;
     esac
   ;;
-  -k|--kuran)
+  --kuran)
     bilesen_yukle kuran_dinletici; shift
     case $1 in
       -r|--rastgele) kuran_dinlet rastgele ;;
       -h|--hatim) kuran_dinlet hatim ;;
       -g|--g[uü]nl[uü]k) kuran_dinlet gunluk ;;
-      -s|--se[cç]im) kuran_dinlet secim; shift; girdi="$1" ;;
+      -s|--se[cç]im) kuran_dinlet secim $2 ;;
       *) hatali_kullanim ${1:-null} ;;
     esac ;;
   -kr|--kr) bilesen_yukle kuran_dinletici; kuran_dinlet rastgele ;;
   -kh|--kh) bilesen_yukle kuran_dinletici; kuran_dinlet hatim ;; 
-  -kg|--kg) bilesen_yukle kuran_dinletici; kuran_dinlet gunler ;;
-  -ks|--ks) bilesen_yukle kuran_dinletici; kuran_dinlet secim; shift; girdi="$1" ;;
+  -kg|--kg) bilesen_yukle kuran_dinletici; kuran_dinlet gunluk ;;
+  -ks|--ks) bilesen_yukle kuran_dinletici; kuran_dinlet secim $2 ;;
   --sureler)
     clear
     gawk -v renk0=${RENK0} -v renk2=${RENK2} -v renk3=${RENK3} -v renk7=${RENK7} \
@@ -102,51 +102,11 @@ case $1 in
   --ramazan)
     yontem_calistir ramazan ;;
   --conky)
-    denetle; bugun
-    printf "${CONKY_BICIMI}" 'Sabah' "$sabah_n" 'Güneş' \
-      "$gunes_n" 'Öğle' "$ogle_n" 'İkindi' "$ikindi_n" 'Akşam' \
-      "$aksam_n" 'Yatsı' "$yatsi_n" ;;
+  bilesen_yukle conky; ezv_conky ;;
   --iftar)
-    denetle; bugun
-
-    # Eğer şu anki saat aksam değerinden küçükse
-    [ $SAAT -lt $aksam ] && {
-      bekleme_suresi $aksam_n; kalan
-
-      printf '%b\n%b\n\n' \
-        "${RENK7}${RENK2}\nİftar saati : ${RENK3}$aksam_n" \
-        "${RENK7}${RENK2}Kalan süre  : ${RENK3}$kalan_sure${RENK0}"
-    } || {
-      # Akşam değeri şu anki saatten büyük ya da eşitse
-      [ $SAAT -ge $aksam ] && {
-        export $(gawk '{printf "aksam_n=%s:%s", $10,$11}' \
-          <(grep $(date -d 'tomorrow' +%d.%m.%Y) "${EZANVERI}"))
-        bekleme_suresi_yarin $aksam_n; kalan
-
-        printf '%b\n%b\n\n' \
-          "${RENK7}${RENK2}\nİftar saati : ${RENK3}$aksam_n${RENK5} (Yarın)" \
-          "${RENK2}Kalan süre  : ${RENK3}$kalan_sure${RENK0}"
-      }
-    };;
+    bilesen_yukle iftar; ezv_iftar ;;
   --conky-iftar)
-    denetle; bugun
-
-    [ $SAAT -lt $aksam ] && {
-      bekleme_suresi $aksam_n; kalan
-
-      echo -e "İftar : $aksam_n\nKalan : $kalan_sure" |\
-        sed 's:saat:sa:;s:dakika:dk:;s:saniye:sn:'
-    } || {
-
-      [ $SAAT -ge $aksam ] && {
-        export $(gawk '{printf "aksam_n=%s:%s", $10,$11}' \
-          <(grep $(date -d 'tomorrow' +%d.%m.%Y) "${EZANVERI}"))
-        bekleme_suresi_yarin $aksam_n; kalan
-
-        echo -e "İftar : $aksam_n (Yarın)\nKalan : $kalan_sure" |\
-          sed 's:saat:sa:;s:dakika:dk:;s:saniye:sn:'
-      }
-    } ;;
+    bilesen_yukle conky-iftar; ezv_conky_iftar ;;
   --hadis)
     icerik_al=${VERI_DIZINI}/veriler/kirk-hadis
     secim_yap 40

@@ -1,4 +1,8 @@
-
+#
+#
+#
+#
+#
 
 function mplayer_calistir() {
   local dinletilecek_oge="$1"

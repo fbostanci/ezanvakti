@@ -6,27 +6,7 @@
 
 function kuran_dinlet() { # kuran_dinlet_yonetimi {{{
   local dinletilecek_sure okuyan kaynak i
-
-  case $1 in
-    secim) sure_girdisi_denetimi ;;
-    hatim)
-      for ((i=1; i<=114; i++))
-      {
-        girdi=$i
-        sure_girdisi_denetimi; sleep 1.5
-      } ;;
-    rastgele)
-      girdi=$((RANDOM%114))
-      (( ! girdi )) && girdi=114
-      sure_girdisi_denetimi ;;
-    gunluk)
-      read -ra sureler <<<$SURELER
-      for i in ${sureler[@]}
-      do
-        girdi=$i
-        sure_girdisi_denetimi; sleep 1.5
-      done
-  esac
+  local girdi="$2"
 
 function sure_girdisi_denetimi() { # sure_girdisi_yonetimi {{{
   if [[ -n $(tr -d 0-9 <<<$girdi) ]]
@@ -65,10 +45,14 @@ function sure_girdisi_denetimi() { # sure_girdisi_yonetimi {{{
 
 } # }}}
 
+function kuran_dinletimi() {
+  local -a sureler
+
   clear
   printf '%b%b\n\n' \
     "${RENK7}${RENK3}" \
-    "$(grep -w $sure ${VERI_DIZINI}/veriler/sureler | gawk '{print $2}')${RENK2} suresi dinletiliyor..."
+    "$(grep -w $sure ${VERI_DIZINI}/veriler/sureler | \
+       gawk '{print $2}')${RENK2} suresi dinletiliyor...${RENK0}"
 
   # Öncelikle kullanıcının girdiği dizinde dosya
   # var mı denetle. Yoksa çevrimiçi dinletime yönel.
@@ -89,13 +73,35 @@ function sure_girdisi_denetimi() { # sure_girdisi_yonetimi {{{
     kaynak='http://www.quranlisten.com'
   }
 
-  bilesen_yukle mplayer_calistir
+  bilesen_yukle mplayer_yonetici
   printf '%b%b\n%b\n' \
     "${RENK7}${RENK2}" \
     "Okuyan : ${RENK3} ${okuyan}${RENK2}" \
     "Kaynak : ${RENK3} ${kaynak}${RENK0}"
 
   mplayer_calistir "${dinletilecek_sure}"
+}
+
+  case $1 in
+    secim) sure_girdisi_denetimi; kuran_dinletimi ;;
+    hatim)
+      for ((i=1; i<=114; i++))
+      {
+        girdi=$i
+        sure_girdisi_denetimi; kuran_dinletimi; sleep 1.5
+      } ;;
+    rastgele)
+      girdi=$((RANDOM%114))
+      (( ! girdi )) && girdi=114
+      sure_girdisi_denetimi; kuran_dinletimi ;;
+    gunluk)
+      read -ra sureler <<<$SURELER
+      for i in ${sureler[@]}
+      do
+        girdi=$i
+        sure_girdisi_denetimi; kuran_dinletimi; sleep 1.5
+      done ;;
+  esac
 } # }}}
 
 
