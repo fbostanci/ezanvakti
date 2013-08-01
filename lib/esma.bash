@@ -1,8 +1,8 @@
-
-
-
-
-
+#
+#
+#
+#
+#
 
 function esma() {
     icerik_al=${VERI_DIZINI}/veriler/esma
@@ -16,5 +16,7 @@ function esma() {
       printf "${alinan_yanit}${RENK0}\n"
       exit 0
     } 
-}    
+}
+
+# vim: set ft=sh ts=2 sw=2 et: 
 
