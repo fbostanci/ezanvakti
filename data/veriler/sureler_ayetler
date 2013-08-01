@@ -1,3 +1,122 @@
+1    7    Fatiha     1       Mekke
+2    286  Bakara     1,2,3   Medine
+3    200  Al-i_İmran 3,4     Medine
+4    176  Nisa       5,6     Medine
+5    120  Maide      6,7     Medine
+6    165  Enam       7,8     Medine
+7    206  Araf       8       Mekke
+8    75   Enfal      9,10    Medine
+9    129  Tevbe      10,11   Medine
+10   109  Yunus      11      Mekke
+11   123  Hud        12      Mekke
+12   111  Yusuf      12,13   Mekke
+13   43   Rad        13      Mekke
+14   52   İbrahim    13      Mekke
+15   99   Hicr       14      Mekke
+16   128  Nahl       14      Mekke
+17   111  İsra       15      Mekke
+18   110  Kehf       15      Mekke 
+19   98   Meryem     16      Mekke
+20   135  Taha       16      Mekke
+21   112  Enbiya     17      Mekke
+22   78   Hac        17      Mekke
+23   118  Müminun    18      Mekke
+24   64   Nur        18      Mekke
+25   77   Furkan     18,19   Mekke
+26   227  Şuara      19      Mekke
+27   93   Neml       19,20   Mekke
+28   88   Kasas      20      Mekke
+29   69   Ankebut    20      Mekke
+30   60   Rum        21      Mekke
+31   34   Lokman     21      Mekke
+32   30   Secde      21      Medine
+33   73   Ahzab      21,22   Medine
+34   54   Sebe       22      Mekke
+35   45   Fatır      22      Mekke
+36   83   Yasin      22,23   Mekke
+37   182  Saffat     23      Medine
+38   88   Sad        23      Mekke
+39   75   Zümer      23,24   Mekke
+40   85   Mümin      24      Mekke
+41   54   Fussilet   24,25   Mekke
+42   53   Şura       25      Mekke
+43   89   Zuhruf     25      Mekke
+44   59   Duhan      25      Mekke
+45   37   Casiye     25,26   Mekke
+46   35   Akaf       26      Mekke
+47   38   Muhammed   26      Mekke
+48   29   Fetih      26      Medine
+49   18   Hucurat    26      Medine
+50   45   Kaf        26      Mekke
+51   60   Zariyat    26,27   Mekke
+52   49   Tur        27      Mekke
+53   62   Necm       27      Mekke
+54   55   Kamer      27      Mekke
+55   78   Rahman     27      Mekke
+56   96   Vakia      27      Mekke
+57   29   Hadid      27      Medine
+58   22   Mücadele   28      Medine
+59   24   Haşr       28      Medine
+60   13   Mümtehine  28      Medine
+61   14   Saf        28      Medine
+62   11   Cuma       28      Medine
+63   11   Münafikun  28      Medine
+64   18   Tegabun    28      Medine
+65   12   Talak      28      Medine
+66   12   Tahrim     28      Medine
+67   30   Mülk       29      Mekke
+68   52   Kalem      29      Mekke
+69   52   Hakka      29      Mekke
+70   44   Mearic     29      Mekke
+71   28   Nuh        29      Mekke
+72   28   Cin        29      Mekke
+73   20   Müzzemmil  29      Mekke
+74   56   Müddessir  29      Mekke
+75   40   Kıyame     29      Mekke
+76   31   İnsan      29      Mekke
+77   50   Mürselat   29      Mekke
+78   40   Nebe       30      Mekke
+79   46   Naziat     30      Mekke
+80   42   Abese      30      Mekke
+81   29   Tekvir     30      Mekke
+82   19   İnfitar    30      Mekke
+83   36   Mutaffifın 30      Mekke
+84   25   İnşikak    30      Mekke
+85   22   Büruc      30      Mekke
+86   17   Tarık      30      Mekke
+87   19   Ala        30      Mekke
+88   26   Gaşiye     30      Mekke
+89   30   Fecr       30      Mekke
+90   20   Beled      30      Mekke
+91   15   Şems       30      Mekke
+92   21   Leyl       30      Mekke
+93   11   Duha       30      Mekke
+94   8    İnşirah    30      Mekke
+95   8    Tin        30      Mekke     
+96   19   Alak       30      Mekke
+97   5    Kadir      30      Mekke
+98   8    Beyyine    30      Medine
+99   8    Zilzal     30      Medine
+100  11   Adiyat     30      Mekke
+101  11   Karia      30      Mekke
+102  8    Tekasür    30      Mekke
+103  3    Asr        30      Mekke
+104  9    Hümeze     30      Mekke
+105  5    Fil        30      Mekke
+106  4    Kureyş     30      Mekke
+107  7    Maun       30      Mekke
+108  3    Kevser     30      Mekke
+109  6    Kafirun    30      Mekke
+110  3    Nasr       30      Medine
+111  5    Tebbet     30      Mekke
+112  4    İhlas      30      Mekke
+113  5    Felak      30      Mekke
+114  6    Nas        30      Mekke
+
+
+Çıkmak    için 'q'    tuşuna    basınız.
+
+
 Fatiha Suresi 1. Ayet
 Fatiha Suresi 2. Ayet
 Fatiha Suresi 3. Ayet
@@ -787,377 +906,377 @@ Maide Suresi 117. Ayet
 Maide Suresi 118. Ayet
 Maide Suresi 119. Ayet
 Maide Suresi 120. Ayet
-En'am Suresi 1. Ayet
-En'am Suresi 2. Ayet
-En'am Suresi 3. Ayet
-En'am Suresi 4. Ayet
-En'am Suresi 5. Ayet
-En'am Suresi 6. Ayet
-En'am Suresi 7. Ayet
-En'am Suresi 8. Ayet
-En'am Suresi 9. Ayet
-En'am Suresi 10. Ayet
-En'am Suresi 11. Ayet
-En'am Suresi 12. Ayet
-En'am Suresi 13. Ayet
-En'am Suresi 14. Ayet
-En'am Suresi 15. Ayet
-En'am Suresi 16. Ayet
-En'am Suresi 17. Ayet
-En'am Suresi 18. Ayet
-En'am Suresi 19. Ayet
-En'am Suresi 20. Ayet
-En'am Suresi 21. Ayet
-En'am Suresi 22. Ayet
-En'am Suresi 23. Ayet
-En'am Suresi 24. Ayet
-En'am Suresi 25. Ayet
-En'am Suresi 26. Ayet
-En'am Suresi 27. Ayet
-En'am Suresi 28. Ayet
-En'am Suresi 29. Ayet
-En'am Suresi 30. Ayet
-En'am Suresi 31. Ayet
-En'am Suresi 32. Ayet
-En'am Suresi 33. Ayet
-En'am Suresi 34. Ayet
-En'am Suresi 35. Ayet
-En'am Suresi 36. Ayet
-En'am Suresi 37. Ayet
-En'am Suresi 38. Ayet
-En'am Suresi 39. Ayet
-En'am Suresi 40. Ayet
-En'am Suresi 41. Ayet
-En'am Suresi 42. Ayet
-En'am Suresi 43. Ayet
-En'am Suresi 44. Ayet
-En'am Suresi 45. Ayet
-En'am Suresi 46. Ayet
-En'am Suresi 47. Ayet
-En'am Suresi 48. Ayet
-En'am Suresi 49. Ayet
-En'am Suresi 50. Ayet
-En'am Suresi 51. Ayet
-En'am Suresi 52. Ayet
-En'am Suresi 53. Ayet
-En'am Suresi 54. Ayet
-En'am Suresi 55. Ayet
-En'am Suresi 56. Ayet
-En'am Suresi 57. Ayet
-En'am Suresi 58. Ayet
-En'am Suresi 59. Ayet
-En'am Suresi 60. Ayet
-En'am Suresi 61. Ayet
-En'am Suresi 62. Ayet
-En'am Suresi 63. Ayet
-En'am Suresi 64. Ayet
-En'am Suresi 65. Ayet
-En'am Suresi 66. Ayet
-En'am Suresi 67. Ayet
-En'am Suresi 68. Ayet
-En'am Suresi 69. Ayet
-En'am Suresi 70. Ayet
-En'am Suresi 71. Ayet
-En'am Suresi 72. Ayet
-En'am Suresi 73. Ayet
-En'am Suresi 74. Ayet
-En'am Suresi 75. Ayet
-En'am Suresi 76. Ayet
-En'am Suresi 77. Ayet
-En'am Suresi 78. Ayet
-En'am Suresi 79. Ayet
-En'am Suresi 80. Ayet
-En'am Suresi 81. Ayet
-En'am Suresi 82. Ayet
-En'am Suresi 83. Ayet
-En'am Suresi 84. Ayet
-En'am Suresi 85. Ayet
-En'am Suresi 86. Ayet
-En'am Suresi 87. Ayet
-En'am Suresi 88. Ayet
-En'am Suresi 89. Ayet
-En'am Suresi 90. Ayet
-En'am Suresi 91. Ayet
-En'am Suresi 92. Ayet
-En'am Suresi 93. Ayet
-En'am Suresi 94. Ayet
-En'am Suresi 95. Ayet
-En'am Suresi 96. Ayet
-En'am Suresi 97. Ayet
-En'am Suresi 98. Ayet
-En'am Suresi 99. Ayet
-En'am Suresi 100. Ayet
-En'am Suresi 101. Ayet
-En'am Suresi 102. Ayet
-En'am Suresi 103. Ayet
-En'am Suresi 104. Ayet
-En'am Suresi 105. Ayet
-En'am Suresi 106. Ayet
-En'am Suresi 107. Ayet
-En'am Suresi 108. Ayet
-En'am Suresi 109. Ayet
-En'am Suresi 110. Ayet
-En'am Suresi 111. Ayet
-En'am Suresi 112. Ayet
-En'am Suresi 113. Ayet
-En'am Suresi 114. Ayet
-En'am Suresi 115. Ayet
-En'am Suresi 116. Ayet
-En'am Suresi 117. Ayet
-En'am Suresi 118. Ayet
-En'am Suresi 119. Ayet
-En'am Suresi 120. Ayet
-En'am Suresi 121. Ayet
-En'am Suresi 122. Ayet
-En'am Suresi 123. Ayet
-En'am Suresi 124. Ayet
-En'am Suresi 125. Ayet
-En'am Suresi 126. Ayet
-En'am Suresi 127. Ayet
-En'am Suresi 128. Ayet
-En'am Suresi 129. Ayet
-En'am Suresi 130. Ayet
-En'am Suresi 131. Ayet
-En'am Suresi 132. Ayet
-En'am Suresi 133. Ayet
-En'am Suresi 134. Ayet
-En'am Suresi 135. Ayet
-En'am Suresi 136. Ayet
-En'am Suresi 137. Ayet
-En'am Suresi 138. Ayet
-En'am Suresi 139. Ayet
-En'am Suresi 140. Ayet
-En'am Suresi 141. Ayet
-En'am Suresi 142. Ayet
-En'am Suresi 143. Ayet
-En'am Suresi 144. Ayet
-En'am Suresi 145. Ayet
-En'am Suresi 146. Ayet
-En'am Suresi 147. Ayet
-En'am Suresi 148. Ayet
-En'am Suresi 149. Ayet
-En'am Suresi 150. Ayet
-En'am Suresi 151. Ayet
-En'am Suresi 152. Ayet
-En'am Suresi 153. Ayet
-En'am Suresi 154. Ayet
-En'am Suresi 155. Ayet
-En'am Suresi 156. Ayet
-En'am Suresi 157. Ayet
-En'am Suresi 158. Ayet
-En'am Suresi 159. Ayet
-En'am Suresi 160. Ayet
-En'am Suresi 161. Ayet
-En'am Suresi 162. Ayet
-En'am Suresi 163. Ayet
-En'am Suresi 164. Ayet
-En'am Suresi 165. Ayet
-A'raf Suresi 1. Ayet
-A'raf Suresi 2. Ayet
-A'raf Suresi 3. Ayet
-A'raf Suresi 4. Ayet
-A'raf Suresi 5. Ayet
-A'raf Suresi 6. Ayet
-A'raf Suresi 7. Ayet
-A'raf Suresi 8. Ayet
-A'raf Suresi 9. Ayet
-A'raf Suresi 10. Ayet
-A'raf Suresi 11. Ayet
-A'raf Suresi 12. Ayet
-A'raf Suresi 13. Ayet
-A'raf Suresi 14. Ayet
-A'raf Suresi 15. Ayet
-A'raf Suresi 16. Ayet
-A'raf Suresi 17. Ayet
-A'raf Suresi 18. Ayet
-A'raf Suresi 19. Ayet
-A'raf Suresi 20. Ayet
-A'raf Suresi 21. Ayet
-A'raf Suresi 22. Ayet
-A'raf Suresi 23. Ayet
-A'raf Suresi 24. Ayet
-A'raf Suresi 25. Ayet
-A'raf Suresi 26. Ayet
-A'raf Suresi 27. Ayet
-A'raf Suresi 28. Ayet
-A'raf Suresi 29. Ayet
-A'raf Suresi 30. Ayet
-A'raf Suresi 31. Ayet
-A'raf Suresi 32. Ayet
-A'raf Suresi 33. Ayet
-A'raf Suresi 34. Ayet
-A'raf Suresi 35. Ayet
-A'raf Suresi 36. Ayet
-A'raf Suresi 37. Ayet
-A'raf Suresi 38. Ayet
-A'raf Suresi 39. Ayet
-A'raf Suresi 40. Ayet
-A'raf Suresi 41. Ayet
-A'raf Suresi 42. Ayet
-A'raf Suresi 43. Ayet
-A'raf Suresi 44. Ayet
-A'raf Suresi 45. Ayet
-A'raf Suresi 46. Ayet
-A'raf Suresi 47. Ayet
-A'raf Suresi 48. Ayet
-A'raf Suresi 49. Ayet
-A'raf Suresi 50. Ayet
-A'raf Suresi 51. Ayet
-A'raf Suresi 52. Ayet
-A'raf Suresi 53. Ayet
-A'raf Suresi 54. Ayet
-A'raf Suresi 55. Ayet
-A'raf Suresi 56. Ayet
-A'raf Suresi 57. Ayet
-A'raf Suresi 58. Ayet
-A'raf Suresi 59. Ayet
-A'raf Suresi 60. Ayet
-A'raf Suresi 61. Ayet
-A'raf Suresi 62. Ayet
-A'raf Suresi 63. Ayet
-A'raf Suresi 64. Ayet
-A'raf Suresi 65. Ayet
-A'raf Suresi 66. Ayet
-A'raf Suresi 67. Ayet
-A'raf Suresi 68. Ayet
-A'raf Suresi 69. Ayet
-A'raf Suresi 70. Ayet
-A'raf Suresi 71. Ayet
-A'raf Suresi 72. Ayet
-A'raf Suresi 73. Ayet
-A'raf Suresi 74. Ayet
-A'raf Suresi 75. Ayet
-A'raf Suresi 76. Ayet
-A'raf Suresi 77. Ayet
-A'raf Suresi 78. Ayet
-A'raf Suresi 79. Ayet
-A'raf Suresi 80. Ayet
-A'raf Suresi 81. Ayet
-A'raf Suresi 82. Ayet
-A'raf Suresi 83. Ayet
-A'raf Suresi 84. Ayet
-A'raf Suresi 85. Ayet
-A'raf Suresi 86. Ayet
-A'raf Suresi 87. Ayet
-A'raf Suresi 88. Ayet
-A'raf Suresi 89. Ayet
-A'raf Suresi 90. Ayet
-A'raf Suresi 91. Ayet
-A'raf Suresi 92. Ayet
-A'raf Suresi 93. Ayet
-A'raf Suresi 94. Ayet
-A'raf Suresi 95. Ayet
-A'raf Suresi 96. Ayet
-A'raf Suresi 97. Ayet
-A'raf Suresi 98. Ayet
-A'raf Suresi 99. Ayet
-A'raf Suresi 100. Ayet
-A'raf Suresi 101. Ayet
-A'raf Suresi 102. Ayet
-A'raf Suresi 103. Ayet
-A'raf Suresi 104. Ayet
-A'raf Suresi 105. Ayet
-A'raf Suresi 106. Ayet
-A'raf Suresi 107. Ayet
-A'raf Suresi 108. Ayet
-A'raf Suresi 109. Ayet
-A'raf Suresi 110. Ayet
-A'raf Suresi 111. Ayet
-A'raf Suresi 112. Ayet
-A'raf Suresi 113. Ayet
-A'raf Suresi 114. Ayet
-A'raf Suresi 115. Ayet
-A'raf Suresi 116. Ayet
-A'raf Suresi 117. Ayet
-A'raf Suresi 118. Ayet
-A'raf Suresi 119. Ayet
-A'raf Suresi 120. Ayet
-A'raf Suresi 121. Ayet
-A'raf Suresi 122. Ayet
-A'raf Suresi 123. Ayet
-A'raf Suresi 124. Ayet
-A'raf Suresi 125. Ayet
-A'raf Suresi 126. Ayet
-A'raf Suresi 127. Ayet
-A'raf Suresi 128. Ayet
-A'raf Suresi 129. Ayet
-A'raf Suresi 130. Ayet
-A'raf Suresi 131. Ayet
-A'raf Suresi 132. Ayet
-A'raf Suresi 133. Ayet
-A'raf Suresi 134. Ayet
-A'raf Suresi 135. Ayet
-A'raf Suresi 136. Ayet
-A'raf Suresi 137. Ayet
-A'raf Suresi 138. Ayet
-A'raf Suresi 139. Ayet
-A'raf Suresi 140. Ayet
-A'raf Suresi 141. Ayet
-A'raf Suresi 142. Ayet
-A'raf Suresi 143. Ayet
-A'raf Suresi 144. Ayet
-A'raf Suresi 145. Ayet
-A'raf Suresi 146. Ayet
-A'raf Suresi 147. Ayet
-A'raf Suresi 148. Ayet
-A'raf Suresi 149. Ayet
-A'raf Suresi 150. Ayet
-A'raf Suresi 151. Ayet
-A'raf Suresi 152. Ayet
-A'raf Suresi 153. Ayet
-A'raf Suresi 154. Ayet
-A'raf Suresi 155. Ayet
-A'raf Suresi 156. Ayet
-A'raf Suresi 157. Ayet
-A'raf Suresi 158. Ayet
-A'raf Suresi 159. Ayet
-A'raf Suresi 160. Ayet
-A'raf Suresi 161. Ayet
-A'raf Suresi 162. Ayet
-A'raf Suresi 163. Ayet
-A'raf Suresi 164. Ayet
-A'raf Suresi 165. Ayet
-A'raf Suresi 166. Ayet
-A'raf Suresi 167. Ayet
-A'raf Suresi 168. Ayet
-A'raf Suresi 169. Ayet
-A'raf Suresi 170. Ayet
-A'raf Suresi 171. Ayet
-A'raf Suresi 172. Ayet
-A'raf Suresi 173. Ayet
-A'raf Suresi 174. Ayet
-A'raf Suresi 175. Ayet
-A'raf Suresi 176. Ayet
-A'raf Suresi 177. Ayet
-A'raf Suresi 178. Ayet
-A'raf Suresi 179. Ayet
-A'raf Suresi 180. Ayet
-A'raf Suresi 181. Ayet
-A'raf Suresi 182. Ayet
-A'raf Suresi 183. Ayet
-A'raf Suresi 184. Ayet
-A'raf Suresi 185. Ayet
-A'raf Suresi 186. Ayet
-A'raf Suresi 187. Ayet
-A'raf Suresi 188. Ayet
-A'raf Suresi 189. Ayet
-A'raf Suresi 190. Ayet
-A'raf Suresi 191. Ayet
-A'raf Suresi 192. Ayet
-A'raf Suresi 193. Ayet
-A'raf Suresi 194. Ayet
-A'raf Suresi 195. Ayet
-A'raf Suresi 196. Ayet
-A'raf Suresi 197. Ayet
-A'raf Suresi 198. Ayet
-A'raf Suresi 199. Ayet
-A'raf Suresi 200. Ayet
-A'raf Suresi 201. Ayet
-A'raf Suresi 202. Ayet
-A'raf Suresi 203. Ayet
-A'raf Suresi 204. Ayet
-A'raf Suresi 205. Ayet
-A'raf Suresi 206. Ayet
+Enam Suresi 1. Ayet
+Enam Suresi 2. Ayet
+Enam Suresi 3. Ayet
+Enam Suresi 4. Ayet
+Enam Suresi 5. Ayet
+Enam Suresi 6. Ayet
+Enam Suresi 7. Ayet
+Enam Suresi 8. Ayet
+Enam Suresi 9. Ayet
+Enam Suresi 10. Ayet
+Enam Suresi 11. Ayet
+Enam Suresi 12. Ayet
+Enam Suresi 13. Ayet
+Enam Suresi 14. Ayet
+Enam Suresi 15. Ayet
+Enam Suresi 16. Ayet
+Enam Suresi 17. Ayet
+Enam Suresi 18. Ayet
+Enam Suresi 19. Ayet
+Enam Suresi 20. Ayet
+Enam Suresi 21. Ayet
+Enam Suresi 22. Ayet
+Enam Suresi 23. Ayet
+Enam Suresi 24. Ayet
+Enam Suresi 25. Ayet
+Enam Suresi 26. Ayet
+Enam Suresi 27. Ayet
+Enam Suresi 28. Ayet
+Enam Suresi 29. Ayet
+Enam Suresi 30. Ayet
+Enam Suresi 31. Ayet
+Enam Suresi 32. Ayet
+Enam Suresi 33. Ayet
+Enam Suresi 34. Ayet
+Enam Suresi 35. Ayet
+Enam Suresi 36. Ayet
+Enam Suresi 37. Ayet
+Enam Suresi 38. Ayet
+Enam Suresi 39. Ayet
+Enam Suresi 40. Ayet
+Enam Suresi 41. Ayet
+Enam Suresi 42. Ayet
+Enam Suresi 43. Ayet
+Enam Suresi 44. Ayet
+Enam Suresi 45. Ayet
+Enam Suresi 46. Ayet
+Enam Suresi 47. Ayet
+Enam Suresi 48. Ayet
+Enam Suresi 49. Ayet
+Enam Suresi 50. Ayet
+Enam Suresi 51. Ayet
+Enam Suresi 52. Ayet
+Enam Suresi 53. Ayet
+Enam Suresi 54. Ayet
+Enam Suresi 55. Ayet
+Enam Suresi 56. Ayet
+Enam Suresi 57. Ayet
+Enam Suresi 58. Ayet
+Enam Suresi 59. Ayet
+Enam Suresi 60. Ayet
+Enam Suresi 61. Ayet
+Enam Suresi 62. Ayet
+Enam Suresi 63. Ayet
+Enam Suresi 64. Ayet
+Enam Suresi 65. Ayet
+Enam Suresi 66. Ayet
+Enam Suresi 67. Ayet
+Enam Suresi 68. Ayet
+Enam Suresi 69. Ayet
+Enam Suresi 70. Ayet
+Enam Suresi 71. Ayet
+Enam Suresi 72. Ayet
+Enam Suresi 73. Ayet
+Enam Suresi 74. Ayet
+Enam Suresi 75. Ayet
+Enam Suresi 76. Ayet
+Enam Suresi 77. Ayet
+Enam Suresi 78. Ayet
+Enam Suresi 79. Ayet
+Enam Suresi 80. Ayet
+Enam Suresi 81. Ayet
+Enam Suresi 82. Ayet
+Enam Suresi 83. Ayet
+Enam Suresi 84. Ayet
+Enam Suresi 85. Ayet
+Enam Suresi 86. Ayet
+Enam Suresi 87. Ayet
+Enam Suresi 88. Ayet
+Enam Suresi 89. Ayet
+Enam Suresi 90. Ayet
+Enam Suresi 91. Ayet
+Enam Suresi 92. Ayet
+Enam Suresi 93. Ayet
+Enam Suresi 94. Ayet
+Enam Suresi 95. Ayet
+Enam Suresi 96. Ayet
+Enam Suresi 97. Ayet
+Enam Suresi 98. Ayet
+Enam Suresi 99. Ayet
+Enam Suresi 100. Ayet
+Enam Suresi 101. Ayet
+Enam Suresi 102. Ayet
+Enam Suresi 103. Ayet
+Enam Suresi 104. Ayet
+Enam Suresi 105. Ayet
+Enam Suresi 106. Ayet
+Enam Suresi 107. Ayet
+Enam Suresi 108. Ayet
+Enam Suresi 109. Ayet
+Enam Suresi 110. Ayet
+Enam Suresi 111. Ayet
+Enam Suresi 112. Ayet
+Enam Suresi 113. Ayet
+Enam Suresi 114. Ayet
+Enam Suresi 115. Ayet
+Enam Suresi 116. Ayet
+Enam Suresi 117. Ayet
+Enam Suresi 118. Ayet
+Enam Suresi 119. Ayet
+Enam Suresi 120. Ayet
+Enam Suresi 121. Ayet
+Enam Suresi 122. Ayet
+Enam Suresi 123. Ayet
+Enam Suresi 124. Ayet
+Enam Suresi 125. Ayet
+Enam Suresi 126. Ayet
+Enam Suresi 127. Ayet
+Enam Suresi 128. Ayet
+Enam Suresi 129. Ayet
+Enam Suresi 130. Ayet
+Enam Suresi 131. Ayet
+Enam Suresi 132. Ayet
+Enam Suresi 133. Ayet
+Enam Suresi 134. Ayet
+Enam Suresi 135. Ayet
+Enam Suresi 136. Ayet
+Enam Suresi 137. Ayet
+Enam Suresi 138. Ayet
+Enam Suresi 139. Ayet
+Enam Suresi 140. Ayet
+Enam Suresi 141. Ayet
+Enam Suresi 142. Ayet
+Enam Suresi 143. Ayet
+Enam Suresi 144. Ayet
+Enam Suresi 145. Ayet
+Enam Suresi 146. Ayet
+Enam Suresi 147. Ayet
+Enam Suresi 148. Ayet
+Enam Suresi 149. Ayet
+Enam Suresi 150. Ayet
+Enam Suresi 151. Ayet
+Enam Suresi 152. Ayet
+Enam Suresi 153. Ayet
+Enam Suresi 154. Ayet
+Enam Suresi 155. Ayet
+Enam Suresi 156. Ayet
+Enam Suresi 157. Ayet
+Enam Suresi 158. Ayet
+Enam Suresi 159. Ayet
+Enam Suresi 160. Ayet
+Enam Suresi 161. Ayet
+Enam Suresi 162. Ayet
+Enam Suresi 163. Ayet
+Enam Suresi 164. Ayet
+Enam Suresi 165. Ayet
+Araf Suresi 1. Ayet
+Araf Suresi 2. Ayet
+Araf Suresi 3. Ayet
+Araf Suresi 4. Ayet
+Araf Suresi 5. Ayet
+Araf Suresi 6. Ayet
+Araf Suresi 7. Ayet
+Araf Suresi 8. Ayet
+Araf Suresi 9. Ayet
+Araf Suresi 10. Ayet
+Araf Suresi 11. Ayet
+Araf Suresi 12. Ayet
+Araf Suresi 13. Ayet
+Araf Suresi 14. Ayet
+Araf Suresi 15. Ayet
+Araf Suresi 16. Ayet
+Araf Suresi 17. Ayet
+Araf Suresi 18. Ayet
+Araf Suresi 19. Ayet
+Araf Suresi 20. Ayet
+Araf Suresi 21. Ayet
+Araf Suresi 22. Ayet
+Araf Suresi 23. Ayet
+Araf Suresi 24. Ayet
+Araf Suresi 25. Ayet
+Araf Suresi 26. Ayet
+Araf Suresi 27. Ayet
+Araf Suresi 28. Ayet
+Araf Suresi 29. Ayet
+Araf Suresi 30. Ayet
+Araf Suresi 31. Ayet
+Araf Suresi 32. Ayet
+Araf Suresi 33. Ayet
+Araf Suresi 34. Ayet
+Araf Suresi 35. Ayet
+Araf Suresi 36. Ayet
+Araf Suresi 37. Ayet
+Araf Suresi 38. Ayet
+Araf Suresi 39. Ayet
+Araf Suresi 40. Ayet
+Araf Suresi 41. Ayet
+Araf Suresi 42. Ayet
+Araf Suresi 43. Ayet
+Araf Suresi 44. Ayet
+Araf Suresi 45. Ayet
+Araf Suresi 46. Ayet
+Araf Suresi 47. Ayet
+Araf Suresi 48. Ayet
+Araf Suresi 49. Ayet
+Araf Suresi 50. Ayet
+Araf Suresi 51. Ayet
+Araf Suresi 52. Ayet
+Araf Suresi 53. Ayet
+Araf Suresi 54. Ayet
+Araf Suresi 55. Ayet
+Araf Suresi 56. Ayet
+Araf Suresi 57. Ayet
+Araf Suresi 58. Ayet
+Araf Suresi 59. Ayet
+Araf Suresi 60. Ayet
+Araf Suresi 61. Ayet
+Araf Suresi 62. Ayet
+Araf Suresi 63. Ayet
+Araf Suresi 64. Ayet
+Araf Suresi 65. Ayet
+Araf Suresi 66. Ayet
+Araf Suresi 67. Ayet
+Araf Suresi 68. Ayet
+Araf Suresi 69. Ayet
+Araf Suresi 70. Ayet
+Araf Suresi 71. Ayet
+Araf Suresi 72. Ayet
+Araf Suresi 73. Ayet
+Araf Suresi 74. Ayet
+Araf Suresi 75. Ayet
+Araf Suresi 76. Ayet
+Araf Suresi 77. Ayet
+Araf Suresi 78. Ayet
+Araf Suresi 79. Ayet
+Araf Suresi 80. Ayet
+Araf Suresi 81. Ayet
+Araf Suresi 82. Ayet
+Araf Suresi 83. Ayet
+Araf Suresi 84. Ayet
+Araf Suresi 85. Ayet
+Araf Suresi 86. Ayet
+Araf Suresi 87. Ayet
+Araf Suresi 88. Ayet
+Araf Suresi 89. Ayet
+Araf Suresi 90. Ayet
+Araf Suresi 91. Ayet
+Araf Suresi 92. Ayet
+Araf Suresi 93. Ayet
+Araf Suresi 94. Ayet
+Araf Suresi 95. Ayet
+Araf Suresi 96. Ayet
+Araf Suresi 97. Ayet
+Araf Suresi 98. Ayet
+Araf Suresi 99. Ayet
+Araf Suresi 100. Ayet
+Araf Suresi 101. Ayet
+Araf Suresi 102. Ayet
+Araf Suresi 103. Ayet
+Araf Suresi 104. Ayet
+Araf Suresi 105. Ayet
+Araf Suresi 106. Ayet
+Araf Suresi 107. Ayet
+Araf Suresi 108. Ayet
+Araf Suresi 109. Ayet
+Araf Suresi 110. Ayet
+Araf Suresi 111. Ayet
+Araf Suresi 112. Ayet
+Araf Suresi 113. Ayet
+Araf Suresi 114. Ayet
+Araf Suresi 115. Ayet
+Araf Suresi 116. Ayet
+Araf Suresi 117. Ayet
+Araf Suresi 118. Ayet
+Araf Suresi 119. Ayet
+Araf Suresi 120. Ayet
+Araf Suresi 121. Ayet
+Araf Suresi 122. Ayet
+Araf Suresi 123. Ayet
+Araf Suresi 124. Ayet
+Araf Suresi 125. Ayet
+Araf Suresi 126. Ayet
+Araf Suresi 127. Ayet
+Araf Suresi 128. Ayet
+Araf Suresi 129. Ayet
+Araf Suresi 130. Ayet
+Araf Suresi 131. Ayet
+Araf Suresi 132. Ayet
+Araf Suresi 133. Ayet
+Araf Suresi 134. Ayet
+Araf Suresi 135. Ayet
+Araf Suresi 136. Ayet
+Araf Suresi 137. Ayet
+Araf Suresi 138. Ayet
+Araf Suresi 139. Ayet
+Araf Suresi 140. Ayet
+Araf Suresi 141. Ayet
+Araf Suresi 142. Ayet
+Araf Suresi 143. Ayet
+Araf Suresi 144. Ayet
+Araf Suresi 145. Ayet
+Araf Suresi 146. Ayet
+Araf Suresi 147. Ayet
+Araf Suresi 148. Ayet
+Araf Suresi 149. Ayet
+Araf Suresi 150. Ayet
+Araf Suresi 151. Ayet
+Araf Suresi 152. Ayet
+Araf Suresi 153. Ayet
+Araf Suresi 154. Ayet
+Araf Suresi 155. Ayet
+Araf Suresi 156. Ayet
+Araf Suresi 157. Ayet
+Araf Suresi 158. Ayet
+Araf Suresi 159. Ayet
+Araf Suresi 160. Ayet
+Araf Suresi 161. Ayet
+Araf Suresi 162. Ayet
+Araf Suresi 163. Ayet
+Araf Suresi 164. Ayet
+Araf Suresi 165. Ayet
+Araf Suresi 166. Ayet
+Araf Suresi 167. Ayet
+Araf Suresi 168. Ayet
+Araf Suresi 169. Ayet
+Araf Suresi 170. Ayet
+Araf Suresi 171. Ayet
+Araf Suresi 172. Ayet
+Araf Suresi 173. Ayet
+Araf Suresi 174. Ayet
+Araf Suresi 175. Ayet
+Araf Suresi 176. Ayet
+Araf Suresi 177. Ayet
+Araf Suresi 178. Ayet
+Araf Suresi 179. Ayet
+Araf Suresi 180. Ayet
+Araf Suresi 181. Ayet
+Araf Suresi 182. Ayet
+Araf Suresi 183. Ayet
+Araf Suresi 184. Ayet
+Araf Suresi 185. Ayet
+Araf Suresi 186. Ayet
+Araf Suresi 187. Ayet
+Araf Suresi 188. Ayet
+Araf Suresi 189. Ayet
+Araf Suresi 190. Ayet
+Araf Suresi 191. Ayet
+Araf Suresi 192. Ayet
+Araf Suresi 193. Ayet
+Araf Suresi 194. Ayet
+Araf Suresi 195. Ayet
+Araf Suresi 196. Ayet
+Araf Suresi 197. Ayet
+Araf Suresi 198. Ayet
+Araf Suresi 199. Ayet
+Araf Suresi 200. Ayet
+Araf Suresi 201. Ayet
+Araf Suresi 202. Ayet
+Araf Suresi 203. Ayet
+Araf Suresi 204. Ayet
+Araf Suresi 205. Ayet
+Araf Suresi 206. Ayet
 Enfal Suresi 1. Ayet
 Enfal Suresi 2. Ayet
 Enfal Suresi 3. Ayet
@@ -1705,49 +1824,49 @@ Yusuf Suresi 108. Ayet
 Yusuf Suresi 109. Ayet
 Yusuf Suresi 110. Ayet
 Yusuf Suresi 111. Ayet
-Ra'd Suresi 1. Ayet
-Ra'd Suresi 2. Ayet
-Ra'd Suresi 3. Ayet
-Ra'd Suresi 4. Ayet
-Ra'd Suresi 5. Ayet
-Ra'd Suresi 6. Ayet
-Ra'd Suresi 7. Ayet
-Ra'd Suresi 8. Ayet
-Ra'd Suresi 9. Ayet
-Ra'd Suresi 10. Ayet
-Ra'd Suresi 11. Ayet
-Ra'd Suresi 12. Ayet
-Ra'd Suresi 13. Ayet
-Ra'd Suresi 14. Ayet
-Ra'd Suresi 15. Ayet
-Ra'd Suresi 16. Ayet
-Ra'd Suresi 17. Ayet
-Ra'd Suresi 18. Ayet
-Ra'd Suresi 19. Ayet
-Ra'd Suresi 20. Ayet
-Ra'd Suresi 21. Ayet
-Ra'd Suresi 22. Ayet
-Ra'd Suresi 23. Ayet
-Ra'd Suresi 24. Ayet
-Ra'd Suresi 25. Ayet
-Ra'd Suresi 26. Ayet
-Ra'd Suresi 27. Ayet
-Ra'd Suresi 28. Ayet
-Ra'd Suresi 29. Ayet
-Ra'd Suresi 30. Ayet
-Ra'd Suresi 31. Ayet
-Ra'd Suresi 32. Ayet
-Ra'd Suresi 33. Ayet
-Ra'd Suresi 34. Ayet
-Ra'd Suresi 35. Ayet
-Ra'd Suresi 36. Ayet
-Ra'd Suresi 37. Ayet
-Ra'd Suresi 38. Ayet
-Ra'd Suresi 39. Ayet
-Ra'd Suresi 40. Ayet
-Ra'd Suresi 41. Ayet
-Ra'd Suresi 42. Ayet
-Ra'd Suresi 43. Ayet
+Rad Suresi 1. Ayet
+Rad Suresi 2. Ayet
+Rad Suresi 3. Ayet
+Rad Suresi 4. Ayet
+Rad Suresi 5. Ayet
+Rad Suresi 6. Ayet
+Rad Suresi 7. Ayet
+Rad Suresi 8. Ayet
+Rad Suresi 9. Ayet
+Rad Suresi 10. Ayet
+Rad Suresi 11. Ayet
+Rad Suresi 12. Ayet
+Rad Suresi 13. Ayet
+Rad Suresi 14. Ayet
+Rad Suresi 15. Ayet
+Rad Suresi 16. Ayet
+Rad Suresi 17. Ayet
+Rad Suresi 18. Ayet
+Rad Suresi 19. Ayet
+Rad Suresi 20. Ayet
+Rad Suresi 21. Ayet
+Rad Suresi 22. Ayet
+Rad Suresi 23. Ayet
+Rad Suresi 24. Ayet
+Rad Suresi 25. Ayet
+Rad Suresi 26. Ayet
+Rad Suresi 27. Ayet
+Rad Suresi 28. Ayet
+Rad Suresi 29. Ayet
+Rad Suresi 30. Ayet
+Rad Suresi 31. Ayet
+Rad Suresi 32. Ayet
+Rad Suresi 33. Ayet
+Rad Suresi 34. Ayet
+Rad Suresi 35. Ayet
+Rad Suresi 36. Ayet
+Rad Suresi 37. Ayet
+Rad Suresi 38. Ayet
+Rad Suresi 39. Ayet
+Rad Suresi 40. Ayet
+Rad Suresi 41. Ayet
+Rad Suresi 42. Ayet
+Rad Suresi 43. Ayet
 İbrahim Suresi 1. Ayet
 İbrahim Suresi 2. Ayet
 İbrahim Suresi 3. Ayet
@@ -2671,124 +2790,124 @@ Hac Suresi 75. Ayet
 Hac Suresi 76. Ayet
 Hac Suresi 77. Ayet
 Hac Suresi 78. Ayet
-Mü'minun Suresi 1. Ayet
-Mü'minun Suresi 2. Ayet
-Mü'minun Suresi 3. Ayet
-Mü'minun Suresi 4. Ayet
-Mü'minun Suresi 5. Ayet
-Mü'minun Suresi 6. Ayet
-Mü'minun Suresi 7. Ayet
-Mü'minun Suresi 8. Ayet
-Mü'minun Suresi 9. Ayet
-Mü'minun Suresi 10. Ayet
-Mü'minun Suresi 11. Ayet
-Mü'minun Suresi 12. Ayet
-Mü'minun Suresi 13. Ayet
-Mü'minun Suresi 14. Ayet
-Mü'minun Suresi 15. Ayet
-Mü'minun Suresi 16. Ayet
-Mü'minun Suresi 17. Ayet
-Mü'minun Suresi 18. Ayet
-Mü'minun Suresi 19. Ayet
-Mü'minun Suresi 20. Ayet
-Mü'minun Suresi 21. Ayet
-Mü'minun Suresi 22. Ayet
-Mü'minun Suresi 23. Ayet
-Mü'minun Suresi 24. Ayet
-Mü'minun Suresi 25. Ayet
-Mü'minun Suresi 26. Ayet
-Mü'minun Suresi 27. Ayet
-Mü'minun Suresi 28. Ayet
-Mü'minun Suresi 29. Ayet
-Mü'minun Suresi 30. Ayet
-Mü'minun Suresi 31. Ayet
-Mü'minun Suresi 32. Ayet
-Mü'minun Suresi 33. Ayet
-Mü'minun Suresi 34. Ayet
-Mü'minun Suresi 35. Ayet
-Mü'minun Suresi 36. Ayet
-Mü'minun Suresi 37. Ayet
-Mü'minun Suresi 38. Ayet
-Mü'minun Suresi 39. Ayet
-Mü'minun Suresi 40. Ayet
-Mü'minun Suresi 41. Ayet
-Mü'minun Suresi 42. Ayet
-Mü'minun Suresi 43. Ayet
-Mü'minun Suresi 44. Ayet
-Mü'minun Suresi 45. Ayet
-Mü'minun Suresi 46. Ayet
-Mü'minun Suresi 47. Ayet
-Mü'minun Suresi 48. Ayet
-Mü'minun Suresi 49. Ayet
-Mü'minun Suresi 50. Ayet
-Mü'minun Suresi 51. Ayet
-Mü'minun Suresi 52. Ayet
-Mü'minun Suresi 53. Ayet
-Mü'minun Suresi 54. Ayet
-Mü'minun Suresi 55. Ayet
-Mü'minun Suresi 56. Ayet
-Mü'minun Suresi 57. Ayet
-Mü'minun Suresi 58. Ayet
-Mü'minun Suresi 59. Ayet
-Mü'minun Suresi 60. Ayet
-Mü'minun Suresi 61. Ayet
-Mü'minun Suresi 62. Ayet
-Mü'minun Suresi 63. Ayet
-Mü'minun Suresi 64. Ayet
-Mü'minun Suresi 65. Ayet
-Mü'minun Suresi 66. Ayet
-Mü'minun Suresi 67. Ayet
-Mü'minun Suresi 68. Ayet
-Mü'minun Suresi 69. Ayet
-Mü'minun Suresi 70. Ayet
-Mü'minun Suresi 71. Ayet
-Mü'minun Suresi 72. Ayet
-Mü'minun Suresi 73. Ayet
-Mü'minun Suresi 74. Ayet
-Mü'minun Suresi 75. Ayet
-Mü'minun Suresi 76. Ayet
-Mü'minun Suresi 77. Ayet
-Mü'minun Suresi 78. Ayet
-Mü'minun Suresi 79. Ayet
-Mü'minun Suresi 80. Ayet
-Mü'minun Suresi 81. Ayet
-Mü'minun Suresi 82. Ayet
-Mü'minun Suresi 83. Ayet
-Mü'minun Suresi 84. Ayet
-Mü'minun Suresi 85. Ayet
-Mü'minun Suresi 86. Ayet
-Mü'minun Suresi 87. Ayet
-Mü'minun Suresi 88. Ayet
-Mü'minun Suresi 89. Ayet
-Mü'minun Suresi 90. Ayet
-Mü'minun Suresi 91. Ayet
-Mü'minun Suresi 92. Ayet
-Mü'minun Suresi 93. Ayet
-Mü'minun Suresi 94. Ayet
-Mü'minun Suresi 95. Ayet
-Mü'minun Suresi 96. Ayet
-Mü'minun Suresi 97. Ayet
-Mü'minun Suresi 98. Ayet
-Mü'minun Suresi 99. Ayet
-Mü'minun Suresi 100. Ayet
-Mü'minun Suresi 101. Ayet
-Mü'minun Suresi 102. Ayet
-Mü'minun Suresi 103. Ayet
-Mü'minun Suresi 104. Ayet
-Mü'minun Suresi 105. Ayet
-Mü'minun Suresi 106. Ayet
-Mü'minun Suresi 107. Ayet
-Mü'minun Suresi 108. Ayet
-Mü'minun Suresi 109. Ayet
-Mü'minun Suresi 110. Ayet
-Mü'minun Suresi 111. Ayet
-Mü'minun Suresi 112. Ayet
-Mü'minun Suresi 113. Ayet
-Mü'minun Suresi 114. Ayet
-Mü'minun Suresi 115. Ayet
-Mü'minun Suresi 116. Ayet
-Mü'minun Suresi 117. Ayet
-Mü'minun Suresi 118. Ayet
+Müminun Suresi 1. Ayet
+Müminun Suresi 2. Ayet
+Müminun Suresi 3. Ayet
+Müminun Suresi 4. Ayet
+Müminun Suresi 5. Ayet
+Müminun Suresi 6. Ayet
+Müminun Suresi 7. Ayet
+Müminun Suresi 8. Ayet
+Müminun Suresi 9. Ayet
+Müminun Suresi 10. Ayet
+Müminun Suresi 11. Ayet
+Müminun Suresi 12. Ayet
+Müminun Suresi 13. Ayet
+Müminun Suresi 14. Ayet
+Müminun Suresi 15. Ayet
+Müminun Suresi 16. Ayet
+Müminun Suresi 17. Ayet
+Müminun Suresi 18. Ayet
+Müminun Suresi 19. Ayet
+Müminun Suresi 20. Ayet
+Müminun Suresi 21. Ayet
+Müminun Suresi 22. Ayet
+Müminun Suresi 23. Ayet
+Müminun Suresi 24. Ayet
+Müminun Suresi 25. Ayet
+Müminun Suresi 26. Ayet
+Müminun Suresi 27. Ayet
+Müminun Suresi 28. Ayet
+Müminun Suresi 29. Ayet
+Müminun Suresi 30. Ayet
+Müminun Suresi 31. Ayet
+Müminun Suresi 32. Ayet
+Müminun Suresi 33. Ayet
+Müminun Suresi 34. Ayet
+Müminun Suresi 35. Ayet
+Müminun Suresi 36. Ayet
+Müminun Suresi 37. Ayet
+Müminun Suresi 38. Ayet
+Müminun Suresi 39. Ayet
+Müminun Suresi 40. Ayet
+Müminun Suresi 41. Ayet
+Müminun Suresi 42. Ayet
+Müminun Suresi 43. Ayet
+Müminun Suresi 44. Ayet
+Müminun Suresi 45. Ayet
+Müminun Suresi 46. Ayet
+Müminun Suresi 47. Ayet
+Müminun Suresi 48. Ayet
+Müminun Suresi 49. Ayet
+Müminun Suresi 50. Ayet
+Müminun Suresi 51. Ayet
+Müminun Suresi 52. Ayet
+Müminun Suresi 53. Ayet
+Müminun Suresi 54. Ayet
+Müminun Suresi 55. Ayet
+Müminun Suresi 56. Ayet
+Müminun Suresi 57. Ayet
+Müminun Suresi 58. Ayet
+Müminun Suresi 59. Ayet
+Müminun Suresi 60. Ayet
+Müminun Suresi 61. Ayet
+Müminun Suresi 62. Ayet
+Müminun Suresi 63. Ayet
+Müminun Suresi 64. Ayet
+Müminun Suresi 65. Ayet
+Müminun Suresi 66. Ayet
+Müminun Suresi 67. Ayet
+Müminun Suresi 68. Ayet
+Müminun Suresi 69. Ayet
+Müminun Suresi 70. Ayet
+Müminun Suresi 71. Ayet
+Müminun Suresi 72. Ayet
+Müminun Suresi 73. Ayet
+Müminun Suresi 74. Ayet
+Müminun Suresi 75. Ayet
+Müminun Suresi 76. Ayet
+Müminun Suresi 77. Ayet
+Müminun Suresi 78. Ayet
+Müminun Suresi 79. Ayet
+Müminun Suresi 80. Ayet
+Müminun Suresi 81. Ayet
+Müminun Suresi 82. Ayet
+Müminun Suresi 83. Ayet
+Müminun Suresi 84. Ayet
+Müminun Suresi 85. Ayet
+Müminun Suresi 86. Ayet
+Müminun Suresi 87. Ayet
+Müminun Suresi 88. Ayet
+Müminun Suresi 89. Ayet
+Müminun Suresi 90. Ayet
+Müminun Suresi 91. Ayet
+Müminun Suresi 92. Ayet
+Müminun Suresi 93. Ayet
+Müminun Suresi 94. Ayet
+Müminun Suresi 95. Ayet
+Müminun Suresi 96. Ayet
+Müminun Suresi 97. Ayet
+Müminun Suresi 98. Ayet
+Müminun Suresi 99. Ayet
+Müminun Suresi 100. Ayet
+Müminun Suresi 101. Ayet
+Müminun Suresi 102. Ayet
+Müminun Suresi 103. Ayet
+Müminun Suresi 104. Ayet
+Müminun Suresi 105. Ayet
+Müminun Suresi 106. Ayet
+Müminun Suresi 107. Ayet
+Müminun Suresi 108. Ayet
+Müminun Suresi 109. Ayet
+Müminun Suresi 110. Ayet
+Müminun Suresi 111. Ayet
+Müminun Suresi 112. Ayet
+Müminun Suresi 113. Ayet
+Müminun Suresi 114. Ayet
+Müminun Suresi 115. Ayet
+Müminun Suresi 116. Ayet
+Müminun Suresi 117. Ayet
+Müminun Suresi 118. Ayet
 Nur Suresi 1. Ayet
 Nur Suresi 2. Ayet
 Nur Suresi 3. Ayet
@@ -2930,233 +3049,233 @@ Furkan Suresi 74. Ayet
 Furkan Suresi 75. Ayet
 Furkan Suresi 76. Ayet
 Furkan Suresi 77. Ayet
-Şu'ara Suresi 1. Ayet
-Şu'ara Suresi 2. Ayet
-Şu'ara Suresi 3. Ayet
-Şu'ara Suresi 4. Ayet
-Şu'ara Suresi 5. Ayet
-Şu'ara Suresi 6. Ayet
-Şu'ara Suresi 7. Ayet
-Şu'ara Suresi 8. Ayet
-Şu'ara Suresi 9. Ayet
-Şu'ara Suresi 10. Ayet
-Şu'ara Suresi 11. Ayet
-Şu'ara Suresi 12. Ayet
-Şu'ara Suresi 13. Ayet
-Şu'ara Suresi 14. Ayet
-Şu'ara Suresi 15. Ayet
-Şu'ara Suresi 16. Ayet
-Şu'ara Suresi 17. Ayet
-Şu'ara Suresi 18. Ayet
-Şu'ara Suresi 19. Ayet
-Şu'ara Suresi 20. Ayet
-Şu'ara Suresi 21. Ayet
-Şu'ara Suresi 22. Ayet
-Şu'ara Suresi 23. Ayet
-Şu'ara Suresi 24. Ayet
-Şu'ara Suresi 25. Ayet
-Şu'ara Suresi 26. Ayet
-Şu'ara Suresi 27. Ayet
-Şu'ara Suresi 28. Ayet
-Şu'ara Suresi 29. Ayet
-Şu'ara Suresi 30. Ayet
-Şu'ara Suresi 31. Ayet
-Şu'ara Suresi 32. Ayet
-Şu'ara Suresi 33. Ayet
-Şu'ara Suresi 34. Ayet
-Şu'ara Suresi 35. Ayet
-Şu'ara Suresi 36. Ayet
-Şu'ara Suresi 37. Ayet
-Şu'ara Suresi 38. Ayet
-Şu'ara Suresi 39. Ayet
-Şu'ara Suresi 40. Ayet
-Şu'ara Suresi 41. Ayet
-Şu'ara Suresi 42. Ayet
-Şu'ara Suresi 43. Ayet
-Şu'ara Suresi 44. Ayet
-Şu'ara Suresi 45. Ayet
-Şu'ara Suresi 46. Ayet
-Şu'ara Suresi 47. Ayet
-Şu'ara Suresi 48. Ayet
-Şu'ara Suresi 49. Ayet
-Şu'ara Suresi 50. Ayet
-Şu'ara Suresi 51. Ayet
-Şu'ara Suresi 52. Ayet
-Şu'ara Suresi 53. Ayet
-Şu'ara Suresi 54. Ayet
-Şu'ara Suresi 55. Ayet
-Şu'ara Suresi 56. Ayet
-Şu'ara Suresi 57. Ayet
-Şu'ara Suresi 58. Ayet
-Şu'ara Suresi 59. Ayet
-Şu'ara Suresi 60. Ayet
-Şu'ara Suresi 61. Ayet
-Şu'ara Suresi 62. Ayet
-Şu'ara Suresi 63. Ayet
-Şu'ara Suresi 64. Ayet
-Şu'ara Suresi 65. Ayet
-Şu'ara Suresi 66. Ayet
-Şu'ara Suresi 67. Ayet
-Şu'ara Suresi 68. Ayet
-Şu'ara Suresi 69. Ayet
-Şu'ara Suresi 70. Ayet
-Şu'ara Suresi 71. Ayet
-Şu'ara Suresi 72. Ayet
-Şu'ara Suresi 73. Ayet
-Şu'ara Suresi 74. Ayet
-Şu'ara Suresi 75. Ayet
-Şu'ara Suresi 76. Ayet
-Şu'ara Suresi 77. Ayet
-Şu'ara Suresi 78. Ayet
-Şu'ara Suresi 79. Ayet
-Şu'ara Suresi 80. Ayet
-Şu'ara Suresi 81. Ayet
-Şu'ara Suresi 82. Ayet
-Şu'ara Suresi 83. Ayet
-Şu'ara Suresi 84. Ayet
-Şu'ara Suresi 85. Ayet
-Şu'ara Suresi 86. Ayet
-Şu'ara Suresi 87. Ayet
-Şu'ara Suresi 88. Ayet
-Şu'ara Suresi 89. Ayet
-Şu'ara Suresi 90. Ayet
-Şu'ara Suresi 91. Ayet
-Şu'ara Suresi 92. Ayet
-Şu'ara Suresi 93. Ayet
-Şu'ara Suresi 94. Ayet
-Şu'ara Suresi 95. Ayet
-Şu'ara Suresi 96. Ayet
-Şu'ara Suresi 97. Ayet
-Şu'ara Suresi 98. Ayet
-Şu'ara Suresi 99. Ayet
-Şu'ara Suresi 100. Ayet
-Şu'ara Suresi 101. Ayet
-Şu'ara Suresi 102. Ayet
-Şu'ara Suresi 103. Ayet
-Şu'ara Suresi 104. Ayet
-Şu'ara Suresi 105. Ayet
-Şu'ara Suresi 106. Ayet
-Şu'ara Suresi 107. Ayet
-Şu'ara Suresi 108. Ayet
-Şu'ara Suresi 109. Ayet
-Şu'ara Suresi 110. Ayet
-Şu'ara Suresi 111. Ayet
-Şu'ara Suresi 112. Ayet
-Şu'ara Suresi 113. Ayet
-Şu'ara Suresi 114. Ayet
-Şu'ara Suresi 115. Ayet
-Şu'ara Suresi 116. Ayet
-Şu'ara Suresi 117. Ayet
-Şu'ara Suresi 118. Ayet
-Şu'ara Suresi 119. Ayet
-Şu'ara Suresi 120. Ayet
-Şu'ara Suresi 121. Ayet
-Şu'ara Suresi 122. Ayet
-Şu'ara Suresi 123. Ayet
-Şu'ara Suresi 124. Ayet
-Şu'ara Suresi 125. Ayet
-Şu'ara Suresi 126. Ayet
-Şu'ara Suresi 127. Ayet
-Şu'ara Suresi 128. Ayet
-Şu'ara Suresi 129. Ayet
-Şu'ara Suresi 130. Ayet
-Şu'ara Suresi 131. Ayet
-Şu'ara Suresi 132. Ayet
-Şu'ara Suresi 133. Ayet
-Şu'ara Suresi 134. Ayet
-Şu'ara Suresi 135. Ayet
-Şu'ara Suresi 136. Ayet
-Şu'ara Suresi 137. Ayet
-Şu'ara Suresi 138. Ayet
-Şu'ara Suresi 139. Ayet
-Şu'ara Suresi 140. Ayet
-Şu'ara Suresi 141. Ayet
-Şu'ara Suresi 142. Ayet
-Şu'ara Suresi 143. Ayet
-Şu'ara Suresi 144. Ayet
-Şu'ara Suresi 145. Ayet
-Şu'ara Suresi 146. Ayet
-Şu'ara Suresi 147. Ayet
-Şu'ara Suresi 148. Ayet
-Şu'ara Suresi 149. Ayet
-Şu'ara Suresi 150. Ayet
-Şu'ara Suresi 151. Ayet
-Şu'ara Suresi 152. Ayet
-Şu'ara Suresi 153. Ayet
-Şu'ara Suresi 154. Ayet
-Şu'ara Suresi 155. Ayet
-Şu'ara Suresi 156. Ayet
-Şu'ara Suresi 157. Ayet
-Şu'ara Suresi 158. Ayet
-Şu'ara Suresi 159. Ayet
-Şu'ara Suresi 160. Ayet
-Şu'ara Suresi 161. Ayet
-Şu'ara Suresi 162. Ayet
-Şu'ara Suresi 163. Ayet
-Şu'ara Suresi 164. Ayet
-Şu'ara Suresi 165. Ayet
-Şu'ara Suresi 166. Ayet
-Şu'ara Suresi 167. Ayet
-Şu'ara Suresi 168. Ayet
-Şu'ara Suresi 169. Ayet
-Şu'ara Suresi 170. Ayet
-Şu'ara Suresi 171. Ayet
-Şu'ara Suresi 172. Ayet
-Şu'ara Suresi 173. Ayet
-Şu'ara Suresi 174. Ayet
-Şu'ara Suresi 175. Ayet
-Şu'ara Suresi 176. Ayet
-Şu'ara Suresi 177. Ayet
-Şu'ara Suresi 178. Ayet
-Şu'ara Suresi 179. Ayet
-Şu'ara Suresi 180. Ayet
-Şu'ara Suresi 181. Ayet
-Şu'ara Suresi 182. Ayet
-Şu'ara Suresi 183. Ayet
-Şu'ara Suresi 184. Ayet
-Şu'ara Suresi 185. Ayet
-Şu'ara Suresi 186. Ayet
-Şu'ara Suresi 187. Ayet
-Şu'ara Suresi 188. Ayet
-Şu'ara Suresi 189. Ayet
-Şu'ara Suresi 190. Ayet
-Şu'ara Suresi 191. Ayet
-Şu'ara Suresi 192. Ayet
-Şu'ara Suresi 193. Ayet
-Şu'ara Suresi 194. Ayet
-Şu'ara Suresi 195. Ayet
-Şu'ara Suresi 196. Ayet
-Şu'ara Suresi 197. Ayet
-Şu'ara Suresi 198. Ayet
-Şu'ara Suresi 199. Ayet
-Şu'ara Suresi 200. Ayet
-Şu'ara Suresi 201. Ayet
-Şu'ara Suresi 202. Ayet
-Şu'ara Suresi 203. Ayet
-Şu'ara Suresi 204. Ayet
-Şu'ara Suresi 205. Ayet
-Şu'ara Suresi 206. Ayet
-Şu'ara Suresi 207. Ayet
-Şu'ara Suresi 208. Ayet
-Şu'ara Suresi 209. Ayet
-Şu'ara Suresi 210. Ayet
-Şu'ara Suresi 211. Ayet
-Şu'ara Suresi 212. Ayet
-Şu'ara Suresi 213. Ayet
-Şu'ara Suresi 214. Ayet
-Şu'ara Suresi 215. Ayet
-Şu'ara Suresi 216. Ayet
-Şu'ara Suresi 217. Ayet
-Şu'ara Suresi 218. Ayet
-Şu'ara Suresi 219. Ayet
-Şu'ara Suresi 220. Ayet
-Şu'ara Suresi 221. Ayet
-Şu'ara Suresi 222. Ayet
-Şu'ara Suresi 223. Ayet
-Şu'ara Suresi 224. Ayet
-Şu'ara Suresi 225. Ayet
-Şu'ara Suresi 226. Ayet
-Şu'ara Suresi 227. Ayet
+Şuara Suresi 1. Ayet
+Şuara Suresi 2. Ayet
+Şuara Suresi 3. Ayet
+Şuara Suresi 4. Ayet
+Şuara Suresi 5. Ayet
+Şuara Suresi 6. Ayet
+Şuara Suresi 7. Ayet
+Şuara Suresi 8. Ayet
+Şuara Suresi 9. Ayet
+Şuara Suresi 10. Ayet
+Şuara Suresi 11. Ayet
+Şuara Suresi 12. Ayet
+Şuara Suresi 13. Ayet
+Şuara Suresi 14. Ayet
+Şuara Suresi 15. Ayet
+Şuara Suresi 16. Ayet
+Şuara Suresi 17. Ayet
+Şuara Suresi 18. Ayet
+Şuara Suresi 19. Ayet
+Şuara Suresi 20. Ayet
+Şuara Suresi 21. Ayet
+Şuara Suresi 22. Ayet
+Şuara Suresi 23. Ayet
+Şuara Suresi 24. Ayet
+Şuara Suresi 25. Ayet
+Şuara Suresi 26. Ayet
+Şuara Suresi 27. Ayet
+Şuara Suresi 28. Ayet
+Şuara Suresi 29. Ayet
+Şuara Suresi 30. Ayet
+Şuara Suresi 31. Ayet
+Şuara Suresi 32. Ayet
+Şuara Suresi 33. Ayet
+Şuara Suresi 34. Ayet
+Şuara Suresi 35. Ayet
+Şuara Suresi 36. Ayet
+Şuara Suresi 37. Ayet
+Şuara Suresi 38. Ayet
+Şuara Suresi 39. Ayet
+Şuara Suresi 40. Ayet
+Şuara Suresi 41. Ayet
+Şuara Suresi 42. Ayet
+Şuara Suresi 43. Ayet
+Şuara Suresi 44. Ayet
+Şuara Suresi 45. Ayet
+Şuara Suresi 46. Ayet
+Şuara Suresi 47. Ayet
+Şuara Suresi 48. Ayet
+Şuara Suresi 49. Ayet
+Şuara Suresi 50. Ayet
+Şuara Suresi 51. Ayet
+Şuara Suresi 52. Ayet
+Şuara Suresi 53. Ayet
+Şuara Suresi 54. Ayet
+Şuara Suresi 55. Ayet
+Şuara Suresi 56. Ayet
+Şuara Suresi 57. Ayet
+Şuara Suresi 58. Ayet
+Şuara Suresi 59. Ayet
+Şuara Suresi 60. Ayet
+Şuara Suresi 61. Ayet
+Şuara Suresi 62. Ayet
+Şuara Suresi 63. Ayet
+Şuara Suresi 64. Ayet
+Şuara Suresi 65. Ayet
+Şuara Suresi 66. Ayet
+Şuara Suresi 67. Ayet
+Şuara Suresi 68. Ayet
+Şuara Suresi 69. Ayet
+Şuara Suresi 70. Ayet
+Şuara Suresi 71. Ayet
+Şuara Suresi 72. Ayet
+Şuara Suresi 73. Ayet
+Şuara Suresi 74. Ayet
+Şuara Suresi 75. Ayet
+Şuara Suresi 76. Ayet
+Şuara Suresi 77. Ayet
+Şuara Suresi 78. Ayet
+Şuara Suresi 79. Ayet
+Şuara Suresi 80. Ayet
+Şuara Suresi 81. Ayet
+Şuara Suresi 82. Ayet
+Şuara Suresi 83. Ayet
+Şuara Suresi 84. Ayet
+Şuara Suresi 85. Ayet
+Şuara Suresi 86. Ayet
+Şuara Suresi 87. Ayet
+Şuara Suresi 88. Ayet
+Şuara Suresi 89. Ayet
+Şuara Suresi 90. Ayet
+Şuara Suresi 91. Ayet
+Şuara Suresi 92. Ayet
+Şuara Suresi 93. Ayet
+Şuara Suresi 94. Ayet
+Şuara Suresi 95. Ayet
+Şuara Suresi 96. Ayet
+Şuara Suresi 97. Ayet
+Şuara Suresi 98. Ayet
+Şuara Suresi 99. Ayet
+Şuara Suresi 100. Ayet
+Şuara Suresi 101. Ayet
+Şuara Suresi 102. Ayet
+Şuara Suresi 103. Ayet
+Şuara Suresi 104. Ayet
+Şuara Suresi 105. Ayet
+Şuara Suresi 106. Ayet
+Şuara Suresi 107. Ayet
+Şuara Suresi 108. Ayet
+Şuara Suresi 109. Ayet
+Şuara Suresi 110. Ayet
+Şuara Suresi 111. Ayet
+Şuara Suresi 112. Ayet
+Şuara Suresi 113. Ayet
+Şuara Suresi 114. Ayet
+Şuara Suresi 115. Ayet
+Şuara Suresi 116. Ayet
+Şuara Suresi 117. Ayet
+Şuara Suresi 118. Ayet
+Şuara Suresi 119. Ayet
+Şuara Suresi 120. Ayet
+Şuara Suresi 121. Ayet
+Şuara Suresi 122. Ayet
+Şuara Suresi 123. Ayet
+Şuara Suresi 124. Ayet
+Şuara Suresi 125. Ayet
+Şuara Suresi 126. Ayet
+Şuara Suresi 127. Ayet
+Şuara Suresi 128. Ayet
+Şuara Suresi 129. Ayet
+Şuara Suresi 130. Ayet
+Şuara Suresi 131. Ayet
+Şuara Suresi 132. Ayet
+Şuara Suresi 133. Ayet
+Şuara Suresi 134. Ayet
+Şuara Suresi 135. Ayet
+Şuara Suresi 136. Ayet
+Şuara Suresi 137. Ayet
+Şuara Suresi 138. Ayet
+Şuara Suresi 139. Ayet
+Şuara Suresi 140. Ayet
+Şuara Suresi 141. Ayet
+Şuara Suresi 142. Ayet
+Şuara Suresi 143. Ayet
+Şuara Suresi 144. Ayet
+Şuara Suresi 145. Ayet
+Şuara Suresi 146. Ayet
+Şuara Suresi 147. Ayet
+Şuara Suresi 148. Ayet
+Şuara Suresi 149. Ayet
+Şuara Suresi 150. Ayet
+Şuara Suresi 151. Ayet
+Şuara Suresi 152. Ayet
+Şuara Suresi 153. Ayet
+Şuara Suresi 154. Ayet
+Şuara Suresi 155. Ayet
+Şuara Suresi 156. Ayet
+Şuara Suresi 157. Ayet
+Şuara Suresi 158. Ayet
+Şuara Suresi 159. Ayet
+Şuara Suresi 160. Ayet
+Şuara Suresi 161. Ayet
+Şuara Suresi 162. Ayet
+Şuara Suresi 163. Ayet
+Şuara Suresi 164. Ayet
+Şuara Suresi 165. Ayet
+Şuara Suresi 166. Ayet
+Şuara Suresi 167. Ayet
+Şuara Suresi 168. Ayet
+Şuara Suresi 169. Ayet
+Şuara Suresi 170. Ayet
+Şuara Suresi 171. Ayet
+Şuara Suresi 172. Ayet
+Şuara Suresi 173. Ayet
+Şuara Suresi 174. Ayet
+Şuara Suresi 175. Ayet
+Şuara Suresi 176. Ayet
+Şuara Suresi 177. Ayet
+Şuara Suresi 178. Ayet
+Şuara Suresi 179. Ayet
+Şuara Suresi 180. Ayet
+Şuara Suresi 181. Ayet
+Şuara Suresi 182. Ayet
+Şuara Suresi 183. Ayet
+Şuara Suresi 184. Ayet
+Şuara Suresi 185. Ayet
+Şuara Suresi 186. Ayet
+Şuara Suresi 187. Ayet
+Şuara Suresi 188. Ayet
+Şuara Suresi 189. Ayet
+Şuara Suresi 190. Ayet
+Şuara Suresi 191. Ayet
+Şuara Suresi 192. Ayet
+Şuara Suresi 193. Ayet
+Şuara Suresi 194. Ayet
+Şuara Suresi 195. Ayet
+Şuara Suresi 196. Ayet
+Şuara Suresi 197. Ayet
+Şuara Suresi 198. Ayet
+Şuara Suresi 199. Ayet
+Şuara Suresi 200. Ayet
+Şuara Suresi 201. Ayet
+Şuara Suresi 202. Ayet
+Şuara Suresi 203. Ayet
+Şuara Suresi 204. Ayet
+Şuara Suresi 205. Ayet
+Şuara Suresi 206. Ayet
+Şuara Suresi 207. Ayet
+Şuara Suresi 208. Ayet
+Şuara Suresi 209. Ayet
+Şuara Suresi 210. Ayet
+Şuara Suresi 211. Ayet
+Şuara Suresi 212. Ayet
+Şuara Suresi 213. Ayet
+Şuara Suresi 214. Ayet
+Şuara Suresi 215. Ayet
+Şuara Suresi 216. Ayet
+Şuara Suresi 217. Ayet
+Şuara Suresi 218. Ayet
+Şuara Suresi 219. Ayet
+Şuara Suresi 220. Ayet
+Şuara Suresi 221. Ayet
+Şuara Suresi 222. Ayet
+Şuara Suresi 223. Ayet
+Şuara Suresi 224. Ayet
+Şuara Suresi 225. Ayet
+Şuara Suresi 226. Ayet
+Şuara Suresi 227. Ayet
 Neml Suresi 1. Ayet
 Neml Suresi 2. Ayet
 Neml Suresi 3. Ayet
@@ -4131,91 +4250,91 @@ Zümer Suresi 72. Ayet
 Zümer Suresi 73. Ayet
 Zümer Suresi 74. Ayet
 Zümer Suresi 75. Ayet
-Mü'min Suresi 1. Ayet
-Mü'min Suresi 2. Ayet
-Mü'min Suresi 3. Ayet
-Mü'min Suresi 4. Ayet
-Mü'min Suresi 5. Ayet
-Mü'min Suresi 6. Ayet
-Mü'min Suresi 7. Ayet
-Mü'min Suresi 8. Ayet
-Mü'min Suresi 9. Ayet
-Mü'min Suresi 10. Ayet
-Mü'min Suresi 11. Ayet
-Mü'min Suresi 12. Ayet
-Mü'min Suresi 13. Ayet
-Mü'min Suresi 14. Ayet
-Mü'min Suresi 15. Ayet
-Mü'min Suresi 16. Ayet
-Mü'min Suresi 17. Ayet
-Mü'min Suresi 18. Ayet
-Mü'min Suresi 19. Ayet
-Mü'min Suresi 20. Ayet
-Mü'min Suresi 21. Ayet
-Mü'min Suresi 22. Ayet
-Mü'min Suresi 23. Ayet
-Mü'min Suresi 24. Ayet
-Mü'min Suresi 25. Ayet
-Mü'min Suresi 26. Ayet
-Mü'min Suresi 27. Ayet
-Mü'min Suresi 28. Ayet
-Mü'min Suresi 29. Ayet
-Mü'min Suresi 30. Ayet
-Mü'min Suresi 31. Ayet
-Mü'min Suresi 32. Ayet
-Mü'min Suresi 33. Ayet
-Mü'min Suresi 34. Ayet
-Mü'min Suresi 35. Ayet
-Mü'min Suresi 36. Ayet
-Mü'min Suresi 37. Ayet
-Mü'min Suresi 38. Ayet
-Mü'min Suresi 39. Ayet
-Mü'min Suresi 40. Ayet
-Mü'min Suresi 41. Ayet
-Mü'min Suresi 42. Ayet
-Mü'min Suresi 43. Ayet
-Mü'min Suresi 44. Ayet
-Mü'min Suresi 45. Ayet
-Mü'min Suresi 46. Ayet
-Mü'min Suresi 47. Ayet
-Mü'min Suresi 48. Ayet
-Mü'min Suresi 49. Ayet
-Mü'min Suresi 50. Ayet
-Mü'min Suresi 51. Ayet
-Mü'min Suresi 52. Ayet
-Mü'min Suresi 53. Ayet
-Mü'min Suresi 54. Ayet
-Mü'min Suresi 55. Ayet
-Mü'min Suresi 56. Ayet
-Mü'min Suresi 57. Ayet
-Mü'min Suresi 58. Ayet
-Mü'min Suresi 59. Ayet
-Mü'min Suresi 60. Ayet
-Mü'min Suresi 61. Ayet
-Mü'min Suresi 62. Ayet
-Mü'min Suresi 63. Ayet
-Mü'min Suresi 64. Ayet
-Mü'min Suresi 65. Ayet
-Mü'min Suresi 66. Ayet
-Mü'min Suresi 67. Ayet
-Mü'min Suresi 68. Ayet
-Mü'min Suresi 69. Ayet
-Mü'min Suresi 70. Ayet
-Mü'min Suresi 71. Ayet
-Mü'min Suresi 72. Ayet
-Mü'min Suresi 73. Ayet
-Mü'min Suresi 74. Ayet
-Mü'min Suresi 75. Ayet
-Mü'min Suresi 76. Ayet
-Mü'min Suresi 77. Ayet
-Mü'min Suresi 78. Ayet
-Mü'min Suresi 79. Ayet
-Mü'min Suresi 80. Ayet
-Mü'min Suresi 81. Ayet
-Mü'min Suresi 82. Ayet
-Mü'min Suresi 83. Ayet
-Mü'min Suresi 84. Ayet
-Mü'min Suresi 85. Ayet
+Mümin Suresi 1. Ayet
+Mümin Suresi 2. Ayet
+Mümin Suresi 3. Ayet
+Mümin Suresi 4. Ayet
+Mümin Suresi 5. Ayet
+Mümin Suresi 6. Ayet
+Mümin Suresi 7. Ayet
+Mümin Suresi 8. Ayet
+Mümin Suresi 9. Ayet
+Mümin Suresi 10. Ayet
+Mümin Suresi 11. Ayet
+Mümin Suresi 12. Ayet
+Mümin Suresi 13. Ayet
+Mümin Suresi 14. Ayet
+Mümin Suresi 15. Ayet
+Mümin Suresi 16. Ayet
+Mümin Suresi 17. Ayet
+Mümin Suresi 18. Ayet
+Mümin Suresi 19. Ayet
+Mümin Suresi 20. Ayet
+Mümin Suresi 21. Ayet
+Mümin Suresi 22. Ayet
+Mümin Suresi 23. Ayet
+Mümin Suresi 24. Ayet
+Mümin Suresi 25. Ayet
+Mümin Suresi 26. Ayet
+Mümin Suresi 27. Ayet
+Mümin Suresi 28. Ayet
+Mümin Suresi 29. Ayet
+Mümin Suresi 30. Ayet
+Mümin Suresi 31. Ayet
+Mümin Suresi 32. Ayet
+Mümin Suresi 33. Ayet
+Mümin Suresi 34. Ayet
+Mümin Suresi 35. Ayet
+Mümin Suresi 36. Ayet
+Mümin Suresi 37. Ayet
+Mümin Suresi 38. Ayet
+Mümin Suresi 39. Ayet
+Mümin Suresi 40. Ayet
+Mümin Suresi 41. Ayet
+Mümin Suresi 42. Ayet
+Mümin Suresi 43. Ayet
+Mümin Suresi 44. Ayet
+Mümin Suresi 45. Ayet
+Mümin Suresi 46. Ayet
+Mümin Suresi 47. Ayet
+Mümin Suresi 48. Ayet
+Mümin Suresi 49. Ayet
+Mümin Suresi 50. Ayet
+Mümin Suresi 51. Ayet
+Mümin Suresi 52. Ayet
+Mümin Suresi 53. Ayet
+Mümin Suresi 54. Ayet
+Mümin Suresi 55. Ayet
+Mümin Suresi 56. Ayet
+Mümin Suresi 57. Ayet
+Mümin Suresi 58. Ayet
+Mümin Suresi 59. Ayet
+Mümin Suresi 60. Ayet
+Mümin Suresi 61. Ayet
+Mümin Suresi 62. Ayet
+Mümin Suresi 63. Ayet
+Mümin Suresi 64. Ayet
+Mümin Suresi 65. Ayet
+Mümin Suresi 66. Ayet
+Mümin Suresi 67. Ayet
+Mümin Suresi 68. Ayet
+Mümin Suresi 69. Ayet
+Mümin Suresi 70. Ayet
+Mümin Suresi 71. Ayet
+Mümin Suresi 72. Ayet
+Mümin Suresi 73. Ayet
+Mümin Suresi 74. Ayet
+Mümin Suresi 75. Ayet
+Mümin Suresi 76. Ayet
+Mümin Suresi 77. Ayet
+Mümin Suresi 78. Ayet
+Mümin Suresi 79. Ayet
+Mümin Suresi 80. Ayet
+Mümin Suresi 81. Ayet
+Mümin Suresi 82. Ayet
+Mümin Suresi 83. Ayet
+Mümin Suresi 84. Ayet
+Mümin Suresi 85. Ayet
 Fussilet Suresi 1. Ayet
 Fussilet Suresi 2. Ayet
 Fussilet Suresi 3. Ayet
@@ -4977,102 +5096,102 @@ Rahman Suresi 75. Ayet
 Rahman Suresi 76. Ayet
 Rahman Suresi 77. Ayet
 Rahman Suresi 78. Ayet
-Vakı'a Suresi 1. Ayet
-Vakı'a Suresi 2. Ayet
-Vakı'a Suresi 3. Ayet
-Vakı'a Suresi 4. Ayet
-Vakı'a Suresi 5. Ayet
-Vakı'a Suresi 6. Ayet
-Vakı'a Suresi 7. Ayet
-Vakı'a Suresi 8. Ayet
-Vakı'a Suresi 9. Ayet
-Vakı'a Suresi 10. Ayet
-Vakı'a Suresi 11. Ayet
-Vakı'a Suresi 12. Ayet
-Vakı'a Suresi 13. Ayet
-Vakı'a Suresi 14. Ayet
-Vakı'a Suresi 15. Ayet
-Vakı'a Suresi 16. Ayet
-Vakı'a Suresi 17. Ayet
-Vakı'a Suresi 18. Ayet
-Vakı'a Suresi 19. Ayet
-Vakı'a Suresi 20. Ayet
-Vakı'a Suresi 21. Ayet
-Vakı'a Suresi 22. Ayet
-Vakı'a Suresi 23. Ayet
-Vakı'a Suresi 24. Ayet
-Vakı'a Suresi 25. Ayet
-Vakı'a Suresi 26. Ayet
-Vakı'a Suresi 27. Ayet
-Vakı'a Suresi 28. Ayet
-Vakı'a Suresi 29. Ayet
-Vakı'a Suresi 30. Ayet
-Vakı'a Suresi 31. Ayet
-Vakı'a Suresi 32. Ayet
-Vakı'a Suresi 33. Ayet
-Vakı'a Suresi 34. Ayet
-Vakı'a Suresi 35. Ayet
-Vakı'a Suresi 36. Ayet
-Vakı'a Suresi 37. Ayet
-Vakı'a Suresi 38. Ayet
-Vakı'a Suresi 39. Ayet
-Vakı'a Suresi 40. Ayet
-Vakı'a Suresi 41. Ayet
-Vakı'a Suresi 42. Ayet
-Vakı'a Suresi 43. Ayet
-Vakı'a Suresi 44. Ayet
-Vakı'a Suresi 45. Ayet
-Vakı'a Suresi 46. Ayet
-Vakı'a Suresi 47. Ayet
-Vakı'a Suresi 48. Ayet
-Vakı'a Suresi 49. Ayet
-Vakı'a Suresi 50. Ayet
-Vakı'a Suresi 51. Ayet
-Vakı'a Suresi 52. Ayet
-Vakı'a Suresi 53. Ayet
-Vakı'a Suresi 54. Ayet
-Vakı'a Suresi 55. Ayet
-Vakı'a Suresi 56. Ayet
-Vakı'a Suresi 57. Ayet
-Vakı'a Suresi 58. Ayet
-Vakı'a Suresi 59. Ayet
-Vakı'a Suresi 60. Ayet
-Vakı'a Suresi 61. Ayet
-Vakı'a Suresi 62. Ayet
-Vakı'a Suresi 63. Ayet
-Vakı'a Suresi 64. Ayet
-Vakı'a Suresi 65. Ayet
-Vakı'a Suresi 66. Ayet
-Vakı'a Suresi 67. Ayet
-Vakı'a Suresi 68. Ayet
-Vakı'a Suresi 69. Ayet
-Vakı'a Suresi 70. Ayet
-Vakı'a Suresi 71. Ayet
-Vakı'a Suresi 72. Ayet
-Vakı'a Suresi 73. Ayet
-Vakı'a Suresi 74. Ayet
-Vakı'a Suresi 75. Ayet
-Vakı'a Suresi 76. Ayet
-Vakı'a Suresi 77. Ayet
-Vakı'a Suresi 78. Ayet
-Vakı'a Suresi 79. Ayet
-Vakı'a Suresi 80. Ayet
-Vakı'a Suresi 81. Ayet
-Vakı'a Suresi 82. Ayet
-Vakı'a Suresi 83. Ayet
-Vakı'a Suresi 84. Ayet
-Vakı'a Suresi 85. Ayet
-Vakı'a Suresi 86. Ayet
-Vakı'a Suresi 87. Ayet
-Vakı'a Suresi 88. Ayet
-Vakı'a Suresi 89. Ayet
-Vakı'a Suresi 90. Ayet
-Vakı'a Suresi 91. Ayet
-Vakı'a Suresi 92. Ayet
-Vakı'a Suresi 93. Ayet
-Vakı'a Suresi 94. Ayet
-Vakı'a Suresi 95. Ayet
-Vakı'a Suresi 96. Ayet
+Vakıa Suresi 1. Ayet
+Vakıa Suresi 2. Ayet
+Vakıa Suresi 3. Ayet
+Vakıa Suresi 4. Ayet
+Vakıa Suresi 5. Ayet
+Vakıa Suresi 6. Ayet
+Vakıa Suresi 7. Ayet
+Vakıa Suresi 8. Ayet
+Vakıa Suresi 9. Ayet
+Vakıa Suresi 10. Ayet
+Vakıa Suresi 11. Ayet
+Vakıa Suresi 12. Ayet
+Vakıa Suresi 13. Ayet
+Vakıa Suresi 14. Ayet
+Vakıa Suresi 15. Ayet
+Vakıa Suresi 16. Ayet
+Vakıa Suresi 17. Ayet
+Vakıa Suresi 18. Ayet
+Vakıa Suresi 19. Ayet
+Vakıa Suresi 20. Ayet
+Vakıa Suresi 21. Ayet
+Vakıa Suresi 22. Ayet
+Vakıa Suresi 23. Ayet
+Vakıa Suresi 24. Ayet
+Vakıa Suresi 25. Ayet
+Vakıa Suresi 26. Ayet
+Vakıa Suresi 27. Ayet
+Vakıa Suresi 28. Ayet
+Vakıa Suresi 29. Ayet
+Vakıa Suresi 30. Ayet
+Vakıa Suresi 31. Ayet
+Vakıa Suresi 32. Ayet
+Vakıa Suresi 33. Ayet
+Vakıa Suresi 34. Ayet
+Vakıa Suresi 35. Ayet
+Vakıa Suresi 36. Ayet
+Vakıa Suresi 37. Ayet
+Vakıa Suresi 38. Ayet
+Vakıa Suresi 39. Ayet
+Vakıa Suresi 40. Ayet
+Vakıa Suresi 41. Ayet
+Vakıa Suresi 42. Ayet
+Vakıa Suresi 43. Ayet
+Vakıa Suresi 44. Ayet
+Vakıa Suresi 45. Ayet
+Vakıa Suresi 46. Ayet
+Vakıa Suresi 47. Ayet
+Vakıa Suresi 48. Ayet
+Vakıa Suresi 49. Ayet
+Vakıa Suresi 50. Ayet
+Vakıa Suresi 51. Ayet
+Vakıa Suresi 52. Ayet
+Vakıa Suresi 53. Ayet
+Vakıa Suresi 54. Ayet
+Vakıa Suresi 55. Ayet
+Vakıa Suresi 56. Ayet
+Vakıa Suresi 57. Ayet
+Vakıa Suresi 58. Ayet
+Vakıa Suresi 59. Ayet
+Vakıa Suresi 60. Ayet
+Vakıa Suresi 61. Ayet
+Vakıa Suresi 62. Ayet
+Vakıa Suresi 63. Ayet
+Vakıa Suresi 64. Ayet
+Vakıa Suresi 65. Ayet
+Vakıa Suresi 66. Ayet
+Vakıa Suresi 67. Ayet
+Vakıa Suresi 68. Ayet
+Vakıa Suresi 69. Ayet
+Vakıa Suresi 70. Ayet
+Vakıa Suresi 71. Ayet
+Vakıa Suresi 72. Ayet
+Vakıa Suresi 73. Ayet
+Vakıa Suresi 74. Ayet
+Vakıa Suresi 75. Ayet
+Vakıa Suresi 76. Ayet
+Vakıa Suresi 77. Ayet
+Vakıa Suresi 78. Ayet
+Vakıa Suresi 79. Ayet
+Vakıa Suresi 80. Ayet
+Vakıa Suresi 81. Ayet
+Vakıa Suresi 82. Ayet
+Vakıa Suresi 83. Ayet
+Vakıa Suresi 84. Ayet
+Vakıa Suresi 85. Ayet
+Vakıa Suresi 86. Ayet
+Vakıa Suresi 87. Ayet
+Vakıa Suresi 88. Ayet
+Vakıa Suresi 89. Ayet
+Vakıa Suresi 90. Ayet
+Vakıa Suresi 91. Ayet
+Vakıa Suresi 92. Ayet
+Vakıa Suresi 93. Ayet
+Vakıa Suresi 94. Ayet
+Vakıa Suresi 95. Ayet
+Vakıa Suresi 96. Ayet
 Hadid Suresi 1. Ayet
 Hadid Suresi 2. Ayet
 Hadid Suresi 3. Ayet
@@ -5197,24 +5316,24 @@ Münafikun Suresi 8. Ayet
 Münafikun Suresi 9. Ayet
 Münafikun Suresi 10. Ayet
 Münafikun Suresi 11. Ayet
-Teğabun Suresi 1. Ayet
-Teğabun Suresi 2. Ayet
-Teğabun Suresi 3. Ayet
-Teğabun Suresi 4. Ayet
-Teğabun Suresi 5. Ayet
-Teğabun Suresi 6. Ayet
-Teğabun Suresi 7. Ayet
-Teğabun Suresi 8. Ayet
-Teğabun Suresi 9. Ayet
-Teğabun Suresi 10. Ayet
-Teğabun Suresi 11. Ayet
-Teğabun Suresi 12. Ayet
-Teğabun Suresi 13. Ayet
-Teğabun Suresi 14. Ayet
-Teğabun Suresi 15. Ayet
-Teğabun Suresi 16. Ayet
-Teğabun Suresi 17. Ayet
-Teğabun Suresi 18. Ayet
+Tegabun Suresi 1. Ayet
+Tegabun Suresi 2. Ayet
+Tegabun Suresi 3. Ayet
+Tegabun Suresi 4. Ayet
+Tegabun Suresi 5. Ayet
+Tegabun Suresi 6. Ayet
+Tegabun Suresi 7. Ayet
+Tegabun Suresi 8. Ayet
+Tegabun Suresi 9. Ayet
+Tegabun Suresi 10. Ayet
+Tegabun Suresi 11. Ayet
+Tegabun Suresi 12. Ayet
+Tegabun Suresi 13. Ayet
+Tegabun Suresi 14. Ayet
+Tegabun Suresi 15. Ayet
+Tegabun Suresi 16. Ayet
+Tegabun Suresi 17. Ayet
+Tegabun Suresi 18. Ayet
 Talak Suresi 1. Ayet
 Talak Suresi 2. Ayet
 Talak Suresi 3. Ayet
@@ -5373,50 +5492,50 @@ Hakka Suresi 49. Ayet
 Hakka Suresi 50. Ayet
 Hakka Suresi 51. Ayet
 Hakka Suresi 52. Ayet
-Me'aric Suresi 1. Ayet
-Me'aric Suresi 2. Ayet
-Me'aric Suresi 3. Ayet
-Me'aric Suresi 4. Ayet
-Me'aric Suresi 5. Ayet
-Me'aric Suresi 6. Ayet
-Me'aric Suresi 7. Ayet
-Me'aric Suresi 8. Ayet
-Me'aric Suresi 9. Ayet
-Me'aric Suresi 10. Ayet
-Me'aric Suresi 11. Ayet
-Me'aric Suresi 12. Ayet
-Me'aric Suresi 13. Ayet
-Me'aric Suresi 14. Ayet
-Me'aric Suresi 15. Ayet
-Me'aric Suresi 16. Ayet
-Me'aric Suresi 17. Ayet
-Me'aric Suresi 18. Ayet
-Me'aric Suresi 19. Ayet
-Me'aric Suresi 20. Ayet
-Me'aric Suresi 21. Ayet
-Me'aric Suresi 22. Ayet
-Me'aric Suresi 23. Ayet
-Me'aric Suresi 24. Ayet
-Me'aric Suresi 25. Ayet
-Me'aric Suresi 26. Ayet
-Me'aric Suresi 27. Ayet
-Me'aric Suresi 28. Ayet
-Me'aric Suresi 29. Ayet
-Me'aric Suresi 30. Ayet
-Me'aric Suresi 31. Ayet
-Me'aric Suresi 32. Ayet
-Me'aric Suresi 33. Ayet
-Me'aric Suresi 34. Ayet
-Me'aric Suresi 35. Ayet
-Me'aric Suresi 36. Ayet
-Me'aric Suresi 37. Ayet
-Me'aric Suresi 38. Ayet
-Me'aric Suresi 39. Ayet
-Me'aric Suresi 40. Ayet
-Me'aric Suresi 41. Ayet
-Me'aric Suresi 42. Ayet
-Me'aric Suresi 43. Ayet
-Me'aric Suresi 44. Ayet
+Mearic Suresi 1. Ayet
+Mearic Suresi 2. Ayet
+Mearic Suresi 3. Ayet
+Mearic Suresi 4. Ayet
+Mearic Suresi 5. Ayet
+Mearic Suresi 6. Ayet
+Mearic Suresi 7. Ayet
+Mearic Suresi 8. Ayet
+Mearic Suresi 9. Ayet
+Mearic Suresi 10. Ayet
+Mearic Suresi 11. Ayet
+Mearic Suresi 12. Ayet
+Mearic Suresi 13. Ayet
+Mearic Suresi 14. Ayet
+Mearic Suresi 15. Ayet
+Mearic Suresi 16. Ayet
+Mearic Suresi 17. Ayet
+Mearic Suresi 18. Ayet
+Mearic Suresi 19. Ayet
+Mearic Suresi 20. Ayet
+Mearic Suresi 21. Ayet
+Mearic Suresi 22. Ayet
+Mearic Suresi 23. Ayet
+Mearic Suresi 24. Ayet
+Mearic Suresi 25. Ayet
+Mearic Suresi 26. Ayet
+Mearic Suresi 27. Ayet
+Mearic Suresi 28. Ayet
+Mearic Suresi 29. Ayet
+Mearic Suresi 30. Ayet
+Mearic Suresi 31. Ayet
+Mearic Suresi 32. Ayet
+Mearic Suresi 33. Ayet
+Mearic Suresi 34. Ayet
+Mearic Suresi 35. Ayet
+Mearic Suresi 36. Ayet
+Mearic Suresi 37. Ayet
+Mearic Suresi 38. Ayet
+Mearic Suresi 39. Ayet
+Mearic Suresi 40. Ayet
+Mearic Suresi 41. Ayet
+Mearic Suresi 42. Ayet
+Mearic Suresi 43. Ayet
+Mearic Suresi 44. Ayet
 Nuh Suresi 1. Ayet
 Nuh Suresi 2. Ayet
 Nuh Suresi 3. Ayet
@@ -5710,52 +5829,52 @@ Nebe Suresi 37. Ayet
 Nebe Suresi 38. Ayet
 Nebe Suresi 39. Ayet
 Nebe Suresi 40. Ayet
-Nazi'at Suresi 1. Ayet
-Nazi'at Suresi 2. Ayet
-Nazi'at Suresi 3. Ayet
-Nazi'at Suresi 4. Ayet
-Nazi'at Suresi 5. Ayet
-Nazi'at Suresi 6. Ayet
-Nazi'at Suresi 7. Ayet
-Nazi'at Suresi 8. Ayet
-Nazi'at Suresi 9. Ayet
-Nazi'at Suresi 10. Ayet
-Nazi'at Suresi 11. Ayet
-Nazi'at Suresi 12. Ayet
-Nazi'at Suresi 13. Ayet
-Nazi'at Suresi 14. Ayet
-Nazi'at Suresi 15. Ayet
-Nazi'at Suresi 16. Ayet
-Nazi'at Suresi 17. Ayet
-Nazi'at Suresi 18. Ayet
-Nazi'at Suresi 19. Ayet
-Nazi'at Suresi 20. Ayet
-Nazi'at Suresi 21. Ayet
-Nazi'at Suresi 22. Ayet
-Nazi'at Suresi 23. Ayet
-Nazi'at Suresi 24. Ayet
-Nazi'at Suresi 25. Ayet
-Nazi'at Suresi 26. Ayet
-Nazi'at Suresi 27. Ayet
-Nazi'at Suresi 28. Ayet
-Nazi'at Suresi 29. Ayet
-Nazi'at Suresi 30. Ayet
-Nazi'at Suresi 31. Ayet
-Nazi'at Suresi 32. Ayet
-Nazi'at Suresi 33. Ayet
-Nazi'at Suresi 34. Ayet
-Nazi'at Suresi 35. Ayet
-Nazi'at Suresi 36. Ayet
-Nazi'at Suresi 37. Ayet
-Nazi'at Suresi 38. Ayet
-Nazi'at Suresi 39. Ayet
-Nazi'at Suresi 40. Ayet
-Nazi'at Suresi 41. Ayet
-Nazi'at Suresi 42. Ayet
-Nazi'at Suresi 43. Ayet
-Nazi'at Suresi 44. Ayet
-Nazi'at Suresi 45. Ayet
-Nazi'at Suresi 46. Ayet
+Naziat Suresi 1. Ayet
+Naziat Suresi 2. Ayet
+Naziat Suresi 3. Ayet
+Naziat Suresi 4. Ayet
+Naziat Suresi 5. Ayet
+Naziat Suresi 6. Ayet
+Naziat Suresi 7. Ayet
+Naziat Suresi 8. Ayet
+Naziat Suresi 9. Ayet
+Naziat Suresi 10. Ayet
+Naziat Suresi 11. Ayet
+Naziat Suresi 12. Ayet
+Naziat Suresi 13. Ayet
+Naziat Suresi 14. Ayet
+Naziat Suresi 15. Ayet
+Naziat Suresi 16. Ayet
+Naziat Suresi 17. Ayet
+Naziat Suresi 18. Ayet
+Naziat Suresi 19. Ayet
+Naziat Suresi 20. Ayet
+Naziat Suresi 21. Ayet
+Naziat Suresi 22. Ayet
+Naziat Suresi 23. Ayet
+Naziat Suresi 24. Ayet
+Naziat Suresi 25. Ayet
+Naziat Suresi 26. Ayet
+Naziat Suresi 27. Ayet
+Naziat Suresi 28. Ayet
+Naziat Suresi 29. Ayet
+Naziat Suresi 30. Ayet
+Naziat Suresi 31. Ayet
+Naziat Suresi 32. Ayet
+Naziat Suresi 33. Ayet
+Naziat Suresi 34. Ayet
+Naziat Suresi 35. Ayet
+Naziat Suresi 36. Ayet
+Naziat Suresi 37. Ayet
+Naziat Suresi 38. Ayet
+Naziat Suresi 39. Ayet
+Naziat Suresi 40. Ayet
+Naziat Suresi 41. Ayet
+Naziat Suresi 42. Ayet
+Naziat Suresi 43. Ayet
+Naziat Suresi 44. Ayet
+Naziat Suresi 45. Ayet
+Naziat Suresi 46. Ayet
 Abese Suresi 1. Ayet
 Abese Suresi 2. Ayet
 Abese Suresi 3. Ayet
@@ -5946,25 +6065,25 @@ Tarık Suresi 14. Ayet
 Tarık Suresi 15. Ayet
 Tarık Suresi 16. Ayet
 Tarık Suresi 17. Ayet
-A'la Suresi 1. Ayet
-A'la Suresi 2. Ayet
-A'la Suresi 3. Ayet
-A'la Suresi 4. Ayet
-A'la Suresi 5. Ayet
-A'la Suresi 6. Ayet
-A'la Suresi 7. Ayet
-A'la Suresi 8. Ayet
-A'la Suresi 9. Ayet
-A'la Suresi 10. Ayet
-A'la Suresi 11. Ayet
-A'la Suresi 12. Ayet
-A'la Suresi 13. Ayet
-A'la Suresi 14. Ayet
-A'la Suresi 15. Ayet
-A'la Suresi 16. Ayet
-A'la Suresi 17. Ayet
-A'la Suresi 18. Ayet
-A'la Suresi 19. Ayet
+Ala Suresi 1. Ayet
+Ala Suresi 2. Ayet
+Ala Suresi 3. Ayet
+Ala Suresi 4. Ayet
+Ala Suresi 5. Ayet
+Ala Suresi 6. Ayet
+Ala Suresi 7. Ayet
+Ala Suresi 8. Ayet
+Ala Suresi 9. Ayet
+Ala Suresi 10. Ayet
+Ala Suresi 11. Ayet
+Ala Suresi 12. Ayet
+Ala Suresi 13. Ayet
+Ala Suresi 14. Ayet
+Ala Suresi 15. Ayet
+Ala Suresi 16. Ayet
+Ala Suresi 17. Ayet
+Ala Suresi 18. Ayet
+Ala Suresi 19. Ayet
 Gaşiye Suresi 1. Ayet
 Gaşiye Suresi 2. Ayet
 Gaşiye Suresi 3. Ayet
@@ -6195,13 +6314,13 @@ Kureyş Suresi 1. Ayet
 Kureyş Suresi 2. Ayet
 Kureyş Suresi 3. Ayet
 Kureyş Suresi 4. Ayet
-Ma'un Suresi 1. Ayet
-Ma'un Suresi 2. Ayet
-Ma'un Suresi 3. Ayet
-Ma'un Suresi 4. Ayet
-Ma'un Suresi 5. Ayet
-Ma'un Suresi 6. Ayet
-Ma'un Suresi 7. Ayet
+Maun Suresi 1. Ayet
+Maun Suresi 2. Ayet
+Maun Suresi 3. Ayet
+Maun Suresi 4. Ayet
+Maun Suresi 5. Ayet
+Maun Suresi 6. Ayet
+Maun Suresi 7. Ayet
 Kevser Suresi 1. Ayet
 Kevser Suresi 2. Ayet
 Kevser Suresi 3. Ayet
@@ -6234,3 +6353,148 @@ Nas Suresi 3. Ayet
 Nas Suresi 4. Ayet
 Nas Suresi 5. Ayet
 Nas Suresi 6. Ayet
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
