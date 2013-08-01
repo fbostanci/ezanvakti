@@ -70,10 +70,8 @@ case $1 in
         printf "${RENK7}${RENK2}Yatsı${RENK3} ezanı dinletiliyor...\n"
         vakit_ezani="${YATSI_EZANI}"
         ezandinlet ;;
-      *)
-        hatali_kullanim ${2:-null} ;;
-    esac
-  ;;
+      *) hatali_kullanim ${2:-null} ;;
+    esac ;;
   --kuran)
     bilesen_yukle kuran_dinletici; shift
     case $1 in
@@ -88,10 +86,7 @@ case $1 in
   -kg|--kg) bilesen_yukle kuran_dinletici; kuran_dinlet gunluk ;;
   -ks|--ks) bilesen_yukle kuran_dinletici; kuran_dinlet secim $2 ;;
   --sureler)
-    clear
-    gawk -v renk0=${RENK0} -v renk2=${RENK2} -v renk3=${RENK3} -v renk7=${RENK7} \
-      '{printf "%s%s%s\t%s%s%s%s\n", renk7,renk3,$1,renk2,$2,renk3,$3,renk0}' \
-      ${VERI_DIZINI}/veriler/sureler | less -R ;;
+    bilesen_yukle sureler_ayetler; sureler_ayetler sirala;;
   --ayet)
     bilesen_yukle ayet_goster
     case $2 in
@@ -99,82 +94,33 @@ case $1 in
       ?*) hatali_kullanim $2 ;;
       '') ayet_goster bildirim ;;
     esac ;;
-  --ramazan)
-    yontem_calistir ramazan ;;
-  --conky)
-  bilesen_yukle conky; ezv_conky ;;
-  --iftar)
-    bilesen_yukle iftar; ezv_iftar ;;
-  --conky-iftar)
-    bilesen_yukle conky-iftar; ezv_conky_iftar ;;
+  --ramazan) yontem_calistir ramazan ;;
+  --conky) bilesen_yukle conky; ezv_conky ;;
+  --iftar) bilesen_yukle iftar; ezv_iftar ;;
+  --conky-iftar) bilesen_yukle conky-iftar; ezv_conky_iftar ;;
   --hadis)
-    icerik_al=${VERI_DIZINI}/veriler/kirk-hadis
-    secim_yap 40
-
+      bilesen_yukle hadis_goster
     case $2 in
-      -u|-t|--u[cç]birim|--terminal)
-        (( ! ${RENK:-RENK_KULLAN} )) && {
-          echo  "${alinan_yanit}" | tr -d '\\' | \
-            sed -r -e 's:\[([0-9]{1,2}(;[0-9]{1,2})?)?[m]::g' -e 's:033::g'
-          exit 0
-        } || {
-          printf "${alinan_yanit}${RENK0}\n"
-          exit 0
-        } ;;
-      ?*)
-        hatali_kullanim $2 ;;
-    esac
-
-    notify-send "$secilen. hadis" "$(sed '1d' <<<"${alinan_yanit}")" \
-     -t $HADIS_BILDIRIM_SURESI"000" -h int:transient:1
-    exit 0 ;;
+      -u|-t|--u[cç]birim|--terminal) hadis_goster ucbirim ;;
+      ?*) hatali_kullanim $2 ;;
+      '') hadis_goster bildirim ;;
   --bilgi)
-    icerik_al=${VERI_DIZINI}/veriler/bilgiler
-    secim_yap 157
-
+      bilesen_yukle bilgi_goster
     case $2 in
-      -u|-t|--u[cç]birim|--terminal)
-        (( ! ${RENK:-RENK_KULLAN} )) && {
-          echo  "\*${alinan_yanit}" | tr -d '\\' | \
-            sed -r -e 's:\[([0-9]{1,2}(;[0-9]{1,2})?)?[m]::g' -e 's:033::g'
-          exit 0
-        } || {
-          printf "${alinan_yanit}${RENK0}\n"
-          exit 0
-        } ;;
-      ?*)
-        hatali_kullanim $2 ;;
-    esac
-
-    notify-send "Bunları biliyor musunuz?" "$(echo  "\*${alinan_yanit}" | tr -d '\\' | sed \
-      -r -e 's:\[([0-9]{1,2}(;[0-9]{1,2})?)?[m]::g' -e 's:033::g')" \
-      -t $BILGI_BILDIRIM_SURESI"000" -h int:transient:1
-    exit 0 ;;
+      -u|-t|--u[cç]birim|--terminal) bilgi_goster ucbirim ;;
+      ?*) hatali_kullanim $2 ;;
+      '') bilgi_goster bildirim ;;
   --esma)
-    icerik_al=${VERI_DIZINI}/veriler/esma
-    secim_yap 99
-
-    (( ! ${RENK:-RENK_KULLAN} )) && {
-      echo  "${alinan_yanit}" | tr -d '\\' | \
-        sed -r -e 's:\[([0-9]{1,2}(;[0-9]{1,2})?)?[m]::g' -e 's:033::g'
-      exit 0
-    } || {
-      printf "${alinan_yanit}${RENK0}\n"
-      exit 0
-    } ;;
-  --g[uü]ncelle)
-    bilesen_yukle guncelleyici; guncelleme_yap ;;
-  --g[uü]nler)
-    printf "${RENK7}${RENK3}\n$(date +%Y)${RENK2} yılı için dini günler ve geceler\n\n"
-    sed -n "s:\([0-9].*$(date +%Y)\)\(.*\):$(echo -e "${RENK7}${RENK3}\1\t${RENK2}\2${RENK0}\n"):p" \
-      <${VERI_DIZINI}/veriler/gunler
-    ;;
-  -V|--s[uü]r[uü]m|--version)
-    surum_goster ;;
-  -h|--help|--yard[iı]m)
-    betik_kullanimi ;;
-  ?*)
-    hatali_kullanim $1 ;;
+      bilesen_yukle esma
+    case $2 in
+      -u|-t|--u[cç]birim|--terminal) esma ucbirim ;;
+      ?*) hatali_kullanim $2 ;;
+      '') esma bildirim ;;
+  --g[uü]ncelle) bilesen_yukle guncelleyici; guncelleme_yap ;;
+  --g[uü]nler) bilesen_yukle dini_gunler; gunler ;;
+  -V|--s[uü]r[uü]m|--version) surum_goster ;;
+  -h|--help|--yard[iı]m) betik_kullanimi ;;
+  ?*) hatali_kullanim $1 ;;
   '')
     # Eğer betik herhangi bir değişken verilmeden çalıştırılmışsa
     # yontem_calistir fonksiyonunu çağır.
