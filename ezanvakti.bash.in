@@ -48,23 +48,21 @@ case $1 in
   -v7|--v7) bilesen_yukle vakitler; vakitleri_goster haftalik ;;
   -v30|--v30) bilesen_yukle vakitler; vakitleri_goster aylik ;;
   -vb|--vb) bilesen_yukle vakitler; vakitleri_goster bildirim ;;
-  --dinle)
-    case $2 in
-      bilesen_yukle ezan_dinlet
+  --dinle) bilesen_yukle ezan_dinlet; shift
+    case $1 in
       -s|--sabah) ezan_dinlet Sabah "${SABAH_EZANI}" ;;
       -o|--[oö][gğ]le) ezan_dinlet Öğle "${OGLE_EZANI}" ;;
       -i|--ikindi) ezan_dinlet İkindi  "${IKINDI_EZANI}" ;;
       -a|--ak[sş]am) ezan_dinlet Akşam "${AKSAM_EZANI}" ;;
       -y|--yats[ıi]) ezan_dinlet Yatsı "${YATSI_EZANI}" ;;
-      *) hatali_kullanim ${2:-null} ;;
+      *) hatali_kullanim ${1:-null} ;;
     esac ;;
-  --kuran)
-    bilesen_yukle kuran_dinletici; shift
+  --kuran) bilesen_yukle kuran_dinletici; shift
     case $1 in
       -r|--rastgele) kuran_dinlet rastgele ;;
       -h|--hatim) kuran_dinlet hatim ;;
       -g|--g[uü]nl[uü]k) kuran_dinlet gunluk ;;
-      -s|--se[cç]im) kuran_dinlet secim $2 ;;
+      -s|--se[cç]im) kuran_dinlet secim $1 ;;
       *) hatali_kullanim ${1:-null} ;;
     esac ;;
   -kr|--kr) bilesen_yukle kuran_dinletici; kuran_dinlet rastgele ;;
@@ -72,35 +70,34 @@ case $1 in
   -kg|--kg) bilesen_yukle kuran_dinletici; kuran_dinlet gunluk ;;
   -ks|--ks) bilesen_yukle kuran_dinletici; kuran_dinlet secim $2 ;;
   --sureler) bilesen_yukle sureler_ayetler; sureler_ayetler sirala;;
-  --ayet)
-    bilesen_yukle ayet_goster
-    case $2 in
+  --ayet) bilesen_yukle ayet_goster; shift
+    case $1 in
       -u|-t|--u[cç]birim|--terminal) ayet_goster ucbirim ;;
-      ?*) hatali_kullanim $2 ;;
+      ?*) hatali_kullanim $1 ;;
       '') ayet_goster bildirim ;;
     esac ;;
   --ramazan) yontem_calistir ramazan ;;
   --conky) bilesen_yukle conky; ezv_conky ;;
   --iftar) bilesen_yukle iftar; ezv_iftar ;;
   --conky-iftar) bilesen_yukle conky-iftar; ezv_conky_iftar ;;
-  --hadis)
-      bilesen_yukle hadis_goster
-    case $2 in
+  --hadis) bilesen_yukle hadis_goster; shift
+    case $1 in
       -u|-t|--u[cç]birim|--terminal) hadis_goster ucbirim ;;
-      ?*) hatali_kullanim $2 ;;
+      ?*) hatali_kullanim $1 ;;
       '') hadis_goster bildirim ;;
-  --bilgi)
-      bilesen_yukle bilgi_goster
-    case $2 in
+    esac ;;
+  --bilgi) bilesen_yukle bilgi_goster; shift
+    case $1 in
       -u|-t|--u[cç]birim|--terminal) bilgi_goster ucbirim ;;
-      ?*) hatali_kullanim $2 ;;
+      ?*) hatali_kullanim $1 ;;
       '') bilgi_goster bildirim ;;
-  --esma)
-      bilesen_yukle esma
-    case $2 in
+    esac ;;
+  --esma) bilesen_yukle esma; shift
+    case $1 in
       -u|-t|--u[cç]birim|--terminal) esma ucbirim ;;
-      ?*) hatali_kullanim $2 ;;
+      ?*) hatali_kullanim $1 ;;
       '') esma bildirim ;;
+    esac ;;
   --g[uü]ncelle) bilesen_yukle guncelleyici; guncelleme_yap ;;
   --g[uü]nler) bilesen_yukle dini_gunler; gunler ;;
   -V|--s[uü]r[uü]m|--version) surum_goster ;;

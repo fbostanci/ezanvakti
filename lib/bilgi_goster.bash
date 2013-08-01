@@ -1,8 +1,8 @@
-
-
-
-
-
+#
+#
+#
+#
+#
 
 function bilgi_goster() {
     icerik_al=${VERI_DIZINI}/veriler/bilgiler
@@ -27,3 +27,5 @@ function bilgi_goster() {
       -t $BILGI_BILDIRIM_SURESI"000" -h int:transient:1
     exit 0
 }
+
+# vim: set ft=sh ts=2 sw=2 et:
