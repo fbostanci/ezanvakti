@@ -50,26 +50,12 @@ case $1 in
   -vb|--vb) bilesen_yukle vakitler; vakitleri_goster bildirim ;;
   --dinle)
     case $2 in
-      -s|--sabah)
-        printf "${RENK7}${RENK2}Sabah${RENK3} ezanı dinletiliyor...\n"
-        vakit_ezani="${SABAH_EZANI}"
-        ezandinlet ;;
-      -o|--[oö][gğ]le)
-        printf "${RENK7}${RENK2}Öğle${RENK3} ezanı dinletiliyor...\n"
-        vakit_ezani="${OGLE_EZANI}"
-        ezandinlet ;;
-      -i|--ikindi)
-        printf "${RENK7}${RENK2}İkindi${RENK3} ezanı dinletiliyor...\n"
-        vakit_ezani="${IKINDI_EZANI}"
-        ezandinlet ;;
-      -a|--ak[sş]am)
-        printf "${RENK7}${RENK2}Akşam${RENK3} ezanı dinletiliyor...\n"
-        vakit_ezani="${AKSAM_EZANI}"
-        ezandinlet ;;
-      -y|--yats[ıi])
-        printf "${RENK7}${RENK2}Yatsı${RENK3} ezanı dinletiliyor...\n"
-        vakit_ezani="${YATSI_EZANI}"
-        ezandinlet ;;
+      bilesen_yukle ezan_dinlet
+      -s|--sabah) ezan_dinlet Sabah "${SABAH_EZANI}" ;;
+      -o|--[oö][gğ]le) ezan_dinlet Öğle "${OGLE_EZANI}" ;;
+      -i|--ikindi) ezan_dinlet İkindi  "${IKINDI_EZANI}" ;;
+      -a|--ak[sş]am) ezan_dinlet Akşam "${AKSAM_EZANI}" ;;
+      -y|--yats[ıi]) ezan_dinlet Yatsı "${YATSI_EZANI}" ;;
       *) hatali_kullanim ${2:-null} ;;
     esac ;;
   --kuran)
@@ -85,8 +71,7 @@ case $1 in
   -kh|--kh) bilesen_yukle kuran_dinletici; kuran_dinlet hatim ;; 
   -kg|--kg) bilesen_yukle kuran_dinletici; kuran_dinlet gunluk ;;
   -ks|--ks) bilesen_yukle kuran_dinletici; kuran_dinlet secim $2 ;;
-  --sureler)
-    bilesen_yukle sureler_ayetler; sureler_ayetler sirala;;
+  --sureler) bilesen_yukle sureler_ayetler; sureler_ayetler sirala;;
   --ayet)
     bilesen_yukle ayet_goster
     case $2 in
@@ -121,10 +106,7 @@ case $1 in
   -V|--s[uü]r[uü]m|--version) surum_goster ;;
   -h|--help|--yard[iı]m) betik_kullanimi ;;
   ?*) hatali_kullanim $1 ;;
-  '')
-    # Eğer betik herhangi bir değişken verilmeden çalıştırılmışsa
-    # yontem_calistir fonksiyonunu çağır.
-    yontem_calistir ;;
+  '') yontem_calistir ;;
 esac
 
 # vim: set ts=2 sw=2 et:
