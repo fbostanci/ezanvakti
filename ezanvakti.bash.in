@@ -36,7 +36,7 @@ case $1 in
       -y|--yats[ıi]) vakitleri_goster yatsi ;;
       7|--haftal[ıi]k) vakitleri_goster haftalik ;;
       30|--ayl[ıi]k) vakitleri_goster aylik ;;
-	  --osd|--bildirim) vakitleri_goster bildirim ;;
+      --osd|--bildirim) vakitleri_goster bildirim ;;
       '') vakitleri_goster tum_vakitler ;;
       ?*) hatali_kullanim $1;;
     esac ;;
@@ -62,14 +62,14 @@ case $1 in
       -r|--rastgele) kuran_dinlet rastgele ;;
       -h|--hatim) kuran_dinlet hatim ;;
       -g|--g[uü]nl[uü]k) kuran_dinlet gunluk ;;
-      -s|--se[cç]im) kuran_dinlet secim $1 ;;
+      -s|--se[cç]im) kuran_dinlet secim $2 ;;
       *) hatali_kullanim ${1:-null} ;;
     esac ;;
   -kr|--kr) bilesen_yukle kuran_dinletici; kuran_dinlet rastgele ;;
   -kh|--kh) bilesen_yukle kuran_dinletici; kuran_dinlet hatim ;; 
   -kg|--kg) bilesen_yukle kuran_dinletici; kuran_dinlet gunluk ;;
   -ks|--ks) bilesen_yukle kuran_dinletici; kuran_dinlet secim $2 ;;
-  --sureler) bilesen_yukle sureler_ayetler; sureler_ayetler sirala;;
+  --sureler) bilesen_yukle sureler_ayetler; sureler_ayetler ;;
   --ayet) bilesen_yukle ayet_goster; shift
     case $1 in
       -u|-t|--u[cç]birim|--terminal) ayet_goster ucbirim ;;
