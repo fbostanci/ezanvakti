@@ -5,7 +5,7 @@
 #
 
 function kuran_dinlet() { # kuran_dinlet_yonetimi {{{
-  local dinletilecek_sure okuyan kaynak i
+  local dinletilecek_sure okuyan kaynak sure i
   local girdi="$2"
 
 function sure_girdisi_denetimi() { # sure_girdisi_yonetimi {{{
@@ -47,12 +47,12 @@ function sure_girdisi_denetimi() { # sure_girdisi_yonetimi {{{
 
 function kuran_dinletimi() {
   local -a sureler
-
+  
   clear
   printf '%b%b\n\n' \
     "${RENK7}${RENK3}" \
-    "$(grep -w $sure ${VERI_DIZINI}/veriler/sureler | \
-       gawk '{print $2}')${RENK2} suresi dinletiliyor...${RENK0}"
+    "$(gawk -v sure=$sure 'BEGIN{gsub("^0*","",sure);} NR==sure {print($3);}' \
+    ${VERI_DIZINI}/veriler/sureler_ayetler)${RENK2} suresi dinletiliyor...${RENK0}"
 
   # Öncelikle kullanıcının girdiği dizinde dosya
   # var mı denetle. Yoksa çevrimiçi dinletime yönel.
