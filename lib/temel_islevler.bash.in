@@ -32,6 +32,7 @@ MPLAYER="mplayer -really-quiet -volume $SES"
 
 declare -A YUKLENEN_BILESENLER
 
+# http://git.archlinux.fr/yaourt.git/tree/src/lib/util.sh.in ( load_lib() )
 function bilesen_yukle() {
   while [[ $1 ]]
   do
@@ -146,25 +147,14 @@ function yontem_calistir() {
 
   [[ $1 = ramazan ]] && degisken=2 || degisken=1
 
-  case ${EZANVAKTI_YONTEM} in
-    [Ss]*)
-      if { ps ax | grep -v grep | grep -w "ezanvakti-sleep.bash [1-2]$" &>/dev/null; }
-      then
-          printf '%b%b\n' \
-            "${RENK3}Ezanvakti artalan bileşeni " \
-            "(ezanvakti-sleep.bash) zaten çalışıyor...${RENK0}"
-          exit 1
-      fi
-      exec ${BILESEN_DIZINI}/ezanvakti-sleep.bash $degisken ;;
-#    [Cc]*)
-#      #crontab hazır değil.
-#
-    *)
+  if { ps ax | grep -v grep | grep -w "ezanvakti-sleep.bash [1-2]$" &>/dev/null; }
+  then
       printf '%b%b\n' \
-        "${RENK3}Girilen ezanvakti yöntemi: " \
-        "${EZANVAKTI_YONTEM} tanımlı değil.${RENK0}"
-      exit 1 ;;
-  esac
+        "${RENK3}Ezanvakti artalan bileşeni " \
+        "(ezanvakti-sleep.bash) zaten çalışıyor...${RENK0}"
+      exit 1
+  fi
+  exec ${BILESEN_DIZINI}/ezanvakti-sleep.bash $degisken ;;
 }
 
 function surum_goster() {

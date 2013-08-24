@@ -4,7 +4,7 @@
 # ezanlar ve iftarimsak fonksiyonları için crontab yazdırmalı yeni hesaplama fonksiyonu geliştir. (?)
 # Archlinux için 2'li paketleme yap. Ses dosyaları için yeni paketleme. ###TAMAM###
 # ses dosyalarını yeni depoya al (?) ###TAMAM###
-# debian paketleme dosyalarını yeni depo açarak paylaşıma aç.
+# debian paketleme dosyalarını paylaşıma aç.
 # gelişmiş arayüz e son özelikleri(dini günler; aylık,haftalık vakitler) ekle.
 # yapılandırma dosyası içe aktarma. --yapilandirma <yapilandirma_dosyasi>
 # oynatici_duraklat için uygulama durumunu denetleme geliştir. ###TAMAM###
