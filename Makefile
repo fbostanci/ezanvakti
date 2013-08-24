@@ -5,7 +5,7 @@
 #
 
 SHELL = /bin/bash
-surum = $(shell sed -n 's:SURUM=::p' lib/temel_islevler.bash.in)
+surum = $(shell cat VERSION)
 derleme = $(shell git log -1 --pretty=format:'%ad' --abbrev-commit --date=short 2>/dev/null | tr -d -- '-')
 
 INSTALL = install
