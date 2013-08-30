@@ -142,21 +142,6 @@ function betik_kullanimi() {
          "  | less -R; exit 0
 }
 
-function yontem_calistir() {
-  local degisken
-
-  [[ $1 = ramazan ]] && degisken=2 || degisken=1
-
-  if { ps ax | grep -v grep | grep -w "ezanvakti-sleep.bash [1-2]$" &>/dev/null; }
-  then
-      printf '%b%b\n' \
-        "${RENK3}Ezanvakti artalan bileşeni " \
-        "(ezanvakti-sleep.bash) zaten çalışıyor...${RENK0}"
-      exit 1
-  fi
-  exec ${BILESEN_DIZINI}/ezanvakti-sleep.bash $degisken ;;
-}
-
 function surum_goster() {
   printf '%s\n\n%s\n\n%s\n%s\n%s\n%s\n' \
     "Ezanvakti $SURUM derleme: $DERLEME"\
@@ -195,6 +180,7 @@ function denetle() {
   # gün değişiminde tarihi güncellemek için tarih, denetle fonksiyonu içine alındı.
   TARIH=$(date +%d.%m.%Y)
   SAAT=$(date +%H%M)
+  UNIXSAAT=$(date -d "$SAAT" +%s)
 
   [[ ! -f ${EZANVERI} ]] && { # ezanveri dosyası yoksa
     (( GUNCELLEME_YAP )) && { bilesen_yukle guncelleyici; guncelleme_yap;} || {
@@ -243,9 +229,15 @@ function denetle() {
 # Bugünün ezan vakitlerini ayıkla ve değerleri vakit değişkenlerine ata.
 function bugun() {
   export $(gawk 'BEGIN{tarih = strftime("%d.%m.%Y")} {if($1 ~ tarih) \
-    {printf "sabah=%s%s\ngunes=%s%s\nogle=%s%s\nikindi=%s%s\naksam=%s%s\
-    \nyatsi=%s%s\nsabah_n=0%s:%s\ngunes_n=0%s:%s\nogle_n=%s:%s\nikindi_n=%s:%s\naksam_n=%s:%s\nyatsi_n=%s:%s"\
-    , $2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13}}' "${EZANVERI}")
+    {printf \
+    "sabah_n=0%s:%s\ngunes_n=0%s:%s\nogle_n=%s:%s\nikindi_n=%s:%s\naksam_n=%s:%s\nyatsi_n=%s:%s"\
+    , $2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13}}' "${EZANVERI}")
+
+  sabah=$(date -d "$sabah_n" +%s)
+  ogle=$(date -d "$ogle_n" +%s)
+  ikindi=$(date -d "$ikindi_n" +%s)
+  aksam=$(date -d "$aksam_n" +%s)
+  yatsi=$(date -d "$yatsi_n" +%s)
 }
 
 # Eğer hedef süre bugün içerisindeyse bu fonksiyon kullanılacak.

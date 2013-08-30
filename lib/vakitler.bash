@@ -12,27 +12,27 @@ function vakitleri_goster() { # {{{
   # --osd/bildirim için renkleri sıfırla
   [[ ${istek} = osd ]] && { RENK1=''; RENK2=''; }
 
-  [[ $SAAT -lt $sabah ]] && {
+  [[ $UNIXSAAT -lt $sabah ]] && {
     bekleme_suresi $sabah_n; kalan
     sabah_kalan="${RENK2} $kalan_sure"
   } || sabah_kalan="${RENK1} OKUNDU"
 
-  [[ $SAAT -lt $ogle ]] && {
+  [[ $UNIXSAAT -lt $ogle ]] && {
     bekleme_suresi $ogle_n; kalan
     ogle_kalan="${RENK2} $kalan_sure"
   } || ogle_kalan="${RENK1} OKUNDU"
 
-  [[ $SAAT -lt $ikindi ]] && {
+  [[ $UNIXSAAT -lt $ikindi ]] && {
     bekleme_suresi $ikindi_n; kalan
     ikindi_kalan="${RENK2} $kalan_sure"
   } || ikindi_kalan="${RENK1} OKUNDU"
 
-  [[ $SAAT -lt $aksam ]] && {
+  [[ $UNIXSAAT -lt $aksam ]] && {
     bekleme_suresi $aksam_n; kalan
     aksam_kalan="${RENK2} $kalan_sure"
   } || aksam_kalan="${RENK1} OKUNDU"
 
-  [[ $SAAT -lt $yatsi ]] && {
+  [[ $UNIXSAAT -lt $yatsi ]] && {
     bekleme_suresi $yatsi_n; kalan
     yatsi_kalan="${RENK2} $kalan_sure"
   } || yatsi_kalan="${RENK1} OKUNDU"

@@ -3,6 +3,8 @@
 #                           Ezanvakti Gelişmiş Arayüz  Bileşeni 1.7
 #
 
+
+echo "Hazır değil"; exit 0
 # TODO: 2.0 için yapılacaklar
 # haftalık ve aylık vakitler çıktılarını göstermeyi ekle. 
 # dini günler gösterimini ekle.

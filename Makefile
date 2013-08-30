@@ -50,6 +50,9 @@ config: clean
 		@$(SED) 's:@libdir@:$(libdir):' \
 			ezanvakti.bash.in > ezanvakti
 
+		@$(SED) 's:@libdir@:$(libdir):' \
+			lib/ezanvakti-sleep.bash.in > lib/ezanvakti-sleep.bash
+
 		@$(SED) -e 's:@surum@:$(surum):' \
 						-e 's:@sounddir@:$(sounddir):' \
 			etc/ayarlar.in > etc/ayarlar
@@ -66,6 +69,7 @@ install: config
 		$(INSTALL) -vDm644 etc/bash_completion/ezanvakti $(DESTDIR)$(completiondir)/ezanvakti
 		$(INSTALL) -vDm644 etc/autostart/ezanvakti.desktop $(DESTDIR)$(sysconfdir)/xdg/autostart/ezanvakti.desktop
 
+#		$(INSTALL) -vDm755 etc/ezanvakti-pm $(DESTDIR)$(sysconfdir)/pm/sleep.d/ezanvakti-pm
 		$(INSTALL) -vDm755 ezanvakti $(DESTDIR)$(bindir)/ezanvakti
 
 		$(INSTALL) -vDm755 data/ezanvakti.desktop $(DESTDIR)$(appdeskdir)/ezanvakti.desktop
@@ -114,6 +118,7 @@ install: config
 
 uninstall:
 		@rm -rf $(DESTDIR)$(sysconfdir)/ezanvakti
+#		@rm -f  $(DESTDIR)$(sysconfdir)/pm/sleep.d/ezanvakti-pm
 		@rm -f  $(DESTDIR)$(completiondir)/ezanvakti
 		@rm -f  $(DESTDIR)$(sysconfdir)/xdg/autostart/ezanvakti.desktop
 		@rm -f  $(DESTDIR)$(bindir)/ezanvakti

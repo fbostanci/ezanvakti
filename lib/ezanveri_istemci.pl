@@ -3,7 +3,7 @@
 #                          Ezanveri İstemci 1.5
 #
 ##
-##          Copyright (c) 2010-2012 Fatih Bostancı  <faopera@gmail.com>
+##          Copyright (c) 2010-2013 Fatih Bostancı  <faopera@gmail.com>
 ##
 ##                   https://gitorious.org/ezanvakti
 ##
