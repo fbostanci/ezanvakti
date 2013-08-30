@@ -42,9 +42,9 @@ clean:
 
 config: clean
 		@$(SED) -e 's:@derleme@:$(derleme):' \
-						-e 's:@datadir@:$(datadir):' \
-						-e 's:@libdir@:$(libdir):' \
-						-e 's:@sysconfdir@:$(sysconfdir):' \
+				-e 's:@datadir@:$(datadir):' \
+				-e 's:@libdir@:$(libdir):' \
+				-e 's:@sysconfdir@:$(sysconfdir):' \
 			lib/temel_islevler.bash.in > lib/temel_islevler.bash
 
 		@$(SED) 's:@libdir@:$(libdir):' \
@@ -54,11 +54,11 @@ config: clean
 			lib/ezanvakti-sleep.bash.in > lib/ezanvakti-sleep.bash
 
 		@$(SED) -e 's:@surum@:$(surum):' \
-						-e 's:@sounddir@:$(sounddir):' \
+				-e 's:@sounddir@:$(sounddir):' \
 			etc/ayarlar.in > etc/ayarlar
 
 		@$(SED) -e 's:@bindir@:$(bindir):' \
-						-e 's:@datadir@:$(datadir):' \
+				-e 's:@datadir@:$(datadir):' \
 			data/ezanvakti.desktop.in > data/ezanvakti.desktop
 
 		@$(SED) 's:@bindir@:$(bindir):' \
