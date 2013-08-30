@@ -101,8 +101,10 @@ case $1 in
     esac ;;
   --g[uü]ncelle) bilesen_yukle guncelleyici; guncelleme_yap ;;
   --g[uü]nler) bilesen_yukle dini_gunler; gunler ;;
-  --s[ıi]f[ıi]rla) rm -f "${EZANVAKTI_AYAR}" && echo 'sıfırlandı.' ;;
-  --config|--yap[ıi]land[ıi]rma) ${EDITOR:-{nano:-vim}} "${EZANVAKTI_AYAR}" ;;
+  --s[ıi]f[ıi]rla) bilesen_yukle ayarlari_sifirla; ayarlari_sifirla ;;
+  --renk|--renk-[öo][gğ]ren) bilesen_yukle renk_ogren; renk_ogren ;;
+  --config|--yap[ıi]land[ıi]rma) ${EDITOR:-${nano:-vim}} "${EZANVAKTI_AYAR}" ;;
+  --term|--uc) bilesen_yukle ucbirim; ucbirim_penceresi ;;
   -V|--s[uü]r[uü]m|--version) surum_goster ;;
   -h|--help|--yard[iı]m) betik_kullanimi ;;
   ?*) hatali_kullanim $1 ;;

@@ -15,7 +15,7 @@ bilesen_yukle mplayer_yonetici
 
 function bekleme_yap() {
   
-  (( KALAN_SURE_SAY )) && {
+  [[ -t 1 ]] && (( KALAN_SURE_SAY )) && {
     while (( bekle ))
     do
       # Her 12 saniyede bir süreyi sapmaya karşı düzelt.
@@ -107,6 +107,9 @@ function ramazan_ezanoku() {
   notify-send "${ILCE} için" "${simdiki} vakti \n$vakit_saati" \
     -i ${VERI_DIZINI}/simgeler/ezanvakti.png -t $EZAN_BILDIRIM_SURESI"000" -h int:transient:1
 
+  bilesen_yukle mplayer_yonetici
+  # Oynatıcı duraklatma etkin mi ezan okumadan değeri
+  # denetle ve fonksiyonu çağır.
   (( OYNATICI_DURAKLAT )) && {
     oynatici_islem
   } || {
@@ -157,7 +160,7 @@ function ezanlar() {
     bekleme_yap $bekle; ezanoku; ezanlar
   } ||
 
-  [[ $SAAT -le $aksam ]] && {
+  [[ $UNIXSAAT -le $aksam ]] && {
     simdiki=Akşam
     vakit_ezani="${AKSAM_EZANI}"
     vakit_saati=$aksam_n
@@ -220,10 +223,10 @@ function iftarimsak() {
 
   # Yeni güne ait hesaplamayı yapmak için saat 00:00 olana kadar
   # bekleme uyarısı ver.
-  [[ $UNIXSAAT -le 2359 ]] && {
+  [[ $UNIXSAAT -le $yeni_gun ]] && {
     printf "${RENK7}${RENK4}Yeni gün için bekleniyor...${RENK0}\n"
 
-    bekleme_suresi "23:59"; bekleme_yap $((bekle+60))
+    bekleme_suresi "23:59:59"; bekleme_yap $((bekle+1))
     gun_animsat & iftarimsak
   }
 }
