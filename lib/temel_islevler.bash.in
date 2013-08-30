@@ -1,7 +1,7 @@
 #
 #
 #
-#                           Ezanvakti Temel İşlevler Bileşeni 1.0
+#                           Ezanvakti Temel İşlevler Bileşeni 1.4
 #
 
 AD=ezanvakti
@@ -13,7 +13,16 @@ VERI_DIZINI=@datadir@/ezanvakti
 
 EZANVAKTI_DIZINI="${XDG_CONFIG_HOME:-$HOME/.config}"/ezanvakti
 EZANVAKTI_AYAR="${EZANVAKTI_DIZINI}"/ayarlar
-    
+
+# Uçbirim pencere başlığını belirle.
+function ucbirim_basligi() {
+	[[ ! -t 1 ]] || [[ ! $DISPLAY ]] && return 0
+	case $TERM in
+		rxvt*|xterm*|aterm)
+		  echo -n -e "\033]0;${AD^} ${SURUM}: $@\007" ;;
+	esac
+}
+  
 [[ ! -d "${EZANVAKTI_DIZINI}" ]] && mkdir -p "${EZANVAKTI_DIZINI}"
 [[ ! -f "${EZANVAKTI_AYAR}"   ]] &&
   sed "s:\$HOME:$HOME:" < @sysconfdir@/ezanvakti/ayarlar > "${EZANVAKTI_AYAR}"
@@ -24,9 +33,10 @@ EZANVAKTI_AYAR="${EZANVAKTI_DIZINI}"/ayarlar
 #  Öntanımlı ayarlardan gelen değerlerin üzerine yazılacak.
 #
 # Kullanıcı ayarlarını al.
-. "${EZANVAKTI_AYAR}" || \
+. "${EZANVAKTI_AYAR}" ||
   { printf "${EZANVAKTI_AYAR} dosyası okunabilir değil.\n Çıkılıyor...\n"; exit 1; }
 
+[[ -t 1 ]] || { RENK_KULLAN=0; RENK=0; }
 EZANVERI=${EZANVAKTI_DIZINI}/${EZANVERI_ADI}
 MPLAYER="mplayer -really-quiet -volume $SES"
 
@@ -63,7 +73,8 @@ function betik_kullanimi() {
     B=''
     R=''
   }
-
+  
+  ucbirim_basligi "yardim"
   echo -e "
     ${B}--dinle${R} [-s,-o,-i,-a,-y]
         İstediğiniz zaman, istediğiniz vakite ait ezanı dinletir.
@@ -96,7 +107,7 @@ function betik_kullanimi() {
         baloncuğunda gösterir.
 
     ${B}--bilgi${R}
-        Diyanetin sitesinden alınan "Bunları biliyor musunuz?"
+        Diyanetin sitesinden alınan 'Bunları biliyor musunuz?'
         kısmından bir soru ve sorunun yanıtını bildirim
         baloncuğunda gösterir.
 
@@ -180,6 +191,8 @@ function denetle() {
   # gün değişiminde tarihi güncellemek için tarih, denetle fonksiyonu içine alındı.
   TARIH=$(date +%d.%m.%Y)
   SAAT=$(date +%H%M)
+  # 08, 09 için oluşan sekizli sayı hatasının önüne geçmek için saatin,
+  # aritmetik karşılaştırmalarda kullanılması için UNIX ikilik saatine çevirdik.
   UNIXSAAT=$(date -d "$SAAT" +%s)
 
   [[ ! -f ${EZANVERI} ]] && { # ezanveri dosyası yoksa
@@ -232,12 +245,14 @@ function bugun() {
     {printf \
     "sabah_n=0%s:%s\ngunes_n=0%s:%s\nogle_n=%s:%s\nikindi_n=%s:%s\naksam_n=%s:%s\nyatsi_n=%s:%s"\
     , $2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13}}' "${EZANVERI}")
-
+  # 08, 09 için oluşan sekizli sayı hatasının önüne geçmek için vakit saatleri,
+  # aritmetik karşılaştırmalarda kullanılması için UNIX ikilik saatine çevirdik.
   sabah=$(date -d "$sabah_n" +%s)
   ogle=$(date -d "$ogle_n" +%s)
   ikindi=$(date -d "$ikindi_n" +%s)
   aksam=$(date -d "$aksam_n" +%s)
   yatsi=$(date -d "$yatsi_n" +%s)
+  yeni_gun=$(date -d "23:59:59" +%s)
 }
 
 # Eğer hedef süre bugün içerisindeyse bu fonksiyon kullanılacak.
