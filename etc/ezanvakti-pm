@@ -1,0 +1,19 @@
+#!/bin/bash
+
+function calisiyorsa() {
+  if { ps ax | grep -v grep | grep -w "ezanvakti-sleep.bash [1-2]$" &>/dev/null; }
+  then
+      return 0
+  else
+      return 1
+  fi
+}
+
+case $1 in
+  suspend|suspend_hybrid|hibernate)
+    : ;;
+  resume|thaw)
+     : ;;
+    #_pid=$(ps ax | grep -Ev '(grep|awk)' | awk '/ezanvakti-sleep.bash/ {print $1}')
+    #if calisiyorsa; then kill -SIGCHLD ${_pid}; fi ;;
+esac
