@@ -2,7 +2,7 @@
 #
 #                           Ezanvakti Basit Arayüz  Bileşeni 1.1
 #
-
+echo "Hazır değil"; exit 0
 if ! [ -x "$(which yad 2>/dev/null)" ]
 then
     printf "Bu özellik YAD gerektirmektedir...\n" >&2

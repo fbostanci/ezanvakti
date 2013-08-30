@@ -87,6 +87,11 @@ SES=100
 # duraklatılması için 1; duraklatılmaması için 0
 OYNATICI_DURAKLAT=0
 
+# Vakit ezanları için uygulama çalışırken uçbirimde bir sonraki vakite
+# ne kadar süre kaldığını saat, dakika ve saniye cinsinden gösterim yapar.
+# (Kalan süre gösterimi için 1; gösterilmemesi için 0)
+KALAN_SURE_SAY=0
+
 # BİLGİ: '*/' olarak işaretlenen ayarlar Ubuntu GNOME ortamında, öntanımlı olarak etkisizdir.
 # Yamalanmış sürüm işlemleri için man dosyasına bakın.
 
@@ -167,8 +172,6 @@ YAZI_RENGI='#FFBD4D'
 #*****Gelişmiş Ayarlar******#
 #                           #
 
-# Ezanvakti günlük vakit bildirimleri yöntemi
-EZANVAKTI_YONTEM=sleep
 
 # Printf arayuz yazı biçimi
 GELISMIS_ARAYUZ_BICIMI='%-62s%s\n%s\n%s\n\t\t\t\t%s\n%s\n\n%s\n\n\t\t\t %s\n\t\t\t %s'
