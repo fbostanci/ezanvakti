@@ -8,11 +8,8 @@ function ucbirim_penceresi() {
   denetle; bugun
 
   function bekleme_goster() {
-    local vakit="$1"
-    local vakit_saati="$2"
-   
-    clear
-    printf "${RENK7}${RENK4}${vakit} için bekleniyor...${RENK0}\n"
+    local vakit_saati="$1"
+
     bekleme_suresi ${vakit_saati}
     while (( bekle ))
     do
@@ -25,36 +22,19 @@ function ucbirim_penceresi() {
     done
   }
 
-   ucbirim_basligi "Kalan Süre Gösterici"
-  [[ $UNIXSAAT -lt $sabah ]] && {
-    bekleme_goster "Sabah ezanı" $sabah_n
-    ucbirim_penceresi
-  }
-
-  [[ $UNIXSAAT -lt $ogle ]] && {
-    bekleme_goster "Öğle ezanı" $ogle_n
-    ucbirim_penceresi
-  }
-
-  [[ $UNIXSAAT -lt $ikindi ]] && {
-    bekleme_goster "İkindi ezanı" $ikindi_n
-    ucbirim_penceresi
-  }
-
-  [[ $UNIXSAAT -lt $aksam ]] && {
-    bekleme_goster "Akşam ezanı" $aksam_n
-    ucbirim_penceresi
-  }
-
-  [[ $UNIXSAAT -lt $yatsi ]] && {
-    bekleme_goster "Yatsı ezanı" $yatsi_n
-    ucbirim_penceresi
-  }
-
-  [[ $UNIXSAAT -lt $yeni_gun ]] && {
-    bekleme_goster "Yeni gün" "23:59:59"
-    sleep 1; ucbirim_penceresi
-  }
+  function ozel_gun_var_mi() {
+    (( GUN_ANIMSAT )) && {
+      if grep -q $(date +%d.%m.%Y) ${VERI_DIZINI}/veriler/gunler
+      then
+        printf "${RENK7}${RENK2}Bugün: "\
+          "${RENK5}$(grep $(date +%d.%m.%Y) ${VERI_DIZINI}/veriler/gunler|cut -d' ' -f2-)"
+      elif grep -q $(date -d 'tomorrow' +%d.%m.%Y) ${VERI_DIZINI}/veriler/gunler
+      then
+        printf "${RENK7}${RENK2}Yarın: "\
+          "${RENK5}$(grep $(date -d 'tomorrow' +%d.%m.%Y) ${VERI_DIZINI}/veriler/gunler|cut -d' ' -f2-)"
+      fi
+    }
 }
 
-# vim: set ft=sh ts=2 sw=2 et:
+
+}
