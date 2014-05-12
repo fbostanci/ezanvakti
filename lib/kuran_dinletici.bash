@@ -52,7 +52,7 @@ function kuran_dinletimi() {
   printf '%b%b\n\n' \
     "${RENK7}${RENK3}" \
     "$(gawk -v sure=$sure 'BEGIN{gsub("^0*","",sure);} NR==sure {print($3);}' \
-    ${VERI_DIZINI}/veriler/sureler_ayetler)${RENK2} suresi dinletiliyor...${RENK0}"
+    ${VERI_DIZINI}/veriler/sure_bilgisi)${RENK2} suresi dinletiliyor...${RENK0}"
 
   # Öncelikle kullanıcının girdiği dizinde dosya
   # var mı denetle. Yoksa çevrimiçi dinletime yönel.
@@ -70,10 +70,12 @@ function kuran_dinletimi() {
           }
 
     dinletilecek_sure="http://www.listen2quran.com/listen/${OKUYAN}/$sure.mp3"
-    kaynak='http://www.quranlisten.com'
+    kaynak='http://www.listen2quran.com'
   }
 
   bilesen_yukle mplayer_yonetici
+  ucbirim_basligi "$(gawk -v sure=$sure 'BEGIN{gsub("^0*","",sure);} NR==sure {print($3);}' \
+    ${VERI_DIZINI}/veriler/sure_bilgisi) Suresi"
   printf '%b%b\n%b\n' \
     "${RENK7}${RENK2}" \
     "Okuyan : ${RENK3} ${okuyan}${RENK2}" \
