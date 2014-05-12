@@ -17,6 +17,7 @@ function ayet_goster() { # {{{
 
     satir=$((RANDOM%6236))
     (( ! satir )) && satir=6236
+    satir=$((satir+119))
 
     case $1 in
       ucbirim)

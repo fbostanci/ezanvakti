@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 #
-#                          Ezanveri İstemci 1.5
+#                          Ezanveri İstemci 2.0
 #
 ##
 ##          Copyright (c) 2010-2013 Fatih Bostancı  <faopera@gmail.com>
@@ -17,37 +17,39 @@
 #
 #
 
+
 use strict;
 use warnings;
-use encoding "utf-8";
+use utf8;
 use WWW::Mechanize;
 
 my $ulke = $ARGV[0];
 my $sehir = $ARGV[1];
 my $ilce = $ARGV[2];
 
-my $baglanti = "http://www.diyanet.gov.tr/turkish/namazvakti/vakithes_namazvakti.asp";
-my $cizelge1 = "benimformum";
-my $cizelge2 = "hesapformu";
+my $baglanti = "http://www.diyanet.gov.tr/tr/PrayerTime/WorldPrayerTimes";
 my $sonuc;
 
 
-my $mech = WWW::Mechanize->new();
-$mech->agent_alias( 'Linux Mozilla' );
-
+my $mech = WWW::Mechanize->new(autocheck => 1, cookie_jar => {}, agent_alias => "Linux Mozilla");
 $mech->get($baglanti);
-$mech->form_name($cizelge1);
 
-$mech->field(ulkeler => $ulke);
-$mech->submit('document.benimformum.submit');
-
-$mech->form_name($cizelge2);
-
-$mech->field(eyalet => $sehir);
-$mech->field(sehirler => $ilce);
-
+$mech->form_number('2');
+$mech->field(Country => $ulke);
+$mech->field(City => $sehir);
+$mech->field(District => $ilce);
 $mech->set_visible( [ radio => 'AYLIK' ] );
-$mech->click_button(value => 'Hesapla');
+$mech->submit();
+
+
+# $mech->submit_form(
+	# form_number => 2,
+	# fields => {
+		# Country => $ulke,
+		# City => $sehir,
+		# District => $ilce,
+	# },
+# );
 
 $sonuc = $mech->content( format => 'text');
 print $sonuc;
