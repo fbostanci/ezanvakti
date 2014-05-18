@@ -76,6 +76,7 @@ case $1 in
   --ayet) bilesen_yukle ayet_goster; shift
     case $1 in
       -u|-t|--u[cç]birim|--terminal) ayet_goster ucbirim ;;
+      --aralik) ayet_goster aralik $2 $3 ;;
       ?*) hatali_kullanim $1 ;;
       '') ayet_goster bildirim ;;
     esac ;;
