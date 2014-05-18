@@ -93,6 +93,7 @@ install: config
 		$(INSTALL) -vm644 data/veriler/gunler $(DESTDIR)$(datadir)/ezanvakti/veriler/gunler
 		$(INSTALL) -vm644 data/veriler/kirk-hadis $(DESTDIR)$(datadir)/ezanvakti/veriler/kirk-hadis
 		$(INSTALL) -vm644 data/veriler/sureler_ayetler $(DESTDIR)$(datadir)/ezanvakti/veriler/sureler_ayetler
+		$(INSTALL) -vm644 data/veriler/sure_bilgisi $(DESTDIR)$(datadir)/ezanvakti/veriler/sure_bilgisi
 
 
 		for i in  data/ulkeler/*; \
