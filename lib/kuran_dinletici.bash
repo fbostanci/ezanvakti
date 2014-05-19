@@ -4,10 +4,6 @@
 #
 #
 
-function kuran_dinlet() { # kuran_dinlet_yonetimi {{{
-  local dinletilecek_sure okuyan kaynak sure i
-  local girdi="$2"
-
 function sure_girdisi_denetimi() { # sure_girdisi_yonetimi {{{
   if [[ -n $(tr -d 0-9 <<<$girdi) ]]
   then
@@ -47,7 +43,7 @@ function sure_girdisi_denetimi() { # sure_girdisi_yonetimi {{{
 
 function kuran_dinletimi() {
   local -a sureler
-  
+
   clear
   printf '%b%b\n\n' \
     "${RENK7}${RENK3}" \
@@ -74,7 +70,7 @@ function kuran_dinletimi() {
   }
 
   bilesen_yukle mplayer_yonetici
-  ucbirim_basligi "$(gawk -v sure=$sure 'BEGIN{gsub("^0*","",sure);} NR==sure {print($3);}' \
+  ucbirim_basligi "$(gawk -v sure=$sure 'BEGIN{gsub("^0*","",sure);} NR==sure {print($4);}' \
     ${VERI_DIZINI}/veriler/sure_bilgisi) Suresi"
   printf '%b%b\n%b\n' \
     "${RENK7}${RENK2}" \
@@ -83,6 +79,10 @@ function kuran_dinletimi() {
 
   mplayer_calistir "${dinletilecek_sure}"
 }
+
+function kuran_dinlet() { # kuran_dinlet_yonetimi {{{
+  local dinletilecek_sure okuyan kaynak sure i
+  local girdi="$2"
 
   case $1 in
     secim) sure_girdisi_denetimi; kuran_dinletimi ;;

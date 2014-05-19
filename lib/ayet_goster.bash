@@ -4,16 +4,6 @@
 #
 #
 
-function ayet_goster() { # {{{
-  [ -f "${KULLANICI_TEFSIR_DIZINI}/${TEFSIR_SAHIBI}" ] && {
-     TEFSIR="${KULLANICI_TEFSIR_DIZINI}/${TEFSIR_SAHIBI}"
-  } || {
-  [ -f "${VERI_DIZINI}/tefsirler/${TEFSIR_SAHIBI}" ] && \
-    TEFSIR="${VERI_DIZINI}/tefsirler/${TEFSIR_SAHIBI}"
-  } || {
-    printf "${RENK3}${TEFSIR_SAHIBI} dosyası bulunamadı.${RENK0}\n"
-    exit 1
-  }
 function ayet_araligi_goster() {
   local sure_kod=$1
   local ayet_kod=$2
@@ -97,6 +87,18 @@ function ayet_araligi_goster() {
       "${RENK8}$(sed -n "${satir}p" "${TEFSIR}")${RENK0}"
   done
 }
+
+function ayet_goster() { # {{{
+  [ -f "${KULLANICI_TEFSIR_DIZINI}/${TEFSIR_SAHIBI}" ] && {
+    TEFSIR="${KULLANICI_TEFSIR_DIZINI}/${TEFSIR_SAHIBI}"
+  } || {
+  [ -f "${VERI_DIZINI}/tefsirler/${TEFSIR_SAHIBI}" ] && \
+    TEFSIR="${VERI_DIZINI}/tefsirler/${TEFSIR_SAHIBI}"
+  } || {
+    printf "${RENK3}${TEFSIR_SAHIBI} dosyası bulunamadı.${RENK0}\n"
+    exit 1
+  }
+
   satir=$((RANDOM%6236))
   (( ! satir )) && satir=6236
 
