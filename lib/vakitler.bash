@@ -6,7 +6,7 @@
 
 function vakitleri_goster() { # {{{
   denetle; bugun
-  
+
   local istek="$1"
 
   # --osd/bildirim için renkleri sıfırla
