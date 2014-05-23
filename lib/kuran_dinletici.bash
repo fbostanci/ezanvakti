@@ -47,7 +47,7 @@ function kuran_dinletimi() {
   clear
   printf '%b%b\n\n' \
     "${RENK7}${RENK3}" \
-    "$(gawk -v sure=$sure 'BEGIN{gsub("^0*","",sure);} NR==sure {print($3);}' \
+    "$(gawk -v sure=$sure 'BEGIN{gsub("^0*","",sure);} NR==sure {print($4);}' \
     ${VERI_DIZINI}/veriler/sure_bilgisi)${RENK2} suresi dinletiliyor...${RENK0}"
 
   # Öncelikle kullanıcının girdiği dizinde dosya
