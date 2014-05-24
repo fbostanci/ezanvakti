@@ -80,6 +80,7 @@ case $1 in
       ?*) hatali_kullanim $1 ;;
       '') ayet_goster bildirim ;;
     esac ;;
+  --aa|-aa) bilesen_yukle ayet_goster; shift; ayet_goster aralik $1 $2 ;;
   --conky) bilesen_yukle conky; ezv_conky ;;
   --iftar) bilesen_yukle iftar; ezv_iftar ;;
   --conky-iftar) bilesen_yukle conky-iftar; ezv_conky_iftar ;;
