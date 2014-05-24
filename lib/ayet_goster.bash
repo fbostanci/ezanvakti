@@ -66,6 +66,7 @@ function ayet_araligi_goster() {
       if ((ilk_sayi > ikinci_sayi ))
       then
           printf "$sure_adi Suresi için ayet aralığını yanlış girdiniz.\n"
+          exit 1
       fi
       if (( ikinci_sayi > sure_ayet_sayisi ))
       then
@@ -77,6 +78,7 @@ function ayet_araligi_goster() {
       ayet_bitis=$((sure_baslama+ikinci_sayi))
   else
       printf "$sure_adi Suresi için ayet aralığını yanlış girdiniz.\n"
+      exit 1
   fi
 
   for satir in $(seq $ayet_baslama $ayet_bitis)

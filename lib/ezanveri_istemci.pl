@@ -36,8 +36,8 @@ $mech->get($baglanti);
 
 $mech->form_number('2');
 $mech->field(Country => $ulke);
-$mech->field(City => $sehir);
-$mech->field(District => $ilce);
+$mech->field(State => $sehir);
+$mech->field(City => $ilce);
 $mech->set_visible( [ radio => 'AYLIK' ] );
 $mech->submit();
 
@@ -46,8 +46,8 @@ $mech->submit();
 	# form_number => 2,
 	# fields => {
 		# Country => $ulke,
-		# City => $sehir,
-		# District => $ilce,
+		# State => $sehir,
+		# City => $ilce,
 	# },
 # );
 
