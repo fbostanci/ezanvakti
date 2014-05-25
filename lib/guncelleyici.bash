@@ -242,16 +242,18 @@ printf "${RENK7}${RENK8} [${RENK2}BAŞARILI${RENK8}]${RENK0}\n"
 printf '%-60b' \
   "${RENK7}${RENK8}${EZANVERI_ADI} dosyası güncelleniyor..${RENK0}"
 
-${BILESEN_DIZINI}/ezanveri_istemci.pl "${ulke}" "${sehir}" "${ilce}" 2>/tmp/ezv-perl-hata-$$ | \
-  sed -e 's:[[:alpha:]]::g' -e 's:[^[:blank:]]*\.:\n&:2g' | \
-  sed -e '1,4d' -e 's: : :g' -e 's:[[:space:]]*$::g' > /tmp/ezanveri-$$
+# TODO: gawk begin vakit adlarını ekle .. END düzenle
+# TODO: hatalı içeriği düzelt.
+${BILESEN_DIZINI}/ezanveri_istemci.pl "${ulke}" "${sehir}" "${ilce}" 2>/tmp/ezv-perl-hata-$$ |
+  sed -n 's:<td class=".*">\(.*\)</td>:\1:p' | sed 's:^ *::' |
+  gawk 'NR != 1 && /[0-9]+[.]/ { printf("\n") } { printf("%s ", $0); } END { printf("\n") }' > /tmp/ezanveri-$$
 
 cat << SON >> /tmp/ezanveri-$$
 
 
 
 # BİLGİ: ${ilce} / ${sehir} / ${ulke} için 30 günlük namaz vakitleridir.
-# Çizelge, 'http://www.diyanet.gov.tr/turkish/namazvakti/vakithes_namazvakti.asp'
+# Çizelge, 'http://www.diyanet.gov.tr/tr/PrayerTime/WorldPrayerTimes'
 # adresinden ezanvakti uygulaması tarafından istenerek oluşturulmuştur.
 
 # Son güncelleme : $(date +%c)
