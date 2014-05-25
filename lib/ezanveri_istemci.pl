@@ -20,7 +20,7 @@
 
 use strict;
 use warnings;
-use utf8;
+use open ':std', ':encoding(UTF-8)';
 use WWW::Mechanize;
 
 my $ulke = $ARGV[0];
@@ -34,22 +34,23 @@ my $sonuc;
 my $mech = WWW::Mechanize->new(autocheck => 1, cookie_jar => {}, agent_alias => "Linux Mozilla");
 $mech->get($baglanti);
 
-$mech->form_number('2');
-$mech->field(Country => $ulke);
-$mech->field(State => $sehir);
-$mech->field(City => $ilce);
-$mech->set_visible( [ radio => 'AYLIK' ] );
-$mech->submit();
+# $mech->form_number('2');
+# $mech->field(Country => $ulke);
+# $mech->field(State => $sehir);
+# $mech->field(City => $ilce);
+# $mech->set_visible( [ radio => 'AYLIK' ] );
+# $mech->submit();
 
 
-# $mech->submit_form(
-	# form_number => 2,
-	# fields => {
-		# Country => $ulke,
-		# State => $sehir,
-		# City => $ilce,
-	# },
-# );
+$mech->submit_form(
+	form_number => 2,
+	fields => {
+		Country => $ulke,
+		State   => $sehir,
+		City    => $ilce,
+		period  => 'Aylik'
+	},
+);
 
-$sonuc = $mech->content( format => 'text');
+$sonuc = $mech->content();
 print $sonuc;
