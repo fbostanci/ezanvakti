@@ -243,8 +243,8 @@ function denetle() {
 function bugun() {
   export $(gawk 'BEGIN{tarih = strftime("%d.%m.%Y")} {if($1 ~ tarih) \
     {printf \
-    "sabah_n=0%s:%s\ngunes_n=0%s:%s\nogle_n=%s:%s\nikindi_n=%s:%s\naksam_n=%s:%s\nyatsi_n=%s:%s"\
-    , $2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13}}' "${EZANVERI}")
+    "sabah_n=%s\ngunes_n=%s\nogle_n=%s\nikindi_n=%s\naksam_n=%s\nyatsi_n=%s"\
+    , $3,$2,$4,$5,$6,$7}}' "${EZANVERI}")
   # 08, 09 için oluşan sekizli sayı hatasının önüne geçmek için vakit saatleri,
   # aritmetik karşılaştırmalarda kullanılması için UNIX ikilik saatine çevirdik.
   sabah=$(date -d "$sabah_n" +%s)
