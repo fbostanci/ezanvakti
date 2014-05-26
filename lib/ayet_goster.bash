@@ -78,7 +78,7 @@ function ayet_araligi_goster() {
           printf "$sure_adi Suresi $sure_ayet_sayisi ayetten oluşmaktadır.\n"
           exit 1
       fi
-      if (( ilk_sayi == 0 )) || (( ikinci_sayi ))
+      if (( ilk_sayi == 0 )) || (( ikinci_sayi == 0 ))
       then
           printf "$sure_adi Suresi için ayet aralığını yanlış girdiniz.\n"
           exit 1
