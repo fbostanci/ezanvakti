@@ -242,9 +242,10 @@ printf "${RENK7}${RENK8} [${RENK2}BAŞARILI${RENK8}]${RENK0}\n"
 printf '%-60b' \
   "${RENK7}${RENK8}${EZANVERI_ADI} dosyası güncelleniyor..${RENK0}"
 
+echo "Tarih       İmsak  Güneş  Öğle   İkindi Akşam  Yatsı  Kıble" >> /tmp/ezanveri-$$
 ${BILESEN_DIZINI}/ezanveri_istemci.pl "${ulke}" "${sehir}" "${ilce}" 2>/tmp/ezv-perl-hata-$$ |
   sed -n 's:<td class=".*">\(.*\)</td>:\1:p' | sed -e 's:^ *::' -e 's:[^[:print:]]: :g' |
-  gawk 'NR != 1 && /[0-9]+[.]/ { printf("\n") } { printf("%s ", $0); } END { printf("\n") }' > /tmp/ezanveri-$$
+  gawk 'NR != 1 && /[0-9]+[.]/ { printf("\n") } { printf("%s ", $0); } END { printf("\n") }' >> /tmp/ezanveri-$$
 
 cat << SON >> /tmp/ezanveri-$$
 
