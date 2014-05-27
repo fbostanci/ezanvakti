@@ -1,15 +1,15 @@
 #
 #
-#                           Ezanvakti Güncelleme  Bileşeni 2.1
+#                           Ezanvakti Güncelleme  Bileşeni 2.2
 #
 #
 
 
 function guncelleme_yap() { ### Ana fonksiyon {{{
-  local arayuz ulke sehir ilce varsayilan_sehir pm dn sure 
+  local arayuz ulke sehir ilce varsayilan_sehir pm dn sure ulke_kodu sehir_kodu ilce_kodu
   local e=0 denetim=0
   local -a pmler
-  
+
   sure="${SECONDS}"
   test x"${ULKE}"  = x"" && ULKE=yok_boyle_bir_yer
   test x"${SEHIR}" = x"" && SEHIR=yok_boyle_bir_yer
@@ -20,7 +20,7 @@ printf '%-59b' \
   "${RENK7}${RENK8}Perl bileşenleri denetleniyor..${RENK0}"
 
 # Perl bileşenlerini denetle.
-for pm in 'WWW::Mechanize' 'HTML::TreeBuilder'
+for pm in 'WWW::Mechanize'
 do
     perl -M${pm} -e 1 2>/dev/null
     dn=$(echo $?)
@@ -45,12 +45,8 @@ done
 }
 
 printf "${RENK7}${RENK8} [${RENK2}BAŞARILI${RENK8}]${RENK0}\n"
-#notify-send "Ezanvakti $SURUM" \
-#"Güncelleme işlemi için gerekli olan \`perl-www-mechanize' bileşeni bulanamadı." \
-#-i ${VERI_DIZINI}/simgeler/ezanvakti.png -t $GUNCELLEME_BILDIRIM_SURESI"000" -h int:transient:1
-#exit 1
-#fi
 #}}}
+
 function arayuz_denetle() { ### Arayüz denetle {{{
   (( denetim )) && return 0 || denetim=1
   printf '%-60b' \
@@ -97,13 +93,13 @@ IFS="
   if (( arayuz == 1 ))
   then
       ulke=$(kdialog --combobox 'Bulunduğunuz ülkeyi seçin'  --title 'Ülke belirleme' \
-             --default 'TURKIYE' $( < ${VERI_DIZINI}/ulkeler/AAA-ULKELER))
+             --default 'TURKIYE' $(cut -d, -f1 < ${VERI_DIZINI}/ulkeler/AAA-ULKELER))
       (( $? == 1 )) && exit 1
       printf "${RENK7}${RENK3} ->${RENK8} Seçilen ülke:${RENK2}  ${ulke}${RENK0}\n"
 
   elif (( arayuz == 2 ))
   then
-      ulke=$(yad --entry --entry-text 'TURKIYE' $( < ${VERI_DIZINI}/ulkeler/AAA-ULKELER) \
+      ulke=$(yad --entry --entry-text 'TURKIYE' $(cut -d, -f1 < ${VERI_DIZINI}/ulkeler/AAA-ULKELER) \
              --width=240 --sticky --window-icon=${VERI_DIZINI}/simgeler/ezanvakti2.png \
              --title 'Ülke belirleme'  --text 'Bulunduğunuz ülkeyi seçin')
       (( $? == 1 )) && exit 1
@@ -111,14 +107,15 @@ IFS="
 
   elif (( arayuz == 3 ))
   then
-      ulke=$(zenity --entry --entry-text 'TURKIYE' $( < ${VERI_DIZINI}/ulkeler/AAA-ULKELER) \
+      ulke=$(zenity --entry --entry-text 'TURKIYE' $(cut -d, -f1 < ${VERI_DIZINI}/ulkeler/AAA-ULKELER) \
              --title 'Ülke belirleme' --text 'Bulunduğunuz ülkeyi seçin')
       (( $? == 1 )) && exit 1
       printf "${RENK7}${RENK3} ->${RENK8} Seçilen ülke:${RENK2}  ${ulke}${RENK0}\n"
   fi
 
+  ulke_kodu=$(grep -w ${ULKE} ${VERI_DIZINI}/ulkeler/AAA-ULKELER | cut -d, -f2)
   sed -i "s:\(ULKE=\).*:\1\'${ulke}\':" "${EZANVAKTI_AYAR}"
-} || ulke=${ULKE}
+} || { ulke=${ULKE}; ulke_kodu=$(grep -w ${ULKE} ${VERI_DIZINI}/ulkeler/AAA-ULKELER | cut -d, -f2); }
 #}}}
 
 ### Şehir işlemleri {{{
@@ -135,19 +132,19 @@ IFS="
   then
       varsayilan_sehir=ISTANBUL
   else
-      varsayilan_sehir=$(head -1 ${VERI_DIZINI}/ulkeler/${ulke})
+      varsayilan_sehir=$(head -1 ${VERI_DIZINI}/ulkeler/${ulke}| cut -d, -f1)
   fi
 
   if (( arayuz == 1 ))
   then
       sehir=$(kdialog --combobox 'Bulunduğunuz şehri seçin' --title 'Şehir belirleme' \
-              --default ${varsayilan_sehir} $( < ${VERI_DIZINI}/ulkeler/${ulke}))
+              --default ${varsayilan_sehir} $(cut -d, -f1 < ${VERI_DIZINI}/ulkeler/${ulke}))
       (( $? == 1 )) && exit 1
       printf "${RENK7}${RENK3} ->${RENK8} Seçilen şehir:${RENK2} ${sehir}${RENK0}\n"
 
   elif (( arayuz == 2 ))
   then
-      sehir=$(yad --entry --entry-text ${varsayilan_sehir} $( < ${VERI_DIZINI}/ulkeler/${ulke}) \
+      sehir=$(yad --entry --entry-text ${varsayilan_sehir} $(cut -d, -f1 < ${VERI_DIZINI}/ulkeler/${ulke}) \
               --width=240 --sticky --window-icon=${VERI_DIZINI}/simgeler/ezanvakti2.png \
               --title 'Şehir belirleme' --text 'Bulunduğunuz şehri seçin')
       (( $? == 1 )) && exit 1
@@ -155,14 +152,15 @@ IFS="
 
   elif (( arayuz == 3 ))
   then
-      sehir=$(zenity --entry --entry-text ${varsayilan_sehir} $( < ${VERI_DIZINI}/ulkeler/${ulke}) \
+      sehir=$(zenity --entry --entry-text ${varsayilan_sehir} $(cut -d, -f1 < ${VERI_DIZINI}/ulkeler/${ulke}) \
               --title 'Şehir belirleme' --text 'Bulunduğunuz şehri seçin')
       (( $? == 1 )) && exit 1
       printf "${RENK7}${RENK3} ->${RENK8} Seçilen şehir:${RENK2} ${sehir}${RENK0}\n"
   fi
 
+  sehir_kodu=$(grep -w ${SEHIR} ${VERI_DIZINI}/ulkeler/${ulke} | cut -d, -f2)
   sed -i "s:\(SEHIR=\).*:\1\'${sehir}\':" "${EZANVAKTI_AYAR}"
-} || sehir=${SEHIR}
+} || { sehir=${SEHIR}; sehir_kodu=$(grep -w ${SEHIR} ${VERI_DIZINI}/ulkeler/${ulke} | cut -d, -f2); }
 #}}}
 
 ### İlçe işlemleri {{{
@@ -175,7 +173,7 @@ then
     [[ -z $(grep -w ${ILCE} ${VERI_DIZINI}/ulkeler/TURKIYE_ilceler/${sehir}) ]] && {
       if [[ $(wc -l < ${VERI_DIZINI}/ulkeler/TURKIYE_ilceler/${sehir}) -eq 1 ]]
       then
-          ilce=$( < ${VERI_DIZINI}/ulkeler/TURKIYE_ilceler/${sehir})
+          ilce=$(cut -d, -f1 < ${VERI_DIZINI}/ulkeler/TURKIYE_ilceler/${sehir})
           printf "${RENK7}${RENK3} ->${RENK8} Seçilen ilçe:${RENK2}  ${ilce}${RENK3} (tek ilçe)${RENK0}\n"
       else
           arayuz_denetle
@@ -183,13 +181,13 @@ then
           if (( arayuz == 1 ))
           then
               ilce=$(kdialog --combobox 'Bulunduğunuz ilçeyi seçin' --title 'İlçe belirleme' \
-                     --default ${sehir} $( < ${VERI_DIZINI}/ulkeler/TURKIYE_ilceler/${sehir}))
+                     --default ${sehir} $(cut -d, -f1 < ${VERI_DIZINI}/ulkeler/TURKIYE_ilceler/${sehir}))
               (( $? == 1 )) && exit 1
               printf "${RENK7}${RENK3} ->${RENK8} Seçilen ilçe:${RENK2}  ${ilce}${RENK0}\n"
 
           elif (( arayuz == 2 ))
           then
-              ilce=$(yad --entry --entry-text ${sehir} $( < ${VERI_DIZINI}/ulkeler/TURKIYE_ilceler/${sehir}) \
+              ilce=$(yad --entry --entry-text ${sehir} $(cut -d, -f1 < ${VERI_DIZINI}/ulkeler/TURKIYE_ilceler/${sehir}) \
                      --width=240 --sticky --window-icon=${VERI_DIZINI}/simgeler/ezanvakti2.png \
                      --title 'İlçe belirleme' --text 'Bulunduğunuz ilçeyi seçin')
               (( $? == 1 )) && exit 1
@@ -197,31 +195,23 @@ then
 
           elif (( arayuz == 3 ))
           then
-              ilce=$(zenity --entry --entry-text ${sehir} $( < ${VERI_DIZINI}/ulkeler/TURKIYE_ilceler/${sehir}) \
+              ilce=$(zenity --entry --entry-text ${sehir} $(cut -d, -f1 < ${VERI_DIZINI}/ulkeler/TURKIYE_ilceler/${sehir}) \
                      --title 'İlçe belirleme' --text 'Bulunduğunuz ilçeyi seçin')
               (( $? == 1 )) && exit 1
               printf "${RENK7}${RENK3} ->${RENK8} Seçilen ilçe:${RENK2}  ${ilce}${RENK0}\n"
           fi
       fi
+
+      ilce_kodu=$(grep -w ${ILCE} ${VERI_DIZINI}/ulkeler/TURKIYE_ilceler/${sehir} | cut -d, -f2)
       sed -i "s:\(ILCE=\).*:\1\'${ilce}\':" "${EZANVAKTI_AYAR}"
-    } || ilce=${ILCE}
+    } || { ilce=${ILCE}; ilce_kodu=$(grep -w ${ILCE} ${VERI_DIZINI}/ulkeler/TURKIYE_ilceler/${sehir} | cut -d, -f2); }
 
 else
-    ilce=${sehir}
+    ilce=${sehir}; ilce_kodu=${sehir_kodu}
     sed -i "s:\(ILCE=\).*:\1\'${sehir}\':" "${EZANVAKTI_AYAR}"
 fi
 #}}}
 unset IFS
-
-### İnternet denetimi {{{
-# HACK: internet bağlantı sınaması yöntemini değiştir.
-#if ! { ping -q -w 1 -c 1 `ip r | grep default | cut -d' ' -f 3` &> /dev/null; }
-#then
-#    printf '%s\n%s\n' \
-#      "${RENK7}${RENK3}İnternet erişimi algılanamadı." \
-#      "Çıkılıyor....${RENK0}"
-#    exit 1
-#fi
 
 printf '%-60b' \
   "${RENK7}${RENK8}İnternet erişimi denetleniyor..${RENK0}"
@@ -238,12 +228,12 @@ fi
 rm -f /tmp/baglantisina &>/dev/null
 printf "${RENK7}${RENK8} [${RENK2}BAŞARILI${RENK8}]${RENK0}\n"
 #}}}
+
 ### Güncelleme işlemi {{{
 printf '%-60b' \
   "${RENK7}${RENK8}${EZANVERI_ADI} dosyası güncelleniyor..${RENK0}"
-
-echo "Tarih       İmsak  Güneş  Öğle   İkindi Akşam  Yatsı  Kıble" >> /tmp/ezanveri-$$
-${BILESEN_DIZINI}/ezanveri_istemci.pl "${ulke}" "${sehir}" "${ilce}" 2>/tmp/ezv-perl-hata-$$ |
+printf "Tarih       Sabah  Güneş  Öğle   İkindi Akşam  Yatsı  Kıble\n" >> /tmp/ezanveri-$$
+${BILESEN_DIZINI}/ezanveri_istemci.pl "${ulke_kodu}" "${sehir_kodu}" "${ilce_kodu}" 2>/tmp/ezv-perl-hata-$$ |
   sed -n 's:<td class=".*">\(.*\)</td>:\1:p' | sed -e 's:^ *::' -e 's:[^[:print:]]: :g' |
   gawk 'NR != 1 && /[0-9]+[.]/ { printf("\n") } { printf("%s ", $0); } END { printf("\n") }' >> /tmp/ezanveri-$$
 
@@ -278,6 +268,7 @@ SON
     rm -f /tmp/ezanveri-$$ &>/dev/null
     exit 1
   } #}}}
+
 printf '%-60b%b' \
   "${RENK7}${RENK8}Güncelleme için geçen süre: " \
   "${RENK2}$((${SECONDS}-${sure})) saniye${RENK0}\n"
