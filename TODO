@@ -13,10 +13,11 @@
 # makefile geliştir. ( dist oluşturma , tane tane dosya kurulumu ) ###TAMAM###
 # gelişmiş arayüz bileşeninin ana betik gereksinimini olabildiğince azalt.
 # kuran dinle için hatalı seçimleri yakalama geliştir.  ###TAMAM###
+# Makefile üzerinden uygulamanın adı değişebilsin.
 # ilçeleri de ekle. ###TAMAM###
 # kendiliğinden çalışmayı yapılandırma dosyasından denetlenebilir yap.
 # --surum çıktısı için daha fazla bilgi  ###TAMAM ###
-# renk özelleştirmelerini daha kolaylaştır. Renkler için kod yerine renk adının kullanılmasını sağla..
+# renk özelleştirmelerini daha kolaylaştır. Renkler için kod yerine renk adının kullanılmasını sağla..(?)
 # man dosyasını 2 ye böl. (1. ve 5. bölümler) ###TAMAM###
 # man dosyalarını güncelle.
 # Ubuntu yamalarını güncelle.

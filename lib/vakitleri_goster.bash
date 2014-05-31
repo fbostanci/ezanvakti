@@ -4,7 +4,7 @@
 #
 #
 
-function vakitleri_goster() { # {{{
+function vakitler() { # {{{
   denetle; bugun
 
   local istek="$1"

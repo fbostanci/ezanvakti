@@ -3,7 +3,7 @@
 #                 Ezanvakti 6.0  -  GNU/Linux Ezan Vakti Bildirici
 #
 ##
-##          Copyright (c) 2010-2013  Fatih Bostancı  <faopera@gmail.com>
+##          Copyright (c) 2010-2014  Fatih Bostancı  <faopera@gmail.com>
 ##
 ##                   https://gitorious.org/ezanvakti
 ##
@@ -30,27 +30,27 @@
 
 case $1 in
   -v|--v|--vakitler)
-    bilesen_yukle vakitler; shift
+    bilesen_yukle vakitleri_goster; shift
     case $1 in
-      -s|--sabah) vakitleri_goster sabah ;;
-      -[oö]|--[oö][gğ]le) vakitleri_goster ogle ;;
-      -i|--ikindi) vakitleri_goster ikindi ;;
-      -a|--ak[sş]am) vakitleri_goster aksam ;;
-      -y|--yats[ıi]) vakitleri_goster yatsi ;;
-      7|--haftal[ıi]k) vakitleri_goster haftalik ;;
-      30|--ayl[ıi]k) vakitleri_goster aylik ;;
-      --osd|--bildirim) vakitleri_goster bildirim ;;
-      '') vakitleri_goster tum_vakitler ;;
+      -s|--sabah) vakitler sabah ;;
+      -[oö]|--[oö][gğ]le) vakitler ogle ;;
+      -i|--ikindi) vakitler ikindi ;;
+      -a|--ak[sş]am) vakitler aksam ;;
+      -y|--yats[ıi]) vakitler yatsi ;;
+      7|--haftal[ıi]k) vakitler haftalik ;;
+      30|--ayl[ıi]k) vakitler aylik ;;
+      --osd|--bildirim) vakitler bildirim ;;
+      '') vakitler tum_vakitler ;;
       ?*) hatali_kullanim $1;;
     esac ;;
-  -vs|--vs) bilesen_yukle vakitler; vakitleri_goster sabah ;;
-  -v[oö]|--v[oö]) bilesen_yukle vakitler; vakitleri_goster ogle ;;
-  -vi|--vi) bilesen_yukle vakitler; vakitleri_goster ikindi ;;
-  -va|--va) bilesen_yukle vakitler; vakitleri_goster aksam ;;
-  -vy|--vy) bilesen_yukle vakitler; vakitleri_goster yatsi ;;
-  -v7|--v7) bilesen_yukle vakitler; vakitleri_goster haftalik ;;
-  -v30|--v30) bilesen_yukle vakitler; vakitleri_goster aylik ;;
-  -vb|--vb) bilesen_yukle vakitler; vakitleri_goster bildirim ;;
+  -vs|--vs) bilesen_yukle vakitleri_goster; vakitler sabah ;;
+  -v[oö]|--v[oö]) bilesen_yukle vakitleri_goster; vakitler ogle ;;
+  -vi|--vi) bilesen_yukle vakitleri_goster; vakitler ikindi ;;
+  -va|--va) bilesen_yukle vakitleri_goster; vakitler aksam ;;
+  -vy|--vy) bilesen_yukle vakitleri_goster; vakitler yatsi ;;
+  -v7|--v7) bilesen_yukle vakitleri_goster; vakitler haftalik ;;
+  -v30|--v30) bilesen_yukle vakitleri_goster; vakitler aylik ;;
+  -vb|--vb) bilesen_yukle vakitleri_goster; vakitler bildirim ;;
   --dinle) bilesen_yukle ezan_dinlet; shift
     case $1 in
       -s|--sabah) ezan_dinlet Sabah "${SABAH_EZANI}" ;;
