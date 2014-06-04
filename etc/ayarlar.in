@@ -106,6 +106,21 @@ EZAN_DUASI_OKU=1
 # Ezanların vaktinden önce ya da sonra okunma süresi (saniye olarak)
 EZAN_OKUNMA_SURESI_FARKI=0
 
+# Sabah ezanı okunsun mu?
+SABAH_EZANI_OKU=1
+
+# Öğle ezanı okunsun mu?
+OGLE_EZANI_OKU=1
+
+# İkindi ezanı okunsun mu?
+IKINDI_EZANI_OKU=1
+
+# Akşam ezanı okunsun mu?
+AKSAM_EZANI_OKU=1
+
+# Yatsı ezanı okunsun mu?
+YATSI_EZANI_OKU=1
+
 # Ezan okuyan
 EZAN_OKUYAN='İsmail COŞAR'
 
