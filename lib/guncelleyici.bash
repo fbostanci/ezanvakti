@@ -1,12 +1,12 @@
 #
 #
-#                           Ezanvakti Güncelleme  Bileşeni 2.2
+#                           Ezanvakti Güncelleme  Bileşeni 2.3
 #
 #
 
 
 function guncelleme_yap() { ### Ana fonksiyon {{{
-  local arayuz au ulke sehir ilce varsayilan_sehir pm dn sure ulke_kodu sehir_kodu ilce_kodu
+  local arayuz au ulke sehir ilce varsayilan_sehir varsayilan_ilce dn sure ulke_kodu sehir_kodu ilce_kodu
   local e=0 denetim=0
   local -a pmler
 
@@ -129,7 +129,7 @@ IFS="
   then
       varsayilan_sehir=ISTANBUL
   else
-      varsayilan_sehir=$(head -1 ${VERI_DIZINI}/ulkeler/${ulke}| cut -d, -f1)
+      varsayilan_sehir=$(head -1 ${VERI_DIZINI}/ulkeler/${ulke} | cut -d, -f1)
   fi
 
   if (( arayuz == 1 ))
@@ -200,11 +200,50 @@ then
       sed -i "s:\(ILCE=\).*:\1\'${ilce}\':" "${EZANVAKTI_AYAR}"
     } || { ilce=${ILCE}; ilce_kodu=$(grep -w ${ILCE} ${VERI_DIZINI}/ulkeler/TURKIYE_ilceler/${sehir} | cut -d, -f2); }
 
+elif [[ ${ulke} = ABD ]]
+then
+    [[ -z $(grep -w ${ILCE} ${VERI_DIZINI}/ulkeler/ABD_ilceler/${sehir}) ]] && {
+      if [[ $(wc -l < ${VERI_DIZINI}/ulkeler/ABD_ilceler/${sehir}) -eq 1 ]]
+      then
+          ilce=$(cut -d, -f1 < ${VERI_DIZINI}/ulkeler/ABD_ilceler/${sehir})
+          printf "${RENK7}${RENK3} ->${RENK8} Seçilen ilçe:${RENK2}  ${ilce}${RENK3} (tek ilçe)${RENK0}\n"
+      else
+          arayuz_denetle
+          varsayilan_ilce=$(head -1 ${VERI_DIZINI}/ulkeler/ABD_ilceler/${sehir} | cut -d, -f1)
+
+          if (( arayuz == 1 ))
+          then
+              ilce=$(kdialog --combobox 'Bulunduğunuz ilçeyi seçin' --title 'İlçe belirleme' \
+                     --default ${varsayilan_ilce} $(cut -d, -f1 < ${VERI_DIZINI}/ulkeler/ABD_ilceler/${sehir}))
+              (( $? == 1 )) && exit 1
+
+
+          elif (( arayuz == 2 ))
+          then
+              ilce=$(yad --entry --entry-text ${varsayilan_ilce} $(cut -d, -f1 < ${VERI_DIZINI}/ulkeler/ABD_ilceler/${sehir}) \
+                     --width=240 --sticky --window-icon=${VERI_DIZINI}/simgeler/ezanvakti2.png \
+                     --title 'İlçe belirleme' --text 'Bulunduğunuz ilçeyi seçin')
+              (( $? == 1 )) && exit 1
+
+          elif (( arayuz == 3 ))
+          then
+              ilce=$(zenity --entry --entry-text ${varsayilan_ilce} $(cut -d, -f1 < ${VERI_DIZINI}/ulkeler/ABD_ilceler/${sehir}) \
+                     --title 'İlçe belirleme' --text 'Bulunduğunuz ilçeyi seçin')
+              (( $? == 1 )) && exit 1
+          fi
+          printf "${RENK7}${RENK3} ->${RENK8} Seçilen ilçe:${RENK2}  ${ilce}${RENK0}\n"
+      fi
+
+      ilce_kodu=$(grep -w ${ILCE} ${VERI_DIZINI}/ulkeler/ABD_ilceler/${sehir} | cut -d, -f2)
+      sed -i "s:\(ILCE=\).*:\1\'${ilce}\':" "${EZANVAKTI_AYAR}"
+    } || { ilce=${ILCE}; ilce_kodu=$(grep -w ${ILCE} ${VERI_DIZINI}/ulkeler/ABD_ilceler/${sehir} | cut -d, -f2); }
+
 else
     ilce=${sehir}; ilce_kodu=${sehir_kodu}
     sed -i "s:\(ILCE=\).*:\1\'${sehir}\':" "${EZANVAKTI_AYAR}"
 fi
 #}}}
+
 unset IFS
 
 printf '%-60b' \

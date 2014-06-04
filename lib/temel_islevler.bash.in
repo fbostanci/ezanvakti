@@ -25,7 +25,7 @@ function ucbirim_basligi() {
   
 [[ ! -d "${EZANVAKTI_DIZINI}" ]] && mkdir -p "${EZANVAKTI_DIZINI}"
 [[ ! -f "${EZANVAKTI_AYAR}"   ]] &&
-  sed "s:\$HOME:$HOME:" < @sysconfdir@/ezanvakti/ayarlar > "${EZANVAKTI_AYAR}"
+  sed "s:\(EZANVERI_DIZINI=\).*:\1\'${EZANVAKTI_DIZINI}\':" < @sysconfdir@/ezanvakti/ayarlar > "${EZANVAKTI_AYAR}"
 
 # Öntanımlı ayarları al.
 . @sysconfdir@/ezanvakti/ayarlar
