@@ -6,7 +6,7 @@
 
 
 function guncelleme_yap() { ### Ana fonksiyon {{{
-  local arayuz au ulke sehir ilce varsayilan_sehir varsayilan_ilce dn sure ulke_kodu sehir_kodu ilce_kodu
+  local arayuz au ulke sehir ilce varsayilan_sehir pm varsayilan_ilce dn sure ulke_kodu sehir_kodu ilce_kodu
   local e=0 denetim=0
   local -a pmler
 
@@ -216,7 +216,6 @@ then
               ilce=$(kdialog --combobox 'Bulunduğunuz ilçeyi seçin' --title 'İlçe belirleme' \
                      --default ${varsayilan_ilce} $(cut -d, -f1 < ${VERI_DIZINI}/ulkeler/ABD_ilceler/${sehir}))
               (( $? == 1 )) && exit 1
-
 
           elif (( arayuz == 2 ))
           then
