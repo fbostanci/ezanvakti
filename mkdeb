@@ -2,7 +2,7 @@
 # Maintainer: Fatih BOSTANCI <faopera@gmail.com>
 
 pkgname=ezanvakti
-pkgver=20110402
+pkgver=5.7.1
 startdir="$(pwd)"
 srcdir="$startdir/src"
 pkgdir="$startdir/pkg"
@@ -20,58 +20,68 @@ trap ctrlc INT
 
 function msg() {
   local ilt=$1; shift
-   printf "${GREEN}==>${ALL_OFF}${BOLD} ${ilt}${ALL_OFF}\n" "$@" >&2
+  printf "${GREEN}==>${ALL_OFF}${BOLD} ${ilt}${ALL_OFF}\n" "$@" >&2
 }
-    function msg2() {
-    local ilt=$1; shift
-    printf "${BLUE}==>${ALL_OFF}${BOLD} ${ilt}${ALL_OFF}\n" "$@" >&2
-    }
-    function error() {
-    local ilt=$1; shift
-    printf "${RED}==> HATA:${ALL_OFF}${BOLD} ${ilt}${ALL_OFF}\n" "$@" >&2
-    exit 1
-    }
-    function ctrlc() {
-    echo
-    error "Kullanıcı tarafından işlem iptal edildi"; exit 1
-    }
-    # root olarak çalıştırılmasın.
-    [[ $UID -eq 0 ]] && error "Yönetici haklarıyla çalıştırılmaz.."
-    function build() {
-    mkdir -p "$startdir"/{src,pkg} && cd "$startdir/src"
-    msg "Gitorious GIT sunucusuna bağlanılıyor..."
-    if [ -d "$startdir/src/$_gitname" ]
-    then
-    cd $_gitname && git pull origin && cd -
-    else
-    git clone "$_gitroot"
-    fi
-    msg "Ubuntu özelleştirme yaması uygulanıyor..."
-    cd "$srcdir"/$pkgname
-    patch -p1 -i ubuntu-ozl.patch
-    cd -
-    }
-    function package() {
-    install -vd "$pkgdir"/usr/share/sounds
-    install -vDm644 {"$srcdir"/$pkgname,"$pkgdir"}/DEBIAN/control
-    install -vDm644 {"$srcdir"/$pkgname,"$pkgdir"}/etc/bash_completion.d/$pkgname
-    install -vDm644 {"$srcdir"/$pkgname,"$pkgdir"}/etc/xdg/autostart/$pkgname.desktop
-    install -vDm755 {"$srcdir"/$pkgname,"$pkgdir"}/usr/bin/$pkgname
-    cp -vR {"$srcdir"/$pkgname,"$pkgdir"}/usr/share/$pkgname/
-    install -vDm755 {"$srcdir"/$pkgname,"$pkgdir"}/usr/share/applications/$pkgname.desktop
-    install -vDm644 {"$srcdir"/$pkgname,"$pkgdir"}/usr/share/man/man1/$pkgname.1
-    cp -vR {"$srcdir"/$pkgname,"$pkgdir"}/usr/share/sounds/$pkgname/
-    chmod 755 $pkgdir/usr/share/$pkgname/bilesenler/ezanveri_guncelle
-    msg ".deb paketi oluşturuluyor..."
-    fakeroot dpkg-deb --build "$startdir"/pkg "$startdir"/ezanvakti-"$pkgver"_all.deb
-    }
-    function mk_dep_control() {
-    msg2 "Paketlemek için gerekli bağımlılıklar denetleniyor..."
-    for i in ${makedepends[@]}
-    do
-    [[ ! $(type -p $i) ]] && error "Devam etmek için $i paketini kurun..."
-    done
-    msg "TAMAM"
-    return 0
-    }
-    mk_dep_control && build && package
+
+function msg2() {
+  local ilt=$1; shift
+  printf "${BLUE}==>${ALL_OFF}${BOLD} ${ilt}${ALL_OFF}\n" "$@" >&2
+}
+
+function error() {
+  local ilt=$1; shift
+  printf "${RED}==> HATA:${ALL_OFF}${BOLD} ${ilt}${ALL_OFF}\n" "$@" >&2
+  exit 1
+}
+
+function ctrlc() {
+  echo
+  error "Kullanıcı tarafından işlem iptal edildi"; exit 1
+}
+
+# root olarak çalıştırılmasın.
+[[ $UID -eq 0 ]] && error "Yönetici haklarıyla çalıştırılmaz.."
+
+function build() {
+  mkdir -p "$startdir"/{src,pkg} && cd "$startdir/src"
+  msg "Gitorious GIT sunucusuna bağlanılıyor..."
+
+  if [ -d "$startdir/src/$_gitname" ]
+  then
+      cd $_gitname && git pull origin && cd -
+  else
+      git clone "$_gitroot"
+  fi
+
+  msg "Ubuntu özelleştirme yaması uygulanıyor..."
+  cd "$srcdir"/$pkgname
+  patch -p1 -i ubuntu-ozl.patch
+  cd -
+}
+
+function package() {
+  install -vd "$pkgdir"/usr/share/sounds
+  install -vDm644 {"$srcdir"/$pkgname,"$pkgdir"}/DEBIAN/control
+  install -vDm644 {"$srcdir"/$pkgname,"$pkgdir"}/etc/bash_completion.d/$pkgname
+  install -vDm644 {"$srcdir"/$pkgname,"$pkgdir"}/etc/xdg/autostart/$pkgname.desktop
+  install -vDm755 {"$srcdir"/$pkgname,"$pkgdir"}/usr/bin/$pkgname
+  cp -vR {"$srcdir"/$pkgname,"$pkgdir"}/usr/share/$pkgname/
+  install -vDm755 {"$srcdir"/$pkgname,"$pkgdir"}/usr/share/applications/$pkgname.desktop
+  install -vDm644 {"$srcdir"/$pkgname,"$pkgdir"}/usr/share/man/man1/$pkgname.1
+  cp -vR {"$srcdir"/$pkgname,"$pkgdir"}/usr/share/sounds/$pkgname/
+  chmod 755 $pkgdir/usr/share/$pkgname/bilesenler/ezanveri_guncelle
+  msg ".deb paketi oluşturuluyor..."
+  fakeroot dpkg-deb --build "$startdir"/pkg "$startdir"/ezanvakti-"$pkgver"_all.deb
+}
+
+function mk_dep_control() {
+  msg2 "Paketlemek için gerekli bağımlılıklar denetleniyor..."
+  for i in ${makedepends[@]}
+  do
+      [[ ! $(type -p $i) ]] && error "Devam etmek için $i paketini kurun..."
+  done
+  msg "TAMAM"
+  return 0
+}
+
+mk_dep_control && build && package

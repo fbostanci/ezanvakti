@@ -83,6 +83,7 @@ function kuran_dinletimi() {
 function kuran_dinlet() { # kuran_dinlet_yonetimi {{{
   local dinletilecek_sure okuyan kaynak sure i
   local girdi="$2"
+  renk_denetle
 
   case $1 in
     secim) sure_girdisi_denetimi; kuran_dinletimi ;;

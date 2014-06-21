@@ -14,6 +14,7 @@ function guncelleme_yap() { ### Ana fonksiyon {{{
   test x"${ULKE}"  = x"" && ULKE=yok_boyle_bir_yer
   test x"${SEHIR}" = x"" && SEHIR=yok_boyle_bir_yer
   test x"${ILCE}"  = x"" && ILCE=yok_boyle_bir_yer
+  renk_denetle
 
 ### Perl denetleme {{{
 printf '%-59b' \
@@ -287,6 +288,7 @@ SON
     rm -f /tmp/ezv-perl-hata-$$ &>/dev/null
     . "${EZANVAKTI_AYAR}"
     ## TODO: Buraya renk denetimi eklenecek
+    renk_denetle
     notify-send "Ezanvakti $SURUM" "${EZANVERI_ADI} dosyası başarıyla güncellendi." \
       -i ${VERI_DIZINI}/simgeler/ezanvakti.png -t $GUNCELLEME_BILDIRIM_SURESI"000" -h int:transient:1
     :> /tmp/eznvrgncldntle_$(date +%d%m%y)

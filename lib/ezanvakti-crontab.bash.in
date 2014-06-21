@@ -22,6 +22,7 @@ exit 0
 . ${BILESEN_DIZINI}/guncelleyici.bash
 . ${BILESEN_DIZINI}/ortak.bash
 . ${BILESEN_DIZINI}/oynatici_duraklat.bash
+renk_denetle
 
 # Vakit bildirimleri için ezan dinletiminin yanında
 # diğer bildirimleri de düzenleyen fonksiyon

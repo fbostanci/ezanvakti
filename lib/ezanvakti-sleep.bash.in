@@ -11,10 +11,10 @@ calisma_kipi=$1
 
 bilesen_yukle mplayer_yonetici
 (( OYNATICI_DURAKLAT )) && bilesen_yukle oynatici_duraklat
-
+renk_denetle
 
 function bekleme_yap() {
-  
+
   [[ -t 1 ]] && (( KALAN_SURE_SAY )) && {
     while (( bekle ))
     do
