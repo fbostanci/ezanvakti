@@ -6,6 +6,7 @@
 
 function ezv_iftar() {
   denetle; bugun
+  renk_denetle
 
   # Eğer şu anki saat aksam değerinden küçükse
   [[ $UNIXSAAT -lt $aksam ]] && {

@@ -6,6 +6,7 @@
 
 function vakitler() { # {{{
   denetle; bugun
+  renk_denetle
 
   local istek="$1"
 
