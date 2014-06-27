@@ -39,7 +39,8 @@ function ezanoku() {
   notify-send "${ILCE} için" \
     "${simdiki} namazı vakti\n$vakit_saati" \
     -i ${VERI_DIZINI}/simgeler/ezanvakti.png -t $EZAN_BILDIRIM_SURESI"000" -h int:transient:1
-  
+
+  (( ezan_okunsun_mu )) || { sleep 1m; return 0; }
   bilesen_yukle mplayer_yonetici
   # Oynatıcı duraklatma etkin mi ezan okumadan değeri
   # denetle ve fonksiyonu çağır.
@@ -107,6 +108,7 @@ function ramazan_ezanoku() {
   notify-send "${ILCE} için" "${simdiki} vakti \n$vakit_saati" \
     -i ${VERI_DIZINI}/simgeler/ezanvakti.png -t $EZAN_BILDIRIM_SURESI"000" -h int:transient:1
 
+  (( ezan_okunsun_mu )) || { sleep 1m; return 0; }
   bilesen_yukle mplayer_yonetici
   # Oynatıcı duraklatma etkin mi ezan okumadan değeri
   # denetle ve fonksiyonu çağır.
@@ -126,6 +128,7 @@ function ezanlar() {
     simdiki=Sabah
     vakit_ezani="${SABAH_EZANI}"
     vakit_saati=$sabah_n
+    ezan_okunsun_mu=${SABAH_EZANI_OKU}
 
     # Eğer betik sabah vakti dakikası içerisinde
     # çalıştırılırsa saniyeyi önemseme, ezan okut.
@@ -140,6 +143,7 @@ function ezanlar() {
     simdiki=Öğle
     vakit_ezani="${OGLE_EZANI}"
     vakit_saati=$ogle_n
+    ezan_okunsun_mu=${OGLE_EZANI_OKU}
 
     [[ $UNIXSAAT -eq $ogle ]] && { ezanoku; ezanlar; }
     printf "${RENK7}${RENK4}Öğle ezanı için bekleniyor...${RENK0}\n"
@@ -152,6 +156,7 @@ function ezanlar() {
     simdiki=İkindi
     vakit_ezani="${IKINDI_EZANI}"
     vakit_saati=$ikindi_n
+    ezan_okunsun_mu=${IKINDI_EZANI_OKU}
 
     [[ $UNIXSAAT -eq $ikindi ]] && { ezanoku; ezanlar; }
     printf "${RENK7}${RENK4}İkindi ezanı için bekleniyor...${RENK0}\n"
@@ -164,6 +169,7 @@ function ezanlar() {
     simdiki=Akşam
     vakit_ezani="${AKSAM_EZANI}"
     vakit_saati=$aksam_n
+    ezan_okunsun_mu=${AKSAM_EZANI_OKU}
 
     [[ $UNIXSAAT -eq $aksam ]] && { ezanoku; ezanlar; }
     printf "${RENK7}${RENK4}Akşam ezanı için bekleniyor...${RENK0}\n"
@@ -176,6 +182,7 @@ function ezanlar() {
     simdiki=Yatsı
     vakit_ezani="${YATSI_EZANI}"
     vakit_saati=$yatsi_n
+    ezan_okunsun_mu=${YATSI_EZANI_OKU}
 
     [[ $UNIXSAAT -eq $yatsi ]] && { ezanoku; ezanlar; }
     printf "${RENK7}${RENK4}Yatsı ezanı için bekleniyor...${RENK0}\n"
@@ -201,6 +208,7 @@ function iftarimsak() {
     simdiki=İmsak
     vakit_ezani="${SABAH_EZANI}"
     vakit_saati=$sabah_n
+    ezan_okunsun_mu=${SABAH_EZANI_OKU}
 
     [[ $SAAT -eq $sabah ]] && { ramazan_ezanoku; iftarimsak; }
     printf "${RENK7}${RENK4}İmsak vakti için bekleniyor...${RENK0}\n"
@@ -213,6 +221,7 @@ function iftarimsak() {
     simdiki=İftar
     vakit_ezani="${AKSAM_EZANI}"
     vakit_saati=$aksam_n
+    ezan_okunsun_mu=${AKSAM_EZANI_OKU}
 
     [[ $UNIXSAAT -eq $aksam ]] && { ramazan_ezanoku; iftarimsak; }
     printf "${RENK7}${RENK4}İftar vakti için bekleniyor...${RENK0}\n"

@@ -67,7 +67,7 @@ function vakitler() { # {{{
           printf "${RENK3}7 günlük veri bulunmuyor..${RENK0}\n"
           exit 1
       fi
- 
+
       printf "\n${RENK7}${RENK6}Tarih        Sabah   Güneş   Öğle    İkindi  Akşam   Yatsı${RENK0}\n"
       grep '^[0-9][0-9]\.[0-9]*\.[0-9]*' "${EZANVERI}" | grep -B7 $(date -d 'next week' +%d.%m.%Y) | \
         gawk -v renk0=${RENK0} -v renk2=${RENK2} -v renk3=${RENK3} -v renk7=${RENK7} \

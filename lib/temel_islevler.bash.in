@@ -37,7 +37,7 @@ function ucbirim_basligi() {
 . "${EZANVAKTI_AYAR}" ||
   { printf "${EZANVAKTI_AYAR} dosyası okunabilir değil.\n Çıkılıyor...\n"; exit 1; }
 
- [[ ! -t 1 ]] || [[ ! $DISPLAY ]] && { RENK_KULLAN=0; RENK=0; }
+[[ ! -t 1 ]] || [[ ! $DISPLAY ]] && { RENK_KULLAN=0; RENK=0; }
 EZANVERI=${EZANVAKTI_DIZINI}/${EZANVERI_ADI}
 MPLAYER="mplayer -really-quiet -volume $SES"
 
