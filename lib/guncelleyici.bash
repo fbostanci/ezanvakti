@@ -4,7 +4,7 @@
 #
 #
 
-
+# TODO: uçbirim çıktılarını geometriye uydur.
 function guncelleme_yap() { ### Ana fonksiyon {{{
   local arayuz au ulke sehir ilce varsayilan_sehir pm varsayilan_ilce dn sure ulke_kodu sehir_kodu ilce_kodu
   local e=0 denetim=0

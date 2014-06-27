@@ -6,11 +6,12 @@
 
 function kalan_sure() {
   denetle; bugun
+  renk_denetle
 
   function bekleme_goster() {
     local vakit="$1"
     local vakit_saati="$2"
-   
+
     clear
     printf "${RENK7}${RENK4}${vakit} için bekleniyor...${RENK0}\n"
     bekleme_suresi ${vakit_saati}
