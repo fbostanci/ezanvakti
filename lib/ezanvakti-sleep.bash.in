@@ -42,14 +42,12 @@ function ezanoku() {
 
   (( ezan_okunsun_mu )) || { sleep 1m; return 0; }
   bilesen_yukle mplayer_yonetici
+
   # Oynatıcı duraklatma etkin mi ezan okumadan değeri
   # denetle ve fonksiyonu çağır.
-  (( OYNATICI_DURAKLAT )) && {
-    oynatici_islem
-  } || {
-    mplayer_calistir "${vakit_ezani}"
-    (( EZAN_DUASI_OKU )) && mplayer_calistir "${EZAN_DUASI}"
-  }; clear
+  (( OYNATICI_DURAKLAT )) && oynatici_islem || mplayer_calistir "${vakit_ezani}"
+  (( EZAN_DUASI_OKU )) && mplayer_calistir "${EZAN_DUASI}"
+  clear
 }
 
 # Vakit ezanı okunmadan önce  anımsatma
@@ -110,14 +108,12 @@ function ramazan_ezanoku() {
 
   (( ezan_okunsun_mu )) || { sleep 1m; return 0; }
   bilesen_yukle mplayer_yonetici
+
   # Oynatıcı duraklatma etkin mi ezan okumadan değeri
   # denetle ve fonksiyonu çağır.
-  (( OYNATICI_DURAKLAT )) && {
-    oynatici_islem
-  } || {
-    mplayer_calistir "${vakit_ezani}"
-    (( EZAN_DUASI_OKU )) && mplayer_calistir "${EZAN_DUASI}"
-  }; clear
+  (( OYNATICI_DURAKLAT )) && oynatici_islem || mplayer_calistir "${vakit_ezani}"
+  (( EZAN_DUASI_OKU )) && mplayer_calistir "${EZAN_DUASI}"
+  clear
 }
 
 # Vakitlerde ezan okunmasının ve bildirimin yönetildiği özyinelemeli ana fonksiyon.

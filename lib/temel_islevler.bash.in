@@ -6,7 +6,7 @@
 
 AD=ezanvakti
 SURUM=6.0
-DERLEME=@derleme@
+DUZENLEME=@duzenleme@
 
 BILESEN_DIZINI=@libdir@/ezanvakti
 VERI_DIZINI=@datadir@/ezanvakti
@@ -155,13 +155,21 @@ function betik_kullanimi() {
 }
 
 function surum_goster() {
-  printf '%s\n\n%s\n\n%s\n%s\n%s\n%s\n' \
-    "Ezanvakti $SURUM derleme: $DERLEME"\
-    'Copyright (c) 2010-2014 Fatih Bostancı'\
-    'Bu uygulama bir özgür yazılımdır: yeniden dağıtabilirsiniz ve/veya'\
-    'Özgür Yazılım Vakfı (FSF) tarafından yayımlanan (GPL)  Genel  kamu'\
-    'lisansı sürüm 3  veya daha yeni bir sürümünde belirtilen  şartlara'\
-    'uymak kaydıyla, üzerinde değişiklik yapabilirsiniz.'
+  printf '%s\n%s\n\n%s\n%s\n%s\n%s\n\n%s\n%s\n%s\n%s\n\n%s\n%s\n' \
+    "Ezanvakti $SURUM düzenleme: $DUZENLEME"\
+    'Copyright (C) 2010-2014 Fatih Bostancı'\
+    'This program is free software; you can redistribute it and/or modify'\
+    'it under the terms of the GNU General Public License as published by'\
+    'the Free Software Foundation; either version 3 of the License, or'\
+    '(at your option) any later version.'\
+    'This program is distributed in the hope that it will be useful,'\
+    'but WITHOUT ANY WARRANTY; without even the implied warranty of'\
+    'MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the'\
+    'GNU General Public License for more details.'\
+    'You should have received a copy of the GNU General Public License'\
+    'along with this program. If not, see http://www.gnu.org/licenses/.'
+
+
 }
 
 # Karar verme önceliği env olarak tanımlıysa RENK değişkenine verildi.

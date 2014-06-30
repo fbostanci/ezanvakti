@@ -6,7 +6,7 @@
 
 SHELL = /bin/bash
 surum = $(shell cat VERSION)
-derleme = $(shell git log -1 --pretty=format:'%ad' --abbrev-commit --date=short 2>/dev/null | tr -d -- '-')
+duzenleme = $(shell git log -1 --pretty=format:'%ad' --abbrev-commit --date=short 2>/dev/null | tr -d -- '-')
 
 INSTALL = install
 SED = sed
@@ -22,8 +22,8 @@ datadir = $(PREFIX)/share
 sounddir = $(PREFIX)/share/sounds
 appdeskdir = $(PREFIX)/share/applications
 
-ifeq "$(derleme)" ""
-	derleme = bilinmeyen
+ifeq "$(duzenleme)" ""
+	duzenleme = bilinmeyen
 endif
 
 all:
@@ -41,7 +41,7 @@ clean:
 
 
 config: clean
-		@$(SED) -e 's:@derleme@:$(derleme):' \
+		@$(SED) -e 's:@duzenleme@:$(duzenleme):' \
 				-e 's:@datadir@:$(datadir):' \
 				-e 's:@libdir@:$(libdir):' \
 				-e 's:@sysconfdir@:$(sysconfdir):' \

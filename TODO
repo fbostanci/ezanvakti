@@ -6,18 +6,14 @@
 # ses dosyalarını yeni depoya al (?) ###TAMAM###
 # debian paketleme dosyalarını paylaşıma aç.
 # gelişmiş arayüz e son özelikleri(dini günler; aylık,haftalık vakitler) ekle.
-# yapılandırma dosyası içe aktarma. --yapilandirma <yapilandirma_dosyasi>
 # oynatici_duraklat için uygulama durumunu denetleme geliştir. ###TAMAM###
 # yapılandırma yöneticisini yeni pencerelere böl. Kapsamını arttır. Önce CB ile pencereleri listele.
 # --vakitler/-v için birleşik komut kullanımı desteği sağla. (ezanvakti -vi gibi) ###TAMAM###
 # makefile geliştir. ( dist oluşturma , tane tane dosya kurulumu ) ###TAMAM###
 # gelişmiş arayüz bileşeninin ana betik gereksinimini olabildiğince azalt.
-# kuran dinle için hatalı seçimleri yakalama geliştir.  ###TAMAM###
 # Makefile üzerinden uygulamanın adı değişebilsin.
 # ilçeleri de ekle. ###TAMAM###
 # kendiliğinden çalışmayı yapılandırma dosyasından denetlenebilir yap.
-# --surum çıktısı için daha fazla bilgi  ###TAMAM ###
-# renk özelleştirmelerini daha kolaylaştır. Renkler için kod yerine renk adının kullanılmasını sağla..(?)
 # man dosyasını 2 ye böl. (1. ve 5. bölümler) ###TAMAM###
 # man dosyalarını güncelle.
 # Ubuntu yamalarını güncelle.
