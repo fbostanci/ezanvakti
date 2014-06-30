@@ -53,15 +53,15 @@ function arayuz_denetle() { ### Arayüz denetle {{{
   printf '%-60b' \
     "${RENK7}${RENK8}Arayüz uygulaması denetleniyor..${RENK0}"
 
-  if test -x "$(which kdialog 2>/dev/null)"
+  if test -x "$(type -p kdialog 2>/dev/null)"
   then
       arayuz=1
       au=Kdialog
-  elif test -x "$(which yad 2>/dev/null)"
+  elif test -x "$(type -p yad 2>/dev/null)"
   then
       arayuz=2
       au=Yad
-  elif test -x "$(which zenity 2>/dev/null)"
+  elif test -x "$(type -p zenity 2>/dev/null)"
   then
       arayuz=3
       au=Zenity
@@ -111,9 +111,10 @@ IFS="
   fi
 
   printf "${RENK7}${RENK3} ->${RENK8} Seçilen ülke:${RENK2}  ${ulke}${RENK0}\n"
-  ulke_kodu=$(grep -w ${ULKE} ${VERI_DIZINI}/ulkeler/AAA-ULKELER | cut -d, -f2)
+
   sed -i "s:\(ULKE=\).*:\1\'${ulke}\':" "${EZANVAKTI_AYAR}"
-} || { ulke=${ULKE}; ulke_kodu=$(grep -w ${ULKE} ${VERI_DIZINI}/ulkeler/AAA-ULKELER | cut -d, -f2); }
+} || ulke=${ULKE}
+ulke_kodu=$(grep -w ${ULKE} ${VERI_DIZINI}/ulkeler/AAA-ULKELER | cut -d, -f2)
 #}}}
 
 ### Şehir işlemleri {{{
@@ -154,9 +155,9 @@ IFS="
   fi
 
   printf "${RENK7}${RENK3} ->${RENK8} Seçilen şehir:${RENK2} ${sehir}${RENK0}\n"
-  sehir_kodu=$(grep -w ${SEHIR} ${VERI_DIZINI}/ulkeler/${ulke} | cut -d, -f2)
   sed -i "s:\(SEHIR=\).*:\1\'${sehir}\':" "${EZANVAKTI_AYAR}"
-} || { sehir=${SEHIR}; sehir_kodu=$(grep -w ${SEHIR} ${VERI_DIZINI}/ulkeler/${ulke} | cut -d, -f2); }
+} || sehir=${SEHIR}
+sehir_kodu=$(grep -w ${SEHIR} ${VERI_DIZINI}/ulkeler/${ulke} | cut -d, -f2)
 #}}}
 
 ### İlçe işlemleri {{{
@@ -197,9 +198,9 @@ then
           printf "${RENK7}${RENK3} ->${RENK8} Seçilen ilçe:${RENK2}  ${ilce}${RENK0}\n"
       fi
 
-      ilce_kodu=$(grep -w ${ILCE} ${VERI_DIZINI}/ulkeler/TURKIYE_ilceler/${sehir} | cut -d, -f2)
       sed -i "s:\(ILCE=\).*:\1\'${ilce}\':" "${EZANVAKTI_AYAR}"
-    } || { ilce=${ILCE}; ilce_kodu=$(grep -w ${ILCE} ${VERI_DIZINI}/ulkeler/TURKIYE_ilceler/${sehir} | cut -d, -f2); }
+    } || ilce=${ILCE}
+    ilce_kodu=$(grep -w ${ILCE} ${VERI_DIZINI}/ulkeler/TURKIYE_ilceler/${sehir} | cut -d, -f2)
 
 elif [[ ${ulke} = ABD ]]
 then
@@ -234,10 +235,9 @@ then
           printf "${RENK7}${RENK3} ->${RENK8} Seçilen ilçe:${RENK2}  ${ilce}${RENK0}\n"
       fi
 
-      ilce_kodu=$(grep -w ${ILCE} ${VERI_DIZINI}/ulkeler/ABD_ilceler/${sehir} | cut -d, -f2)
       sed -i "s:\(ILCE=\).*:\1\'${ilce}\':" "${EZANVAKTI_AYAR}"
-    } || { ilce=${ILCE}; ilce_kodu=$(grep -w ${ILCE} ${VERI_DIZINI}/ulkeler/ABD_ilceler/${sehir} | cut -d, -f2); }
-
+    } || ilce=${ILCE}
+    ilce_kodu=$(grep -w ${ILCE} ${VERI_DIZINI}/ulkeler/ABD_ilceler/${sehir} | cut -d, -f2)
 else
     ilce=${sehir}; ilce_kodu=${sehir_kodu}
     sed -i "s:\(ILCE=\).*:\1\'${sehir}\':" "${EZANVAKTI_AYAR}"
@@ -265,10 +265,11 @@ printf "${RENK7}${RENK8} [${RENK2}BAŞARILI${RENK8}]${RENK0}\n"
 ### Güncelleme işlemi {{{
 printf '%-60b' \
   "${RENK7}${RENK8}${EZANVERI_ADI} dosyası güncelleniyor..${RENK0}"
+
 printf "Tarih       Sabah  Güneş  Öğle   İkindi Akşam  Yatsı  Kıble\n" >> /tmp/ezanveri-$$
 ${BILESEN_DIZINI}/ezanveri_istemci.pl "${ulke_kodu}" "${sehir_kodu}" "${ilce_kodu}" 2>/tmp/ezv-perl-hata-$$ |
-  sed -n 's:<td class=".*">\(.*\)</td>:\1:p' | sed -e 's:^ *::' -e 's:[^[:print:]]: :g' |
-  gawk 'NR != 1 && /[0-9]+[.]/ { printf("\n") } { printf("%s ", $0); } END { printf("\n") }' >> /tmp/ezanveri-$$
+sed -n 's:<td class=".*">\(.*\)</td>:\1:p' | sed -e 's:^ *::' -e 's:[^[:print:]]: :g' |
+gawk 'NR != 1 && /[0-9]+[.]/ { printf("\n") } { printf("%s ", $0); } END { printf("\n") }' >> /tmp/ezanveri-$$
 
 cat << SON >> /tmp/ezanveri-$$
 
@@ -289,6 +290,7 @@ SON
     . "${EZANVAKTI_AYAR}"
     ## TODO: Buraya renk denetimi eklenecek
     renk_denetle
+
     notify-send "Ezanvakti $SURUM" "${EZANVERI_ADI} dosyası başarıyla güncellendi." \
       -i ${VERI_DIZINI}/simgeler/ezanvakti.png -t $GUNCELLEME_BILDIRIM_SURESI"000" -h int:transient:1
     :> /tmp/eznvrgncldntle_$(date +%d%m%y)
@@ -297,6 +299,7 @@ SON
     printf "${RENK7}${RENK3}\n$( < /tmp/ezv-perl-hata-$$)${RENK0}\n"
     rm -f /tmp/ezv-perl-hata-$$ &>/dev/null
     printf "${RENK7}${RENK4}\n!!! YENIDEN DENEYIN !!!${RENK0}\n"
+
     notify-send "Ezanvakti $SURUM" "${EZANVERI_ADI} dosyasının güncellenmesi başarısız oldu." \
       -i ${VERI_DIZINI}/simgeler/ezanvakti.png -t $GUNCELLEME_BILDIRIM_SURESI"000" -h int:transient:1
     rm -f /tmp/ezanveri-$$ &>/dev/null
