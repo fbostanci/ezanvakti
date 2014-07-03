@@ -13,17 +13,16 @@ echo "Hazır değil"; exit 0
 # sistem tepsisi desteği .(?)
 # arayüzde html kod denemeleri.
 
-if ! [ -x "$(which yad 2>/dev/null)" ]
+if ! [[ -x $(type -p yad 2>/dev/null) ]]
 then
     printf "Bu özellik YAD gerektirmektedir...\n" >&2
     exit 1
 fi
 
+. @libdir@/ezanvakti/arayuz_temel.bash
 # düz komut çıktıları için rengi sıfırla.
-export RENK=0
+export RENK_KULLAN=0 RENK=0
 
-# TODO: denetle öncelikle.
-ezanvakti_xc="$(type -p ezanvakti)"
 
 elx=''
 for ((i=1; i<=CIZGI_UZUNLUGU; i++))
@@ -31,6 +30,17 @@ for ((i=1; i<=CIZGI_UZUNLUGU; i++))
   elx+="${CIZGI_SIMGESI}"
 }
 
+sure_listesi="!1-Fatiha!2-Bakara!3-Al-i İmran!4-Nisa!5-Maide!6-Enam!7-Araf!8-Enfal!9-Tevbe!10-Yunus\
+!11-Hud!12-Yusuf!13-Rad!14-İbrahim!15-Hicr!16-Nahl!17-İsra!18-Kehf!19-Meryem!20-Taha!21-Enbiya!22-Hac\
+!23-Müminun!24-Nur!25-Furkan!26-Şuara!27-Neml!28-Kasas!29-Ankebut!30-Rum!31-Lokman!32-Secde!33-Ahzab\
+!34-Sebe!35-Fatır!36-Yasin!37-Saffat!38-Sad!39-Zümer!40-Mümin!41-Fussilet!42-Şura!43-Zuhruf!44-Duhan\
+!45-Casiye!46-Akaf!47-Muhammed!48-Fetih!49-Hucurat!50-Kaf!51-Zariyat!52-Tur!53-Necm!54-Kamer!55-Rahman\
+!56-Vakia!57-Hadid!58-Mücadele!59-Haşr!60-Mümtehine!61-Saf!62-Cuma!63-Münafikun!64-Tegabun!65-Talak\
+!66-Tahrim!67-Mülk!68-Kalem!69-Hakka!70-Mearic!71-Nuh!72-Cin!73-Müzzemmil!74-Müddessir!75-Kıyame\
+!76-İnsan!77-Mürselat!78-Nebe!79-Naziat!80-Abese!81-Tekvir!82-İnfitar!83-Mutaffifın!84-İnşikak\
+!85-Büruc!86-Tarık!87-Ala!88-Gaşiye!89-Fecr!90-Beled!91-Şems!92-Leyl!93-Duha!94-İnşirah!95-Tin\
+!96-Alak!97-Kadir!98-Beyyine!99-Zilzal!100-Adiyat!101-Karia!102-Tekasür!103-Asr!104-Hümeze\
+!105-Fil!106-Kureyş!107-Maun!108-Kevser!109-Kafirun!110-Nasr!111-Tebbet!112-İhlas!113-Felak!114-Nas"
 
 (( GUN_ANIMSAT )) && {
   if grep -q $(date +%d.%m.%Y) ${VERI_DIZINI}/veriler/gunler
@@ -44,20 +54,9 @@ for ((i=1; i<=CIZGI_UZUNLUGU; i++))
       ozel_ileti=''
   fi
 }
-. ${BILESEN_DIZINI}/yapilandirma_yoneticisi.bash
+# . ${BILESEN_DIZINI}/yapilandirma_yoneticisi.bash
 
-sure_listesi="!001-Fatiha!002-Bakara!003-Al-i İmran!004-Nisa!005-Maide!006-En'am!007-A'raf!\
-008-Enfal!009-Tevbe!010-Yunus!011-Hud!012-Yusuf!013-Ra'd!014-İbrahim!015-Hicr!016-Nahl!017-İsra!018-Kehf!\
-019-Meryem!020-Taha!021-Enbiya!022-Hac!023-Mü'minun!024-Nur!025-Furkan!026-Şu'ara!027-Neml!028-Kasas!\
-029-Ankebut!030-Rum!031-Lokman!032-Secde!033-Ahzab!034-Sebe!035-Fatır!036-Yasin!037-Saffat!038-Sad!\
-039-Zümer!040-Mü'min!041-Fussilet!042-Şura!043-Zuhruf!044-Duhan!045-Casiye!046-Ahkaf!047-Muhammed!\
-048-Fetih!049-Hucurat!050-Kaf!051-Zariyat!052-Tur!053-Necm!054-Kamer!055-Rahman!056-Vakı'a!057-Hadid!\
-058-Mücadele!059-Haşr!060-Mümtehine!061-Saff!062-Cuma!063-Münafikun!064-Teğabun!065-Talak!066-Tahrim!\
-067-Mülk!068-Kalem!069-Hakka!070-Me'aric!071-Nuh!072-Cin!073-Müzzemmil!074-Müddessir!075-Kıyame!\
-076-İnsan!077-Mürselat!078-Nebe!079-Nazi'at!080-Abese!081-Tekvir!082-İnfitar!083-Mutaffifin!084-İnşikak!\
-085-Büruc!086-Tarık!087-A'la!088-Gaşiye!089-Fecr!090-Beled!091-Şems!092-Leyl!093-Duha!094-İnşirah!095-Tin!\
-096-Alak!097-Kadr!098-Beyyine!099-Zilzal!100-Adiyat!101-Karia!102-Tekasür!103-Asr!104-Hümeze!105-Fil!\
-106-Kureyş!107-Ma'un!108-Kevser!109-Kafirun!110-Nasr!111-Tebbet!112-İhlas!113-Felak!114-Nas"
+
 
 function pencere_bilgi() {
 
@@ -86,7 +85,7 @@ function hakkinda() {
 
    <a href= 'https://gitorious.org/ezanvakti' >https://gitorious.org/ezanvakti</a>
 
-Copyright (c) 2010-2012 Fatih Bostancı
+Copyright (c) 2010-2014 Fatih Bostancı
 GPL 3 ile lisanslanmıştır.\n" \
   --title "Ezanvakti ${SURUM} - Hakkında" --fixed --image-on-top \
   --button='gtk-close' --sticky --center \

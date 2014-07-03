@@ -6,7 +6,7 @@
 
 AD=ezanvakti
 SURUM=6.0
-DUZENLEME=@duzenleme@
+DUZELTME=@duzeltme@
 
 BILESEN_DIZINI=@libdir@/ezanvakti
 VERI_DIZINI=@datadir@/ezanvakti
@@ -156,7 +156,7 @@ function betik_kullanimi() {
 
 function surum_goster() {
   printf '%s\n%s\n\n%s\n%s\n%s\n%s\n\n%s\n%s\n%s\n%s\n\n%s\n%s\n' \
-    "Ezanvakti $SURUM düzenleme: $DUZENLEME"\
+    "Ezanvakti $SURUM düzenleme: $DUZELTME"\
     'Copyright (C) 2010-2014 Fatih Bostancı'\
     'This program is free software; you can redistribute it and/or modify'\
     'it under the terms of the GNU General Public License as published by'\
