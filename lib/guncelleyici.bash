@@ -248,6 +248,7 @@ unset IFS
 
 printf '%-60b' \
   "${RENK7}${RENK8}İnternet erişimi denetleniyor..${RENK0}"
+
 # internet erişimini denetle.
 wget -t 3 -T 10 www.google.com -O /tmp/baglantisina &>/dev/null
 if ! [ -s /tmp/baglantisina ]

@@ -25,7 +25,7 @@
 
 #set -n
 #set -x
-#TODO: yontem_calistir birinci.bash ekle.
+
 #TODO: conky sonraki çıktısı
 [[ $1 = --@(gui|aray[uü]z)   ]] && exec @libdir@/ezanvakti/arayuz.bash
 [[ $1 = --@(gui2|aray[uü]z2) ]] && exec @libdir@/ezanvakti/arayuz2.bash
@@ -114,7 +114,6 @@ case $1 in
   --renk|--renk-[öo][gğ]ren) bilesen_yukle renk_ogren; renk_ogren ;;
   --config|--yap[ıi]land[ıi]rma) ${EDITOR:-${nano:-vim}} "${EZANVAKTI_AYAR}" ;;
   --kalan) bilesen_yukle kalan; kalan_sure ;;
-  --cli|--ksa) bilesen_yukle; ucbirim_penceresi ;;
   -V|--s[uü]r[uü]m|--version) surum_goster ;;
   -h|--help|--yard[iı]m) betik_kullanimi ;;
   ?*) hatali_kullanim $1 ;;
