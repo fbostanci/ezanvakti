@@ -20,8 +20,7 @@ package_ezanvakti-devel() {
   pkgdesc="GNU/Linux icin Ezan Vakti Bildirici"
   license=('GPL3')
   depends=('bash' 'sed' 'gawk' 'grep' 'libnotify' 'mplayer' 'ezanvakti-ses>=20111229')
-  optdepends=('perl-html-tree: Ezanveri güncelleme işlemi için'
-              'perl-www-mechanize: Ezanveri güncelleme işlemi için'
+  optdepends=('perl-www-mechanize: Ezanveri güncelleme işlemi için'
               'bash-completion: Bash tamamlama desteği için')
   conflicts=('ezanvakti')
 
@@ -61,7 +60,7 @@ package_ezanvakti-ses() {
 
   #${EDITOR:-${vim:-vi}} Makefile
   msg "make başlatılıyor..."
-  make PREFIX=/usr  DESTDIR="${pkgdir}" install
+  make PREFIX=/usr DESTDIR="${pkgdir}" install
 }
 
 # vim:set ts=2 sw=2 et:

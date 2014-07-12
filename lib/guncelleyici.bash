@@ -53,15 +53,15 @@ function arayuz_denetle() { ### Arayüz denetle {{{
   printf '%-60b' \
     "${RENK7}${RENK8}Arayüz uygulaması denetleniyor..${RENK0}"
 
-  if test -x "$(type -p kdialog 2>/dev/null)"
+  if test -x "$(type -p kdialog)"
   then
       arayuz=1
       au=Kdialog
-  elif test -x "$(type -p yad 2>/dev/null)"
+  elif test -x "$(type -p yad)"
   then
       arayuz=2
       au=Yad
-  elif test -x "$(type -p zenity 2>/dev/null)"
+  elif test -x "$(type -p zenity)"
   then
       arayuz=3
       au=Zenity
@@ -180,7 +180,6 @@ then
               ilce=$(kdialog --combobox 'Bulunduğunuz ilçeyi seçin' --title 'İlçe belirleme' \
                      --default ${sehir} $(cut -d, -f1 < ${VERI_DIZINI}/ulkeler/TURKIYE_ilceler/${sehir}))
               (( $? == 1 )) && exit 1
-
 
           elif (( arayuz == 2 ))
           then
