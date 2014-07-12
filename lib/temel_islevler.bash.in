@@ -177,7 +177,6 @@ function surum_goster() {
 #
 # Renk kullan sıfırsa renkleri sıfırla.
 
-# HACK: fonksiyon olarak düzenle.
 function renk_denetle() {
   [[ ! -t 1 ]] || [[ ! $DISPLAY ]] && { RENK_KULLAN=0; RENK=0; } ||
     (( ! ${RENK:-RENK_KULLAN} )) && {
@@ -245,10 +244,6 @@ function denetle() {
     }
   }
 }
-
-################################################
-# HACK: bugun ile bugun_noktali' yi birleştir. #
-################################################
 
 # Bugünün ezan vakitlerini ayıkla ve değerleri vakit değişkenlerine ata.
 function bugun() {

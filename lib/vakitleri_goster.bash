@@ -11,7 +11,7 @@ function vakitler() { # {{{
   local istek="$1"
 
   # --osd/bildirim için renkleri sıfırla
-  [[ ${istek} = osd ]] && { RENK1=''; RENK2=''; }
+  [[ ${istek} = bildirim ]] && { RENK1=''; RENK2=''; }
 
   [[ $UNIXSAAT -lt $sabah ]] && {
     bekleme_suresi $sabah_n; kalan
