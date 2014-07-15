@@ -26,6 +26,7 @@ ifeq "$(duzeltme)" ""
 	duzeltme = bilinmeyen
 endif
 
+
 all:
 		@echo "Nothing to make, use 'make install' to perform an installation."
 
@@ -33,6 +34,7 @@ all:
 clean:
 		@rm -f ezanvakti 2>/dev/null
 		@rm -f lib/temel_islevler.bash 2>/dev/null
+		@rm -f lib/arayuz.bash 2>/dev/null
 		@rm -f lib/ezanvakti-sleep.bash 2>/dev/null
 		@rm -f lib/ezanvakti-crontab.bash 2>/dev/null
 		@rm -f etc/ayarlar 2>/dev/null
@@ -41,14 +43,17 @@ clean:
 
 
 config: clean
-		@$(SED) -e 's:@duzenleme@:$(duzenleme):' \
-				-e 's:@datadir@:$(datadir):' \
-				-e 's:@libdir@:$(libdir):' \
-				-e 's:@sysconfdir@:$(sysconfdir):' \
+		@$(SED) -e 's:@duzeltme@:$(duzeltme):' \
+			-e 's:@datadir@:$(datadir):' \
+			-e 's:@libdir@:$(libdir):' \
+			-e 's:@sysconfdir@:$(sysconfdir):' \
 			lib/temel_islevler.bash.in > lib/temel_islevler.bash
 
 		@$(SED) 's:@libdir@:$(libdir):' \
 			ezanvakti.bash.in > ezanvakti
+
+		@$(SED) 's:@libdir@:$(libdir):' \
+			lib/arayuz.bash.in > lib/arayuz.bash
 
 		@$(SED) 's:@libdir@:$(libdir):' \
 			lib/ezanvakti-sleep.bash.in > lib/ezanvakti-sleep.bash
@@ -58,7 +63,7 @@ config: clean
 			etc/ayarlar.in > etc/ayarlar
 
 		@$(SED) -e 's:@bindir@:$(bindir):' \
-				-e 's:@datadir@:$(datadir):' \
+			-e 's:@datadir@:$(datadir):' \
 			data/ezanvakti.desktop.in > data/ezanvakti.desktop
 
 		@$(SED) 's:@bindir@:$(bindir):' \
