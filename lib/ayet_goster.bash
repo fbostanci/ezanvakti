@@ -102,10 +102,10 @@ function ayet_araligi_goster() {
 
 function ayet_goster() { # {{{
   renk_denetle
-  [ -f "${KULLANICI_TEFSIR_DIZINI}/${TEFSIR_SAHIBI}" ] && {
+  [[ -f "${KULLANICI_TEFSIR_DIZINI}/${TEFSIR_SAHIBI}" ]] && {
     TEFSIR="${KULLANICI_TEFSIR_DIZINI}/${TEFSIR_SAHIBI}"
   } || {
-  [ -f "${VERI_DIZINI}/tefsirler/${TEFSIR_SAHIBI}" ] && \
+  [[ -f "${VERI_DIZINI}/tefsirler/${TEFSIR_SAHIBI}" ]] &&
     TEFSIR="${VERI_DIZINI}/tefsirler/${TEFSIR_SAHIBI}"
   } || {
     printf "${RENK3}${TEFSIR_SAHIBI} dosyası bulunamadı.${RENK0}\n"

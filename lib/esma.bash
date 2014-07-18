@@ -9,13 +9,13 @@ function esma() {
     secim_yap 99
 
     (( ! ${RENK:-RENK_KULLAN} )) && {
-      echo  "${alinan_yanit}" | tr -d '\\' | \
-        sed -r -e 's:\[([0-9]{1,2}(;[0-9]{1,2})?)?[m]::g' -e 's:033::g'
+      printf "${alinan_yanit}\n"
       exit 0
     } || {
-      printf "${alinan_yanit}${RENK0}\n"
+      # TODO: Renklendirme işlemleri
+      printf "${alinan_yanit}\n"
       exit 0
-    } 
+    }
 }
 
 # vim: set ft=sh ts=2 sw=2 et:

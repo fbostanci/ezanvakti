@@ -43,7 +43,8 @@ clean:
 
 
 config: clean
-		@$(SED) -e 's:@duzeltme@:$(duzeltme):' \
+		@$(SED) -e 's:@surum@:$(surum):' \
+			-e 's:@duzeltme@:$(duzeltme):' \
 			-e 's:@datadir@:$(datadir):' \
 			-e 's:@libdir@:$(libdir):' \
 			-e 's:@sysconfdir@:$(sysconfdir):' \
@@ -59,7 +60,7 @@ config: clean
 			lib/ezanvakti-sleep.bash.in > lib/ezanvakti-sleep.bash
 
 		@$(SED) -e 's:@surum@:$(surum):' \
-				-e 's:@sounddir@:$(sounddir):' \
+			-e 's:@sounddir@:$(sounddir):' \
 			etc/ayarlar.in > etc/ayarlar
 
 		@$(SED) -e 's:@bindir@:$(bindir):' \

@@ -5,7 +5,7 @@
 #
 
 AD=ezanvakti
-SURUM=6.0
+SURUM=@surum@
 DUZELTME=@duzeltme@
 
 BILESEN_DIZINI=@libdir@/ezanvakti
