@@ -26,7 +26,7 @@
 #set -n
 #set -x
 
-#TODO: conky sonraki çıktısı
+
 [[ $1 = --@(gui|aray[uü]z)   ]] && exec @libdir@/ezanvakti/arayuz.bash
 [[ $1 = --@(gui2|aray[uü]z2) ]] && exec @libdir@/ezanvakti/arayuz2.bash
 [[ $1 = --ramazan            ]] && exec @libdir@/ezanvakti/ezanvakti-sleep.bash 2
