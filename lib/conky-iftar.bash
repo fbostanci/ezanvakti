@@ -5,7 +5,7 @@
 #
 
 function ezv_conky_iftar() {
-  denetle
+  denetle; bugun
 
   [[ $UNIXSAAT -lt $aksam ]] && {
     bekleme_suresi $aksam_n; kalan
@@ -13,6 +13,7 @@ function ezv_conky_iftar() {
       sed 's:saat:sa:;s:dakika:dk:;s:saniye:sn:'
   } || {
     [[ $UNIXSAAT -ge $aksam ]] && {
+      # FIXME: Yarının aksam vakti ezanveri dosyasında var mı denetle önc..
       export $(gawk '{printf "aksam_n=%s", $6}' \
         <(grep $(date -d 'tomorrow' +%d.%m.%Y) "${EZANVERI}"))
       bekleme_suresi_yarin $aksam_n; kalan
