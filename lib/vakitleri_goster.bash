@@ -59,8 +59,8 @@ function vakitler() { # {{{
       printf "\n${RENK7}${RENK6}Tarih        Sabah   Güneş   Öğle    İkindi  Akşam   Yatsı${RENK0}\n"
       gawk -v renk0=${RENK0} -v renk2=${RENK2} -v renk3=${RENK3} -v renk7=${RENK7} \
         '/^[0-9][0-9]\.[0-9]*\.[0-9]*/ \
-        {printf "%s%s%s%s   0%s:%s   0%s:%s   %s:%s   %s:%s   %s:%s   %s:%s%s\n"\
-        , renk7,renk3,$1,renk2,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,renk0}' "${EZANVERI}" ;;
+        {printf "%s%s%s%s   %s   %s   %s   %s   %s   %s%s\n"\
+        , renk7,renk3,$1,renk2,$2,$3,$4,$5,$6,$7,renk0}' "${EZANVERI}" ;;
     haftalik)
       if ! grep -qo $(date -d 'next week' +%d.%m.%Y) "${EZANVERI}"
       then
@@ -71,8 +71,8 @@ function vakitler() { # {{{
       printf "\n${RENK7}${RENK6}Tarih        Sabah   Güneş   Öğle    İkindi  Akşam   Yatsı${RENK0}\n"
       grep '^[0-9][0-9]\.[0-9]*\.[0-9]*' "${EZANVERI}" | grep -B7 $(date -d 'next week' +%d.%m.%Y) | \
         gawk -v renk0=${RENK0} -v renk2=${RENK2} -v renk3=${RENK3} -v renk7=${RENK7} \
-        '{printf "%s%s%s%s   0%s:%s   0%s:%s   %s:%s   %s:%s   %s:%s   %s:%s%s\n"\
-        , renk7,renk3,$1,renk2,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,renk0}' ;;
+        '{printf "%s%s%s%s   %s   %s   %s   %s   %s   %s%s\n"\
+        , renk7,renk3,$1,renk2,$2,$3,$4,$5,$6,$7,renk0}' ;;
     bildirim)
       notify-send "Ezanvakti ${SURUM} - vakitler" \
         "$(printf '%s\n%s\n%s\n%s\n%s' \

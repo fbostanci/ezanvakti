@@ -164,13 +164,13 @@ sehir_kodu=$(grep -w ${SEHIR} ${VERI_DIZINI}/ulkeler/${ulke} | cut -d, -f2)
 ######################################################################
 #                         İLÇE İŞLEMLERİ                             #
 ######################################################################
-
-if [[ ${ulke} = TURKIYE ]]
+# FIXME: abd varsayilan ilce secimi.
+if [[ ${ulke} = @(TURKIYE|ABD) ]]
 then
-    [[ -z $(grep -w ${ILCE} ${VERI_DIZINI}/ulkeler/TURKIYE_ilceler/${sehir}) ]] && {
-      if [[ $(wc -l < ${VERI_DIZINI}/ulkeler/TURKIYE_ilceler/${sehir}) -eq 1 ]]
+    [[ -z $(grep -w ${ILCE} ${VERI_DIZINI}/ulkeler/${ulke}_ilceler/${sehir}) ]] && {
+      if [[ $(wc -l < ${VERI_DIZINI}/ulkeler/${ulke}_ilceler/${sehir}) -eq 1 ]]
       then
-          ilce=$(cut -d, -f1 < ${VERI_DIZINI}/ulkeler/TURKIYE_ilceler/${sehir})
+          ilce=$(cut -d, -f1 < ${VERI_DIZINI}/ulkeler/${ulke}_ilceler/${sehir})
           printf "${RENK7}${RENK3} ->${RENK8} Seçilen ilçe:${RENK2}  ${ilce}${RENK3} (tek ilçe)${RENK0}\n"
       else
           arayuz_denetle
@@ -178,19 +178,19 @@ then
           if (( arayuz == 1 ))
           then
               ilce=$(kdialog --combobox 'Bulunduğunuz ilçeyi seçin' --title 'İlçe belirleme' \
-                     --default ${sehir} $(cut -d, -f1 < ${VERI_DIZINI}/ulkeler/TURKIYE_ilceler/${sehir}))
+                     --default ${sehir} $(cut -d, -f1 < ${VERI_DIZINI}/ulkeler/${ulke}_ilceler/${sehir}))
               (( $? == 1 )) && exit 1
 
           elif (( arayuz == 2 ))
           then
-              ilce=$(yad --entry --entry-text ${sehir} $(cut -d, -f1 < ${VERI_DIZINI}/ulkeler/TURKIYE_ilceler/${sehir}) \
+              ilce=$(yad --entry --entry-text ${sehir} $(cut -d, -f1 < ${VERI_DIZINI}/ulkeler/${ulke}_ilceler/${sehir}) \
                      --width=240 --sticky --window-icon=${VERI_DIZINI}/simgeler/ezanvakti2.png \
                      --title 'İlçe belirleme' --text 'Bulunduğunuz ilçeyi seçin')
               (( $? == 1 )) && exit 1
 
           elif (( arayuz == 3 ))
           then
-              ilce=$(zenity --entry --entry-text ${sehir} $(cut -d, -f1 < ${VERI_DIZINI}/ulkeler/TURKIYE_ilceler/${sehir}) \
+              ilce=$(zenity --entry --entry-text ${sehir} $(cut -d, -f1 < ${VERI_DIZINI}/ulkeler/${ulke}_ilceler/${sehir}) \
                      --title 'İlçe belirleme' --text 'Bulunduğunuz ilçeyi seçin')
               (( $? == 1 )) && exit 1
           fi
@@ -199,44 +199,8 @@ then
 
       sed -i "s:\(ILCE=\).*:\1\'${ilce}\':" "${EZANVAKTI_AYAR}"
     } || ilce=${ILCE}
-    ilce_kodu=$(grep -w ${ILCE} ${VERI_DIZINI}/ulkeler/TURKIYE_ilceler/${sehir} | cut -d, -f2)
+    ilce_kodu=$(grep -w ${ILCE} ${VERI_DIZINI}/ulkeler/${ulke}_ilceler/${sehir} | cut -d, -f2)
 
-elif [[ ${ulke} = ABD ]]
-then
-    [[ -z $(grep -w ${ILCE} ${VERI_DIZINI}/ulkeler/ABD_ilceler/${sehir}) ]] && {
-      if [[ $(wc -l < ${VERI_DIZINI}/ulkeler/ABD_ilceler/${sehir}) -eq 1 ]]
-      then
-          ilce=$(cut -d, -f1 < ${VERI_DIZINI}/ulkeler/ABD_ilceler/${sehir})
-          printf "${RENK7}${RENK3} ->${RENK8} Seçilen ilçe:${RENK2}  ${ilce}${RENK3} (tek ilçe)${RENK0}\n"
-      else
-          arayuz_denetle
-          varsayilan_ilce=$(head -1 ${VERI_DIZINI}/ulkeler/ABD_ilceler/${sehir} | cut -d, -f1)
-
-          if (( arayuz == 1 ))
-          then
-              ilce=$(kdialog --combobox 'Bulunduğunuz ilçeyi seçin' --title 'İlçe belirleme' \
-                     --default ${varsayilan_ilce} $(cut -d, -f1 < ${VERI_DIZINI}/ulkeler/ABD_ilceler/${sehir}))
-              (( $? == 1 )) && exit 1
-
-          elif (( arayuz == 2 ))
-          then
-              ilce=$(yad --entry --entry-text ${varsayilan_ilce} $(cut -d, -f1 < ${VERI_DIZINI}/ulkeler/ABD_ilceler/${sehir}) \
-                     --width=240 --sticky --window-icon=${VERI_DIZINI}/simgeler/ezanvakti2.png \
-                     --title 'İlçe belirleme' --text 'Bulunduğunuz ilçeyi seçin')
-              (( $? == 1 )) && exit 1
-
-          elif (( arayuz == 3 ))
-          then
-              ilce=$(zenity --entry --entry-text ${varsayilan_ilce} $(cut -d, -f1 < ${VERI_DIZINI}/ulkeler/ABD_ilceler/${sehir}) \
-                     --title 'İlçe belirleme' --text 'Bulunduğunuz ilçeyi seçin')
-              (( $? == 1 )) && exit 1
-          fi
-          printf "${RENK7}${RENK3} ->${RENK8} Seçilen ilçe:${RENK2}  ${ilce}${RENK0}\n"
-      fi
-
-      sed -i "s:\(ILCE=\).*:\1\'${ilce}\':" "${EZANVAKTI_AYAR}"
-    } || ilce=${ILCE}
-    ilce_kodu=$(grep -w ${ILCE} ${VERI_DIZINI}/ulkeler/ABD_ilceler/${sehir} | cut -d, -f2)
 else
     ilce=${sehir}; ilce_kodu=${sehir_kodu}
     sed -i "s:\(ILCE=\).*:\1\'${sehir}\':" "${EZANVAKTI_AYAR}"
