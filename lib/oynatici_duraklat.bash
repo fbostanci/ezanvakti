@@ -3,14 +3,14 @@
 #                           Ezanvakti Oynatıcı Duraklatma Bileşeni 1.5
 #
 #
-
+# TODO: gmusicbrowser destegi
 function oynatici_islem() {
   local -a OYNATICILAR DURDURULAN
   local oynatici
 
   OYNATICILAR=( deadbeef clementine amarok rhythmbox
                 aqualung audacious banshee exaile cmus
-                moc qmmp )
+                moc qmmp juk)
 
   function qdbus_sorgu() {
     local komut
@@ -24,7 +24,7 @@ function oynatici_islem() {
         return 1
     fi
   }
-
+# FIXME: dbus status dogrula
   function dbus_sorgu() {
     local komut
 
@@ -101,6 +101,13 @@ function oynatici_islem() {
               qmmp --pause > /dev/null 2>&1
               DURDURULAN+=('qmmp')
           fi
+      elif [[ ${oynatici} = juk ]]
+      then
+          if qdbus_sorgu juk;
+          then
+              qdbus org.kde.juk /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Pause
+              DURDURULAN+=('juk')
+          fi
       fi
     }
   done
@@ -143,6 +150,9 @@ function oynatici_islem() {
       elif [[ ${oynatici} = qmmp ]]
       then
           qmmp --play > /dev/null 2>&1
+      elif [[ ${oynatici} = juk ]]
+      then
+          qdbus org.kde.juk /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Pause
       fi
   done
 }

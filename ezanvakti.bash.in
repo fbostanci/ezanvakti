@@ -89,7 +89,7 @@ case $1 in
   --aa|-aa) bilesen_yukle ayet_goster; shift; ayet_goster aralik $1 $2 ;;
   --conky) bilesen_yukle conky; ezv_conky ;;
   --iftar) bilesen_yukle iftar; ezv_iftar ;;
-  --conky-iftar) bilesen_yukle conky-iftar; ezv_conky_iftar ;;
+  --conky-iftar) bilesen_yukle conky; ezv_conky_iftar ;;
   --hadis) bilesen_yukle hadis_goster; shift
     case $1 in
       -u|-t|--u[cç]birim|--terminal) hadis_goster ucbirim ;;
