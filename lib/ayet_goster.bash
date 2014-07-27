@@ -7,7 +7,7 @@
 function ayet_araligi_goster() {
   local sure_kod=$1
   local ayet_kod=$2
-  local sure sure_adi sure_baslama baslangic son sure_ayet_sayisi \
+  local sure sure_adi sure_sira sure_baslama baslangic son sure_ayet_sayisi \
         int_ayet_kod ayet_baslama ayet_bitis satir
 
   if [[ -z ${sure_kod} || -z ${ayet_kod} ]]
@@ -47,7 +47,8 @@ function ayet_araligi_goster() {
   fi
 
   export $(gawk -v sira=$sure_kod '{if(NR==sira) {printf \
-    "sure_adi=%s\nsure_baslama=%s\nsure_ayet_sayisi=%s\ncuz=%s\nyer=%s",$4,$3,$2,$5,$6}}' <${VERI_DIZINI}/veriler/sure_bilgisi)
+    "sure_adi=%s\nsure_sira=%s\nsure_baslama=%s\nsure_ayet_sayisi=%s\ncuz=%s\nyer=%s",$4,$1,$3,$2,$5,$6}}' \
+    <${VERI_DIZINI}/veriler/sure_bilgisi)
 
   int_ayet_kod=$(tr -d 0-9 <<<$ayet_kod)
   if [[ -z $int_ayet_kod ]]
@@ -93,9 +94,10 @@ function ayet_araligi_goster() {
 
   for satir in $(seq $ayet_baslama $ayet_bitis)
   do
-    printf "%b%b\n%b\n\n" "${RENK5}(${RENK2}Ayet: ${RENK3}$(sed -n "${satir}p"\
+    printf "%b%b%b\n%b\n\n" "${RENK5}(${RENK2}Ayet: ${RENK3}$(sed -n "${satir}p"\
       "${VERI_DIZINI}/veriler/sureler_ayetler")"\
-      "${RENK2} Genel sıra: ${RENK3}$satir/6236 ${RENK2}Cüz:${RENK3} $cuz ${RENK2}İndiği yer: ${RENK3}$yer${RENK5})"\
+      "${RENK2} Genel sıra: ${RENK3}$satir/6236 ${RENK2}" \
+      "${RENK2}Cüz:${RENK3} $cuz ${RENK2}İndiği yer: ${RENK3}$yer${RENK5})"\
       "${RENK8}$(sed -n "${satir}p" "${TEFSIR}")${RENK0}"
   done
 }
@@ -130,7 +132,7 @@ function ayet_goster() { # {{{
   aralik)
     ayet_araligi_goster $2 $3
     exit 0 ;;
-  esac  
+  esac
 } # }}}
 
 # vim: set ft=sh ts=2 sw=2 et:
