@@ -96,7 +96,7 @@ function ayet_araligi_goster() {
   do
     printf "%b%b%b\n%b\n\n" "${RENK5}(${RENK2}Ayet: ${RENK3}$(sed -n "${satir}p"\
       "${VERI_DIZINI}/veriler/sureler_ayetler")"\
-      "${RENK2} Genel sıra: ${RENK3}$satir/6236 ${RENK2}" \
+      "${RENK2} Genel sıra: ${RENK3}$satir/6236 ${RENK2}"\
       "${RENK2}Cüz:${RENK3} $cuz ${RENK2}İndiği yer: ${RENK3}$yer${RENK5})"\
       "${RENK8}$(sed -n "${satir}p" "${TEFSIR}")${RENK0}"
   done

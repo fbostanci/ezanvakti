@@ -239,7 +239,7 @@ cat << SON >> /tmp/ezanveri-$$
 
 
 
-# BİLGİ: ${ilce} / ${sehir} / ${ulke} için 30 günlük namaz vakitleridir.
+# BİLGİ: ${ulke} / ${sehir} / ${ilce} için 30 günlük namaz vakitleridir.
 # Çizelge, 'http://www.diyanet.gov.tr/tr/PrayerTime/WorldPrayerTimes'
 # adresinden ezanvakti uygulaması tarafından istenerek oluşturulmuştur.
 

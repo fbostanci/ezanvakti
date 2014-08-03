@@ -3,6 +3,36 @@
 #                           Ezanvakti Oynatıcı Duraklatma Bileşeni 1.5
 #
 #
+
+function qdbus_sorgu() {
+  local komut
+
+  komut=$(qdbus org.mpris.MediaPlayer2.$1 /org/mpris/MediaPlayer2 \
+            org.freedesktop.DBus.Properties.Get org.mpris.MediaPlayer2.Player PlaybackStatus)
+
+  if [[ ${komut} = Playing ]]
+  then
+      return 0
+  else
+      return 1
+  fi
+}
+
+# FIXME: dbus status dogrula
+function dbus_sorgu() {
+  local komut
+
+  komut="dbus-send --print-reply --session --dest=org.mpris.$1 \
+          /Player org.freedesktop.MediaPlayer.GetStatus | grep -Eq 'int32 [1|2]'"
+
+  if ! eval ${komut}
+  then
+      return 0
+  else
+      return 1
+  fi
+}
+
 # TODO: gmusicbrowser destegi
 function oynatici_islem() {
   local -a OYNATICILAR DURDURULAN
@@ -11,33 +41,6 @@ function oynatici_islem() {
   OYNATICILAR=( deadbeef clementine amarok rhythmbox
                 aqualung audacious banshee exaile cmus
                 moc qmmp juk)
-
-  function qdbus_sorgu() {
-    local komut
-
-    komut=$(qdbus org.mpris.MediaPlayer2.$1 /org/mpris/MediaPlayer2 \
-            org.freedesktop.DBus.Properties.Get org.mpris.MediaPlayer2.Player PlaybackStatus)
-    if [[ ${komut} = Playing ]]
-    then
-        return 0
-    else
-        return 1
-    fi
-  }
-# FIXME: dbus status dogrula
-  function dbus_sorgu() {
-    local komut
-
-    komut="dbus-send --print-reply --session --dest=org.mpris.$1 \
-           /Player org.freedesktop.MediaPlayer.GetStatus | grep -Eq 'int32 [1|2]'"
-    if ! eval ${komut}
-    then
-        return 0
-    else
-        return 1
-    fi
-  }
-
 
   for oynatici in ${OYNATICILAR[@]}
   do
