@@ -144,8 +144,8 @@ uninstall:
 
 dist:
 		@echo "Kaynak kod paketi oluşturuluyor. Lütfen bekleyiniz..."
-		@git archive master | xz > ezanvakti-devel-$(surum).$(derleme).tar.xz
-		@echo "İşlem tamamlandı. ----------> ezanvakti-devel-$(surum).$(derleme).tar.xz"
+		@git archive master | xz > ezanvakti-devel-$(surum).$(duzeltme).tar.xz
+		@echo "İşlem tamamlandı. ----------> ezanvakti-devel-$(surum).$(duzeltme).tar.xz"
 
 
 .PHONY: all clean config dist install uninstall

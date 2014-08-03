@@ -49,18 +49,9 @@ package_ezanvakti-ses() {
   optdepends=()
   conflicts=('ezanvakti')
 
-  msg "Gitorious GIT sunucusuna bağlanılıyor..."
-
-  if [ -d "${srcdir}/${_gitname2}" ]
-  then
-       cd ${_gitname2} && git pull origin
-  else
-       git clone "${_gitroot2}" && cd ${_gitname2}
-  fi
-
   #${EDITOR:-${vim:-vi}} Makefile
   msg "make başlatılıyor..."
-  make PREFIX=/usr DESTDIR="${pkgdir}" install
+  make -C ezanlar PREFIX=/usr DESTDIR="${pkgdir}" install
 }
 
 # vim:set ts=2 sw=2 et:

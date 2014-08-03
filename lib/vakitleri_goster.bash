@@ -13,27 +13,27 @@ function vakitler() { # {{{
   # --osd/bildirim için renkleri sıfırla
   [[ ${istek} = bildirim ]] && { RENK1=''; RENK2=''; }
 
-  [[ $UNIXSAAT -lt $sabah ]] && {
+  (( UNIXSAAT < sabah )) && {
     bekleme_suresi $sabah_n; kalan
     sabah_kalan="${RENK2} $kalan_sure"
   } || sabah_kalan="${RENK1} OKUNDU"
 
-  [[ $UNIXSAAT -lt $ogle ]] && {
+  (( UNIXSAAT < ogle )) && {
     bekleme_suresi $ogle_n; kalan
     ogle_kalan="${RENK2} $kalan_sure"
   } || ogle_kalan="${RENK1} OKUNDU"
 
-  [[ $UNIXSAAT -lt $ikindi ]] && {
+  (( UNIXSAAT < ikindi )) && {
     bekleme_suresi $ikindi_n; kalan
     ikindi_kalan="${RENK2} $kalan_sure"
   } || ikindi_kalan="${RENK1} OKUNDU"
 
-  [[ $UNIXSAAT -lt $aksam ]] && {
+  (( UNIXSAAT < aksam )) && {
     bekleme_suresi $aksam_n; kalan
     aksam_kalan="${RENK2} $kalan_sure"
   } || aksam_kalan="${RENK1} OKUNDU"
 
-  [[ $UNIXSAAT -lt $yatsi ]] && {
+  (( UNIXSAAT < yatsi )) && {
     bekleme_suresi $yatsi_n; kalan
     yatsi_kalan="${RENK2} $kalan_sure"
   } || yatsi_kalan="${RENK1} OKUNDU"
@@ -69,7 +69,7 @@ function vakitler() { # {{{
       fi
 
       printf "\n${RENK7}${RENK6}Tarih        Sabah   Güneş   Öğle    İkindi  Akşam   Yatsı${RENK0}\n"
-      grep '^[0-9][0-9]\.[0-9]*\.[0-9]*' "${EZANVERI}" | grep -B7 $(date -d 'next week' +%d.%m.%Y) | \
+      grep '^[0-9][0-9]\.[0-9]*\.[0-9]*' "${EZANVERI}" | grep -B7 $(date -d 'next week' +%d.%m.%Y) |
         gawk -v renk0=${RENK0} -v renk2=${RENK2} -v renk3=${RENK3} -v renk7=${RENK7} \
         '{printf "%s%s%s%s   %s   %s   %s   %s   %s   %s%s\n"\
         , renk7,renk3,$1,renk2,$2,$3,$4,$5,$6,$7,renk0}' ;;

@@ -38,7 +38,7 @@ function ucbirim_basligi() {
   { printf "${EZANVAKTI_AYAR} dosyası okunabilir değil.\n Çıkılıyor...\n"; exit 1; }
 
 [[ ! -t 1 ]] || [[ ! $DISPLAY ]] && { RENK_KULLAN=0; RENK=0; }
-EZANVERI=${EZANVAKTI_DIZINI}/${EZANVERI_ADI}
+EZANVERI="${EZANVAKTI_DIZINI}/${EZANVERI_ADI}"
 MPLAYER="mplayer -really-quiet -volume $SES"
 
 declare -A YUKLENEN_BILESENLER
@@ -202,7 +202,7 @@ function denetle() {
   TARIH=$(date +%d.%m.%Y)
   SAAT=$(date +%H%M)
   # 08, 09 için oluşan sekizli sayı hatasının önüne geçmek için saatin,
-  # aritmetik karşılaştırmalarda kullanılması için UNIX ikilik saatine çevirdik.
+  # sayısal karşılaştırmalarda kullanılması için UNIX ikilik saatine çevirdik.
   UNIXSAAT=$(date -d "$SAAT" +%s)
 
   [[ ! -f ${EZANVERI} ]] && { # ezanveri dosyası yoksa
@@ -251,8 +251,7 @@ function bugun() {
     {printf \
     "sabah_n=%s\ngunes_n=%s\nogle_n=%s\nikindi_n=%s\naksam_n=%s\nyatsi_n=%s"\
     , $3,$2,$4,$5,$6,$7}}' "${EZANVERI}")
-  # 08, 09 için oluşan sekizli sayı hatasının önüne geçmek için vakit saatleri,
-  # sayısal karşılaştırmalarda kullanılması için UNIX ikilik saatine çevirdik.
+
   sabah=$(date -d "$sabah_n" +%s)
   ogle=$(date -d "$ogle_n" +%s)
   ikindi=$(date -d "$ikindi_n" +%s)
