@@ -49,14 +49,22 @@ case $1 in
       '') vakitler tum_vakitler ;;
       ?*) hatali_kullanim $1;;
     esac ;;
-  -vs|--vs) bilesen_yukle vakitleri_goster; vakitler sabah ;;
-  -v[oö]|--v[oö]) bilesen_yukle vakitleri_goster; vakitler ogle ;;
-  -vi|--vi) bilesen_yukle vakitleri_goster; vakitler ikindi ;;
-  -va|--va) bilesen_yukle vakitleri_goster; vakitler aksam ;;
-  -vy|--vy) bilesen_yukle vakitleri_goster; vakitler yatsi ;;
-  -v7|--v7) bilesen_yukle vakitleri_goster; vakitler haftalik ;;
-  -v30|--v30) bilesen_yukle vakitleri_goster; vakitler aylik ;;
-  -vb|--vb) bilesen_yukle vakitleri_goster; vakitler bildirim ;;
+  -vs|--vs) bilesen_yukle vakitleri_goster
+            vakitler sabah ;;
+  -v[oö]|--v[oö]) bilesen_yukle vakitleri_goster
+                  vakitler ogle ;;
+  -vi|--vi) bilesen_yukle vakitleri_goster
+            vakitler ikindi ;;
+  -va|--va) bilesen_yukle vakitleri_goster
+            vakitler aksam ;;
+  -vy|--vy) bilesen_yukle vakitleri_goster
+            vakitler yatsi ;;
+  -v7|--v7) bilesen_yukle vakitleri_goster
+            vakitler haftalik ;;
+  -v30|--v30) bilesen_yukle vakitleri_goster
+            vakitler aylik ;;
+  -vb|--vb) bilesen_yukle vakitleri_goster
+            vakitler bildirim ;;
   --dinle) bilesen_yukle ezan_dinlet; shift
     case $1 in
       -s|--sabah) ezan_dinlet Sabah "${SABAH_EZANI}" ;;
@@ -74,11 +82,16 @@ case $1 in
       -s|--se[cç]im) kuran_dinlet secim $2 ;;
       *) hatali_kullanim ${1:-null} ;;
     esac ;;
-  -kr|--kr) bilesen_yukle kuran_dinletici; kuran_dinlet rastgele ;;
-  -kh|--kh) bilesen_yukle kuran_dinletici; kuran_dinlet hatim ;; 
-  -kg|--kg) bilesen_yukle kuran_dinletici; kuran_dinlet gunluk ;;
-  -ks|--ks) bilesen_yukle kuran_dinletici; kuran_dinlet secim $2 ;;
-  --sureler) bilesen_yukle sureler_ayetler; sureler_ayetler ;;
+  -kr|--kr) bilesen_yukle kuran_dinletici
+            kuran_dinlet rastgele ;;
+  -kh|--kh) bilesen_yukle kuran_dinletici
+            kuran_dinlet hatim ;; 
+  -kg|--kg) bilesen_yukle kuran_dinletici
+            kuran_dinlet gunluk ;;
+  -ks|--ks) bilesen_yukle kuran_dinletici
+            kuran_dinlet secim $2 ;;
+  --sureler) bilesen_yukle sureler_ayetler
+             sureler_ayetler ;;
   --ayet) bilesen_yukle ayet_goster; shift
     case $1 in
       -u|-t|--u[cç]birim|--terminal) ayet_goster ucbirim ;;
@@ -86,11 +99,15 @@ case $1 in
       ?*) hatali_kullanim $1 ;;
       '') ayet_goster bildirim ;;
     esac ;;
-  --aa|-aa) bilesen_yukle ayet_goster; shift; ayet_goster aralik $1 $2 ;;
-  --conky) bilesen_yukle conky; ezv_conky ;;
-  --iftar) bilesen_yukle iftar; ezv_iftar ;;
-  --conky-iftar) bilesen_yukle conky; ezv_conky_iftar ;;
-  --hadis) bilesen_yukle hadis_goster; shift
+  --aa|-aa) bilesen_yukle ayet_goster; shift
+            ayet_goster aralik $1 $2 ;;
+  --conky) bilesen_yukle conky
+           ezv_conky ;;
+  --iftar) bilesen_yukle iftar
+           ezv_iftar ;;
+  --conky-iftar) bilesen_yukle conky
+                 ezv_conky_iftar ;;
+  --hadis) bilesen_yukle bilgi_goster; shift
     case $1 in
       -u|-t|--u[cç]birim|--terminal) hadis_goster ucbirim ;;
       ?*) hatali_kullanim $1 ;;
@@ -102,20 +119,25 @@ case $1 in
       ?*) hatali_kullanim $1 ;;
       '') bilgi_goster bildirim ;;
     esac ;;
-  --esma) bilesen_yukle esma; shift
+  --esma) bilesen_yukle bilgi_goster; shift
     case $1 in
       -u|-t|--u[cç]birim|--terminal) esma ucbirim ;;
       ?*) hatali_kullanim $1 ;;
       '') esma bildirim ;;
     esac ;;
-  --g[uü]ncelle) bilesen_yukle guncelleyici; guncelleme_yap ;;
-  --g[uü]nler) bilesen_yukle dini_gunler; gunler ;;
+  --g[uü]ncelle) bilesen_yukle guncelleyici
+                 guncelleme_yap ;;
+  --g[uü]nler) bilesen_yukle dini_gunler
+               gunler ;;
 #  --s[ıi]f[ıi]rla) bilesen_yukle ayarlari_sifirla; ayarlari_sifirla ;;
-  --renk|--renk-[öo][gğ]ren) bilesen_yukle renk_ogren; renk_ogren ;;
+  --renk|--renk-[öo][gğ]ren) bilesen_yukle renk_ogren
+                             renk_ogren ;;
   --config|--yap[ıi]land[ıi]rma) ${EDITOR:-${nano:-vim}} "${EZANVAKTI_AYAR}" ;;
-  --kalan) bilesen_yukle kalan; kalan_sure ;;
+  --kalan) bilesen_yukle kalan
+           kalan_sure ;;
   -V|--s[uü]r[uü]m|--version) surum_goster ;;
-  -h|--help|--yard[iı]m) betik_kullanimi ;;
+  -h|--help|--yard[iı]m) bilesen_yukle kullanim
+                         betik_kullanimi ;;
   ?*) hatali_kullanim $1 ;;
 esac
 

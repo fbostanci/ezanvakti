@@ -47,7 +47,7 @@ function hadis_goster() {
     esac
 }
 
-function esma() {
+function esma_goster() {
     icerik_al=${VERI_DIZINI}/veriler/esma
     secim_yap 99
 

@@ -13,7 +13,7 @@
 # gelişmiş arayüz bileşeninin ana betik gereksinimini olabildiğince azalt.
 # Makefile üzerinden uygulamanın adı değişebilsin.
 # Conky sonraki vakit cıktısı
-# Conky ve conky-iftar bilesenlerini birlestir.
+# Conky ve conky-iftar bilesenlerini birlestir. ###TAMAM###
 # Hadis,esma ve bilgi bilesenlerini birlestir.
 # ilçeleri de ekle. ###TAMAM###
 # kendiliğinden çalışmayı yapılandırma dosyasından denetlenebilir yap.

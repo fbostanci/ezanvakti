@@ -13,17 +13,10 @@ VERI_DIZINI=@datadir@/ezanvakti
 
 EZANVAKTI_DIZINI="${XDG_CONFIG_HOME:-$HOME/.config}"/ezanvakti
 EZANVAKTI_AYAR="${EZANVAKTI_DIZINI}"/ayarlar
+EZANVERI="${EZANVAKTI_DIZINI}/${EZANVERI_ADI}"
+MPLAYER="mplayer -really-quiet -volume $SES"
 
-# Uçbirim pencere başlığını belirle.
-function ucbirim_basligi() {
-  [[ ! -t 1 ]] || [[ ! $DISPLAY ]] && return 0
-
-   case $TERM in
-     rxvt*|xterm*|aterm)
-       echo -n -e "\033]0;${AD^} ${SURUM}: $@\007" ;;
-   esac
-}
-
+[[ ! -t 1 ]] || [[ ! $DISPLAY ]] && { RENK_KULLAN=0; RENK=0; }
 [[ ! -d "${EZANVAKTI_DIZINI}" ]] && mkdir -p "${EZANVAKTI_DIZINI}"
 [[ ! -f "${EZANVAKTI_AYAR}"   ]] &&
   sed "s:\(EZANVERI_DIZINI=\).*:\1\'${EZANVAKTI_DIZINI}\':" < @sysconfdir@/ezanvakti/ayarlar > "${EZANVAKTI_AYAR}"
@@ -35,14 +28,38 @@ function ucbirim_basligi() {
 #
 # Kullanıcı ayarlarını al.
 . "${EZANVAKTI_AYAR}" ||
-  { printf "${EZANVAKTI_AYAR} dosyası okunabilir değil.\n Çıkılıyor...\n"; exit 1; }
+  { printf '%s dosyası okunabilir değil.\nÇıkılıyor...\n' "${EZANVAKTI_AYAR}"; exit 1; }
 
-[[ ! -t 1 ]] || [[ ! $DISPLAY ]] && { RENK_KULLAN=0; RENK=0; }
-EZANVERI="${EZANVAKTI_DIZINI}/${EZANVERI_ADI}"
-MPLAYER="mplayer -really-quiet -volume $SES"
+# Karar verme önceliği env olarak tanımlıysa RENK değişkenine verildi.
+# RENK null ise ayarlar dosyasından okunan RENK_KULLAN değerini kullanacak.
+#
+# Renk kullan sıfırsa renkleri sıfırla.
+function renk_denetle() {
+  [[ ! -t 1 ]] || [[ ! $DISPLAY ]] && { RENK_KULLAN=0; RENK=0; } ||
+    (( ! ${RENK:-RENK_KULLAN} )) && {
+      RENK0=''
+      RENK1=''
+      RENK2=''
+      RENK3=''
+      RENK4=''
+      RENK5=''
+      RENK6=''
+      RENK7=''
+      RENK8=''
+    }
+}
+
+# Uçbirim pencere başlığını belirle.
+function ucbirim_basligi() {
+  [[ ! -t 1 ]] || [[ ! $DISPLAY ]] && return 0
+
+   case $TERM in
+     rxvt*|xterm*|aterm)
+       echo -n -e "\033]0;${AD^} ${SURUM}: $@\007" ;;
+   esac
+}
 
 declare -A YUKLENEN_BILESENLER
-
 # http://git.archlinux.fr/yaourt.git/tree/src/lib/util.sh.in ( load_lib() )
 function bilesen_yukle() {
   while [[ $1 ]]
@@ -60,136 +77,8 @@ function bilesen_yukle() {
 }
 
 function hatali_kullanim() {
-  echo "${0##*/}: \`$1' geçerli değil. Yardım için --yardim kullanın." >&2
+  printf "%s: \`%s' geçerli değil. Yardım için --yardim kullanın.\n" "${AD}" "$1" >&2
   exit 1
-}
-
-function betik_kullanimi() {
-  local  B R
-
-  B=$(tput bold)
-  R=$(tput sgr0)
-
-  (( ! ${RENK:-RENK_KULLAN} )) && {
-    B=''
-    R=''
-  }
-
-  ucbirim_basligi "yardim"
-  echo -e "
-    ${B}--dinle${R} [-s,-o,-i,-a,-y]
-        İstediğiniz zaman, istediğiniz vakite ait ezanı dinletir.
-
-    ${B}-v, --vakitler${R}
-        Toplu olarak günlük ezan vakitlerini görüntüler.
-
-        [-s,-o,-i,-a,-y]
-            Sadece bir vakit için görüntüleme yapar.
-
-        [7,30]
-            7/30 günlük vakitleri görüntüler.
-
-        [--bildirim]
-            Vakit çıktılarını uçbirim yerine bildirim baloncuğuna yönlendirir.
-
-    ${B}--kuran${R} [-s <sure_kodu>, -r, -g, -h]
-        Çevrimiçi olarak ya da yerel dizinden kuran dinletir.
-
-    ${B}--sureler${R}
-        Sureleri dinlemek için gerekli olan kod numaralarını
-        ve sure adlarını görüntüler.
-
-    ${B}--ayet${R}
-        Rastgele bir Kuran ayeti seçerek Türkçe anlamını
-        bildirim baloncuğunda gösterir.
-
-    ${B}--hadis${R}
-        40 hadisten rastgele bir hadis seçerek bildirim
-        baloncuğunda gösterir.
-
-    ${B}--bilgi${R}
-        Diyanetin sitesinden alınan 'Bunları biliyor musunuz?'
-        kısmından bir soru ve sorunun yanıtını bildirim
-        baloncuğunda gösterir.
-
-    ${B}--esma${R}
-        Esma-ül Hüsna dan Allah ın bir adını gösterir.
-
-    ${B}--guncelle${R}
-        Ezanveri dosyasını 30 günlük vakitleri içerecek
-        şekilde günceller/oluşturur.
-
-    ${B}--iftar${R}
-        İftar vaktine ne kadar süre kaldığını görüntüler.
-
-    ${B}--ramazan${R}
-        Ramazan ayında isteğe bağlı olarak sadece iftar
-        ve imsak vakitleri için ezan okunur.
-
-    ${B}--conky${R}
-        Conky alanında günlük ezan vakitlerini eklemek
-        isteyenler için renksiz ve kısa çıktı verir.
-
-    ${B}--conky-iftar${R}
-        Conky alanında iftar vaktine ne kadar süre kaldığını
-        görmek isteyenler için renksiz ve kısa çıktı verir.
-
-    ${B}--gunler${R}
-        İçinde bulunulan yıla ait dini günleri ve geceleri gösterir.
-
-    ${B}--arayuz${R}
-        Gelişmiş arayüz penceresini başlatır.
-
-    ${B}--arayuz2${R}
-        Basit arayüz penceresini başlatır.
-
-    ${B}-V, --surum, --version${R}
-        Betiğin sürüm numarasını gösterir ve çıkar.
-
-    ${B}-h, --help, --yardim, --yardım${R}
-        Bu yardım sayfasını görüntüler ve çıkar.
-
-
-  Çıkmak için 'q' tuşuna basınız.
-         "  | less -R; exit 0
-}
-
-function surum_goster() {
-  printf '%s\n%s\n\n%s\n%s\n%s\n%s\n\n%s\n%s\n%s\n%s\n\n%s\n%s\n' \
-    "Ezanvakti $SURUM düzenleme: $DUZELTME"\
-    'Copyright (C) 2010-2015 Fatih Bostancı'\
-    'This program is free software; you can redistribute it and/or modify'\
-    'it under the terms of the GNU General Public License as published by'\
-    'the Free Software Foundation; either version 3 of the License, or'\
-    '(at your option) any later version.'\
-    'This program is distributed in the hope that it will be useful,'\
-    'but WITHOUT ANY WARRANTY; without even the implied warranty of'\
-    'MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the'\
-    'GNU General Public License for more details.'\
-    'You should have received a copy of the GNU General Public License'\
-    'along with this program. If not, see http://www.gnu.org/licenses/.'
-
-
-}
-
-# Karar verme önceliği env olarak tanımlıysa RENK değişkenine verildi.
-# RENK null ise ayarlar dosyasından okunan RENK_KULLAN değerini kullanacak.
-#
-# Renk kullan sıfırsa renkleri sıfırla.
-
-function renk_denetle() {
-  [[ ! -t 1 ]] || [[ ! $DISPLAY ]] && { RENK_KULLAN=0; RENK=0; } ||
-    (( ! ${RENK:-RENK_KULLAN} )) && {
-      RENK0=''
-      RENK1=''
-      RENK2=''
-      RENK3=''
-      RENK4=''
-      RENK5=''
-      RENK6=''
-      RENK7=''
-      RENK8=''
-    }
 }
 
 # Ezanveri dosyası gerektiren işlemlerde ilk önce bu fonksiyon çağrılacak.
@@ -284,6 +173,22 @@ function secim_yap() {
   secilen=$((RANDOM%$1))
   (( ! secilen )) && secilen=$1
   alinan_yanit="$(sed -n "/#$secilen<#/,/#>$secilen#/p" ${icerik_al} | sed '1d;$d')"
+}
+
+function surum_goster() {
+  printf '%s\n%s\n\n%s\n%s\n%s\n%s\n\n%s\n%s\n%s\n%s\n\n%s\n%s\n' \
+    "Ezanvakti $SURUM düzenleme: $DUZELTME"\
+    'Copyright (C) 2010-2015 Fatih Bostancı'\
+    'This program is free software; you can redistribute it and/or modify'\
+    'it under the terms of the GNU General Public License as published by'\
+    'the Free Software Foundation; either version 3 of the License, or'\
+    '(at your option) any later version.'\
+    'This program is distributed in the hope that it will be useful,'\
+    'but WITHOUT ANY WARRANTY; without even the implied warranty of'\
+    'MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the'\
+    'GNU General Public License for more details.'\
+    'You should have received a copy of the GNU General Public License'\
+    'along with this program. If not, see http://www.gnu.org/licenses/.'
 }
 
 # vim: set ft=sh ts=2 sw=2 et:
