@@ -13,7 +13,7 @@ exit 0
 #####################################
 
 # Öntanımlı ayarları al.
-. @sysconfdir@/ezanvakti/ayarlar
+. @sysconfdir@/@AD@/ayarlar
 
 # Kullanıcı ayarlarını al.
 . "${EZANVAKTI_AYAR}"
