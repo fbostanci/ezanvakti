@@ -43,6 +43,7 @@ $(SCRIPTS): ${SCRIPTS:=.in}
 		-e 's:@datadir@:$(datadir):' \
 		-e 's:@libdir@:$(libdir):' \
 		-e 's:@sysconfdir@:$(sysconfdir):' \
+		-e 's:@sounddir@:$(sounddir):' \
 	$@.in > $@
 
 install: $(SCRIPTS)
