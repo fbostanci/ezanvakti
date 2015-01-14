@@ -1,8 +1,9 @@
 # Maintainer: Fatih Bostancı <faopera@gmail.com>
 
-pkgbase="ezanvakti-devel"
-pkgname=('ezanvakti-devel' 'ezanvakti-ses')
-pkgver=20120406
+pkgbase=ezanvakti-devel
+pkgname=('ezanvakti-devel'
+         'ezanvakti-ses')
+pkgver=6.0
 pkgrel=1
 pkgdesc="GNU/Linux icin Ezan Vakti Bildirici"
 arch=('any')
@@ -19,7 +20,7 @@ _gitname2='ezanvakti-ses'
 package_ezanvakti-devel() {
   pkgdesc="GNU/Linux icin Ezan Vakti Bildirici"
   license=('GPL3')
-  depends=('bash' 'sed' 'gawk' 'grep' 'libnotify' 'mplayer' 'ezanvakti-ses>=20111229')
+  depends=('bash' 'sed' 'gawk' 'grep' 'libnotify' 'mplayer' 'ezanvakti-ses>=1.0')
   optdepends=('perl-www-mechanize: Ezanveri güncelleme işlemi için'
               'bash-completion: Bash tamamlama desteği için')
   conflicts=('ezanvakti')
@@ -41,8 +42,8 @@ package_ezanvakti-devel() {
 
 package_ezanvakti-ses() {
   pkgdesc="Ezanvakti uygulaması icin ezan ses dosyalari"
-  pkgver="$pkgver"
-  pkgrel="$pkgrel"
+  pkgver=1.0
+  pkgrel=1
   url="http://www.ismailcosar.com.tr/"
   license=('unknown')
   depends=()

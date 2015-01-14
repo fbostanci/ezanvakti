@@ -1,4 +1,4 @@
-# Ezanvakti @surum@ yapılandırma dosyası
+# @AD@ @surum@ yapılandırma dosyası
 # Bu dosya üzerinde değişiklik yaparak kişisel
 # özelleştirmelerinizi yapabilirsiniz.
 # Eğer, ekleyeceğiniz değerler boşluk içeriyorsa
@@ -13,7 +13,7 @@
 
 
 # Ezanveri dosyasının bulunduğu dizin
-EZANVERI_DIZINI='$HOME/.config/ezanvakti'
+EZANVERI_DIZINI='$HOME/.config/@AD@'
 
 # Ezanveri dosyasının adı
 EZANVERI_ADI=ezanveri
@@ -125,22 +125,22 @@ YATSI_EZANI_OKU=1
 EZAN_OKUYAN='İsmail COŞAR'
 
 # Sabah ezanı ses dosyası
-SABAH_EZANI=@sounddir@/ezanvakti/sabah_saba.ogg
+SABAH_EZANI=@sounddir@/@AD@/sabah_saba.ogg
 
 # Öğle ezanı ses dosyası
-OGLE_EZANI=@sounddir@/ezanvakti/ogle_rast.ogg
+OGLE_EZANI=@sounddir@/@AD@/ogle_rast.ogg
 
 # İkindi ezanı ses dosyası
-IKINDI_EZANI=@sounddir@/ezanvakti/ikindi_hicaz.ogg
+IKINDI_EZANI=@sounddir@/@AD@/ikindi_hicaz.ogg
 
 # Akşam ezanı ses dosyası
-AKSAM_EZANI=@sounddir@/ezanvakti/aksam_segah.ogg
+AKSAM_EZANI=@sounddir@/@AD@/aksam_segah.ogg
 
 # Yatsı ezanı ses dosyası
-YATSI_EZANI=@sounddir@/ezanvakti/yatsi_ussak.ogg
+YATSI_EZANI=@sounddir@/@AD@/yatsi_ussak.ogg
 
 # Ezan duası ses dosyası
-EZAN_DUASI=@sounddir@/ezanvakti/ezan_duasi.ogg
+EZAN_DUASI=@sounddir@/@AD@/ezan_duasi.ogg
 
 #                           #
 #******Renk Ayarları******#

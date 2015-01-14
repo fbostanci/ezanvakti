@@ -11,7 +11,7 @@
 # --vakitler/-v için birleşik komut kullanımı desteği sağla. (ezanvakti -vi gibi) ###TAMAM###
 # makefile geliştir. ( dist oluşturma , tane tane dosya kurulumu ) ###TAMAM###
 # gelişmiş arayüz bileşeninin ana betik gereksinimini olabildiğince azalt.
-# Makefile üzerinden uygulamanın adı değişebilsin.
+# Makefile üzerinden uygulamanın adı değişebilsin.###TAMAM###
 # Conky sonraki vakit cıktısı
 # Conky ve conky-iftar bilesenlerini birlestir. ###TAMAM###
 # Hadis,esma ve bilgi bilesenlerini birlestir.

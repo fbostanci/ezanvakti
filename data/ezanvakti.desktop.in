@@ -1,6 +1,6 @@
 [Desktop Entry]
 Encoding=UTF-8
-Name=Ezanvakti
+Name=@AD@
 Comment=GNU/Linux için Ezan vakti bildirici
 Icon=@datadir@/ezanvakti/simgeler/ezanvakti2.png
 Exec=@bindir@/ezanvakti --arayuz
