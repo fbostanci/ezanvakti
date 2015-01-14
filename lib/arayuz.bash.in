@@ -19,8 +19,8 @@ then
     exit 1
 fi
 
-. @libdir@/ezanvakti/temel_islevler.bash
-. @libdir@/ezanvakti/arayuz_temel.bash
+. @libdir@/@AD@/temel_islevler.bash
+. @libdir@/@AD@/arayuz_temel.bash
 
 # düz komut çıktıları için rengi sıfırla.
 export RENK_KULLAN=0 RENK=0

@@ -7,7 +7,7 @@
 
 calisma_kipi=$1
 
-. @libdir@/ezanvakti/temel_islevler.bash
+. @libdir@/@AD@/temel_islevler.bash
 
 bilesen_yukle mplayer_yonetici
 (( OYNATICI_DURAKLAT )) && bilesen_yukle oynatici_duraklat
