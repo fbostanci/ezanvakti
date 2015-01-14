@@ -42,8 +42,6 @@ package_ezanvakti-devel() {
 
 package_ezanvakti-ses() {
   pkgdesc="Ezanvakti uygulaması icin ezan ses dosyalari"
-  pkgver=1.0
-  pkgrel=1
   url="http://www.ismailcosar.com.tr/"
   license=('unknown')
   depends=()
