@@ -57,7 +57,7 @@ function ucbirim_basligi() {
   { printf '%s dosyası okunabilir değil.\nÇıkılıyor...\n' "${EZANVAKTI_AYAR}"; exit 1; }
 
 EZANVERI="${EZANVAKTI_DIZINI}/${EZANVERI_ADI}"
-MPLAYER="mplayer -really-quiet -volume $SES"
+MPLAYER="mplayer -really-quiet -softvol -volume $SES"
 declare -A YUKLENEN_BILESENLER
 # http://git.archlinux.fr/yaourt.git/tree/src/lib/util.sh.in ( load_lib() )
 function bilesen_yukle() {
@@ -138,7 +138,7 @@ function bugun() {
   export $(gawk 'BEGIN{tarih = strftime("%d.%m.%Y")} {if($1 ~ tarih) \
     {printf \
     "sabah_n=%s\ngunes_n=%s\nogle_n=%s\nikindi_n=%s\naksam_n=%s\nyatsi_n=%s"\
-    , $3,$2,$4,$5,$6,$7}}' "${EZANVERI}")
+    , $2,$3,$4,$5,$6,$7}}' "${EZANVERI}")
 
   sabah=$(date -d "$sabah_n" +%s)
   ogle=$(date -d "$ogle_n" +%s)

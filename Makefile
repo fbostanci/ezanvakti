@@ -17,10 +17,10 @@ bindir        = $(PREFIX)/bin
 libdir        = $(PREFIX)/lib
 sysconfdir    = $(PREFIX)/etc
 datadir       = $(PREFIX)/share
-completiondir = ${datadir}/bash-completion/completions
-mandir        = ${datadir}/man
-sounddir      = ${datadir}/sounds
-appdeskdir    = ${datadir}/applications
+completiondir = $(PREFIX)/share/bash-completion/completions
+mandir        = $(PREFIX)/share/man
+sounddir      = $(PREFIX)/share/sounds
+appdeskdir    = $(PREFIX)/share/applications
 autostartdir  = $(sysconfdir)/xdg/autostart
 
 
@@ -30,8 +30,7 @@ endif
 
 SCRIPTS = ezanvakti.bash lib/temel_islevler.bash lib/arayuz.bash \
 	lib/ezanvakti-sleep.bash data/ezanvakti.desktop \
-	lib/ezanvakti-crontab.bash etc/ayarlar \
-	etc/autostart/ezanvakti.desktop
+	etc/ayarlar etc/autostart/ezanvakti.desktop
 
 all: $(SCRIPTS)
 
@@ -56,7 +55,6 @@ install: $(SCRIPTS)
 	$(INSTALL) -vd $(DESTDIR)$(appdeskdir)
 	$(INSTALL) -vd $(DESTDIR)$(autostartdir)
 
-#	$(INSTALL) -vDm755 etc/ezanvakti-pm $(DESTDIR)$(sysconfdir)/pm/sleep.d/ezanvakti-pm
 	$(INSTALL) -vm755 ezanvakti.bash $(DESTDIR)$(bindir)/$(AD)
 	$(INSTALL) -vm755 lib/ezanveri_istemci.pl $(DESTDIR)$(libdir)/$(AD)/ezanveri_istemci.pl
 	$(INSTALL) -vm755 data/ezanvakti.desktop $(DESTDIR)$(appdeskdir)/$(AD).desktop
@@ -112,7 +110,6 @@ uninstall:
 	@rm -rf $(DESTDIR)$(libdir)/$(AD)
 	@rm -rf $(DESTDIR)$(datadir)/$(AD)
 	@rm -rf $(DESTDIR)$(sysconfdir)/$(AD)
-#	@rm -f  $(DESTDIR)$(sysconfdir)/pm/sleep.d/ezanvakti-pm
 	@rm -f  $(DESTDIR)$(completiondir)/$(AD)
 	@rm -f  $(DESTDIR)$(autostartdir)/$(AD).desktop
 	@rm -f  $(DESTDIR)$(mandir)/man1/$(AD).1*
