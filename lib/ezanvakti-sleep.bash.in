@@ -210,7 +210,7 @@ function iftarimsak() {
     vakit_saati=$sabah_n
     ezan_okunsun_mu=${SABAH_EZANI_OKU}
 
-    [[ $SAAT -eq $sabah ]] && { ramazan_ezanoku; iftarimsak; }
+    [[ $UNIXSAAT -eq $sabah ]] && { ramazan_ezanoku; iftarimsak; }
     printf "${RENK7}${RENK4}İmsak vakti için bekleniyor...${RENK0}\n"
 
     bekleme_suresi $sabah_n; vakit_animsat &
