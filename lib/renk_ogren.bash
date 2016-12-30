@@ -1,12 +1,12 @@
 #
 # http://tldp.org/HOWTO/Bash-Prompt-HOWTO/x329.html
 #
-#   This file echoes a bunch of color codes to the
-#   terminal to demonstrate what's available.  Each
+#   This file echoes a bunch of color codes to the 
+#   terminal to demonstrate what's available.  Each 
 #   line is the color code of one forground color,
-#   out of 17 (default + 16 escapes), followed by a
-#   test use of that color on all nine background
-#   colors (default + 8 escapes)
+#   out of 17 (default + 16 escapes), followed by a 
+#   test use of that color on all nine background 
+#   colors (default + 8 escapes).
 #
 
 function renk_ogren() {
