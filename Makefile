@@ -39,6 +39,7 @@ $(SCRIPTS): ${SCRIPTS:=.in}
 	@$(SED) -e 's:@AD@:$(AD):' \
 		-e 's:@SURUM@:$(SURUM):' \
 		-e 's:@DUZELTME@:$(DUZELTME):' \
+		-e 's:@bindir@:$(bindir):' \
 		-e 's:@datadir@:$(datadir):' \
 		-e 's:@libdir@:$(libdir):' \
 		-e 's:@sysconfdir@:$(sysconfdir):' \
@@ -50,6 +51,7 @@ install: $(SCRIPTS)
 	$(INSTALL) -vd $(DESTDIR)$(libdir)/$(AD)
 	$(INSTALL) -vd $(DESTDIR)$(sysconfdir)/$(AD)
 	$(INSTALL) -vd $(DESTDIR)$(datadir)/$(AD)/{veriler,tefsirler,simgeler,ulkeler{,/TURKIYE_ilceler,/ABD_ilceler}}
+	$(INSTALL) -vd $(DESTDIR)$(sounddir)/$(AD)
 	$(INSTALL) -vd $(DESTDIR)$(completiondir)
 	$(INSTALL) -vd $(DESTDIR)$(mandir)/man{1,5}
 	$(INSTALL) -vd $(DESTDIR)$(appdeskdir)
@@ -97,6 +99,12 @@ install: $(SCRIPTS)
 	do \
 		u_dosya="$$(basename "$$u")"; \
 		$(INSTALL) -vm644 "$$u" $(DESTDIR)$(datadir)/$(AD)/ulkeler/ABD_ilceler/"$$u_dosya"; \
+	done
+	
+	for e in  ezanlar/*.ogg; \
+	do \
+		e_dosya=$$(basename $$e); \
+		$(INSTALL) -vm644 $$e $(DESTDIR)$(sounddir)/$(AD)/$$e_dosya; \
 	done
 
 	for t in data/tefsirler/*; \
