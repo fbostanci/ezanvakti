@@ -27,32 +27,32 @@ function kalan_sure() {
   }
 
    ucbirim_basligi "Kalan Süre Gösterici"
-  [[ $UNIXSAAT -lt $sabah ]] && {
+  (( UNIXSAAT < sabah )) && {
     bekleme_goster "Sabah ezanı" $sabah_n
     kalan_sure
   }
 
-  [[ $UNIXSAAT -lt $ogle ]] && {
+  (( UNIXSAAT < ogle )) && {
     bekleme_goster "Öğle ezanı" $ogle_n
     kalan_sure
   }
 
-  [[ $UNIXSAAT -lt $ikindi ]] && {
+  (( UNIXSAAT < ikindi )) && {
     bekleme_goster "İkindi ezanı" $ikindi_n
     kalan_sure
   }
 
-  [[ $UNIXSAAT -lt $aksam ]] && {
+  (( UNIXSAAT < aksam )) && {
     bekleme_goster "Akşam ezanı" $aksam_n
     kalan_sure
   }
 
-  [[ $UNIXSAAT -lt $yatsi ]] && {
+  (( UNIXSAAT < yatsi )) && {
     bekleme_goster "Yatsı ezanı" $yatsi_n
     kalan_sure
   }
 
-  [[ $UNIXSAAT -lt $yeni_gun ]] && {
+  (( UNIXSAAT < yeni_gun )) && {
     bekleme_goster "Yeni gün" "23:59:59"
     sleep 1; kalan_sure
   }

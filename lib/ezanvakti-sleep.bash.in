@@ -19,7 +19,7 @@ function bekleme_yap() {
     while (( bekle ))
     do
       # Her 12 saniyede bir süreyi sapmaya karşı düzelt.
-      ((bekle%12 == 0)) && bekleme_suresi ${vakit_saati}
+      (( bekle%12 == 0 )) && bekleme_suresi ${vakit_saati}
       printf "${RENK7}${RENK2}Kalan süre:${RENK5} %02d saat : %02d dakika : %02d saniye${RENK0}\r" \
         $((bekle/3600)) $((bekle%3600/60)) $((bekle%60))
       ((bekle--))
@@ -120,7 +120,7 @@ function ramazan_ezanoku() {
 function ezanlar() {
   denetle; bugun
 
-  [[ $UNIXSAAT -le $sabah ]] && {
+  (( UNIXSAAT <= sabah )) && {
     simdiki=Sabah
     vakit_ezani="${SABAH_EZANI}"
     vakit_saati=$sabah_n
@@ -139,59 +139,59 @@ function ezanlar() {
     bekleme_yap $bekle; ezanlar; ezanoku; ezanlar
   } ||
 
-  [[ $UNIXSAAT -le $ogle ]] && {
+  (( UNIXSAAT <= ogle )) && {
     simdiki=Öğle
     vakit_ezani="${OGLE_EZANI}"
     vakit_saati=$ogle_n
     ezan_okunsun_mu=${OGLE_EZANI_OKU}
 
-    [[ $UNIXSAAT -eq $ogle ]] && { ezanoku; ezanlar; }
+    (( UNIXSAAT == ogle )) && { ezanoku; ezanlar; }
     printf "${RENK7}${RENK4}Öğle ezanı için bekleniyor...${RENK0}\n"
 
     bekleme_suresi $ogle_n; vakit_animsat &
     bekleme_yap $bekle; ezanlar; ezanoku; ezanlar
   } ||
 
-  [[ $UNIXSAAT -le $ikindi ]] && {
+  (( UNIXSAAT <= ikindi )) && {
     simdiki=İkindi
     vakit_ezani="${IKINDI_EZANI}"
     vakit_saati=$ikindi_n
     ezan_okunsun_mu=${IKINDI_EZANI_OKU}
 
-    [[ $UNIXSAAT -eq $ikindi ]] && { ezanoku; ezanlar; }
+    (( UNIXSAAT == ikindi )) && { ezanoku; ezanlar; }
     printf "${RENK7}${RENK4}İkindi ezanı için bekleniyor...${RENK0}\n"
 
     bekleme_suresi $ikindi_n; vakit_animsat &
     bekleme_yap $bekle; ezanlar; ezanoku; ezanlar
   } ||
 
-  [[ $UNIXSAAT -le $aksam ]] && {
+  (( UNIXSAAT <= aksam )) && {
     simdiki=Akşam
     vakit_ezani="${AKSAM_EZANI}"
     vakit_saati=$aksam_n
     ezan_okunsun_mu=${AKSAM_EZANI_OKU}
 
-    [[ $UNIXSAAT -eq $aksam ]] && { ezanoku; ezanlar; }
+    (( UNIXSAAT == aksam )) && { ezanoku; ezanlar; }
     printf "${RENK7}${RENK4}Akşam ezanı için bekleniyor...${RENK0}\n"
 
     bekleme_suresi $aksam_n; vakit_animsat &
     bekleme_yap $bekle; ezanlar; ezanoku; ezanlar
   } ||
 
-  [[ $UNIXSAAT -le $yatsi ]] && {
+  (( UNIXSAAT <= yatsi )) && {
     simdiki=Yatsı
     vakit_ezani="${YATSI_EZANI}"
     vakit_saati=$yatsi_n
     ezan_okunsun_mu=${YATSI_EZANI_OKU}
 
-    [[ $UNIXSAAT -eq $yatsi ]] && { ezanoku; ezanlar; }
+    (( UNIXSAAT == yatsi )) && { ezanoku; ezanlar; }
     printf "${RENK7}${RENK4}Yatsı ezanı için bekleniyor...${RENK0}\n"
 
     bekleme_suresi $yatsi_n; vakit_animsat &
     bekleme_yap $bekle; ezanlar; ezanoku; ezanlar
   } ||
 
-  [[ $UNIXSAAT -le $(date -d "23:59:59" +%s) ]] && {
+  (( UNIXSAAT <= $(date -d "23:59:59" +%s) )) && {
     vakit_saati=23:59
     printf "${RENK7}${RENK4}Yeni gün için bekleniyor...${RENK0}\n"
 
@@ -204,26 +204,26 @@ function ezanlar() {
 function iftarimsak() {
   denetle; bugun
 
-  [[ $UNIXSAAT -le $sabah ]] && {
+  (( UNIXSAAT <= sabah )) && {
     simdiki=İmsak
     vakit_ezani="${SABAH_EZANI}"
     vakit_saati=$sabah_n
     ezan_okunsun_mu=${SABAH_EZANI_OKU}
 
-    [[ $UNIXSAAT -eq $sabah ]] && { ramazan_ezanoku; iftarimsak; }
+    (( UNIXSAAT == sabah )) && { ramazan_ezanoku; iftarimsak; }
     printf "${RENK7}${RENK4}İmsak vakti için bekleniyor...${RENK0}\n"
 
     bekleme_suresi $sabah_n; vakit_animsat &
     bekleme_yap $bekle; iftarimsak; ramazan_ezanoku; iftarimsak
   } ||
 
-  [[ $UNIXSAAT -le $aksam ]] && {
+  (( UNIXSAAT <= aksam )) && {
     simdiki=İftar
     vakit_ezani="${AKSAM_EZANI}"
     vakit_saati=$aksam_n
     ezan_okunsun_mu=${AKSAM_EZANI_OKU}
 
-    [[ $UNIXSAAT -eq $aksam ]] && { ramazan_ezanoku; iftarimsak; }
+    (( UNIXSAAT == aksam )) && { ramazan_ezanoku; iftarimsak; }
     printf "${RENK7}${RENK4}İftar vakti için bekleniyor...${RENK0}\n"
 
     bekleme_suresi $aksam_n; vakit_animsat &
@@ -232,7 +232,7 @@ function iftarimsak() {
 
   # Yeni güne ait hesaplamayı yapmak için saat 00:00 olana kadar
   # bekleme uyarısı ver.
-  [[ $UNIXSAAT -le $yeni_gun ]] && {
+  (( UNIXSAAT <= yeni_gun )) && {
     printf "${RENK7}${RENK4}Yeni gün için bekleniyor...${RENK0}\n"
 
     bekleme_suresi "23:59:59"; bekleme_yap $((bekle+1)); iftarimsak
