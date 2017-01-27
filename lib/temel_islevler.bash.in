@@ -141,6 +141,7 @@ function bugun() {
     , $2,$3,$4,$5,$6,$7}}' "${EZANVERI}")
 
   sabah=$(date -d "$sabah_n" +%s)
+  gunes=$(date -d "$gunes_n" +%s)
   ogle=$(date -d "$ogle_n" +%s)
   ikindi=$(date -d "$ikindi_n" +%s)
   aksam=$(date -d "$aksam_n" +%s)
