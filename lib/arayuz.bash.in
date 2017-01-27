@@ -4,7 +4,6 @@
 #
 
 
-echo "Hazır değil"; exit 0
 # TODO: 2.0 için yapılacaklar
 # haftalık ve aylık vakitler çıktılarını göstermeyi ekle. 
 # dini günler gösterimini ekle.
@@ -21,6 +20,8 @@ fi
 
 . @libdir@/@AD@/temel_islevler.bash
 . @libdir@/@AD@/arayuz_temel.bash
+
+bilesen_yukle bilgi_goster
 
 # düz komut çıktıları için rengi sıfırla.
 export RENK_KULLAN=0 RENK=0
@@ -47,63 +48,20 @@ for ((i=1; i<=CIZGI_UZUNLUGU; i++))
   fi
 }
 
-
 function arayuz() {
-  denetle; bugun
+  g_vakitleri_al
   local strng donus str str2
-
-  if [ $SAAT -lt $sabah ]
-  then
-      ileti='Sabah ezanına kalan süre :'
-      v_kalan=$("${ezanvakti_xc}" -v -s)
-      vakit_bilgisi='<b>Şimdi Yatsı Vakti</b>'
-
-  elif [ $SAAT -lt $ogle ]
-  then
-      ileti='Öğle ezanına kalan süre :'
-      v_kalan=$("${ezanvakti_xc}" -v -o)
-      if [ $SAAT -eq $gunes ]
-      then
-          vakit_bilgisi='<b>Güneş Doğuş Vakti</b>'
-      elif [ $SAAT -gt $gunes ]
-      then
-          vakit_bilgisi='<b>Şimdi Kuşluk Vakti</b>'
-      else
-          vakit_bilgisi='<b>Şimdi Sabah Vakti</b>'
-      fi
-  elif [ $SAAT -lt $ikindi ]
-  then
-      ileti='İkindi ezanına kalan süre :'
-      v_kalan=$("${ezanvakti_xc}" -v -i)
-      vakit_bilgisi='<b>Şimdi Öğle Vakti</b>'
-  elif [ $SAAT -lt $aksam ]
-  then
-      ileti='Akşam ezanına kalan süre :'
-      v_kalan=$("${ezanvakti_xc}" -v -a)
-      vakit_bilgisi='<b>Şimdi İkindi Vakti</b>'
-  elif [ $SAAT -lt $yatsi ]
-  then
-      ileti='Yatsı ezanına kalan süre :'
-      v_kalan=$("${ezanvakti_xc}" -v -y)
-      vakit_bilgisi='<b>Şimdi Akşam Vakti</b>'
-  elif [ $SAAT -le 2359 ]
-  then
-      ileti='Yeni gün için bekleniyor..'
-      v_kalan=
-      vakit_bilgisi='<b>Şimdi Yatsı Vakti</b>'
-  fi
 
 strng=$(yad --form --text "$(printf "${GELISMIS_ARAYUZ_BICIMI}" "${TARIH}" "$(date +%H:%M:%S)" \
   "${ILCE} / ${ULKE}" "${elx}" "${vakit_bilgisi}${ozel_ileti}" "${elx}" \
-  "$("${ezanvakti_xc}" --arayuzlericin)" "${ileti}" \
-  "$(cut -d' ' -f5- <<<${v_kalan})")" \
+  "$(g_vakitleri_yaz)" "${v_ileti}" "${v_kalan}")" \
 --field='Ezanlar:CB' \
 '!Sabah!Öğle!İkindi!Akşam!Yatsı' \
 --field='Sureler:CB' \
 "!000-Özel Pencere$sure_listesi" \
 --field='Seçimler:CB' \
 '!Ayet!Hadis!Bilgi!Esma-ül Hüsna' \
---button="gtk-about:160" --button="gtk-properties:170" --button='gtk-ok:150' --button="gtk-quit:121" \
+--button=gtk-about:"bash -c g_hakkinda" --button="gtk-properties:170" --button='gtk-ok:150' --button="gtk-quit:121" \
 --image=${VERI_DIZINI}/simgeler/ezanvakti.png --window-icon=${VERI_DIZINI}/simgeler/ezanvakti2.png \
 --title "Ezanvakti $SURUM" --sticky --center --fixed)
 
@@ -156,16 +114,16 @@ then
         secim_goster;arayuz
     elif [ "$str" = "Hadis" ]
     then
-        "${ezanvakti_xc}" --hadis -u > /tmp/ezanvakti-6
-        secim_goster;arayuz
+        hadis_goster ucbirim > /tmp/ezanvakti-6
+        g_secim_goster;arayuz
     elif [ "$str" = "Esma-ül Hüsna" ]
     then
-        "${ezanvakti_xc}" --esma > /tmp/ezanvakti-6
-        secim_goster;arayuz
+        esma_goster ucbirim > /tmp/ezanvakti-6
+        g_secim_goster;arayuz
     elif [ "$str" = "Bilgi" ]
     then
-        "${ezanvakti_xc}" --bilgi -u > /tmp/ezanvakti-6
-        secim_goster;arayuz
+        bilgi_goster ucbirim > /tmp/ezanvakti-6
+        g_secim_goster;arayuz
     elif [ `echo $str | grep [0-9]` ]
     then
         sure=$(echo "$str" | cut -d'-' -f1)
@@ -198,10 +156,6 @@ then
         arayuz
     fi
 
-elif (( $donus == 160 ))
-then
-    hakkinda
-    arayuz
 elif (( $donus == 170 ))
 then
     yapilandirma

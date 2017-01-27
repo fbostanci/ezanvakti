@@ -19,7 +19,7 @@ function kalan_sure() {
     do
       # Her 12 saniyede bir süreyi sapmaya karşı düzelt.
       ((bekle%12 == 0)) && bekleme_suresi ${vakit_saati}
-      printf "${RENK7}${RENK2}Kalan süre:${RENK5} %02d saat : %02d dakika : %02d saniye${RENK0}\r" \
+      printf "${RENK7}${RENK2}Kalan süre:${RENK5} %02d saat : %02d dakika : %02d saniye ${RENK2}(${RENK1}${vakit_saati}${RENK2})${RENK0}\r" \
         $((bekle/3600)) $((bekle%3600/60)) $((bekle%60))
       ((bekle--))
       sleep 1

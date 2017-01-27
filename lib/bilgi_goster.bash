@@ -51,6 +51,7 @@ function esma_goster() {
     icerik_al=${VERI_DIZINI}/veriler/esma
     secim_yap 99
 
+
     (( ! ${RENK:-RENK_KULLAN} )) && {
       printf "${alinan_yanit}\n"
       exit 0
