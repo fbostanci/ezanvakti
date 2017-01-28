@@ -121,9 +121,9 @@ case $1 in
     esac ;;
   --esma) bilesen_yukle bilgi_goster; shift
     case $1 in
-      -u|-t|--u[cç]birim|--terminal) esma ucbirim ;;
+      -u|-t|--u[cç]birim|--terminal) esma_goster ucbirim ;;
       ?*) hatali_kullanim $1 ;;
-      '') esma bildirim ;;
+      '') esma_goster bildirim ;;
     esac ;;
   --g[uü]ncelle) bilesen_yukle guncelleyici
                  guncelleme_yap ;;
