@@ -124,7 +124,7 @@ function ayet_goster() { # {{{
       "${RENK3}\nGünlük Ayet ${RENK2}(${RENK8}" \
       "$(sed -n "${satir}p" ${VERI_DIZINI}/veriler/sureler_ayetler) $satir/6236${RENK2})${RENK8}\n\n" \
       "$(sed -n "${satir}p" "${TEFSIR}")${RENK0}"
-    exit 0 ;; 
+    ;; 
   bildirim)
     notify-send "Günlük Ayet ($(sed -n "${satir}p" ${VERI_DIZINI}/veriler/sureler_ayetler))" \
       "$(sed -n "${satir}p" "${TEFSIR}")" -t $AYET_BILDIRIM_SURESI"000" -h int:transient:1
