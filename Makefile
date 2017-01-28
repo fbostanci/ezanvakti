@@ -29,7 +29,7 @@ ifeq "$(DUZELTME)" ""
 endif
 
 SCRIPTS = ezanvakti.bash lib/temel_islevler.bash lib/arayuz.bash \
-	lib/ezanvakti-sleep.bash data/ezanvakti.desktop \
+	lib/arayuz2.bash lib/ezanvakti-sleep.bash data/ezanvakti.desktop \
 	etc/ayarlar etc/autostart/ezanvakti.desktop
 
 all: $(SCRIPTS)

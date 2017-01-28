@@ -91,5 +91,5 @@ function betik_kullanimi() {
 
 
   Çıkmak için 'q' tuşuna basınız.
-         "  | less -R; exit 0
+         "  | less -R
 }

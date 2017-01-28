@@ -26,20 +26,15 @@ bilesen_yukle mplayer_yonetici
 bilesen_yukle ayet_goster
 bilesen_yukle kuran_dinletici
 bilesen_yukle vakitleri_goster
-bilesen_yukle dini_gunler
-bilesen_yukle yapilandirma_yoneticisi
 
 # düz komut çıktıları için rengi sıfırla.
 export RENK_KULLAN=0 RENK=0
-
 
 elx=''
 for ((i=1; i<=CIZGI_UZUNLUGU; i++))
 {
   elx+="${CIZGI_SIMGESI}"
 }
-
-
 
 (( GUN_ANIMSAT )) && {
   if grep -q $(date +%d.%m.%Y) ${VERI_DIZINI}/veriler/gunler
@@ -67,7 +62,9 @@ strng=$(yad --form --text "$(printf "${GELISMIS_ARAYUZ_BICIMI}" "${TARIH}" "$(da
 "!000-Özel Pencere$sure_listesi" \
 --field='Seçimler:CB' \
 '!Ayet!Hadis!Bilgi!Esma-ül Hüsna!Haftalık Vakitler!Aylık Vakitler!Dini Günler ve Geceler' \
---button=about:"bash -c g_hakkinda" --button="gtk-preferences:170" --button='gtk-ok:150' --button="gtk-cancel:121" \
+--field=Başlatıcı:CE \
+"${tamamlama_listesi}" \
+--button='gtk-ok:150' --button="gtk-cancel:121" \
 --image=${VERI_DIZINI}/simgeler/ezanvakti.png --window-icon=${VERI_DIZINI}/simgeler/ezanvakti2.png \
 --title "Ezanvakti $SURUM" --sticky --center --fixed)
 
@@ -81,79 +78,110 @@ if (( $donus == 150 ))
 then
     if [[ $str = Sabah ]]
     then
-        mplayer_ileti=" Sabah ezanı dinletiliyor..\n\n Okuyan : ${EZAN_OKUYAN}"
-        mplayer_calistir "${SABAH_EZANI}" &
-        pencere_bilgi; arayuz
+            mplayer_ileti=" Sabah ezanı dinletiliyor..\n\n Okuyan : ${EZAN_OKUYAN}"
+            mplayer_calistir "${SABAH_EZANI}" &
+            pencere_bilgi; arayuz
 
     elif [[ $str = Öğle ]]
     then
-        mplayer_ileti=" Öğle ezanı dinletiliyor..\n\n Okuyan : ${EZAN_OKUYAN}"
-        mplayer_calistir "${OGLE_EZANI}" &
-        pencere_bilgi; arayuz
+            mplayer_ileti=" Öğle ezanı dinletiliyor..\n\n Okuyan : ${EZAN_OKUYAN}"
+            mplayer_calistir "${OGLE_EZANI}" &
+            pencere_bilgi; arayuz
 
     elif [[ $str = İkindi ]]
     then
-        mplayer_ileti=" İkindi ezanı dinletiliyor..\n\n Okuyan : ${EZAN_OKUYAN}"
-        mplayer_calistir "${IKINDI_EZANI}" &
-        pencere_bilgi; arayuz
+            mplayer_ileti=" İkindi ezanı dinletiliyor..\n\n Okuyan : ${EZAN_OKUYAN}"
+            mplayer_calistir "${IKINDI_EZANI}" &
+            pencere_bilgi; arayuz
 
     elif [[ $str = Akşam ]]
     then
-        mplayer_ileti=" Akşam ezanı dinletiliyor..\n\n Okuyan : ${EZAN_OKUYAN}"
-        mplayer_calistir "${AKSAM_EZANI}" &
-        pencere_bilgi; arayuz
+           mplayer_ileti=" Akşam ezanı dinletiliyor..\n\n Okuyan : ${EZAN_OKUYAN}"
+           mplayer_calistir "${AKSAM_EZANI}" &
+           pencere_bilgi; arayuz
 
     elif [[ $str = Yatsı ]]
     then
-        mplayer_ileti=" Yatsı ezanı dinletiliyor..\n\n Okuyan : ${EZAN_OKUYAN}"
-        mplayer_calistir "${YATSI_EZANI}" &
-        pencere_bilgi; arayuz
+            mplayer_ileti=" Yatsı ezanı dinletiliyor..\n\n Okuyan : ${EZAN_OKUYAN}"
+            mplayer_calistir "${YATSI_EZANI}" &
+            pencere_bilgi; arayuz
 
     elif [[ $str = Ayet ]]
     then
-        secim_basligi='Bir Ayet'
-        ayet_goster ucbirim > /tmp/ezanvakti-6
-        g_secim_goster;arayuz
+            secim_basligi='Bir Ayet'
+            ayet_goster ucbirim > /tmp/ezanvakti-6
+            g_secim_goster;arayuz
 
     elif [[ $str = Hadis ]]
     then
-        secim_basligi='40 Hadis'
-        hadis_goster ucbirim > /tmp/ezanvakti-6
-        g_secim_goster;arayuz
+            secim_basligi='40 Hadis'
+            hadis_goster ucbirim > /tmp/ezanvakti-6
+            g_secim_goster;arayuz
 
     elif [[ $str = Esma-ül Hüsna ]]
     then
-        secim_basligi='Esma-ül Hüsna'
-        esma_goster ucbirim > /tmp/ezanvakti-6
-        g_secim_goster;arayuz
+            secim_basligi='Esma-ül Hüsna'
+            esma_goster ucbirim > /tmp/ezanvakti-6
+            g_secim_goster;arayuz
 
     elif [[ $str = Bilgi ]]
     then
-        secim_basligi='Dini Bilgiler'
-        bilgi_goster ucbirim > /tmp/ezanvakti-6
-        g_secim_goster;arayuz
+            secim_basligi='Dini Bilgiler'
+            bilgi_goster ucbirim > /tmp/ezanvakti-6
+            g_secim_goster;arayuz
 
     elif [[ $str = Aylık Vakitler ]]
     then
-        secim_basligi='Aylık Vakitler'
-        vakitler aylik > /tmp/ezanvakti-6
-        g_secim_goster; arayuz
+            secim_basligi='Aylık Vakitler'
+            vakitler aylik > /tmp/ezanvakti-6
+            g_secim_goster; arayuz
 
     elif [[ $str = Haftalık Vakitler ]]
     then
-        secim_basligi='Haftalık Vakitler'
-        vakitler haftalik > /tmp/ezanvakti-6
-        g_secim_goster; arayuz
+            secim_basligi='Haftalık Vakitler'
+            vakitler haftalik > /tmp/ezanvakti-6
+            g_secim_goster; arayuz
 
     elif [[ $str = Dini Günler ve Geceler ]]
     then
-        secim_basligi="$(date +%Y) Dini Günler ve Geceler"
-        gunler > /tmp/ezanvakti-6
-        g_secim_goster; arayuz
+           bilesen_yukle dini_gunler
+           secim_basligi="$(date +%Y) Dini Günler ve Geceler"
+           gunler > /tmp/ezanvakti-6
+           g_secim_goster; arayuz
+
+    elif [[ $str = Ayarlar  ]]
+    then
+            bilesen_yukle yapilandirma_yoneticisi
+            yapilandirma
+
+    elif [[ $str = özel pencere ]]
+    then
+            ozel_pencere
+
+    elif [[ $str = güncelle ]]
+    then
+            bilesen_yukle guncelleyici
+            guncelleme_yap; arayuz
+
+    elif [[ $str = hakkında ]]
+    then
+            g_hakkinda; arayuz
+    
+    elif [[ $str = arayuz2 ]]
+    then
+            bilesen_yukle arayuz2
+            arayuz2; arayuz
+
+    elif [[ $str = yardım ]]
+    then
+            bilesen_yukle kullanim
+            betik_kullanimi > /tmp/ezanvakti-6
+            sed -i '75d' /tmp/ezanvakti-6
+            g_secim_goster; arayuz
 
     elif [ `echo $str | grep [0-9]` ]
     then
-        sure=$(echo "$str" | cut -d'-' -f1)
+            sure=$(echo "$str" | cut -d'-' -f1)
 
         if [ $sure = 000 ]
         then
@@ -162,28 +190,30 @@ then
             if [[ -f "${YEREL_SURE_DIZINI}/$sure.mp3" ]]
             then
                 okuyan='Yerel Okuyucu'
+
             elif [[ ${OKUYAN} = AlGhamdi ]]
             then
                 okuyan="Saad el Ghamdi"
+
             elif [[ ${OKUYAN} = AsShatree ]]
             then
                 okuyan="As Shatry"
+
             elif [[ ${OKUYAN} = AlAjmy ]]
             then
                 okuyan="Ahmad el Ajmy"
             fi
         fi
 
-        mplayer_ileti="$(gawk -v sira=$sure '{if(NR==sira) print $4;}' < ${VERI_DIZINI}/veriler/sure_bilgisi) suresi dinletiliyor..\n\n Okuyan : ${okuyan}"
+        mplayer_ileti="$(gawk -v sira=$sure '{if(NR==sira) print $4;}' < ${VERI_DIZINI}/veriler/sure_bilgisi)"
+        mplayer_ileti+=" suresi dinletiliyor..\n\n Okuyan : ${okuyan}"
         kuran_dinlet secim $sure &
         pencere_bilgi; arayuz
+
     else
         arayuz
     fi
 
-elif (( $donus == 170 ))
-then
-    yapilandirma
 elif (( $donus == 121 ))
 then
     exit 0
