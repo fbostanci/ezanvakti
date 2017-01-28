@@ -5,9 +5,9 @@
 
 
 # TODO: 2.0 için yapılacaklar
-# haftalık ve aylık vakitler çıktılarını göstermeyi ekle. 
-# dini günler gösterimini ekle.
-# ana betik bağımlığını azalt . Ortak yeni fonksiyonlar yaz.
+# haftalık ve aylık vakitler çıktılarını göstermeyi ekle. @
+# dini günler gösterimini ekle.@
+# ana betik bağımlığını azalt . Ortak yeni fonksiyonlar yaz.@
 # Çoklu çalışmayı engelle.
 # sistem tepsisi desteği .(?)
 # arayüzde html kod denemeleri.
@@ -27,6 +27,7 @@ bilesen_yukle ayet_goster
 bilesen_yukle kuran_dinletici
 bilesen_yukle vakitleri_goster
 bilesen_yukle dini_gunler
+bilesen_yukle yapilandirma_yoneticisi
 
 # düz komut çıktıları için rengi sıfırla.
 export RENK_KULLAN=0 RENK=0
@@ -66,7 +67,7 @@ strng=$(yad --form --text "$(printf "${GELISMIS_ARAYUZ_BICIMI}" "${TARIH}" "$(da
 "!000-Özel Pencere$sure_listesi" \
 --field='Seçimler:CB' \
 '!Ayet!Hadis!Bilgi!Esma-ül Hüsna!Haftalık Vakitler!Aylık Vakitler!Dini Günler ve Geceler' \
---button=gtk-help-about:"bash -c g_hakkinda" --button="gtk-preferences:170" --button='gtk-ok:150' --button="gtk-cancel:121" \
+--button=about:"bash -c g_hakkinda" --button="gtk-preferences:170" --button='gtk-ok:150' --button="gtk-cancel:121" \
 --image=${VERI_DIZINI}/simgeler/ezanvakti.png --window-icon=${VERI_DIZINI}/simgeler/ezanvakti2.png \
 --title "Ezanvakti $SURUM" --sticky --center --fixed)
 
@@ -81,66 +82,75 @@ then
     if [[ $str = Sabah ]]
     then
         mplayer_ileti=" Sabah ezanı dinletiliyor..\n\n Okuyan : ${EZAN_OKUYAN}"
-        pencere_bilgi &
-        mplayer_calistir "${SABAH_EZANI}"
-        pkill yad &>/dev/null
-        arayuz
+        mplayer_calistir "${SABAH_EZANI}" &
+        pencere_bilgi; arayuz
+
     elif [[ $str = Öğle ]]
     then
         mplayer_ileti=" Öğle ezanı dinletiliyor..\n\n Okuyan : ${EZAN_OKUYAN}"
-        pencere_bilgi &
-        mplayer_calistir "${OGLE_EZANI}"
-        pkill yad &>/dev/null
-        arayuz
+        mplayer_calistir "${OGLE_EZANI}" &
+        pencere_bilgi; arayuz
+
     elif [[ $str = İkindi ]]
     then
         mplayer_ileti=" İkindi ezanı dinletiliyor..\n\n Okuyan : ${EZAN_OKUYAN}"
-        pencere_bilgi &
-        mplayer_calistir "${IKINDI_EZANI}"
-        pkill yad &>/dev/null
-        arayuz
+        mplayer_calistir "${IKINDI_EZANI}" &
+        pencere_bilgi; arayuz
+
     elif [[ $str = Akşam ]]
     then
         mplayer_ileti=" Akşam ezanı dinletiliyor..\n\n Okuyan : ${EZAN_OKUYAN}"
-        pencere_bilgi &
-        mplayer_calistir "${AKSAM_EZANI}"
-        pkill yad &>/dev/null
-        arayuz
+        mplayer_calistir "${AKSAM_EZANI}" &
+        pencere_bilgi; arayuz
+
     elif [[ $str = Yatsı ]]
     then
         mplayer_ileti=" Yatsı ezanı dinletiliyor..\n\n Okuyan : ${EZAN_OKUYAN}"
-        pencere_bilgi &
-        mplayer_calistir "${YATSI_EZANI}"
-        pkill yad &>/dev/null
-        arayuz
+        mplayer_calistir "${YATSI_EZANI}" &
+        pencere_bilgi; arayuz
+
     elif [[ $str = Ayet ]]
     then
+        secim_basligi='Bir Ayet'
         ayet_goster ucbirim > /tmp/ezanvakti-6
         g_secim_goster;arayuz
+
     elif [[ $str = Hadis ]]
     then
-        hadis_goster ucbirim  > /tmp/ezanvakti-6
+        secim_basligi='40 Hadis'
+        hadis_goster ucbirim > /tmp/ezanvakti-6
         g_secim_goster;arayuz
+
     elif [[ $str = Esma-ül Hüsna ]]
     then
-        esma_goster ucbirim  > /tmp/ezanvakti-6
+        secim_basligi='Esma-ül Hüsna'
+        esma_goster ucbirim > /tmp/ezanvakti-6
         g_secim_goster;arayuz
+
     elif [[ $str = Bilgi ]]
     then
+        secim_basligi='Dini Bilgiler'
         bilgi_goster ucbirim > /tmp/ezanvakti-6
         g_secim_goster;arayuz
+
     elif [[ $str = Aylık Vakitler ]]
     then
+        secim_basligi='Aylık Vakitler'
         vakitler aylik > /tmp/ezanvakti-6
         g_secim_goster; arayuz
+
     elif [[ $str = Haftalık Vakitler ]]
     then
+        secim_basligi='Haftalık Vakitler'
         vakitler haftalik > /tmp/ezanvakti-6
         g_secim_goster; arayuz
+
     elif [[ $str = Dini Günler ve Geceler ]]
     then
+        secim_basligi="$(date +%Y) Dini Günler ve Geceler"
         gunler > /tmp/ezanvakti-6
         g_secim_goster; arayuz
+
     elif [ `echo $str | grep [0-9]` ]
     then
         sure=$(echo "$str" | cut -d'-' -f1)
@@ -164,11 +174,9 @@ then
             fi
         fi
 
-        mplayer_ileti=" $(grep -w $sure ${VERI_DIZINI}/veriler/sure_bilgisi | gawk '{print $4}') suresi dinletiliyor..\n\n Okuyan : ${okuyan}"
-        pencere_bilgi &
-        kuran_dinlet secim $sure
-        pkill yad &>/dev/null
-        arayuz
+        mplayer_ileti="$(gawk -v sira=$sure '{if(NR==sira) print $4;}' < ${VERI_DIZINI}/veriler/sure_bilgisi) suresi dinletiliyor..\n\n Okuyan : ${okuyan}"
+        kuran_dinlet secim $sure &
+        pencere_bilgi; arayuz
     else
         arayuz
     fi
