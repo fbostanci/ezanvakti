@@ -19,6 +19,10 @@ sure_listesi+='!95-Tin!96-Alak!97-Kadir!98-Beyyine!99-Zilzal!100-Adiyat!101-Kari
 sure_listesi+='!103-Asr!104-Hümeze!105-Fil!106-Kureyş!107-Maun!108-Kevser!109-Kafirun!110-Nasr'
 sure_listesi+='!111-Tebbet!112-İhlas!113-Felak!114-Nas'
 
+tamamlama_listesi='!Ayarlar!Ayet!Sabah!Öğle!İkindi!Akşam!Yatsı!yapilandirma!Hadis!Esma-ül Hüsna'
+tamamlama_listesi+='!Bilgi!Aylık Vakitler!Haftalık Vakitler!Dini Günler ve Geceler!hakkında' 
+tamamlama_listesi+="!güncelle!yardım!arayuz2!000!özel pencere!$sure_listesi"
+
 function g_vakitleri_al() {
   denetle; bugun
 
@@ -82,7 +86,7 @@ function g_vakitleri_yaz() {
 function g_secim_goster() {
   yad --title "Ezanvakti $SURUM - ${secim_basligi}" --text-info --filename=/tmp/ezanvakti-6 --width=560 --height=300 --wrap \
       --button='gtk-close' --window-icon=${VERI_DIZINI}/simgeler/ezanvakti2.png --back="$ARKAPLAN_RENGI"\
-      --fore="$YAZI_RENGI" --mouse --sticky --tail
+      --fore="$YAZI_RENGI" --mouse --sticky
 }
 
 function g_hakkinda() {
@@ -97,8 +101,6 @@ GPL 3 ile lisanslanmıştır.\n" \
   --button='gtk-close' --sticky --center \
   --image=${VERI_DIZINI}/simgeler/ezanvakti2.png --window-icon=${VERI_DIZINI}/simgeler/ezanvakti2.png
 }
-
-export -f g_hakkinda
 
 function pencere_bilgi() {
 
