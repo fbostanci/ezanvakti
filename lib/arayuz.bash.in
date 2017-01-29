@@ -61,10 +61,10 @@ strng=$(yad --form --text "$(printf "${GELISMIS_ARAYUZ_BICIMI}" "${TARIH}" "$(da
 --field='Sureler:CB' \
 "!000-Özel Pencere$sure_listesi" \
 --field='Seçimler:CB' \
-'!Ayet!Hadis!Bilgi!Esma-ül Hüsna!Haftalık Vakitler!Aylık Vakitler!Dini Günler ve Geceler' \
+'!Ayet!Hadis!Bilgi!Esma-ül Hüsna!Haftalık Vakitler!Aylık Vakitler!Dini Günler ve Geceler!Yapılandırma Yöneticisi' \
 --field=Başlatıcı:CE \
 "${tamamlama_listesi}" \
---button='gtk-ok:150' --button="gtk-cancel:121" \
+--button='gtk-ok:150' --button="gtk-close:121" \
 --image=${VERI_DIZINI}/simgeler/ezanvakti.png --window-icon=${VERI_DIZINI}/simgeler/ezanvakti2.png \
 --title "Ezanvakti $SURUM" --sticky --center --fixed)
 
@@ -149,7 +149,7 @@ then
            gunler > /tmp/ezanvakti-6
            g_secim_goster; arayuz
 
-    elif [[ $str = Ayarlar  ]]
+    elif [[ $str = @(Ayarlar|yapilandirma|Yapılandırma Yöneticisi)  ]]
     then
             bilesen_yukle yapilandirma_yoneticisi
             yapilandirma

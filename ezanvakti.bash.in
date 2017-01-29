@@ -123,7 +123,6 @@ case $1 in
     case $1 in
       -u|-t|--u[cç]birim|--terminal) esma_goster ucbirim ;;
       ?*) hatali_kullanim $1 ;;
-      '') esma_goster bildirim ;;
     esac ;;
   --g[uü]ncelle) bilesen_yukle guncelleyici
                  guncelleme_yap ;;
