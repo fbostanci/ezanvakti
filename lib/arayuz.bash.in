@@ -1,6 +1,6 @@
 #
 #
-#                           Ezanvakti Gelişmiş Arayüz  Bileşeni 1.7
+#                           Ezanvakti Gelişmiş Arayüz  Bileşeni 2.0
 #
 
 
@@ -166,7 +166,7 @@ then
     elif [[ $str = hakkında ]]
     then
             g_hakkinda; arayuz
-    
+
     elif [[ $str = arayuz2 ]]
     then
             bilesen_yukle arayuz2
