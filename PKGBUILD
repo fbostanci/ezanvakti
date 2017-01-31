@@ -1,65 +1,26 @@
 # Maintainer: Fatih Bostancı <faopera@gmail.com>
 
-pkgbase=ezanvakti-devel
-pkgname=('ezanvakti-devel'
-         'ezanvakti-ses')
-pkgver=6.0
+pkgname=ezanvakti
+pkgver=20170131
 pkgrel=1
-pkgdesc="GNU/Linux icin Ezan Vakti Bildirici"
+pkgdesc="Prayer Times script for Turkish users"
 arch=('any')
-url="https://gitorious.org/ezanvakti"
+url="https://gitlab.com/ironic/ezanvakti"
+license=('GPL3')
 makedepends=('git')
+depends=('bash' 'sed' 'gawk' 'grep' 'libnotify' 'mplayer' 'perl-www-mechanize' 'yad')
+optdepends=('bash-completion: bash tamamlama destegi')
+source=('git+https://gitlab.com/ironic/ezanvakti.git')
+md5sums=('SKIP')
 
-_gitroot='git://gitorious.org/ezanvakti/ezanvakti-devel.git'
-_gitname='ezanvakti-devel'
-
-_gitroot2='git://gitorious.org/ezanvakti/ezanvakti-ses.git'
-_gitname2='ezanvakti-ses'
-
-
-package_ezanvakti-devel() {
-  pkgdesc="GNU/Linux icin Ezan Vakti Bildirici"
-  license=('GPL3')
-  depends=('bash' 'sed' 'gawk' 'grep' 'libnotify' 'mplayer' 'ezanvakti-ses>=1.0')
-  optdepends=('perl-www-mechanize: Ezanveri güncelleme işlemi için'
-              'bash-completion: Bash tamamlama desteği için')
-  conflicts=('ezanvakti')
-
-  msg "Gitorious GIT sunucusuna bağlanılıyor..."
-
-  if [ -d "${srcdir}/${_gitname}" ]
-  then
-       cd ${_gitname} && git pull origin
-  else
-       git clone "${_gitroot}" && cd ${_gitname}
-  fi
-
- #${EDITOR:-${vim:-vi}} Makefile
-  msg "make başlatılıyor..."
-  make PREFIX=/usr sysconfdir=/etc DESTDIR="${pkgdir}" install
+pkgver() {
+  cd "$pkgname"
+  cat VERSION
 }
 
-
-package_ezanvakti-ses() {
-  pkgdesc="Ezanvakti uygulaması icin ezan ses dosyalari"
-  url="http://www.ismailcosar.com.tr/"
-  license=('unknown')
-  depends=()
-  optdepends=()
-  conflicts=('ezanvakti')
-
-  msg "Gitorious GIT sunucusuna bağlanılıyor..."
-
-  if [ -d "${srcdir}/${_gitname2}" ]
-  then
-       cd ${_gitname2} && git pull origin
-  else
-       git clone "${_gitroot2}" && cd ${_gitname2}
-  fi
-
-  #${EDITOR:-${vim:-vi}} Makefile
-  msg "make başlatılıyor..."
-  make PREFIX=/usr DESTDIR="${pkgdir}" install
+package() {
+  cd "$pkgname"
+  make PREFIX=/usr sysconfdir=/etc DESTDIR="${pkgdir}" install
 }
 
 # vim:set ts=2 sw=2 et:
