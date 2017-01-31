@@ -84,29 +84,29 @@ function g_vakitleri_yaz() {
 }
 
 function g_secim_goster() {
-  yad --title "Ezanvakti $SURUM - ${secim_basligi}" --text-info --filename=/tmp/ezanvakti-6 --width=560 --height=300 --wrap \
+  yad --title "${AD^} $SURUM - ${secim_basligi}" --text-info --filename=/tmp/ezanvakti-6 --width=560 --height=300 --wrap \
       --button='gtk-close' --window-icon=${VERI_DIZINI}/simgeler/ezanvakti2.png --back="$ARKAPLAN_RENGI"\
       --fore="$YAZI_RENGI" --mouse --sticky
 }
 
 function g_hakkinda() {
-  yad --text "\t\t<b><big>Ezanvakti ${SURUM}</big></b>
+  yad --text "\t\t<b><big>${AD^} ${SURUM}</big></b>
 \"GNU/Linux için ezan vakti bildirici\"
 
    <a href= 'https://gitlab.com/ironic/ezanvakti' >Ezanvakti Sayfası</a>
 
 Copyright (c) 2010-2017 Fatih Bostancı
 GPL 3 ile lisanslanmıştır.\n" \
-  --title "Ezanvakti ${SURUM} - Hakkında" --fixed --image-on-top \
+  --title "${AD^} ${SURUM} - Hakkında" --fixed --image-on-top \
   --button='gtk-close' --sticky --center \
   --image=${VERI_DIZINI}/simgeler/ezanvakti2.png --window-icon=${VERI_DIZINI}/simgeler/ezanvakti2.png
 }
 
 function pencere_bilgi() {
 
-yad --form --separator=' ' --title="Ezanvakti $SURUM" --text "${mplayer_ileti}" \
+yad --form --separator=' ' --title="${AD^} $SURUM" --text "${mplayer_ileti}" \
   --image=${VERI_DIZINI}/simgeler/ezanvakti.png --window-icon=${VERI_DIZINI}/simgeler/ezanvakti2.png \
-  --button='gtk-cancel:127' --button='gtk-close:0' --sticky --mouse --fixed
+  --button='gtk-cancel:127' --button='gtk-close:0' --mouse --fixed
 
   case $? in
     *)
@@ -127,7 +127,7 @@ strng=$(yad --form \
 "${sure_listesi}" \
 --button='gtk-go-back:151' --button='gtk-media-play:152' --button='gtk-quit:153' \
 --image=${VERI_DIZINI}/simgeler/ezanvakti.png --window-icon=${VERI_DIZINI}/simgeler/ezanvakti2.png \
---title "Ezanvakti $SURUM" --sticky --center --fixed)
+--title "${AD^} $SURUM" --sticky --center --fixed)
 
 donus=$(echo $?)
 
@@ -175,8 +175,8 @@ case $donus in
 
     mplayer_ileti="$(gawk -v sira=$sure '{if(NR==sira) print $4;}' < ${VERI_DIZINI}/veriler/sure_bilgisi) suresi dinletiliyor..\
     \n\n Okuyan : ${str}"
-    mplayer_calistir "${dinletilecek_sure}" &
-    pencere_bilgi; ozel_pencere ;;
+    pencere_bilgi & mplayer_calistir "${dinletilecek_sure}"
+    pkill yad >/dev/null 2>&1; ozel_pencere ;;
   153)
     exit 0 ;;
 esac

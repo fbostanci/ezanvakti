@@ -99,7 +99,7 @@ IFS="
   elif (( arayuz == 2 ))
   then
       ulke=$(yad --entry --entry-text 'TURKIYE' $(cut -d, -f1 < ${VERI_DIZINI}/ulkeler/AAA-ULKELER) \
-             --width=240 --sticky --window-icon=${VERI_DIZINI}/simgeler/ezanvakti2.png \
+             --width=300 --sticky --center --window-icon=${VERI_DIZINI}/simgeler/ezanvakti2.png \
              --title 'Ülke belirleme'  --text 'Bulunduğunuz ülkeyi seçin')
       (( $? == 1 )) && exit 1
 
@@ -143,7 +143,7 @@ ulke_kodu=$(grep -w ${ULKE} ${VERI_DIZINI}/ulkeler/AAA-ULKELER | cut -d, -f2)
   elif (( arayuz == 2 ))
   then
       sehir=$(yad --entry --entry-text ${varsayilan_sehir} $(cut -d, -f1 < ${VERI_DIZINI}/ulkeler/${ulke}) \
-              --width=240 --sticky --window-icon=${VERI_DIZINI}/simgeler/ezanvakti2.png \
+              --width=300 --sticky --center --window-icon=${VERI_DIZINI}/simgeler/ezanvakti2.png \
               --title 'Şehir belirleme' --text 'Bulunduğunuz şehri seçin')
       (( $? == 1 )) && exit 1
 
@@ -184,7 +184,7 @@ then
           elif (( arayuz == 2 ))
           then
               ilce=$(yad --entry --entry-text ${sehir} $(cut -d, -f1 < ${VERI_DIZINI}/ulkeler/${ulke}_ilceler/${sehir}) \
-                     --width=240 --sticky --window-icon=${VERI_DIZINI}/simgeler/ezanvakti2.png \
+                     --width=300 --sticky --center --window-icon=${VERI_DIZINI}/simgeler/ezanvakti2.png \
                      --title 'İlçe belirleme' --text 'Bulunduğunuz ilçeyi seçin')
               (( $? == 1 )) && exit 1
 
