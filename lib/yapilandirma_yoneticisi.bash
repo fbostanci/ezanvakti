@@ -411,7 +411,7 @@ yad --notebook --key=190707 \
                 ) | yad  --progress --title="${AD^} $SURUM" --progress-text="${EZANVERI_ADI} güncelleniyor" \
                          --pulsate --auto-close --width=300 --center --fixed --no-buttons\
                          --window-icon=${VERI_DIZINI}/simgeler/ezanvakti2.png
-                         . "${EZANVAKTI_AYAR}"
+                . "${EZANVAKTI_AYAR}"
             }
             arayuz ;;
 
