@@ -1,0 +1,87 @@
+ezanvakti (20141212-1~distroguide~utopic) utopic; urgency=medium
+
+  * Vakitlerde ezan okunmasi istege bagli yapildi.
+  * duzeltmeler
+
+ -- Fatih Bostanci <faopera@gmail.com>  Fri, 12 Dec 2014 17:04:40 +0200
+
+ezanvakti (20140606-1~distroguide~trusty) trusty; urgency=medium
+
+  * duzeltmeler
+
+ -- Fatih Bostanci <faopera@gmail.com>  Fri, 06 Jun 2014 00:18:07 +0300
+
+ezanvakti (20140603-1~distroguide~trusty) trusty; urgency=low
+
+  * Guncelleme sorunu duzeltildi.
+
+ -- Fatih Bostanci <faopera@gmail.com>  Tue, 03 Jun 2014 20:43:01 +0300
+
+ezanvakti (20120505-1~distroguide~precise) precise; urgency=low
+
+  * Guncelleme sorunu duzeltildi.
+ 
+ -- Fatih Bostanci <faopera@gmail.com>  Sat, 05 May 2012 15:37:49 +0300
+
+ezanvakti (20120418-1~distroguide~lucid) lucid; urgency=low
+
+  * Ubuntu uyumsuzluklar, giderildi.
+ 
+ -- Fatih Bostanci <faopera@gmail.com>  Wed, 18 Apr 2012 18:26:19 +0300
+
+ezanvakti (20120405-1~distroguide~lucid) lucid; urgency=low
+
+  * 6.0 gelistirmelerinden 5.7 ye uygun olanlar eklendi.
+ 
+ -- Fatih Bostanci <faopera@gmail.com>  Sat, 07 Apr 2012 00:17:07 +0300
+
+ezanvakti (20110912-1~distroguide~lucid) lucid; urgency=low
+
+  * yapilandirma_yoneticisi hatasi duzeltildi.
+  * bash tamamlama betigi guncellendi.
+
+ -- Fatih Bostanci <faopera@gmail.com>  Mon, 12 Sep 2011 16:02:34 +0300
+
+ezanvakti (20110909-1~distroguide~lucid) lucid; urgency=low
+
+  * --vakitler --osd destegi.
+
+ -- Fatih Bostanci <faopera@gmail.com>  Fri, 09 Sep 2011 19:47:22 +0300
+
+ezanvakti (20110907-1~distroguide~lucid) lucid; urgency=low
+
+  * quiet grep.
+
+ -- Fatih Bostanci <faopera@gmail.com>  Wed, 07 Sep 2011 11:55:29 +0300
+
+ezanvakti (20110906-2~distroguide~lucid) lucid; urgency=high
+
+  * yapilandirma_yoneticisi yeni surume yukseltildi.
+  * renk_ogren betigi eklendi.
+  * man dosyası guncellendi.
+
+ -- Fatih Bostanci <faopera@gmail.com>  Tue, 06 Sep 2011 20:33:47 +0300
+
+ezanvakti (20110906-1~distroguide~lucid) lucid; urgency=high
+
+  * yapilandirma_yoneticisi kaydetme sorunu duzeltildi.
+
+ -- Fatih Bostanci <faopera@gmail.com>  Tue, 06 Sep 2011 13:21:32 +0300
+
+ezanvakti (20110904-3~distroguide~lucid) lucid; urgency=high
+
+  * bugfix release
+
+ -- Fatih Bostanci <faopera@gmail.com>  Sun, 04 Sep 2011 23:37:06 +0300
+
+ezanvakti (20110904-2~distroguide~lucid) lucid; urgency=high
+
+  * ikinci deneme
+
+ -- Fatih Bostanci <faopera@gmail.com>  Sun, 04 Sep 2011 22:15:21 +0300
+
+ezanvakti (20110904-1~distroguide~lucid) lucid; urgency=high
+
+  * initial release
+
+ -- Fatih Bostanci <faopera@gmail.com>  Sun, 04 Sep 2011 18:12:44 +0300
