@@ -2,8 +2,8 @@
 #
 #                           Ezanvakti Gelişmiş Arayüz  Bileşeni 2.0
 #
-
-
+#
+#set -x
 # TODO: 2.0 için yapılacaklar
 # haftalık ve aylık vakitler çıktılarını göstermeyi ekle. @
 # dini günler gösterimini ekle.@
@@ -66,7 +66,7 @@ strng=$(yad --form --text "$(printf "${GELISMIS_ARAYUZ_BICIMI}" "${TARIH}" "$(da
 "${tamamlama_listesi}" \
 --button='gtk-ok:150' --button="gtk-close:121" \
 --image=${VERI_DIZINI}/simgeler/ezanvakti.png --window-icon=${VERI_DIZINI}/simgeler/ezanvakti2.png \
---title "Ezanvakti $SURUM" --sticky --center --fixed)
+--title "${AD^} $SURUM" --center --fixed)
 
 donus=$(echo $?)
 
@@ -108,7 +108,7 @@ then
 
     elif [[ $str = Ayet ]]
     then
-            secim_basligi='Bir Ayet'
+            secim_basligi='Günlük Ayet'
             ayet_goster ucbirim > /tmp/ezanvakti-6
             g_secim_goster;arayuz
 
@@ -207,8 +207,9 @@ then
 
         mplayer_ileti="$(gawk -v sira=$sure '{if(NR==sira) print $4;}' < ${VERI_DIZINI}/veriler/sure_bilgisi)"
         mplayer_ileti+=" suresi dinletiliyor..\n\n Okuyan : ${okuyan}"
-        kuran_dinlet secim $sure &
-        pencere_bilgi; arayuz
+        pencere_bilgi &
+        kuran_dinlet secim $sure
+        pkill yad >/dev/null 2>&1; arayuz
 
     else
         arayuz
