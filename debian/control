@@ -1,0 +1,12 @@
+Source: ezanvakti
+Section: misc
+Priority: extra
+Maintainer: Fatih Bostanci <faopera@gmail.com>
+Build-Depends: cdbs
+Standards-Version: 3.9.5
+
+Package: ezanvakti
+Architecture: all
+Depends: ${perl:Depends}, ${misc:Depends}, ezanvakti-ses (>= 1.0), yad (>= 0.12.0), libnotify-bin, mplayer, libwww-mechanize-perl, sed, gawk, bash-completion
+Description: ezanvakti
+ GNU/Linux icin ezan vakti bildirici.
