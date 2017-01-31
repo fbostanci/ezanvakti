@@ -95,12 +95,12 @@ case $1 in
   --ayet) bilesen_yukle ayet_goster; shift
     case $1 in
       -u|-t|--u[cç]birim|--terminal) ayet_goster ucbirim ;;
-      -a|--aral[ıi]k) ayet_goster aralik $2 $3 ;;
+      -a|--aa) ayet_goster aralik $2 $3 ;;
       ?*) hatali_kullanim $1 ;;
       '') ayet_goster bildirim ;;
     esac ;;
-  --aa|-aa) bilesen_yukle ayet_goster; shift
-            ayet_goster aralik $1 $2 ;;
+  --aral[ıi]k) bilesen_yukle ayet_goster; shift
+               ayet_goster aralik $1 $2 ;;
   --conky) bilesen_yukle conky
            ezv_conky ;;
   --iftar) bilesen_yukle iftar
