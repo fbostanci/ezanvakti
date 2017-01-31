@@ -6,7 +6,7 @@
 
 SHELL         = /bin/bash
 DESTDIR       =
-AD            = ezanvakti-devel
+AD            = ezanvakti
 SURUM         = $(shell cat VERSION)
 DUZELTME      = $(shell git log -1 --pretty=format:'%ad' --abbrev-commit --date=short 2>/dev/null | tr -d -- '-')
 PREFIX        = /usr/local
