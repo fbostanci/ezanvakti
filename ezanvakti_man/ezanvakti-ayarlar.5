@@ -17,16 +17,19 @@ Ezanveri dosyanız için farklı bir ad kullanmak istiyorsanız bu değere yeni 
 .B ULKE
 Ezanveri dosyanızı güncelleme işleminde taban olarak kullanılacak ülke adıdır.
 .TP
-.B KONUM
+.B SEHIR
 Betik bildirimlerinde bulunduğunuz şehri göstermek ayrıca ezanveri dosyanızı güncelleme
 işleminde taban olarak kullanılacak şehir adıdır.
+.TP
+.B ILCE
+Ezanveri dosyanızı güncellemede kullanılacak ilçe adıdır.
 .TP
 .B GUNCELLEME_YAP
 Ezanveri dosyasının güncel kalması için, son 7 gün bildirim baloncuğu ile uyarı yapılmaktadır.
 5.2 sürümünden beri artık ezanveri dosyanızın olmadığı ya da güncel olmadığı durumlar için de
 otomatik güncelleme özelliği eklenmiştir.
-Eğer, güncelleme işleminin otomatik olarak yapılmasını istiyorsanız bu değeri 0; yapılmaması
-için değeri 1 yapın. Öntanımlı olarak, otomatik güncelleme açık gelmektedir.
+Eğer, güncelleme işleminin otomatik olarak yapılmasını istiyorsanız bu değeri 1; yapılmaması
+için değeri 0 yapın. Öntanımlı olarak, otomatik güncelleme açık gelmektedir.
 .TP
 .B KULLANICI_TEFSIR_DIZINI
 Türkçe kuran ayetleri gösteriminde kullanılacak tefsir dosyaları için, ek olarak
@@ -134,12 +137,18 @@ uygulaması için kullanılacak ses değeridir. Öntanımlı 100'dür.
 .B OYNATICI_DURAKLAT
 Vakit ezanı okunacağı zaman, betiğin tanıdığı oynatıcıları ezan okunurken duraklatıp;
 ezan bitimiyle oynatıcının devam etmesini sağlayan değerdir. Öntanımlı bu özellik kapalı gelmektedir.
-Duraklatmayı açmak için 0; kapatmak için 1 değerini girin. Bu özellik sadece vakitlerde okunan
+Duraklatmayı açmak için 1; kapatmak için 0 değerini girin. Bu özellik sadece vakitlerde okunan
 ezanlar içindir. Ezan dinleme işleminde etkisizdir.
 
-Desteklenen oynatıcılar: DeadBeeF, Clementine, Amarok, Audacious, Aqualunq, Banshee, Exaile,
-Rhythmbox, Cmus, Qmmp, Moc
+Desteklenen oynatıcılar: Deadbeef, Clementine, Amarok, Rhythmbox,
+                Aqualung, Audacious, Banshee, Exaile, Cmus,
+                Moc, Qmmp, Juk
 .TP
+.B KALAN_SURE_SAY
+Vakit ezanları için uygulama çalışırken uçbirim ekranında sıradaki vakte ne kadar
+kaldığını özyinelemeli olarak gösterir.
+Etkinleştirmek için değeri 1; kapatmak için 0 değerini girin.
+.TP 
 .B EZAN_DUASI_OKU
 Ezan okuma işleminden sonra,  Türkçe ezan duası da okunmasını belirleyen değerdir.
 Öntanımlı olarak okunma açık gelmektedir. (0 değeri.) Eğer okunmamasını istiyorsanız
@@ -154,6 +163,36 @@ okunmasını istiyorsanız 120 değerini girin. Önüne \'+' işareti koymayın.
 Ezanveri dosyanızdaki asıl vakit saatleri değişmemektedir.
 Dolayısıyla gösterilen vakit saatleri de değişmez. Değişen
 sadece ezanın okunma saati ve ezana kalan sürelerdir.
+.TP
+.B SABAH_EZANI_OKU
+Sabah vakti için ezan okunup okunmayacağını belirten değerdir.
+Kapalı olduğunda ezan okunmaz ama bildirimler ekrana gönderilir.
+Öntanımlı etkin konumda gelmektedir. Değeri etkinleştirme için 1;
+kapatma için 0 olarak belirleyin.
+.TP
+.B OGLE_EZANI_OKU
+Öğle vakti için ezan okunup okunmayacağını belirten değerdir.
+Kapalı olduğunda ezan okunmaz ama bildirimler ekrana gönderilir.
+Öntanımlı etkin konumda gelmektedir. Değeri etkinleştirme için 1;
+kapatma için 0 olarak belirleyin.
+.TP
+.B IKINDI_EZANI_OKU
+İkindi vakti için ezan okunup okunmayacağını belirten değerdir.
+Kapalı olduğunda ezan okunmaz ama bildirimler ekrana gönderilir.
+Öntanımlı etkin konumda gelmektedir. Değeri etkinleştirme için 1;
+kapatma için 0 olarak belirleyin.
+.TP
+.B AKSAM_EZANI_OKU
+Akşam vakti için ezan okunup okunmayacağını belirten değerdir.
+Kapalı olduğunda ezan okunmaz ama bildirimler ekrana gönderilir.
+Öntanımlı etkin konumda gelmektedir. Değeri etkinleştirme için 1;
+kapatma için 0 olarak belirleyin.
+.TP
+.B YATSI_EZANI_OKU
+Yatsı vakti için ezan okunup okunmayacağını belirten değerdir.
+Kapalı olduğunda ezan okunmaz ama bildirimler ekrana gönderilir.
+Öntanımlı etkin konumda gelmektedir. Değeri etkinleştirme için 1;
+kapatma için 0 olarak belirleyin.
 .TP
 .B EZAN_OKUYAN
 Ezan okunurken yapılacak bildirim için, ezanı okuyan kişinin adıdır.
@@ -236,20 +275,20 @@ Gelişmiş arayüzde gösterilen şerit bantların simge değeridir. Öntanıml�
 .TP
 .B RENK_KULLAN
 Uçbirim çıktıları için rengin kullanılması/kullanılmaması işlemini belirleyen değerdir.
-Renk kullanmak için 0; renksiz çıktılar için 1 değerini girin.
+Renk kullanmak için 1; renksiz çıktılar için 0 değerini girin.
 İşlem uygulama geneli tüm uçbirim çıktılarına uygulanır.
 .TP
 .B RENK KODLARI
 Uçbirim çıktılarında kullanılan renkleri isterseniz değiştirebilirsiniz.
 Renk kodlarını öğrenmek için
 
-.B /usr/share/ezanvakti/bilesenler/renk_ogren
+.B ezanvakti \-\-renk
 
-betiğini çalıştırın. Uçbirim şemanıza uygun renklerin kodlarını uçbirime renkli olarak
+komutunu çalıştırın. Uçbirim şemanıza uygun renklerin kodlarını uçbirime renkli olarak
 verir.
 .TP
 .B ARKAPLAN_RENGI
-Gelişmiş arayüzdeki seçim göster bölümünde yapılan istek için içeriği gösteren kutucuğun arka plan renk
+Gelişmiş arayüzdeki Seçimler bölümünde yapılan istek için içeriği gösteren kutucuğun arka plan renk
 değeridir.
 .TP
 .B YAZI_RENGI

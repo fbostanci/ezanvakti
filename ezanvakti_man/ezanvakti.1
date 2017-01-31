@@ -16,11 +16,39 @@ vardır. Kullanılan dosyaları yapılandırma dosyasından okuduğundan
 kullanıcıya daha fazla özelleştirme sunar.
 .SH SEÇENEKLER
 .TP
-.B \-v, \-\-vakitler
+.B \-v, \-\-v, \-\-vakitler
 Toplu olarak günlük ezan vakitlerini görüntüler ve vakitlere ne kadar süre
 kaldığını  gösterir ve çıkar. Eğer vakit geçmişse "OKUNDU" olarak görünür.
 .PP
-\fIek olarak\fP :
+Vakit gösterimi sık kullanılacak bir komut olduğu için birleşik kullanımı da
+vardır.
+.TP 5
+.B \      -vs, \-\-vs
+Sabah vakti gösterimi için birleşik komuttur.
+.TP 5
+.B \      -vs, \-\-vs
+Öğle vakti gösterimi için birleşik komuttur.
+.TP 5
+.B \      -vi, \-\-vi
+İkindi vakti gösterimi için birleşik komuttur.
+.TP 5
+.B \      -va, \-\-va
+Akşam vakti gösterimi için birleşik komuttur.
+.TP 5
+.B \      -vy, \-\-vy
+Yatsı vakti gösterimi için birleşik komuttur.
+.TP 5
+.B \      -v7, \-\-v7
+7 günlük vakit gösterimi için birleşik komuttur.
+.TP 5
+.B \      -v30, \-\-v30
+30 günlük vakit gösterimi için birleşik komuttur.
+.TP 5
+.B \      -vb, \-\-vb
+Vakitler çıktısının bildirim baloncuğunda
+gösterimi için birleşik komuttur.
+.PP
+\fInormal kullanımlar için ek olarak\fP :
 .TP 5
 .B \      -s, \-\-sabah
 Sabah vaktine ne kadar süre kaldığını gösterir ve çıkar.
@@ -48,9 +76,26 @@ Vakitler çıktısını uçbirim yerine bildirim baloncuğuna yönlendirir.
 .TP
 .B \-\-kuran \fI[ek_seçenek]\fP
 Çevrimiçi olarak ya da yerel dizinden kuran dinletir. Çevrimiçi kuran dinleme
-için quranlisten.com sitesi kullanılmaktadır. Kuran dinlemek
+için listen2quran.com sitesi kullanılmaktadır. Kuran dinlemek
 için ek olarak aşağıdakilerden uygun seçeneği de girmeniz
 gereklidir.
+.TP
+Kuran dinletimi için de birleşik komut desteği vardır.
+.TP 5
+.B \      -ks, \-\-ks
+Değişken olarak \fI<sure_kodu>\fP verildiğinde o kodla ilişik sureyi dinletir.
+.TP 5
+.B \      -kr, \-\-kr
+1-114 arası rastgele bir sure seçip dinletmenin birleşik komutudur.
+.TP 5
+.B \      -kh, \-\-kh
+1'den 114'e kadar tüm sureleri sırayla okumanın birleşik komutudur.
+.TP 5
+.B \      -kg, \-\-kg
+\'ayarlar' dosyasında SURELER için girilen numaralara ait sureleri dinletmenin
+birleşik komutudur.
+.TP
+\fInormal kullanımlar için ek olarak\fP :
 .TP 5
 .B \      -s, \-\-secim, \-\-seçim
 Değişken olarak \fI<sure_kodu>\fP verildiğinde o kodla ilişik sureyi dinletir.
@@ -74,6 +119,10 @@ Rastgele bir kuran ayeti seçerek Türkçe anlamını bildirim baloncuğunda gö
 .TP 5
 .B \      -u, \-t, --ucbirim, \-\-uçbirim, \-\-terminal
 Ayeti bildirim baloncuğu yerine uçbirimden görüntüler ve çıkar.
+.TP 5
+.B \      -a, \-\-aa
+\fI<sure_kodu>\fP \fI<ayet_baslangıc_no-ayet_bitis_no>\fP.
+Ayrıntı için bkz. \-\-aralık seçeneği
 .TP
 .B \-\-ramazan
 Sadece iftar ve imsak vakitleri için ezan okunur.
@@ -88,6 +137,10 @@ ve kısa çıktı verir.
 .B \-\-conky\-iftar
 Conky alanında iftar vaktine ne kadar süre kaldığını görmek isteyenler için
 renksiz ve kısa çıktı verir.
+.TP
+.B \-\-aralık, \-\-aralik \fI[sure_kodu] [ayet_aralıgı_başlangıç-ayet_aralığı_bitiş]\fR
+Ayet gösteriminde istenen surenin istenen ayet aralığını gösterir.
+ör: ezanvakti \-\-aralık \2 \55\-\61 \2. surenin \55. ve \61. ayetleri dahil olmak üzere aradaki ayetleri gösterir.
 .TP
 .B \-\-dinle \fI[ek_seçenek]\fP
 istediğiniz zaman istediğiniz vakite ait ezanı dinletir. Dinlemek istediğiniz
@@ -132,6 +185,12 @@ Soru ve yanıtı bildirim baloncuğu yerine uçbirimden görüntüler ve çıkar
 .TP
 .B \-\-gunler, \-\-günler
 İçinde bulunduğunuz yıla ait dini günler ve geceleri liste halinde görüntüler ve çıkar.
+..TP
+.B  \-\-arayuz, \-\-arayüz, \-\-gui
+Ezanvakti gelişmiş arayüz bileşenini başlatır.
+.TP
+.B  \-\-arayuz2, \-\-arayüz2, \-\-gui2
+Ezanvakti basit arayüz bileşenini başlatır.
 .TP
 .B \ -\-guncelle, \-\-güncelle
 Ezanveri dosyasını 30 günlük vakitleri içerecek şekilde günceller/ oluşturur.
@@ -144,11 +203,23 @@ kolaylaştırmak adına 'ayarlar' dosyanıza seçtiğiniz ülke ve şehir adın�
 
 Veriler diyanet.gov.tr sitesi üzerinden alınmaktadır.
 .TP
-.B  \-\-arayuz, \-\-arayüz, \-\-gui
-Ezanvakti gelişmiş arayüz bileşenini başlatır.
+.B \-\-renk, \-\-renk-ogren, \-\-renk-öğren
+Uçbirim ekranında renklerin kodlarını o kodun nasıl göründüğünü toplu şekilde gösterir.
+Özellikle ayarlar dosyasındaki uçbirim renklerini değiştirme işleminde kullanıcıya kolaylık
+sağlar.
 .TP
-.B  \-\-arayuz2, \-\-arayüz2, \-\-gui2
-Ezanvakti basit arayüz bileşenini başlatır.
+.B \-\-config, \-\-yapılandırma, \-\-yapilandirma
+ayarlar dosyasını uçbirim ekranında açar. Açma işlemi için EDITOR tanımlı uygulamayı kullanır.
+EDITOR tanımlı değilse nano ile açar.
+.TP
+.B \-\-kalan
+Uçbirim ekranında özyinelemeli olarak sıradaki vakti ve vakte ne kadar süre kaldığını gösterir.
+.TP
+.B  \-\-surum, \-\-sürüm, \-\-version, \-V
+Ezanvakti uygulamasının sürüm bilgisini görüntüler ve çıkar.
+.TP
+.B  \-\-yardım, \-\-yardim, \-\-help, \-h
+Yardım bilgisini gösterir ve çıkar.
 .LP
 .SH YAZAR
 	Fatih Bostancı <faopera@gmail.com>

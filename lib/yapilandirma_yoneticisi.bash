@@ -7,7 +7,7 @@
 function yapilandirma() {
   local d1 d2 d3 d4 d5 d6 d7 d8 d9
   local ayr1 ayr2 ayr3 ayr4
-  local _GUNCELLEME_YAP _OYNATICI_DURAKLAT _EZAN_DUASI_OKU _RENK_KULLAN _GUNCELLEME_GEREKLI _u_ileti
+  local _GUNCELLEME_YAP _OYNATICI_DURAKLAT _EZAN_DUASI_OKU _RENK_KULLAN _GUNCELLEME_GEREKLI
   local _SABAH_OKUNSUN_MU _OGLE_OKUNSUN_MU  _IKINDI_OKUNSUN_MU _AKSAM_OKUNSUN_MU _YATSI_OKUNSUN_MU
 
 
@@ -38,8 +38,8 @@ yad --plug=190707 --tabnum=1 --form \
 --field='Şehir:' \
 --field='İlçe' \
 --field='Otomatik Ezanveri Güncelleme:CHK' \
-"${EZANVERI_ADI}" \
-"${ULKE}" "${SEHIR}" "${ILCE}" "$d1" > $ayr1 &
+"${EZANVERI_ADI}" "${ULKE}" "${SEHIR}" \
+"${ILCE}" "$d1" > $ayr1 &
 yad --plug=190707 --tabnum=2 --form \
 --field='Oynatıcı Duraklat:CHK' \
 --field='Ezan Duası Oku:CHK' \
@@ -229,7 +229,10 @@ yad --notebook --key=190707 \
 
             if [[ ${EZAN_OKUYAN} != ${liste2[10]} ]]
             then
-                sed -i "s:\(EZAN_OKUYAN=\).*:\1\'${liste2[10]}\':" "${EZANVAKTI_AYAR}"
+                if [[ -n ${liste2[10]} ]]
+                then
+                    sed -i "s:\(EZAN_OKUYAN=\).*:\1\'${liste2[10]}\':" "${EZANVAKTI_AYAR}"
+                fi
             fi
 ######################################################################
 #                         LİSTE 3 İŞLEMLERİ                          #
@@ -358,7 +361,7 @@ yad --notebook --key=190707 \
                     sed -i "s:\(^OKUYAN=\).*:\1\'${liste4[2]}\':" "${EZANVAKTI_AYAR}"
                 fi
             fi
-# 
+
 #             if [[ ${liste4[3]} != ${RENK3} ]]
 #             then
 #                 sed -i "s:\(RENK3=\).*:\1\'${liste4[3]}\':" "${EZANVAKTI_AYAR}"
@@ -388,7 +391,7 @@ yad --notebook --key=190707 \
 #             then
 #                 sed -i "s:\(RENK8=\).*:\1\'${liste4[8]}\':" "${EZANVAKTI_AYAR}"
 #             fi
-#
+
             if [[ ${liste4[4]} != ${ARKAPLAN_RENGI} ]]
             then
                 sed -i "s:\(ARKAPLAN_RENGI=\).*:\1\'${liste4[4]}\':" "${EZANVAKTI_AYAR}"
