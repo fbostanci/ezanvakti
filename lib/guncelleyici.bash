@@ -174,7 +174,8 @@ then
           printf "${RENK7}${RENK3} ->${RENK8} Seçilen ilçe:${RENK2}  ${ilce}${RENK3} (tek ilçe)${RENK0}\n"
       else
           arayuz_denetle
-          [[ ${ulke} = TURKIYE ]] && g_sehir=${sehir} || g_sehir=$(head -1 ${VERI_DIZINI}/ulkeler/${ulke}_ilceler/${sehir})
+          [[ ${ulke} = TURKIYE ]] && g_sehir=${sehir} || 
+                                     g_sehir=$(head -1 ${VERI_DIZINI}/ulkeler/${ulke}_ilceler/${sehir}| cut -d, -f1)
 
           if (( arayuz == 1 ))
           then
