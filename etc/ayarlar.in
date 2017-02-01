@@ -4,7 +4,7 @@
 # Eğer, ekleyeceğiniz değerler boşluk içeriyorsa
 # tırnak içerisine alarak ekleme yapın.
 # Özelleştirme hakkında daha fazla bilgi için:
-# 'man ezanvakti' komutunu kullanın.
+# 'man 5 ezanvakti-ayarlar' komutunu kullanın.
 
 
 #                           #
@@ -143,7 +143,7 @@ YATSI_EZANI=@sounddir@/@AD@/yatsi_ussak.ogg
 EZAN_DUASI=@sounddir@/@AD@/ezan_duasi.ogg
 
 #                           #
-#******Renk Ayarları******#
+#******Renk Ayarları********#
 #                           #
 
 # Uçbirim çıktıları için renk kullanılması (kullanılması için 1; kullanılmaması için 0)

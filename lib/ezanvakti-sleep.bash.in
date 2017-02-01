@@ -240,34 +240,6 @@ function iftarimsak() {
   }
 }
 
-#function cikis_yap() {
-#  kill 0
-#  echo
-#  exit 1
-#}
-
-#function yeniden_baslat() {
-
-#  [[ -n ${vakit_animsat_pid} ]] && kill -9 ${vakit_animsat_pid} &>/dev/null
-#  [[ -n ${bekleme_yap_pid} ]] && kill -9 ${bekleme_yap_pid} &>/dev/null
-#  if (( calisma_kipi == 1 ))
-#  then
-#      gun_animsat &
-#      ezanlar
-#  elif (( calisma_kipi == 2 ))
-#  then
-#      gun_animsat &
-#      iftarimsak
-#  fi
-#}
-
-# SIGHUP, SIGINT, SIGQUIT ve ERR sinyallerini yakala..
-#
-# Sinyal yakalandığında cikis_yap() fonk. çağır.
-#trap cikis_yap 1 2 3  ERR
-#trap yeniden_baslat SIGCHLD
-
-
 # Bileşen burdan yönetiliyor.
 # Ana betikten gelen değere ($1 = $degisken) göre ilgili fonksiyonu çağır.
 #
