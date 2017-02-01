@@ -174,23 +174,24 @@ then
           printf "${RENK7}${RENK3} ->${RENK8} Seçilen ilçe:${RENK2}  ${ilce}${RENK3} (tek ilçe)${RENK0}\n"
       else
           arayuz_denetle
+          [[ ${ulke} = TURKIYE ]] && g_sehir=${sehir} || g_sehir=(head -1 ${VERI_DIZINI}/ulkeler/${ulke}_ilceler/${sehir})
 
           if (( arayuz == 1 ))
           then
               ilce=$(kdialog --combobox 'Bulunduğunuz ilçeyi seçin' --title 'İlçe belirleme' \
-                     --default ${sehir} $(cut -d, -f1 < ${VERI_DIZINI}/ulkeler/${ulke}_ilceler/${sehir}))
+                     --default ${g_sehir} $(cut -d, -f1 < ${VERI_DIZINI}/ulkeler/${ulke}_ilceler/${sehir}))
               (( $? == 1 )) && exit 1
 
           elif (( arayuz == 2 ))
           then
-              ilce=$(yad --entry --entry-text ${sehir} $(cut -d, -f1 < ${VERI_DIZINI}/ulkeler/${ulke}_ilceler/${sehir}) \
+              ilce=$(yad --entry --entry-text ${g_sehir} $(cut -d, -f1 < ${VERI_DIZINI}/ulkeler/${ulke}_ilceler/${sehir}) \
                      --width=300 --sticky --center --window-icon=${VERI_DIZINI}/simgeler/ezanvakti2.png \
                      --title 'İlçe belirleme' --text 'Bulunduğunuz ilçeyi seçin')
               (( $? == 1 )) && exit 1
 
           elif (( arayuz == 3 ))
           then
-              ilce=$(zenity --entry --entry-text ${sehir} $(cut -d, -f1 < ${VERI_DIZINI}/ulkeler/${ulke}_ilceler/${sehir}) \
+              ilce=$(zenity --entry --entry-text ${g_sehir} $(cut -d, -f1 < ${VERI_DIZINI}/ulkeler/${ulke}_ilceler/${sehir}) \
                      --title 'İlçe belirleme' --text 'Bulunduğunuz ilçeyi seçin')
               (( $? == 1 )) && exit 1
           fi
@@ -214,7 +215,7 @@ printf '%-60b' \
 
 # internet erişimini denetle.
 wget -t 3 -T 10 www.google.com -O /tmp/baglantisina &>/dev/null
-if ! [ -s /tmp/baglantisina ]
+if ! [[ -s /tmp/baglantisina ]]
 then
     printf "${RENK7}${RENK8} [${RENK1}BAŞARISIZ${RENK8}]${RENK0}\n"
     printf '\n%b\n%b\n' \
@@ -239,7 +240,7 @@ cat << SON >> /tmp/ezanveri-$$
 
 
 
-# BİLGİ: ${ulke} / ${sehir} / ${ilce} için 30 günlük namaz vakitleridir.
+# BİLGİ: ${sehir} / ${ilce} için 30 günlük ezan vakitleridir.
 # Çizelge, 'http://www.diyanet.gov.tr/tr/PrayerTime/WorldPrayerTimes'
 # adresinden ezanvakti uygulaması tarafından istenerek oluşturulmuştur.
 

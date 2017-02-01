@@ -4,38 +4,38 @@
 #
 #
 
-function sure_girdisi_denetimi() { # sure_girdisi_yonetimi {{{
-  if [[ -n $(tr -d 0-9 <<<$girdi) ]]
+function sure_no_denetimi() { # sure_no_yonetimi {{{
+  if [[ -n $(tr -d 0-9 <<<$sure_no) ]]
   then
       printf '%b\n%b\n' \
-        "${AD}: hatalı girdi: \`$girdi' " \
+        "${AD}: hatalı sure_no: \`$sure_no' " \
         'Sure kodu olarak 1-114 arası sayısal bir değer giriniz.'
       exit 1
-  elif (( ! ${#girdi} ))
+  elif (( ! ${#sure_no} ))
   then
       printf "${AD}: Bu özelliğin kullanımı için ek olarak sure kodu girmelisiniz.\n"
       exit 1
-  elif (( ${#girdi} > 3 ))
+  elif (( ${#sure_no} > 3 ))
   then
       printf '%b\n%b\n' \
-        "${AD}: hatalı girdi: \`$girdi' " \
+        "${AD}: hatalı sure_no: \`$sure_no' " \
         'Girilen sure kodunun basamak sayısı <= 3 olmalı.'
       exit 1
-  elif (( girdi < 1 || girdi > 114 ))
+  elif (( sure_no < 1 || sure_no > 114 ))
   then
       printf '%b\n%b\n' \
-        "${AD}: hatalı girdi: \`$girdi' " \
+        "${AD}: hatalı sure_no: \`$sure_no' " \
         'Girilen sure kodu 1 <= sure_kodu <= 114 arasında olmalı.'
       exit 1
   else  # Girilen sure koduna göre değişkenin önüne sıfır ekle.
-      if (( ${#girdi} == 1 ))
+      if (( ${#sure_no} == 1 ))
       then
-          sure=00$girdi
-      elif (( ${#girdi} == 2 ))
+          sure=00$sure_no
+      elif (( ${#sure_no} == 2 ))
       then
-          sure=0$girdi
+          sure=0$sure_no
       else
-          sure=$girdi
+          sure=$sure_no
       fi
   fi
 
@@ -58,11 +58,11 @@ function kuran_dinletimi() {
     okuyan='Yerel Okuyucu'
   } || {
           # Seçilen okuyucu koduna göre okuyucunun tam adını yeni değere ata.
-          [ ${OKUYAN} = AlGhamdi  ] && okuyan='Saad el Ghamdi' \
+          [[ ${OKUYAN} = AlGhamdi  ]] && okuyan='Saad el Ghamdi' \
           || {
-          [ ${OKUYAN} = AsShatree ] && okuyan='As Shatry'
+          [[ ${OKUYAN} = AsShatree ]] && okuyan='As Shatry'
           } || {
-          [ ${OKUYAN} = AlAjmy    ] && okuyan='Ahmad el Ajmy'
+          [[ ${OKUYAN} = AlAjmy    ]] && okuyan='Ahmad el Ajmy'
           }
 
     dinletilecek_sure="http://www.listen2quran.com/listen/${OKUYAN}/$sure.mp3"
@@ -82,27 +82,27 @@ function kuran_dinletimi() {
 
 function kuran_dinlet() { # kuran_dinlet_yonetimi {{{
   local dinletilecek_sure okuyan kaynak sure i
-  local girdi="$2"
+  local sure_no="$2"
   renk_denetle
 
   case $1 in
-    secim) sure_girdisi_denetimi; kuran_dinletimi ;;
+    secim) sure_no_denetimi; kuran_dinletimi ;;
     hatim)
       for ((i=1; i<=114; i++))
       {
-        girdi=$i
-        sure_girdisi_denetimi; kuran_dinletimi; sleep 1.5
+        sure_no=$i
+        sure_no_denetimi; kuran_dinletimi; sleep 1.5
       } ;;
     rastgele)
-      girdi=$((RANDOM%114))
-      (( ! girdi )) && girdi=114
-      sure_girdisi_denetimi; kuran_dinletimi ;;
+      sure_no=$((RANDOM%114))
+      (( ! sure_no )) && sure_no=114
+        sure_no_denetimi; kuran_dinletimi ;;
     gunluk)
       read -ra sureler <<<$SURELER
       for i in ${sureler[@]}
       do
-        girdi=$i
-        sure_girdisi_denetimi; kuran_dinletimi; sleep 1.5
+        sure_no=$i
+        sure_no_denetimi; kuran_dinletimi; sleep 1.5
       done ;;
   esac
 } # }}}
