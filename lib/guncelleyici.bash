@@ -164,8 +164,8 @@ sehir_kodu=$(grep -w ${SEHIR} ${VERI_DIZINI}/ulkeler/${ulke} | cut -d, -f2)
 ######################################################################
 #                         İLÇE İŞLEMLERİ                             #
 ######################################################################
-# FIXME: abd varsayilan ilce secimi.
-if [[ ${ulke} = @(TURKIYE|ABD) ]]
+
+if [[ ${ulke} = @(TURKIYE|ABD|KANADA) ]]
 then
     [[ -z $(grep -w ${ILCE} ${VERI_DIZINI}/ulkeler/${ulke}_ilceler/${sehir}) ]] && {
       if [[ $(wc -l < ${VERI_DIZINI}/ulkeler/${ulke}_ilceler/${sehir}) -eq 1 ]]
@@ -254,9 +254,8 @@ SON
     printf "${RENK7}${RENK8} [${RENK2}BAŞARILI${RENK8}]${RENK0}\n"
     rm -f /tmp/ezv-perl-hata-$$ &>/dev/null
     . "${EZANVAKTI_AYAR}"
-    ## TODO: Buraya renk denetimi eklenecek
-    renk_denetle
 
+    renk_denetle
     notify-send "Ezanvakti $SURUM" "${EZANVERI_ADI} dosyası başarıyla güncellendi." \
       -i ${VERI_DIZINI}/simgeler/ezanvakti.png -t $GUNCELLEME_BILDIRIM_SURESI"000" -h int:transient:1
     :> /tmp/eznvrgncldntle_$(date +%d%m%y)
