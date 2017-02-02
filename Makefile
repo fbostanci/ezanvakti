@@ -50,7 +50,7 @@ install: $(SCRIPTS)
 	$(INSTALL) -vd $(DESTDIR)$(bindir)
 	$(INSTALL) -vd $(DESTDIR)$(libdir)/$(AD)
 	$(INSTALL) -vd $(DESTDIR)$(sysconfdir)/$(AD)
-	$(INSTALL) -vd $(DESTDIR)$(datadir)/$(AD)/{veriler,tefsirler,simgeler,ulkeler{,/TURKIYE_ilceler,/ABD_ilceler}}
+	$(INSTALL) -vd $(DESTDIR)$(datadir)/$(AD)/{veriler,tefsirler,simgeler,ulkeler{,/TURKIYE_ilceler,/ABD_ilceler,/KANADA_ilceler}}
 	$(INSTALL) -vd $(DESTDIR)$(sounddir)/$(AD)
 	$(INSTALL) -vd $(DESTDIR)$(completiondir)
 	$(INSTALL) -vd $(DESTDIR)$(mandir)/man{1,5}
@@ -100,7 +100,13 @@ install: $(SCRIPTS)
 		u_dosya="$$(basename "$$u")"; \
 		$(INSTALL) -vm644 "$$u" $(DESTDIR)$(datadir)/$(AD)/ulkeler/ABD_ilceler/"$$u_dosya"; \
 	done
-	
+
+	for k in data/ulkeler/KANADA_ilceler/*; \
+	do \
+		k_dosya="$$(basename "$$k")"; \
+		$(INSTALL) -vm644 "$$k" $(DESTDIR)$(datadir)/$(AD)/ulkeler/KANADA_ilceler/"$$k_dosya"; \
+	done
+
 	for e in  ezanlar/*.ogg; \
 	do \
 		e_dosya=$$(basename $$e); \
