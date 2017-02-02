@@ -1,6 +1,6 @@
 #
 #
-#                           Ezanvakti Oynatıcı Duraklatma Bileşeni 1.5
+#                           Ezanvakti Oynatıcı Duraklatma Bileşeni 1.6
 #
 #
 
@@ -18,14 +18,14 @@ function qdbus_sorgu() {
   fi
 }
 
-# FIXME: dbus status dogrula
 function dbus_sorgu() {
   local komut
 
-  komut="dbus-send --print-reply --session --dest=org.mpris.$1 \
-          /Player org.freedesktop.MediaPlayer.GetStatus | grep -Eq 'int32 [1|2]'"
+  komut=$(dbus-send --print-reply --dest=org.mpris.MediaPlayer2.$1\
+        /org/mpris/MediaPlayer2 org.freedesktop.DBus.Properties.Get string:'org.mpris.MediaPlayer2.Player' \
+        string:'PlaybackStatus' | awk -F'[\"]' '/string/ {print $2;}')
 
-  if ! eval ${komut}
+  if [[ ${komut} = Playing ]]
   then
       return 0
   else
@@ -33,19 +33,27 @@ function dbus_sorgu() {
   fi
 }
 
-# TODO: gmusicbrowser destegi
+
 function oynatici_islem() {
   local -a OYNATICILAR DURDURULAN
   local oynatici
 
-  OYNATICILAR=( deadbeef clementine amarok rhythmbox
+  OYNATICILAR=( spotify deadbeef clementine amarok rhythmbox
                 aqualung audacious banshee exaile cmus
                 moc qmmp juk)
 
   for oynatici in ${OYNATICILAR[@]}
   do
     [[ -n $(pgrep ${oynatici}) ]] && {
-      if [[ ${oynatici} = deadbeef ]]
+      if [[ ${oynatici} = spotify ]]
+      then
+          if dbus_sorgu spotify;
+          then
+              dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify \
+              /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause > /dev/null 2>&1
+              DURDURULAN+=('spotify')
+          fi
+      elif [[ ${oynatici} = deadbeef ]]
       then
           deadbeef --pause > /dev/null 2>&1
           DURDURULAN+=('deadbeef')
@@ -120,7 +128,11 @@ function oynatici_islem() {
   (( EZAN_DUASI_OKU )) && mplayer_calistir "${EZAN_DUASI}"
   for oynatici in ${DURDURULAN[@]}
   do
-      if [[ ${oynatici} = deadbeef ]]
+      if [[ ${oynatici} = spotify ]]
+      then
+          dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify \
+                    /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause > /dev/null 2>&1
+      elif [[ ${oynatici} = deadbeef ]]
       then
           deadbeef --play > /dev/null 2>&1
       elif [[ ${oynatici} = clementine ]]

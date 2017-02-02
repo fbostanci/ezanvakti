@@ -43,6 +43,19 @@ function betik_kullanimi() {
         Rastgele bir Kuran ayeti seçerek Türkçe anlamını
         bildirim baloncuğunda gösterir.
 
+    ${B}--aralik${R} [<sure_kodu> <ayet_aralığı> ]
+        İstenen surenin, istenen ayetleri arasını gösterir.
+        ayet aralığı; <ayet_başlangıc_no-ayet_bitis_no>
+        şeklinde olmalıdır.
+
+    ${B}--kalan${R}
+        Uçbirimde sıradaki vakte ne kadar süre kaldığını
+        özyinelemeli olarak gösterir.
+
+    ${B}--config${R}
+        Ayarlar dosyasını EDITOR olarak tanımlı uygulamayla
+        açar. EDITOR tanımlı değilse nano ile açar.
+
     ${B}--hadis${R}
         40 hadisten rastgele bir hadis seçerek bildirim
         baloncuğunda gösterir.
