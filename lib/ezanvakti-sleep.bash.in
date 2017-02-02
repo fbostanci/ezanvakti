@@ -45,8 +45,10 @@ function ezanoku() {
 
   # Oynatıcı duraklatma etkin mi ezan okumadan değeri
   # denetle ve fonksiyonu çağır.
-  (( OYNATICI_DURAKLAT )) && oynatici_islem || mplayer_calistir "${vakit_ezani}"
-  (( EZAN_DUASI_OKU )) && mplayer_calistir "${EZAN_DUASI}"
+  (( OYNATICI_DURAKLAT )) && oynatici_islem ||
+  { mplayer_calistir "${vakit_ezani}"
+    (( EZAN_DUASI_OKU )) && mplayer_calistir "${EZAN_DUASI}"
+  }
   clear
 }
 
