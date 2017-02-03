@@ -176,7 +176,7 @@ then
     then
             bilesen_yukle kullanim
             betik_kullanimi > /tmp/ezanvakti-6
-            sed -i '$ d' /tmp/ezanvakti-6
+            sed -i '$d' /tmp/ezanvakti-6
             g_secim_goster; arayuz
 
     elif [ `echo $str | grep [0-9]` ]

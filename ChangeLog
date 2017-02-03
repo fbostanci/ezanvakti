@@ -1,5 +1,25 @@
 
 
+
+
+
+/×××××××××××××××××××××××××××××
+× Ezanvakti 5.7.2
+×××××××××××××××××××××××××××××/
+2015-01-09 Fatih BOSTANCI <faopera@gmail.com>
+
+ *  Tüm vakit ezanlarının isteğe bağlı okunabilmesi özelliği eklendi.
+ * Utopic için paketleme yapıldı.
+
+
+/×××××××××××××××××××××××××××××
+× Ezanvakti 5.7.1
+×××××××××××××××××××××××××××××/
+2014-05-28 Fatih BOSTANCI <faopera@gmail.com>
+
+ * Diyanet sitesindeki değişiklikten dolayı oluşan güncelleme hatası giderildi.
+
+
 /×××××××××××××××××××××××××××××
 × Ezanvakti 5.7
 ×××××××××××××××××××××××××××××/
@@ -16,6 +36,7 @@
  *  Unity menü desteği
  *  Uygulama launchpad deposuna taşındı. (https://launchpad.net/~fbostanci/+archive/distroguide)
  *  Man dosyası güncellendi.
+
 
 /×××××××××××××××××××××××××××××
 × Ezanvakti 5.6
