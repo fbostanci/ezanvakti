@@ -1,8 +1,8 @@
-diff -aur a/data/veriler/ayarlar.in b/data/veriler/ayarlar.in
---- a/data/veriler/ayarlar.in	2011-11-13 15:11:38.000000000 +0200
-+++ b/data/veriler/ayarlar.in	2011-11-17 21:39:56.963796060 +0200
-@@ -125,19 +125,19 @@
- #                           #
+diff -aur a/ezanvakti/etc/ayarlar.in b/ezanvakti/etc/ayarlar.in
+--- a/ezanvakti/etc/ayarlar.in	2017-02-01 08:48:14.000000000 +0300
++++ b/ezanvakti/etc/ayarlar.in	2017-02-03 16:14:55.107008990 +0300
+@@ -189,16 +189,16 @@
+ 
  
  # Printf arayuz yazı biçimi
 -GELISMIS_ARAYUZ_BICIMI='%-62s%s\n%s\n%s\n\t\t\t\t%s\n%s\n\n%s\n\n\t\t\t %s\n\t\t\t %s'
@@ -21,6 +21,3 @@ diff -aur a/data/veriler/ayarlar.in b/data/veriler/ayarlar.in
  # Arayüz çizgi karakter uzunluğu
 -CIZGI_UZUNLUGU=26
 +CIZGI_UZUNLUGU=22
- 
- # Uçbirim çıktıları için renk kullanılması (kullanılması için 1; kullanılmaması için 0)
- RENK_KULLAN=1

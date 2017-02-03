@@ -76,7 +76,7 @@ komutunu girin.
 
 <br><br>
 
-AYARLAR ve YAPILANDIRMA
+KULLANIM ve YAPILANDIRMA
 ==
 Uygulamanın kullanımı ve yapılandırma ayarları için man dosyasına bakın.
 
