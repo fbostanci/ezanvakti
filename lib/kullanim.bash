@@ -103,6 +103,5 @@ function betik_kullanimi() {
         Bu yardım sayfasını görüntüler ve çıkar.
 
 
-  Çıkmak için 'q' tuşuna basınız.
-         "  | less -R
+  Çıkmak için 'q' tuşuna basınız."  | less -R
 }

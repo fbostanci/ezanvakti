@@ -38,7 +38,8 @@ function ezanoku() {
 
   notify-send "${ILCE} için" \
     "${simdiki} namazı vakti\n$vakit_saati" \
-    -i ${VERI_DIZINI}/simgeler/ezanvakti.png -t $EZAN_BILDIRIM_SURESI"000" -h int:transient:1
+    -i ${VERI_DIZINI}/simgeler/ezanvakti.png \
+    -u critical -t $EZAN_BILDIRIM_SURESI"000" -h int:transient:1
 
   (( ezan_okunsun_mu )) || { sleep 1m; return 0; }
   bilesen_yukle mplayer_yonetici
@@ -68,7 +69,8 @@ function vakit_animsat() {
     (( animsatici_saniye > 0 )) && {
       sleep $animsatici_saniye
       notify-send "Ezanvakti" "$VAKIT_ANIMSAT dakika sonra $simdiki ezanı okunacak." \
-        -t $EZAN_BILDIRIM_SURESI"000" -i ${VERI_DIZINI}/simgeler/ezanvakti.png -h int:transient:1
+        -u critical -t $EZAN_BILDIRIM_SURESI"000" \
+        -i ${VERI_DIZINI}/simgeler/ezanvakti.png -h int:transient:1
     }
   }
 }
@@ -106,7 +108,8 @@ function ramazan_ezanoku() {
     "için ${RENK3}${simdiki}${RENK2} vakti${RENK5} $vakit_saati${RENK0}"
 
   notify-send "${ILCE} için" "${simdiki} vakti \n$vakit_saati" \
-    -i ${VERI_DIZINI}/simgeler/ezanvakti.png -t $EZAN_BILDIRIM_SURESI"000" -h int:transient:1
+    -i ${VERI_DIZINI}/simgeler/ezanvakti.png \
+    -u critical -t $EZAN_BILDIRIM_SURESI"000" -h int:transient:1
 
   (( ezan_okunsun_mu )) || { sleep 1m; return 0; }
   bilesen_yukle mplayer_yonetici
