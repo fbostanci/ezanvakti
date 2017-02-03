@@ -70,7 +70,7 @@ komutunu verin. Eğer paketleme yapıyorsanız, DESTDIR ile paket kurulum dizini
 
 **kaldırma için:**
 
-`sudomake PREFIX=/usr sysconfdir=/etc uninstall`
+`sudo make PREFIX=/usr sysconfdir=/etc uninstall`
 
 komutunu girin.
 
