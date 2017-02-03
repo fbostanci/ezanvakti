@@ -30,15 +30,15 @@ BAĞIMLILIKLAR
 *    grep
 *    libnotify
 *    mplayer
+*    perl-www-mechanize
+*    perl-html-tree
 
 <br>
 
 **EK ÖZELLİKLERİN KULLANIMI  İÇİN GEREKLİ (kullanmak isteniyorsa) BAĞIMLILIKLAR**
 
- *  perl-www-mechanize  (Ezanveri güncelleme desteği)
- *  perl-html-tree  (Ezanveri güncelleme desteği)
- *  bash-completion  (Bash tamamlama desteği)
- *  yad   (Arayüz desteği)
+*  bash-completion  (Bash tamamlama desteği)
+*  yad   (Arayüz desteği)
 
 <br><br>
 
