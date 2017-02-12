@@ -179,11 +179,11 @@ then
             sed -i '$d' /tmp/ezanvakti-6
             g_secim_goster; arayuz
 
-    elif [ `echo $str | grep [0-9]` ]
+    elif [[ $(grep [0-9] <<<$str) ]]
     then
-            sure=$(echo "$str" | cut -d'-' -f1)
+            sure=$(cut -d'-' -f1 <<<$str)
 
-        if [ $sure = 000 ]
+        if [[ $sure = 000 ]]
         then
             ozel_pencere
         else
