@@ -13,12 +13,31 @@ Ezanvakti  T.C. Diyanet İşleri Başkanlığı sitesinden bulunduğunuz ülke
 ve şehir için aylık bazda ezan vakitleri çizelgesini alarak vakti
 geldiğinde ezan okuyan ve bildirim veren bir uygulamadır.
 
-Ayrıca ayet gösterimi, ezan ve kuran dinletimi, ezan okunurken oynatıcı
-duraklatma gibi birçok gelişmiş özelliğe sahiptir. Kullandığı dosyaları ve
-ayarları yapılandırma dosyasından okuduğundan kullanıcıya geniş
-özelleştirme desteği sunar.
+Kullandığı dosyaları ve ayarları yapılandırma dosyasından
+okuduğundan kullanıcıya geniş özelleştirme desteği sunar.
+
+Genel Özellikleri
+=
+*  Diyanet sitesindeki tüm ülke ve şehirler için aylık vakitleri alma.
+*  Otomatik ezan vakitleri güncelleme.
+*  Ezan vakitlerini ve vakitlere ne kadar süre kaldığını toplu/tekil gösterme.
+*  İftar vaktine ne kadar süre kaldığını gösterme.
+*  Her vakit için farklı makamda ezan ve ezan duası.
+*  Vakit ezanı okunurken desteklenen müzik oynatıcıyı ezan bitimine kadar duraklatma
+*  3 farklı okuyucu seçimli kuran dinletme.
+*  İstenen surenin istenen ayet aralığını gösterme.
+*  40 hadisten rastgele bir hadisi uçbirimden ya da bildirim baloncuğunda gösterme.
+*  Esma-ül Hüsna'dan rastgele bir adı  uçbirimden ya da bildirim baloncuğunda gösterme.
+*  Diyanet sitesinden alınmış soru- yanıtlardan rastgele birini  uçbirimden ya da bildirim baloncuğunda gösterme.
+*  İçinde bulunan yıla ait dini günleri ve geceleri listeleme.
+*  Aylık ya da haftalık vakitleri listeleme.
+*  Conky uygulamasında kullanım için özel çıktı.
+*  Sıradaki ezan vaktini (süre ayarlı) ve dini günleri anımsatma.
+*  Geniş özelleştirme desteği.
+*  Basit seviye arayüz desteği.
 
 [Ekran görüntüleri için tıklayınız.](https://gitlab.com/ironic/ezanvakti/wikis/ekran-goruntuleri)
+=
 
 <br><br>
 

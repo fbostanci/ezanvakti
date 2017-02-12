@@ -69,7 +69,7 @@ function ayet_araligi_goster() {
   elif [[ $int_ayet_kod = - ]]
   then
       export $(gawk -F'-' '{printf "ilk_sayi=%d\nikinci_sayi=%d", $1,$2}' <<<$ayet_kod)
-      if ((ilk_sayi > ikinci_sayi ))
+      if (( ilk_sayi > ikinci_sayi ))
       then
           printf "$sure_adi Suresi için ayet aralığını yanlış girdiniz.\n"
           exit 1

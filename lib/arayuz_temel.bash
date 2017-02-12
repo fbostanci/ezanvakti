@@ -131,7 +131,7 @@ strng=$(yad --form \
 
 donus=$(echo $?)
 
-declare -x $(echo "$strng" | sed 's:|: :g' | gawk '{print "str="$1 "\nstr2="$2}')
+declare -x $(sed 's:|: :g' <<<"$strng" | gawk '{print "str="$1 "\nstr2="$2}')
 
 case $donus in
   151)

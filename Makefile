@@ -65,8 +65,8 @@ install: $(SCRIPTS)
 	$(INSTALL) -vm644 etc/bash_completion/ezanvakti $(DESTDIR)$(completiondir)/$(AD)
 	$(INSTALL) -vm644 etc/autostart/ezanvakti.desktop $(DESTDIR)$(autostartdir)/$(AD).desktop
 	# man
-	$(INSTALL) -vm644 ezanvakti_man/ezanvakti.1 $(DESTDIR)$(mandir)/man1/$(AD).1
-	$(INSTALL) -vm644 ezanvakti_man/ezanvakti-ayarlar.5 $(DESTDIR)$(mandir)/man5/$(AD)-ayarlar.5
+	$(INSTALL) -vm644 doc/ezanvakti.1 $(DESTDIR)$(mandir)/man1/$(AD).1
+	$(INSTALL) -vm644 doc/ezanvakti-ayarlar.5 $(DESTDIR)$(mandir)/man5/$(AD)-ayarlar.5
 	# simgeler
 	$(INSTALL) -vm644 data/simgeler/ezanvakti.png $(DESTDIR)$(datadir)/$(AD)/simgeler/ezanvakti.png
 	$(INSTALL) -vm644 data/simgeler/ezanvakti2.png $(DESTDIR)$(datadir)/$(AD)/simgeler/ezanvakti2.png
