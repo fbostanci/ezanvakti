@@ -1,6 +1,7 @@
 #!/bin/bash
 # Maintainer: Fatih BOSTANCI <faopera@gmail.com>
 
+echo "güncel değil"; exit 1
 pkgname=ezanvakti
 pkgver=5.7.1
 startdir="$(pwd)"

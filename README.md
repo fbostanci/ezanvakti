@@ -9,6 +9,7 @@ Ezanvakti 6.0 GNU/Linux için ezan vakti bildirici
 
 HAKKINDA
 ==
+
 Ezanvakti  T.C. Diyanet İşleri Başkanlığı sitesinden bulunduğunuz ülke
 ve şehir için aylık bazda ezan vakitleri çizelgesini alarak vakti
 geldiğinde ezan okuyan ve bildirim veren bir uygulamadır.
@@ -50,7 +51,6 @@ BAĞIMLILIKLAR
 *    libnotify
 *    mplayer
 *    perl-www-mechanize
-*    perl-html-tree
 
 <br>
 
