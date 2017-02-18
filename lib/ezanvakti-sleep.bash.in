@@ -9,7 +9,7 @@ calisma_kipi=$1
 
 . @libdir@/@AD@/temel_islevler.bash
 # TODO: kendiliğinden çalışmayı denetle.
-# TODO: 
+# TODO:
 bilesen_yukle mplayer_yonetici
 (( OYNATICI_DURAKLAT )) && bilesen_yukle oynatici_duraklat
 renk_denetle
@@ -117,7 +117,7 @@ function ramazan_ezanoku() {
 
   # Oynatıcı duraklatma etkin mi ezan okumadan değeri
   # denetle ve fonksiyonu çağır.
-  (( OYNATICI_DURAKLAT )) && oynatici_islem || 
+  (( OYNATICI_DURAKLAT )) && oynatici_islem ||
   { mplayer_calistir "${vakit_ezani}"
     (( EZAN_DUASI_OKU )) && mplayer_calistir "${EZAN_DUASI}"
   }
