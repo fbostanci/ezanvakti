@@ -30,7 +30,7 @@ Genel Özellikleri
 *  40 hadisten rastgele bir hadisi uçbirimden ya da bildirim baloncuğunda gösterme.
 *  Esma-ül Hüsna'dan rastgele bir adı  uçbirimden ya da bildirim baloncuğunda gösterme.
 *  Diyanet sitesinden alınmış soru- yanıtlardan rastgele birini  uçbirimden ya da bildirim baloncuğunda gösterme.
-*  İçinde bulunan yıla ait dini günleri ve geceleri listeleme.
+*  İçinde bulunulan yıla ait dini günleri ve geceleri listeleme.
 *  Aylık ya da haftalık vakitleri listeleme.
 *  Conky uygulamasında kullanım için özel çıktı.
 *  Sıradaki ezan vaktini (süre ayarlı) ve dini günleri anımsatma.
