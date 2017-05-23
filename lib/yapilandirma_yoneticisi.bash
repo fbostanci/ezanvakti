@@ -57,11 +57,11 @@ yad --plug=190707 --tabnum=2 --form \
  "${OGLE_EZANI}" "${IKINDI_EZANI}" "${AKSAM_EZANI}" \
  "${YATSI_EZANI}" "${EZAN_DUASI}" "${EZAN_OKUYAN}" > $ayr2 &
 yad --plug=190707 --tabnum=3 --form \
---field='Sabah ezanı okunsun mu:CHK' \
---field='Öğle ezanı okunsun mu:CHK' \
---field='İkindi ezanı okunsun mu:CHK' \
---field='Akşam ezanı okunsun mu:CHK' \
---field='Yatsı ezanı okunsun mu:CHK' \
+--field='Sabah ezanı okunsun:CHK' \
+--field='Öğle ezanı okunsun:CHK' \
+--field='İkindi ezanı okunsun:CHK' \
+--field='Akşam ezanı okunsun:CHK' \
+--field='Yatsı ezanı okunsun:CHK' \
 --field='Mplayer ses seviyesi:SCL' \
 --field='Dini gün anımsat (sn. 0 ise kapalı):NUM' \
 --field='Ezan Bildirim Süresi (sn):NUM' \

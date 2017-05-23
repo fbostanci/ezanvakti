@@ -79,13 +79,9 @@ function betik_kullanimi() {
         Ramazan ayında isteğe bağlı olarak sadece iftar
         ve imsak vakitleri için ezan okunur.
 
-    ${B}--conky${R}
+    ${B}--conky [--iftar, --siradaki]${R}
         Conky alanında günlük ezan vakitlerini eklemek
         isteyenler için renksiz ve kısa çıktı verir.
-
-    ${B}--conky-iftar${R}
-        Conky alanında iftar vaktine ne kadar süre kaldığını
-        görmek isteyenler için renksiz ve kısa çıktı verir.
 
     ${B}--gunler${R}
         İçinde bulunulan yıla ait dini günleri ve geceleri gösterir.

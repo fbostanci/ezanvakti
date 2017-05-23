@@ -9,6 +9,7 @@ function vakitler() { # {{{
   renk_denetle
 
   local istek="$1"
+  local siradaki_vakit siradaki_vakit_kalan
 
   # --osd/bildirim için renkleri sıfırla
   [[ ${istek} = bildirim ]] && { RENK1=''; RENK2=''; }
@@ -49,6 +50,8 @@ function vakitler() { # {{{
       printf "${RENK7}${RENK2}\nAkşam ezanı  ${RENK3}: $aksam_n $aksam_kalan${RENK0}\n\n" ;;
     yatsi)
       printf "${RENK7}${RENK2}\nYatsı ezanı  ${RENK3}: $yatsi_n $yatsi_kalan${RENK0}\n\n" ;;
+    siradaki)
+      bilesen_yukle siradaki; siradaki_vakit siradaki ;;
     aylik)
       if ! grep -qo $(date -d 'next week' +%d.%m.%Y) "${EZANVERI}"
       then

@@ -1,12 +1,12 @@
-.TH "Ezanvakti" "1" "2017\-xx\-xx" "Ezanvakti 6\&.0" "Ezanvakti Kullanım Yönergeleri"
+.TH "Ezanvakti" "1" "2017\-xx\-xx" "Ezanvakti 6\&.1" "Ezanvakti Kullanım Yönergeleri"
 .SH "AD"
-Ezanvakti 6\.0 \- GNU/Linux için Ezan Vakti Bildirici
+Ezanvakti 6\.1 \- GNU/Linux için Ezan Vakti Bildirici
 .SH "KULLANIM ŞEKLİ"
 .B ezanvakti
 .RI [ seçenek ]
 .SH AÇIKLAMA
-Diyanet İşleri Başkanlığı sitesinden 
-.B (http://ur1.ca/0xfkr)
+Diyanet İşleri Başkanlığı sitesinden
+.B (http://www.diyanet.gov.tr)
 bulunduğunuz ülke ve şehre ait haftalık ya da aylık namaz vakitleri
 çizelgesini kaydettiğiniz dosyayı kullanarak, zamanı geldiğinde ezan
 okuyan ve bildirim veren bir uygulamadır. Ayrıca istenilen zaman ezan
@@ -26,7 +26,7 @@ vardır.
 .B \      -vs, \-\-vs
 Sabah vakti gösterimi için birleşik komuttur.
 .TP 5
-.B \      -vs, \-\-vs
+.B \      -vo, \-\-vo, \-\-vö
 Öğle vakti gösterimi için birleşik komuttur.
 .TP 5
 .B \      -vi, \-\-vi
@@ -46,6 +46,10 @@ Yatsı vakti gösterimi için birleşik komuttur.
 .TP 5
 .B \      -vb, \-\-vb
 Vakitler çıktısının bildirim baloncuğunda
+gösterimi için birleşik komuttur.
+.TP 5
+.B \      -vt, \-\-vt
+Sıradaki vakit ve vakte ne kadar süre kaldığının
 gösterimi için birleşik komuttur.
 .PP
 \fInormal kullanımlar için ek olarak\fP :
@@ -73,6 +77,9 @@ Yatsı vaktine ne kadar süre kaldığını gösterir ve çıkar.
 .TP 5
 .B \     \-\-osd, \-\-bildirim
 Vakitler çıktısını uçbirim yerine bildirim baloncuğuna yönlendirir.
+.TP 5
+.B \      -t, \-\-sıradaki, \-\-siradaki
+Sıradaki vakit ve vakte ne kadar süre kaldığını gösterir ve çıkar.
 .TP
 .B \-\-kuran \fI[ek_seçenek]\fP
 Çevrimiçi olarak ya da yerel dizinden kuran dinletir. Çevrimiçi kuran dinleme
@@ -134,9 +141,13 @@ Sadece iftar ve imsak vakitleri için ezan okunur.
 Conky alanına günlük ezan vakitlerini eklemek isteyenler için renksiz
 ve kısa çıktı verir.
 .TP
-.B \-\-conky\-iftar
+\fIek olarak\fP
+.TP 5
+.B \      -\-iftar
 Conky alanında iftar vaktine ne kadar süre kaldığını görmek isteyenler için
 renksiz ve kısa çıktı verir.
+.TP
+.B \      -\-sıradaki, \-\-siradaki
 .TP
 .B \-\-aralık, \-\-aralik \fI[sure_kodu] [ayet_aralıgı_başlangıç-ayet_aralığı_bitiş]\fR
 Ayet gösteriminde istenen surenin istenen ayet aralığını gösterir.
