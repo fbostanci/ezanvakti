@@ -108,9 +108,9 @@ case $1 in
   --iftar) bilesen_yukle iftar; ezv_iftar ;;
   --conky)
     case $2 in
-      --s[ıi]radaki) bilesen_yukle siradaki
+      -s|--s[ıi]radaki) bilesen_yukle siradaki
                      siradaki_vakit conky_siradaki ;;
-      --iftar) bilesen_yukle conky; ezv_conky_iftar ;;
+      -i|--iftar) bilesen_yukle conky; ezv_conky_iftar ;;
       *) bilesen_yukle conky; ezv_conky ;;
     esac ;;
   --hadis) bilesen_yukle bilgi_goster; shift
