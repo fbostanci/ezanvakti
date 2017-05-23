@@ -43,7 +43,7 @@ function siradaki_vakit() { # {{{
 
   elif  (( UNIXSAAT < yeni_gun ))
   then
-    bekleme_suresi bekleme_suresi "23:59:59"; kalan
+    bekleme_suresi "23:59:59"; bekle=$((bekle+1)); kalan
     siradaki_vakit="Yeni gün"
     siradaki_vakit_kalan="${RENK2} $kalan_sure"
   fi
