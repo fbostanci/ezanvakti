@@ -7,7 +7,7 @@ function siradaki_vakit() { # {{{
   renk_denetle
 
   local istek="$1"
-  local siradaki_vakit siradaki_vakit_kalan
+  local siradaki_vakit siradaki_vakit_kalan ileti
 
   [[ ${istek} = conky_siradaki ]] && RENK2=''
 
@@ -50,7 +50,8 @@ function siradaki_vakit() { # {{{
 
   case $istek in
     siradaki)
-      printf "${RENK7}${RENK3}\n${siradaki_vakit} ezanı  ${RENK3}: $siradaki_vakit_kalan${RENK0}\n\n" ;;
+      [[ $siradaki_vakit = "Yeni gün" ]] && ileti="$siradaki_vakit" || ileti="$siradaki_vakit ezanı"
+      printf "${RENK7}${RENK3}\n${ileti}  ${RENK3}: $siradaki_vakit_kalan${RENK0}\n\n" ;;
     conky_siradaki)
       printf "${siradaki_vakit} : $siradaki_vakit_kalan\n"  |
         sed 's:saat:sa:;s:dakika:dk:;s:saniye:sn:' ;;
