@@ -1,3 +1,9 @@
+ezanvakti (20170405-1~distroguide~zesty) zesty; urgency=medium
+
+  * 6.0
+
+ -- Fatih Bostancı <faopera@gmail.com>  Tue, 04 Apr 2017 20:35:15 +0300
+
 ezanvakti (20141212-1~distroguide~utopic) utopic; urgency=medium
 
   * Vakitlerde ezan okunmasi istege bagli yapildi.
