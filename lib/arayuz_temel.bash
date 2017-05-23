@@ -20,11 +20,13 @@ sure_listesi+='!103-Asr!104-Hümeze!105-Fil!106-Kureyş!107-Maun!108-Kevser!109-
 sure_listesi+='!111-Tebbet!112-İhlas!113-Felak!114-Nas'
 
 tamamlama_listesi='!Ayarlar!Ayet!Sabah!Öğle!İkindi!Akşam!Yatsı!yapilandirma!Hadis!Esma-ül Hüsna'
-tamamlama_listesi+='!Bilgi!Aylık Vakitler!Haftalık Vakitler!Dini Günler ve Geceler!hakkında' 
+tamamlama_listesi+='!Bilgi!Aylık Vakitler!Haftalık Vakitler!Dini Günler ve Geceler!hakkında'
 tamamlama_listesi+="!güncelle!yardım!arayuz2!000!özel pencere!$sure_listesi"
 
 function g_vakitleri_al() {
   denetle; bugun
+  local sabah_kerahat=$(( gunes + 2700 ))
+  local ogle_kerahat=$(( ogle - 2700 ))
 
   if (( UNIXSAAT < sabah ))
   then
@@ -38,12 +40,12 @@ function g_vakitleri_al() {
       bekleme_suresi $ogle_n; kalan
       v_ileti='Öğle ezanına kalan süre :'
       v_kalan="$kalan_sure"
-      if (( UNIXSAAT == gunes ))
+      if (( UNIXSAAT = gunes ))
       then
           vakit_bilgisi='<b>Güneş Doğuş Vakti</b>'
-      elif (( UNIXSAAT > gunes ))
+      elif (( UNIXSAAT <= sabah_kerahat ))
       then
-          vakit_bilgisi='<b>Şimdi Kuşluk Vakti</b>'
+          vakit_bilgisi='<b>Şimdi Kerahat Vakti</b>'
       else
           vakit_bilgisi='<b>Şimdi Sabah Vakti</b>'
       fi
@@ -95,7 +97,7 @@ function g_hakkinda() {
 
    <a href= 'https://gitlab.com/ironic/ezanvakti' >Ezanvakti Sayfası</a>
 
-Copyright (c) 2010-2017 Fatih Bostancı
+Copyright (c) 2010-$(date +%Y) Fatih Bostancı
 GPL 3 ile lisanslanmıştır.\n" \
   --title "${AD^} ${SURUM} - Hakkında" --fixed --image-on-top \
   --button='gtk-close' --sticky --center \

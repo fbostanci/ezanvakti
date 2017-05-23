@@ -178,7 +178,7 @@ function secim_yap() {
 function surum_goster() {
   printf '%s\n%s\n\n%s\n%s\n%s\n%s\n\n%s\n%s\n%s\n%s\n\n%s\n%s\n' \
     "${AD^} $SURUM düzenleme: $DUZELTME"\
-    'Copyright (C) 2010-2017 Fatih Bostancı'\
+    "Copyright (C) 2010-$(date +%Y) Fatih Bostancı"\
     'This program is free software; you can redistribute it and/or modify'\
     'it under the terms of the GNU General Public License as published by'\
     'the Free Software Foundation; either version 3 of the License, or'\

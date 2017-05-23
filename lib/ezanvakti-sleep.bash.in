@@ -199,11 +199,11 @@ function ezanlar() {
     bekleme_yap $bekle; ezanlar; ezanoku; ezanlar
   } ||
 
-  (( UNIXSAAT <= $(date -d "23:59:59" +%s) )) && {
+  (( UNIXSAAT <= yeni_gun )) && {
     vakit_saati=23:59
     printf "${RENK7}${RENK4}Yeni gün için bekleniyor...${RENK0}\n"
 
-    bekleme_suresi "23:59:59"; bekleme_yap $bekle; ezanlar
+    bekleme_suresi "23:59:59"; bekleme_yap $((bekle+1)); ezanlar
     gun_animsat & ezanlar
   }
 }
