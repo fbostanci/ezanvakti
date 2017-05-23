@@ -18,7 +18,7 @@ function ezv_iftar() {
   } || {
     # Akşam değeri şu anki saatten büyük ya da eşitse
     (( UNIXSAAT >= aksam )) && {
-       export $(gawk '{printf "aksam_n=%s:%s", $10,$11}' \
+       export $(gawk '{printf "aksam_n=%s", $6}' \
          <(grep $(date -d 'tomorrow' +%d.%m.%Y) "${EZANVERI}"))
        bekleme_suresi_yarin $aksam_n; kalan
        printf '%b\n%b\n\n' \
