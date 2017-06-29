@@ -124,6 +124,7 @@ uninstall:
 	@rm -rf $(DESTDIR)$(libdir)/$(AD)
 	@rm -rf $(DESTDIR)$(datadir)/$(AD)
 	@rm -rf $(DESTDIR)$(sysconfdir)/$(AD)
+	@rm -rf $(DESTDIR)$(sounddir)/$(AD)
 	@rm -f  $(DESTDIR)$(completiondir)/$(AD)
 	@rm -f  $(DESTDIR)$(autostartdir)/$(AD).desktop
 	@rm -f  $(DESTDIR)$(mandir)/man1/$(AD).1*

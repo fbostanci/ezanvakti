@@ -111,7 +111,7 @@ case $1 in
   --conky)
     case $2 in
       -s|--s[ıi]radaki) bilesen_yukle siradaki
-                     siradaki_vakit conky_siradaki ;;
+                        siradaki_vakit conky_siradaki ;;
       -i|--iftar) bilesen_yukle conky; ezv_conky_iftar ;;
       *) bilesen_yukle conky; ezv_conky ;;
     esac ;;
