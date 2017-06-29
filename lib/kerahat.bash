@@ -8,12 +8,14 @@ function kerahat_vakitleri() {
 
   local kerahat_suresi='45 minutes' #dk
   local kv_gunes=$(date -d "$gunes_n $kerahat_suresi" +%H:%M)
+
   local kv_ogle=$(date -d "-$kerahat_suresi $ogle_n" +%H:%M)
   local kv_aksam=$(date -d "-$kerahat_suresi $aksam_n" +%H:%M)
 
 case $1 in
   ucbirim)
     renk_denetle
+
     printf '%b\n%b\n%b\n\n%b\n%b\n\n%b\n%b\n\n%b\n%b\n%b\n\n%b\n%b\n\n'\
       "${RENK7}${RENK3}\n${ILCE}${RENK5} için kerahat vaktileri (${TARIH} $(date +%H:%M:%S))\n"\
       "${RENK2}Kerahat Vakti 1${RENK3} : $sabah_n - $gunes_n${RENK2} arası"\
@@ -27,6 +29,7 @@ case $1 in
       "ancak kerahat vakti girinceye kadar kaza namazı kılınır."\
       "${RENK2}Kerahat vakti 5${RENK3} : $kv_aksam - $aksam_n${RENK2} arası"\
       "${RENK8}O günün ikindi namazı farzı hariç olmak üzere başka bir namaz kılınmaz.${RENK0}" ;;
+
   conky)
     printf '%b\n%b\n%b\n%b\n%b\n'\
       "Kerahat vakti 1 : $sabah_n - $gunes_n arası"\

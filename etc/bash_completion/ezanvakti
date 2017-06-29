@@ -1,6 +1,8 @@
 
 _ezanvakti() {
-  local cur prev kuran_uzun vakitler_uzun vakitler_uzun2 butun_uzun ucbirim_uzun nglob_ayar ezanvakti_exec ezanvakti conky_uzun
+  local cur prev kuran_uzun vakitler_uzun vakitler_uzun2
+  local butun_uzun ucbirim_uzun nglob_ayar ezanvakti_exec
+  local ezanvakti conky_uzun
 
   nglob_ayar=$(shopt -p nullglob)
   shopt -s nullglob
@@ -15,17 +17,18 @@ _ezanvakti() {
   ezanvakti=$(basename "$ezanvakti_exec")
 
   vakitler_uzun='--sabah --ogle --ikindi --aksam --yatsi'
-  vakitler_uzun2='--sabah --ogle --ikindi --aksam --yatsi --aylik --haftalik --bildirim --siradaki'
+  vakitler_uzun2='--sabah --ogle --ikindi --aksam --yatsi \
+  --aylik --haftalik --bildirim --siradaki --kerahat'
 
   kuran_uzun='--secim --rastgele --hatim --gunluk'
-  conky_uzun='--iftar --siradaki'
+  conky_uzun='--iftar --siradaki --kerahat'
   ucbirim_uzun='--ucbirim --terminal'
 
   butun_uzun='--vakitler --conky --iftar --ayet \
 --esma --bilgi --hadis --kuran --dinle --arayuz --arayuz2 \
 --gui --gui2 --bilgi --sureler --ramazan --guncelle \
---yardim  --surum --gunler --aralik --kalan --config --yapilandirma --renk-öğren\
---renk'
+--yardim  --surum --gunler --aralik --kalan --config \
+--yapilandirma --renk'
 
   case "$prev" in
 

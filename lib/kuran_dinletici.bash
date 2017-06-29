@@ -11,22 +11,26 @@ function sure_no_denetimi() { # sure_no_yonetimi {{{
         "${AD}: hatalı sure_no: \`$sure_no' " \
         'Sure kodu olarak 1-114 arası sayısal bir değer giriniz.'
       exit 1
+
   elif (( ! ${#sure_no} ))
   then
       printf "${AD}: Bu özelliğin kullanımı için ek olarak sure kodu girmelisiniz.\n"
       exit 1
+
   elif (( ${#sure_no} > 3 ))
   then
       printf '%b\n%b\n' \
         "${AD}: hatalı sure_no: \`$sure_no' " \
         'Girilen sure kodunun basamak sayısı <= 3 olmalı.'
       exit 1
+
   elif (( sure_no < 1 || sure_no > 114 ))
   then
       printf '%b\n%b\n' \
         "${AD}: hatalı sure_no: \`$sure_no' " \
         'Girilen sure kodu 1 <= sure_kodu <= 114 arasında olmalı.'
       exit 1
+
   else  # Girilen sure koduna göre değişkenin önüne sıfır ekle.
       if (( ${#sure_no} == 1 ))
       then
@@ -72,6 +76,7 @@ function kuran_dinletimi() {
   bilesen_yukle mplayer_yonetici
   ucbirim_basligi "$(gawk -v sure=$sure 'BEGIN{gsub("^0*","",sure);} NR==sure {print($4);}' \
     ${VERI_DIZINI}/veriler/sure_bilgisi) Suresi"
+
   printf '%b%b\n%b\n' \
     "${RENK7}${RENK2}" \
     "Okuyan : ${RENK3} ${okuyan}${RENK2}" \
@@ -83,6 +88,7 @@ function kuran_dinletimi() {
 function kuran_dinlet() { # kuran_dinlet_yonetimi {{{
   local dinletilecek_sure okuyan kaynak sure i
   local sure_no="$2"
+
   renk_denetle
 
   case $1 in
@@ -93,17 +99,21 @@ function kuran_dinlet() { # kuran_dinlet_yonetimi {{{
         sure_no=$i
         sure_no_denetimi; kuran_dinletimi; sleep 1.5
       } ;;
+
     rastgele)
       sure_no=$((RANDOM%114))
       (( ! sure_no )) && sure_no=114
         sure_no_denetimi; kuran_dinletimi ;;
+
     gunluk)
       read -ra sureler <<<$SURELER
+
       for i in ${sureler[@]}
       do
         sure_no=$i
         sure_no_denetimi; kuran_dinletimi; sleep 1.5
       done ;;
+
   esac
 } # }}}
 

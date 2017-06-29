@@ -1,73 +1,22 @@
 #
 #
-#                           Ezanvakti Basit Arayüz  Bileşeni 1.2
+#                           Ezanvakti Basit Arayüz  Bileşeni 1.3
 #
 #
-
-if ! [[ -x $(type -p yad) ]]
-then
-    printf "Bu özellik YAD gerektirmektedir...\n" >&2
-    exit 1
-fi
 
 . @libdir@/@AD@/temel_islevler.bash
-
-# düz komut çıktıları için rengi sıfırla.
-export RENK_KULLAN=0 RENK=0
-
-function g_vakitleri_yaz() {
-  printf "${VAKIT_BICIMI}" 'Sabah' "$sabah_n" 'Güneş' \
-         "$gunes_n" 'Öğle' "$ogle_n" 'İkindi' "$ikindi_n" 'Akşam' \
-         "$aksam_n" 'Yatsı' "$yatsi_n"
-}
-
-function g_vakitleri_al() {
-  denetle; bugun
-
-  if (( UNIXSAAT < sabah ))
-  then
-      bekleme_suresi $sabah_n; kalan
-       v_ileti='Sabah ezanına kalan süre :'
-       v_kalan="$kalan_sure"
-       vakit_bilgisi='<b>Şimdi Yatsı Vakti</b>'
-
-elif (( UNIXSAAT < ikindi ))
-then
-      bekleme_suresi $ikindi_n; kalan
-      v_ileti='İkindi ezanına kalan süre :'
-      v_kalan="$kalan_sure"
-      vakit_bilgisi='<b>Şimdi Öğle Vakti</b>'
-
-elif (( UNIXSAAT < aksam ))
-then
-      bekleme_suresi $aksam_n; kalan
-      v_ileti='Akşam ezanına kalan süre :'
-      v_kalan="$kalan_sure"
-      vakit_bilgisi='<b>Şimdi İkindi Vakti</b>'
-
-elif (( UNIXSAAT < yatsi ))
-then
-      bekleme_suresi $yatsi_n; kalan
-      v_ileti='Yatsı ezanına kalan süre :'
-      v_kalan="$kalan_sure"
-      vakit_bilgisi='<b>Şimdi Akşam Vakti</b>'
-
-elif (( UNIXSAAT >= yenigun ))
-then
-      v_ileti='Yeni gün için bekleniyor..'
-      v_kalan=
-      vakit_bilgisi='<b>Şimdi Yatsı Vakti</b>'
-fi
-}
+. @libdir@/@AD@/arayuz_temel.bash
 
 
 function arayuz2() {
   g_vakitleri_al
+VAKIT_BICIMI='\t%s\t%s\n\t%s\t%s\n\t%s\t%s\n\t%s\t%s\n\t%-7s%s\n\t%s\t%s'
 
 yad --title "Ezanvakti $SURUM" \
 --text "$(g_vakitleri_yaz)\n\n${v_ileti}\n${v_kalan}" \
 --button="gtk-refresh:172" --button="gtk-close" \
---image=${VERI_DIZINI}/simgeler/ezanvakti.png --window-icon=${VERI_DIZINI}/simgeler/ezanvakti2.png \
+--image=${VERI_DIZINI}/simgeler/ezanvakti.png \
+--window-icon=${VERI_DIZINI}/simgeler/ezanvakti2.png \
 --mouse --fixed --sticky
 
 case $? in

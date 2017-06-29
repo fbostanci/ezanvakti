@@ -12,25 +12,10 @@
 # sistem tepsisi desteği .(?)
 # arayüzde html kod denemeleri.
 
-if ! [[ -x $(type -p yad) ]]
-then
-    printf "Bu özellik YAD gerektirmektedir...\n" >&2
-    exit 1
-fi
-
 . @libdir@/@AD@/temel_islevler.bash
 . @libdir@/@AD@/arayuz_temel.bash
 
-bilesen_yukle bilgi_goster
 bilesen_yukle mplayer_yonetici
-bilesen_yukle ayet_goster
-bilesen_yukle kuran_dinletici
-bilesen_yukle vakitleri_goster
-bilesen_yukle kerahat
-bilesen_yukle dini_gunler
-
-# düz komut çıktıları için rengi sıfırla.
-export RENK_KULLAN=0 RENK=0
 
 elx=''
 for ((i=1; i<=CIZGI_UZUNLUGU; i++))
@@ -45,7 +30,6 @@ for ((i=1; i<=CIZGI_UZUNLUGU; i++))
   elif grep -q $(date -d 'tomorrow' +%d.%m.%Y) ${VERI_DIZINI}/veriler/gunler
   then
       ozel_ileti="\n\nYarın:  <b>$(grep $(date -d 'tomorrow' +%d.%m.%Y) ${VERI_DIZINI}/veriler/gunler | cut -d' ' -f2-)</b>"
-
   else
       ozel_ileti=''
   fi
@@ -113,48 +97,56 @@ then
     elif [[ $str = Ayet ]]
     then
             secim_basligi='Günlük Ayet'
+            bilesen_yukle ayet_goster
             ayet_goster ucbirim > /tmp/ezanvakti-6
             g_secim_goster;arayuz
 
     elif [[ $str = Hadis ]]
     then
             secim_basligi='40 Hadis'
+            bilesen_yukle bilgi_goster
             hadis_goster ucbirim > /tmp/ezanvakti-6
             g_secim_goster;arayuz
 
     elif [[ $str = Esma-ül Hüsna ]]
     then
             secim_basligi='Esma-ül Hüsna'
+            bilesen_yukle bilgi_goster
             esma_goster ucbirim > /tmp/ezanvakti-6
             g_secim_goster;arayuz
 
     elif [[ $str = Bilgi ]]
     then
             secim_basligi='Dini Bilgiler'
+            bilesen_yukle bilgi_goster
             bilgi_goster ucbirim > /tmp/ezanvakti-6
             g_secim_goster;arayuz
 
     elif [[ $str = Aylık Vakitler ]]
     then
             secim_basligi='Aylık Vakitler'
+            bilesen_yukle vakitleri_goster
             vakitler aylik > /tmp/ezanvakti-6
             g_secim_goster; arayuz
 
     elif [[ $str = Haftalık Vakitler ]]
     then
             secim_basligi='Haftalık Vakitler'
+            bilesen_yukle vakitleri_goster
             vakitler haftalik > /tmp/ezanvakti-6
             g_secim_goster; arayuz
 
-    elif [[ $str = 'Kerahat Vakitleri' ]]
+    elif [[ $str = @(Kerahat Vakitleri|Kerahat) ]]
     then
             secim_basligi='Kerahat Vakitleri'
+            bilesen_yukle kerahat
             kerahat_vakitleri ucbirim > /tmp/ezanvakti-6
             g_secim_goster; arayuz
 
     elif [[ $str = Dini Günler ve Geceler ]]
     then
             secim_basligi="$(date +%Y) Dini Günler ve Geceler"
+            bilesen_yukle dini_gunler
             gunler > /tmp/ezanvakti-6
             g_secim_goster; arayuz
 
@@ -214,8 +206,10 @@ then
             fi
         fi
 
+        bilesen_yukle kuran_dinletici
         mplayer_ileti="$(gawk -v sira=$sure '{if(NR==sira) print $4;}' < ${VERI_DIZINI}/veriler/sure_bilgisi)"
         mplayer_ileti+=" suresi dinletiliyor..\n\n Okuyan : ${okuyan}"
+
         pencere_bilgi &
         kuran_dinlet secim $sure
         pkill yad >/dev/null 2>&1; arayuz

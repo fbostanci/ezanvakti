@@ -138,7 +138,7 @@ clean:
 
 dist:
 	@echo "Kaynak kod paketi oluşturuluyor. Lütfen bekleyiniz..."
-	@git archive master | xz > $(AD)-$(surum).$(duzeltme).tar.xz
+	@git archive master | xz > $(AD)-$(SURUM).$(DUZELTME).tar.xz
 	@echo "İşlem tamamlandı. ----------> $(AD)-$(surum).$(duzeltme).tar.xz"
 
 

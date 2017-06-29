@@ -66,6 +66,7 @@ function vakit_animsat() {
     # Eğer betik vakit ezanına animsatma dakikasından
     # daha az bir süre kala çalıştırılırsa bekleme değeri
     # eksiye düşüyor.
+    #
     # Sadece değer sıfırdan büyükse anımsatma yap.
     (( animsatici_saniye > 0 )) && {
       sleep $animsatici_saniye
@@ -139,12 +140,8 @@ function ezanlar() {
     [[ $SAAT -eq $sabah ]] && { ezanoku; ezanlar; }
     printf "${RENK7}${RENK4}Sabah ezanı için bekleniyor...${RENK0}\n"
 
-    # Bilgisayar uyku ya da askı kipinden döndüğünde sleep komutundan
-    # dolayı saat uyumsuzluğu sorunu oluyor.
-    # Ezan okutmadan önce son bir denetim daha yapılması için
-    # ezanlar/iftarimsak fonksiyonlarını bir daha çağır.
     bekleme_suresi $sabah_n; vakit_animsat &
-    bekleme_yap $bekle; ezanlar; ezanoku; ezanlar
+    bekleme_yap $bekle; ezanoku; ezanlar
   } ||
 
   (( UNIXSAAT <= ogle )) && {
@@ -157,7 +154,7 @@ function ezanlar() {
     printf "${RENK7}${RENK4}Öğle ezanı için bekleniyor...${RENK0}\n"
 
     bekleme_suresi $ogle_n; vakit_animsat &
-    bekleme_yap $bekle; ezanlar; ezanoku; ezanlar
+    bekleme_yap $bekle; ezanoku; ezanlar
   } ||
 
   (( UNIXSAAT <= ikindi )) && {
@@ -170,7 +167,7 @@ function ezanlar() {
     printf "${RENK7}${RENK4}İkindi ezanı için bekleniyor...${RENK0}\n"
 
     bekleme_suresi $ikindi_n; vakit_animsat &
-    bekleme_yap $bekle; ezanlar; ezanoku; ezanlar
+    bekleme_yap $bekle; ezanoku; ezanlar
   } ||
 
   (( UNIXSAAT <= aksam )) && {
@@ -183,7 +180,7 @@ function ezanlar() {
     printf "${RENK7}${RENK4}Akşam ezanı için bekleniyor...${RENK0}\n"
 
     bekleme_suresi $aksam_n; vakit_animsat &
-    bekleme_yap $bekle; ezanlar; ezanoku; ezanlar
+    bekleme_yap $bekle; ezanoku; ezanlar
   } ||
 
   (( UNIXSAAT <= yatsi )) && {
@@ -196,14 +193,14 @@ function ezanlar() {
     printf "${RENK7}${RENK4}Yatsı ezanı için bekleniyor...${RENK0}\n"
 
     bekleme_suresi $yatsi_n; vakit_animsat &
-    bekleme_yap $bekle; ezanlar; ezanoku; ezanlar
+    bekleme_yap $bekle; ezanoku; ezanlar
   } ||
 
   (( UNIXSAAT <= yeni_gun )) && {
     vakit_saati=23:59
     printf "${RENK7}${RENK4}Yeni gün için bekleniyor...${RENK0}\n"
 
-    bekleme_suresi "23:59:59"; bekleme_yap $((bekle+1)); ezanlar
+    bekleme_suresi "23:59:59"; bekleme_yap $((bekle+1))
     gun_animsat & ezanlar
   }
 }
@@ -222,7 +219,7 @@ function iftarimsak() {
     printf "${RENK7}${RENK4}İmsak vakti için bekleniyor...${RENK0}\n"
 
     bekleme_suresi $sabah_n; vakit_animsat &
-    bekleme_yap $bekle; iftarimsak; ramazan_ezanoku; iftarimsak
+    bekleme_yap $bekle; ramazan_ezanoku; iftarimsak
   } ||
 
   (( UNIXSAAT <= aksam )) && {
@@ -235,7 +232,7 @@ function iftarimsak() {
     printf "${RENK7}${RENK4}İftar vakti için bekleniyor...${RENK0}\n"
 
     bekleme_suresi $aksam_n; vakit_animsat &
-    bekleme_yap $bekle; iftarimsak; ramazan_ezanoku; iftarimsak
+    bekleme_yap $bekle; ramazan_ezanoku; iftarimsak
   } ||
 
   # Yeni güne ait hesaplamayı yapmak için saat 00:00 olana kadar
@@ -243,7 +240,7 @@ function iftarimsak() {
   (( UNIXSAAT <= yeni_gun )) && {
     printf "${RENK7}${RENK4}Yeni gün için bekleniyor...${RENK0}\n"
 
-    bekleme_suresi "23:59:59"; bekleme_yap $((bekle+1)); iftarimsak
+    bekleme_suresi "23:59:59"; bekleme_yap $((bekle+1))
     gun_animsat & iftarimsak
   }
 }
@@ -257,6 +254,7 @@ if (( calisma_kipi == 1 ))
 then
     gun_animsat &
     ezanlar
+
 elif (( calisma_kipi == 2 ))
 then
     gun_animsat &

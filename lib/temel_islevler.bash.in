@@ -45,6 +45,7 @@ function ucbirim_basligi() {
 
 [[ ! -t 1 ]] || [[ ! $DISPLAY ]] && { RENK_KULLAN=0; RENK=0; }
 [[ ! -d "${EZANVAKTI_DIZINI}" ]] && mkdir -p "${EZANVAKTI_DIZINI}"
+
 [[ ! -f "${EZANVAKTI_AYAR}"   ]] &&
   sed "s:\(EZANVERI_DIZINI=\).*:\1\'${EZANVAKTI_DIZINI}\':" < @sysconfdir@/${AD}/ayarlar > "${EZANVAKTI_AYAR}"
 
@@ -66,11 +67,13 @@ function bilesen_yukle() {
   while [[ $1 ]]
   do
     (( YUKLENEN_BILESENLER[$1] )) && return 0
+
     if [[ ! -r "${BILESEN_DIZINI}/$1.bash" ]]
     then
         printf "$1.bash dosyası bulunamadı.\n"
         exit 1
     fi
+
     . "${BILESEN_DIZINI}/$1.bash" || printf "$1.bash bileşeninde sorun var.\n"
     YUKLENEN_BILESENLER[$1]=1
     shift
@@ -87,10 +90,12 @@ function hatali_kullanim() {
 # ezanveri dosyasının kullanıldığı işlemler için olumsuz durumları denetle.
 function denetle() {
   local ksatir
+
   # ezanlar ve iftarimsak fonksiyonları özyinelemeli çalıştığı için
   # gün değişiminde tarihi güncellemek için tarih, denetle fonksiyonu içine alındı.
   TARIH=$(date +%d.%m.%Y)
   SAAT=$(date +%H:%M)
+
   # 08, 09 için oluşan sekizli sayı hatasının önüne geçmek için saatin,
   # sayısal karşılaştırmalarda kullanılması için saati UNIX ikilik saatine çevirdik.
   UNIXSAAT=$(date -d "$SAAT" +%s)
@@ -174,6 +179,7 @@ function kalan() {
 function secim_yap() {
   secilen=$((RANDOM%$1))
   (( ! secilen )) && secilen=$1
+
   alinan_yanit="$(sed -n "/#$secilen<#/,/#>$secilen#/p" ${icerik_al} | sed '1d;$d')"
 }
 

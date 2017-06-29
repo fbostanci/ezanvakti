@@ -21,6 +21,7 @@ function ezv_iftar() {
        export $(gawk '{printf "aksam_n=%s", $6}' \
          <(grep $(date -d 'tomorrow' +%d.%m.%Y) "${EZANVERI}"))
        bekleme_suresi_yarin $aksam_n; kalan
+
        printf '%b\n%b\n\n' \
          "${RENK7}${RENK2}\nİftar saati : ${RENK3}$aksam_n${RENK5} (Yarın)" \
          "${RENK2}Kalan süre  : ${RENK3}$kalan_sure${RENK0}"
