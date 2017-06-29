@@ -13,6 +13,7 @@ VERI_DIZINI=@datadir@/${AD}
 
 EZANVAKTI_DIZINI="${XDG_CONFIG_HOME:-$HOME/.config}"/${AD}
 EZANVAKTI_AYAR="${EZANVAKTI_DIZINI}"/ayarlar
+
 # Karar verme önceliği env olarak tanımlıysa RENK değişkenine verildi.
 # RENK null ise ayarlar dosyasından okunan RENK_KULLAN değerini kullanacak.
 #
@@ -58,6 +59,7 @@ function ucbirim_basligi() {
 
 EZANVERI="${EZANVAKTI_DIZINI}/${EZANVERI_ADI}"
 MPLAYER="mplayer -really-quiet -softvol -volume $SES"
+
 declare -A YUKLENEN_BILESENLER
 # http://git.archlinux.fr/yaourt.git/tree/src/lib/util.sh.in ( load_lib() )
 function bilesen_yukle() {
@@ -88,13 +90,13 @@ function denetle() {
   # ezanlar ve iftarimsak fonksiyonları özyinelemeli çalıştığı için
   # gün değişiminde tarihi güncellemek için tarih, denetle fonksiyonu içine alındı.
   TARIH=$(date +%d.%m.%Y)
-  SAAT=$(date +%H%M)
+  SAAT=$(date +%H:%M)
   # 08, 09 için oluşan sekizli sayı hatasının önüne geçmek için saatin,
-  # sayısal karşılaştırmalarda kullanılması için UNIX ikilik saatine çevirdik.
+  # sayısal karşılaştırmalarda kullanılması için saati UNIX ikilik saatine çevirdik.
   UNIXSAAT=$(date -d "$SAAT" +%s)
 
   [[ ! -f ${EZANVERI} ]] && { # ezanveri dosyası yoksa
-    (( GUNCELLEME_YAP )) && { bilesen_yukle guncelleyici; guncelleme_yap;} || {
+    (( GUNCELLEME_YAP )) && { bilesen_yukle guncelleyici; guncelleme_yap; } || {
       printf '%b%b\n%b\n' \
         "${RENK7}${RENK2}${EZANVERI}" \
         "${RENK3} dosyası bulunamadı." \
@@ -105,7 +107,7 @@ function denetle() {
 
   # Bugüne ait tarih ezanveri dosyasında yoksa
   [[ -z $(grep -o ${TARIH} "${EZANVERI}") ]] && {
-    (( GUNCELLEME_YAP )) && { bilesen_yukle guncelleyici; guncelleme_yap;} || {
+    (( GUNCELLEME_YAP )) && { bilesen_yukle guncelleyici; guncelleme_yap; } || {
       printf '%b%b\n%b\n' \
         "${RENK7}${RENK2}${EZANVERI_ADI}" \
         "${RENK3} dosyası güncel değil." \
@@ -154,7 +156,7 @@ function bekleme_suresi() {
   bekle=$(($(date -d "$1" +%s) - $(date +%s) + EZAN_OKUNMA_SURESI_FARKI))
 }
 
-#  Eğer hedef süre yarına aitse bu fonksiyon kullanılacak.
+# Eğer hedef süre yarına aitse bu fonksiyon kullanılacak.
 function bekleme_suresi_yarin() {
   bekle=$((86400 - $(date +%s) + $(date -d "$1" +%s) + EZAN_OKUNMA_SURESI_FARKI))
 }

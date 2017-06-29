@@ -24,7 +24,8 @@ _ezanvakti() {
   butun_uzun='--vakitler --conky --iftar --ayet \
 --esma --bilgi --hadis --kuran --dinle --arayuz --arayuz2 \
 --gui --gui2 --bilgi --sureler --ramazan --guncelle \
---yardim  --surum --gunler --aralik --kalan --config --yapilandirma'
+--yardim  --surum --gunler --aralik --kalan --config --yapilandirma --renk-öğren\
+--renk'
 
   case "$prev" in
 

@@ -2,6 +2,7 @@
 #
 #                           Ezanvakti Basit Arayüz  Bileşeni 1.2
 #
+#
 
 if ! [[ -x $(type -p yad) ]]
 then
