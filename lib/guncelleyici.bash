@@ -57,14 +57,17 @@ function arayuz_denetle() { ### Arayüz denetle {{{
   then
       arayuz=1
       au=Kdialog
+
   elif test -x "$(type -p yad)"
   then
       arayuz=2
       au=Yad
+
   elif test -x "$(type -p zenity)"
   then
       arayuz=3
       au=Zenity
+
   else
       printf "${RENK7}${RENK8} [${RENK1}BAŞARISIZ${RENK8}]${RENK0}\n"
       printf '\n%b\n%b\n%b\n' \
@@ -72,6 +75,7 @@ function arayuz_denetle() { ### Arayüz denetle {{{
         "Sisteminizde istenen uygulamalar bulunamadı." \
         "Konum bilgilerinizi ayarlar dosyasına elle girip yeniden deneyin.${RENK0}"
       exit 1
+
   fi
   printf "${RENK7}${RENK8} [${RENK2}BAŞARILI${RENK8}]${RENK0}\n"
   printf '%b\n' \
@@ -152,6 +156,7 @@ ulke_kodu=$(grep -w ${ULKE} ${VERI_DIZINI}/ulkeler/AAA-ULKELER | cut -d, -f2)
       sehir=$(zenity --entry --entry-text ${varsayilan_sehir} $(cut -d, -f1 < ${VERI_DIZINI}/ulkeler/${ulke}) \
               --title 'Şehir belirleme' --text 'Bulunduğunuz şehri seçin')
       (( $? == 1 )) && exit 1
+
   fi
 
   printf "${RENK7}${RENK3} ->${RENK8} Seçilen şehir:${RENK2} ${sehir}${RENK0}\n"
@@ -172,6 +177,7 @@ then
       then
           ilce=$(cut -d, -f1 < ${VERI_DIZINI}/ulkeler/${ulke}_ilceler/${sehir})
           printf "${RENK7}${RENK3} ->${RENK8} Seçilen ilçe:${RENK2}  ${ilce}${RENK3} (tek ilçe)${RENK0}\n"
+
       else
           arayuz_denetle
           [[ ${ulke} = TURKIYE ]] && g_sehir=${sehir} ||
@@ -195,6 +201,7 @@ then
               ilce=$(zenity --entry --entry-text ${g_sehir} $(cut -d, -f1 < ${VERI_DIZINI}/ulkeler/${ulke}_ilceler/${sehir}) \
                      --title 'İlçe belirleme' --text 'Bulunduğunuz ilçeyi seçin')
               (( $? == 1 )) && exit 1
+
           fi
           printf "${RENK7}${RENK3} ->${RENK8} Seçilen ilçe:${RENK2}  ${ilce}${RENK0}\n"
       fi
@@ -224,6 +231,7 @@ then
       "Çıkılıyor...${RENK0}"
     exit 1
 fi
+
 rm -f /tmp/baglantisina &>/dev/null
 printf "${RENK7}${RENK8} [${RENK2}BAŞARILI${RENK8}]${RENK0}\n"
 #}}}
@@ -252,6 +260,7 @@ SON
   (( $(wc -l < /tmp/ezanveri-$$) >= 20 )) && {
     mv -f /tmp/ezanveri-$$ "${EZANVERI}"
     printf "${RENK7}${RENK8} [${RENK2}BAŞARILI${RENK8}]${RENK0}\n"
+
     rm -f /tmp/ezv-perl-hata-$$ &>/dev/null
     . "${EZANVAKTI_AYAR}"
 
@@ -262,13 +271,16 @@ SON
   } || {
     printf "${RENK7}${RENK8} [${RENK1}BAŞARISIZ${RENK8}]${RENK0}\n"
     printf "${RENK7}${RENK3}\n$( < /tmp/ezv-perl-hata-$$)${RENK0}\n"
+
     rm -f /tmp/ezv-perl-hata-$$ &>/dev/null
     printf "${RENK7}${RENK4}\n!!! YENIDEN DENEYIN !!!${RENK0}\n"
 
     notify-send "Ezanvakti $SURUM" "${EZANVERI_ADI} dosyasının güncellenmesi başarısız oldu." \
       -i ${VERI_DIZINI}/simgeler/ezanvakti.png -t $GUNCELLEME_BILDIRIM_SURESI"000" -h int:transient:1
+
     rm -f /tmp/ezanveri-$$ &>/dev/null
     exit 1
+
   } #}}}
 
 printf '%-60b%b' \

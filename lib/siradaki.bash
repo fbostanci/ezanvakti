@@ -54,6 +54,7 @@ function siradaki_vakit() { # {{{
     siradaki)
       [[ $siradaki_vakit = "Yeni gün" ]] && ileti="$siradaki_vakit" || ileti="$siradaki_vakit ezanı"
       printf "${RENK7}${RENK3}\n${ileti}  ${RENK3}: $siradaki_vakit_kalan${RENK0}\n\n" ;;
+
     conky_siradaki)
       printf "${siradaki_vakit} : $siradaki_vakit_kalan\n"  |
         sed 's:saat:sa:;s:dakika:dk:;s:saniye:sn:' ;;

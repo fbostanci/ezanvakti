@@ -53,10 +53,12 @@ function oynatici_islem() {
               /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause > /dev/null 2>&1
               DURDURULAN+=('spotify')
           fi
+
       elif [[ ${oynatici} = deadbeef ]]
       then
           deadbeef --pause > /dev/null 2>&1
           DURDURULAN+=('deadbeef')
+
       elif [[ ${oynatici} = clementine ]]
       then
           if qdbus_sorgu clementine;
@@ -64,6 +66,7 @@ function oynatici_islem() {
               clementine --pause > /dev/null 2>&1
               DURDURULAN+=('clementine')
           fi
+
       elif [[ ${oynatici} = amarok ]]
       then
           if qdbus_sorgu amarok;
@@ -71,14 +74,17 @@ function oynatici_islem() {
               amarok --pause  > /dev/null 2>&1
               DURDURULAN+=('amarok')
           fi
+
       elif [[ ${oynatici} = rhythmbox ]]
       then
           rhythmbox-client --pause  > /dev/null 2>&1
           DURDURULAN+=('rhytmbox')
+
       elif [[ ${oynatici} = aqulung ]]
       then
           aqualung --pause > /dev/null 2>&1
           DURDURULAN+=('aqualung')
+
       elif [[ ${oynatici} = audacious ]]
       then
           if dbus_sorgu audacious;
@@ -86,18 +92,22 @@ function oynatici_islem() {
               audacious --pause > /dev/null 2>&1
               DURDURULAN+=('audacious')
           fi
+
       elif [[ ${oynatici} = banshee ]]
       then
           banshee --pause > /dev/null 2>&1
           DURDURULAN+=('banshee')
+
       elif [[ ${oynatici} = exaile ]]
       then
           exaile --play-pause > /dev/null 2>&1
           DURDURULAN+=('exaile')
+
       elif [[ ${oynatici} = moc ]]
       then
           moc --pause > /dev/null 2>&1
           DURDURULAN+=('moc')
+
       elif [[ ${oynatici} = cmus ]]
       then
           if [[ $(cmus-remote -C status | head -1) = status\ playing ]]
@@ -105,6 +115,7 @@ function oynatici_islem() {
               cmus-remote --pause > /dev/null 2>&1
               DURDURULAN+=('cmus')
           fi
+
       elif [[ ${oynatici} = qmmp ]]
       then
           if qdbus_sorgu qmmp;
@@ -112,6 +123,7 @@ function oynatici_islem() {
               qmmp --pause > /dev/null 2>&1
               DURDURULAN+=('qmmp')
           fi
+
       elif [[ ${oynatici} = juk ]]
       then
           if qdbus_sorgu juk;
@@ -123,52 +135,67 @@ function oynatici_islem() {
     }
   done
 
+################################################################
+ mplayer_calistir "${vakit_ezani}"                             #
+(( EZAN_DUASI_OKU )) && mplayer_calistir "${EZAN_DUASI}"       #
+################################################################
 
-  mplayer_calistir "${vakit_ezani}"
-  (( EZAN_DUASI_OKU )) && mplayer_calistir "${EZAN_DUASI}"
   for oynatici in ${DURDURULAN[@]}
   do
       if [[ ${oynatici} = spotify ]]
       then
           dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify \
                     /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause > /dev/null 2>&1
+
       elif [[ ${oynatici} = deadbeef ]]
       then
           deadbeef --play > /dev/null 2>&1
+
       elif [[ ${oynatici} = clementine ]]
       then
           clementine --play > /dev/null 2>&1
+
       elif [[ ${oynatici} = amarok ]]
       then
           amarok --play > /dev/null 2>&1
+
       elif [[ ${oynatici} = rhythmbox ]]
       then
           rhythmbox-client --play > /dev/null 2>&1
+
       elif [[ ${oynatici} = aqulung ]]
       then
           aqualung --play > /dev/null 2>&1
+
       elif [[ ${oynatici} = audacious ]]
       then
           audacious --play > /dev/null 2>&1
+
       elif [[ ${oynatici} = banshee ]]
       then
           banshee --play > /dev/null 2>&1
+
       elif [[ ${oynatici} = exaile ]]
       then
           exaile --play-pause > /dev/null 2>&1
+
       elif [[ ${oynatici} = moc ]]
       then
           moc --play > /dev/null 2>&1
+
       elif [[ ${oynatici} = cmus ]]
       then
           cmus-remote --play > /dev/null 2>&1
+
       elif [[ ${oynatici} = qmmp ]]
       then
           qmmp --play > /dev/null 2>&1
+
       elif [[ ${oynatici} = juk ]]
       then
           qdbus org.kde.juk /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Pause
       fi
+
   done
 }
 

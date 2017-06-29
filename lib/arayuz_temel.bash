@@ -4,6 +4,12 @@
 #
 #
 
+if ! [[ -x $(type -p yad) ]]
+then
+    printf "Bu özellik YAD gerektirmektedir...\n" >&2
+    exit 1
+fi
+
 sure_listesi='!1-Fatiha!2-Bakara!3-Al-i İmran!4-Nisa!5-Maide!6-Enam!7-Araf!8-Enfal!9-Tevbe!10-Yunus'
 sure_listesi+='!11-Hud!12-Yusuf!13-Rad!14-İbrahim!15-Hicr!16-Nahl!17-İsra!18-Kehf!19-Meryem!20-Taha'
 sure_listesi+='!21-Enbiya!22-Hac!23-Müminun!24-Nur!25-Furkan!26-Şuara!27-Neml!28-Kasas!29-Ankebut'
@@ -21,7 +27,10 @@ sure_listesi+='!111-Tebbet!112-İhlas!113-Felak!114-Nas'
 
 tamamlama_listesi='!Ayarlar!Ayet!Sabah!Öğle!İkindi!Akşam!Yatsı!yapilandirma!Hadis!Esma-ül Hüsna'
 tamamlama_listesi+='!Bilgi!Aylık Vakitler!Haftalık Vakitler!Dini Günler ve Geceler!hakkında'
-tamamlama_listesi+="!güncelle!yardım!arayuz2!000!özel pencere!$sure_listesi"
+tamamlama_listesi+="!güncelle!yardım!arayuz2!Kerahat!000!özel pencere!$sure_listesi"
+
+# düz komut çıktıları için rengi sıfırla.
+export RENK_KULLAN=0 RENK=0
 
 function g_vakitleri_al() {
   denetle; bugun
@@ -143,8 +152,7 @@ yad --form --separator=' ' --title="${AD^} $SURUM" --text "${mplayer_ileti}" \
   case $? in
     *)
       echo stop > /tmp/mplayer-$$.pipe 2>/dev/null
-      echo stop > /tmp/mplayer-$$.pipe2 2>/dev/null
-      rm -f /tmp/mplayer-$$.pipe{,2} &>/dev/null
+      rm -f /tmp/mplayer-$$.pipe &>/dev/null
       ;;
   esac
 }

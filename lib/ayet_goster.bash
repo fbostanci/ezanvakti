@@ -22,18 +22,21 @@ function ayet_araligi_goster() {
         "${AD}: hatalı sure_kodu: \`$sure_kod' " \
         'Sure kodu olarak 1-114 arası sayısal bir değer giriniz.'
       exit 1
+
   elif (( ${#sure_kod} > 3 ))
   then
       printf '%b\n%b\n' \
         "${AD}: hatalı sure_kodu: \`$sure_kod' " \
         'Girilen sure kodunun basamak sayısı <= 3 olmalı.'
       exit 1
+
   elif (( sure_kod < 1 || sure_kod > 114 ))
   then
       printf '%b\n%b\n' \
         "${AD}: hatalı sure_kodu: \`$sure_kod' " \
         'Girilen sure kodu 1 <= sure_kodu <= 114 arasında olmalı.'
       exit 1
+
   else  # Girilen sure koduna göre değişkenin önüne sıfır ekle.
       if (( ${#sure_kod} == 1 ))
       then
@@ -73,11 +76,13 @@ function ayet_araligi_goster() {
       then
           printf "$sure_adi Suresi için ayet aralığını yanlış girdiniz.\n"
           exit 1
+
       fi
       if (( ikinci_sayi > sure_ayet_sayisi ))
       then
           printf "$sure_adi Suresi $sure_ayet_sayisi ayetten oluşmaktadır.\n"
           exit 1
+
       fi
       if (( ilk_sayi == 0 )) || (( ikinci_sayi == 0 ))
       then
@@ -123,15 +128,17 @@ function ayet_goster() { # {{{
     printf '%b%b%b\n' \
       "${RENK3}\nGünlük Ayet ${RENK2}(${RENK8}" \
       "$(sed -n "${satir}p" ${VERI_DIZINI}/veriler/sureler_ayetler) $satir/6236${RENK2})${RENK8}\n\n" \
-      "$(sed -n "${satir}p" "${TEFSIR}")${RENK0}"
-    ;; 
+      "$(sed -n "${satir}p" "${TEFSIR}")${RENK0}" ;;
+
   bildirim)
     notify-send "Günlük Ayet ($(sed -n "${satir}p" ${VERI_DIZINI}/veriler/sureler_ayetler))" \
       "$(sed -n "${satir}p" "${TEFSIR}")" -t $AYET_BILDIRIM_SURESI"000" -h int:transient:1
     exit 0 ;;
+
   aralik)
     ayet_araligi_goster $2 $3
     exit 0 ;;
+
   esac
 } # }}}
 
