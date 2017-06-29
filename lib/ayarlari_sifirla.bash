@@ -14,7 +14,7 @@ function ayarlari_sifirla() {
 # TODO: yeni ayarlar dosyasını oluştur.
 
   ayar_sayisi=$(ls -A ".${EZANVAKTI_AYAR##*/}"_* |wc -l)
-  (( ayar_sayisi>4 )) && {
+  (( ayar_sayisi > 4 )) && {
 
       silinecek_dosya="$(ls -Atr ."${EZANVAKTI_AYAR##*/}"_* | head -n1)"
 

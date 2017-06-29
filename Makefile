@@ -1,6 +1,6 @@
 #
 #
-#               Ezanvakti 6.0 Makefile
+#               Ezanvakti 6.1 Makefile
 #
 #
 
@@ -28,14 +28,14 @@ ifeq "$(DUZELTME)" ""
 	DUZELTME = bilinmeyen
 endif
 
-SCRIPTS = ezanvakti.bash lib/temel_islevler.bash lib/arayuz.bash \
+BETIKLER = ezanvakti.bash lib/temel_islevler.bash lib/arayuz.bash \
 	lib/arayuz2.bash lib/ezanvakti-sleep.bash data/ezanvakti.desktop \
 	etc/ayarlar etc/autostart/ezanvakti.desktop
 
-all: $(SCRIPTS)
+all: $(BETIKLER)
 
-$(SCRIPTS): ${SCRIPTS:=.in}
-	@echo '	GEN' $@
+$(BETIKLER): ${BETIKLER:=.in}
+	@echo '	YAP' $@
 	@$(SED) -e 's:@AD@:$(AD):' \
 		-e 's:@SURUM@:$(SURUM):' \
 		-e 's:@DUZELTME@:$(DUZELTME):' \
@@ -46,7 +46,7 @@ $(SCRIPTS): ${SCRIPTS:=.in}
 		-e 's:@sounddir@:$(sounddir):' \
 	$@.in > $@
 
-install: $(SCRIPTS)
+install: $(BETIKLER)
 	$(INSTALL) -vd $(DESTDIR)$(bindir)
 	$(INSTALL) -vd $(DESTDIR)$(libdir)/$(AD)
 	$(INSTALL) -vd $(DESTDIR)$(sysconfdir)/$(AD)
@@ -133,7 +133,7 @@ uninstall:
 	@echo "$(AD) başarıyla sisteminizden kaldırıldı.."
 
 clean:
-	rm -f $(SCRIPTS)
+	rm -f $(BETIKLER)
 
 dist:
 	@echo "Kaynak kod paketi oluşturuluyor. Lütfen bekleyiniz..."

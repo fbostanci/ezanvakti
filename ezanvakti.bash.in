@@ -43,8 +43,8 @@ case $1 in
       -i|--ikindi) vakitler ikindi ;;
       -a|--ak[sş]am) vakitler aksam ;;
       -y|--yats[ıi]) vakitler yatsi ;;
-      -t|--s[ıi]radaki) bilesen_yukle siradaki
-                        siradaki_vakit siradaki ;;
+      -t|--s[ıi]radaki) vakitler siradaki ;;
+      -k|--kerahat) vakitler kerahat ;;
       7|--haftal[ıi]k) vakitler haftalik ;;
       30|--ayl[ıi]k) vakitler aylik ;;
       --osd|--bildirim) vakitler bildirim ;;
@@ -61,8 +61,10 @@ case $1 in
             vakitler aksam ;;
   -vy|--vy) bilesen_yukle vakitleri_goster
             vakitler yatsi ;;
-  -vt|--vt) bilesen_yukle siradaki
-            siradaki_vakit siradaki ;;
+  -vt|--vt) bilesen_yukle vakitleri_goster
+            vakitler siradaki ;;
+  -vk|--vk) bilesen_yukle vakitleri_goster
+            vakitler kerahat ;;
   -v7|--v7) bilesen_yukle vakitleri_goster
             vakitler haftalik ;;
   -v30|--v30) bilesen_yukle vakitleri_goster

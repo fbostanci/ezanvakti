@@ -1,6 +1,8 @@
-
-
-
+#
+#
+#
+#
+#
 
 function siradaki_vakit() { # {{{
   denetle; bugun
@@ -57,3 +59,5 @@ function siradaki_vakit() { # {{{
         sed 's:saat:sa:;s:dakika:dk:;s:saniye:sn:' ;;
   esac
 }
+
+# }}}
