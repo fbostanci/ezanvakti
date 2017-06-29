@@ -71,7 +71,7 @@ function g_vakitleri_al() {
       bekleme_suresi $ogle_n; kalan
       v_ileti='Öğle ezanına kalan süre :'
       v_kalan="$kalan_sure"
-      vakit_bilgisi='<b>Şimdi Kerahat Vakti 2</b>'
+      vakit_bilgisi='<b>Şimdi Kerahat Vakti 3</b>'
 
   elif (( UNIXSAAT < ikindi ))
   then
