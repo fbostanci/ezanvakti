@@ -50,10 +50,6 @@ function vakitler() { # {{{
       printf "${RENK7}${RENK2}\nAkşam ezanı  ${RENK3}: $aksam_n $aksam_kalan${RENK0}\n\n" ;;
     yatsi)
       printf "${RENK7}${RENK2}\nYatsı ezanı  ${RENK3}: $yatsi_n $yatsi_kalan${RENK0}\n\n" ;;
-    siradaki)
-      bilesen_yukle siradaki; siradaki_vakit siradaki ;;
-    kerahat)
-      bilesen_yukle kerahat; kerahat_vakitleri ;;
     aylik)
       if ! grep -qo $(date -d 'next week' +%d.%m.%Y) "${EZANVERI}"
       then

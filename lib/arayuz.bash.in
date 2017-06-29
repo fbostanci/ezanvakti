@@ -26,6 +26,8 @@ bilesen_yukle mplayer_yonetici
 bilesen_yukle ayet_goster
 bilesen_yukle kuran_dinletici
 bilesen_yukle vakitleri_goster
+bilesen_yukle kerahat
+bilesen_yukle dini_gunler
 
 # düz komut çıktıları için rengi sıfırla.
 export RENK_KULLAN=0 RENK=0
@@ -51,7 +53,9 @@ for ((i=1; i<=CIZGI_UZUNLUGU; i++))
 
 function arayuz() {
   g_vakitleri_al
-  local strng donus str str2
+
+  local strng donus
+  local str str2
 
 strng=$(yad --form --text "$(printf "${GELISMIS_ARAYUZ_BICIMI}" "${TARIH}" "$(date +%H:%M:%S)" \
   "${ILCE} / ${ULKE}" "${elx}" "${vakit_bilgisi}${ozel_ileti}" "${elx}" \
@@ -61,7 +65,7 @@ strng=$(yad --form --text "$(printf "${GELISMIS_ARAYUZ_BICIMI}" "${TARIH}" "$(da
 --field='Sureler:CB' \
 "!000-Özel Pencere$sure_listesi" \
 --field='Seçimler:CB' \
-'!Ayet!Hadis!Bilgi!Esma-ül Hüsna!Haftalık Vakitler!Aylık Vakitler!Dini Günler ve Geceler!Yapılandırma Yöneticisi' \
+'!Haftalık Vakitler!Aylık Vakitler!Kerahat Vakitleri!Dini Günler ve Geceler!Ayet!Hadis!Bilgi!Esma-ül Hüsna!Yapılandırma Yöneticisi' \
 --field=Başlatıcı:CE \
 "${tamamlama_listesi}" \
 --button='gtk-ok:150' --button="gtk-close:121" \
@@ -96,9 +100,9 @@ then
 
     elif [[ $str = Akşam ]]
     then
-           mplayer_ileti=" Akşam ezanı dinletiliyor..\n\n Okuyan : ${EZAN_OKUYAN}"
-           mplayer_calistir "${AKSAM_EZANI}" &
-           pencere_bilgi; arayuz
+            mplayer_ileti=" Akşam ezanı dinletiliyor..\n\n Okuyan : ${EZAN_OKUYAN}"
+            mplayer_calistir "${AKSAM_EZANI}" &
+            pencere_bilgi; arayuz
 
     elif [[ $str = Yatsı ]]
     then
@@ -142,12 +146,17 @@ then
             vakitler haftalik > /tmp/ezanvakti-6
             g_secim_goster; arayuz
 
+    elif [[ $str = 'Kerahat Vakitleri' ]]
+    then
+            secim_basligi='Kerahat Vakitleri'
+            kerahat_vakitleri ucbirim > /tmp/ezanvakti-6
+            g_secim_goster; arayuz
+
     elif [[ $str = Dini Günler ve Geceler ]]
     then
-           bilesen_yukle dini_gunler
-           secim_basligi="$(date +%Y) Dini Günler ve Geceler"
-           gunler > /tmp/ezanvakti-6
-           g_secim_goster; arayuz
+            secim_basligi="$(date +%Y) Dini Günler ve Geceler"
+            gunler > /tmp/ezanvakti-6
+            g_secim_goster; arayuz
 
     elif [[ $str = @(Ayarlar|yapilandirma|Yapılandırma Yöneticisi)  ]]
     then

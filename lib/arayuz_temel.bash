@@ -73,19 +73,26 @@ function g_vakitleri_al() {
       v_kalan="$kalan_sure"
       vakit_bilgisi='<b>Şimdi Kerahat Vakti 3</b>'
 
-  elif (( UNIXSAAT < ikindi ))
+  elif (( UNIXSAAT > ogle )) && (( UNIXSAAT < ikindi ))
   then
       bekleme_suresi $ikindi_n; kalan
       v_ileti='İkindi ezanına kalan süre :'
       v_kalan="$kalan_sure"
       vakit_bilgisi='<b>Şimdi Öğle Vakti</b>'
 
-  elif (( UNIXSAAT < aksam )) && (( UNIXSAAT >= kv_aksam ))
+  elif (( UNIXSAAT > ikindi )) && (( UNIXSAAT < kv_aksam ))
   then
       bekleme_suresi $aksam_n; kalan
       v_ileti='Akşam ezanına kalan süre :'
       v_kalan="$kalan_sure"
       vakit_bilgisi='<b>Şimdi Kerahat Vakti 4</b>'
+
+  elif (( UNIXSAAT < aksam )) && (( UNIXSAAT >= kv_aksam ))
+  then
+      bekleme_suresi $aksam_n; kalan
+      v_ileti='Akşam ezanına kalan süre :'
+      v_kalan="$kalan_sure"
+      vakit_bilgisi='<b>Şimdi Kerahat Vakti 5</b>'
 
   elif (( UNIXSAAT < yatsi ))
   then
@@ -94,7 +101,7 @@ function g_vakitleri_al() {
       v_kalan="$kalan_sure"
       vakit_bilgisi='<b>Şimdi Akşam Vakti</b>'
 
-  elif (( UNIXSAAT >= yenigun ))
+  elif (( UNIXSAAT <= yeni_gun ))
   then
       v_ileti='Yeni gün için bekleniyor..'
       v_kalan=
@@ -109,9 +116,9 @@ function g_vakitleri_yaz() {
 }
 
 function g_secim_goster() {
-  yad --title "${AD^} $SURUM - ${secim_basligi}" --text-info --filename=/tmp/ezanvakti-6 --width=560 --height=300 --wrap \
-      --button='gtk-close' --window-icon=${VERI_DIZINI}/simgeler/ezanvakti2.png --back="$ARKAPLAN_RENGI"\
-      --fore="$YAZI_RENGI" --mouse --sticky
+  yad --title "${AD^} $SURUM - ${secim_basligi}" --text-info --filename=/tmp/ezanvakti-6 \
+      --width=560 --height=300 --wrap --button='gtk-close' --window-icon=${VERI_DIZINI}/simgeler/ezanvakti2.png \
+      --back="$ARKAPLAN_RENGI" --fore="$YAZI_RENGI" --mouse --sticky
 }
 
 function g_hakkinda() {
@@ -156,7 +163,7 @@ strng=$(yad --form \
 
 donus=$(echo $?)
 
-declare -x $(sed 's:|: :g' <<<"$strng" | gawk '{print "str="$1 "\nstr2="$2}')
+declare -x $(sed 's:|: :g' <<< "$strng" | gawk '{print "str="$1 "\nstr2="$2}')
 
 case $donus in
   151)
