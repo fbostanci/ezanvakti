@@ -1,8 +1,8 @@
-Son Güncelleme:  Fri, 03 Feb 2017 10:01:24 +0300
+Son Güncelleme:  Fri, 30 Jun 2017 15:57:18 +0300
 
 <br>
 
-Ezanvakti 6.0 GNU/Linux için ezan vakti bildirici
+Ezanvakti 6.1 GNU/Linux için ezan vakti bildirici
 ====
 
 <br>
@@ -23,6 +23,8 @@ Genel Özellikleri
 *  Otomatik ezan vakitleri güncelleme.
 *  Ezan vakitlerini ve vakitlere ne kadar süre kaldığını toplu/tekil gösterme.
 *  İftar vaktine ne kadar süre kaldığını gösterme.
+*  Sıradaki vakit, ve vakte ne kadar süre kaldığını gösterme.
+*  Kerahat vakitlerini gösterme.
 *  Her vakit için farklı makamda ezan ve ezan duası.
 *  Vakit ezanı okunurken desteklenen müzik oynatıcıyı ezan bitimine kadar duraklatma
 *  3 farklı okuyucu seçimli kuran dinletme.
