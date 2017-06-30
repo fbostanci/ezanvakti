@@ -1,7 +1,7 @@
 # Maintainer: Fatih Bostancı <faopera@gmail.com>
 
 pkgname=ezanvakti
-pkgver=20170131
+pkgver=20170630
 pkgrel=1
 pkgdesc="Prayer Times script for Turkish users"
 arch=('any')
