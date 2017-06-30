@@ -39,7 +39,7 @@ Genel Özellikleri
 *  Geniş özelleştirme desteği.
 *  Basit seviye arayüz desteği.
 
-[Ekran görüntüleri için tıklayınız.](https://gitlab.com/ironic/ezanvakti/wikis/ekran-goruntuleri)
+[Ekran görüntüleri için tıklayınız.](https://gitlab.com/fbostanci/ezanvakti/wikis/ekran-goruntuleri)
 =
 
 <br><br>
