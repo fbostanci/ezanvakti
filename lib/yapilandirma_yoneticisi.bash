@@ -33,14 +33,18 @@ ayr4=/tmp/ezanvakti_ayr4
 ipcrm -M 190707  > /dev/null 2>&1
 
 yad --plug=190707 --tabnum=1 --form \
---item-separator='\n' \
 --field='Ezanveri Adı:' \
 --field='Ülke:' \
 --field='Şehir:' \
---field='İlçe' \
+--field='İlçe:' \
 --field='Otomatik Ezanveri Güncelleme:CHK' \
+--field='\nTefsir ve Kuran okuyucu seçimleri\n:LBL' \
+--field='Kullanılacak Tefsir:CB' \
+--field='Kuran okuyan:CB' \
 "${EZANVERI_ADI}" "${ULKE}" "${SEHIR}" \
-"${ILCE}" "$d1" > $ayr1 &
+"${ILCE}" "$d1" " " \
+ "^${TEFSIR_SAHIBI}!diyanet!ozturk!ates!yazir"  \
+"^${OKUYAN}!AlGhamdi!AsShatree!AlAjmy"  > $ayr1 &
 yad --plug=190707 --tabnum=2 --form \
 --field='Oynatıcı Duraklat:CHK' \
 --field='Ezan Duası Oku:CHK' \
@@ -79,18 +83,27 @@ yad --plug=190707 --tabnum=3 --form \
 "$GUNCELLEME_BILDIRIM_SURESI[!10..30[!1]]" > $ayr3 &
 yad --plug=190707 --tabnum=4 --form \
 --field='Uçbirimde renk kullan:CHK' \
---field='Kullanılacak Tefsir:CB' \
---field='Kuran okuyan:CB' \
---field='\nGelişmiş arayüzde açılan metin kutusu renk seçimleri\n:LBL' \
+--field='\nGelişmiş arayüz için renk seçimleri\n:LBL' \
 --field='Metin kutusu arka plan rengi:CLR' \
 --field='Metin kutusu yazı rengi:CLR' \
-"$d9" "^${TEFSIR_SAHIBI}!diyanet!ozturk!ates!yazir" \
-"^${OKUYAN}!AlGhamdi!AsShatree!AlAjmy" " " \
-"${ARKAPLAN_RENGI}" "${YAZI_RENGI}" > $ayr4 &
+--field='Arayüz tarih saat rengi:CLR' \
+--field='Arayüz konum rengi:CLR' \
+--field='Arayüz çizgi rengi:CLR' \
+--field='Arayüz simdiki vakit rengi:CLR' \
+--field='Arayüz vakitler rengi:CLR' \
+--field='Arayüz seçili vakit rengi:CLR' \
+--field='Arayüz kalan süre rengi:CLR' \
+--field='Arayüz seçke adları rengi:CLR' \
+"$d9" " " "${ARKAPLAN_RENGI}" \
+"${YAZI_RENGI}" "${ARAYUZ_TARIH_SAAT_RENGI}" \
+"${ARAYUZ_KONUM_RENGI}" "${ARAYUZ_CIZGI_RENGI}" \
+"${ARAYUZ_SIMDIKI_VAKIT_RENGI}" "${ARAYUZ_VAKITLER_RENGI}"  \
+"${ARAYUZ_SECILI_VAKIT_RENGI}" "${ARAYUZ_KALAN_SURE_RENGI}" \
+"${ARAYUZ_SECKE_ADLARI_RENGI}" > $ayr4 &
 yad --notebook --key=190707 \
 --title "${AD^} ${SURUM} - Yapılandırma Yöneticisi" \
 --tab="Ezanveri Ayarları" --tab="Ezan Ayarları" \
---tab="Bildirim Ayarları" --tab="Çeşitli Ayarlar" \
+--tab="Bildirim Ayarları" --tab="Renk Ayarları" \
 --fixed --center --tab-pos=top --buttons-layout='spread' \
 --window-icon=${VERI_DIZINI}/simgeler/ezanvakti2.png \
 --button='gtk-go-back:171' --button='gtk-open:172' \
@@ -161,9 +174,27 @@ yad --notebook --key=190707 \
             then
                 sed -i "s:\(GUNCELLEME_YAP=\).*:\1$_GUNCELLEME_YAP:" "${EZANVAKTI_AYAR}"
             fi
+
+            if [[ ${liste1[6]} != ${TEFSIR_SAHIBI} ]]
+            then
+                if [[ -n ${liste1[6]} ]]
+                then
+                    sed -i "s:\(TEFSIR_SAHIBI=\).*:\1\'${liste1[6]}\':" "${EZANVAKTI_AYAR}"
+                fi
+            fi
+
+            if [[ ${liste1[7]} != ${OKUYAN} ]]
+            then
+                if [[ -n ${liste1[7]} ]]
+                then
+                    sed -i "s:\(^OKUYAN=\).*:\1\'${liste1[7]}\':" "${EZANVAKTI_AYAR}"
+                fi
+            fi
+
 ######################################################################
 #                         LİSTE 2 İŞLEMLERİ                          #
 ######################################################################
+
             if [[ ${liste2[0]} != TRUE ]]
             then
                 _OYNATICI_DURAKLAT=0
@@ -235,9 +266,11 @@ yad --notebook --key=190707 \
                     sed -i "s:\(EZAN_OKUYAN=\).*:\1\'${liste2[10]}\':" "${EZANVAKTI_AYAR}"
                 fi
             fi
+
 ######################################################################
 #                         LİSTE 3 İŞLEMLERİ                          #
 ######################################################################
+
             if [[ ${liste3[0]} != TRUE ]]
             then
                 _SABAH_OKUNSUN_MU=0
@@ -332,9 +365,11 @@ yad --notebook --key=190707 \
             then
                 sed -i "s:\(GUNCELLEME_BILDIRIM_SURESI=\).*:\1\'${liste3[11]}\':" "${EZANVAKTI_AYAR}"
             fi
+
 ######################################################################
 #                         LİSTE 4 İŞLEMLERİ                          #
 ######################################################################
+
             if [[ ${liste4[0]} != TRUE ]]
             then
                 _RENK_KULLAN=0
@@ -347,21 +382,7 @@ yad --notebook --key=190707 \
                 sed -i "s:\(^RENK_KULLAN=\).*:\1$_RENK_KULLAN:" "${EZANVAKTI_AYAR}"
             fi
 
-            if [[ ${liste4[1]} != ${TEFSIR_SAHIBI} ]]
-            then
-                if [[ -n ${liste4[1]} ]]
-                then
-                    sed -i "s:\(TEFSIR_SAHIBI=\).*:\1\'${liste4[1]}\':" "${EZANVAKTI_AYAR}"
-                fi
-            fi
 
-            if [[ ${liste4[2]} != ${OKUYAN} ]]
-            then
-                if [[ -n ${liste4[2]} ]]
-                then
-                    sed -i "s:\(^OKUYAN=\).*:\1\'${liste4[2]}\':" "${EZANVAKTI_AYAR}"
-                fi
-            fi
 
 #             if [[ ${liste4[3]} != ${RENK3} ]]
 #             then
@@ -393,14 +414,54 @@ yad --notebook --key=190707 \
 #                 sed -i "s:\(RENK8=\).*:\1\'${liste4[8]}\':" "${EZANVAKTI_AYAR}"
 #             fi
 
-            if [[ ${liste4[4]} != ${ARKAPLAN_RENGI} ]]
+            if [[ ${liste4[2]} != ${ARKAPLAN_RENGI} ]]
             then
-                sed -i "s:\(ARKAPLAN_RENGI=\).*:\1\'${liste4[4]}\':" "${EZANVAKTI_AYAR}"
+                sed -i "s:\(ARKAPLAN_RENGI=\).*:\1\'${liste4[2]}\':" "${EZANVAKTI_AYAR}"
             fi
 
-            if [[ ${liste4[5]} != ${YAZI_RENGI} ]]
+            if [[ ${liste4[3]} != ${YAZI_RENGI} ]]
             then
-                sed -i "s:\(YAZI_RENGI=\).*:\1\'${liste4[5]}\':" "${EZANVAKTI_AYAR}"
+                sed -i "s:\(YAZI_RENGI=\).*:\1\'${liste4[3]}\':" "${EZANVAKTI_AYAR}"
+            fi
+
+            if [[ ${liste4[4]} != ${ARAYUZ_TARIH_SAAT_RENGI} ]]
+            then
+                sed -i "s:\(ARAYUZ_TARIH_SAAT_RENGI=\).*:\1\'${liste4[4]}\':" "${EZANVAKTI_AYAR}"
+            fi
+
+            if [[ ${liste4[5]} != ${ARAYUZ_KONUM_RENGI} ]]
+            then
+                sed -i "s:\(ARAYUZ_KONUM_RENGI=\).*:\1\'${liste4[5]}\':" "${EZANVAKTI_AYAR}"
+            fi
+
+            if [[ ${liste4[6]} != ${ARAYUZ_CIZGI_RENGI} ]]
+            then
+                sed -i "s:\(ARAYUZ_CIZGI_RENGI=\).*:\1\'${liste4[6]}\':" "${EZANVAKTI_AYAR}"
+            fi
+
+            if [[ ${liste4[7]} != ${ARAYUZ_SIMDIKI_VAKIT_RENGI} ]]
+            then
+                sed -i "s:\(ARAYUZ_SIMDIKI_VAKIT_RENGI=\).*:\1\'${liste4[7]}\':" "${EZANVAKTI_AYAR}"
+            fi
+
+            if [[ ${liste4[8]} != ${ARAYUZ_VAKITLER_RENGI} ]]
+            then
+                sed -i "s:\(ARAYUZ_VAKITLER_RENGI=\).*:\1\'${liste4[8]}\':" "${EZANVAKTI_AYAR}"
+            fi
+
+            if [[ ${liste4[9]} != ${ARAYUZ_SECILI_VAKIT_RENGI} ]]
+            then
+                sed -i "s:\(ARAYUZ_SECILI_VAKIT_RENGI=\).*:\1\'${liste4[9]}\':" "${EZANVAKTI_AYAR}"
+            fi
+
+            if [[ ${liste4[10]} != ${ARAYUZ_KALAN_SURE_RENGI} ]]
+            then
+                sed -i "s:\(ARAYUZ_KALAN_SURE_RENGI=\).*:\1\'${liste4[10]}\':" "${EZANVAKTI_AYAR}"
+            fi
+
+            if [[ ${liste4[11]} != ${ARAYUZ_SECKE_ADLARI_RENGI} ]]
+            then
+                sed -i "s:\(ARAYUZ_SECKE_ADLARI_RENGI=\).*:\1\'${liste4[11]}\':" "${EZANVAKTI_AYAR}"
             fi
 
 #           # source

@@ -1,6 +1,6 @@
 #
 #
-#
+#       Ezanvakti Kuran dinletme bileşeni
 #
 #
 
