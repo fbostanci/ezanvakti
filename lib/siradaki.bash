@@ -1,6 +1,6 @@
 #
 #
-#
+#       Ezanvakti sıradaki vakit gösterme bileşeni
 #
 #
 

@@ -1,6 +1,6 @@
 #
 #
-#
+#        Ezanvakti Conky bileşeni
 #
 #
 

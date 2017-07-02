@@ -184,6 +184,40 @@ YAZI_RENGI='#FFBD4D'
 
 
 #                           #
+#*****Arayüz Ayarları*****#
+#                           #
+
+
+# Arayüz çizgi simgesi
+ARAYUZ_CIZGI_SIMGESI='@'
+
+# Arayüz çizgi karakter uzunluğu
+ARAYUZ_CIZGI_UZUNLUGU=26
+
+# Arayüz tarih ve saat rengi
+ARAYUZ_TARIH_SAAT_RENGI='#00FF007F'
+
+# Arayüz ilçe / ülke rengi
+ARAYUZ_KONUM_RENGI='#00FF007F'
+
+# Arayüz çizgi rengi
+ARAYUZ_CIZGI_RENGI='#00FF007F'
+
+# Arayüz şimdiki vakit rengi
+ARAYUZ_SIMDIKI_VAKIT_RENGI='#00FF007F'
+
+# Arayüzdeki vakitlerin rengi
+ARAYUZ_VAKITLER_RENGI='#00FF007F'
+
+# Arayüzdeki seçili vakit rengi
+ARAYUZ_SECILI_VAKIT_RENGI='#00FF007F'
+
+# Arayüzde sıradaki vakte kalan süre bilgisi rengi
+ARAYUZ_KALAN_SURE_RENGI='#00FF007F'
+
+ARAYUZ_SECKE_ADLARI_RENGI='#00FF007F'
+
+#                           #
 #*****Gelişmiş Ayarlar******#
 #                           #
 
@@ -197,8 +231,5 @@ CONKY_BICIMI='%-14s%s\n%-15s%s\n%-17s%s\n%-17s%s\n%-14s%s\n%-17s%s\n'
 # Printf arayüzlerdeki vakit çıktısı biçimi
 VAKIT_BICIMI='\t\t\t%-14s%s\n\t\t\t%-16s%s\n\t\t\t%-18s%s\n\t\t\t%-18s%s\n\t\t\t%-14s%s\n\t\t\t%-18s%s'
 
-# Arayüz çizgi simgesi
-CIZGI_SIMGESI='@'
 
-# Arayüz çizgi karakter uzunluğu
-CIZGI_UZUNLUGU=26
+

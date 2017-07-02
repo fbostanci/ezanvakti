@@ -23,7 +23,7 @@ function dbus_sorgu() {
 
   komut=$(dbus-send --print-reply --dest=org.mpris.MediaPlayer2.$1\
         /org/mpris/MediaPlayer2 org.freedesktop.DBus.Properties.Get string:'org.mpris.MediaPlayer2.Player' \
-        string:'PlaybackStatus' | awk -F'[\"]' '/string/ {print $2;}')
+        string:'PlaybackStatus' | gawk -F'[\"]' '/string/ {print $2;}')
 
   if [[ ${komut} = Playing ]]
   then

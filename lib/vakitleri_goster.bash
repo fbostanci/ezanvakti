@@ -1,6 +1,6 @@
 #
 #
-#
+#       Ezanvakti vakitleri gösterme bileşeni
 #
 #
 

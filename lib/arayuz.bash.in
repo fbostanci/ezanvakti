@@ -10,7 +10,7 @@
 # ana betik bağımlığını azalt . Ortak yeni fonksiyonlar yaz.@
 # Çoklu çalışmayı engelle.
 # sistem tepsisi desteği .(?)
-# arayüzde html kod denemeleri.
+# arayüzde html kod denemeleri. @
 
 . @libdir@/@AD@/temel_islevler.bash
 . @libdir@/@AD@/arayuz_temel.bash
@@ -18,9 +18,9 @@
 bilesen_yukle mplayer_yonetici
 
 elx=''
-for ((i=1; i<=CIZGI_UZUNLUGU; i++))
+for ((i=1; i<=ARAYUZ_CIZGI_UZUNLUGU; i++))
 {
-  elx+="${CIZGI_SIMGESI}"
+  elx+="${ARAYUZ_CIZGI_SIMGESI}"
 }
 
 (( GUN_ANIMSAT )) && {
@@ -41,18 +41,24 @@ function arayuz() {
   local strng donus
   local str str2
 
-strng=$(yad --form --text "$(printf "${GELISMIS_ARAYUZ_BICIMI}" "${TARIH}" "$(date +%H:%M:%S)" \
-  "${ILCE} / ${ULKE}" "${elx}" "${vakit_bilgisi}${ozel_ileti}" "${elx}" \
-  "$(g_vakitleri_yaz)" "${v_ileti}" "${v_kalan}")" \
---field='Ezanlar:CB' \
+strng=$(yad --form --text "$(printf "${GELISMIS_ARAYUZ_BICIMI}" \
+  "<span foreground=\'${ARAYUZ_TARIH_SAAT_RENGI}\'>${TARIH}</span>" \
+  "<span foreground=\'${ARAYUZ_TARIH_SAAT_RENGI}\'>$(date +%H:%M:%S)</span>" \
+  "<span foreground=\'${ARAYUZ_KONUM_RENGI}\'>${ILCE} / ${ULKE}</span>" \
+  "<span foreground=\'${ARAYUZ_CIZGI_RENGI}\'>${elx}</span>" \
+  "<span foreground=\'${ARAYUZ_SIMDIKI_VAKIT_RENGI}\'>${vakit_bilgisi}${ozel_ileti}</span>" \
+  "<span foreground=\'${ARAYUZ_CIZGI_RENGI}\'>${elx}</span>" \
+  "<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>$(g_vakitleri_yaz)</span>" \
+  "<span foreground=\'${ARAYUZ_KALAN_SURE_RENGI}\'>${v_ileti}</span>" \
+  "<span foreground=\'${ARAYUZ_KALAN_SURE_RENGI}\'>${v_kalan}</span>")" \
+--field="<span foreground=\'${ARAYUZ_SECKE_ADLARI_RENGI}\'>Ezanlar</span>:CB" \
 '!Sabah!Öğle!İkindi!Akşam!Yatsı' \
---field='Sureler:CB' \
+--field="<span foreground=\'${ARAYUZ_SECKE_ADLARI_RENGI}\'>Sureler</span>:CB" \
 "!000-Özel Pencere$sure_listesi" \
---field='Seçimler:CB' \
+--field="<span foreground=\'${ARAYUZ_SECKE_ADLARI_RENGI}\'>Seçimler</span>:CB" \
 '!Haftalık Vakitler!Aylık Vakitler!Kerahat Vakitleri!Dini Günler ve Geceler!Ayet!Hadis!Bilgi!Esma-ül Hüsna!Yapılandırma Yöneticisi' \
---field=Başlatıcı:CE \
-"${tamamlama_listesi}" \
---button='gtk-ok:150' --button="gtk-close:121" \
+--field="<span foreground=\'${ARAYUZ_SECKE_ADLARI_RENGI}\'>Başlatıcı</span>:CE" \
+"${tamamlama_listesi}" --button='gtk-ok:150' --button="gtk-close:121" \
 --image=${VERI_DIZINI}/simgeler/ezanvakti.png --window-icon=${VERI_DIZINI}/simgeler/ezanvakti2.png \
 --title "${AD^} $SURUM" --center --fixed)
 

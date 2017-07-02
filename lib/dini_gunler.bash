@@ -1,6 +1,6 @@
 #
 #
-#
+#       Ezanvakti Dini günleri ve geceleri gösterme bileşeni
 #
 #
 
