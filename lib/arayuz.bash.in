@@ -5,15 +5,19 @@
 #
 #set -x
 # TODO: 2.0 için yapılacaklar
-# haftalık ve aylık vakitler çıktılarını göstermeyi ekle. @
-# dini günler gösterimini ekle.@
-# ana betik bağımlığını azalt . Ortak yeni fonksiyonlar yaz.@
-# Çoklu çalışmayı engelle.
+# haftalık ve aylık vakitler çıktılarını göstermeyi ekle.@TMM
+# dini günler gösterimini ekle.@TMM
+# ana betik bağımlığını azalt . Ortak yeni fonksiyonlar yaz.@TMM
+# Çoklu çalışmayı engelle.@TMM
 # sistem tepsisi desteği .(?)
-# arayüzde html kod denemeleri. @
+# arayüzde html kod denemeleri.@TMM
 
 . @libdir@/@AD@/temel_islevler.bash
 . @libdir@/@AD@/arayuz_temel.bash
+
+# Yalnıca bir arayüz örneği çalışması için
+# pid denetimi yapılsın.
+arayuz_pid_denetle
 
 bilesen_yukle mplayer_yonetici
 
@@ -47,8 +51,7 @@ strng=$(yad --form --text "$(printf "${GELISMIS_ARAYUZ_BICIMI}" \
   "<span foreground=\'${ARAYUZ_KONUM_RENGI}\'>${ILCE} / ${ULKE}</span>" \
   "<span foreground=\'${ARAYUZ_CIZGI_RENGI}\'>${elx}</span>" \
   "<span foreground=\'${ARAYUZ_SIMDIKI_VAKIT_RENGI}\'>${vakit_bilgisi}${ozel_ileti}</span>" \
-  "<span foreground=\'${ARAYUZ_CIZGI_RENGI}\'>${elx}</span>" \
-  "<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>$(g_vakitleri_yaz)</span>" \
+  "<span foreground=\'${ARAYUZ_CIZGI_RENGI}\'>${elx}</span>" "$(g_vakitleri_yaz)" \
   "<span foreground=\'${ARAYUZ_KALAN_SURE_RENGI}\'>${v_ileti}</span>" \
   "<span foreground=\'${ARAYUZ_KALAN_SURE_RENGI}\'>${v_kalan}</span>")" \
 --field="<span foreground=\'${ARAYUZ_SECKE_ADLARI_RENGI}\'>Ezanlar</span>:CB" \
@@ -170,7 +173,7 @@ then
             bilesen_yukle guncelleyici
             guncelleme_yap; arayuz
 
-    elif [[ $str = hakkında ]]
+    elif [[ $str = @(hakkında|about) ]]
     then
             g_hakkinda; arayuz
 

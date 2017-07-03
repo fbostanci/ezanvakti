@@ -27,10 +27,34 @@ sure_listesi+='!111-Tebbet!112-İhlas!113-Felak!114-Nas'
 
 tamamlama_listesi='!Ayarlar!Ayet!Sabah!Öğle!İkindi!Akşam!Yatsı!yapilandirma!Hadis!Esma-ül Hüsna'
 tamamlama_listesi+='!Bilgi!Aylık Vakitler!Haftalık Vakitler!Dini Günler ve Geceler!hakkında'
-tamamlama_listesi+="!güncelle!yardım!arayuz2!Kerahat!000!özel pencere!$sure_listesi"
+tamamlama_listesi+="!about!güncelle!yardım!arayuz2!Kerahat!000!özel pencere!$sure_listesi"
 
 # düz komut çıktıları için rengi sıfırla.
 export RENK_KULLAN=0 RENK=0
+
+function arayuz_pid_denetle() {
+  local ypid=$$
+
+  if [[ -f /tmp/.ezanvakti_yad_arayuz.pid && -n $(ps -p $( < /tmp/.ezanvakti_yad_arayuz.pid) -o comm=) ]]
+  then
+      printf "Yalnızca bir arayüz örneği çalışabilir.\n" >&2
+      exit 1
+  else
+      printf "$ypid" > /tmp/.ezanvakti_yad_arayuz.pid
+  fi
+}
+
+function arayuz_pid_denetle2() {
+  local ypid=$$
+
+  if [[ -f /tmp/.ezanvakti_yad_arayuz2.pid && -n $(ps -p $( < /tmp/.ezanvakti_yad_arayuz2.pid) -o comm=) ]]
+  then
+      printf "Yalnızca bir arayüz2 örneği çalışabilir.\n" >&2
+      exit 1
+  else
+      printf "$ypid" > /tmp/.ezanvakti_yad_arayuz2.pid
+  fi
+}
 
 function g_vakitleri_al() {
   denetle; bugun
@@ -119,9 +143,110 @@ function g_vakitleri_al() {
 }
 
 function g_vakitleri_yaz() {
-  printf "${VAKIT_BICIMI}" 'Sabah' "$sabah_n" 'Güneş' \
-         "$gunes_n" 'Öğle' "$ogle_n" 'İkindi' "$ikindi_n" 'Akşam' \
-         "$aksam_n" 'Yatsı' "$yatsi_n"
+  local sabah gunes ogle
+  local ikindi aksam yatsi
+  local vakitsiz
+
+  vakitsiz="'<b>Şimdi Kerahat Vakti 1</b>'|'<b>Şimdi Kerahat Vakti 2</b>'"
+  vakitsiz+="|'<b>Şimdi Kerahat Vakti 3</b>'|'<b>Şimdi Kuşluk Vakti</b>'"
+  vakitsiz+="|'<b>Şimdi Kerahat Vakti 5</b>'"
+
+  if [[ ${vakit_bilgisi} = '<b>Şimdi Yatsı Vakti</b>'  ]]
+  then
+      sabah="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>Sabah</span>"
+      sabah_n="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>$sabah_n</span>"
+      gunes="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>Güneş</span>"
+      gunes_n="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>$gunes_n</span>"
+      ogle="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>Öğle</span>"
+      ogle_n="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>$ogle_n</span>"
+      ikindi="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>İkindi</span>"
+      ikindi_n="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>$ikindi_n</span>"
+      aksam="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>Akşam</span>"
+      aksam_n="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>$aksam_n</span>"
+      yatsi="<span foreground=\'${ARAYUZ_SECILI_VAKIT_RENGI}\'>Yatsı</span>"
+      yatsi_n="<span foreground=\'${ARAYUZ_SECILI_VAKIT_RENGI}\'>$yatsi_n</span>"
+
+  elif [[ ${vakit_bilgisi} = '<b>Güneş Doğuş Vakti</b>' ]]
+  then
+      sabah="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>Sabah</span>"
+      sabah_n="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>$sabah_n</span>"
+      gunes="<span foreground=\'${ARAYUZ_SECILI_VAKIT_RENGI}\'>Güneş</span>"
+      gunes_n="<span foreground=\'${ARAYUZ_SECILI_VAKIT_RENGI}\'>$gunes_n</span>"
+      ogle="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>Öğle</span>"
+      ogle_n="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>$ogle_n</span>"
+      ikindi="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>İkindi</span>"
+      ikindi_n="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>$ikindi_n</span>"
+      aksam="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>Akşam</span>"
+      aksam_n="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>$aksam_n</span>"
+      yatsi="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>Yatsı</span>"
+      yatsi_n="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>$yatsi_n</span>"
+
+  elif [[ ${vakit_bilgisi} = '<b>Şimdi Öğle Vakti</b>' ]]
+  then
+      sabah="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>Sabah</span>"
+      sabah_n="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>$sabah_n</span>"
+      gunes="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>Güneş</span>"
+      gunes_n="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>$gunes_n</span>"
+      ogle="<span foreground=\'${ARAYUZ_SECILI_VAKIT_RENGI}\'>Öğle</span>"
+      ogle_n="<span foreground=\'${ARAYUZ_SECILI_VAKIT_RENGI}\'>$ogle_n</span>"
+      ikindi="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>İkindi</span>"
+      ikindi_n="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>$ikindi_n</span>"
+      aksam="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>Akşam</span>"
+      aksam_n="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>$aksam_n</span>"
+      yatsi="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>Yatsı</span>"
+      yatsi_n="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>$yatsi_n</span>"
+
+  elif [[ ${vakit_bilgisi} = @('<b>Şimdi Kerahat Vakti 4</b>') ]]
+  then
+      sabah="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>Sabah</span>"
+      sabah_n="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>$sabah_n</span>"
+      gunes="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>Güneş</span>"
+      gunes_n="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>$gunes_n</span>"
+      ogle="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>Öğle</span>"
+      ogle_n="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>$ogle_n</span>"
+      ikindi="<span foreground=\'${ARAYUZ_SECILI_VAKIT_RENGI}\'>İkindi</span>"
+      ikindi_n="<span foreground=\'${ARAYUZ_SECILI_VAKIT_RENGI}\'>$ikindi_n</span>"
+      aksam="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>Akşam</span>"
+      aksam_n="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>$aksam_n</span>"
+      yatsi="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>Yatsı</span>"
+      yatsi_n="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>$yatsi_n</span>"
+
+  elif [[ ${vakit_bilgisi} = '<b>Şimdi Akşam Vakti</b>' ]]
+  then
+      sabah="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>Sabah</span>"
+      sabah_n="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>$sabah_n</span>"
+      gunes="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>Güneş</span>"
+      gunes_n="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>$gunes_n</span>"
+      ogle="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>Öğle</span>"
+      ogle_n="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>$ogle_n</span>"
+      ikindi="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>İkindi</span>"
+      ikindi_n="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>$ikindi_n</span>"
+      aksam="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>Akşam</span>"
+      aksam_n="<span foreground=\'${ARAYUZ_SECILI_VAKIT_RENGI}\'>$aksam_n</span>"
+      yatsi="<span foreground=\'${ARAYUZ_SECILI_VAKIT_RENGI}\'>Yatsı</span>"
+      yatsi_n="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>$yatsi_n</span>"
+
+  elif [[ ${vakit_bilgisi} = @(${vakitsiz}) ]]
+  then
+      sabah="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>Sabah</span>"
+      sabah_n="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>$sabah_n</span>"
+      gunes="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>Güneş</span>"
+      gunes_n="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>$gunes_n</span>"
+      ogle="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>Öğle</span>"
+      ogle_n="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>$ogle_n</span>"
+      ikindi="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>İkindi</span>"
+      ikindi_n="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>$ikindi_n</span>"
+      aksam="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>Akşam</span>"
+      aksam_n="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>$aksam_n</span>"
+      yatsi="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>Yatsı</span>"
+      yatsi_n="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>$yatsi_n</span>"
+  fi
+
+
+
+  printf "${VAKIT_BICIMI}" "${sabah}" "$sabah_n" "${gunes}" \
+         "$gunes_n" "${ogle}" "$ogle_n" "${ikindi}" "$ikindi_n" "${aksam}" \
+         "$aksam_n" "${yatsi}" "$yatsi_n"
 }
 
 function g_secim_goster() {
@@ -134,7 +259,8 @@ function g_hakkinda() {
   yad --text "\t\t<b><big>${AD^} ${SURUM}</big></b>
 \"GNU/Linux için ezan vakti bildirici\"
 
-   <a href= 'https://gitlab.com/ironic/ezanvakti' >Ezanvakti Sayfası</a>
+   <a href= 'https://gitlab.com/fbostanci/ezanvakti' >Ezanvakti Sayfası</a>
+   <a href= 'https://github.com/fbostanci/ezanvakti' >Ezanvakti Github Sayfası</a>
 
 Copyright (c) 2010-$(date +%Y) Fatih Bostancı
 GPL 3 ile lisanslanmıştır.\n" \
@@ -158,7 +284,8 @@ yad --form --separator=' ' --title="${AD^} $SURUM" --text "${mplayer_ileti}" \
 }
 
 function ozel_pencere() {
-  local strng donus str str2
+  local strng donus
+  local str str2
 
 strng=$(yad --form \
 --field=Okuyucu:CB \
