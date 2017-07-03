@@ -29,6 +29,9 @@ tamamlama_listesi='!Ayarlar!Ayet!Sabah!Öğle!İkindi!Akşam!Yatsı!yapilandirma
 tamamlama_listesi+='!Bilgi!Aylık Vakitler!Haftalık Vakitler!Dini Günler ve Geceler!hakkında'
 tamamlama_listesi+="!about!güncelle!yardım!arayuz2!Kerahat!000!özel pencere!$sure_listesi"
 
+secim_listesi='!Haftalık Vakitler!Aylık Vakitler!Kerahat Vakitleri!Dini Günler ve Geceler'
+secim_listesi+='!Ayet!Hadis!Bilgi!Esma-ül Hüsna!Yapılandırma Yöneticisi'
+
 # düz komut çıktıları için rengi sıfırla.
 export RENK_KULLAN=0 RENK=0
 
@@ -147,9 +150,9 @@ function g_vakitleri_yaz() {
   local ikindi aksam yatsi
   local vakitsiz
 
-  vakitsiz="'<b>Şimdi Kerahat Vakti 1</b>'|'<b>Şimdi Kerahat Vakti 2</b>'"
-  vakitsiz+="|'<b>Şimdi Kerahat Vakti 3</b>'|'<b>Şimdi Kuşluk Vakti</b>'"
-  vakitsiz+="|'<b>Şimdi Kerahat Vakti 5</b>'"
+  vakitsiz="<b>Şimdi Kerahat Vakti 1</b>|<b>Şimdi Kerahat Vakti 2</b>"
+  vakitsiz+="|<b>Şimdi Kerahat Vakti 3</b>|<b>Şimdi Kuşluk Vakti</b>"
+  vakitsiz+="|<b>Şimdi Kerahat Vakti 5</b>"
 
   if [[ ${vakit_bilgisi} = '<b>Şimdi Yatsı Vakti</b>'  ]]
   then
@@ -241,8 +244,6 @@ function g_vakitleri_yaz() {
       yatsi="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>Yatsı</span>"
       yatsi_n="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>$yatsi_n</span>"
   fi
-
-
 
   printf "${VAKIT_BICIMI}" "${sabah}" "$sabah_n" "${gunes}" \
          "$gunes_n" "${ogle}" "$ogle_n" "${ikindi}" "$ikindi_n" "${aksam}" \
