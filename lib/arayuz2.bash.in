@@ -9,11 +9,10 @@
 
 # Yalnıca bir arayüz2 örneği çalışması için
 # pid denetimi yapılsın.
-arayuz_pid_denetle2
+arayuz2_pid_denetle
 
 function arayuz2() {
   g_vakitleri_al
-VAKIT_BICIMI='\t%s\t\t%s\n\t%s\t\t%s\n\t%s\t\t%s\n\t%s\t\t%s\n\t%s\t%s\n\t%s\t\t%s'
 
 yad --title "Ezanvakti $SURUM" \
 --text="$(g_vakitleri_yaz)\n\n<span foreground=\'${ARAYUZ_KALAN_SURE_RENGI}\'>${v_ileti}\n${v_kalan}</span>" \

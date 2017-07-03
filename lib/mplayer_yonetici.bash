@@ -7,6 +7,18 @@
 function mplayer_calistir() {
   local dinletilecek_oge="$1"
 
+  if [[ ${dinletilecek_oge} =~ ^http.* ]]
+  then
+    # internet erişimini denetle.
+    if ! ping -q -c 1 -W 1 google.com >/dev/null
+    then
+        printf '\n%b\n%b\n' \
+          "${RENK7}${RENK3}İnternet erişimi algılanamadı." \
+          "Çıkılıyor...${RENK0}"
+        exit 1
+    fi
+  fi
+
   rm -f /tmp/mplayer-$$.pipe 2>/dev/null
   mkfifo /tmp/mplayer-$$.pipe
 
