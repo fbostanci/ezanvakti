@@ -142,9 +142,10 @@ YATSI_EZANI=@sounddir@/@AD@/yatsi_ussak.ogg
 # Ezan duası ses dosyası
 EZAN_DUASI=@sounddir@/@AD@/ezan_duasi.ogg
 
-#                           #
-#******Renk Ayarları********#
-#                           #
+#                                   #
+#******Uçbirim Renk Ayarları********#
+#                                   #
+
 
 # Uçbirim çıktıları için renk kullanılması (kullanılması için 1; kullanılmaması için 0)
 RENK_KULLAN=1
@@ -182,10 +183,9 @@ ARKAPLAN_RENGI='#000000'
 # Metin kutusu yazı rengi
 YAZI_RENGI='#FFBD4D'
 
-
-#                           #
-#*****Arayüz Ayarları*****#
-#                           #
+#                                #
+#*******Arayüz Renk Ayarları*****#
+#                                #
 
 
 # Arayüz çizgi simgesi
@@ -195,27 +195,28 @@ ARAYUZ_CIZGI_SIMGESI='@'
 ARAYUZ_CIZGI_UZUNLUGU=26
 
 # Arayüz tarih ve saat rengi
-ARAYUZ_TARIH_SAAT_RENGI='#00FF007F'
+ARAYUZ_TARIH_SAAT_RENGI='#fcaf3e'
 
 # Arayüz ilçe / ülke rengi
-ARAYUZ_KONUM_RENGI='#00FF007F'
+ARAYUZ_KONUM_RENGI='#c17d11'
 
 # Arayüz çizgi rengi
-ARAYUZ_CIZGI_RENGI='#00FF007F'
+ARAYUZ_CIZGI_RENGI='#ad7fa8'
 
 # Arayüz şimdiki vakit rengi
-ARAYUZ_SIMDIKI_VAKIT_RENGI='#00FF007F'
+ARAYUZ_SIMDIKI_VAKIT_RENGI='#f3ff67'
 
 # Arayüzdeki vakitlerin rengi
-ARAYUZ_VAKITLER_RENGI='#00FF007F'
+ARAYUZ_VAKITLER_RENGI='#e9b96e'
 
 # Arayüzdeki seçili vakit rengi
-ARAYUZ_SECILI_VAKIT_RENGI='#00FF007F'
+ARAYUZ_SECILI_VAKIT_RENGI='#8ae234'
 
 # Arayüzde sıradaki vakte kalan süre bilgisi rengi
-ARAYUZ_KALAN_SURE_RENGI='#00FF007F'
+ARAYUZ_KALAN_SURE_RENGI='#ffbd4d'
 
-ARAYUZ_SECKE_ADLARI_RENGI='#00FF007F'
+# Arayüz seçke adları rengi
+ARAYUZ_SECKE_ADLARI_RENGI='#e9b96e'
 
 #                           #
 #*****Gelişmiş Ayarlar******#
@@ -229,7 +230,6 @@ GELISMIS_ARAYUZ_BICIMI='%-62s%s\n%s\n%s\n\t\t\t\t%s\n%s\n\n%s\n\n\t\t\t %s\n\t\t
 CONKY_BICIMI='%-14s%s\n%-15s%s\n%-17s%s\n%-17s%s\n%-14s%s\n%-17s%s\n'
 
 # Printf arayüzlerdeki vakit çıktısı biçimi
-VAKIT_BICIMI='\t\t\t%-14s%s\n\t\t\t%-16s%s\n\t\t\t%-18s%s\n\t\t\t%-18s%s\n\t\t\t%-14s%s\n\t\t\t%-18s%s'
+VAKIT_BICIMI='\t\t\t%s\t\t%s\n\t\t\t%s\t\t%s\n\t\t\t%s\t\t%s\n\t\t\t%s\t\t%s\n\t\t\t%s\t%s\n\t\t\t%s\t\t%s'
 
-
-
+###AYARLAR SON###

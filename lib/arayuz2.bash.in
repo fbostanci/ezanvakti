@@ -7,6 +7,9 @@
 . @libdir@/@AD@/temel_islevler.bash
 . @libdir@/@AD@/arayuz_temel.bash
 
+# Yalnıca bir arayüz2 örneği çalışması için
+# pid denetimi yapılsın.
+arayuz_pid_denetle2
 
 function arayuz2() {
   g_vakitleri_al
