@@ -47,7 +47,7 @@ function arayuz_pid_denetle() {
   fi
 }
 
-function arayuz_pid_denetle2() {
+function arayuz2_pid_denetle() {
   local ypid=$$
 
   if [[ -f /tmp/.ezanvakti_yad_arayuz2.pid && -n $(ps -p $( < /tmp/.ezanvakti_yad_arayuz2.pid) -o comm=) ]]

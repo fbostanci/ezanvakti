@@ -4,7 +4,6 @@
 #
 #
 
-# TODO: uçbirim çıktılarını geometriye uydur.
 function guncelleme_yap() { ### Ana fonksiyon {{{
   local arayuz au ulke sehir ilce varsayilan_sehir pm varsayilan_ilce dn sure ulke_kodu sehir_kodu ilce_kodu
   local e=0 denetim=0
@@ -222,8 +221,7 @@ printf '%-60b' \
   "${RENK7}${RENK8}İnternet erişimi denetleniyor..${RENK0}"
 
 # internet erişimini denetle.
-wget -t 3 -T 10 www.google.com -O /tmp/baglantisina &>/dev/null
-if ! [[ -s /tmp/baglantisina ]]
+if ! ping -q -c 1 -W 1 google.com >/dev/null
 then
     printf "${RENK7}${RENK8} [${RENK1}BAŞARISIZ${RENK8}]${RENK0}\n"
     printf '\n%b\n%b\n' \

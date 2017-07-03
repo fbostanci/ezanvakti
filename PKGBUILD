@@ -10,7 +10,7 @@ license=('GPL3')
 makedepends=('git')
 depends=('bash' 'sed' 'gawk' 'grep' 'libnotify' 'mplayer' 'perl-www-mechanize' 'yad')
 optdepends=('bash-completion: bash tamamlama destegi')
-source=('git+https://gitlab.com/ironic/ezanvakti.git')
+source=('git+https://gitlab.com/fbostanci/ezanvakti.git')
 md5sums=('SKIP')
 
 pkgver() {
