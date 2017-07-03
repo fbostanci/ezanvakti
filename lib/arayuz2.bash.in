@@ -13,10 +13,10 @@ arayuz_pid_denetle2
 
 function arayuz2() {
   g_vakitleri_al
-VAKIT_BICIMI='\t%s\t%s\n\t%s\t%s\n\t%s\t%s\n\t%s\t%s\n\t%-7s%s\n\t%s\t%s'
+VAKIT_BICIMI='\t%s\t\t%s\n\t%s\t\t%s\n\t%s\t\t%s\n\t%s\t\t%s\n\t%s\t%s\n\t%s\t\t%s'
 
 yad --title "Ezanvakti $SURUM" \
---text "$(g_vakitleri_yaz)\n\n${v_ileti}\n${v_kalan}" \
+--text="$(g_vakitleri_yaz)\n\n<span foreground=\'${ARAYUZ_KALAN_SURE_RENGI}\'>${v_ileti}\n${v_kalan}</span>" \
 --button="gtk-refresh:172" --button="gtk-close" \
 --image=${VERI_DIZINI}/simgeler/ezanvakti.png \
 --window-icon=${VERI_DIZINI}/simgeler/ezanvakti2.png \
