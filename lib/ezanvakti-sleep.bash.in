@@ -135,9 +135,6 @@ function ezanlar() {
     vakit_saati=$sabah_n
     ezan_okunsun_mu=${SABAH_EZANI_OKU}
 
-    # Eğer betik ezan vakti dakikası içerisinde
-    # çalıştırılırsa saniyeyi önemseme, ezan okut.
-    [[ $SAAT -eq $sabah ]] && { ezanoku; ezanlar; }
     printf "${RENK7}${RENK4}Sabah ezanı için bekleniyor...${RENK0}\n"
 
     bekleme_suresi $sabah_n; vakit_animsat &
@@ -150,7 +147,6 @@ function ezanlar() {
     vakit_saati=$ogle_n
     ezan_okunsun_mu=${OGLE_EZANI_OKU}
 
-    (( UNIXSAAT == ogle )) && { ezanoku; ezanlar; }
     printf "${RENK7}${RENK4}Öğle ezanı için bekleniyor...${RENK0}\n"
 
     bekleme_suresi $ogle_n; vakit_animsat &
@@ -163,7 +159,6 @@ function ezanlar() {
     vakit_saati=$ikindi_n
     ezan_okunsun_mu=${IKINDI_EZANI_OKU}
 
-    (( UNIXSAAT == ikindi )) && { ezanoku; ezanlar; }
     printf "${RENK7}${RENK4}İkindi ezanı için bekleniyor...${RENK0}\n"
 
     bekleme_suresi $ikindi_n; vakit_animsat &
@@ -176,7 +171,6 @@ function ezanlar() {
     vakit_saati=$aksam_n
     ezan_okunsun_mu=${AKSAM_EZANI_OKU}
 
-    (( UNIXSAAT == aksam )) && { ezanoku; ezanlar; }
     printf "${RENK7}${RENK4}Akşam ezanı için bekleniyor...${RENK0}\n"
 
     bekleme_suresi $aksam_n; vakit_animsat &
@@ -189,7 +183,6 @@ function ezanlar() {
     vakit_saati=$yatsi_n
     ezan_okunsun_mu=${YATSI_EZANI_OKU}
 
-    (( UNIXSAAT == yatsi )) && { ezanoku; ezanlar; }
     printf "${RENK7}${RENK4}Yatsı ezanı için bekleniyor...${RENK0}\n"
 
     bekleme_suresi $yatsi_n; vakit_animsat &
@@ -215,7 +208,6 @@ function iftarimsak() {
     vakit_saati=$sabah_n
     ezan_okunsun_mu=${SABAH_EZANI_OKU}
 
-    (( UNIXSAAT == sabah )) && { ramazan_ezanoku; iftarimsak; }
     printf "${RENK7}${RENK4}İmsak vakti için bekleniyor...${RENK0}\n"
 
     bekleme_suresi $sabah_n; vakit_animsat &
@@ -228,7 +220,6 @@ function iftarimsak() {
     vakit_saati=$aksam_n
     ezan_okunsun_mu=${AKSAM_EZANI_OKU}
 
-    (( UNIXSAAT == aksam )) && { ramazan_ezanoku; iftarimsak; }
     printf "${RENK7}${RENK4}İftar vakti için bekleniyor...${RENK0}\n"
 
     bekleme_suresi $aksam_n; vakit_animsat &
