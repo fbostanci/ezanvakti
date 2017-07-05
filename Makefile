@@ -1,6 +1,6 @@
 #
 #
-#               Ezanvakti 6.1 Makefile
+#               Ezanvakti 6.2 Makefile
 #
 #
 
@@ -74,11 +74,7 @@ install: $(BETIKLER)
 	for l in lib/*.bash; \
 	do \
 		l_dosya="$$(basename $$l)"; \
-		if  [[ $$l_dosya = ezanvakti-sleep.bash ]]; then \
-			$(INSTALL) -vm755 $$l $(DESTDIR)$(libdir)/$(AD)/$$l_dosya; \
-		else \
-			$(INSTALL) -vm644 $$l $(DESTDIR)$(libdir)/$(AD)/$$l_dosya; \
-		fi \
+		$(INSTALL) -vm755 $$l $(DESTDIR)$(libdir)/$(AD)/$$l_dosya; \
 	done
 
 	for v in data/veriler/*; \
