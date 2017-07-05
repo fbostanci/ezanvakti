@@ -127,7 +127,7 @@ function denetle() {
   let ksatir++
 
   (( ksatir <= 7 )) && { # sonuç 7 ya da 7'den küçükse
-    (( GUNCELLEME_YAP )) && { bilesen_yukle guncelleyici; guncelleme_yap;}
+    (( GUNCELLEME_YAP )) && { bilesen_yukle guncelleyici; guncelleme_yap; }
 
     # Betiğin mevcut oturum boyunca sadece ilk çalışmada bildirim vermesi
     # için çerez dosya denetimi ekledik. Gün değişimi durumu için (mevcut oturum devam ediyorsa)

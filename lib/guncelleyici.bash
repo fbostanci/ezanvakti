@@ -221,7 +221,7 @@ printf '%-60b' \
   "${RENK7}${RENK8}İnternet erişimi denetleniyor..${RENK0}"
 
 # internet erişimini denetle.
-if ! ping -q -c 1 -W 1 google.com >/dev/null
+if ! ping -q -c 1 -W 1 google.com &>/dev/null
 then
     printf "${RENK7}${RENK8} [${RENK1}BAŞARISIZ${RENK8}]${RENK0}\n"
     printf '\n%b\n%b\n' \
@@ -230,7 +230,6 @@ then
     exit 1
 fi
 
-rm -f /tmp/baglantisina &>/dev/null
 printf "${RENK7}${RENK8} [${RENK2}BAŞARILI${RENK8}]${RENK0}\n"
 #}}}
 
