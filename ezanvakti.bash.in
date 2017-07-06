@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-#                 Ezanvakti 6.1  -  GNU/Linux Ezan Vakti Bildirici
+#                 Ezanvakti 6.2  -  GNU/Linux Ezan Vakti Bildirici
 #
 ##
 ##          Copyright (c) 2010-2017  Fatih Bostancı  <faopera@gmail.com>
@@ -101,6 +101,9 @@ case $1 in
   -vb|--vb)
     bilesen_yukle vakitleri_goster
     vakitler bildirim ;;
+  --unity)
+    bilesen_yukle unity_menu; shift
+    unity_menu "$1" ;;
   --dinle)
     bilesen_yukle ezan_dinlet; shift
     case $1 in
