@@ -78,9 +78,6 @@ function unity_menu() {
       betik_kullanimi > /tmp/ezanvakti-6
       g_secim_goster ;;
 
-    hakkinda)
-      g_hakkinda ;;
-
   esac
 }
 
