@@ -195,28 +195,28 @@ ARAYUZ_CIZGI_SIMGESI='@'
 ARAYUZ_CIZGI_UZUNLUGU=26
 
 # Arayüz tarih ve saat rengi
-ARAYUZ_TARIH_SAAT_RENGI='#fcaf3e'
+ARAYUZ_TARIH_SAAT_RENGI='#5c3566'
 
 # Arayüz ilçe / ülke rengi
-ARAYUZ_KONUM_RENGI='#c17d11'
+ARAYUZ_KONUM_RENGI='#5c3566'
 
 # Arayüz çizgi rengi
-ARAYUZ_CIZGI_RENGI='#ad7fa8'
+ARAYUZ_CIZGI_RENGI='#3465a4'
 
 # Arayüz şimdiki vakit rengi
-ARAYUZ_SIMDIKI_VAKIT_RENGI='#f3ff67'
+ARAYUZ_SIMDIKI_VAKIT_RENGI='#4e9a06'
 
 # Arayüzdeki vakitlerin rengi
-ARAYUZ_VAKITLER_RENGI='#e9b96e'
+ARAYUZ_VAKITLER_RENGI='#ce5c00'
 
 # Arayüzdeki seçili vakit rengi
 ARAYUZ_SECILI_VAKIT_RENGI='#8ae234'
 
 # Arayüzde sıradaki vakte kalan süre bilgisi rengi
-ARAYUZ_KALAN_SURE_RENGI='#ffbd4d'
+ARAYUZ_KALAN_SURE_RENGI='#8f5902'
 
 # Arayüz seçke adları rengi
-ARAYUZ_SECKE_ADLARI_RENGI='#e9b96e'
+ARAYUZ_SECKE_ADLARI_RENGI='#9c72f6'
 
 #                           #
 #*****Gelişmiş Ayarlar******#
