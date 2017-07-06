@@ -7,7 +7,7 @@ Exec=@bindir@/ezanvakti --arayuz
 Terminal=false
 Type=Application
 Categories=GTK;Application;Utility;
-X-Ayatana-Desktop-Shortcuts=EzvG1;EzvG2;EzvG3;EzvG4;EzvG5;EzvG6;EzvG7;EzvG8;EzvG9;EzvG10;
+X-Ayatana-Desktop-Shortcuts=EzvG1;EzvG2;EzvG3;EzvG4;EzvG5;EzvG6;EzvG7;EzvG8;EzvG9;EzvG10;EzvG11;
 TargetEnvironment=Unity
 
 [EzvG1 Shortcut Group]
@@ -56,6 +56,11 @@ Exec=@bindir@/ezanvakti --unity yapilandirma
 TargetEnvironment=Unity
 
 [EzvG10 Shortcut Group]
+Name=Hakkında
+Exec=@bindir@/ezanvakti --unity hakkinda
+TargetEnvironment=Unity
+
+[EzvG11 Shortcut Group]
 Name=Yardım
 Exec=@bindir@/ezanvakti --unity yardim
 TargetEnvironment=Unity

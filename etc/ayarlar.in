@@ -224,7 +224,7 @@ ARAYUZ_SECKE_ADLARI_RENGI='#e9b96e'
 
 
 # Printf arayuz yazı biçimi
-GELISMIS_ARAYUZ_BICIMI='%-62s%s\n%s\n%s\n\t\t\t\t%s\n%s\n\n%s\n\n\t\t\t %s\n\t\t\t %s'
+GELISMIS_ARAYUZ_BICIMI='%-125s%s\n%s\n%s\n\t\t\t\t%s\n%s\n\n%s\n\n\t\t\t %s\n\t\t\t %s'
 
 # Printf conky çıktısı biçimi
 CONKY_BICIMI='%-14s%s\n%-15s%s\n%-17s%s\n%-17s%s\n%-14s%s\n%-17s%s\n'
