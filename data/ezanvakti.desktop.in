@@ -7,3 +7,55 @@ Exec=@bindir@/ezanvakti --arayuz
 Terminal=false
 Type=Application
 Categories=GTK;Application;Utility;
+X-Ayatana-Desktop-Shortcuts=EzvG1;EzvG2;EzvG3;EzvG4;EzvG5;EzvG6;EzvG7;EzvG8;EzvG9;EzvG10;
+TargetEnvironment=Unity
+
+[EzvG1 Shortcut Group]
+Name=Günlük Vakitler
+Exec=@bindir@/ezanvakti --unity vakitler
+TargetEnvironment=Unity
+
+[EzvG2 Shortcut Group]
+Name=Kerahat Vakitleri
+Exec=@bindir@/ezanvakti --unity kerahat
+TargetEnvironment=Unity
+
+[EzvG3 Shortcut Group]
+Name=Kuran Dinle
+Exec=@bindir@/ezanvakti --unity kuran
+TargetEnvironment=Unity
+
+[EzvG4 Shortcut Group]
+Name=Dini Günler ve Geceler
+Exec=@bindir@/ezanvakti --unity gunler
+TargetEnvironment=Unity
+
+[EzvG5 Shortcut Group]
+Name=Bir Ayet
+Exec=@bindir@/ezanvakti --unity ayet
+TargetEnvironment=Unity
+
+[EzvG6 Shortcut Group]
+Name=40 Hadis
+Exec=@bindir@/ezanvakti --unity hadis
+TargetEnvironment=Unity
+
+[EzvG7 Shortcut Group]
+Name=Esma-ül Hüsna
+Exec=@bindir@/ezanvakti --unity esma
+TargetEnvironment=Unity
+
+[EzvG8 Shortcut Group]
+Name=Dini Bilgi
+Exec=@bindir@/ezanvakti --unity bilgi
+TargetEnvironment=Unity
+
+[EzvG9 Shortcut Group]
+Name=Ayarlar
+Exec=@bindir@/ezanvakti --unity yapilandirma
+TargetEnvironment=Unity
+
+[EzvG10 Shortcut Group]
+Name=Yardım
+Exec=@bindir@/ezanvakti --unity yardim
+TargetEnvironment=Unity
