@@ -7,60 +7,48 @@ Exec=@bindir@/ezanvakti --arayuz
 Terminal=false
 Type=Application
 Categories=GTK;Application;Utility;
-X-Ayatana-Desktop-Shortcuts=EzvG1;EzvG2;EzvG3;EzvG4;EzvG5;EzvG6;EzvG7;EzvG8;EzvG9;EzvG10;EzvG11;
-TargetEnvironment=Unity
+Actions=EzvG1;EzvG2;EzvG3;EzvG4;EzvG5;EzvG6;EzvG7;EzvG8;EzvG9;EzvG10;EzvG11;
 
-[EzvG1 Shortcut Group]
+[Desktop Action EzvG1]
 Name=Günlük Vakitler
-Exec=@bindir@/ezanvakti --unity vakitler
-TargetEnvironment=Unity
+Exec=@bindir@/ezanvakti --eylem vakitler
 
-[EzvG2 Shortcut Group]
+[Desktop Action EzvG2]
 Name=Kerahat Vakitleri
-Exec=@bindir@/ezanvakti --unity kerahat
-TargetEnvironment=Unity
+Exec=@bindir@/ezanvakti --eylem kerahat
 
-[EzvG3 Shortcut Group]
+[Desktop Action EzvG3]
 Name=Kuran Dinle
-Exec=@bindir@/ezanvakti --unity kuran
-TargetEnvironment=Unity
+Exec=@bindir@/ezanvakti --eylem kuran
 
-[EzvG4 Shortcut Group]
+[Desktop Action EzvG4]
 Name=Dini Günler ve Geceler
-Exec=@bindir@/ezanvakti --unity gunler
-TargetEnvironment=Unity
+Exec=@bindir@/ezanvakti --eylem gunler
 
-[EzvG5 Shortcut Group]
+[Desktop Action EzvG5]
 Name=Bir Ayet
-Exec=@bindir@/ezanvakti --unity ayet
-TargetEnvironment=Unity
+Exec=@bindir@/ezanvakti --eylem ayet
 
-[EzvG6 Shortcut Group]
+[Desktop Action EzvG6]
 Name=40 Hadis
-Exec=@bindir@/ezanvakti --unity hadis
-TargetEnvironment=Unity
+Exec=@bindir@/ezanvakti --eylem hadis
 
-[EzvG7 Shortcut Group]
+[Desktop Action EzvG7]
 Name=Esma-ül Hüsna
-Exec=@bindir@/ezanvakti --unity esma
-TargetEnvironment=Unity
+Exec=@bindir@/ezanvakti --eylem esma
 
-[EzvG8 Shortcut Group]
+[Desktop Action EzvG8]
 Name=Dini Bilgi
-Exec=@bindir@/ezanvakti --unity bilgi
-TargetEnvironment=Unity
+Exec=@bindir@/ezanvakti --eylem bilgi
 
-[EzvG9 Shortcut Group]
+[Desktop Action EzvG9]
 Name=Ayarlar
-Exec=@bindir@/ezanvakti --unity yapilandirma
-TargetEnvironment=Unity
+Exec=@bindir@/ezanvakti --eylem yapilandirma
 
-[EzvG10 Shortcut Group]
+[Desktop Action EzvG10]
 Name=Hakkında
-Exec=@bindir@/ezanvakti --unity hakkinda
-TargetEnvironment=Unity
+Exec=@bindir@/ezanvakti --eylem hakkinda
 
-[EzvG11 Shortcut Group]
+[Desktop Action EzvG11]
 Name=Yardım
-Exec=@bindir@/ezanvakti --unity yardim
-TargetEnvironment=Unity
+Exec=@bindir@/ezanvakti --eylem yardim

@@ -6,20 +6,20 @@
 
 bilesen_yukle arayuz_temel
 
-function unity_pid_denetle() {
+function eylem_pid_denetle() {
   local ypid=$$
 
-  if [[ -f /tmp/.ezanvakti_unity_menu.pid && -n $(ps -p $( < /tmp/.ezanvakti_unity_menu.pid) -o comm=) ]]
+  if [[ -f /tmp/.ezanvakti_eylem_menu.pid && -n $(ps -p $( < /tmp/.ezanvakti_eylem_menu.pid) -o comm=) ]]
   then
       printf "Yalnızca bir arayüz örneği çalışabilir.\n" >&2
       exit 1
   else
-      printf "$ypid" > /tmp/.ezanvakti_unity_menu.pid
+      printf "$ypid" > /tmp/.ezanvakti_eylem_menu.pid
   fi
 }
 
-function unity_menu() {
-  unity_pid_denetle
+function eylem_menu() {
+  eylem_pid_denetle
 
   case $1 in
     vakitler)
@@ -76,6 +76,7 @@ function unity_menu() {
       secim_basligi='Kullanım'
       bilesen_yukle kullanim
       betik_kullanimi > /tmp/ezanvakti-6
+      sed -i '$d' /tmp/ezanvakti-6
       g_secim_goster ;;
 
     hakkinda)

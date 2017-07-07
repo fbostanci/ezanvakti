@@ -199,7 +199,7 @@ function g_vakitleri_yaz() {
       yatsi="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>Yatsı</span>"
       yatsi_n="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>$yatsi_n</span>"
 
-  elif [[ ${vakit_bilgisi} = @('<b>Şimdi Kerahat Vakti 4</b>') ]]
+  elif [[ ${vakit_bilgisi} = '<b>Şimdi Kerahat Vakti 4</b>' ]]
   then
       sabah="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>Sabah</span>"
       sabah_n="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>$sabah_n</span>"
