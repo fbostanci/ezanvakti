@@ -23,9 +23,21 @@ function eylem_menu() {
 
   case $1 in
     vakitler)
-      secim_basligi='Vakitler'
+      secim_basligi='Günlük Vakitler'
       bilesen_yukle vakitleri_goster
       vakitler tum_vakitler > /tmp/ezanvakti-6
+      g_secim_goster ;;
+
+    v7)
+      secim_basligi='Haftalık Vakitler'
+      bilesen_yukle vakitleri_goster
+      vakitler haftalik > /tmp/ezanvakti-6
+      g_secim_goster ;;
+
+    v30)
+      secim_basligi='Aylık Vakitler'
+      bilesen_yukle vakitleri_goster
+      vakitler aylik > /tmp/ezanvakti-6
       g_secim_goster ;;
 
     kerahat)

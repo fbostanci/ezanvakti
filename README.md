@@ -88,7 +88,7 @@ PKGBUILD dosyasının bulunduğu dizinde `makepkg -si` komutunu girin.
 
 <br>
 
-**Diğer dağitimlar için kurulum:**
+**Diğer dağıtımlar için kurulum:**
 
 `sudo make PREFIX=/usr sysconfdir=/etc install`
 

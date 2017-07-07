@@ -139,7 +139,7 @@ clean:
 dist:
 	@echo "Kaynak kod paketi oluşturuluyor. Lütfen bekleyiniz..."
 	@git archive master | xz > $(AD)-$(SURUM).$(DUZELTME).tar.xz
-	@echo "İşlem tamamlandı. ----------> $(AD)-$(surum).$(duzeltme).tar.xz"
+	@echo "İşlem tamamlandı. ----------> $(AD)-$(SURUM).$(DUZELTME).tar.xz"
 
 
 .PHONY: all clean dist install uninstall
