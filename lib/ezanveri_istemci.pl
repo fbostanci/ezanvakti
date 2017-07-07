@@ -5,7 +5,7 @@
 ##
 ##          Copyright (c) 2010-2017 Fatih Bostancı  <faopera@gmail.com>
 ##
-##                   https://gitlab.com/ironic/ezanvakti
+##                   https://gitlab.com/fbostanci/ezanvakti
 ##
 ##
 ## This program is free software; you can redistribute it and/or modify
@@ -36,7 +36,6 @@ my $ilce = $ARGV[2];
 my $baglanti = "http://www.diyanet.gov.tr/tr/PrayerTime/WorldPrayerTimes";
 my $sonuc;
 
-
 my $mech = WWW::Mechanize->new(autocheck => 1, cookie_jar => {}, agent_alias => "Linux Mozilla");
 $mech->get($baglanti);
 
@@ -46,7 +45,6 @@ $mech->get($baglanti);
 # $mech->field(City => $ilce);
 # $mech->set_visible( [ radio => 'AYLIK' ] );
 # $mech->submit();
-
 
 $mech->submit_form(
 	form_number => 2,

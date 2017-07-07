@@ -40,7 +40,7 @@ function oynatici_islem() {
 
   OYNATICILAR=( spotify deadbeef clementine amarok rhythmbox
                 aqualung audacious banshee exaile cmus
-                moc qmmp juk)
+                moc qmmp juk )
 
   for oynatici in ${OYNATICILAR[@]}
   do
