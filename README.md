@@ -1,8 +1,8 @@
-Son Güncelleme:  Fri, 30 Jun 2017 15:57:18 +0300
+Son Güncelleme:  Fri, 07 Jul 2017 12:51:49 +0300
 
 <br>
 
-Ezanvakti 6.1 GNU/Linux için ezan vakti bildirici
+Ezanvakti 6.2 GNU/Linux için ezan vakti bildirici
 ====
 
 <br>
@@ -67,6 +67,13 @@ KURULUM ve KALDIRMA
 ===
 **Archlinux için kurulum:**
 
+[AUR](https://aur.archlinux.org/) üzerinde uygulama bulunmaktadır.
+AUR yardımcı uygulamanızla güncel sürümü kurabilirsiniz.
+
+ör: Yaourt kullanıyorsanız:
+`yaourt -S ezanvakti`
+
+Kaynak kod üzerinden kurulum için
 PKGBUILD dosyasının bulunduğu dizinde `makepkg -si` komutunu girin.
 
 <br>
