@@ -8,8 +8,7 @@ function siradaki_vakit() { # {{{
   denetle; bugun
   renk_denetle
 
-  local istek="$1"
-  local siradaki_vakit siradaki_vakit_kalan ileti
+  local istek="$1" siradaki_vakit siradaki_vakit_kalan ileti
 
   [[ ${istek} = conky_siradaki ]] && RENK2=''
 

@@ -109,6 +109,7 @@ function ayet_araligi_goster() {
 
 function ayet_goster() { # {{{
   renk_denetle
+
   [[ -f "${KULLANICI_TEFSIR_DIZINI}/${TEFSIR_SAHIBI}" ]] && {
     TEFSIR="${KULLANICI_TEFSIR_DIZINI}/${TEFSIR_SAHIBI}"
   } || {

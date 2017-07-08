@@ -7,7 +7,6 @@
 function ezan_dinlet() {
   local vakit="$1"
   local vakit_ezani="$2"
-  renk_denetle
 
   bilesen_yukle mplayer_yonetici
 

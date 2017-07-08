@@ -4,22 +4,39 @@
 #                           Ezanvakti Temel İşlevler Bileşeni 1.4
 #
 
-AD=@AD@
-SURUM=@SURUM@
-DUZELTME=@DUZELTME@
+AD="@AD@"
+SURUM="@SURUM@"
+DUZELTME="@DUZELTME@"
 
-BILESEN_DIZINI=@libdir@/${AD}
-VERI_DIZINI=@datadir@/${AD}
+BILESEN_DIZINI="@libdir@/${AD}"
+VERI_DIZINI="@datadir@/${AD}"
 
-EZANVAKTI_DIZINI="${XDG_CONFIG_HOME:-$HOME/.config}"/${AD}
-EZANVAKTI_AYAR="${EZANVAKTI_DIZINI}"/ayarlar
+EZANVAKTI_DIZINI="${XDG_CONFIG_HOME:-$HOME/.config}/${AD}"
+EZANVAKTI_AYAR="${EZANVAKTI_DIZINI}/ayarlar"
+
+[[ ! -d   ${EZANVAKTI_DIZINI} ]] && mkdir -p "${EZANVAKTI_DIZINI}"
+
+[[ ! -f   ${EZANVAKTI_AYAR}   ]] &&
+  sed "s:\(EZANVERI_DIZINI=\).*:\1\'${EZANVAKTI_DIZINI}\':" < @sysconfdir@/${AD}/ayarlar > "${EZANVAKTI_AYAR}"
+
+# Öntanımlı ayarları al.
+. @sysconfdir@/${AD}/ayarlar
+
+#  Öntanımlı ayarlardan gelen değerlerin üzerine yazılacak.
+#
+# Kullanıcı ayarlarını al.
+. "${EZANVAKTI_AYAR}" ||
+  { printf '%s dosyası okunabilir değil.\n' "${EZANVAKTI_AYAR}"; exit 1; }
+
+EZANVERI="${EZANVAKTI_DIZINI}/${EZANVERI_ADI}"
+MPLAYER="mplayer -really-quiet -softvol -volume $SES"
 
 # Karar verme önceliği env olarak tanımlıysa RENK değişkenine verildi.
 # RENK null ise ayarlar dosyasından okunan RENK_KULLAN değerini kullanacak.
 #
 # Renk kullan sıfırsa renkleri sıfırla.
 function renk_denetle() {
-  [[ ! -t 1 ]] || [[ ! $DISPLAY ]] && { RENK_KULLAN=0; RENK=0; } ||
+  [[ ! -t 1 ]] || [[ ! $DISPLAY ]] && { RENK_KULLAN=0; RENK=0; }
     (( ! ${RENK:-RENK_KULLAN} )) && {
       RENK0=''
       RENK1=''
@@ -42,24 +59,6 @@ function ucbirim_basligi() {
        echo -n -e "\033]0;${AD^} ${SURUM}: $@\007" ;;
    esac
 }
-
-[[ ! -t 1 ]] || [[ ! $DISPLAY ]] && { RENK_KULLAN=0; RENK=0; }
-[[ ! -d "${EZANVAKTI_DIZINI}" ]] && mkdir -p "${EZANVAKTI_DIZINI}"
-
-[[ ! -f "${EZANVAKTI_AYAR}"   ]] &&
-  sed "s:\(EZANVERI_DIZINI=\).*:\1\'${EZANVAKTI_DIZINI}\':" < @sysconfdir@/${AD}/ayarlar > "${EZANVAKTI_AYAR}"
-
-# Öntanımlı ayarları al.
-. @sysconfdir@/${AD}/ayarlar
-
-#  Öntanımlı ayarlardan gelen değerlerin üzerine yazılacak.
-#
-# Kullanıcı ayarlarını al.
-. "${EZANVAKTI_AYAR}" ||
-  { printf '%s dosyası okunabilir değil.\nÇıkılıyor...\n' "${EZANVAKTI_AYAR}"; exit 1; }
-
-EZANVERI="${EZANVAKTI_DIZINI}/${EZANVERI_ADI}"
-MPLAYER="mplayer -really-quiet -softvol -volume $SES"
 
 declare -A YUKLENEN_BILESENLER
 # http://git.archlinux.fr/yaourt.git/tree/src/lib/util.sh.in ( load_lib() )
@@ -102,10 +101,7 @@ function denetle() {
 
   [[ ! -f ${EZANVERI} ]] && { # ezanveri dosyası yoksa
     (( GUNCELLEME_YAP )) && { bilesen_yukle guncelleyici; guncelleme_yap; } || {
-      printf '%b%b\n%b\n' \
-        "${RENK7}${RENK2}${EZANVERI}" \
-        "${RENK3} dosyası bulunamadı." \
-        "Çıkılıyor...${RENK0}"
+      printf '%s dosyası bulunamadı.\n' "${EZANVERI}"
       exit 1
     }
   }
@@ -113,10 +109,7 @@ function denetle() {
   # Bugüne ait tarih ezanveri dosyasında yoksa
   [[ -z $(grep -o ${TARIH} "${EZANVERI}") ]] && {
     (( GUNCELLEME_YAP )) && { bilesen_yukle guncelleyici; guncelleme_yap; } || {
-      printf '%b%b\n%b\n' \
-        "${RENK7}${RENK2}${EZANVERI_ADI}" \
-        "${RENK3} dosyası güncel değil." \
-        "Çıkılıyor...${RENK0}"
+      printf '%s dosyası güncel değil.\n' "${EZANVERI}"
       exit 1
     }
   }
@@ -171,32 +164,6 @@ function bekleme_suresi_yarin() {
 function kalan() {
   kalan_sure=$(printf '%02d saat : %02d dakika : %02d saniye' \
     $((bekle/3600)) $((bekle%3600/60)) $((bekle%60)))
-}
-
-# Hadis, bilgi ve esma için 1 ile verilen sayı($1) arasında
-# rastgele bir sayı seç. Seçilen sayı için içerik_al ile gelen
-# dosya üzerinde işlem yapıp içeriği alinan_yanit değişkenine ata.
-function secim_yap() {
-  secilen=$((RANDOM%$1))
-  (( ! secilen )) && secilen=$1
-
-  alinan_yanit="$(sed -n "/#$secilen<#/,/#>$secilen#/p" ${icerik_al} | sed '1d;$d')"
-}
-
-function surum_goster() {
-  printf '%s\n%s\n\n%s\n%s\n%s\n%s\n\n%s\n%s\n%s\n%s\n\n%s\n%s\n' \
-    "${AD^} $SURUM düzenleme: $DUZELTME"\
-    "Copyright (C) 2010-$(date +%Y) Fatih Bostancı"\
-    'This program is free software; you can redistribute it and/or modify'\
-    'it under the terms of the GNU General Public License as published by'\
-    'the Free Software Foundation; either version 3 of the License, or'\
-    '(at your option) any later version.'\
-    'This program is distributed in the hope that it will be useful,'\
-    'but WITHOUT ANY WARRANTY; without even the implied warranty of'\
-    'MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the'\
-    'GNU General Public License for more details.'\
-    'You should have received a copy of the GNU General Public License'\
-    'along with this program. If not, see http://www.gnu.org/licenses/.'
 }
 
 # vim: set ft=sh ts=2 sw=2 et:

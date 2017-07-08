@@ -9,10 +9,9 @@ calisma_kipi=$1
 
 . @libdir@/@AD@/temel_islevler.bash
 # TODO: kendiliğinden çalışmayı denetle.
-# TODO:
+# TODO: vakit_animsat ve gun_animsat i ayır
 bilesen_yukle mplayer_yonetici
 (( OYNATICI_DURAKLAT )) && bilesen_yukle oynatici_duraklat
-renk_denetle
 
 function bekleme_yap() {
 
@@ -33,6 +32,7 @@ function bekleme_yap() {
 # diğer bildirimleri de düzenleyen fonksiyon
 function ezanoku() {
   clear
+
   printf '%b%b\n' \
     "${RENK7}${RENK3}${ILCE}${RENK2} " \
     "için ${RENK3}${simdiki}${RENK2} namazı vakti${RENK5} $vakit_saati${RENK0}"
@@ -105,6 +105,7 @@ function gun_animsat() {
 # --ramazan için özel bildirim veren ezan okutma fonksiyonu.
 function ramazan_ezanoku() {
   clear
+
   printf '%b\n%b\n' \
     "${RENK7}${RENK3} ${ILCE}${RENK2} " \
     "için ${RENK3}${simdiki}${RENK2} vakti${RENK5} $vakit_saati${RENK0}"
@@ -128,9 +129,10 @@ function ramazan_ezanoku() {
 # Vakitlerde ezan okunmasının ve bildirimin yönetildiği özyinelemeli ana fonksiyon.
 function ezanlar() {
   denetle; bugun
+  renk_denetle
 
   (( UNIXSAAT <= sabah )) && {
-    simdiki=Sabah
+    simdiki='Sabah'
     vakit_ezani="${SABAH_EZANI}"
     vakit_saati=$sabah_n
     ezan_okunsun_mu=${SABAH_EZANI_OKU}
@@ -142,7 +144,7 @@ function ezanlar() {
   } ||
 
   (( UNIXSAAT <= ogle )) && {
-    simdiki=Öğle
+    simdiki='Öğle'
     vakit_ezani="${OGLE_EZANI}"
     vakit_saati=$ogle_n
     ezan_okunsun_mu=${OGLE_EZANI_OKU}
@@ -154,7 +156,7 @@ function ezanlar() {
   } ||
 
   (( UNIXSAAT <= ikindi )) && {
-    simdiki=İkindi
+    simdiki='İkindi'
     vakit_ezani="${IKINDI_EZANI}"
     vakit_saati=$ikindi_n
     ezan_okunsun_mu=${IKINDI_EZANI_OKU}
@@ -166,7 +168,7 @@ function ezanlar() {
   } ||
 
   (( UNIXSAAT <= aksam )) && {
-    simdiki=Akşam
+    simdiki='Akşam'
     vakit_ezani="${AKSAM_EZANI}"
     vakit_saati=$aksam_n
     ezan_okunsun_mu=${AKSAM_EZANI_OKU}
@@ -178,7 +180,7 @@ function ezanlar() {
   } ||
 
   (( UNIXSAAT <= yatsi )) && {
-    simdiki=Yatsı
+    simdiki='Yatsı'
     vakit_ezani="${YATSI_EZANI}"
     vakit_saati=$yatsi_n
     ezan_okunsun_mu=${YATSI_EZANI_OKU}
@@ -201,9 +203,10 @@ function ezanlar() {
 # Ramazan ezan bildiriminin yönetildiği ana özyinelemeli fonksiyon.
 function iftarimsak() {
   denetle; bugun
+  renk_denetle
 
   (( UNIXSAAT <= sabah )) && {
-    simdiki=İmsak
+    simdiki='İmsak'
     vakit_ezani="${SABAH_EZANI}"
     vakit_saati=$sabah_n
     ezan_okunsun_mu=${SABAH_EZANI_OKU}
@@ -215,7 +218,7 @@ function iftarimsak() {
   } ||
 
   (( UNIXSAAT <= aksam )) && {
-    simdiki=İftar
+    simdiki='İftar'
     vakit_ezani="${AKSAM_EZANI}"
     vakit_saati=$aksam_n
     ezan_okunsun_mu=${AKSAM_EZANI_OKU}

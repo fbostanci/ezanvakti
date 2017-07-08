@@ -12,9 +12,7 @@ function mplayer_calistir() {
     # internet erişimini denetle.
     if ! ping -q -c 1 -W 1 google.com &>/dev/null
     then
-        printf '\n%b\n%b\n' \
-          "${RENK7}${RENK3}İnternet erişimi algılanamadı." \
-          "Çıkılıyor...${RENK0}"
+        printf 'İnternet erişimi algılanamadı.\n'
         exit 1
     fi
   fi

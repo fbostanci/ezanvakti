@@ -25,7 +25,7 @@ autostartdir  = $(sysconfdir)/xdg/autostart
 
 
 ifeq "$(DUZELTME)" ""
-	DUZELTME = bilinmeyen
+	DUZELTME = $(shell date +%Y%m%d)
 endif
 
 BETIKLER = ezanvakti.bash lib/temel_islevler.bash lib/arayuz.bash \

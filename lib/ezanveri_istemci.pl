@@ -6,7 +6,7 @@
 ##          Copyright (c) 2010-2017 Fatih Bostancı  <faopera@gmail.com>
 ##
 ##                   https://gitlab.com/fbostanci/ezanvakti
-##
+##                   https://github.com/fbostanci/ezanvakti
 ##
 ## This program is free software; you can redistribute it and/or modify
 ## it under the terms of the GNU General Public License as published by

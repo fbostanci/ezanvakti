@@ -42,8 +42,7 @@ for ((i=1; i<=ARAYUZ_CIZGI_UZUNLUGU; i++))
 function arayuz() {
   g_vakitleri_al
 
-  local strng donus
-  local str str2
+  local strng donus str str2
 
 strng=$(yad --form --text "$(printf "${GELISMIS_ARAYUZ_BICIMI}" \
   "<span foreground=\'${ARAYUZ_TARIH_SAAT_RENGI}\'>${TARIH}</span>" \
@@ -175,6 +174,7 @@ then
 
     elif [[ $str = @(hakkında|about) ]]
     then
+            bilesen_yukle hakkinda
             g_hakkinda; arayuz
 
     elif [[ $str = arayuz2 ]]

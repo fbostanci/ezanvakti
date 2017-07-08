@@ -5,9 +5,7 @@
 #
 
 function yapilandirma() {
-  local d1 d2 d3 d4 d5 d6 d7 d8 d9
-  local ayr1 ayr2 ayr3 ayr4
-
+  local d1 d2 d3 d4 d5 d6 d7 d8 d9 ayr1 ayr2 ayr3 ayr4
   local _GUNCELLEME_YAP _OYNATICI_DURAKLAT _EZAN_DUASI_OKU _RENK_KULLAN _GUNCELLEME_GEREKLI
   local _SABAH_OKUNSUN_MU _OGLE_OKUNSUN_MU _IKINDI_OKUNSUN_MU _AKSAM_OKUNSUN_MU _YATSI_OKUNSUN_MU
 
