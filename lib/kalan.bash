@@ -3,31 +3,30 @@
 #
 #
 #
+function bekleme_goster() {
+  local vakit="$1" vakit_saati="$2"
+  renk_denetle
+
+  clear
+  printf "${RENK7}${RENK4}${vakit} için bekleniyor...${RENK0}\n"
+  bekleme_suresi ${vakit_saati}
+  while (( bekle ))
+  do
+    # Her 12 saniyede bir süreyi sapmaya karşı düzelt.
+    ((bekle%12 == 0)) && bekleme_suresi ${vakit_saati}
+
+    printf "${RENK7}${RENK2}Kalan süre:${RENK5} %02d saat : %02d dakika : %02d saniye ${RENK2}(${RENK1}${vakit_saati}${RENK2})${RENK0}\r" \
+      $((bekle/3600)) $((bekle%3600/60)) $((bekle%60))
+    ((bekle--))
+    sleep 1
+  done
+}
 
 function kalan_sure() {
   denetle; bugun
-  renk_denetle
 
-  function bekleme_goster() {
-    local vakit="$1"
-    local vakit_saati="$2"
+  ucbirim_basligi "Kalan Süre Gösterici"
 
-    clear
-    printf "${RENK7}${RENK4}${vakit} için bekleniyor...${RENK0}\n"
-    bekleme_suresi ${vakit_saati}
-    while (( bekle ))
-    do
-      # Her 12 saniyede bir süreyi sapmaya karşı düzelt.
-      ((bekle%12 == 0)) && bekleme_suresi ${vakit_saati}
-
-      printf "${RENK7}${RENK2}Kalan süre:${RENK5} %02d saat : %02d dakika : %02d saniye ${RENK2}(${RENK1}${vakit_saati}${RENK2})${RENK0}\r" \
-        $((bekle/3600)) $((bekle%3600/60)) $((bekle%60))
-      ((bekle--))
-      sleep 1
-    done
-  }
-
-   ucbirim_basligi "Kalan Süre Gösterici"
   (( UNIXSAAT < sabah )) && {
     bekleme_goster "Sabah ezanı" $sabah_n
     kalan_sure

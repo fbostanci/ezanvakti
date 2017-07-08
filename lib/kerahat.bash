@@ -6,11 +6,12 @@
 function kerahat_vakitleri() {
   denetle; bugun
 
-  local kerahat_suresi='45 minutes' #dk
-  local kv_gunes=$(date -d "$gunes_n $kerahat_suresi" +%H:%M)
+  local kerahat_suresi kv_gunes kv_ogle kv_aksam
 
-  local kv_ogle=$(date -d "-$kerahat_suresi $ogle_n" +%H:%M)
-  local kv_aksam=$(date -d "-$kerahat_suresi $aksam_n" +%H:%M)
+  kerahat_suresi='45 minutes' #dk
+  kv_gunes=$(date -d "$gunes_n $kerahat_suresi" +%H:%M)
+  kv_ogle=$(date -d "-$kerahat_suresi $ogle_n" +%H:%M)
+  kv_aksam=$(date -d "-$kerahat_suresi $aksam_n" +%H:%M)
 
 case $1 in
   ucbirim)

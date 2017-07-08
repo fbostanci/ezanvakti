@@ -92,6 +92,7 @@ function eylem_menu() {
       g_secim_goster ;;
 
     hakkinda)
+      bilesen_yukle hakkinda
       g_hakkinda ;;
 
   esac

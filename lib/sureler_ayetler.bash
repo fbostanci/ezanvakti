@@ -5,8 +5,8 @@
 #
 
 function sureler_ayetler() {
-  renk_denetle
   clear
+  renk_denetle
 
   gawk -v r0=${RENK0} -v r2=${RENK2} -v r3=${RENK3} -v r7=${RENK7} \
     'BEGIN{printf "%s%s%s\t%s\t%s\t%s\t%s%s\n", r7,r3,"KOD","SURE ADI","AYET SAYISI","CÜZ NO","İNDİĞİ YER",r0}

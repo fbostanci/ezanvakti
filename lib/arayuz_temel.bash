@@ -62,10 +62,12 @@ function arayuz2_pid_denetle() {
 function g_vakitleri_al() {
   denetle; bugun
 
-  local kerahat_suresi=2700 #45 dk
-  local kv_gunes=$(( gunes + kerahat_suresi ))
-  local kv_ogle=$(( ogle - kerahat_suresi ))
-  local kv_aksam=$(( aksam - kerahat_suresi ))
+  local kerahat_suresi kv_gunes kv_ogle kv_aksam
+
+  kerahat_suresi=2700 #45 dk
+  kv_gunes=$(( gunes + kerahat_suresi ))
+  kv_ogle=$(( ogle - kerahat_suresi ))
+  kv_aksam=$(( aksam - kerahat_suresi ))
 
   if (( UNIXSAAT < sabah ))
   then
@@ -146,13 +148,10 @@ function g_vakitleri_al() {
 }
 
 function g_vakitleri_yaz() {
-  local sabah gunes ogle
-  local ikindi aksam yatsi
-  local vakitsiz
+  local sabah gunes ogle ikindi aksam yatsi vakitsiz
 
-  vakitsiz="<b>Şimdi Kerahat Vakti 1</b>|<b>Şimdi Kerahat Vakti 2</b>"
-  vakitsiz+="|<b>Şimdi Kerahat Vakti 3</b>|<b>Şimdi Kuşluk Vakti</b>"
-  vakitsiz+="|<b>Şimdi Kerahat Vakti 5</b>"
+  vakitsiz="<b>Şimdi Kerahat Vakti 2</b>|<b>Şimdi Kerahat Vakti 3</b>"
+  vakitsiz+="|<b>Şimdi Kuşluk Vakti</b>|<b>Şimdi Kerahat Vakti 5</b>"
 
   if [[ ${vakit_bilgisi} = '<b>Şimdi Yatsı Vakti</b>'  ]]
   then
@@ -168,6 +167,21 @@ function g_vakitleri_yaz() {
       aksam_n="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>$aksam_n</span>"
       yatsi="<span foreground=\'${ARAYUZ_SECILI_VAKIT_RENGI}\'>Yatsı</span>"
       yatsi_n="<span foreground=\'${ARAYUZ_SECILI_VAKIT_RENGI}\'>$yatsi_n</span>"
+
+  elif [[ ${vakit_bilgisi} = '<b>Şimdi Kerahat Vakti 1</b>' ]]
+  then
+      sabah="<span foreground=\'${ARAYUZ_SECILI_VAKIT_RENGI}\'>Sabah</span>"
+      sabah_n="<span foreground=\'${ARAYUZ_SECILI_VAKIT_RENGI}\'>$sabah_n</span>"
+      gunes="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>Güneş</span>"
+      gunes_n="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>$gunes_n</span>"
+      ogle="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>Öğle</span>"
+      ogle_n="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>$ogle_n</span>"
+      ikindi="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>İkindi</span>"
+      ikindi_n="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>$ikindi_n</span>"
+      aksam="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>Akşam</span>"
+      aksam_n="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>$aksam_n</span>"
+      yatsi="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>Yatsı</span>"
+      yatsi_n="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>$yatsi_n</span>"
 
   elif [[ ${vakit_bilgisi} = '<b>Güneş Doğuş Vakti</b>' ]]
   then
@@ -256,25 +270,10 @@ function g_secim_goster() {
       --back="$ARKAPLAN_RENGI" --fore="$YAZI_RENGI" --mouse --sticky
 }
 
-function g_hakkinda() {
-  yad --text "\t\t<b><big>${AD^} ${SURUM}</big></b>
-\"GNU/Linux için ezan vakti bildirici\"
-
-   <a href= 'https://gitlab.com/fbostanci/ezanvakti' >Ezanvakti Sayfası</a>
-   <a href= 'https://github.com/fbostanci/ezanvakti' >Ezanvakti Github Sayfası</a>
-
-Copyright (c) 2010-$(date +%Y) Fatih Bostancı
-GPL 3 ile lisanslanmıştır.\n" \
-  --title "${AD^} ${SURUM} - Hakkında" --fixed --image-on-top \
-  --button='gtk-close' --sticky --center \
-  --image=${VERI_DIZINI}/simgeler/ezanvakti2.png --window-icon=${VERI_DIZINI}/simgeler/ezanvakti2.png
-}
-
 function pencere_bilgi() {
-
-yad --form --separator=' ' --title="${AD^} $SURUM" --text "${mplayer_ileti}" \
-  --image=${VERI_DIZINI}/simgeler/ezanvakti.png --window-icon=${VERI_DIZINI}/simgeler/ezanvakti2.png \
-  --button='gtk-cancel:127' --button='gtk-close:0' --mouse --fixed
+  yad --form --separator=' ' --title="${AD^} $SURUM" --text "${mplayer_ileti}" \
+      --image=${VERI_DIZINI}/simgeler/ezanvakti.png --window-icon=${VERI_DIZINI}/simgeler/ezanvakti2.png \
+      --button='gtk-cancel:127' --button='gtk-close:0' --mouse --fixed
 
   case $? in
     *)
@@ -285,8 +284,7 @@ yad --form --separator=' ' --title="${AD^} $SURUM" --text "${mplayer_ileti}" \
 }
 
 function ozel_pencere() {
-  local strng donus
-  local str str2
+  local strng donus str str2
 
 strng=$(yad --form \
 --field=Okuyucu:CB \

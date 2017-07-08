@@ -8,8 +8,7 @@ function vakitler() { # {{{
   denetle; bugun
   renk_denetle
 
-  local istek="$1"
-  local siradaki_vakit siradaki_vakit_kalan
+  local istek="$1" siradaki_vakit siradaki_vakit_kalan
 
   # --osd/bildirim için renkleri sıfırla
   [[ ${istek} = bildirim ]] && { RENK1=''; RENK2=''; }
