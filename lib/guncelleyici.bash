@@ -5,11 +5,11 @@
 #
 
 function guncelleme_yap() { ### Ana fonksiyon {{{
-  local arayuz au ulke sehir ilce varsayilan_sehir pm varsayilan_ilce dn sure ulke_kodu sehir_kodu ilce_kodu
+  local arayuz au ulke sehir ilce varsayilan_sehir pm varsayilan_ilce dn ulke_kodu sehir_kodu ilce_kodu
   local e=0 denetim=0
   local -a pmler
 
-  sure="${SECONDS}"
+  SECONDS=0
   test x"${ULKE}"  = x"" && ULKE=yok_boyle_bir_yer
   test x"${SEHIR}" = x"" && SEHIR=yok_boyle_bir_yer
   test x"${ILCE}"  = x"" && ILCE=yok_boyle_bir_yer
@@ -282,7 +282,7 @@ SON
 
 printf '%-60b%b' \
   "${RENK7}${RENK8}Güncelleme için geçen süre: " \
-  "${RENK2}$((${SECONDS}-${sure})) saniye${RENK0}\n"
+  "${RENK2}${SECONDS} saniye${RENK0}\n"
 } #}}}
 
 # vim: set ft=sh ts=2 sw=2 et:
