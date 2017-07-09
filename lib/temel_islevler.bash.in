@@ -15,7 +15,6 @@ EZANVAKTI_DIZINI="${XDG_CONFIG_HOME:-$HOME/.config}/${AD}"
 EZANVAKTI_AYAR="${EZANVAKTI_DIZINI}/ayarlar"
 
 [[ ! -d   ${EZANVAKTI_DIZINI} ]] && mkdir -p "${EZANVAKTI_DIZINI}"
-
 [[ ! -f   ${EZANVAKTI_AYAR}   ]] &&
   sed "s:\(EZANVERI_DIZINI=\).*:\1\'${EZANVAKTI_DIZINI}\':" < @sysconfdir@/${AD}/ayarlar > "${EZANVAKTI_AYAR}"
 
@@ -126,8 +125,6 @@ function denetle() {
 
 # Bugünün ezan vakitlerini ayıkla ve değerleri vakit değişkenlerine ata.
 function bugun() {
-  # ezanlar ve iftarimsak fonksiyonları özyinelemeli çalıştığı için
-  # gün değişiminde tarihi güncellemek için tarih, denetle fonksiyonu içine alındı.
   TARIH=$(date +%d.%m.%Y)
   SAAT=$(date +%H:%M)
 
@@ -151,19 +148,19 @@ function bugun() {
 
 # Eğer hedef süre bugün içerisindeyse bu fonksiyon kullanılacak.
 function bekleme_suresi() {
-  bekle=$(($(date -d "$1" +%s) - $(date +%s) + EZAN_OKUNMA_SURESI_FARKI))
+  bekle=$(( $(date -d "$1" +%s) - $(date +%s) + EZAN_OKUNMA_SURESI_FARKI ))
 }
 
 # Eğer hedef süre yarına aitse bu fonksiyon kullanılacak.
 function bekleme_suresi_yarin() {
-  bekle=$((86400 - $(date +%s) + $(date -d "$1" +%s) + EZAN_OKUNMA_SURESI_FARKI))
+  bekle=$(( 86400 - $(date +%s) + $(date -d "$1" +%s) + EZAN_OKUNMA_SURESI_FARKI ))
 }
 
 # bekleme süresi fonksiyonlarından gelen bekle değerini
 # saat, dakika ve saniyeye çeviren fonksiyon
 function kalan() {
   kalan_sure=$(printf '%02d saat : %02d dakika : %02d saniye' \
-    $((bekle/3600)) $((bekle%3600/60)) $((bekle%60)))
+    $(( bekle / 3600 )) $(( bekle % 3600 / 60 )) $(( bekle % 60 )) )
 }
 
 # vim: set ft=sh ts=2 sw=2 et:

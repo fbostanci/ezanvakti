@@ -181,17 +181,8 @@ function ezanvakti_bekle() {
 #
 # 1: normal vakit ezanları
 # 2: Vakit ezanları için ramazan kipi. (--ramazan)
-if (( calisma_kipi == 1 ))
-then
-    denetle; gun_animsat &
-    vakit_animsat &
-    ezanvakti_bekle
-
-elif (( calisma_kipi == 2 ))
-then
-    denetle; gun_animsat &
-    vakit_animsat &
-    ezanvakti_bekle
-fi
+denetle; gun_animsat &
+vakit_animsat &
+ezanvakti_bekle
 
 # vim: set ft=sh ts=2 sw=2 et:

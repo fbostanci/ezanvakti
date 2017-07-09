@@ -2,7 +2,7 @@
 Encoding=UTF-8
 Name=@AD@
 Comment=GNU/Linux için Ezan vakti bildirici
-Icon=@datadir@/@AD@/simgeler/@AD@2.png
+Icon=@datadir@/@AD@/simgeler/ezanvakti2.png
 Exec=@bindir@/@AD@ --arayuz
 Terminal=false
 Type=Application
