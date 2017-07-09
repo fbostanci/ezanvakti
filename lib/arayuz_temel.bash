@@ -139,7 +139,7 @@ function g_vakitleri_al() {
       v_kalan="$kalan_sure"
       vakit_bilgisi='<b>Şimdi Akşam Vakti</b>'
 
-  elif (( UNIXSAAT <= yeni_gun ))
+  elif (( UNIXSAAT < yeni_gun ))
   then
       v_ileti='Yeni gün için bekleniyor..'
       v_kalan=
@@ -342,6 +342,7 @@ case $donus in
     mplayer_ileti="$(gawk -v sira=$sure '{if(NR==sira) print $4;}' < ${VERI_DIZINI}/veriler/sure_bilgisi) suresi dinletiliyor..\
     \n\n Okuyan : ${str}"
     pencere_bilgi & mplayer_calistir "${dinletilecek_sure}"
+    # FIXME: yad pid bul
     pkill yad >/dev/null 2>&1; ozel_pencere ;;
   153)
     exit 0 ;;
