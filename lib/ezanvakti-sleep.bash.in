@@ -19,36 +19,6 @@ function cikis_yap() {
   exit 0
 }
 
-# Vakit ezanı okunmadan önce  anımsatma
-function vakit_animsat() {
-  local dakika_saniye animsatici_saniye ileti
-
-  # Kullanıcı anımsatma değerini sıfır olarak belirlememişse
-  (( VAKIT_ANIMSAT )) && {
-    ezan_vakitlerini_al
-
-    dakika_saniye=$(( VAKIT_ANIMSAT * 60 ))
-    animsatici_saniye=$(( vakit_saati - dakika_saniye ))
-
-    if (( $(( animsatici_saniye - 60 )) == UNIXSAAT ))
-    then
-        sleep $(( animsatici_saniye - $(date +%s) ))
-    else
-        set -e
-        while (( animsatici_saniye != UNIXSAAT ))
-        do
-          sleep 59; vakit_animsat
-        done
-    fi
-
-    [[ ${simdiki} = @(İmsak|İftar) ]] && ileti='vakti olacak.' || ileti='ezanı okunacak.'
-    notify-send "Ezanvakti" "$VAKIT_ANIMSAT dakika sonra $simdiki ${ileti}" \
-      -u critical -t $BILGI_BILDIRIM_SURESI"000" \
-      -i ${VERI_DIZINI}/simgeler/ezanvakti.png -h int:transient:1
-    sleep 60; vakit_animsat
-  }
-}
-
 # Dini günler için anımsatıcı
 function gun_animsat() {
   local ozel_ileti
@@ -151,23 +121,55 @@ function ezan_oku() {
   clear
 }
 
+# Vakit ezanı okunmadan önce  anımsatma
+function vakit_animsat() {
+  local dakika_saniye animsatici_saniye ileti
+
+  # Kullanıcı anımsatma değerini sıfır olarak belirlememişse
+  (( VAKIT_ANIMSAT )) && {
+    ezan_vakitlerini_al
+
+    dakika_saniye=$(( VAKIT_ANIMSAT * 60 ))
+    animsatici_saniye=$(( vakit_saati - dakika_saniye ))
+
+    if (( $(( animsatici_saniye - 60 )) == UNIXSAAT ))
+    then
+        sleep $(( animsatici_saniye - $(date +%s) ))
+    else
+        set -e
+        while (( animsatici_saniye != UNIXSAAT ))
+        do
+          sleep 59; vakit_animsat
+        done
+    fi
+
+    [[ ${simdiki} = @(İmsak|İftar) ]] && ileti='vakti olacak.' || ileti='ezanı okunacak.'
+    notify-send "Ezanvakti" "$VAKIT_ANIMSAT dakika sonra $simdiki ${ileti}" \
+      -u critical -t $BILGI_BILDIRIM_SURESI"000" \
+      -i ${VERI_DIZINI}/simgeler/ezanvakti.png -h int:transient:1
+    sleep 60; vakit_animsat
+  }
+}
+
 function ezanvakti_bekle() {
   local ileti
   ezan_vakitlerini_al
 
   [[ -z $simdiki ]] && {
     printf "${RENK7}${RENK4}Yeni gün için bekleniyor...${RENK0}\r"
-    (( $(( vakit_saati - 60 )) == UNIXSAAT )) && sleep $(( vakit_saati - $(date +%s) )) || 
+    (( $(( vakit_saati - 60 )) == UNIXSAAT )) && sleep $(( vakit_saati - $(date +%s) )) ||
       { sleep 59; ezanvakti_bekle; }
   }
 
   [[ ${simdiki} = @(İmsak|İftar) ]] && ileti='vakti' || ileti='ezanı'
   if (( $(( vakit_saati - 60 )) == UNIXSAAT ))
   then
-      printf "${RENK7}${RENK4}${simdiki} ${ileti} için bekleniyor...${RENK0}\r"
+      printf '%b %b' "${RENK7}${RENK4}${simdiki} ${ileti} için bekleniyor."\
+                     "${RENK2}(${RENK4}${vakit_saati_n}${RENK2})${RENK0}\r"
       sleep $(( vakit_saati - $(date +%s) ))
   else
-      printf "${RENK7}${RENK4}${simdiki} ${ileti} için bekleniyor...${RENK0}\r"
+      printf '%b %b' "${RENK7}${RENK4}${simdiki} ${ileti} için bekleniyor."\
+                     "${RENK2}(${RENK4}${vakit_saati_n}${RENK2})${RENK0}\r"
       set -e
       while (( vakit_saati != UNIXSAAT ))
       do
