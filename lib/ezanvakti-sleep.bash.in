@@ -147,7 +147,9 @@ function vakit_animsat() {
     notify-send "Ezanvakti" "$VAKIT_ANIMSAT dakika sonra $simdiki ${ileti}" \
       -u critical -t $BILGI_BILDIRIM_SURESI"000" \
       -i ${VERI_DIZINI}/simgeler/ezanvakti.png -h int:transient:1
-    sleep 60; vakit_animsat
+    sleep 60
+    VAKIT_ANIMSAT="$(gawk -F'=' '/^VAKIT_ANIMSAT/{print($2);}' "${EZANVAKTI_AYAR}")"
+    vakit_animsat
   }
 }
 
