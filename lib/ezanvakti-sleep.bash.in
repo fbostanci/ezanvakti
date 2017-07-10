@@ -124,7 +124,7 @@ function ezan_oku() {
 # Vakit ezanı okunmadan önce  anımsatma
 function vakit_animsat() {
   local dakika_saniye animsatici_saniye ileti
-
+  set -x
   # Kullanıcı anımsatma değerini sıfır olarak belirlememişse
   (( VAKIT_ANIMSAT )) && {
     ezan_vakitlerini_al
@@ -136,7 +136,7 @@ function vakit_animsat() {
     then
         sleep $(( animsatici_saniye - $(date +%s) ))
     else
-        set -e
+#         set -e
         while (( animsatici_saniye != UNIXSAAT ))
         do
           sleep 59; vakit_animsat
@@ -147,9 +147,7 @@ function vakit_animsat() {
     notify-send "Ezanvakti" "$VAKIT_ANIMSAT dakika sonra $simdiki ${ileti}" \
       -u critical -t $BILGI_BILDIRIM_SURESI"000" \
       -i ${VERI_DIZINI}/simgeler/ezanvakti.png -h int:transient:1
-    sleep 60
-    VAKIT_ANIMSAT="$(gawk -F'=' '/^VAKIT_ANIMSAT/{print($2);}' "${EZANVAKTI_AYAR}")"
-    vakit_animsat
+    sleep 60; vakit_animsat
   }
 }
 
