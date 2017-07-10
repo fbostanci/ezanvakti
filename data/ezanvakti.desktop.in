@@ -7,48 +7,56 @@ Exec=@bindir@/@AD@ --arayuz
 Terminal=false
 Type=Application
 Categories=GTK;Application;Utility;
-Actions=EzvG1;EzvG2;EzvG3;EzvG4;EzvG5;EzvG6;EzvG7;EzvG8;EzvG9;EzvG10;EzvG11;
+Actions=EzvG1;EzvG2;EzvG3;EzvG4;EzvG5;EzvG6;EzvG7;EzvG8;EzvG9;EzvG10;EzvG11;EzvG12;EzvG13;
 
 [Desktop Action EzvG1]
 Name=Günlük Vakitler
 Exec=@bindir@/@AD@ --eylem vakitler
 
 [Desktop Action EzvG2]
+Name=Haftalık Vakitler
+Exec=@bindir@/@AD@ --eylem v7
+
+[Desktop Action EzvG3]
+Name=Aylık Vakitler
+Exec=@bindir@/@AD@ --eylem v30
+
+[Desktop Action EzvG4]
 Name=Kerahat Vakitleri
 Exec=@bindir@/@AD@ --eylem kerahat
 
-[Desktop Action EzvG3]
+[Desktop Action EzvG5]
 Name=Kuran Dinle
 Exec=@bindir@/@AD@ --eylem kuran
 
-[Desktop Action EzvG4]
+[Desktop Action EzvG6]
 Name=Dini Günler ve Geceler
 Exec=@bindir@/@AD@ --eylem gunler
 
-[Desktop Action EzvG5]
+[Desktop Action EzvG7]
 Name=Günlük Ayet
 Exec=@bindir@/@AD@ --eylem ayet
 
-[Desktop Action EzvG6]
+[Desktop Action EzvG8]
 Name=40 Hadis
 Exec=@bindir@/@AD@ --eylem hadis
 
-[Desktop Action EzvG7]
+[Desktop Action EzvG9]
 Name=Esma-ül Hüsna
 Exec=@bindir@/@AD@ --eylem esma
 
-[Desktop Action EzvG8]
+[Desktop Action EzvG10]
 Name=Dini Bilgi
 Exec=@bindir@/@AD@ --eylem bilgi
 
-[Desktop Action EzvG9]
+[Desktop Action EzvG11]
 Name=Ayarlar
 Exec=@bindir@/@AD@ --eylem yapilandirma
 
-[Desktop Action EzvG10]
+[Desktop Action EzvG12]
 Name=Hakkında
 Exec=@bindir@/@AD@ --eylem hakkinda
 
-[Desktop Action EzvG11]
+[Desktop Action EzvG13]
 Name=Yardım
 Exec=@bindir@/@AD@ --eylem yardim
