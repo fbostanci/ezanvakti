@@ -130,6 +130,13 @@ then
             bilgi_goster ucbirim > /tmp/ezanvakti-6
             g_secim_goster;arayuz
 
+    elif [[ $str = Günlük Vakitler ]]
+    then
+            secim_basligi='Günlük Vakitler'
+            bilesen_yukle vakitleri_goster
+            vakitler tum_vakitler > /tmp/ezanvakti-6
+            g_secim_goster; arayuz
+
     elif [[ $str = Aylık Vakitler ]]
     then
             secim_basligi='Aylık Vakitler'

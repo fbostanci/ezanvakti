@@ -29,8 +29,8 @@ tamamlama_listesi='!Ayarlar!Ayet!Sabah!Öğle!İkindi!Akşam!Yatsı!yapilandirma
 tamamlama_listesi+='!Bilgi!Aylık Vakitler!Haftalık Vakitler!Dini Günler ve Geceler!hakkında'
 tamamlama_listesi+="!about!güncelle!yardım!arayuz2!Kerahat!000!özel pencere!$sure_listesi"
 
-secim_listesi='!Haftalık Vakitler!Aylık Vakitler!Kerahat Vakitleri!Dini Günler ve Geceler'
-secim_listesi+='!Ayet!Hadis!Bilgi!Esma-ül Hüsna!Yapılandırma Yöneticisi'
+secim_listesi='!Günlük Vakitler!Haftalık Vakitler!Aylık Vakitler!Kerahat Vakitleri'
+secim_listesi+='!Dini Günler ve Geceler!Ayet!Hadis!Bilgi!Esma-ül Hüsna!Yapılandırma Yöneticisi'
 
 # düz komut çıktıları için rengi sıfırla.
 export RENK_KULLAN=0 RENK=0
