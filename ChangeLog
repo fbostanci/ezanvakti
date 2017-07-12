@@ -32,7 +32,7 @@
  *  Gelişmiş arayüze haftalık aylık vakit gösterimi eklendi.
  *  Yapılandırma yöneticisi YAD yenilikleri sayesinde sekmeli kullanıma geçirildi.
      Kapsamı arttırıldı.
- *  İstenen surenin istenin ayet aralığı gösterme eklendi. (--aralik)
+ *  İstenen surenin istenen ayet aralığı gösterme eklendi. (--aralik)
  *  Surelerin listelenmesinde sure adı ve ayet sayısı yanına cüz no indiği yer
     bilgileri de eklendi.
  *  Oynatici_duraklat: Juk ve Spotify desteği

@@ -44,7 +44,6 @@ function gun_animsat() {
   }
 }
 
-# Vakitlerde ezan okunmasının ve bildirimin yönetildiği özyinelemeli ana fonksiyon.
 function ezan_vakitlerini_al() {
   bugun
 
@@ -129,6 +128,8 @@ function vakit_animsat() {
   (( VAKIT_ANIMSAT )) && {
     ezan_vakitlerini_al
 
+    [[ -z $simdiki ]] && { sleep 59; vakit_animsat; }
+
     dakika_saniye=$(( VAKIT_ANIMSAT * 60 ))
     animsatici_saniye=$(( vakit_saati - dakika_saniye ))
 
@@ -151,6 +152,7 @@ function vakit_animsat() {
   }
 }
 
+# Vakitlerde ezan okunmasının ve bildirimin yönetildiği özyinelemeli ana fonksiyon.
 function ezanvakti_bekle() {
   local ileti
   ezan_vakitlerini_al

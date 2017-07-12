@@ -6,7 +6,7 @@
 
 if ! [[ -x $(type -p yad) ]]
 then
-    printf "Bu özellik YAD gerektirmektedir...\n" >&2
+    printf "%s: Bu özellik YAD gerektirmektedir...\n" "${AD}" >&2
     exit 1
 fi
 
