@@ -1,7 +1,7 @@
 
 _ezanvakti() {
   local cur prev kuran_uzun vakitler_uzun vakitler_uzun2
-  local butun_uzun ucbirim_uzun nglob_ayar ezanvakti_exec
+  local butun_uzun bildirim_uzun nglob_ayar ezanvakti_exec
   local ezanvakti conky_uzun
 
   nglob_ayar=$(shopt -p nullglob)
@@ -22,13 +22,13 @@ _ezanvakti() {
 
   kuran_uzun='--secim --rastgele --hatim --gunluk'
   conky_uzun='--iftar --siradaki --kerahat'
-  ucbirim_uzun='--ucbirim --terminal'
+  bildirim_uzun='--bildirim --osd'
 
   butun_uzun='--vakitler --conky --iftar --ayet \
 --esma --bilgi --hadis --kuran --dinle --arayuz --arayuz2 \
 --gui --gui2 --bilgi --sureler --ramazan --guncelle \
 --yardim  --surum --gunler --aralik --kalan --config \
---yapilandirma --renk'
+--yapilandirma --renk --eylem'
 
   case "$prev" in
 
@@ -36,7 +36,7 @@ _ezanvakti() {
      COMPREPLY=( $(compgen -W "${butun_uzun}" -- $cur) ) ;;
 
     --ayet|--hadis|--bilgi)
-      COMPREPLY=( $(compgen -W "${ucbirim_uzun}"  -- $cur) ) ;;
+      COMPREPLY=( $(compgen -W "${bildirim_uzun}"  -- $cur) ) ;;
 
     -v|--vakitler)
       COMPREPLY=( $(compgen -W "${vakitler_uzun2}"  -- $cur) ) ;;
