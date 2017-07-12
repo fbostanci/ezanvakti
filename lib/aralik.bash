@@ -12,6 +12,17 @@ function ayet_araligi_goster() {
   local sure sure_adi sure_sira sure_baslama baslangic son sure_ayet_sayisi \
         int_ayet_kod ayet_baslama ayet_bitis satir
 
+  if [[ -f ${KULLANICI_TEFSIR_DIZINI}/${TEFSIR_SAHIBI} ]]
+  then
+       TEFSIR="${KULLANICI_TEFSIR_DIZINI}/${TEFSIR_SAHIBI}"
+  elif [[ -f ${VERI_DIZINI}/tefsirler/${TEFSIR_SAHIBI} ]]
+  then
+      TEFSIR="${VERI_DIZINI}/tefsirler/${TEFSIR_SAHIBI}"
+  else
+      printf "${RENK3}${TEFSIR_SAHIBI} dosyası bulunamadı.${RENK0}\n" >&2
+      exit 1
+  fi
+
   if [[ -z ${sure_kod} || -z ${ayet_kod} ]]
   then
       printf "%s: Kullanım: <sure_kodu> <ayet_aralığı>\n" "${AD}" >&2
