@@ -136,7 +136,7 @@ function vakit_animsat() {
     then
         sleep $(( animsatici_saniye - $(date +%s) ))
     else
-#         set -e
+#       set -e
         while (( animsatici_saniye != UNIXSAAT ))
         do
           sleep 59; vakit_animsat
@@ -183,7 +183,7 @@ function ezanvakti_bekle() {
 #
 # 1: normal vakit ezanları
 # 2: Vakit ezanları için ramazan kipi. (--ramazan)
-denetle; gun_animsat &
+denetle; gun_animsat
 vakit_animsat &
 ezanvakti_bekle
 
