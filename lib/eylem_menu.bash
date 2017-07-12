@@ -48,6 +48,7 @@ function eylem_menu() {
 
     kuran)
       bilesen_yukle mplayer_yonetici
+      function arayuz() { true; }
       ozel_pencere ;;
 
     gunler)
@@ -82,6 +83,7 @@ function eylem_menu() {
 
     yapilandirma)
       bilesen_yukle yapilandirma_yoneticisi
+      function arayuz() { true; }
       yapilandirma ;;
 
     yardim)

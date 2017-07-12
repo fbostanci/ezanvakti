@@ -12,7 +12,7 @@ function ayet_araligi_goster() {
 
   if [[ -z ${sure_kod} || -z ${ayet_kod} ]]
   then
-      printf "Kullanım: <sure_kodu> <ayet_aralığı>\n"
+      printf "%s: Kullanım: <sure_kodu> <ayet_aralığı>\n" "${AD}" >&2
       exit 1
   fi
 
@@ -20,21 +20,21 @@ function ayet_araligi_goster() {
   then
       printf '%b\n%b\n' \
         "${AD}: hatalı sure_kodu: \`$sure_kod' " \
-        'Sure kodu olarak 1-114 arası sayısal bir değer giriniz.'
+        'Sure kodu olarak 1-114 arası sayısal bir değer giriniz.' >&2
       exit 1
 
   elif (( ${#sure_kod} > 3 ))
   then
       printf '%b\n%b\n' \
         "${AD}: hatalı sure_kodu: \`$sure_kod' " \
-        'Girilen sure kodunun basamak sayısı <= 3 olmalı.'
+        'Girilen sure kodunun basamak sayısı <= 3 olmalı.' >&2
       exit 1
 
   elif (( sure_kod < 1 || sure_kod > 114 ))
   then
       printf '%b\n%b\n' \
         "${AD}: hatalı sure_kodu: \`$sure_kod' " \
-        'Girilen sure kodu 1 <= sure_kodu <= 114 arasında olmalı.'
+        'Girilen sure kodu 1 <= sure_kodu <= 114 arasında olmalı.' >&2
       exit 1
 
   else  # Girilen sure koduna göre değişkenin önüne sıfır ekle.
@@ -58,12 +58,12 @@ function ayet_araligi_goster() {
   then
       if (( ayet_kod > sure_ayet_sayisi ))
       then
-          printf "$sure_adi Suresi $sure_ayet_sayisi ayetten oluşmaktadır.\n"
+          printf "%s: %s Suresi %s ayetten oluşmaktadır.\n" "${AD}" "$sure_adi" "$sure_ayet_sayisi" >&2
           exit 1
       fi
       if (( ayet_kod == 0 ))
       then
-          printf "$sure_adi Suresi için ayet aralığını yanlış girdiniz.\n"
+          printf "%s: %s Suresi için ayet aralığını yanlış girdiniz.\n" "${AD}" "$sure_adi" >&2
           exit 1
       fi
 
@@ -74,26 +74,26 @@ function ayet_araligi_goster() {
       export $(gawk -F'-' '{printf "ilk_sayi=%d\nikinci_sayi=%d", $1,$2}' <<<$ayet_kod)
       if (( ilk_sayi > ikinci_sayi ))
       then
-          printf "$sure_adi Suresi için ayet aralığını yanlış girdiniz.\n"
+          printf "%s: %s Suresi için ayet aralığını yanlış girdiniz.\n" "${AD}" "$sure_adi"  >&2
           exit 1
 
       fi
       if (( ikinci_sayi > sure_ayet_sayisi ))
       then
-          printf "$sure_adi Suresi $sure_ayet_sayisi ayetten oluşmaktadır.\n"
+          printf "%s: %s Suresi %s ayetten oluşmaktadır.\n" "${AD}" "$sure_adi" "$sure_ayet_sayisi" >&2
           exit 1
 
       fi
       if (( ilk_sayi == 0 )) || (( ikinci_sayi == 0 ))
       then
-          printf "$sure_adi Suresi için ayet aralığını yanlış girdiniz.\n"
+          printf "%s: $sure_adi Suresi için ayet aralığını yanlış girdiniz.\n" "${AD}" >&2
           exit 1
       fi
 
       ayet_baslama=$((sure_baslama+ilk_sayi))
       ayet_bitis=$((sure_baslama+ikinci_sayi))
   else
-      printf "$sure_adi Suresi için ayet aralığını yanlış girdiniz.\n"
+      printf "%s: $sure_adi Suresi için ayet aralığını yanlış girdiniz.\n" "${AD}" >&2
       exit 1
   fi
 
@@ -110,15 +110,16 @@ function ayet_araligi_goster() {
 function ayet_goster() { # {{{
   renk_denetle
 
-  [[ -f "${KULLANICI_TEFSIR_DIZINI}/${TEFSIR_SAHIBI}" ]] && {
-    TEFSIR="${KULLANICI_TEFSIR_DIZINI}/${TEFSIR_SAHIBI}"
-  } || {
-  [[ -f "${VERI_DIZINI}/tefsirler/${TEFSIR_SAHIBI}" ]] &&
-    TEFSIR="${VERI_DIZINI}/tefsirler/${TEFSIR_SAHIBI}"
-  } || {
-    printf "${RENK3}${TEFSIR_SAHIBI} dosyası bulunamadı.${RENK0}\n"
-    exit 1
-  }
+  if [[ -f ${KULLANICI_TEFSIR_DIZINI}/${TEFSIR_SAHIBI} ]]
+  then
+       TEFSIR="${KULLANICI_TEFSIR_DIZINI}/${TEFSIR_SAHIBI}"
+  elif [[ -f ${VERI_DIZINI}/tefsirler/${TEFSIR_SAHIBI} ]]
+  then
+      TEFSIR="${VERI_DIZINI}/tefsirler/${TEFSIR_SAHIBI}"
+  else
+      printf "${RENK3}${TEFSIR_SAHIBI} dosyası bulunamadı.${RENK0}\n" >&2
+      exit 1
+  fi
 
   satir=$((RANDOM%6236))
   (( ! satir )) && satir=6236
