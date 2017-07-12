@@ -11,7 +11,7 @@ function eylem_pid_denetle() {
 
   if [[ -f /tmp/.ezanvakti_eylem_menu.pid && -n $(ps -p $( < /tmp/.ezanvakti_eylem_menu.pid) -o comm=) ]]
   then
-      printf "Yalnızca bir arayüz örneği çalışabilir.\n" >&2
+      printf "%s: Yalnızca bir arayüz örneği çalışabilir.\n" "${AD}" >&2
       exit 1
   else
       printf "$ypid" > /tmp/.ezanvakti_eylem_menu.pid
