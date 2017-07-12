@@ -159,19 +159,18 @@ function ezanvakti_bekle() {
 
   [[ -z $simdiki ]] && {
     printf "${RENK7}${RENK4}Yeni gün için bekleniyor...${RENK0}\r"
-    (( $(( vakit_saati - 60 )) == UNIXSAAT )) && sleep $(( vakit_saati - $(date +%s) )) ||
-      { sleep 59; ezanvakti_bekle; }
+    sleep 59; ezanvakti_bekle
   }
 
   [[ ${simdiki} = @(İmsak|İftar) ]] && ileti='vakti' || ileti='ezanı'
   if (( $(( vakit_saati - 60 )) == UNIXSAAT ))
   then
       printf '%b %b' "${RENK7}${RENK4}${simdiki} ${ileti} için bekleniyor."\
-                     "${RENK2}(${RENK4}${vakit_saati_n}${RENK2})${RENK0}\r"
+                     "${RENK2}(${RENK5}${vakit_saati_n}${RENK2})${RENK0}\r"
       sleep $(( vakit_saati - $(date +%s) ))
   else
       printf '%b %b' "${RENK7}${RENK4}${simdiki} ${ileti} için bekleniyor."\
-                     "${RENK2}(${RENK4}${vakit_saati_n}${RENK2})${RENK0}\r"
+                     "${RENK2}(${RENK5}${vakit_saati_n}${RENK2})${RENK0}\r"
 #     set -e
       while (( vakit_saati != UNIXSAAT ))
       do
