@@ -25,7 +25,7 @@ EZANVAKTI_AYAR="${EZANVAKTI_DIZINI}/ayarlar"
 #
 # Kullanıcı ayarlarını al.
 . "${EZANVAKTI_AYAR}" ||
-  { printf '%s dosyası okunabilir değil.\n' "${EZANVAKTI_AYAR}"; exit 1; }
+  { printf '%s: %s dosyası okunabilir değil.\n' "${AD}" "${EZANVAKTI_AYAR}"; exit 1; }
 
 EZANVERI="${EZANVAKTI_DIZINI}/${EZANVERI_ADI}"
 MPLAYER="mplayer -really-quiet -softvol -volume $SES"
@@ -91,7 +91,7 @@ function denetle() {
 
   [[ ! -f ${EZANVERI} ]] && { # ezanveri dosyası yoksa
     (( GUNCELLEME_YAP )) && { bilesen_yukle guncelleyici; guncelleme_yap; } || {
-      printf '%s dosyası bulunamadı.\n' "${EZANVERI}"
+      printf '%s: %s dosyası bulunamadı.\n' "${AD}" "${EZANVERI}"
       exit 1
     }
   }
@@ -99,7 +99,7 @@ function denetle() {
   # Bugüne ait tarih ezanveri dosyasında yoksa
   [[ -z $(grep -o $(date +%d.%m.%Y) "${EZANVERI}") ]] && {
     (( GUNCELLEME_YAP )) && { bilesen_yukle guncelleyici; guncelleme_yap; } || {
-      printf '%s dosyası güncel değil.\n' "${EZANVERI}"
+      printf '%s: %s dosyası güncel değil.\n' "${AD}" "${EZANVERI}"
       exit 1
     }
   }
@@ -116,7 +116,7 @@ function denetle() {
     # için çerez dosya denetimi ekledik. Gün değişimi durumu için (mevcut oturum devam ediyorsa)
     # ayrıca dosyaya tarih uzantısı da ekledik.
     [[ ! -f /tmp/eznvrgncldntle_$(date +%d%m%y) ]] && {
-      notify-send "Ezanvakti ${SURUM}" "${EZANVERI_ADI} dosyanız\n\t$ksatir gün\nsonra güncelliğini yitirecek." \
+      notify-send "${AD^} ${SURUM}" "${EZANVERI_ADI} dosyanız\n\t$ksatir gün\nsonra güncelliğini yitirecek." \
         -i ${VERI_DIZINI}/simgeler/ezanvakti.png -t $GUNCELLEME_BILDIRIM_SURESI"000" -h int:transient:1
       :> /tmp/eznvrgncldntle_$(date +%d%m%y)
     }

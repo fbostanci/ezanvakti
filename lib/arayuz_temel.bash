@@ -40,7 +40,7 @@ function arayuz_pid_denetle() {
 
   if [[ -f /tmp/.ezanvakti_yad_arayuz.pid && -n $(ps -p $( < /tmp/.ezanvakti_yad_arayuz.pid) -o comm=) ]]
   then
-      printf "Yalnızca bir arayüz örneği çalışabilir.\n" >&2
+      printf "%s: Yalnızca bir arayüz örneği çalışabilir.\n" "${AD}" >&2
       exit 1
   else
       printf "$ypid" > /tmp/.ezanvakti_yad_arayuz.pid
@@ -52,7 +52,7 @@ function arayuz2_pid_denetle() {
 
   if [[ -f /tmp/.ezanvakti_yad_arayuz2.pid && -n $(ps -p $( < /tmp/.ezanvakti_yad_arayuz2.pid) -o comm=) ]]
   then
-      printf "Yalnızca bir arayüz2 örneği çalışabilir.\n" >&2
+      printf "%s: Yalnızca bir arayüz2 örneği çalışabilir.\n" "${AD}" >&2
       exit 1
   else
       printf "$ypid" > /tmp/.ezanvakti_yad_arayuz2.pid

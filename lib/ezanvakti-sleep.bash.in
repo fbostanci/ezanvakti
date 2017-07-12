@@ -38,7 +38,7 @@ function gun_animsat() {
 
     # eğer ozel_ileti boş (null) dönmemişse bildirimi gönder.
     [[ -n ${ozel_ileti} ]] && {
-      notify-send "Ezanvakti" "${ozel_ileti}" -t $GUN_ANIMSAT"000" \
+      notify-send "${AD^}" "${ozel_ileti}" -t $GUN_ANIMSAT"000" \
         -i ${VERI_DIZINI}/simgeler/ezanvakti.png -h int:transient:1
     }
   }
@@ -144,7 +144,7 @@ function vakit_animsat() {
     fi
 
     [[ ${simdiki} = @(İmsak|İftar) ]] && ileti='vakti olacak.' || ileti='ezanı okunacak.'
-    notify-send "Ezanvakti" "$VAKIT_ANIMSAT dakika sonra $simdiki ${ileti}" \
+    notify-send "${AD^}" "$VAKIT_ANIMSAT dakika sonra $simdiki ${ileti}" \
       -u critical -t $BILGI_BILDIRIM_SURESI"000" \
       -i ${VERI_DIZINI}/simgeler/ezanvakti.png -h int:transient:1
     sleep 60; vakit_animsat
@@ -170,7 +170,7 @@ function ezanvakti_bekle() {
   else
       printf '%b %b' "${RENK7}${RENK4}${simdiki} ${ileti} için bekleniyor."\
                      "${RENK2}(${RENK4}${vakit_saati_n}${RENK2})${RENK0}\r"
-      # set -e
+#     set -e
       while (( vakit_saati != UNIXSAAT ))
       do
         sleep 59; ezanvakti_bekle
