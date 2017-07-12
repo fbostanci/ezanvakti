@@ -1,6 +1,6 @@
 .TH "Ezanvakti" "1" "2017\-07\-07" "Ezanvakti 6\&.3" "Ezanvakti Kullanım Yönergeleri"
 .SH "AD"
-Ezanvakti 6\.2 \- GNU/Linux için Ezan Vakti Bildirici
+Ezanvakti 6\.3 \- GNU/Linux için Ezan Vakti Bildirici
 .SH "KULLANIM ŞEKLİ"
 .B ezanvakti
 .RI [ seçenek ]
@@ -126,16 +126,12 @@ Değişken olarak \fI<sure_kodu>\fP verildiğinde o kodla ilişik sureyi dinleti
 Sureleri dinlemek için gerekli olan kod numaralarını ve sure adlarını görüntüler ve çıkar.
 .TP
 .B \-\-ayet
-Rastgele bir kuran ayeti seçerek Türkçe anlamını bildirim baloncuğunda gösterir.
+Rastgele bir kuran ayeti seçerek Türkçe anlamını uçbirimde gösterir.
 .PP
 \fIek olarak\fP
 .TP 5
-.B \      -u, \-t, --ucbirim, \-\-uçbirim, \-\-terminal
-Ayeti bildirim baloncuğu yerine uçbirimden görüntüler ve çıkar.
-.TP 5
-.B \      -a, \-\-aa
-\fI<sure_kodu>\fP \fI<ayet_baslangıc_no-ayet_bitis_no>\fP.
-Ayrıntı için bkz. \-\-aralık seçeneği
+.B \      -b, \-o, \-\-bildirim, \-\-osd
+Ayeti uçbirim yerine bildirim baloncuğunda görüntüler ve çıkar.
 .TP
 .B \-\-ramazan
 Sadece iftar ve imsak vakitleri için ezan okunur.
@@ -183,13 +179,12 @@ Akşam ezanını dinletir.
 Yatsı ezanını dinletir.
 .TP
 .B \-\-hadis
-40 hadisten rastgele bir hadis seçerek bildirim
-baloncuğunda gösterir.
+40 hadisten rastgele bir hadis seçerek uçbirimde gösterir.
 .PP
 \fIek olarak\fP
 .TP 5
-.B \      -u, \-t, --ucbirim, \-\-uçbirim, \-\-terminal
-Hadisi bildirim baloncuğu yerine; uçbirimden görüntüler ve çıkar.
+.B \      -b, \-o, \-\-bildirim, \-\-osd
+Hadisi uçbirim yerine bildirim baloncuğunda görüntüler ve çıkar.
 .TP
 .B \-\-esma
 Esma-ül Hüsna olarak adlandırılan Allah'ın güzel adlarından 99 tane içinden
@@ -197,12 +192,12 @@ rastgele bir seçim yapar ve seçileni \fIyalnızca\fP uçbirimde gösterir.
 .TP
 .B \-\-bilgi
 Diyanet sitesinden alınan "Bunları biliyor musunuz?" adlı içerikten rastgele
-bir soru seçerek, sorunun yanıtıyla beraber, bildirim baloncuğunda gösterir.
+bir soru seçerek, sorunun yanıtıyla beraber, uçbirimde gösterir.
 .PP
 \fIek olarak\fP
 .TP 5
-.B \      -u, \-t, --ucbirim, \-\-uçbirim, \-\-terminal
-Soru ve yanıtı bildirim baloncuğu yerine uçbirimden görüntüler ve çıkar.
+.B \      -b, \-o, \-\-bildirim, \-\-osd
+Soru ve yanıtı uçbirim yerine bildirim baloncuğunda görüntüler ve çıkar.
 .TP
 .B \-\-gunler, \-\-günler
 İçinde bulunduğunuz yıla ait dini günler ve geceleri liste halinde görüntüler ve çıkar.

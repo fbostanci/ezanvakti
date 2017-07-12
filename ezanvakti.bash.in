@@ -150,16 +150,14 @@ case $1 in
   --ayet)
     bilesen_yukle ayet_goster; shift
     case $1 in
-      -u|-t|--u[cç]birim|--terminal)
-        ayet_goster ucbirim ;;
-      -a|--aa)
-        ayet_goster aralik $2 $3 ;;
+      -b|-o|--bildirim|--osd)
+        ayet_goster bildirim ;;
       ?*) hatali_kullanim $1 ;;
-      '') ayet_goster bildirim ;;
+      '') ayet_goster ucbirim ;;
     esac ;;
   --aral[ıi]k)
-    bilesen_yukle ayet_goster; shift
-    ayet_goster aralik $1 $2 ;;
+    bilesen_yukle aralik; shift
+    ayet_araligi_goster $1 $2 ;;
   --iftar)
     bilesen_yukle iftar
     ezv_iftar ;;
@@ -180,18 +178,18 @@ case $1 in
   --hadis)
     bilesen_yukle bilgi_goster; shift
     case $1 in
-      -u|-t|--u[cç]birim|--terminal)
-        hadis_goster ucbirim ;;
+      -b|-o|--bildirim|--osd)
+        hadis_goster bildirim ;;
       ?*) hatali_kullanim $1 ;;
-      '') hadis_goster bildirim ;;
+      '') hadis_goster ucbirim ;;
     esac ;;
   --bilgi)
     bilesen_yukle bilgi_goster; shift
     case $1 in
-      -u|-t|--u[cç]birim|--terminal)
-        bilgi_goster ucbirim ;;
+      -b|-o|--bildirim|--osd)
+        bilgi_goster bildirim ;;
       ?*) hatali_kullanim $1 ;;
-      '') bilgi_goster bildirim ;;
+      '') bilgi_goster ucbirim ;;
     esac ;;
   --esma)
     bilesen_yukle bilgi_goster
