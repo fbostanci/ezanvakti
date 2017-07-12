@@ -5,7 +5,7 @@
 #
 
 function ezv_iftar() {
-  denetle; bugun
+  ezanveri_denetle; bugun
   renk_denetle
 
   # Eğer şu anki saat aksam değerinden küçükse

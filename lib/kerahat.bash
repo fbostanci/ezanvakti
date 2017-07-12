@@ -4,7 +4,7 @@
 #
 #
 function kerahat_vakitleri() {
-  denetle; bugun
+  ezanveri_denetle; bugun
 
   local kerahat_suresi kv_gunes kv_ogle kv_aksam
 

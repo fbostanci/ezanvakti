@@ -5,7 +5,7 @@
 #
 
 function vakitler() { # {{{
-  denetle; bugun
+  ezanveri_denetle; bugun
   renk_denetle
 
   local istek="$1" siradaki_vakit siradaki_vakit_kalan

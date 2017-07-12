@@ -5,7 +5,7 @@
 #
 
 function ezv_conky() {
-  denetle; bugun
+  ezanveri_denetle; bugun
 
   printf "${CONKY_BICIMI}" 'Sabah' "$sabah_n" 'Güneş' \
     "$gunes_n" 'Öğle' "$ogle_n" 'İkindi' "$ikindi_n" 'Akşam' \
@@ -13,7 +13,7 @@ function ezv_conky() {
 }
 
 function ezv_conky_iftar() {
-  denetle; bugun
+  ezanveri_denetle; bugun
 
   (( UNIXSAAT < aksam )) && {
     bekleme_suresi $aksam_n; kalan
@@ -23,7 +23,7 @@ function ezv_conky_iftar() {
     (( UNIXSAAT >= aksam )) && {
       # Yarının aksam vakti ezanveri dosyasında var mı denetle önc..
       [[ -z $(grep $(date -d 'tomorrow' +%d.%m.%Y) "${EZANVERI}") ]] && {
-        (( GUNCELLEME_YAP )) && { bilesen_yukle guncelleyici; guncelleme_yap;} || {
+        (( GUNCELLEME_YAP )) && { bilesen_yukle guncelleyici; guncelleme_yap; } || {
           printf "${EZANVERI_ADI} dosyanızda yarına ait veri bulunmuyor.\n"; exit 1
         }
       }

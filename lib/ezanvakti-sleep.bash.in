@@ -184,7 +184,7 @@ function ezanvakti_bekle() {
 #
 # 1: normal vakit ezanları
 # 2: Vakit ezanları için ramazan kipi. (--ramazan)
-denetle; gun_animsat
+ezanveri_denetle; gun_animsat
 vakit_animsat &
 ezanvakti_bekle
 

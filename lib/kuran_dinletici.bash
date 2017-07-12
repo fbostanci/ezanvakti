@@ -56,22 +56,26 @@ function kuran_dinletimi() {
 
   # Öncelikle kullanıcının girdiği dizinde dosya
   # var mı denetle. Yoksa çevrimiçi dinletime yönel.
-  [[ -f "${YEREL_SURE_DIZINI}/$sure.mp3" ]] && {
-    dinletilecek_sure="${YEREL_SURE_DIZINI}/$sure.mp3"
-    kaynak='Yerel Dizin'
-    okuyan='Yerel Okuyucu'
-  } || {
-          # Seçilen okuyucu koduna göre okuyucunun tam adını yeni değere ata.
-          [[ ${OKUYAN} = AlGhamdi  ]] && okuyan='Saad el Ghamdi' \
-          || {
-          [[ ${OKUYAN} = AsShatree ]] && okuyan='As Shatry'
-          } || {
-          [[ ${OKUYAN} = AlAjmy    ]] && okuyan='Ahmad el Ajmy'
-          }
-
-    dinletilecek_sure="http://www.listen2quran.com/listen/${OKUYAN}/$sure.mp3"
-    kaynak='http://www.listen2quran.com'
-  }
+  if [[ -f ${YEREL_SURE_DIZINI}/$sure.mp3 ]]
+  then
+      dinletilecek_sure="${YEREL_SURE_DIZINI}/$sure.mp3"
+      kaynak='Yerel Dizin'
+      okuyan='Yerel Okuyucu'
+  else
+      # Seçilen okuyucu koduna göre okuyucunun tam adını yeni değere ata.
+      if [[ ${OKUYAN} = AlGhamdi ]]
+      then
+          okuyan='Saad el Ghamdi'
+      elif [[ ${OKUYAN} = AsShatree ]]
+      then
+          okuyan='As Shatry'
+      elif [[ ${OKUYAN} = AlAjmy ]]
+      then
+          okuyan='Ahmad el Ajmy'
+      fi
+  fi
+  dinletilecek_sure="http://www.listen2quran.com/listen/${OKUYAN}/$sure.mp3"
+  kaynak='http://www.listen2quran.com'
 
   bilesen_yukle mplayer_yonetici
   ucbirim_basligi "$(gawk -v sure=$sure 'BEGIN{gsub("^0*","",sure);} NR==sure {print($4);}' \
@@ -101,7 +105,7 @@ function kuran_dinlet() { # kuran_dinlet_yonetimi {{{
       } ;;
 
     rastgele)
-      sure_no=$((RANDOM%114))
+      sure_no=$(( RANDOM % 114 ))
       (( ! sure_no )) && sure_no=114
         sure_no_denetimi; kuran_dinletimi ;;
 

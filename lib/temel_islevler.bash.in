@@ -86,7 +86,7 @@ function hatali_kullanim() {
 # Ezanveri dosyası gerektiren işlemlerde ilk önce bu fonksiyon çağrılacak.
 #
 # ezanveri dosyasının kullanıldığı işlemler için olumsuz durumları denetle.
-function denetle() {
+function ezanveri_denetle() {
   local ksatir
 
   [[ ! -f ${EZANVERI} ]] && { # ezanveri dosyası yoksa
