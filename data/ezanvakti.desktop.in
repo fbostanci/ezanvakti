@@ -1,4 +1,5 @@
 [Desktop Entry]
+Version=1.0
 Encoding=UTF-8
 Name=@AD@
 Comment=GNU/Linux için Ezan vakti bildirici
@@ -7,56 +8,56 @@ Exec=@bindir@/@AD@ --arayuz
 Terminal=false
 Type=Application
 Categories=GTK;Application;Utility;
-Actions=EzvG1;EzvG2;EzvG3;EzvG4;EzvG5;EzvG6;EzvG7;EzvG8;EzvG9;EzvG10;EzvG11;EzvG12;EzvG13;
+Actions=EzvGv1;EzvGv2;EzvGv3;EzvGv4;EzvGv5;EzvGv6;EzvGv7;EzvGv8;EzvGv9;EzvGv10;EzvGv11;EzvGv12;EzvGv13;
 
-[Desktop Action EzvG1]
+[Desktop Action EzvGv1]
 Name=Günlük Vakitler
 Exec=@bindir@/@AD@ --eylem vakitler
 
-[Desktop Action EzvG2]
+[Desktop Action EzvGv2]
 Name=Haftalık Vakitler
 Exec=@bindir@/@AD@ --eylem v7
 
-[Desktop Action EzvG3]
+[Desktop Action EzvGv3]
 Name=Aylık Vakitler
 Exec=@bindir@/@AD@ --eylem v30
 
-[Desktop Action EzvG4]
+[Desktop Action EzvGv4]
 Name=Kerahat Vakitleri
 Exec=@bindir@/@AD@ --eylem kerahat
 
-[Desktop Action EzvG5]
+[Desktop Action EzvGv5]
 Name=Kuran Dinle
 Exec=@bindir@/@AD@ --eylem kuran
 
-[Desktop Action EzvG6]
+[Desktop Action EzvGv6]
 Name=Dini Günler ve Geceler
 Exec=@bindir@/@AD@ --eylem gunler
 
-[Desktop Action EzvG7]
+[Desktop Action EzvGv7]
 Name=Günlük Ayet
 Exec=@bindir@/@AD@ --eylem ayet
 
-[Desktop Action EzvG8]
+[Desktop Action EzvGv8]
 Name=40 Hadis
 Exec=@bindir@/@AD@ --eylem hadis
 
-[Desktop Action EzvG9]
+[Desktop Action EzvGv9]
 Name=Esma-ül Hüsna
 Exec=@bindir@/@AD@ --eylem esma
 
-[Desktop Action EzvG10]
+[Desktop Action EzvGv10]
 Name=Dini Bilgi
 Exec=@bindir@/@AD@ --eylem bilgi
 
-[Desktop Action EzvG11]
+[Desktop Action EzvGv11]
 Name=Ayarlar
 Exec=@bindir@/@AD@ --eylem yapilandirma
 
-[Desktop Action EzvG12]
+[Desktop Action EzvGv12]
 Name=Hakkında
 Exec=@bindir@/@AD@ --eylem hakkinda
 
-[Desktop Action EzvG13]
+[Desktop Action EzvGv13]
 Name=Yardım
 Exec=@bindir@/@AD@ --eylem yardim

@@ -124,7 +124,7 @@ function ezan_oku() {
 # Vakit ezanı okunmadan önce  anımsatma
 function vakit_animsat() {
   local dakika_saniye animsatici_saniye ileti
-  set -x
+
   # Kullanıcı anımsatma değerini sıfır olarak belirlememişse
   (( VAKIT_ANIMSAT )) && {
     ezan_vakitlerini_al
@@ -170,7 +170,7 @@ function ezanvakti_bekle() {
   else
       printf '%b %b' "${RENK7}${RENK4}${simdiki} ${ileti} için bekleniyor."\
                      "${RENK2}(${RENK4}${vakit_saati_n}${RENK2})${RENK0}\r"
-      set -e
+      # set -e
       while (( vakit_saati != UNIXSAAT ))
       do
         sleep 59; ezanvakti_bekle
