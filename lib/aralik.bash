@@ -5,6 +5,8 @@
 #
 
 function ayet_araligi_goster() {
+  renk_denetle
+
   local sure_kod=$1
   local ayet_kod=$2
   local sure sure_adi sure_sira sure_baslama baslangic son sure_ayet_sayisi \
