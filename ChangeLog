@@ -2,6 +2,48 @@
 
 
 
+/×××××××××××××××××××××××××××××
+× Ezanvakti 6.2
+×××××××××××××××××××××××××××××/
+2017-07-07 Fatih BOSTANCI <faopera@gmail.com>
+
+ *  Gelişmiş ve basit arayüzde yazı renkleri özelleştirmeleri (html renkleri kullanılıyor.)
+ *  Desktop actions (Ezanvakti simgesi sağ tık menüsü) desteği (--eylem)
+
+
+/×××××××××××××××××××××××××××××
+× Ezanvakti 6.1
+×××××××××××××××××××××××××××××/
+2017-06-30 Fatih BOSTANCI <faopera@gmail.com>
+
+ *  Vakitler ve conky için sıradaki vakit gösterimi(-vt, --conky --siradaki)
+ *  Vakitler ve conky için kerahat vakitleri gösterimi(-vk, --conky --kerahat)
+ *  Gelişmiş ve basit arayüz kerahat vakitlerini gösteriyor.
+ *  Çeşitli kod düzenlemeleri
+
+
+/×××××××××××××××××××××××××××××
+× Ezanvakti 6.0
+×××××××××××××××××××××××××××××/
+2017-04-05 Fatih BOSTANCI <faopera@gmail.com>
+
+ *  İlçe desteği (TÜRKİYE/ABD/KANADA için)
+ *  Uygulama bileşenlere ayrıldı ve daha modüler hale getirildi.
+ *  Gelişmiş arayüze haftalık aylık vakit gösterimi eklendi.
+ *  Yapılandırma yöneticisi YAD yenilikleri sayesinde sekmeli kullanıma geçirildi.
+     Kapsamı arttırıldı.
+ *  İstenen surenin istenin ayet aralığı gösterme eklendi. (--aralik)
+ *  Surelerin listelenmesinde sure adı ve ayet sayısı yanına cüz no indiği yer
+    bilgileri de eklendi.
+ *  Oynatici_duraklat: Juk ve Spotify desteği
+ *  Oynatici_duraklat artık sadece uygulama müzik çaldığında durdurma yapıyor.
+ *  Makefile geliştirmeleri.
+ *  Uygulama kurulurken uygulamanın adını değiştirebilme (make ile).
+ *  Man dosyası iki parçaya ayrıldı ve güncellendi.
+ *  Birçok küçük geliştirme yapıldı.
+ *  Gitorious kapandığı için uygulama Gitlab'a taşındı. (https://gitlab.com/fbostanci/ezanvakti)
+ *  Github'a da yansı depo olarak eklendi. (https://github.com/fbostanci/ezanvakti)
+
 
 /×××××××××××××××××××××××××××××
 × Ezanvakti 5.7.2
@@ -9,7 +51,7 @@
 2015-01-09 Fatih BOSTANCI <faopera@gmail.com>
 
  *  Tüm vakit ezanlarının isteğe bağlı okunabilmesi özelliği eklendi.
- * Utopic için paketleme yapıldı.
+ *  Utopic için paketleme yapıldı.
 
 
 /×××××××××××××××××××××××××××××
@@ -17,7 +59,7 @@
 ×××××××××××××××××××××××××××××/
 2014-05-28 Fatih BOSTANCI <faopera@gmail.com>
 
- * Diyanet sitesindeki değişiklikten dolayı oluşan güncelleme hatası giderildi.
+ *  Diyanet sitesindeki değişiklikten dolayı oluşan güncelleme hatası giderildi.
 
 
 /×××××××××××××××××××××××××××××
