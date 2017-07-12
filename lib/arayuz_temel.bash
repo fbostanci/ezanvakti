@@ -60,7 +60,7 @@ function arayuz2_pid_denetle() {
 }
 
 function g_vakitleri_al() {
-  denetle; bugun
+  ezanveri_denetle; bugun
 
   local kerahat_suresi kv_gunes kv_ogle kv_aksam
 

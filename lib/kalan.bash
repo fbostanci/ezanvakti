@@ -23,7 +23,7 @@ function bekleme_goster() {
 }
 
 function kalan_sure() {
-  denetle; bugun
+  ezanveri_denetle; bugun
 
   ucbirim_basligi "Kalan Süre Gösterici"
 
