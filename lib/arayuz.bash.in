@@ -74,131 +74,131 @@ if (( donus == 150 ))
 then
     if [[ $str = Sabah ]]
     then
-            mplayer_ileti=" Sabah ezanı dinletiliyor..\n\n Okuyan : ${EZAN_OKUYAN}"
-            mplayer_calistir "${SABAH_EZANI}" &
+        mplayer_ileti=" Sabah ezanı dinletiliyor..\n\n Okuyan : ${EZAN_OKUYAN}"
+        player_calistir "${SABAH_EZANI}" &
             pencere_bilgi; arayuz
 
     elif [[ $str = Öğle ]]
     then
-            mplayer_ileti=" Öğle ezanı dinletiliyor..\n\n Okuyan : ${EZAN_OKUYAN}"
-            mplayer_calistir "${OGLE_EZANI}" &
-            pencere_bilgi; arayuz
+        mplayer_ileti=" Öğle ezanı dinletiliyor..\n\n Okuyan : ${EZAN_OKUYAN}"
+        mplayer_calistir "${OGLE_EZANI}" &
+        pencere_bilgi; arayuz
 
     elif [[ $str = İkindi ]]
     then
-            mplayer_ileti=" İkindi ezanı dinletiliyor..\n\n Okuyan : ${EZAN_OKUYAN}"
-            mplayer_calistir "${IKINDI_EZANI}" &
-            pencere_bilgi; arayuz
+        mplayer_ileti=" İkindi ezanı dinletiliyor..\n\n Okuyan : ${EZAN_OKUYAN}"
+        mplayer_calistir "${IKINDI_EZANI}" &
+        pencere_bilgi; arayuz
 
     elif [[ $str = Akşam ]]
     then
-            mplayer_ileti=" Akşam ezanı dinletiliyor..\n\n Okuyan : ${EZAN_OKUYAN}"
-            mplayer_calistir "${AKSAM_EZANI}" &
-            pencere_bilgi; arayuz
+        mplayer_ileti=" Akşam ezanı dinletiliyor..\n\n Okuyan : ${EZAN_OKUYAN}"
+        mplayer_calistir "${AKSAM_EZANI}" &
+        pencere_bilgi; arayuz
 
     elif [[ $str = Yatsı ]]
     then
-            mplayer_ileti=" Yatsı ezanı dinletiliyor..\n\n Okuyan : ${EZAN_OKUYAN}"
-            mplayer_calistir "${YATSI_EZANI}" &
-            pencere_bilgi; arayuz
+        mplayer_ileti=" Yatsı ezanı dinletiliyor..\n\n Okuyan : ${EZAN_OKUYAN}"
+        mplayer_calistir "${YATSI_EZANI}" &
+        pencere_bilgi; arayuz
 
     elif [[ $str = Ayet ]]
     then
-            secim_basligi='Günlük Ayet'
-            bilesen_yukle ayet_goster
-            ayet_goster ucbirim > /tmp/ezanvakti-6
-            g_secim_goster;arayuz
+        secim_basligi='Günlük Ayet'
+        bilesen_yukle ayet_goster
+        ayet_goster ucbirim > /tmp/ezanvakti-6
+        g_secim_goster; arayuz
 
     elif [[ $str = Hadis ]]
     then
-            secim_basligi='40 Hadis'
-            bilesen_yukle bilgi_goster
-            hadis_goster ucbirim > /tmp/ezanvakti-6
-            g_secim_goster;arayuz
+        secim_basligi='40 Hadis'
+        bilesen_yukle bilgi_goster
+        hadis_goster ucbirim > /tmp/ezanvakti-6
+        g_secim_goster; arayuz
 
     elif [[ $str = Esma-ül Hüsna ]]
     then
-            secim_basligi='Esma-ül Hüsna'
-            bilesen_yukle bilgi_goster
-            esma_goster ucbirim > /tmp/ezanvakti-6
-            g_secim_goster;arayuz
+        secim_basligi='Esma-ül Hüsna'
+        bilesen_yukle bilgi_goster
+        esma_goster ucbirim > /tmp/ezanvakti-6
+        g_secim_goster; arayuz
 
     elif [[ $str = Bilgi ]]
     then
-            secim_basligi='Dini Bilgiler'
-            bilesen_yukle bilgi_goster
-            bilgi_goster ucbirim > /tmp/ezanvakti-6
-            g_secim_goster;arayuz
+        secim_basligi='Dini Bilgiler'
+        bilesen_yukle bilgi_goster
+        bilgi_goster ucbirim > /tmp/ezanvakti-6
+        g_secim_goster; arayuz
 
     elif [[ $str = Günlük Vakitler ]]
     then
-            secim_basligi='Günlük Vakitler'
-            bilesen_yukle vakitleri_goster
-            vakitler tum_vakitler > /tmp/ezanvakti-6
-            g_secim_goster; arayuz
+        secim_basligi='Günlük Vakitler'
+        bilesen_yukle vakitleri_goster
+        vakitler tum_vakitler > /tmp/ezanvakti-6
+        g_secim_goster; arayuz
 
     elif [[ $str = Aylık Vakitler ]]
     then
-            secim_basligi='Aylık Vakitler'
-            bilesen_yukle vakitleri_goster
-            vakitler aylik > /tmp/ezanvakti-6
-            g_secim_goster; arayuz
+        secim_basligi='Aylık Vakitler'
+        bilesen_yukle vakitleri_goster
+        vakitler aylik > /tmp/ezanvakti-6
+        g_secim_goster; arayuz
 
     elif [[ $str = Haftalık Vakitler ]]
     then
-            secim_basligi='Haftalık Vakitler'
-            bilesen_yukle vakitleri_goster
-            vakitler haftalik > /tmp/ezanvakti-6
-            g_secim_goster; arayuz
+        secim_basligi='Haftalık Vakitler'
+        bilesen_yukle vakitleri_goster
+        vakitler haftalik > /tmp/ezanvakti-6
+        g_secim_goster; arayuz
 
     elif [[ $str = @(Kerahat Vakitleri|Kerahat) ]]
     then
-            secim_basligi='Kerahat Vakitleri'
-            bilesen_yukle kerahat
-            kerahat_vakitleri ucbirim > /tmp/ezanvakti-6
-            g_secim_goster; arayuz
+        secim_basligi='Kerahat Vakitleri'
+        bilesen_yukle kerahat
+        kerahat_vakitleri ucbirim > /tmp/ezanvakti-6
+        g_secim_goster; arayuz
 
     elif [[ $str = Dini Günler ve Geceler ]]
     then
-            secim_basligi="$(date +%Y) Dini Günler ve Geceler"
-            bilesen_yukle dini_gunler
-            gunler > /tmp/ezanvakti-6
-            g_secim_goster; arayuz
+        secim_basligi="$(date +%Y) Dini Günler ve Geceler"
+        bilesen_yukle dini_gunler
+        gunler > /tmp/ezanvakti-6
+        g_secim_goster; arayuz
 
     elif [[ $str = @(Ayarlar|yapilandirma|Yapılandırma Yöneticisi)  ]]
     then
-            bilesen_yukle yapilandirma_yoneticisi
-            yapilandirma
+        bilesen_yukle yapilandirma_yoneticisi
+        yapilandirma
 
     elif [[ $str = özel pencere ]]
     then
-            ozel_pencere
+        ozel_pencere
 
     elif [[ $str = güncelle ]]
     then
-            bilesen_yukle guncelleyici
-            guncelleme_yap; arayuz
+        bilesen_yukle guncelleyici
+        guncelleme_yap; arayuz
 
     elif [[ $str = @(hakkında|about) ]]
     then
-            bilesen_yukle hakkinda
-            g_hakkinda; arayuz
+        bilesen_yukle hakkinda
+        g_hakkinda; arayuz
 
     elif [[ $str = arayuz2 ]]
     then
-            bilesen_yukle arayuz2
-            arayuz2; arayuz
+        bilesen_yukle arayuz2
+        arayuz2; arayuz
 
     elif [[ $str = yardım ]]
     then
-            bilesen_yukle kullanim
-            betik_kullanimi > /tmp/ezanvakti-6
-            sed -i '$d' /tmp/ezanvakti-6
-            g_secim_goster; arayuz
+        bilesen_yukle kullanim
+        betik_kullanimi > /tmp/ezanvakti-6
+        sed -i '$d' /tmp/ezanvakti-6
+        g_secim_goster; arayuz
 
     elif [[ $(grep [0-9] <<<$str) ]]
     then
-            sure=$(cut -d'-' -f1 <<<$str)
+        sure=$(cut -d'-' -f1 <<<$str)
 
         if [[ $sure = 000 ]]
         then
@@ -238,6 +238,6 @@ elif (( donus == 121 ))
 then
     exit 0
 fi
-};arayuz
+}; arayuz
 
 # vim: set ft=sh ts=2 sw=2 et:

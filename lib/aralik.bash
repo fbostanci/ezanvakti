@@ -14,7 +14,7 @@ function ayet_araligi_goster() {
 
   if [[ -f ${KULLANICI_TEFSIR_DIZINI}/${TEFSIR_SAHIBI} ]]
   then
-       TEFSIR="${KULLANICI_TEFSIR_DIZINI}/${TEFSIR_SAHIBI}"
+      TEFSIR="${KULLANICI_TEFSIR_DIZINI}/${TEFSIR_SAHIBI}"
   elif [[ -f ${VERI_DIZINI}/tefsirler/${TEFSIR_SAHIBI} ]]
   then
       TEFSIR="${VERI_DIZINI}/tefsirler/${TEFSIR_SAHIBI}"
@@ -31,21 +31,21 @@ function ayet_araligi_goster() {
 
   if [[ -n $(tr -d 0-9 <<<$sure_kod) ]]
   then
-      printf '%b\n%b\n' \
+      printf '%s\n%s\n' \
         "${AD}: hatalı sure_kodu: \`$sure_kod' " \
         'Sure kodu olarak 1-114 arası sayısal bir değer giriniz.' >&2
       exit 1
 
   elif (( ${#sure_kod} > 3 ))
   then
-      printf '%b\n%b\n' \
+      printf '%s\n%s\n' \
         "${AD}: hatalı sure_kodu: \`$sure_kod' " \
         'Girilen sure kodunun basamak sayısı <= 3 olmalı.' >&2
       exit 1
 
   elif (( sure_kod < 1 || sure_kod > 114 ))
   then
-      printf '%b\n%b\n' \
+      printf '%s\n%s\n' \
         "${AD}: hatalı sure_kodu: \`$sure_kod' " \
         'Girilen sure kodu 1 <= sure_kodu <= 114 arasında olmalı.' >&2
       exit 1
