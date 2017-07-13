@@ -36,7 +36,7 @@ my $ilce = $ARGV[2];
 my $baglanti = "http://www.diyanet.gov.tr/tr/PrayerTime/WorldPrayerTimes";
 my $sonuc;
 
-my $mech = WWW::Mechanize->new(autocheck => 1, cookie_jar => {}, agent_alias => "Linux Mozilla");
+my $mech = WWW::Mechanize->new(agent_alias => "Linux Mozilla");
 $mech->get($baglanti);
 
 # $mech->form_number('2');
