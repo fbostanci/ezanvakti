@@ -70,7 +70,7 @@ declare -x $(echo "$strng" | sed 's:|: :g' | gawk '{print "str="$1 "\nstr2="$2}'
 
 [[ -n $str2 ]] && arayuz
 
-if (( $donus == 150 ))
+if (( donus == 150 ))
 then
     if [[ $str = Sabah ]]
     then
@@ -234,7 +234,7 @@ then
         arayuz
     fi
 
-elif (( $donus == 121 ))
+elif (( donus == 121 ))
 then
     exit 0
 fi
