@@ -1,4 +1,4 @@
-#
+#!/bin/bash
 # http://tldp.org/HOWTO/Bash-Prompt-HOWTO/x329.html
 #
 #   This file echoes a bunch of color codes to the

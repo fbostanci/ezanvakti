@@ -1,4 +1,4 @@
-#
+#!/bin/bash
 #
 #       Ezanvakti vakitleri gösterme bileşeni
 #

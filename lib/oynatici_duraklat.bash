@@ -1,4 +1,4 @@
-#
+#!/bin/bash
 #
 #                           Ezanvakti Oynatıcı Duraklatma Bileşeni 1.6
 #

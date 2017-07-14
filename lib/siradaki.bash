@@ -1,4 +1,4 @@
-#
+#!/bin/bash
 #
 #       Ezanvakti sıradaki vakit gösterme bileşeni
 #

@@ -1,4 +1,4 @@
-#
+#!/bin/bash
 #
 #                           Ezanvakti Yapılandırma Yöneticisi Bileşeni 2.0
 #
