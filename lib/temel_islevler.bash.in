@@ -1,4 +1,4 @@
-#
+#!/bin/bash
 #
 #
 #                           Ezanvakti Temel İşlevler Bileşeni 1.4
@@ -79,7 +79,7 @@ function bilesen_yukle() {
 }
 
 function hatali_kullanim() {
-  printf "%s: -- \`%s' geçerli değil. \nYardım için '%s --yardım' kullanın.\n" "${AD}" "$1" "${AD}" >&2
+  printf "%s: -- \`%s' geçerli değil.\nYardım için '%s --yardım' kullanın.\n" "${AD}" "$1" "${AD}" >&2
   exit 1
 }
 

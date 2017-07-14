@@ -1,4 +1,4 @@
-#
+#!/bin/bash
 #
 #                           Ezanvakti Güncelleme  Bileşeni 2.3
 #

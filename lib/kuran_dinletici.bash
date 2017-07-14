@@ -1,4 +1,4 @@
-#
+#!/bin/bash
 #
 #       Ezanvakti Kuran dinletme bileşeni
 #
