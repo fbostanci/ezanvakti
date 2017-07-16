@@ -54,7 +54,7 @@ function gun_animsat() {
     # eğer ozel_ileti boş (null) dönmemişse bildirimi gönder.
     [[ -n ${ozel_ileti} ]] && {
       notify-send "${AD^}" "${ozel_ileti}" -t $GUN_ANIMSAT"000" \
-        -i ${VERI_DIZINI}/simgeler/ezanvakti.png -h int:transient:1
+        -i ezanvakti -h int:transient:1
     }
   }
 }
