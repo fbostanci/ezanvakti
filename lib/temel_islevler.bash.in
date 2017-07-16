@@ -126,7 +126,7 @@ function ezanveri_denetle() {
   local ksatir
 
   [[ ! -f ${EZANVERI} ]] && { # ezanveri dosyası yoksa
-    (( GUNCELLEME_YAP )) && { bilesen_yukle guncelleyici; gorsel_guncelleme_yap; } || {
+    (( GUNCELLEME_YAP )) && { bilesen_yukle guncelleyici; guncelleme_yap; } || {
       printf '%s: %s dosyası bulunamadı.\n' "${AD}" "${EZANVERI}"
       exit 1
     }
@@ -134,7 +134,7 @@ function ezanveri_denetle() {
 
   # Bugüne ait tarih ezanveri dosyasında yoksa
   [[ -z $(grep -o $(date +%d.%m.%Y) "${EZANVERI}") ]] && {
-    (( GUNCELLEME_YAP )) && { bilesen_yukle guncelleyici; gorsel_guncelleme_yap; } || {
+    (( GUNCELLEME_YAP )) && { bilesen_yukle guncelleyici; guncelleme_yap; } || {
       printf '%s: %s dosyası güncel değil.\n' "${AD}" "${EZANVERI}"
       exit 1
     }
@@ -146,7 +146,7 @@ function ezanveri_denetle() {
   let ksatir++
 
   (( ksatir <= 7 )) && { # sonuç 7 ya da 7'den küçükse
-    (( GUNCELLEME_YAP )) && { bilesen_yukle guncelleyici; gorsel_guncelleme_yap; }
+    (( GUNCELLEME_YAP )) && { bilesen_yukle guncelleyici; guncelleme_yap; }
 
     # Betiğin mevcut oturum boyunca sadece ilk çalışmada bildirim vermesi
     # için çerez dosya denetimi ekledik. Gün değişimi durumu için (mevcut oturum devam ediyorsa)
