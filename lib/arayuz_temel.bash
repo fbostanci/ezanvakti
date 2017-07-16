@@ -34,6 +34,7 @@ secim_listesi+='!Dini Günler ve Geceler!Ayet!Hadis!Bilgi!Esma-ül Hüsna!Ya
 
 # düz komut çıktıları için rengi sıfırla.
 export RENK_KULLAN=0 RENK=0
+acilisa_baslatici_ekle
 
 function arayuz_pid_denetle() {
   local ypid=$$

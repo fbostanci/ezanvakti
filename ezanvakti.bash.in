@@ -31,6 +31,7 @@
 [[ $1 = ''                   ]] && exec @libdir@/@AD@/ezanvakti-sleep.bash
 
 . @libdir@/@AD@/temel_islevler.bash
+acilisa_baslatici_ekle
 
 case $1 in
   -v|--v|--vakitler)
