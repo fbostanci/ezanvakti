@@ -508,12 +508,13 @@ yad --notebook --key=190707 \
                    --window-icon=${VERI_DIZINI}/simgeler/ezanvakti2.png
         }
 
-#         (( _YENIDEN_BASLATMA_GEREKLI )) && {
-#           if pgrep ezanvakti-sleep
-#           then
-#               pkill ezanvakti-sleep
-#               bash ${BILESEN_DIZINI}/ezanvakti-sleep.bash &
-#           fi
+        (( _YENIDEN_BASLATMA_GEREKLI )) && {
+          if pgrep ezanvakti-sleep
+          then
+              pkill ezanvakti-sleep
+              ${BILESEN_DIZINI}/ezanvakti-sleep.bash &
+              disown
+          fi
 #         }
         arayuz ;;
 
