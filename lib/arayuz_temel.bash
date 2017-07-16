@@ -266,13 +266,13 @@ function g_vakitleri_yaz() {
 
 function g_secim_goster() {
   yad --title "${AD^} $SURUM - ${secim_basligi}" --text-info --filename=/tmp/ezanvakti-6 \
-      --width=560 --height=300 --wrap --button='gtk-close' --window-icon=${VERI_DIZINI}/simgeler/ezanvakti2.png \
+      --width=560 --height=300 --wrap --button='gtk-close' --window-icon=ezanvakti \
       --back="$ARKAPLAN_RENGI" --fore="$YAZI_RENGI" --mouse --sticky
 }
 
 function pencere_bilgi() {
   yad --form --separator=' ' --title="${AD^} $SURUM" --text "${mplayer_ileti}" \
-      --image=${VERI_DIZINI}/simgeler/ezanvakti.png --window-icon=${VERI_DIZINI}/simgeler/ezanvakti2.png \
+      --image=ezanvakti --window-icon=ezanvakti \
       --button='gtk-cancel:127' --button='gtk-close:0' --mouse --fixed
 
   case $? in
@@ -292,7 +292,7 @@ strng=$(yad --form \
 --field=Sure:CB \
 "${sure_listesi}" \
 --button='gtk-go-back:151' --button='gtk-media-play:152' --button='gtk-quit:153' \
---image=${VERI_DIZINI}/simgeler/ezanvakti.png --window-icon=${VERI_DIZINI}/simgeler/ezanvakti2.png \
+--image=ezanvakti --window-icon=ezanvakti \
 --title "${AD^} $SURUM" --sticky --center --fixed)
 
 donus=$(echo $?)
