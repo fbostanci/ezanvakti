@@ -14,11 +14,11 @@ Ezanveri dosyanız için farklı bir ad kullanmak istiyorsanız bu değere yeni 
 Ezanveri dosyanızı güncelleme işleminde taban olarak kullanılacak ülke adıdır.
 .TP
 .B SEHIR
-Uygulama bildirimlerinde bulunduğunuz şehri göstermek ayrıca ezanveri dosyanızı güncelleme
-işleminde taban olarak kullanılacak şehir adıdır.
+Ezanveri dosyanızı güncellemede kullanılacak şehir adıdır.
 .TP
 .B ILCE
-Ezanveri dosyanızı güncellemede kullanılacak ilçe adıdır.
+Uygulama bildirimlerinde bulunduğunuz ilçeyi göstermek ayrıca ezanveri dosyanızı güncelleme
+işleminde taban olarak kullanılacak ilçe adıdır.
 .TP
 .B GUNCELLEME_YAP
 Ezanveri dosyasının güncel kalması için, son 7 gün bildirim baloncuğu ile uyarı yapılmaktadır.
@@ -36,7 +36,7 @@ Uygulamanın sistem açılışında çalışma kipini belirleyen değerdir. Kip 
 bu kiple çalışacaktır.
 .TP
 .B KULLANICI_TEFSIR_DIZINI
-Türkçe kuran ayetleri gösteriminde kullanılacak tefsir dosyaları için, ek olarak
+Türkçe Kuran-ı Kerim ayetleri gösteriminde kullanılacak tefsir dosyaları için, ek olarak
 kullanıcının belirleyeceği dizine de bakması için kullanılacak bilgidir. Kullanılacak tefsir
 için uygulama iki dizine de bakar. (diğer dizin root kullanıcısı üzerindedir.)
 .TP
@@ -59,7 +59,7 @@ ekleyebilirsiniz.
 Daha fazlası için zekr.org sitesini ziyaret edin.
 .TP
 .B YEREL_SURE_DIZINI
-Kuran dinlemek için internet yerine, kendi dosyalarınızı kullanmak
+Kuran-ı Kerim dinlemek için internet yerine, kendi dosyalarınızı kullanmak
 istiyorsanız, dosyalarınızın bulunduğu konumu buraya girin. Sure ses dosyaları
 \-\-sureler
 (bkz.
@@ -70,10 +70,10 @@ Uygulama eğer istenen sureyi, belirttiğiniz dizinde bulamazsa, çevrimiçi ola
 dinletmeyi deneyecektir.
 .TP
 .B OKUYAN
-Çevrimiçi ya da yerel dizinden kuran dinleme işleminde farklı bir kuran
-okuyucusu seçebilirsiniz. Öntanımlı değer Saad el Ghamdi' dir.
+Çevrimiçi ya da yerel dizinden Kuran-ı Kerim dinleme işleminde farklı bir
+okuyucu seçebilirsiniz. Öntanımlı değer Saad el Ghamdi' dir.
 
-Çevrimiçi kuran dinleme işlemi için değeri
+Çevrimiçi Kuran-ı Kerim dinleme işlemi için değeri
 
 As Shatry için 'AsShatree'
 
@@ -135,7 +135,7 @@ istiyorsanız dakika cinsinden olmak şartıyla istediğiniz değeri girin. Önt
 açık gelmektedir ve değeri 15 dakikadır.
 .TP
 .B SES
-Ezan okuma/dinletme ve kuran dinleme işlemleri için kullanılan Mplayer
+Ezan okuma/dinletme ve Kuran-ı Kerim dinleme işlemleri için kullanılan Mplayer
 uygulaması için kullanılacak ses değeridir. Öntanımlı 100'dür.
 .TP
 .B OYNATICI_DURAKLAT
@@ -276,6 +276,14 @@ Gelişmiş arayüzde gösterilen şerit bantların simge değeridir. Öntanıml�
 Uçbirim çıktıları için rengin kullanılması/kullanılmaması işlemini belirleyen değerdir.
 Renk kullanmak için 1; renksiz çıktılar için 0 değerini girin.
 İşlem uygulama geneli tüm uçbirim çıktılarına uygulanır.
+Eğer bir komut için RENK_KULLAN değerini değiştirmeden renk aç/kapat yapmak istiyorsanız
+komutu çalıştırmadan önce RENK değişkenini belirleyebilirsiniz. Geçici olarak renkleri
+açmak için RENK değerini 1, kapatmak için 0 olarak girin.
+
+ÖR: export RENK=0; ezanvakti --vakitler
+komutu RENK_KULLAN değeri ne olursa olsun renksiz çıktı verir. RENK değerini değiştirmeden
+aynı uçbirimden gireceğiniz yeni komutlar da renksiz çıktı verir. Her defasında export komutu
+çalıştırmanıza gerek yoktur.
 .TP
 .B RENK KODLARI
 Uçbirim çıktılarında kullanılan renkleri isterseniz değiştirebilirsiniz.

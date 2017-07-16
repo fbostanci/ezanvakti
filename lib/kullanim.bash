@@ -75,10 +75,6 @@ function betik_kullanimi() {
     ${B}--iftar${R}
         İftar vaktine ne kadar süre kaldığını görüntüler.
 
-    ${B}--ramazan${R}
-        Ramazan ayında isteğe bağlı olarak sadece iftar
-        ve imsak vakitleri için ezan okunur.
-
     ${B}--conky${R} [-s, -i, -k]
         Conky alanında günlük ezan vakitlerini eklemek
         isteyenler için renksiz ve kısa çıktı verir.
