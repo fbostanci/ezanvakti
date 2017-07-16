@@ -501,12 +501,7 @@ yad --notebook --key=190707 \
         . "${EZANVAKTI_AYAR}"
         (( _GUNCELLEME_GEREKLI )) && {
           bilesen_yukle guncelleyici
-          (
-            guncelleme_yap
-          ) | yad  --progress --title="${AD^} $SURUM" --progress-text="${EZANVERI_ADI} güncelleniyor" \
-                   --pulsate --auto-close --width=300 --center --fixed --no-buttons\
-                   --window-icon=${VERI_DIZINI}/simgeler/ezanvakti2.png
-        }
+          gorsel_guncelleme_yap
 
         (( _YENIDEN_BASLATMA_GEREKLI )) && {
           if pgrep ezanvakti-sleep

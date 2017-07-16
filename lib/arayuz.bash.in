@@ -176,7 +176,7 @@ then
     elif [[ $str = güncelle ]]
     then
         bilesen_yukle guncelleyici
-        guncelleme_yap; arayuz
+        gorsel_guncelleme_yap; arayuz
 
     elif [[ $str = @(hakkında|about) ]]
     then
