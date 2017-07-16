@@ -94,7 +94,7 @@ IFS="
 
   if (( arayuz == 1 ))
   then
-      ulke=$(kdialog --combobox 'Bulunduğunuz ülkeyi seçin'  --title 'Ülke belirleme' \
+      ulke=$(kdialog --combobox 'Bulunduğunuz ülkeyi seçin' --title 'Ülke belirleme' \
              --default 'TURKIYE' $(cut -d, -f1 < ${VERI_DIZINI}/ulkeler/AAA-ULKELER))
       (( $? == 1 )) && exit 1
 
@@ -102,7 +102,7 @@ IFS="
   elif (( arayuz == 2 ))
   then
       ulke=$(yad --entry --entry-text 'TURKIYE' $(cut -d, -f1 < ${VERI_DIZINI}/ulkeler/AAA-ULKELER) \
-             --width=300 --sticky --center --window-icon=${VERI_DIZINI}/simgeler/ezanvakti2.png \
+             --width=300 --sticky --center --window-icon=ezanvakti \
              --title 'Ülke belirleme'  --text 'Bulunduğunuz ülkeyi seçin')
       (( $? == 1 )) && exit 1
 
@@ -146,7 +146,7 @@ ulke_kodu=$(grep -w ${ULKE} ${VERI_DIZINI}/ulkeler/AAA-ULKELER | cut -d, -f2)
   elif (( arayuz == 2 ))
   then
       sehir=$(yad --entry --entry-text ${varsayilan_sehir} $(cut -d, -f1 < ${VERI_DIZINI}/ulkeler/${ulke}) \
-              --width=300 --sticky --center --window-icon=${VERI_DIZINI}/simgeler/ezanvakti2.png \
+              --width=300 --sticky --center --window-icon=ezanvakti \
               --title 'Şehir belirleme' --text 'Bulunduğunuz şehri seçin')
       (( $? == 1 )) && exit 1
 
@@ -191,8 +191,7 @@ then
           elif (( arayuz == 2 ))
           then
               ilce=$(yad --entry --entry-text ${g_sehir} $(cut -d, -f1 < ${VERI_DIZINI}/ulkeler/${ulke}_ilceler/${sehir}) \
-                     --width=300 --sticky --center --window-icon=${VERI_DIZINI}/simgeler/ezanvakti2.png \
-                     --title 'İlçe belirleme' --text 'Bulunduğunuz ilçeyi seçin')
+                     --width=300 --sticky --center --window-icon=ezanvakti --title 'İlçe belirleme' --text 'Bulunduğunuz ilçeyi seçin')
               (( $? == 1 )) && exit 1
 
           elif (( arayuz == 3 ))
@@ -224,9 +223,8 @@ printf '%-60b' \
 if ! ping -q -c 1 -W 1 google.com &>/dev/null
 then
     printf "${RENK7}${RENK8} [${RENK1}BAŞARISIZ${RENK8}]${RENK0}\n"
-    printf '\n%b\n%b\n' \
-      "${RENK7}${RENK3}İnternet erişimi algılanamadı." \
-      "Çıkılıyor...${RENK0}"
+    printf '\n%b\n' \
+      "${RENK7}${RENK3}İnternet erişimi algılanamadı.${RENK0}"
     exit 1
 fi
 
@@ -248,7 +246,7 @@ cat << SON >> /tmp/ezanveri-$$
 
 # BİLGİ: ${sehir} / ${ilce} için 30 günlük ezan vakitleridir.
 # Çizelge, 'http://www.diyanet.gov.tr/tr/PrayerTime/WorldPrayerTimes'
-# adresinden ezanvakti uygulaması tarafından istenerek oluşturulmuştur.
+# adresinden ${AD} uygulaması tarafından istenerek oluşturulmuştur.
 
 # Son güncelleme : $(date +%c)
 SON
@@ -263,7 +261,7 @@ SON
 
     renk_denetle
     notify-send "${AD^} $SURUM" "${EZANVERI_ADI} dosyası başarıyla güncellendi." \
-      -i ${VERI_DIZINI}/simgeler/ezanvakti.png -t $GUNCELLEME_BILDIRIM_SURESI"000" -h int:transient:1
+      -i ezanvakti -t $GUNCELLEME_BILDIRIM_SURESI"000" -h int:transient:1
     :> /tmp/eznvrgncldntle_$(date +%d%m%y)
   } || {
     printf "${RENK7}${RENK8} [${RENK1}BAŞARISIZ${RENK8}]${RENK0}\n"
@@ -273,7 +271,7 @@ SON
     printf "${RENK7}${RENK4}\n!!! YENIDEN DENEYIN !!!${RENK0}\n"
 
     notify-send "${AD^} $SURUM" "${EZANVERI_ADI} dosyasının güncellenmesi başarısız oldu." \
-      -i ${VERI_DIZINI}/simgeler/ezanvakti.png -t $GUNCELLEME_BILDIRIM_SURESI"000" -h int:transient:1
+      -i ezanvakti -t $GUNCELLEME_BILDIRIM_SURESI"000" -h int:transient:1
 
     rm -f /tmp/ezanveri-$$ &>/dev/null
     exit 1

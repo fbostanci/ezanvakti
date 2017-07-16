@@ -1,15 +1,11 @@
 .TH "Ezanvakti" "5" "2017\-07\-07" "Ezanvakti 6\&.3" "Ezanvakti Kullanım Yönergeleri"
 .LP
 .SH AYARLAR Dosyası İşlemleri
-Betik ilk çalıştırmada \fI~/.config/ezanvakti\fP dizinini \-eğer yoksa\- oluşturmaktadır.
+Uygulama ilk çalıştırmada \fI~/.config/ezanvakti\fP dizinini \-eğer yoksa\- oluşturmaktadır.
 Dosya içeriğine ayrıca öntanımlı ayarların bulunduğu 'ayarlar' dosyasını yazmaktadır.
-Bu dosyayı düzenleyerek betik üzerinde düzenlemeler yapmaya gereksinim duymadan kendi
-özelleştirmelerinizi yapabilirsiniz. Betik açılışta bu dosyadaki değerlere göre
+Bu dosyayı düzenleyerek \-uygulama üzerinde düzenlemeler yapmaya gereksinim duymadan\- kendi
+özelleştirmelerinizi yapabilirsiniz. Uygulama açılışta bu dosyadaki değerlere göre
 çalışacaktır.
-.TP
-.B EZANVERI_DIZINI
-Ezanveri dosyanızı istediğiniz konuma taşıyabilirsiniz. Konum öntanımlı olarak ev
-dizinidir. Farklı bir konum için bu değeri düzenleyin.
 .TP
 .B EZANVERI_ADI
 Ezanveri dosyanız için farklı bir ad kullanmak istiyorsanız bu değere yeni adı girin.
@@ -18,7 +14,7 @@ Ezanveri dosyanız için farklı bir ad kullanmak istiyorsanız bu değere yeni 
 Ezanveri dosyanızı güncelleme işleminde taban olarak kullanılacak ülke adıdır.
 .TP
 .B SEHIR
-Betik bildirimlerinde bulunduğunuz şehri göstermek ayrıca ezanveri dosyanızı güncelleme
+Uygulama bildirimlerinde bulunduğunuz şehri göstermek ayrıca ezanveri dosyanızı güncelleme
 işleminde taban olarak kullanılacak şehir adıdır.
 .TP
 .B ILCE
@@ -31,10 +27,18 @@ otomatik güncelleme özelliği eklenmiştir.
 Eğer, güncelleme işleminin otomatik olarak yapılmasını istiyorsanız bu değeri 1; yapılmaması
 için değeri 0 yapın. Öntanımlı olarak, otomatik güncelleme açık gelmektedir.
 .TP
+.B ACILISTA_BASLAT
+Uygulamanın sistem açılışında çalışma kipini belirleyen değerdir. Kip değerleri şunlardır.
+0: Uygulama açılışta kendiliğinden çalışmaz.
+1: Uygulama açılışta normal (5 vakit ezan) kipte çalışır.
+2: Uygulama açılışta ramazan kipiyle (Yalnızca imsak ve iftar vakitleri için) çalışır.
+1 ve 2 kipi için uygulama açılışa başlatıcı ekleyecektir ve sonraki sistem açılışlarında
+bu kiple çalışacaktır.
+.TP
 .B KULLANICI_TEFSIR_DIZINI
 Türkçe kuran ayetleri gösteriminde kullanılacak tefsir dosyaları için, ek olarak
 kullanıcının belirleyeceği dizine de bakması için kullanılacak bilgidir. Kullanılacak tefsir
-için betik iki dizine de bakar. (diğer dizin root kullanıcısı üzerindedir.)
+için uygulama iki dizine de bakar. (diğer dizin root kullanıcısı üzerindedir.)
 .TP
 .B TEFSIR_SAHIBI
 Tefsir dizinlerindeki hangi dosyanın kullanılacağını belirten değerdir. Öntanımlı olarak
@@ -62,7 +66,7 @@ istiyorsanız, dosyalarınızın bulunduğu konumu buraya girin. Sure ses dosyal
 .B \-\-sureler
 seçeneği.)
 değişkeni ile görüntüleyeceğiniz listedeki gibi numaralarla adlandırılmalıdır.
-Betik eğer istenen sureyi, belirttiğiniz dizinde bulamazsa, çevrimiçi olarak
+Uygulama eğer istenen sureyi, belirttiğiniz dizinde bulamazsa, çevrimiçi olarak
 dinletmeyi deneyecektir.
 .TP
 .B OKUYAN
@@ -226,7 +230,7 @@ ses dosyasının konumunu girin.
 .SH GELiŞMiŞ AYARLAR
 Arayüzlerde ve Conky uygulamasında değişik yazı tipi ve
 boyutlarında düzensiz görünümler ortaya çıkmaktadır.
-Daha güzel görünüm elde edebilmek için betik üzerinde
+Daha güzel görünüm elde edebilmek için uygulama üzerinde
 düzenleme yapmak yerine bu bölümdeki değerleri düzenleyerek
 istediğiniz görünüme kavuşabilirsiniz. Değerler printf uygulamasıyla
 gösterilmektedir.

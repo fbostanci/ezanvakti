@@ -18,9 +18,7 @@ yad --title "${AD^} $SURUM" \
 --text="$(g_vakitleri_yaz)\n\n<span foreground=\'${ARAYUZ_SIMDIKI_VAKIT_RENGI}\'>${vakit_bilgisi}${ozel_ileti}</span>\
 \n\n<span foreground=\'${ARAYUZ_KALAN_SURE_RENGI}\'>${v_ileti}\n${v_kalan}</span>" \
 --button="gtk-refresh:172" --button="gtk-close" \
---image=${VERI_DIZINI}/simgeler/ezanvakti.png \
---window-icon=${VERI_DIZINI}/simgeler/ezanvakti2.png \
---mouse --fixed --sticky
+--image=ezanvakti --window-icon=ezanvakti --mouse --fixed --sticky
 
 case $? in
   172)

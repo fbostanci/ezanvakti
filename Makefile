@@ -20,8 +20,8 @@ datadir       = $(PREFIX)/share
 completiondir = $(PREFIX)/share/bash-completion/completions
 mandir        = $(PREFIX)/share/man
 sounddir      = $(PREFIX)/share/sounds
+icondir       = $(PREFIX)/share/icons/hicolor
 appdeskdir    = $(PREFIX)/share/applications
-autostartdir  = $(sysconfdir)/xdg/autostart
 
 
 ifeq "$(DUZELTME)" ""
@@ -30,7 +30,7 @@ endif
 
 BETIKLER = ezanvakti.bash lib/temel_islevler.bash lib/arayuz.bash \
 	lib/arayuz2.bash lib/ezanvakti-sleep.bash data/ezanvakti.desktop \
-	etc/ayarlar etc/autostart/ezanvakti.desktop
+	data/ayarlar
 
 all: $(BETIKLER)
 
@@ -55,21 +55,17 @@ install: $(BETIKLER)
 	$(INSTALL) -vd $(DESTDIR)$(completiondir)
 	$(INSTALL) -vd $(DESTDIR)$(mandir)/man{1,5}
 	$(INSTALL) -vd $(DESTDIR)$(appdeskdir)
-	$(INSTALL) -vd $(DESTDIR)$(autostartdir)
+	$(INSTALL) -vd $(DESTDIR)$(icondir)/{16x16,22x22,32x32,48x48,64x64,96x96}/apps
 
 	$(INSTALL) -vm755 ezanvakti.bash $(DESTDIR)$(bindir)/$(AD)
 	$(INSTALL) -vm755 lib/ezanveri_istemci.pl $(DESTDIR)$(libdir)/$(AD)/ezanveri_istemci.pl
 	$(INSTALL) -vm755 data/ezanvakti.desktop $(DESTDIR)$(appdeskdir)/$(AD).desktop
 
-	$(INSTALL) -vm644 etc/ayarlar $(DESTDIR)$(sysconfdir)/$(AD)/ayarlar
-	$(INSTALL) -vm644 etc/bash_completion/ezanvakti $(DESTDIR)$(completiondir)/$(AD)
-	$(INSTALL) -vm644 etc/autostart/ezanvakti.desktop $(DESTDIR)$(autostartdir)/$(AD).desktop
+	$(INSTALL) -vm644 data/ayarlar $(DESTDIR)$(sysconfdir)/$(AD).conf
+	$(INSTALL) -vm644 data/ezanvakti_completion $(DESTDIR)$(completiondir)/$(AD)
 	# man
 	$(INSTALL) -vm644 doc/ezanvakti.1 $(DESTDIR)$(mandir)/man1/$(AD).1
 	$(INSTALL) -vm644 doc/ezanvakti-ayarlar.5 $(DESTDIR)$(mandir)/man5/$(AD)-ayarlar.5
-	# simgeler
-	$(INSTALL) -vm644 data/simgeler/ezanvakti.png $(DESTDIR)$(datadir)/$(AD)/simgeler/ezanvakti.png
-	$(INSTALL) -vm644 data/simgeler/ezanvakti2.png $(DESTDIR)$(datadir)/$(AD)/simgeler/ezanvakti2.png
 
 	for l in lib/*.bash; \
 	do \
@@ -109,8 +105,13 @@ install: $(BETIKLER)
 
 	for e in  ezanlar/*.ogg; \
 	do \
-		e_dosya=$$(basename $$e); \
+		e_dosya=$$(basename "$$e"); \
 		$(INSTALL) -vm644 $$e $(DESTDIR)$(sounddir)/$(AD)/$$e_dosya; \
+	done
+
+	for m in 16 22 32 48 64 96; \
+	do \
+		$(INSTALL) -vm644 data/simgeler/ezanvakti"$$m".png $(DESTDIR)$(icondir)/$$m"x"$$m/apps/$(AD).png; \
 	done
 
 	for t in data/tefsirler/*; \
@@ -123,13 +124,13 @@ uninstall:
 	@rm -f  $(DESTDIR)$(bindir)/$(AD)
 	@rm -rf $(DESTDIR)$(libdir)/$(AD)
 	@rm -rf $(DESTDIR)$(datadir)/$(AD)
-	@rm -rf $(DESTDIR)$(sysconfdir)/$(AD)
+	@rm -rf $(DESTDIR)$(sysconfdir)/$(AD).conf
 	@rm -rf $(DESTDIR)$(sounddir)/$(AD)
 	@rm -f  $(DESTDIR)$(completiondir)/$(AD)
-	@rm -f  $(DESTDIR)$(autostartdir)/$(AD).desktop
 	@rm -f  $(DESTDIR)$(mandir)/man1/$(AD).1*
 	@rm -f  $(DESTDIR)$(mandir)/man5/$(AD)-ayarlar.5*
 	@rm -f  $(DESTDIR)$(appdeskdir)/$(AD).desktop
+	@rm -f  $(DESTDIR)$(icondir)/{16x16,22x22,32x32,48x48,64x64,96x96}/apps/$(AD).png
 
 	@echo "$(AD) başarıyla sisteminizden kaldırıldı.."
 

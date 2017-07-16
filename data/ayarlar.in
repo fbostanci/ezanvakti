@@ -12,9 +12,6 @@
 #                           #
 
 
-# Ezanveri dosyasının bulunduğu dizin
-EZANVERI_DIZINI='$HOME/.config/@AD@'
-
 # Ezanveri dosyasının adı
 EZANVERI_ADI=ezanveri
 
@@ -27,8 +24,17 @@ SEHIR=Bilinmeyen
 # Bulunduğunuz ilçe
 ILCE=Bilinmeyen
 
-# Ezanveri otomatik güncelleme (Güncelleme yapılması için 1; yapılmaması için 0)
+# Ezanveri otomatik güncelleme
+# Güncelleme yapılması için: 1
+# yapılmaması için: 0
 GUNCELLEME_YAP=1
+
+# Uygulamanın sistem açılışında başlatma
+# normal kipte başlatılması için: 1
+# ramazan kipi için: 2
+# başlatılmaması için: 0
+ACILISTA_BASLAT=1
+
 
 #                           #
 #*******Sure Ayarları*******#
@@ -84,7 +90,8 @@ VAKIT_ANIMSAT=15
 SES=100
 
 # Desteklenen oynatıcıyı ezan okunması bitene kadar duraklatma
-# duraklatılması için 1; duraklatılmaması için 0
+# duraklatılması için: 1
+# duraklatılmaması için: 0
 OYNATICI_DURAKLAT=0
 
 # BİLGİ: '*/' olarak işaretlenen ayarlar Ubuntu GNOME ortamında, öntanımlı olarak etkisizdir.
@@ -95,12 +102,16 @@ OYNATICI_DURAKLAT=0
 #                           #
 
 
-# Ezanlardan sonra Türkçe ezan duası (okunması için 1; okunmaması için 0)
+# Ezanlardan sonra Türkçe ezan duası
+# okunması için: 1
+# okunmaması için: 0
 EZAN_DUASI_OKU=1
 
 # Ezanların vaktinden önce ya da sonra okunma süresi (saniye olarak)
 EZAN_OKUNMA_SURESI_FARKI=0
 
+# Ezanların okunması için: 1
+# okunmaması için: 0 
 # Sabah ezanı okunsun mu?
 SABAH_EZANI_OKU=1
 
@@ -142,7 +153,9 @@ EZAN_DUASI=@sounddir@/@AD@/ezan_duasi.ogg
 #                                   #
 
 
-# Uçbirim çıktıları için renk kullanılması (kullanılması için 1; kullanılmaması için 0)
+# Uçbirim çıktıları için renk kullanılması
+# kullanılması için: 1
+# kullanılmaması için: 0
 RENK_KULLAN=1
 
 # Rengi sıfırla
