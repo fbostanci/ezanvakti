@@ -74,7 +74,7 @@ then
     if [[ $str = Sabah ]]
     then
         mplayer_ileti=" Sabah ezanı dinletiliyor..\n\n Okuyan : ${EZAN_OKUYAN}"
-        player_calistir "${SABAH_EZANI}" &
+        mplayer_calistir "${SABAH_EZANI}" &
             pencere_bilgi; arayuz
 
     elif [[ $str = Öğle ]]

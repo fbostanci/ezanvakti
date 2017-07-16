@@ -7,18 +7,17 @@ Ezanvakti 6\.3 \- GNU/Linux için Ezan Vakti Bildirici
 .SH AÇIKLAMA
 Diyanet İşleri Başkanlığı sitesinden
 .B (http://www.diyanet.gov.tr)
-bulunduğunuz ülke ve şehre ait haftalık ya da aylık namaz vakitleri
-çizelgesini kaydettiğiniz dosyayı kullanarak, zamanı geldiğinde ezan
-okuyan ve bildirim veren bir uygulamadır. Ayrıca istenilen zaman ezan
-ve çevrimiçi kuran dinleme, ezan vakitlerine ne kadar süre kaldığını
-gösterme, günlük rastgele bir ayet seçerek gösterme gibi ek özellikleri
-vardır. Kullanılan dosyaları yapılandırma dosyasından okuduğundan
-kullanıcıya daha fazla özelleştirme sunar.
+bulunduğunuz ülke ve şehre ait aylık namaz vakitlerini kullanarak,
+zamanı geldiğinde ezan okuyan ve bildirim veren bir uygulamadır.
+Ayrıca istenilen zaman ezan ve çevrimiçi Kuran-ı Kerim dinleme,
+ezan vakitlerine ne kadar süre kaldığını gösterme, kerahat vakitlerini
+gösterme gibi ek özellikleri vardır. Kullanılan dosyaları yapılandırma
+dosyasından okuduğundan kullanıcıya daha fazla özelleştirme sunar.
 .SH SEÇENEKLER
 .TP
 .B \-v, \-\-v, \-\-vakitler
 Toplu olarak günlük ezan vakitlerini görüntüler ve vakitlere ne kadar süre
-kaldığını  gösterir ve çıkar. Eğer vakit geçmişse "OKUNDU" olarak görünür.
+kaldığını gösterir ve çıkar. Eğer vakit geçmişse "OKUNDU" olarak görünür.
 .PP
 Vakit gösterimi sık kullanılacak bir komut olduğu için birleşik kullanımı da
 vardır.
@@ -88,7 +87,7 @@ Vakitler çıktısını uçbirim yerine bildirim baloncuğuna yönlendirir.
 Sıradaki vakit ve vakte ne kadar süre kaldığını gösterir ve çıkar.
 .TP
 .B \-\-kuran \fI[ek_seçenek]\fP
-Çevrimiçi olarak ya da yerel dizinden kuran dinletir. Çevrimiçi kuran dinleme
+Çevrimiçi olarak ya da yerel dizinden Kuran-ı Kerim dinletir. Çevrimiçi Kuran-ı Kerim dinleme
 için listen2quran.com sitesi kullanılmaktadır. Kuran dinlemek
 için ek olarak aşağıdakilerden uygun seçeneği de girmeniz
 gereklidir.
@@ -126,7 +125,7 @@ Değişken olarak \fI<sure_kodu>\fP verildiğinde o kodla ilişik sureyi dinleti
 Sureleri dinlemek için gerekli olan kod numaralarını ve sure adlarını görüntüler ve çıkar.
 .TP
 .B \-\-ayet
-Rastgele bir kuran ayeti seçerek Türkçe anlamını uçbirimde gösterir.
+Rastgele bir Kuran-ı Kerim ayeti seçerek Türkçe anlamını uçbirimde gösterir.
 .PP
 \fIek olarak\fP
 .TP 5
@@ -147,10 +146,12 @@ Conky alanında iftar vaktine ne kadar süre kaldığını görmek isteyenler i�
 renksiz ve kısa çıktı verir.
 .TP
 .B \      -s, \-\-sıradaki, \-\-siradaki
-Conky için, sıradaki vakit ve vakte ne kadar süre kaldığını gösterir ve çıkar.
+Conky alanında sıradaki vakit ve vakte ne kadar süre kaldığını görmek isteyenler için
+renksiz ve kısa çıktı verir.
 .TP
 .B \      -k, \-\-kerahat
-Conky için, o güne ait kerahat vakitlerini gösterir ve çıkar.
+Conky alanında, o güne ait kerahat vakitlerini görmek isteyenler için renksiz ve kısa
+çıktı verir.
 .TP
 .B \-\-aralık, \-\-aralik \fI[sure_kodu] [ayet_aralıgı_başlangıç-ayet_aralığı_bitiş]\fR
 Ayet gösteriminde istenen surenin istenen ayet aralığını gösterir.
