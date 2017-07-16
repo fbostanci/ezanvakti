@@ -195,7 +195,7 @@ case $1 in
     esma_goster ucbirim ;;
   --g[uü]ncelle)
     bilesen_yukle guncelleyici
-    guncelleme_yap ;;
+    gorsel_guncelleme_yap ;;
   --g[uü]nler)
     bilesen_yukle dini_gunler
     gunler ;;
