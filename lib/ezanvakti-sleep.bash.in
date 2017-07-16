@@ -172,7 +172,7 @@ function vakit_animsat() {
     [[ ${simdiki} = @(İmsak|İftar) ]] && ileti='vakti olacak.' || ileti='ezanı okunacak.'
     notify-send "${AD^}" "$VAKIT_ANIMSAT dakika sonra $simdiki ${ileti}" \
       -u critical -t $BILGI_BILDIRIM_SURESI"000" \
-      -i ${VERI_DIZINI}/simgeler/ezanvakti.png -h int:transient:1
+      -i ezanvakti -h int:transient:1
     sleep 60; vakit_animsat
   }
 }
