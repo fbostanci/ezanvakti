@@ -106,6 +106,19 @@ function hatali_kullanim() {
   exit 1
 }
 
+function gorsel_guncelleme_yap() {
+
+  if  [[ -x $(type -p yad) ]]
+  then
+      (
+        guncelleme_yap
+      ) | yad  --progress --title="${AD^} $SURUM" --progress-text="${EZANVERI_ADI} güncelleniyor" \
+               --pulsate --auto-close --width=300 --center --fixed --no-buttons --window-icon=ezanvakti
+  else
+      guncelleme_yap
+  fi
+}
+
 # Ezanveri dosyası gerektiren işlemlerde ilk önce bu fonksiyon çağrılacak.
 #
 # ezanveri dosyasının kullanıldığı işlemler için olumsuz durumları denetle.
@@ -113,7 +126,7 @@ function ezanveri_denetle() {
   local ksatir
 
   [[ ! -f ${EZANVERI} ]] && { # ezanveri dosyası yoksa
-    (( GUNCELLEME_YAP )) && { bilesen_yukle guncelleyici; guncelleme_yap; } || {
+    (( GUNCELLEME_YAP )) && { bilesen_yukle guncelleyici; gorsel_guncelleme_yap; } || {
       printf '%s: %s dosyası bulunamadı.\n' "${AD}" "${EZANVERI}"
       exit 1
     }
@@ -121,7 +134,7 @@ function ezanveri_denetle() {
 
   # Bugüne ait tarih ezanveri dosyasında yoksa
   [[ -z $(grep -o $(date +%d.%m.%Y) "${EZANVERI}") ]] && {
-    (( GUNCELLEME_YAP )) && { bilesen_yukle guncelleyici; guncelleme_yap; } || {
+    (( GUNCELLEME_YAP )) && { bilesen_yukle guncelleyici; gorsel_guncelleme_yap; } || {
       printf '%s: %s dosyası güncel değil.\n' "${AD}" "${EZANVERI}"
       exit 1
     }
@@ -133,7 +146,7 @@ function ezanveri_denetle() {
   let ksatir++
 
   (( ksatir <= 7 )) && { # sonuç 7 ya da 7'den küçükse
-    (( GUNCELLEME_YAP )) && { bilesen_yukle guncelleyici; guncelleme_yap; }
+    (( GUNCELLEME_YAP )) && { bilesen_yukle guncelleyici; gorsel_guncelleme_yap; }
 
     # Betiğin mevcut oturum boyunca sadece ilk çalışmada bildirim vermesi
     # için çerez dosya denetimi ekledik. Gün değişimi durumu için (mevcut oturum devam ediyorsa)
