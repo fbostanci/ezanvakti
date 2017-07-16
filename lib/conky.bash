@@ -23,7 +23,7 @@ function ezv_conky_iftar() {
     (( UNIXSAAT >= aksam )) && {
       # Yarının aksam vakti ezanveri dosyasında var mı denetle önc..
       [[ -z $(grep $(date -d 'tomorrow' +%d.%m.%Y) "${EZANVERI}") ]] && {
-        (( GUNCELLEME_YAP )) && { bilesen_yukle guncelleyici; gorsel_guncelleme_yap; } || {
+        (( GUNCELLEME_YAP )) && { bilesen_yukle guncelleyici; guncelleme_yap; } || {
           printf "${EZANVERI_ADI} dosyanızda yarına ait veri bulunmuyor.\n"; exit 1
         }
       }

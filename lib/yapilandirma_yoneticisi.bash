@@ -502,6 +502,7 @@ yad --notebook --key=190707 \
         (( _GUNCELLEME_GEREKLI )) && {
           bilesen_yukle guncelleyici
           gorsel_guncelleme_yap
+        }
 
         (( _YENIDEN_BASLATMA_GEREKLI )) && {
           if pgrep ezanvakti-sleep
