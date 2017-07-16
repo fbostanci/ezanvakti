@@ -38,7 +38,7 @@ yad --plug=190707 --tabnum=1 --form \
 --field='Şehir:' \
 --field='İlçe:' \
 --field='Otomatik Ezanveri Güncelleme:CHK' \
---field='Sistem açılışında uygulama çalışma kipi:CB' \
+--field='Uygulama çalışma kipi:CB' \
 --field='\nTefsir ve Kuran okuyucu seçimleri\n:LBL' \
 --field='Kullanılacak Tefsir:CB' \
 --field='Kuran okuyan:CB' \
