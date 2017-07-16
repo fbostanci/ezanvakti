@@ -515,7 +515,7 @@ yad --notebook --key=190707 \
               ${BILESEN_DIZINI}/ezanvakti-sleep.bash &
               disown
           fi
-#         }
+         }
         arayuz ;;
 
 # _SES_SEVIYE=$(sed -n 's:[,|.].*::p' <<<${list[8]})
