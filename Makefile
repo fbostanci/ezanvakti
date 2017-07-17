@@ -49,7 +49,6 @@ $(BETIKLER): ${BETIKLER:=.in}
 install: $(BETIKLER)
 	$(INSTALL) -vd $(DESTDIR)$(bindir)
 	$(INSTALL) -vd $(DESTDIR)$(libdir)/$(AD)
-	$(INSTALL) -vd $(DESTDIR)$(sysconfdir)/$(AD)
 	$(INSTALL) -vd $(DESTDIR)$(datadir)/$(AD)/{veriler,tefsirler,simgeler,ulkeler{,/TURKIYE_ilceler,/ABD_ilceler,/KANADA_ilceler}}
 	$(INSTALL) -vd $(DESTDIR)$(sounddir)/$(AD)
 	$(INSTALL) -vd $(DESTDIR)$(completiondir)
