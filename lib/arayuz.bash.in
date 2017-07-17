@@ -20,6 +20,7 @@
 arayuz_pid_denetle
 
 bilesen_yukle mplayer_yonetici
+bilesen_yukle hicri
 
 elx=''
 for ((i=1; i<=ARAYUZ_CIZGI_UZUNLUGU; i++))
@@ -45,7 +46,7 @@ function arayuz() {
   local strng donus str str2
 
 strng=$(yad --form --text "$(printf "${GELISMIS_ARAYUZ_BICIMI}" \
-  "<span foreground=\'${ARAYUZ_TARIH_SAAT_RENGI}\'>${TARIH}</span>" \
+  "<span foreground=\'${ARAYUZ_TARIH_SAAT_RENGI}\'>${TARIH} \($(hicri_tarih_al)\)</span>" \
   "<span foreground=\'${ARAYUZ_TARIH_SAAT_RENGI}\'>$(date +%H:%M:%S)</span>" \
   "<span foreground=\'${ARAYUZ_KONUM_RENGI}\'>${ILCE} / ${ULKE}</span>" \
   "<span foreground=\'${ARAYUZ_CIZGI_RENGI}\'>${elx}</span>" \
