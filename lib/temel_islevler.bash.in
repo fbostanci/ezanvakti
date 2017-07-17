@@ -32,21 +32,23 @@ MPLAYER="mplayer -really-quiet -softvol -volume $SES"
 declare -A YUKLENEN_BILESENLER
 
 function acilisa_baslatici_ekle() {
-  local baslatici="${XDG_CONFIG_HOME:-$HOME/.config}/autostart/${AD}.desktop"
+  local baslatici_dizini baslatici
 
+  baslatici_dizini="${XDG_CONFIG_HOME:-$HOME/.config}/autostart/"
+  baslatici="${baslatici_dizini}/${AD}.desktop"
+
+  [[ ! -d ${baslatici_dizini} ]] && mkdir -p "${baslatici_dizini}"
   if (( ACILISTA_BASLAT ))
   then
       if [[ ! -f ${baslatici} ]]
       then
-          printf '%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s'\
+          printf '%s\n%s\n%s\n%s\n%s\n%s'\
             '[Desktop Entry]'\
-            'Version=1.0'\
-            'Encoding=UTF-8'\
+            'Type=Application'\
             'Name=@AD@'\
+            'Exec=@libdir@/@AD@/ezanvakti-sleep.bash 657a616e76616b7469'\
             'Comment=GNU/Linux icin ezan vakti bildirici'\
-            "Exec=@libdir@/@AD@/ezanvakti-sleep.bash 657a616e76616b7469"\
-            'Terminal=false'\
-            'Type=Application' > "${baslatici}"
+            'Terminal=false' > "${baslatici}"
           chmod 755 "${baslatici}"
       fi
   else

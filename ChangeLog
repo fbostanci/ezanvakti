@@ -26,7 +26,7 @@
  *  Arayüzde yapılan değişiklikler eğer ezanvakti-sleep betiğinin çalışmasını ilgilendiriyorsa
     otomatik yeniden başlatma eklendi.
  *  Uygulama otomatik başlatıcısını kendi ekliyor. (Eğer ACILISTA_BASLAT 0 değilse)
- *  /etc/autostart başaltıcısı kaldırıldı.
+ *  /etc/autostart başlatıcısı kaldırıldı.
  *  Uygulamanın kullandığı simgeler sistem icons dizinlerine eklendi.
  *  OKUYAN --> KURAN_OKUYAN olarak adlandırıldı.
  *  bash completion betiği güncellendi.
