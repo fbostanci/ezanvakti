@@ -37,8 +37,8 @@ Genel Özellikleri
 *  Her vakit için farklı makamda ezan ve ezan duası.
 *  Vakit ezanı okunurken desteklenen müzik oynatıcıyı ezan bitimine kadar duraklatma.<br>
    <pre>Desteklenen oynatıcılar: Spotify, Deadbeef, Clementine, Amarok, Rhythmbox,
-                                 Aqualung, Audacious, Banshee, Exaile, Cmus,
-                                 Moc, Qmmp, Juk</pre>
+                            Aqualung, Audacious, Banshee, Exaile, Cmus,
+                            Moc, Qmmp, Juk</pre>
 *  3 farklı okuyucu seçimli Kuran dinletme. (--kuran)<br>
    Ayrıca hatim, rastgele, seçim ya da kullanıcının belirlediği sure dizisini dinletme kipleri
 *  Sureleri; sure adı, ayet sayısı, sure numarası, cüz no ve indiği yer şeklinde listeleme. (--sureler)
