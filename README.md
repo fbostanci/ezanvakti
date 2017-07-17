@@ -29,15 +29,16 @@ Genel Özellikleri
 *  Arayüzden ve uçbirimden kerahat vakitlerini gösterebilme. (-vk)
 *  Arayüzde hicri tarih gösterimi
 *  Arayüz HTML renk özelleştirmeleri
-*  Sistem açılışında 3 farklı kipte çalışabilme
+*  Sistem açılışında 3 farklı kipte çalışabilme<br>
+   <pre>
     1: beş vakit (normal kip)
     2: ramazan (yalnızca iftar ve imsak vakitlerinde ezan  okunur.)
-    3: kapalı (arkada çalışmaz.)
+    0: kapalı (arkada çalışmaz.)</pre>
 *  Her vakit için farklı makamda ezan ve ezan duası.
-*  Vakit ezanı okunurken desteklenen müzik oynatıcıyı ezan bitimine kadar duraklatma.
-   Desteklenen oynatıcılar: Spotify, Deadbeef, Clementine, Amarok, Rhythmbox,
-                            Aqualung, Audacious, Banshee, Exaile, Cmus,
-                            Moc, Qmmp, Juk
+*  Vakit ezanı okunurken desteklenen müzik oynatıcıyı ezan bitimine kadar duraklatma.<br>
+   <pre>Desteklenen oynatıcılar: Spotify, Deadbeef, Clementine, Amarok, Rhythmbox,
+                                 Aqualung, Audacious, Banshee, Exaile, Cmus,
+                                 Moc, Qmmp, Juk</pre>
 *  3 farklı okuyucu seçimli Kuran dinletme. (--kuran)
    Ayrıca hatim, rastgele, seçim ya da kullanıcının belirlediği sure dizisini dinletme kipleri
 *  Sureleri; sure adı, ayet sayısı, sure numarası, cüz no ve indiği yer şeklinde listeleme. (--sureler)
