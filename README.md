@@ -39,7 +39,7 @@ Genel Özellikleri
    <pre>Desteklenen oynatıcılar: Spotify, Deadbeef, Clementine, Amarok, Rhythmbox,
                                  Aqualung, Audacious, Banshee, Exaile, Cmus,
                                  Moc, Qmmp, Juk</pre>
-*  3 farklı okuyucu seçimli Kuran dinletme. (--kuran)
+*  3 farklı okuyucu seçimli Kuran dinletme. (--kuran)<br>
    Ayrıca hatim, rastgele, seçim ya da kullanıcının belirlediği sure dizisini dinletme kipleri
 *  Sureleri; sure adı, ayet sayısı, sure numarası, cüz no ve indiği yer şeklinde listeleme. (--sureler)
 *  İstenen surenin istenen ayet aralığını gösterme. (--aralık)
