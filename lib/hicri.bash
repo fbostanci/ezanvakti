@@ -10,7 +10,7 @@
 # ----------------------------------------------------------------------------------
 # Simple bash script to display Islamic date (Hijri / Hijriyah).
 # Ported from php script I found on internet. I do not own the calculation method.
-#  
+#
 # LICENSE
 # ----------------------------------------------------------------------------------
 #  The MIT License (MIT)
@@ -33,7 +33,7 @@ function hicri_tarih_al() {
                 'Zilhicce' )
 
   a=$(( $(( $month - 14 )) / 12 ))
-  b=$(( $(( $year+4900+$a )) / 100 ))
+  b=$(( $(( $year + 4900 + $a )) / 100 ))
   c=$(( $(( 1461 * $(( $year + 4800 + $a )) )) / 4 ))
   d=$(( $(( 367 * $(( $month - 2 - 12 * $a )) )) / 12 ))
   e=$(( $(( 3 * $b )) / 4 ))
