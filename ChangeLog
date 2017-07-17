@@ -3,6 +3,37 @@
 
 
 /×××××××××××××××××××××××××××××
+× Ezanvakti 6.3
+×××××××××××××××××××××××××××××/
+2017-0x-0x Fatih BOSTANCI <faopera@gmail.com>
+
+ *  ezanvakti-sleep ve vakit_animsat hesaplama algoritması değiştirildi.
+    Bu sayede sistem uykuya ya da askıya alındığında oluşan yanlış ezan okuma
+    sıkıntısı giderildi.
+ *  Gelişmiş arayüze hicri tarih gösterimi eklendi.
+ *  Uygulama --ayet, --hadis, --bilgi parametreleriyle çalıştığında bildirim 
+    baloncuğu açılıyordu, öncelik uçbirime verildi. Bildirim baloncuğu için
+    ek olarak -b, -o, --bildirim, ya da --osd girilmesi gerekiyor.
+ *  --ayet --aa kaldırıldı. Ayet aralık için yalnızca --aralik var.
+ *  --ramazan kaldırıldı.
+ *  ACILISTA_BASLAT ile ezanvakti-sleep betiğine sistem açılışında
+    3 farklı kipte çalışabilme özelliği eklendi.
+    kipler:
+    1: Beş vakit ezan (normal çalıştırma)
+    2: Ramazan (Yalnızca İftar ve İmsak vakitleri için ezan okunma ve bildirim var.)
+    0: Kapalı. Sistem açılışında arka planda başlamaz.
+ *  ACILISTA_BASLAT değerini belirleme yapılandırma yöneticisi üzerinden de yapılıyor.
+ *  Arayüzde yapılan değişiklikler eğer ezanvakti-sleep betiğinin çalışmasını ilgilendiriyorsa
+    otomatik yeniden başlatma eklendi.
+ *  Uygulama otomatik başlatıcısını kendi ekliyor. (Eğer ACILISTA_BASLAT 0 değilse)
+ *  /etc/autostart başaltıcısı kaldırıldı.
+ *  Uygulamanın kullandığı simgeler sistem icons dizinlerine eklendi.
+ *  OKUYAN --> KURAN_OKUYAN olarak adlandırıldı.
+ *  bash completion betiği güncellendi.
+ *  man dosyaları güncellendi.
+
+
+/×××××××××××××××××××××××××××××
 × Ezanvakti 6.2
 ×××××××××××××××××××××××××××××/
 2017-07-07 Fatih BOSTANCI <faopera@gmail.com>
