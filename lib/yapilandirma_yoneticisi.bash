@@ -45,7 +45,7 @@ yad --plug=190707 --tabnum=1 --form \
 "${EZANVERI_ADI}" "${ULKE}" "${SEHIR}" \
 "${ILCE}" "$d1" "^${_CALISMA_KIPI}!Beş vakit!Ramazan!Kapalı" " " \
  "^${TEFSIR_SAHIBI}!diyanet!ozturk!ates!yazir"  \
-"^${OKUYAN}!AlGhamdi!AsShatree!AlAjmy"  > $ayr1 &
+"^${KURAN_OKUYAN}!AlGhamdi!AsShatree!AlAjmy"  > $ayr1 &
 yad --plug=190707 --tabnum=2 --form \
 --field='Oynatıcı Duraklat:CHK' \
 --field='Ezan Duası Oku:CHK' \
@@ -201,9 +201,9 @@ yad --notebook --key=190707 \
             sed -i "s:\(TEFSIR_SAHIBI=\).*:\1\'${liste1[7]}\':" "${EZANVAKTI_AYAR}"
         fi
 
-        if [[ ${liste1[8]} != ${OKUYAN} ]]
+        if [[ ${liste1[8]} != ${KURAN_OKUYAN} ]]
         then
-            sed -i "s:\(^OKUYAN=\).*:\1\'${liste1[8]}\':" "${EZANVAKTI_AYAR}"
+            sed -i "s:\(^KURAN_OKUYAN=\).*:\1\'${liste1[8]}\':" "${EZANVAKTI_AYAR}"
         fi
 
 ######################################################################

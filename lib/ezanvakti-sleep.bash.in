@@ -216,8 +216,6 @@ function ezanvakti_bekle() {
 
 # Bileşen burdan yönetiliyor.
 #
-# 1: normal vakit ezanları
-# 2: Vakit ezanları için ramazan kipi. (--ramazan)
 ezv_sleep_pid_denetle; ezanveri_denetle
 gun_animsat; vakit_animsat &
 ezanvakti_bekle

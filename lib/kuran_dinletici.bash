@@ -63,18 +63,18 @@ function kuran_dinletimi() {
       okuyan='Yerel Okuyucu'
   else
       # Seçilen okuyucu koduna göre okuyucunun tam adını yeni değere ata.
-      if [[ ${OKUYAN} = AlGhamdi ]]
+      if [[ ${KURAN_OKUYAN} = AlGhamdi ]]
       then
           okuyan='Saad el Ghamdi'
-      elif [[ ${OKUYAN} = AsShatree ]]
+      elif [[ ${KURAN_OKUYAN} = AsShatree ]]
       then
           okuyan='As Shatry'
-      elif [[ ${OKUYAN} = AlAjmy ]]
+      elif [[ ${KURAN_OKUYAN} = AlAjmy ]]
       then
           okuyan='Ahmad el Ajmy'
       fi
   fi
-  dinletilecek_sure="http://www.listen2quran.com/listen/${OKUYAN}/$sure.mp3"
+  dinletilecek_sure="http://www.listen2quran.com/listen/${KURAN_OKUYAN}/$sure.mp3"
   kaynak='http://www.listen2quran.com'
 
   bilesen_yukle mplayer_yonetici

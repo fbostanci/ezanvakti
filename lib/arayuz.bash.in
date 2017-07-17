@@ -207,15 +207,15 @@ then
             then
                 okuyan='Yerel Okuyucu'
 
-            elif [[ ${OKUYAN} = AlGhamdi ]]
+            elif [[ ${KURAN_OKUYAN} = AlGhamdi ]]
             then
                 okuyan="Saad el Ghamdi"
 
-            elif [[ ${OKUYAN} = AsShatree ]]
+            elif [[ ${KURAN_OKUYAN} = AsShatree ]]
             then
                 okuyan="As Shatry"
 
-            elif [[ ${OKUYAN} = AlAjmy ]]
+            elif [[ ${KURAN_OKUYAN} = AlAjmy ]]
             then
                 okuyan="Ahmad el Ajmy"
             fi

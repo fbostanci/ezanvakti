@@ -29,7 +29,7 @@ ILCE=Bilinmeyen
 # yapılmaması için: 0
 GUNCELLEME_YAP=1
 
-# Uygulamanın sistem açılışında başlatma
+# Uygulamanın sistem açılışında başlatılması
 # normal kipte başlatılması için: 1
 # ramazan kipi için: 2
 # başlatılmaması için: 0
@@ -51,7 +51,7 @@ TEFSIR_SAHIBI=diyanet
 YEREL_SURE_DIZINI=Bilinmeyen
 
 # Kuran okuyan
-OKUYAN=AlGhamdi
+KURAN_OKUYAN=AlGhamdi
 
 # Günlük değişkeni için seçilen sureler
 SURELER='67 44 55 36 59 1 6'
@@ -111,7 +111,8 @@ EZAN_DUASI_OKU=1
 EZAN_OKUNMA_SURESI_FARKI=0
 
 # Ezanların okunması için: 1
-# okunmaması için: 0 
+# okunmaması için: 0
+#
 # Sabah ezanı okunsun mu?
 SABAH_EZANI_OKU=1
 
