@@ -124,8 +124,8 @@ uninstall:
 	@rm -f  $(DESTDIR)$(bindir)/$(AD)
 	@rm -rf $(DESTDIR)$(libdir)/$(AD)
 	@rm -rf $(DESTDIR)$(datadir)/$(AD)
-	@rm -rf $(DESTDIR)$(sysconfdir)/$(AD).conf
 	@rm -rf $(DESTDIR)$(sounddir)/$(AD)
+	@rm -f  $(DESTDIR)$(sysconfdir)/$(AD).conf
 	@rm -f  $(DESTDIR)$(completiondir)/$(AD)
 	@rm -f  $(DESTDIR)$(mandir)/man1/$(AD).1*
 	@rm -f  $(DESTDIR)$(mandir)/man5/$(AD)-ayarlar.5*

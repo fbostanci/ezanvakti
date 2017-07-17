@@ -33,7 +33,6 @@ function dbus_sorgu() {
   fi
 }
 
-
 function oynatici_islem() {
   local -a OYNATICILAR DURDURULAN
   local oynatici
