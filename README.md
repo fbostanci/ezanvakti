@@ -1,8 +1,8 @@
-Son Güncelleme:  Fri, 07 Jul 2017 12:51:49 +0300
+Son Güncelleme:  Mon, 17 Jul 2017 18:15:50 +0300
 
 <br>
 
-Ezanvakti 6.2 GNU/Linux için ezan vakti bildirici
+Ezanvakti 6.3 GNU/Linux için ezan vakti bildirici
 ====
 
 <br>
@@ -21,21 +21,37 @@ Genel Özellikleri
 =
 *  Diyanet sitesindeki tüm ülke ve şehirler için aylık vakitleri alma.
 *  Otomatik ezan vakitleri güncelleme.
-*  Ezan vakitlerini ve vakitlere ne kadar süre kaldığını toplu/tekil gösterme.
-*  İftar vaktine ne kadar süre kaldığını gösterme.
-*  Sıradaki vakit, ve vakte ne kadar süre kaldığını gösterme.
-*  Kerahat vakitlerini gösterme.
+*  Ezan vakitlerini ve vakitlere ne kadar süre kaldığını
+   toplu/tekil gösterme. (--vakitler)
+*  Vakitlerde ezan okunma/okunmama seçimi.
+*  İftar vaktine ne kadar süre kaldığını gösterme. (--iftar)
+*  Sıradaki vakit, ve vakte ne kadar süre kaldığını gösterme. (-vt)
+*  Arayüzden ve uçbirimden kerahat vakitlerini gösterebilme. (-vk)
+*  Arayüzde hicri tarih gösterimi
+*  Arayüz HTML renk özelleştirmeleri
+*  Sistem açılışında 3 farklı kipte çalışabilme
+    1: beş vakit (normal kip)
+    2: ramazan (yalnızca iftar ve imsak vakitlerinde ezan  okunur.)
+    3: kapalı (arkada çalışmaz.)
 *  Her vakit için farklı makamda ezan ve ezan duası.
-*  Vakit ezanı okunurken desteklenen müzik oynatıcıyı ezan bitimine kadar duraklatma
-*  3 farklı okuyucu seçimli kuran dinletme.
-*  İstenen surenin istenen ayet aralığını gösterme.
-*  40 hadisten rastgele bir hadisi uçbirimden ya da bildirim baloncuğunda gösterme.
-*  Esma-ül Hüsna'dan rastgele bir adı  uçbirimden ya da bildirim baloncuğunda gösterme.
-*  Diyanet sitesinden alınmış soru- yanıtlardan rastgele birini  uçbirimden ya da bildirim baloncuğunda gösterme.
+*  Vakit ezanı okunurken desteklenen müzik oynatıcıyı ezan bitimine kadar duraklatma.
+   Desteklenen oynatıcılar: Spotify, Deadbeef, Clementine, Amarok, Rhythmbox,
+                            Aqualung, Audacious, Banshee, Exaile, Cmus,
+                            Moc, Qmmp, Juk
+*  3 farklı okuyucu seçimli Kuran dinletme. (--kuran)
+   Ayrıca hatim, rastgele, seçim ya da kullanıcının belirlediği sure dizisini dinletme kipleri
+*  Sureleri; sure adı, ayet sayısı, sure numarası, cüz no ve indiği yer şeklinde listeleme. (--sureler)
+*  İstenen surenin istenen ayet aralığını gösterme. (--aralık)
+*  40 hadisten rastgele bir hadisi uçbirimden ya da bildirim baloncuğunda gösterme. (--hadis)
+*  Esma-ül Hüsna'dan rastgele bir adı  uçbirimden ya da bildirim baloncuğunda gösterme. (--esma)
+*  Diyanet sitesinden alınmış soru-yanıtlardan rastgele birini  uçbirimden
+   ya da bildirim baloncuğunda gösterme. (--bilgi)
 *  İçinde bulunulan yıla ait dini günleri ve geceleri listeleme.
-*  Aylık ya da haftalık vakitleri listeleme.
-*  Conky uygulamasında kullanım için özel çıktı.
+*  Dini günler ve geceler için bir gün önceden bildirim verme. (--gunler)
+*  Aylık ya da haftalık vakitleri listeleme. (-v7, -v30)
+*  Conky uygulamasında kullanım için özel çıktılar. (--conky)
 *  Sıradaki ezan vaktini (süre ayarlı) ve dini günleri anımsatma.
+*  Başlatıcı sağ tık seçke desteği (unity/desktop actions özelliği)
 *  Geniş özelleştirme desteği.
 *  Basit seviye arayüz desteği.
 
