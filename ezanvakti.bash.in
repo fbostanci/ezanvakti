@@ -116,6 +116,8 @@ case $1 in
         ezan_dinlet Akşam "${AKSAM_EZANI}" ;;
       -y|--yats[ıi])
         ezan_dinlet Yatsı "${YATSI_EZANI}" ;;
+      -c|--cuma)
+        ezan_dinlet 'Cuma selası' "${CUMA_SELASI}" ;;
       *) hatali_kullanim ${1:-null} ;;
     esac ;;
   --kuran)

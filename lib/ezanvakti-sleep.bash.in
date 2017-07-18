@@ -2,7 +2,7 @@
 #
 #
 #
-#                           Ezanvakti Sleep Yöntemi  Bileşeni 1.4
+#                           Ezanvakti Sleep Yöntemi  Bileşeni 1.5
 #
 
 calisma_kodu="$1"
@@ -61,8 +61,10 @@ function gun_animsat() {
 
 function cuma_selasi() {
   local sela_vakti
+  ezan_vakitlerini_al
 
-  sela_vakti=$(( vakit_saati - SELA_OKUNMA_FARKI ))
+  sela_vakti=$(( ogle - SELA_OKUNMA_SURESI_FARKI * 60 ))
+  (( sela_vakti < UNIXSAAT )) && return 0
 
   if (( $(( sela_vakti - 60 )) == UNIXSAAT ))
   then
@@ -76,7 +78,7 @@ function cuma_selasi() {
   fi
 
   notify-send "${ILCE} için" \
-    "Cuma Selası date +%H:%M\n Okuyan: ${SELA_OKUYAN}" \
+    "Cuma Selası (Öğle: $ogle_n)\n Okuyan: ${SELA_OKUYAN}" \
     -i ezanvakti -u critical -h int:transient:1 \
     -t $EZAN_BILDIRIM_SURESI"000"
 
@@ -90,6 +92,7 @@ function cuma_selasi() {
   } || mplayer_calistir "${CUMA_SELASI}"
   clear
 }
+
 
 function ezan_vakitlerini_al() {
   bugun
@@ -114,7 +117,6 @@ function ezan_vakitlerini_al() {
       vakit_saati_n=$ogle_n
       vakit_saati=$(( ogle + EZAN_OKUNMA_SURESI_FARKI ))
       ezan_okunsun_mu=${OGLE_EZANI_OKU}
-      (( $(date +%u) == 5 )) && (( CUMA_SELASI_OKU )) && cuma_selasi &
 
   elif (( UNIXSAAT <= ikindi ))
   then
@@ -259,6 +261,7 @@ function ezanvakti_bekle() {
 
 ezv_sleep_pid_denetle; ezanveri_denetle
 gun_animsat; vakit_animsat &
+(( $(date +%u) == 5 )) && (( CUMA_SELASI_OKU )) && cuma_selasi &
 ezanvakti_bekle
 
 # vim: set ft=sh ts=2 sw=2 et:
