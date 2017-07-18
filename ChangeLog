@@ -12,6 +12,7 @@
     sıkıntısı giderildi.
  *  Gelişmiş arayüze hicri tarih gösterimi eklendi.
  *  Vakit anımsatıcı bildirimle birlikte sesli uyarı da verebiliyor.
+ *  Cuma günü isteğe bağlı sela okunması eklendi. (süre ayarlı)
  *  Uygulama --ayet, --hadis, --bilgi parametreleriyle çalıştığında bildirim 
     baloncuğu açılıyordu, öncelik uçbirime verildi. Bildirim baloncuğu için
     ek olarak -b, -o, --bildirim, ya da --osd girilmesi gerekiyor.
@@ -30,6 +31,7 @@
  *  /etc/autostart başlatıcısı kaldırıldı.
  *  Uygulamanın kullandığı simgeler sistem icons dizinlerine eklendi.
  *  OKUYAN --> KURAN_OKUYAN olarak adlandırıldı.
+ *  Yapilandırma yöneticisi güncellendi.
  *  bash completion betiği güncellendi.
  *  man dosyaları güncellendi.
 

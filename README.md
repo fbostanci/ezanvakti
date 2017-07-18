@@ -29,6 +29,7 @@ Genel Özellikleri
 *  Arayüzden ve uçbirimden kerahat vakitlerini gösterebilme. (-vk)
 *  Arayüzde hicri tarih gösterimi
 *  Arayüz HTML renk özelleştirmeleri
+*  Cuma günü isteğe bağlı sela okunması (süre ayarlı)
 *  Sistem açılışında 3 farklı kipte çalışabilme<br>
    <pre>
     1: beş vakit (normal kip)
