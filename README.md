@@ -42,16 +42,17 @@ Genel Özellikleri
 *  3 farklı okuyucu seçimli Kuran dinletme. (--kuran)<br>
    Ayrıca hatim, rastgele, seçim ya da kullanıcının belirlediği sure dizisini dinletme kipleri
 *  Sureleri; sure adı, ayet sayısı, sure numarası, cüz no ve indiği yer şeklinde listeleme. (--sureler)
-*  İstenen surenin istenen ayet aralığını gösterme. (--aralık)
+*  İstenen surenin istenen ayet aralığını gösterme. (--aralik)
 *  40 hadisten rastgele bir hadisi uçbirimden ya da bildirim baloncuğunda gösterme. (--hadis)
 *  Esma-ül Hüsna'dan rastgele bir adı  uçbirimden ya da bildirim baloncuğunda gösterme. (--esma)
 *  Diyanet sitesinden alınmış soru-yanıtlardan rastgele birini  uçbirimden
    ya da bildirim baloncuğunda gösterme. (--bilgi)
-*  İçinde bulunulan yıla ait dini günleri ve geceleri listeleme.
-*  Dini günler ve geceler için bir gün önceden bildirim verme. (--gunler)
+*  İçinde bulunulan yıla ait dini günleri ve geceleri listeleme. (--gunler)
+*  Dini günler ve geceler için bir gün önceden bildirim verme.
 *  Aylık ya da haftalık vakitleri listeleme. (-v7, -v30)
 *  Conky uygulamasında kullanım için özel çıktılar. (--conky)
 *  Sıradaki ezan vaktini (süre ayarlı) ve dini günleri anımsatma.
+*  Sesli vakit anımsatma
 *  Başlatıcı sağ tık seçke desteği (unity/desktop actions özelliği)
 *  Geniş özelleştirme desteği.
 *  Basit seviye arayüz desteği.

@@ -76,7 +76,7 @@ then
     then
         mplayer_ileti=" Sabah ezanı dinletiliyor..\n\n Okuyan : ${EZAN_OKUYAN}"
         mplayer_calistir "${SABAH_EZANI}" &
-            pencere_bilgi; arayuz
+        pencere_bilgi; arayuz
 
     elif [[ $str = Öğle ]]
     then
@@ -219,6 +219,9 @@ then
             elif [[ ${KURAN_OKUYAN} = AlAjmy ]]
             then
                 okuyan="Ahmad el Ajmy"
+            else
+                printf '%s: Deskteklenmeyen KURAN_OKUYAN adı: %s\n' "${AD}" "${KURAN_OKUYAN}" >&2
+                exit 1
             fi
         fi
 

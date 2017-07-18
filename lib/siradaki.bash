@@ -14,39 +14,39 @@ function siradaki_vakit() { # {{{
 
   if (( UNIXSAAT < sabah ))
   then
-    bekleme_suresi $sabah_n; kalan
-    siradaki_vakit="Sabah"
-    siradaki_vakit_kalan="${RENK2} $kalan_sure"
+      bekleme_suresi $sabah_n; kalan
+      siradaki_vakit="Sabah"
+      siradaki_vakit_kalan="${RENK2} $kalan_sure"
 
   elif (( UNIXSAAT < ogle ))
   then
-    bekleme_suresi $ogle_n; kalan
-    siradaki_vakit="Öğle"
-    siradaki_vakit_kalan="${RENK2} $kalan_sure"
+      bekleme_suresi $ogle_n; kalan
+      siradaki_vakit="Öğle"
+      siradaki_vakit_kalan="${RENK2} $kalan_sure"
 
   elif (( UNIXSAAT < ikindi ))
   then
-    bekleme_suresi $ikindi_n; kalan
-    siradaki_vakit="İkindi"
-    siradaki_vakit_kalan="${RENK2} $kalan_sure"
+      bekleme_suresi $ikindi_n; kalan
+      siradaki_vakit="İkindi"
+      siradaki_vakit_kalan="${RENK2} $kalan_sure"
 
   elif (( UNIXSAAT < aksam ))
   then
-    bekleme_suresi $aksam_n; kalan
-    siradaki_vakit="Akşam"
-    siradaki_vakit_kalan="${RENK2} $kalan_sure"
+      bekleme_suresi $aksam_n; kalan
+      siradaki_vakit="Akşam"
+      siradaki_vakit_kalan="${RENK2} $kalan_sure"
 
   elif (( UNIXSAAT < yatsi ))
   then
-    bekleme_suresi $yatsi_n; kalan
-    siradaki_vakit="Yatsı"
-    siradaki_vakit_kalan="${RENK2} $kalan_sure"
+      bekleme_suresi $yatsi_n; kalan
+      siradaki_vakit="Yatsı"
+      siradaki_vakit_kalan="${RENK2} $kalan_sure"
 
   elif  (( UNIXSAAT < yeni_gun ))
   then
-    bekleme_suresi "23:59:59"; bekle=$(( bekle + 1 )); kalan
-    siradaki_vakit="Yeni gün"
-    siradaki_vakit_kalan="${RENK2} $kalan_sure"
+      bekleme_suresi "23:59:59"; bekle=$(( bekle + 1 )); kalan
+      siradaki_vakit="Yeni gün"
+      siradaki_vakit_kalan="${RENK2} $kalan_sure"
   fi
 
   case $istek in
