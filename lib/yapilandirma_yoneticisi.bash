@@ -56,7 +56,7 @@ yad --plug=190707 --tabnum=2 --form \
 --field='Oynatıcı Duraklat:CHK' \
 --field='Ezan Duası Oku:CHK' \
 --field='Vakit anımsat için sesli uyarı:CHK' \
---field='Ezan Okunma Süresi Farkı (dk):NUM' \
+--field='Ezan Okunma Süresi Farkı (sn):NUM' \
 --field='Sela Okunma Süresi Farkı (sn):NUM' \
 --field='Vakit animsat:NUM' \
 --field='Sabah Ezanı:FL' \

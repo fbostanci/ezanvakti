@@ -149,10 +149,11 @@ function g_vakitleri_al() {
 }
 
 function g_vakitleri_yaz() {
-  local sabah gunes ogle ikindi aksam yatsi vakitsiz
+  local sabah gunes ogle ikindi aksam yatsi vakitsiz ikindi_kerahat
 
   vakitsiz="<b>Şimdi Kerahat Vakti 2</b>|<b>Şimdi Kerahat Vakti 3</b>"
-  vakitsiz+="|<b>Şimdi Kuşluk Vakti</b>|<b>Şimdi Kerahat Vakti 5</b>"
+  vakitsiz+="|<b>Şimdi Kuşluk Vakti</b>"
+  ikindi_kerahat="<b>Şimdi Kerahat Vakti 4</b>|<b>Şimdi Kerahat Vakti 5</b>"
 
   if [[ ${vakit_bilgisi} = '<b>Şimdi Yatsı Vakti</b>'  ]]
   then
@@ -214,7 +215,7 @@ function g_vakitleri_yaz() {
       yatsi="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>Yatsı</span>"
       yatsi_n="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>$yatsi_n</span>"
 
-  elif [[ ${vakit_bilgisi} = '<b>Şimdi Kerahat Vakti 4</b>' ]]
+  elif [[ ${vakit_bilgisi} = @(${ikindi_kerahat}) ]]
   then
       sabah="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>Sabah</span>"
       sabah_n="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>$sabah_n</span>"
