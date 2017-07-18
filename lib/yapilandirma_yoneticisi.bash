@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-#                           Ezanvakti Yapılandırma Yöneticisi Bileşeni 2.0
+#                           Ezanvakti Yapılandırma Yöneticisi Bileşeni 2.1
 #
 #
 
@@ -505,9 +505,17 @@ yad --notebook --key=190707 \
         }
 
         (( _YENIDEN_BASLATMA_GEREKLI )) && {
-          if pgrep ezanvakti-sleep
+          if (( ! ACILISTA_BASLAT ))
           then
-              pkill ezanvakti-sleep
+              if pgrep ezanvakti-sleep
+              then
+                  pkill ezanvakti-sleep
+              fi
+          else
+              if pgrep ezanvakti-sleep
+              then
+                  pkill ezanvakti-sleep
+              fi
               ${BILESEN_DIZINI}/ezanvakti-sleep.bash &
               disown
           fi
