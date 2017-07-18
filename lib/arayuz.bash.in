@@ -55,7 +55,7 @@ strng=$(yad --form --text "$(printf "${GELISMIS_ARAYUZ_BICIMI}" \
   "<span foreground=\'${ARAYUZ_KALAN_SURE_RENGI}\'>${v_ileti}</span>" \
   "<span foreground=\'${ARAYUZ_KALAN_SURE_RENGI}\'>${v_kalan}</span>")" \
 --field="<span foreground=\'${ARAYUZ_SECKE_ADLARI_RENGI}\'>Ezanlar</span>:CB" \
-'!Sabah!Öğle!İkindi!Akşam!Yatsı' \
+'!Sabah!Öğle!İkindi!Akşam!Yatsı!Sela' \
 --field="<span foreground=\'${ARAYUZ_SECKE_ADLARI_RENGI}\'>Sureler</span>:CB" \
 "!000-Özel Pencere$sure_listesi" \
 --field="<span foreground=\'${ARAYUZ_SECKE_ADLARI_RENGI}\'>Seçimler</span>:CB" \
@@ -100,6 +100,12 @@ then
     then
         mplayer_ileti=" Yatsı ezanı dinletiliyor..\n\n Okuyan : ${EZAN_OKUYAN}"
         mplayer_calistir "${YATSI_EZANI}" &
+        pencere_bilgi; arayuz
+
+    elif [[ $str = Sela ]]
+    then
+        mplayer_ileti=" Cuma selası dinletiliyor..\n\n Okuyan : ${SELA_OKUYAN}"
+        mplayer_calistir "${CUMA_SELASI}" &
         pencere_bilgi; arayuz
 
     elif [[ $str = Ayet ]]

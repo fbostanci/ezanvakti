@@ -34,7 +34,7 @@ function dbus_sorgu() {
 }
 
 function oynatici_duraklat() {
-  local -a OYNATICILAR DURDURULAN
+  local -a OYNATICILAR
   local oynatici
 
   OYNATICILAR=( spotify deadbeef clementine amarok rhythmbox

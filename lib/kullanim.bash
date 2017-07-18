@@ -17,7 +17,7 @@ function betik_kullanimi() {
 
   ucbirim_basligi "yardim"
   echo -e "
-    ${B}--dinle${R} [-s,-o,-i,-a,-y]
+    ${B}--dinle${R} [-s,-o,-i,-a,-y, -c]
         İstediğiniz zaman, istediğiniz vakite ait ezanı dinletir.
 
     ${B}-v, --vakitler${R}
