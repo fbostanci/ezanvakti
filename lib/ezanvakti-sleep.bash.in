@@ -173,6 +173,11 @@ function vakit_animsat() {
     notify-send "${AD^}" "$VAKIT_ANIMSAT dakika sonra $simdiki ${ileti}" \
       -u critical -t $BILGI_BILDIRIM_SURESI"000" \
       -i ezanvakti -h int:transient:1
+
+    (( SESLI_UYARI )) && {
+      bilesen_yukle mplayer_yonetici
+      mplayer_calistir "${UYARI_SESI}"
+    }
     sleep 60; vakit_animsat
   }
 }
@@ -214,8 +219,6 @@ function ezanvakti_bekle() {
   ezan_oku; ezanvakti_bekle
 }
 
-# Bileşen burdan yönetiliyor.
-#
 ezv_sleep_pid_denetle; ezanveri_denetle
 gun_animsat; vakit_animsat &
 ezanvakti_bekle

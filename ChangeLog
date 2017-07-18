@@ -11,6 +11,7 @@
     Bu sayede sistem uykuya ya da askıya alındığında oluşan yanlış ezan okuma
     sıkıntısı giderildi.
  *  Gelişmiş arayüze hicri tarih gösterimi eklendi.
+ *  Vakit anımsatıcı bildirimle birlikte sesli uyarı da verebiliyor.
  *  Uygulama --ayet, --hadis, --bilgi parametreleriyle çalıştığında bildirim 
     baloncuğu açılıyordu, öncelik uçbirime verildi. Bildirim baloncuğu için
     ek olarak -b, -o, --bildirim, ya da --osd girilmesi gerekiyor.

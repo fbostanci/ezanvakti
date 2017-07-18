@@ -134,6 +134,11 @@ Eğer ezan okunmadan önce vaktin yaklaştığıyla ilgili anımsatma bildirimi 
 istiyorsanız dakika cinsinden olmak şartıyla istediğiniz değeri girin. Öntanımlı bu özellik
 açık gelmektedir ve değeri 15 dakikadır.
 .TP
+.B SESLI_UYARI
+Vakitlerden önce yapılan anımsatmayla birlikte sesli uyarı da verilmesini belirleyen değerdir.
+Vakit anımsatmalarında sesli uyarı da almak için 1, almamak için 0 girin. Sesli uyarı alabilmeniz
+için VAKIT_ANIMSAT etkin olmalıdır.
+.TP
 .B SES
 Ezan okuma/dinletme ve Kuran dinleme işlemleri için kullanılan Mplayer
 uygulaması için kullanılacak ses değeridir. Öntanımlı 100'dür.
@@ -226,6 +231,10 @@ Ezan okumadan sonra, dinletilecek ezan duası için
 kullanılacak ses dosyasının bulunduğu dizindir. Eğer
 farklı bir ses dosyası kullanmak istiyorsanız bu değere,
 ses dosyasının konumunu girin.
+.TP
+.B UYAR_SESI
+Vakit anımsatıcı da sesli uyarı olarak kullanılacak uyarı
+sesinin bulunduğu dizindir.
 .LP
 .SH GELiŞMiŞ AYARLAR
 Arayüzlerde ve Conky uygulamasında değişik yazı tipi ve
