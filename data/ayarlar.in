@@ -86,6 +86,11 @@ GUN_ANIMSAT=15
 # Bildirim yapılmaması için değeri 0 olarak girin.
 VAKIT_ANIMSAT=15
 
+# VAKIT_ANIMSAT için sesli uyarı verme
+# verilmesi için: 1
+# verilmemesi için: 0
+SESLI_UYARI=1
+
 # Mplayer ses seviyesi (0-100 arası)
 SES=100
 
@@ -94,8 +99,8 @@ SES=100
 # duraklatılmaması için: 0
 OYNATICI_DURAKLAT=0
 
-# BİLGİ: '*/' olarak işaretlenen ayarlar Ubuntu GNOME ortamında, öntanımlı olarak etkisizdir.
-# Yamalanmış sürüm işlemleri için man dosyasına bakın.
+# BİLGİ: '*/' olarak işaretlenen ayarlar Ubuntu ortamında, öntanımlı olarak etkisizdir.
+# Yamalanmış libnotify-bin sürüm işlemleri için man dosyasına bakın.
 
 #                           #
 #*******Ezan Ayarları*******#
@@ -148,6 +153,9 @@ YATSI_EZANI=@sounddir@/@AD@/yatsi_ussak.ogg
 
 # Ezan duası ses dosyası
 EZAN_DUASI=@sounddir@/@AD@/ezan_duasi.ogg
+
+# Sesli uyarı ses dosyası
+UYARI_SESI=@sounddir@/@AD@/uyari.ogg
 
 #                                   #
 #******Uçbirim Renk Ayarları********#
