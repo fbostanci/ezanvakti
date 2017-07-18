@@ -33,7 +33,7 @@ function dbus_sorgu() {
   fi
 }
 
-function oynatici_islem() {
+function oynatici_duraklat() {
   local -a OYNATICILAR DURDURULAN
   local oynatici
 
@@ -133,12 +133,9 @@ function oynatici_islem() {
       fi
     }
   done
+}
 
-################################################################
- mplayer_calistir "${vakit_ezani}"                             #
-(( EZAN_DUASI_OKU )) && mplayer_calistir "${EZAN_DUASI}"       #
-################################################################
-
+function oynatici_devam() {
   for oynatici in ${DURDURULAN[@]}
   do
       if [[ ${oynatici} = spotify ]]

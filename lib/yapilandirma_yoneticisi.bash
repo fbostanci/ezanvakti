@@ -5,10 +5,10 @@
 #
 
 function yapilandirma() {
-  local d1 d2 d3 d4 d5 d6 d7 d8 d9 d0 ayr1 ayr2 ayr3 ayr4
+  local d1 d2 d3 d4 d5 d6 d7 d8 d9 d0 ds ayr1 ayr2 ayr3 ayr4
   local _GUNCELLEME_YAP _OYNATICI_DURAKLAT _EZAN_DUASI_OKU _RENK_KULLAN _GUNCELLEME_GEREKLI
   local _SABAH_OKUNSUN_MU _OGLE_OKUNSUN_MU _IKINDI_OKUNSUN_MU _AKSAM_OKUNSUN_MU _YATSI_OKUNSUN_MU
-  local _ACILISTA_BASLAT _YENIDEN_BASLATMA_GEREKLI _SESLI_UYARI
+  local _ACILISTA_BASLAT _YENIDEN_BASLATMA_GEREKLI _SESLI_UYARI _CUMA_SELASI_OKUNSUN_MU
 
 (( GUNCELLEME_YAP    )) && d1=TRUE || d1=FALSE
 (( OYNATICI_DURAKLAT )) && d2=TRUE || d2=FALSE
@@ -19,6 +19,7 @@ function yapilandirma() {
 (( AKSAM_EZANI_OKU   )) && d7=TRUE || d7=FALSE
 (( YATSI_EZANI_OKU   )) && d8=TRUE || d8=FALSE
 (( SESLI_UYARI       )) && d0=TRUE || d0=FALSE
+(( CUMA_SELASI_OKU   )) && ds=TRUE || ds=FALSE
 (( $(gawk -F'=' '/^RENK_KULLAN/{print($2);}' "${EZANVAKTI_AYAR}") )) && d9=TRUE || d9=FALSE
 (( ACILISTA_BASLAT == 0 )) && _CALISMA_KIPI='Kapalı' || {
 (( ACILISTA_BASLAT == 1 )) && _CALISMA_KIPI='Beş vakit' || _CALISMA_KIPI='Ramazan'; }
@@ -40,18 +41,23 @@ yad --plug=190707 --tabnum=1 --form \
 --field='İlçe:' \
 --field='Otomatik Ezanveri Güncelleme:CHK' \
 --field='Uygulama çalışma kipi:CB' \
---field='\nTefsir ve Kuran okuyucu seçimleri\n:LBL' \
+--field='\nTefsir ve Kuran okuyucu seçimleri:LBL' \
 --field='Kullanılacak Tefsir:CB' \
 --field='Kuran okuyan:CB' \
+--field='\nEzan ve sela okuyan adları:LBL' \
+--field='Ezan okuyan:' \
+--field='Sela okuyan:' \
 "${EZANVERI_ADI}" "${ULKE}" "${SEHIR}" \
 "${ILCE}" "$d1" "^${_CALISMA_KIPI}!Beş vakit!Ramazan!Kapalı" " " \
- "^${TEFSIR_SAHIBI}!diyanet!ozturk!ates!yazir"  \
-"^${KURAN_OKUYAN}!AlGhamdi!AsShatree!AlAjmy"  > $ayr1 &
+"^${TEFSIR_SAHIBI}!diyanet!ozturk!ates!yazir"  \
+"^${KURAN_OKUYAN}!AlGhamdi!AsShatree!AlAjmy" " " \
+"${EZAN_OKUYAN}" "${SELA_OKUYAN}" > $ayr1 &
 yad --plug=190707 --tabnum=2 --form \
 --field='Oynatıcı Duraklat:CHK' \
 --field='Ezan Duası Oku:CHK' \
 --field='Vakit anımsat için sesli uyarı:CHK' \
---field='Ezan Okunma Süresi Farkı:NUM' \
+--field='Ezan Okunma Süresi Farkı (dk):NUM' \
+--field='Sela Okunma Süresi Farkı (sn):NUM' \
 --field='Vakit animsat:NUM' \
 --field='Sabah Ezanı:FL' \
 --field='Öğle Ezanı:FL' \
@@ -59,18 +65,19 @@ yad --plug=190707 --tabnum=2 --form \
 --field='Akşam Ezanı:FL' \
 --field='Yatsı Ezanı:FL' \
 --field='Ezan Duası:FL' \
+--field='Cuma Selası:FL' \
 --field='Uyarı sesi:FL' \
---field='Ezan okuyan:' \
 "$d2" "$d3" "$d0" -- "$EZAN_OKUNMA_SURESI_FARKI[!-600..600][!60]]" \
- "$VAKIT_ANIMSAT[!0..60[!1]]" "${SABAH_EZANI}" \
- "${OGLE_EZANI}" "${IKINDI_EZANI}" "${AKSAM_EZANI}" \
- "${YATSI_EZANI}" "${EZAN_DUASI}" "${UYARI_SESI}" "${EZAN_OKUYAN}" > $ayr2 &
+"$SELA_OKUNMA_SURESI_FARKI[!0..240][!10]]" "$VAKIT_ANIMSAT[!0..60[!1]]" \
+"${SABAH_EZANI}" "${OGLE_EZANI}" "${IKINDI_EZANI}" "${AKSAM_EZANI}" \
+"${YATSI_EZANI}" "${EZAN_DUASI}" "${CUMA_SELASI}" "${UYARI_SESI}" > $ayr2 &
 yad --plug=190707 --tabnum=3 --form \
 --field='Sabah ezanı okunsun:CHK' \
 --field='Öğle ezanı okunsun:CHK' \
 --field='İkindi ezanı okunsun:CHK' \
 --field='Akşam ezanı okunsun:CHK' \
 --field='Yatsı ezanı okunsun:CHK' \
+--field='Cuma selası okunsun:CHK' \
 --field='Mplayer ses seviyesi:SCL' \
 --field='Dini gün anımsat (sn. 0 ise kapalı):NUM' \
 --field='Ezan Bildirim Süresi (sn):NUM' \
@@ -78,7 +85,7 @@ yad --plug=190707 --tabnum=3 --form \
 --field='Hadis Bildirim Süresi (sn):NUM' \
 --field='Bilgi Bildirim Süresi (sn):NUM' \
 --field='Güncelleme Bildirim Süresi (sn):NUM' \
-"$d4" "$d5" "$d6" "$d7" "$d8" \
+"$d4" "$d5" "$d6" "$d7" "$d8" "$ds" \
 "$SES[!0..100[!1]]" "$GUN_ANIMSAT[!0..30[!1]]" \
 "$EZAN_BILDIRIM_SURESI[!15..300[!15]]" \
 "$AYET_BILDIRIM_SURESI[!10..30[!1]]" \
@@ -209,6 +216,22 @@ yad --notebook --key=190707 \
             sed -i "s:\(^KURAN_OKUYAN=\).*:\1\'${liste1[8]}\':" "${EZANVAKTI_AYAR}"
         fi
 
+        if [[ ${EZAN_OKUYAN} != ${liste1[10]} ]]
+        then
+            if [[ -n ${liste1[10]} ]]
+            then
+                sed -i "s:\(EZAN_OKUYAN=\).*:\1\'${liste1[10]}\':" "${EZANVAKTI_AYAR}"
+            fi
+        fi
+
+        if [[ ${SELA_OKUYAN} != ${liste1[11]} ]]
+        then
+            if [[ -n ${liste1[11]} ]]
+            then
+                sed -i "s:\(SELA_OKUYAN=\).*:\1\'${liste1[11]}\':" "${EZANVAKTI_AYAR}"
+            fi
+        fi
+
 ######################################################################
 #                         LİSTE 2 İŞLEMLERİ                          #
 ######################################################################
@@ -258,60 +281,64 @@ yad --notebook --key=190707 \
             _YENIDEN_BASLATMA_GEREKLI=1
         fi
 
-        if (( VAKIT_ANIMSAT != ${liste2[4]} ))
+        if (( SELA_OKUNMA_SURESI_FARKI != ${liste2[4]} ))
         then
-            sed -i "s:\(VAKIT_ANIMSAT=\).*:\1${liste2[4]}:" "${EZANVAKTI_AYAR}"
+            sed -i "s:\(SELA_OKUNMA_SURESI_FARKI=\).*:\1${liste2[4]}:" "${EZANVAKTI_AYAR}"
             _YENIDEN_BASLATMA_GEREKLI=1
         fi
 
-        if [[ ${SABAH_EZANI} != ${liste2[5]} ]]
+        if (( VAKIT_ANIMSAT != ${liste2[5]} ))
         then
-            sed -i "s:\(SABAH_EZANI=\).*:\1\'${liste2[5]}\':" "${EZANVAKTI_AYAR}"
+            sed -i "s:\(VAKIT_ANIMSAT=\).*:\1${liste2[5]}:" "${EZANVAKTI_AYAR}"
             _YENIDEN_BASLATMA_GEREKLI=1
         fi
 
-        if [[ ${OGLE_EZANI} != ${liste2[6]} ]]
+        if [[ ${SABAH_EZANI} != ${liste2[6]} ]]
         then
-            sed -i "s:\(OGLE_EZANI=\).*:\1\'${liste2[6]}\':" "${EZANVAKTI_AYAR}"
+            sed -i "s:\(SABAH_EZANI=\).*:\1\'${liste2[6]}\':" "${EZANVAKTI_AYAR}"
             _YENIDEN_BASLATMA_GEREKLI=1
         fi
 
-        if [[ ${IKINDI_EZANI} != ${liste2[7]} ]]
+        if [[ ${OGLE_EZANI} != ${liste2[7]} ]]
         then
-            sed -i "s:\(IKINDI_EZANI=\).*:\1\'${liste2[7]}\':" "${EZANVAKTI_AYAR}"
+            sed -i "s:\(OGLE_EZANI=\).*:\1\'${liste2[7]}\':" "${EZANVAKTI_AYAR}"
             _YENIDEN_BASLATMA_GEREKLI=1
         fi
 
-        if [[ ${AKSAM_EZANI} != ${liste2[8]} ]]
+        if [[ ${IKINDI_EZANI} != ${liste2[8]} ]]
         then
-            sed -i "s:\(AKSAM_EZANI=\).*:\1\'${liste2[8]}\':" "${EZANVAKTI_AYAR}"
+            sed -i "s:\(IKINDI_EZANI=\).*:\1\'${liste2[8]}\':" "${EZANVAKTI_AYAR}"
             _YENIDEN_BASLATMA_GEREKLI=1
         fi
 
-        if [[ ${YATSI_EZANI} != ${liste2[9]} ]]
+        if [[ ${AKSAM_EZANI} != ${liste2[9]} ]]
         then
-            sed -i "s:\(YATSI_EZANI=\).*:\1\'${liste2[9]}\':" "${EZANVAKTI_AYAR}"
+            sed -i "s:\(AKSAM_EZANI=\).*:\1\'${liste2[9]}\':" "${EZANVAKTI_AYAR}"
             _YENIDEN_BASLATMA_GEREKLI=1
         fi
 
-        if [[ ${EZAN_DUASI} != ${liste2[10]} ]]
+        if [[ ${YATSI_EZANI} != ${liste2[10]} ]]
         then
-            sed -i "s:\(EZAN_DUASI=\).*:\1\'${liste2[10]}\':" "${EZANVAKTI_AYAR}"
+            sed -i "s:\(YATSI_EZANI=\).*:\1\'${liste2[10]}\':" "${EZANVAKTI_AYAR}"
             _YENIDEN_BASLATMA_GEREKLI=1
         fi
 
-        if [[ ${UYARI_SESI} != ${liste2[11]} ]]
+        if [[ ${EZAN_DUASI} != ${liste2[11]} ]]
         then
-            sed -i "s:\(UYARI_SESI=\).*:\1\'${liste2[11]}\':" "${EZANVAKTI_AYAR}"
+            sed -i "s:\(EZAN_DUASI=\).*:\1\'${liste2[11]}\':" "${EZANVAKTI_AYAR}"
             _YENIDEN_BASLATMA_GEREKLI=1
         fi
 
-        if [[ ${EZAN_OKUYAN} != ${liste2[12]} ]]
+        if [[ ${CUMA_SELASI} != ${liste2[12]} ]]
         then
-            if [[ -n ${liste2[12]} ]]
-            then
-                sed -i "s:\(EZAN_OKUYAN=\).*:\1\'${liste2[12]}\':" "${EZANVAKTI_AYAR}"
-            fi
+            sed -i "s:\(CUMA_SELASI=\).*:\1\'${liste2[12]}\':" "${EZANVAKTI_AYAR}"
+            _YENIDEN_BASLATMA_GEREKLI=1
+        fi
+
+        if [[ ${UYARI_SESI} != ${liste2[13]} ]]
+        then
+            sed -i "s:\(UYARI_SESI=\).*:\1\'${liste2[13]}\':" "${EZANVAKTI_AYAR}"
+            _YENIDEN_BASLATMA_GEREKLI=1
         fi
 
 ######################################################################
@@ -353,6 +380,13 @@ yad --notebook --key=190707 \
             _YATSI_OKUNSUN_MU=1
         fi
 
+        if [[ ${liste3[5]} != TRUE ]]
+        then
+            _CUMA_SELASI_OKUNSUN_MU=0
+        else
+            _CUMA_SELASI_OKUNSUN_MU=1
+        fi
+
         if (( SABAH_EZANI_OKU != _SABAH_OKUNSUN_MU ))
         then
             sed -i "s:\(SABAH_EZANI_OKU=\).*:\1$_SABAH_OKUNSUN_MU:" "${EZANVAKTI_AYAR}"
@@ -383,42 +417,48 @@ yad --notebook --key=190707 \
             _YENIDEN_BASLATMA_GEREKLI=1
         fi
 
-        if [[ ${SES} != ${liste3[5]} ]]
+        if (( CUMA_SELASI_OKU != _CUMA_SELASI_OKUNSUN_MU ))
         then
-            sed -i "s:\(SES=\).*:\1\'${liste3[5]}\':" "${EZANVAKTI_AYAR}"
+            sed -i "s:\(CUMA_SELASI_OKU=\).*:\1$_CUMA_SELASI_OKUNSUN_MU:" "${EZANVAKTI_AYAR}"
             _YENIDEN_BASLATMA_GEREKLI=1
         fi
 
-        if [[ ${GUN_ANIMSAT} != ${liste3[6]} ]]
+        if [[ ${SES} != ${liste3[6]} ]]
         then
-            sed -i "s:\(GUN_ANIMSAT=\).*:\1\'${liste3[6]}\':" "${EZANVAKTI_AYAR}"
+            sed -i "s:\(SES=\).*:\1\'${liste3[6]}\':" "${EZANVAKTI_AYAR}"
             _YENIDEN_BASLATMA_GEREKLI=1
         fi
 
-        if [[ ${EZAN_BILDIRIM_SURESI} != ${liste3[7]} ]]
+        if [[ ${GUN_ANIMSAT} != ${liste3[7]} ]]
         then
-            sed -i "s:\(EZAN_BILDIRIM_SURESI=\).*:\1\'${liste3[7]}\':" "${EZANVAKTI_AYAR}"
+            sed -i "s:\(GUN_ANIMSAT=\).*:\1\'${liste3[7]}\':" "${EZANVAKTI_AYAR}"
             _YENIDEN_BASLATMA_GEREKLI=1
         fi
 
-        if [[ ${AYET_BILDIRIM_SURESI} != ${liste3[8]} ]]
+        if [[ ${EZAN_BILDIRIM_SURESI} != ${liste3[8]} ]]
         then
-            sed -i "s:\(AYET_BILDIRIM_SURESI=\).*:\1\'${liste3[8]}\':" "${EZANVAKTI_AYAR}"
+            sed -i "s:\(EZAN_BILDIRIM_SURESI=\).*:\1\'${liste3[8]}\':" "${EZANVAKTI_AYAR}"
+            _YENIDEN_BASLATMA_GEREKLI=1
         fi
 
-        if [[ ${HADIS_BILDIRIM_SURESI} != ${liste3[9]} ]]
+        if [[ ${AYET_BILDIRIM_SURESI} != ${liste3[9]} ]]
         then
-            sed -i "s:\(HADIS_BILDIRIM_SURESI=\).*:\1\'${liste3[9]}\':" "${EZANVAKTI_AYAR}"
+            sed -i "s:\(AYET_BILDIRIM_SURESI=\).*:\1\'${liste3[9]}\':" "${EZANVAKTI_AYAR}"
         fi
 
-        if [[ ${BILGI_BILDIRIM_SURESI} != ${liste3[10]} ]]
+        if [[ ${HADIS_BILDIRIM_SURESI} != ${liste3[10]} ]]
         then
-            sed -i "s:\(BILGI_BILDIRIM_SURESI=\).*:\1\'${liste3[10]}\':" "${EZANVAKTI_AYAR}"
+            sed -i "s:\(HADIS_BILDIRIM_SURESI=\).*:\1\'${liste3[10]}\':" "${EZANVAKTI_AYAR}"
         fi
 
-        if [[ ${GUNCELLEME_BILDIRIM_SURESI} != ${liste3[11]} ]]
+        if [[ ${BILGI_BILDIRIM_SURESI} != ${liste3[11]} ]]
         then
-            sed -i "s:\(GUNCELLEME_BILDIRIM_SURESI=\).*:\1\'${liste3[11]}\':" "${EZANVAKTI_AYAR}"
+            sed -i "s:\(BILGI_BILDIRIM_SURESI=\).*:\1\'${liste3[11]}\':" "${EZANVAKTI_AYAR}"
+        fi
+
+        if [[ ${GUNCELLEME_BILDIRIM_SURESI} != ${liste3[12]} ]]
+        then
+            sed -i "s:\(GUNCELLEME_BILDIRIM_SURESI=\).*:\1\'${liste3[12]}\':" "${EZANVAKTI_AYAR}"
         fi
 
 ######################################################################

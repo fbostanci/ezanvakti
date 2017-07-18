@@ -59,6 +59,38 @@ function gun_animsat() {
   }
 }
 
+function cuma_selasi() {
+  local sela_vakti
+
+  sela_vakti=$(( vakit_saati - SELA_OKUNMA_FARKI ))
+
+  if (( $(( sela_vakti - 60 )) == UNIXSAAT ))
+  then
+      sleep $(( sela_vakti - $(date +%s) ))
+  else
+#     set -e
+      while (( sela_vakti != UNIXSAAT ))
+      do
+        sleep 59; cuma_selasi
+      done
+  fi
+
+  notify-send "${ILCE} için" \
+    "Cuma Selası date +%H:%M\n Okuyan: ${SELA_OKUYAN}" \
+    -i ezanvakti -u critical -h int:transient:1 \
+    -t $EZAN_BILDIRIM_SURESI"000"
+
+  bilesen_yukle mplayer_yonetici
+  # Oynatıcı duraklatma etkin mi ezan okumadan değeri
+  # denetle ve fonksiyonu çağır.
+  (( OYNATICI_DURAKLAT )) && {
+    oynatici_duraklat
+    mplayer_calistir "${CUMA_SELASI}"
+    oynatici_devam
+  } || mplayer_calistir "${CUMA_SELASI}"
+  clear
+}
+
 function ezan_vakitlerini_al() {
   bugun
 
@@ -82,6 +114,7 @@ function ezan_vakitlerini_al() {
       vakit_saati_n=$ogle_n
       vakit_saati=$(( ogle + EZAN_OKUNMA_SURESI_FARKI ))
       ezan_okunsun_mu=${OGLE_EZANI_OKU}
+      (( $(date +%u) == 5 )) && (( CUMA_SELASI_OKU )) && cuma_selasi &
 
   elif (( UNIXSAAT <= ikindi ))
   then
@@ -138,8 +171,13 @@ function ezan_oku() {
 
   # Oynatıcı duraklatma etkin mi ezan okumadan değeri
   # denetle ve fonksiyonu çağır.
-  (( OYNATICI_DURAKLAT )) && oynatici_islem ||
-  { mplayer_calistir "${vakit_ezani}"
+  (( OYNATICI_DURAKLAT )) && {
+    oynatici_duraklat
+    mplayer_calistir "${vakit_ezani}"                             #
+    (( EZAN_DUASI_OKU )) && mplayer_calistir "${EZAN_DUASI}"
+    oynatici_devam
+  } || {
+    mplayer_calistir "${vakit_ezani}"
     (( EZAN_DUASI_OKU )) && mplayer_calistir "${EZAN_DUASI}"
   }
   clear

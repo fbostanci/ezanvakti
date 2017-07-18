@@ -133,8 +133,18 @@ AKSAM_EZANI_OKU=1
 # Yatsı ezanı okunsun mu?
 YATSI_EZANI_OKU=1
 
+# Cuma selası okunsun mu?
+CUMA_SELASI_OKU=1
+
+# Cuma günü öğle vaktinden 
+# kaç dakika önce sela okunsun ?
+SELA_OKUNMA_SURESI_FARKI=60
+
 # Ezan okuyan
 EZAN_OKUYAN='İsmail COŞAR'
+
+# Sela okuyan
+SELA_OKUYAN='Nurettin OKUMUŞ'
 
 # Sabah ezanı ses dosyası
 SABAH_EZANI=@sounddir@/@AD@/sabah_saba.ogg
@@ -153,6 +163,9 @@ YATSI_EZANI=@sounddir@/@AD@/yatsi_ussak.ogg
 
 # Ezan duası ses dosyası
 EZAN_DUASI=@sounddir@/@AD@/ezan_duasi.ogg
+
+# Cuma selası ses dosyası
+CUMA_SELASI=@sounddir@/@AD@/cuma_selasi.ogg
 
 # Sesli uyarı ses dosyası
 UYARI_SESI=@sounddir@/@AD@/uyari.ogg
