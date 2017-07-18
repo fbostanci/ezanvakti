@@ -144,7 +144,7 @@ SELA_OKUNMA_SURESI_FARKI=60
 EZAN_OKUYAN='İsmail COŞAR'
 
 # Sela okuyan
-SELA_OKUYAN='Nurettin OKUMUŞ'
+SELA_OKUYAN='Şemsi Özçicek'
 
 # Sabah ezanı ses dosyası
 SABAH_EZANI=@sounddir@/@AD@/sabah_saba.ogg
