@@ -415,38 +415,6 @@ yad --notebook --key=190707 \
             sed -i "s:\(^RENK_KULLAN=\).*:\1$_RENK_KULLAN:" "${EZANVAKTI_AYAR}"
         fi
 
-
-
-#             if [[ ${liste4[3]} != ${RENK3} ]]
-#             then
-#                 sed -i "s:\(RENK3=\).*:\1\'${liste4[3]}\':" "${EZANVAKTI_AYAR}"
-#             fi
-# 
-#             if [[ ${liste4[4]} != ${RENK4} ]]
-#             then
-#                 sed -i "s:\(RENK4=\).*:\1\'${liste4[4]}\':" "${EZANVAKTI_AYAR}"
-#             fi
-# 
-#             if [[ ${liste4[5]} != ${RENK5} ]]
-#             then
-#                 sed -i "s:\(RENK5=\).*:\1\'${liste4[5]}\':" "${EZANVAKTI_AYAR}"
-#             fi
-# 
-#             if [[ ${liste4[6]} != ${RENK6} ]]
-#             then
-#                 sed -i "s:\(RENK6=\).*:\1\'${liste4[6]}\':" "${EZANVAKTI_AYAR}"
-#             fi
-# 
-#             if [[ ${liste4[7]} != ${RENK7} ]]
-#             then
-#                 sed -i "s:\(RENK7=\).*:\1\'${liste4[7]}\':" "${EZANVAKTI_AYAR}"
-#             fi
-# 
-#             if [[ ${liste4[8]} != ${RENK8} ]]
-#             then
-#                 sed -i "s:\(RENK8=\).*:\1\'${liste4[8]}\':" "${EZANVAKTI_AYAR}"
-#             fi
-
         if [[ ${liste4[2]} != ${ARKAPLAN_RENGI} ]]
         then
             sed -i "s:\(ARKAPLAN_RENGI=\).*:\1\'${liste4[2]}\':" "${EZANVAKTI_AYAR}"
