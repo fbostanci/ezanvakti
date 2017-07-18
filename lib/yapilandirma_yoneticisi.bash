@@ -300,7 +300,7 @@ yad --notebook --key=190707 \
             _YENIDEN_BASLATMA_GEREKLI=1
         fi
 
-        if [[ ${UYARI_SESI} =! ${liste2[11]} ]]
+        if [[ ${UYARI_SESI} != ${liste2[11]} ]]
         then
             sed -i "s:\(UYARI_SESI=\).*:\1\'${liste2[11]}\':" "${EZANVAKTI_AYAR}"
             _YENIDEN_BASLATMA_GEREKLI=1
