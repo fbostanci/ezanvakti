@@ -23,7 +23,6 @@
 #
 #
 
-
 use strict;
 use warnings;
 use open ':std', ':encoding(UTF-8)';
@@ -36,15 +35,9 @@ my $ilce = $ARGV[2];
 my $baglanti = "http://www.diyanet.gov.tr/tr/PrayerTime/WorldPrayerTimes";
 my $sonuc;
 
-my $mech = WWW::Mechanize->new(agent_alias => "Linux Mozilla");
+my $mech = WWW::Mechanize->new()
+$mech->agent_alias( 'Linux Mozilla' );
 $mech->get($baglanti);
-
-# $mech->form_number('2');
-# $mech->field(Country => $ulke);
-# $mech->field(State => $sehir);
-# $mech->field(City => $ilce);
-# $mech->set_visible( [ radio => 'AYLIK' ] );
-# $mech->submit();
 
 $mech->submit_form(
 	form_number => 2,
