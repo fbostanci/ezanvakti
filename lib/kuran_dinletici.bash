@@ -72,6 +72,9 @@ function kuran_dinletimi() {
       elif [[ ${KURAN_OKUYAN} = AlAjmy ]]
       then
           okuyan='Ahmad el Ajmy'
+      else
+          printf '%s: Deskteklenmeyen KURAN_OKUYAN adı: %s\n' "${AD}" "${KURAN_OKUYAN}" >&2
+          exit 1
       fi
   fi
   dinletilecek_sure="http://www.listen2quran.com/listen/${KURAN_OKUYAN}/$sure.mp3"

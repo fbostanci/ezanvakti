@@ -18,7 +18,7 @@ function ayet_goster() {
       exit 1
   fi
 
-  satir=$((RANDOM%6236))
+  satir=$(( RANDOM % 6236 ))
   (( ! satir )) && satir=6236
 
 
