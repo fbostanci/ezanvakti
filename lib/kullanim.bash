@@ -33,7 +33,7 @@ function betik_kullanimi() {
             Vakit çıktılarını uçbirim yerine bildirim baloncuğuna yönlendirir.
 
     ${B}--kuran${R} [-s <sure_kodu>, -r, -g, -h]
-        Çevrimiçi olarak ya da yerel dizinden kuran dinletir.
+        Çevrimiçi olarak ya da yerel dizinden Kuran dinletir.
 
     ${B}--sureler${R}
         Sureleri dinlemek için gerekli olan kod numaralarını
