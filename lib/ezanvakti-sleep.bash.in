@@ -90,7 +90,7 @@ function cuma_selasi() {
     mplayer_calistir "${CUMA_SELASI}"
     oynatici_devam
   } || mplayer_calistir "${CUMA_SELASI}"
-  clear
+  clear; return 0
 }
 
 
