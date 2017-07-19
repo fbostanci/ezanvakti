@@ -4,7 +4,7 @@
 #
 #
 
-function surum_goster() {
+surum_goster() {
   printf '%s\n%s\n\n%s\n%s\n%s\n%s\n\n%s\n%s\n%s\n%s\n\n%s\n%s\n' \
     "${AD^} $SURUM düzenleme: $DUZELTME"\
     "Copyright (C) 2010-$(date +%Y) Fatih Bostancı"\
@@ -20,7 +20,7 @@ function surum_goster() {
     'along with this program. If not, see http://www.gnu.org/licenses/.'
 }
 
-function g_hakkinda() {
+g_hakkinda() {
   yad --text "\t\t<b><big>${AD^} ${SURUM}</big></b>
 \"GNU/Linux için ezan vakti bildirici\"
 

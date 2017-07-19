@@ -4,7 +4,7 @@
 #
 #
 
-function mplayer_calistir() {
+mplayer_calistir() {
   local dinletilecek_oge="$1"
 
   if [[ ${dinletilecek_oge} =~ ^http.* ]]

@@ -7,14 +7,14 @@
 # Hadis, bilgi ve esma için 1 ile verilen sayı($1) arasında
 # rastgele bir sayı seç. Seçilen sayı için içerik_al ile gelen
 # dosya üzerinde işlem yapıp içeriği alinan_yanit değişkenine ata.
-function secim_yap() {
+secim_yap() {
   secilen=$(( RANDOM % $1 ))
   (( ! secilen )) && secilen=$1
 
   alinan_yanit="$(sed -n "/#$secilen<#/,/#>$secilen#/p" ${icerik_al} | sed '1d;$d')"
 }
 
-function bilgi_goster() {
+bilgi_goster() {
   icerik_al=${VERI_DIZINI}/veriler/bilgiler
   secim_yap 157
 
@@ -31,7 +31,7 @@ function bilgi_goster() {
   esac
 }
 
-function hadis_goster() {
+hadis_goster() {
   icerik_al=${VERI_DIZINI}/veriler/kirk-hadis
   secim_yap 40
 
@@ -47,7 +47,7 @@ function hadis_goster() {
   esac
 }
 
-function esma_goster() {
+esma_goster() {
   icerik_al=${VERI_DIZINI}/veriler/esma
   secim_yap 99
 

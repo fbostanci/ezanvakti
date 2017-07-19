@@ -4,7 +4,7 @@
 #
 #
 
-function vakitler() { # {{{
+vakitler() { # {{{
   ezanveri_denetle; bugun
   renk_denetle
 

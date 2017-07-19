@@ -68,7 +68,7 @@ case $1 in
         vakitler bildirim ;;
       '') bilesen_yukle vakitleri_goster
           vakitler tum_vakitler ;;
-      ?*) hatali_kullanim $2 ;;
+      ?*) hatali_kullanim "$2" ;;
     esac ;;
   -vs|--vs)
     bilesen_yukle vakitleri_goster
@@ -118,7 +118,7 @@ case $1 in
         ezan_dinlet Yatsı "${YATSI_EZANI}" ;;
       -c|--cuma)
         ezan_dinlet 'Cuma selası' "${CUMA_SELASI}" ;;
-      *) hatali_kullanim ${1:-null} ;;
+      *) hatali_kullanim "${1:-null}" ;;
     esac ;;
   --kuran)
     bilesen_yukle kuran_dinletici; shift
@@ -130,8 +130,8 @@ case $1 in
       -g|--g[uü]nl[uü]k)
         kuran_dinlet gunluk ;;
       -s|--se[cç]im)
-        kuran_dinlet secim $2 ;;
-      *) hatali_kullanim ${1:-null} ;;
+        kuran_dinlet secim "$2" ;;
+      *) hatali_kullanim "${1:-null}" ;;
     esac ;;
   -kr|--kr)
     bilesen_yukle kuran_dinletici
@@ -144,7 +144,7 @@ case $1 in
     kuran_dinlet gunluk ;;
   -ks|--ks)
     bilesen_yukle kuran_dinletici
-    kuran_dinlet secim $2 ;;
+    kuran_dinlet secim "$2" ;;
   --sureler)
     bilesen_yukle sureler_ayetler
     sureler_ayetler ;;
@@ -153,12 +153,12 @@ case $1 in
     case $1 in
       -b|-o|--bildirim|--osd)
         ayet_goster bildirim ;;
-      ?*) hatali_kullanim $1 ;;
+      ?*) hatali_kullanim "$1" ;;
       '') ayet_goster ucbirim ;;
     esac ;;
   --aral[ıi]k)
     bilesen_yukle aralik; shift
-    ayet_araligi_goster $1 $2 ;;
+    ayet_araligi_goster "$1" "$2" ;;
   --iftar)
     bilesen_yukle iftar
     ezv_iftar ;;
@@ -181,7 +181,7 @@ case $1 in
     case $1 in
       -b|-o|--bildirim|--osd)
         hadis_goster bildirim ;;
-      ?*) hatali_kullanim $1 ;;
+      ?*) hatali_kullanim "$1" ;;
       '') hadis_goster ucbirim ;;
     esac ;;
   --bilgi)
@@ -189,7 +189,7 @@ case $1 in
     case $1 in
       -b|-o|--bildirim|--osd)
         bilgi_goster bildirim ;;
-      ?*) hatali_kullanim $1 ;;
+      ?*) hatali_kullanim "$1" ;;
       '') bilgi_goster ucbirim ;;
     esac ;;
   --esma)
@@ -216,7 +216,7 @@ case $1 in
   -h|--help|--yard[iı]m)
     bilesen_yukle kullanim
     betik_kullanimi ;;
-  ?*) hatali_kullanim $1 ;;
+  ?*) hatali_kullanim "$1" ;;
 esac
 
 # vim: set ts=2 sw=2 et:

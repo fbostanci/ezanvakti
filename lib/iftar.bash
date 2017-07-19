@@ -4,7 +4,7 @@
 #
 #
 
-function ezv_iftar() {
+ezv_iftar() {
   ezanveri_denetle; bugun
   renk_denetle
 

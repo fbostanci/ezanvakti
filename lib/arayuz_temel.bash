@@ -36,7 +36,7 @@ secim_listesi+='!Dini Günler ve Geceler!Ayet!Hadis!Bilgi!Esma-ül Hüsna!Ya
 export RENK_KULLAN=0 RENK=0
 acilisa_baslatici_ekle
 
-function arayuz_pid_denetle() {
+arayuz_pid_denetle() {
   local ypid=$$
 
   if [[ -f /tmp/.ezanvakti_yad_arayuz.pid && -n $(ps -p $( < /tmp/.ezanvakti_yad_arayuz.pid) -o comm=) ]]
@@ -48,7 +48,7 @@ function arayuz_pid_denetle() {
   fi
 }
 
-function arayuz2_pid_denetle() {
+arayuz2_pid_denetle() {
   local ypid=$$
 
   if [[ -f /tmp/.ezanvakti_yad_arayuz2.pid && -n $(ps -p $( < /tmp/.ezanvakti_yad_arayuz2.pid) -o comm=) ]]
@@ -60,7 +60,7 @@ function arayuz2_pid_denetle() {
   fi
 }
 
-function g_vakitleri_al() {
+g_vakitleri_al() {
   ezanveri_denetle; bugun
 
   local kerahat_suresi kv_gunes kv_ogle kv_aksam
@@ -148,7 +148,7 @@ function g_vakitleri_al() {
   fi
 }
 
-function g_vakitleri_yaz() {
+g_vakitleri_yaz() {
   local sabah gunes ogle ikindi aksam yatsi vakitsiz ikindi_kerahat
 
   vakitsiz="<b>Şimdi Kerahat Vakti 2</b>|<b>Şimdi Kerahat Vakti 3</b>"
@@ -266,13 +266,13 @@ function g_vakitleri_yaz() {
          "$aksam_n" "${yatsi}" "$yatsi_n"
 }
 
-function g_secim_goster() {
+g_secim_goster() {
   yad --title "${AD^} $SURUM - ${secim_basligi}" --text-info --filename=/tmp/ezanvakti-6 \
       --width=560 --height=300 --wrap --button='gtk-close' --window-icon=ezanvakti \
       --back="$ARKAPLAN_RENGI" --fore="$YAZI_RENGI" --mouse --sticky
 }
 
-function pencere_bilgi() {
+pencere_bilgi() {
   yad --form --separator=' ' --title="${AD^} $SURUM" --text "${mplayer_ileti}" \
       --image=ezanvakti --window-icon=ezanvakti \
       --button='gtk-cancel:127' --button='gtk-close:0' --mouse --fixed
@@ -285,7 +285,7 @@ function pencere_bilgi() {
   esac
 }
 
-function ozel_pencere() {
+ozel_pencere() {
   local strng donus str str2
 
 strng=$(yad --form \

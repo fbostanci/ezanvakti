@@ -4,7 +4,7 @@
 #
 #
 
-function ezan_dinlet() {
+ezan_dinlet() {
   local vakit="$1" vakit_ezani="$2" ileti
 
   [[ "${vakit}" = "Cuma selası" ]] && {

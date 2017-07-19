@@ -5,7 +5,7 @@
 #
 
 # TODO: eski ayarlar dosyasından seçileni yeniden kullanılabilir yap.
-function ayarlari_sifirla() {
+ayarlari_sifirla() {
   echo "hazır değil"; return 1
   local ayar_sayisi silinecek_dosya
 

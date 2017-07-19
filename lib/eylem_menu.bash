@@ -6,7 +6,7 @@
 
 bilesen_yukle arayuz_temel
 
-function eylem_pid_denetle() {
+eylem_pid_denetle() {
   local ypid=$$
 
   if [[ -f /tmp/.ezanvakti_eylem_menu.pid && -n $(ps -p $( < /tmp/.ezanvakti_eylem_menu.pid) -o comm=) ]]
@@ -18,7 +18,7 @@ function eylem_pid_denetle() {
   fi
 }
 
-function eylem_menu() {
+eylem_menu() {
   eylem_pid_denetle
 
   case $1 in
@@ -48,7 +48,7 @@ function eylem_menu() {
 
     kuran)
       bilesen_yukle mplayer_yonetici
-      function arayuz() { true; }
+      arayuz() { true; }
       ozel_pencere ;;
 
     gunler)
@@ -83,7 +83,7 @@ function eylem_menu() {
 
     yapilandirma)
       bilesen_yukle yapilandirma_yoneticisi
-      function arayuz() { true; }
+      arayuz() { true; }
       yapilandirma ;;
 
     yardim)

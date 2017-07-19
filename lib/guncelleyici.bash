@@ -4,7 +4,7 @@
 #
 #
 
-function guncelleme_yap() { ### Ana fonksiyon {{{
+guncelleme_yap() { ### Ana fonksiyon {{{
   local arayuz au ulke sehir ilce varsayilan_sehir pm varsayilan_ilce dn ulke_kodu sehir_kodu ilce_kodu
   local e=0 denetim=0
   local -a pmler
@@ -47,7 +47,7 @@ done
 printf "${RENK7}${RENK8} [${RENK2}BAŞARILI${RENK8}]${RENK0}\n"
 #}}}
 
-function arayuz_denetle() { ### Arayüz denetle {{{
+arayuz_denetle() { ### Arayüz denetle {{{
   (( denetim )) && return 0 || denetim=1
   printf '%-60b' \
     "${RENK7}${RENK8}Arayüz uygulaması denetleniyor..${RENK0}"

@@ -4,7 +4,7 @@
 #
 #
 
-function yapilandirma() {
+yapilandirma() {
   local d1 d2 d3 d4 d5 d6 d7 d8 d9 d0 ds ayr1 ayr2 ayr3 ayr4
   local _GUNCELLEME_YAP _OYNATICI_DURAKLAT _EZAN_DUASI_OKU _RENK_KULLAN _GUNCELLEME_GEREKLI
   local _SABAH_OKUNSUN_MU _OGLE_OKUNSUN_MU _IKINDI_OKUNSUN_MU _AKSAM_OKUNSUN_MU _YATSI_OKUNSUN_MU
@@ -275,19 +275,19 @@ yad --notebook --key=190707 \
             _YENIDEN_BASLATMA_GEREKLI=1
         fi
 
-        if (( EZAN_OKUNMA_SURESI_FARKI != ${liste2[3]} ))
+        if (( EZAN_OKUNMA_SURESI_FARKI != liste2[3] ))
         then
             sed -i "s:\(EZAN_OKUNMA_SURESI_FARKI=\).*:\1${liste2[3]}:" "${EZANVAKTI_AYAR}"
             _YENIDEN_BASLATMA_GEREKLI=1
         fi
 
-        if (( SELA_OKUNMA_SURESI_FARKI != ${liste2[4]} ))
+        if (( SELA_OKUNMA_SURESI_FARKI != liste2[4] ))
         then
             sed -i "s:\(SELA_OKUNMA_SURESI_FARKI=\).*:\1${liste2[4]}:" "${EZANVAKTI_AYAR}"
             _YENIDEN_BASLATMA_GEREKLI=1
         fi
 
-        if (( VAKIT_ANIMSAT != ${liste2[5]} ))
+        if (( VAKIT_ANIMSAT != liste2[5] ))
         then
             sed -i "s:\(VAKIT_ANIMSAT=\).*:\1${liste2[5]}:" "${EZANVAKTI_AYAR}"
             _YENIDEN_BASLATMA_GEREKLI=1

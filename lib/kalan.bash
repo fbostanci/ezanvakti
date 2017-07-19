@@ -3,7 +3,8 @@
 #
 #
 #
-function bekleme_goster() {
+
+bekleme_goster() {
   local vakit="$1" vakit_saati="$2"
   renk_denetle
 
@@ -22,7 +23,7 @@ function bekleme_goster() {
   done
 }
 
-function kalan_sure() {
+kalan_sure() {
   ezanveri_denetle; bugun
 
   ucbirim_basligi "Kalan Süre Gösterici"

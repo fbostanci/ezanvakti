@@ -4,7 +4,7 @@
 #
 #
 
-function qdbus_sorgu() {
+qdbus_sorgu() {
   local komut
 
   komut=$(qdbus org.mpris.MediaPlayer2.$1 /org/mpris/MediaPlayer2 \
@@ -18,7 +18,7 @@ function qdbus_sorgu() {
   fi
 }
 
-function dbus_sorgu() {
+dbus_sorgu() {
   local komut
 
   komut=$(dbus-send --print-reply --dest=org.mpris.MediaPlayer2.$1\
@@ -33,7 +33,7 @@ function dbus_sorgu() {
   fi
 }
 
-function oynatici_duraklat() {
+oynatici_duraklat() {
   local -a OYNATICILAR
   local oynatici
 
@@ -135,7 +135,7 @@ function oynatici_duraklat() {
   done
 }
 
-function oynatici_devam() {
+oynatici_devam() {
   for oynatici in ${DURDURULAN[@]}
   do
       if [[ ${oynatici} = spotify ]]

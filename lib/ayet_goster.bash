@@ -4,7 +4,7 @@
 #
 #
 
-function ayet_goster() {
+ayet_goster() {
   renk_denetle
 
   if [[ -f ${KULLANICI_TEFSIR_DIZINI}/${TEFSIR_SAHIBI} ]]
