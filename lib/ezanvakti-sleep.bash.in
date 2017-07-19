@@ -53,7 +53,7 @@ gun_animsat() {
 
     # eğer ozel_ileti boş (null) dönmemişse bildirimi gönder.
     [[ -n ${ozel_ileti} ]] && {
-      notify-send "${AD^}" "${ozel_ileti}" -t "$GUN_ANIMSAT'000'" \
+      notify-send "${AD^}" "${ozel_ileti}" -t $GUN_ANIMSAT"000" \
         -i ezanvakti -h int:transient:1
     }
   }
@@ -80,7 +80,7 @@ cuma_selasi() {
   notify-send "${ILCE} için" \
     "Cuma Selası (Öğle: $ogle_n)\n Okuyan: ${SELA_OKUYAN}" \
     -i ezanvakti -u critical -h int:transient:1 \
-    -t "$EZAN_BILDIRIM_SURESI'000'"
+    -t $EZAN_BILDIRIM_SURESI"000"
 
   bilesen_yukle mplayer_yonetici
   # Oynatıcı duraklatma etkin mi ezan okumadan değeri
@@ -166,22 +166,32 @@ ezan_oku() {
   notify-send "${ILCE} için" \
     "${simdiki} ${ileti}\n$vakit_saati_n" \
     -i ezanvakti -u critical -h int:transient:1 \
-    -t "$EZAN_BILDIRIM_SURESI'000'"
+    -t $EZAN_BILDIRIM_SURESI"000"
 
   (( ezan_okunsun_mu )) || { sleep 1m; return 0; }
   bilesen_yukle mplayer_yonetici
 
+  [[ ! -f ${vakit_ezani} ]] && {
+    printf '%s: vaktin ses dosyası bulunamadı.' "${AD}" >&2
+    sleep 1m; return 0
+  }
+
+  [[ ! -f ${EZAN_DUASI} ]] && {
+    EZAN_DUASI_OKU=0
+    printf '%s: ezan duası ses dosyası bulunamadı.' "${AD}" >&2
+  }
   # Oynatıcı duraklatma etkin mi ezan okumadan değeri
   # denetle ve fonksiyonu çağır.
-  (( OYNATICI_DURAKLAT )) && {
-    oynatici_duraklat
-    mplayer_calistir "${vakit_ezani}"
-    (( EZAN_DUASI_OKU )) && mplayer_calistir "${EZAN_DUASI}"
-    oynatici_devam
-  } || {
-    mplayer_calistir "${vakit_ezani}"
-    (( EZAN_DUASI_OKU )) && mplayer_calistir "${EZAN_DUASI}"
-  }
+  if (( OYNATICI_DURAKLAT ))
+  then
+      oynatici_duraklat
+      mplayer_calistir "${vakit_ezani}"
+      (( EZAN_DUASI_OKU )) && mplayer_calistir "${EZAN_DUASI}"
+      oynatici_devam
+  else
+      mplayer_calistir "${vakit_ezani}"
+      (( EZAN_DUASI_OKU )) && mplayer_calistir "${EZAN_DUASI}"
+  fi
   clear
 }
 
@@ -211,7 +221,7 @@ vakit_animsat() {
 
     [[ ${simdiki} = @(İmsak|İftar) ]] && ileti='vakti olacak.' || ileti='ezanı okunacak.'
     notify-send "${AD^}" "$VAKIT_ANIMSAT dakika sonra $simdiki ${ileti}" \
-      -u critical -t "$BILGI_BILDIRIM_SURESI'000'" \
+      -u critical -t $BILGI_BILDIRIM_SURESI"000" \
       -i ezanvakti -h int:transient:1
 
     (( SESLI_UYARI )) && {
