@@ -31,7 +31,7 @@ EZANVERI="${EZANVAKTI_DIZINI}/${EZANVERI_ADI}"
 MPLAYER="mplayer -really-quiet -softvol -volume $SES"
 declare -A YUKLENEN_BILESENLER
 
-function acilisa_baslatici_ekle() {
+acilisa_baslatici_ekle() {
   local baslatici_dizini baslatici
 
   baslatici_dizini="${XDG_CONFIG_HOME:-$HOME/.config}/autostart/"
@@ -60,7 +60,7 @@ function acilisa_baslatici_ekle() {
 # RENK null ise ayarlar dosyasından okunan RENK_KULLAN değerini kullanacak.
 #
 # Renk kullan sıfırsa renkleri sıfırla.
-function renk_denetle() {
+renk_denetle() {
   [[ ! -t 1 ]] || [[ ! $DISPLAY ]] && { RENK_KULLAN=0; RENK=0; }
     (( ! ${RENK:-RENK_KULLAN} )) && {
       RENK0=''
@@ -76,7 +76,7 @@ function renk_denetle() {
 }
 
 # Uçbirim pencere başlığını belirle.
-function ucbirim_basligi() {
+ucbirim_basligi() {
   [[ ! -t 1 ]] || [[ ! $DISPLAY ]] && return 0
 
    case $TERM in
@@ -86,7 +86,7 @@ function ucbirim_basligi() {
 }
 
 # http://git.archlinux.fr/yaourt.git/tree/src/lib/util.sh.in ( load_lib() )
-function bilesen_yukle() {
+bilesen_yukle() {
   while [[ $1 ]]
   do
     (( YUKLENEN_BILESENLER[$1] )) && return 0
@@ -103,12 +103,12 @@ function bilesen_yukle() {
   done
 }
 
-function hatali_kullanim() {
+hatali_kullanim() {
   printf "%s: -- \`%s' geçerli değil.\nYardım için '%s --yardım' kullanın.\n" "${AD}" "$1" "${AD}" >&2
   exit 1
 }
 
-function gorsel_guncelleme_yap() {
+gorsel_guncelleme_yap() {
 
   if  [[ -x $(type -p yad) ]]
   then
@@ -124,7 +124,7 @@ function gorsel_guncelleme_yap() {
 # Ezanveri dosyası gerektiren işlemlerde ilk önce bu fonksiyon çağrılacak.
 #
 # ezanveri dosyasının kullanıldığı işlemler için olumsuz durumları denetle.
-function ezanveri_denetle() {
+ezanveri_denetle() {
   local ksatir
 
   [[ ! -f ${EZANVERI} ]] && { # ezanveri dosyası yoksa
@@ -162,7 +162,7 @@ function ezanveri_denetle() {
 }
 
 # Bugünün ezan vakitlerini ayıkla ve değerleri vakit değişkenlerine ata.
-function bugun() {
+bugun() {
   TARIH=$(date +%d.%m.%Y)
   SAAT=$(date +%H:%M)
 
@@ -185,18 +185,18 @@ function bugun() {
 }
 
 # Eğer hedef süre bugün içerisindeyse bu fonksiyon kullanılacak.
-function bekleme_suresi() {
+bekleme_suresi() {
   bekle=$(( $(date -d "$1" +%s) - $(date +%s) + EZAN_OKUNMA_SURESI_FARKI ))
 }
 
 # Eğer hedef süre yarına aitse bu fonksiyon kullanılacak.
-function bekleme_suresi_yarin() {
+bekleme_suresi_yarin() {
   bekle=$(( 86400 - $(date +%s) + $(date -d "$1" +%s) + EZAN_OKUNMA_SURESI_FARKI ))
 }
 
 # bekleme süresi fonksiyonlarından gelen bekle değerini
 # saat, dakika ve saniyeye çeviren fonksiyon
-function kalan() {
+kalan() {
   kalan_sure=$(printf '%02d saat : %02d dakika : %02d saniye' \
     $(( bekle / 3600 )) $(( bekle % 3600 / 60 )) $(( bekle % 60 )) )
 }

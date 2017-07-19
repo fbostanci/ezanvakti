@@ -4,7 +4,7 @@
 #
 #
 
-function sureler_ayetler() {
+sureler_ayetler() {
   clear
   renk_denetle
 

@@ -40,7 +40,7 @@ for ((i=1; i<=ARAYUZ_CIZGI_UZUNLUGU; i++))
   fi
 }
 
-function arayuz() {
+arayuz() {
   g_vakitleri_al
 
   local strng donus str str2

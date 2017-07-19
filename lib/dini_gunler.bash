@@ -4,7 +4,7 @@
 #
 #
 
-function gunler() {
+gunler() {
   renk_denetle
 
   printf "${RENK7}${RENK3}\n$(date +%Y)${RENK2} yılı için dini günler ve geceler\n\n"

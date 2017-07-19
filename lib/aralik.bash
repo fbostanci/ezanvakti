@@ -4,13 +4,12 @@
 #
 #
 
-function ayet_araligi_goster() {
+ayet_araligi_goster() {
   renk_denetle
 
   local sure_kod=$1
   local ayet_kod=$2
-  local sure sure_adi sure_sira sure_baslama baslangic son sure_ayet_sayisi \
-        int_ayet_kod ayet_baslama ayet_bitis satir
+  local sure_adi sure_baslama sure_ayet_sayisi int_ayet_kod ayet_baslama ayet_bitis satir
 
   if [[ -f ${KULLANICI_TEFSIR_DIZINI}/${TEFSIR_SAHIBI} ]]
   then
@@ -19,7 +18,7 @@ function ayet_araligi_goster() {
   then
       TEFSIR="${VERI_DIZINI}/tefsirler/${TEFSIR_SAHIBI}"
   else
-      printf "${RENK3}${TEFSIR_SAHIBI} dosyası bulunamadı.${RENK0}\n" >&2
+      printf "${RENK3}%s dosyası bulunamadı.${RENK0}\n" "${TEFSIR_SAHIBI}" >&2
       exit 1
   fi
 
@@ -29,7 +28,7 @@ function ayet_araligi_goster() {
       exit 1
   fi
 
-  if [[ -n $(tr -d 0-9 <<<$sure_kod) ]]
+  if [[ -n $(tr -d 0-9 <<<"$sure_kod") ]]
   then
       printf '%s\n%s\n' \
         "${AD}: hatalı sure_kodu: \`$sure_kod' " \
@@ -53,20 +52,20 @@ function ayet_araligi_goster() {
   else  # Girilen sure koduna göre değişkenin önüne sıfır ekle.
       if (( ${#sure_kod} == 1 ))
       then
-          sure=00$sure_kod
+          sure_kod=00$sure_kod
       elif (( ${#sure_kod} == 2 ))
       then
-          sure=0$sure_kod
+          sure_kod=0$sure_kod
       else
-          sure=$sure_kod
+          sure_kod="$sure_kod"
       fi
   fi
 
   export $(gawk -v sira=$sure_kod '{if(NR==sira) {printf \
-    "sure_adi=%s\nsure_sira=%s\nsure_baslama=%s\nsure_ayet_sayisi=%s\ncuz=%s\nyer=%s",$4,$1,$3,$2,$5,$6}}' \
-    <${VERI_DIZINI}/veriler/sure_bilgisi)
+    "sure_adi=%s\nsure_baslama=%s\nsure_ayet_sayisi=%s\ncuz=%s\nyer=%s",$4,$3,$2,$5,$6}}' \
+    < ${VERI_DIZINI}/veriler/sure_bilgisi)
 
-  int_ayet_kod=$(tr -d 0-9 <<<$ayet_kod)
+  int_ayet_kod=$(tr -d 0-9 <<<"$ayet_kod")
   if [[ -z $int_ayet_kod ]]
   then
       if (( ayet_kod > sure_ayet_sayisi ))

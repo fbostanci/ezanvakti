@@ -4,7 +4,7 @@
 #
 #
 
-function siradaki_vakit() { # {{{
+siradaki_vakit() { # {{{
   ezanveri_denetle; bugun
   renk_denetle
 

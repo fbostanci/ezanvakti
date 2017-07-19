@@ -11,7 +11,7 @@
 # pid denetimi yapılsın.
 arayuz2_pid_denetle
 
-function arayuz2() {
+arayuz2() {
   g_vakitleri_al
 
 yad --title "${AD^} $SURUM" \

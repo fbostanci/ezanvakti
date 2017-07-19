@@ -17,15 +17,15 @@ bilesen_yukle mplayer_yonetici
 renk_denetle
 
 trap cikis_yap INT
-function cikis_yap() {
+cikis_yap() {
   echo
   exit 0
 }
 
-function ezv_sleep_pid_denetle() {
+ezv_sleep_pid_denetle() {
   local ypid=$$
 
-  if [[ -f /tmp/.ezv_sleep.pid && -n $(ps -p $( < /tmp/.ezv_sleep.pid) -o comm=) ]]
+  if [[ -f /tmp/.ezv_sleep.pid && -n $(ps -p "$( < /tmp/.ezv_sleep.pid)" -o comm=) ]]
   then
       printf "%s: Yalnızca bir örneği çalışabilir.\n" "${AD}" >&2
       exit 1
@@ -35,16 +35,16 @@ function ezv_sleep_pid_denetle() {
 }
 
 # Dini günler için anımsatıcı
-function gun_animsat() {
+gun_animsat() {
   local ozel_ileti
 
   # Eğer GUN_ANIMSAT değeri sıfır değilse girilen saniye değerini
   # bildirimin bekleme süresi olarak kullan.
   (( GUN_ANIMSAT )) && {
-    if grep -q $(date +%d.%m.%Y) ${VERI_DIZINI}/veriler/gunler
+    if grep -q "$(date +%d.%m.%Y)" "${VERI_DIZINI}/veriler/gunler"
     then
         ozel_ileti="\n\nBugün:  <b>$(grep $(date +%d.%m.%Y) ${VERI_DIZINI}/veriler/gunler | cut -d' ' -f2-)</b>"
-    elif grep -q $(date -d 'tomorrow' +%d.%m.%Y) ${VERI_DIZINI}/veriler/gunler
+    elif grep -q "$(date -d 'tomorrow' +%d.%m.%Y)" ${VERI_DIZINI}/veriler/gunler
     then
         ozel_ileti="\n\nYarın:  <b>$(grep $(date -d 'tomorrow' +%d.%m.%Y) ${VERI_DIZINI}/veriler/gunler | cut -d' ' -f2-)</b>"
     else
@@ -53,13 +53,13 @@ function gun_animsat() {
 
     # eğer ozel_ileti boş (null) dönmemişse bildirimi gönder.
     [[ -n ${ozel_ileti} ]] && {
-      notify-send "${AD^}" "${ozel_ileti}" -t $GUN_ANIMSAT"000" \
+      notify-send "${AD^}" "${ozel_ileti}" -t "$GUN_ANIMSAT'000'" \
         -i ezanvakti -h int:transient:1
     }
   }
 }
 
-function cuma_selasi() {
+cuma_selasi() {
   local sela_vakti
   ezan_vakitlerini_al
 
@@ -80,7 +80,7 @@ function cuma_selasi() {
   notify-send "${ILCE} için" \
     "Cuma Selası (Öğle: $ogle_n)\n Okuyan: ${SELA_OKUYAN}" \
     -i ezanvakti -u critical -h int:transient:1 \
-    -t $EZAN_BILDIRIM_SURESI"000"
+    -t "$EZAN_BILDIRIM_SURESI'000'"
 
   bilesen_yukle mplayer_yonetici
   # Oynatıcı duraklatma etkin mi ezan okumadan değeri
@@ -90,11 +90,11 @@ function cuma_selasi() {
     mplayer_calistir "${CUMA_SELASI}"
     oynatici_devam
   } || mplayer_calistir "${CUMA_SELASI}"
-  clear; return 0
+  return 0
 }
 
 
-function ezan_vakitlerini_al() {
+ezan_vakitlerini_al() {
   bugun
 
   if (( UNIXSAAT <= sabah ))
@@ -154,7 +154,7 @@ function ezan_vakitlerini_al() {
   fi
 }
 
-function ezan_oku() {
+ezan_oku() {
   local ileti
   clear
 
@@ -166,7 +166,7 @@ function ezan_oku() {
   notify-send "${ILCE} için" \
     "${simdiki} ${ileti}\n$vakit_saati_n" \
     -i ezanvakti -u critical -h int:transient:1 \
-    -t $EZAN_BILDIRIM_SURESI"000"
+    -t "$EZAN_BILDIRIM_SURESI'000'"
 
   (( ezan_okunsun_mu )) || { sleep 1m; return 0; }
   bilesen_yukle mplayer_yonetici
@@ -175,7 +175,7 @@ function ezan_oku() {
   # denetle ve fonksiyonu çağır.
   (( OYNATICI_DURAKLAT )) && {
     oynatici_duraklat
-    mplayer_calistir "${vakit_ezani}"                             #
+    mplayer_calistir "${vakit_ezani}"
     (( EZAN_DUASI_OKU )) && mplayer_calistir "${EZAN_DUASI}"
     oynatici_devam
   } || {
@@ -186,7 +186,7 @@ function ezan_oku() {
 }
 
 # Vakit ezanı okunmadan önce  anımsatma
-function vakit_animsat() {
+vakit_animsat() {
   local dakika_saniye animsatici_saniye ileti
 
   # Kullanıcı anımsatma değerini sıfır olarak belirlememişse
@@ -211,7 +211,7 @@ function vakit_animsat() {
 
     [[ ${simdiki} = @(İmsak|İftar) ]] && ileti='vakti olacak.' || ileti='ezanı okunacak.'
     notify-send "${AD^}" "$VAKIT_ANIMSAT dakika sonra $simdiki ${ileti}" \
-      -u critical -t $BILGI_BILDIRIM_SURESI"000" \
+      -u critical -t "$BILGI_BILDIRIM_SURESI'000'" \
       -i ezanvakti -h int:transient:1
 
     (( SESLI_UYARI )) && {
@@ -223,7 +223,7 @@ function vakit_animsat() {
 }
 
 # Vakitlerde ezan okunmasının ve bildirimin yönetildiği özyinelemeli ana fonksiyon.
-function ezanvakti_bekle() {
+ezanvakti_bekle() {
   local ileti rm_sim_ileti
   ezan_vakitlerini_al
 

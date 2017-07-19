@@ -4,7 +4,7 @@
 #
 #
 
-function ezv_conky() {
+ezv_conky() {
   ezanveri_denetle; bugun
 
   printf "${CONKY_BICIMI}" 'Sabah' "$sabah_n" 'Güneş' \
@@ -12,7 +12,7 @@ function ezv_conky() {
     "$aksam_n" 'Yatsı' "$yatsi_n"
 }
 
-function ezv_conky_iftar() {
+ezv_conky_iftar() {
   ezanveri_denetle; bugun
 
   (( UNIXSAAT < aksam )) && {

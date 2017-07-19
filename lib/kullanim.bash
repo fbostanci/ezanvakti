@@ -4,7 +4,7 @@
 #
 #
 
-function betik_kullanimi() {
+betik_kullanimi() {
   local  B R
 
   B=$(tput bold)

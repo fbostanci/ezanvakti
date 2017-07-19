@@ -3,7 +3,8 @@
 #       Ezanvakti kerahat vakitleri gösterme bileşeni
 #
 #
-function kerahat_vakitleri() {
+
+kerahat_vakitleri() {
   ezanveri_denetle; bugun
 
   local kerahat_suresi kv_gunes kv_ogle kv_aksam

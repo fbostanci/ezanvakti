@@ -9,7 +9,7 @@
 #   colors (default + 8 escapes)
 #
 
-function renk_ogren() {
+renk_ogren() {
   local T='ezV'   # The test text
   local FG BG
 

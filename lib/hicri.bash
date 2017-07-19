@@ -17,7 +17,7 @@
 #  Copyright (c) 2016 Ghozy Arif Fajri <gojigeje@gmail.com>
 
 
-function hicri_tarih_al() {
+hicri_tarih_al() {
   local adjust date manth year a b c d e jd wd l n z m d y gun ay yil
   local -a hicri_aylar
 

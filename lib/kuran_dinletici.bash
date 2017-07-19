@@ -4,7 +4,7 @@
 #
 #
 
-function sure_no_denetimi() { # sure_no_yonetimi {{{
+sure_no_denetimi() { # sure_no_yonetimi {{{
   if [[ -n $(tr -d 0-9 <<<$sure_no) ]]
   then
       printf '%b\n%b\n' \
@@ -45,7 +45,7 @@ function sure_no_denetimi() { # sure_no_yonetimi {{{
 
 } # }}}
 
-function kuran_dinletimi() {
+kuran_dinletimi() {
   local -a sureler
 
   clear
@@ -92,7 +92,7 @@ function kuran_dinletimi() {
   mplayer_calistir "${dinletilecek_sure}"
 }
 
-function kuran_dinlet() { # kuran_dinlet_yonetimi {{{
+kuran_dinlet() { # kuran_dinlet_yonetimi {{{
   local dinletilecek_sure okuyan kaynak sure i
   local sure_no="$2"
 
@@ -104,7 +104,7 @@ function kuran_dinlet() { # kuran_dinlet_yonetimi {{{
       for ((i=1; i<=114; i++))
       {
         sure_no=$i
-        sure_no_denetimi; kuran_dinletimi; sleep 1.5
+        sure_no_denetimi; kuran_dinletimi; sleep 1
       } ;;
 
     rastgele)
@@ -118,7 +118,7 @@ function kuran_dinlet() { # kuran_dinlet_yonetimi {{{
       for i in ${sureler[@]}
       do
         sure_no=$i
-        sure_no_denetimi; kuran_dinletimi; sleep 1.5
+        sure_no_denetimi; kuran_dinletimi; sleep 1
       done ;;
 
   esac
