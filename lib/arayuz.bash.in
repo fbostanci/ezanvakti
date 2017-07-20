@@ -24,9 +24,9 @@ bilesen_yukle hicri
 
 elx=''
 for ((i=1; i<=ARAYUZ_CIZGI_UZUNLUGU; i++))
-{
+do
   elx+="${ARAYUZ_CIZGI_SIMGESI}"
-}
+done
 
 (( GUN_ANIMSAT )) && {
   if grep -q $(date +%d.%m.%Y) ${VERI_DIZINI}/veriler/gunler
@@ -74,39 +74,39 @@ if (( donus == 150 ))
 then
     if [[ $str = Sabah ]]
     then
-        mplayer_ileti=" Sabah ezanı dinletiliyor..\n\n Okuyan : ${EZAN_OKUYAN}"
-        mplayer_calistir "${SABAH_EZANI}" &
-        pencere_bilgi; arayuz
+        mplayer_ileti=" Sabah ezanı dinletiliyor\n\n Okuyan : ${EZAN_OKUYAN}"
+        pencere_bilgi "${SABAH_EZANI}" & mplayer_calistir "${SABAH_EZANI}"
+        arayuz
 
     elif [[ $str = Öğle ]]
     then
         mplayer_ileti=" Öğle ezanı dinletiliyor..\n\n Okuyan : ${EZAN_OKUYAN}"
-        mplayer_calistir "${OGLE_EZANI}" &
-        pencere_bilgi; arayuz
+        pencere_bilgi "${OGLE_EZANI}" & mplayer_calistir "${OGLE_EZANI}"
+        arayuz
 
     elif [[ $str = İkindi ]]
     then
-        mplayer_ileti=" İkindi ezanı dinletiliyor..\n\n Okuyan : ${EZAN_OKUYAN}"
-        mplayer_calistir "${IKINDI_EZANI}" &
-        pencere_bilgi; arayuz
+        mplayer_ileti=" İkindi ezanı dinletiliyor\n\n Okuyan : ${EZAN_OKUYAN}"
+        pencere_bilgi "$IKINDI_EZANI" & mplayer_calistir "${IKINDI_EZANI}"
+        arayuz
 
     elif [[ $str = Akşam ]]
     then
-        mplayer_ileti=" Akşam ezanı dinletiliyor..\n\n Okuyan : ${EZAN_OKUYAN}"
-        mplayer_calistir "${AKSAM_EZANI}" &
-        pencere_bilgi; arayuz
+        mplayer_ileti=" Akşam ezanı dinletiliyor\n\n Okuyan : ${EZAN_OKUYAN}"
+        pencere_bilgi "${AKSAM_EZANI}" & mplayer_calistir "${AKSAM_EZANI}"
+        arayuz
 
     elif [[ $str = Yatsı ]]
     then
-        mplayer_ileti=" Yatsı ezanı dinletiliyor..\n\n Okuyan : ${EZAN_OKUYAN}"
-        mplayer_calistir "${YATSI_EZANI}" &
-        pencere_bilgi; arayuz
+        mplayer_ileti=" Yatsı ezanı dinletiliyor\n\n Okuyan : ${EZAN_OKUYAN}"
+        pencere_bilgi"${YATSI_EZANI}" & mplayer_calistir "${YATSI_EZANI}"
+        arayuz
 
     elif [[ $str = Sela ]]
     then
-        mplayer_ileti=" Cuma selası dinletiliyor..\n\n Okuyan : ${SELA_OKUYAN}"
-        mplayer_calistir "${CUMA_SELASI}" &
-        pencere_bilgi; arayuz
+        mplayer_ileti=" Cuma selası dinletiliyor\n\n Okuyan : ${SELA_OKUYAN}"
+        pencere_bilgi "${CUMA_SELASI}" & mplayer_calistir "${CUMA_SELASI}"
+        arayuz
 
     elif [[ $str = Ayet ]]
     then
@@ -210,34 +210,45 @@ then
         then
             ozel_pencere
         else
-            if [[ -f "${YEREL_SURE_DIZINI}/$sure.mp3" ]]
+            if (( ${#sure} == 1 ))
+            then
+                sure_sifirli=00$sure
+            elif (( ${#sure} == 2 ))
+            then
+                sure_sifirli=0$sure
+            else
+                sure_sifirli=$sure
+            fi
+
+            if [[ -f "${YEREL_SURE_DIZINI}/$sure_sifirli.mp3" ]]
             then
                 okuyan='Yerel Okuyucu'
+                dinletilecek_sure="${YEREL_SURE_DIZINI}/$sure_sifirli.mp3"
 
             elif [[ ${KURAN_OKUYAN} = AlGhamdi ]]
             then
                 okuyan="Saad el Ghamdi"
-
+                dinletilecek_sure="http://www.listen2quran.com/listen/${KURAN_OKUYAN}/$sure_sifirli.mp3"
             elif [[ ${KURAN_OKUYAN} = AsShatree ]]
             then
                 okuyan="As Shatry"
-
+                dinletilecek_sure="http://www.listen2quran.com/listen/${KURAN_OKUYAN}/$sure_sifirli.mp3"
             elif [[ ${KURAN_OKUYAN} = AlAjmy ]]
             then
                 okuyan="Ahmad el Ajmy"
+                dinletilecek_sure="http://www.listen2quran.com/listen/${KURAN_OKUYAN}/$sure_sifirli.mp3"
             else
-                printf '%s: Deskteklenmeyen KURAN_OKUYAN adı: %s\n' "${AD}" "${KURAN_OKUYAN}" >&2
+                printf '%s: Desteklenmeyen KURAN_OKUYAN adı: %s\n' "${AD}" "${KURAN_OKUYAN}" >&2
                 exit 1
             fi
         fi
 
         bilesen_yukle kuran_dinletici
         mplayer_ileti="$(gawk -v sira=$sure '{if(NR==sira) print $4;}' < ${VERI_DIZINI}/veriler/sure_bilgisi)"
-        mplayer_ileti+=" suresi dinletiliyor..\n\n Okuyan : ${okuyan}"
+        mplayer_ileti+=" suresi dinletiliyor\n\n Okuyan : ${okuyan}"
 
-        pencere_bilgi &
-        kuran_dinlet secim $sure
-        pkill yad >/dev/null 2>&1; arayuz
+        pencere_bilgi "${dinletilecek_sure}" & kuran_dinlet secim $sure
+        arayuz
 
     else
         arayuz

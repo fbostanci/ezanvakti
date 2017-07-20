@@ -45,8 +45,12 @@ sure_no_denetimi() { # sure_no_yonetimi {{{
 
 } # }}}
 
+mplayer_kuran_sure_al() {
+  mplayer -vo null -ao null -frames 0 -identify "$1" 2>/dev/null | gawk  -F"=" '/^ID_LENGTH/ {print int($2);}'
+}
+
 kuran_dinletimi() {
-  local -a sureler
+  local parca_suresi parca_suresi_n
 
   clear
   printf '%b%b\n\n' \
@@ -76,25 +80,31 @@ kuran_dinletimi() {
           printf '%s: Deskteklenmeyen KURAN_OKUYAN adı: %s\n' "${AD}" "${KURAN_OKUYAN}" >&2
           exit 1
       fi
+      dinletilecek_sure="http://www.listen2quran.com/listen/${KURAN_OKUYAN}/$sure.mp3"
+      kaynak='http://www.listen2quran.com'
   fi
-  dinletilecek_sure="http://www.listen2quran.com/listen/${KURAN_OKUYAN}/$sure.mp3"
-  kaynak='http://www.listen2quran.com'
+
 
   bilesen_yukle mplayer_yonetici
   ucbirim_basligi "$(gawk -v sure=$sure 'BEGIN{gsub("^0*","",sure);} NR==sure {print($4);}' \
     ${VERI_DIZINI}/veriler/sure_bilgisi) Suresi"
 
-  printf '%b%b\n%b\n' \
+  parca_suresi="$(mplayer_kuran_sure_al "${dinletilecek_sure}")"
+  parca_suresi_n=$(printf '%02d saat : %02d dakika : %02d saniye' \
+                    $(( parca_suresi / 3600 )) $(( parca_suresi % 3600 / 60 )) $(( parca_suresi % 60 )) )
+
+  printf '%b%b\n%b\n%b\n' \
     "${RENK7}${RENK2}" \
     "Okuyan : ${RENK3} ${okuyan}${RENK2}" \
-    "Kaynak : ${RENK3} ${kaynak}${RENK0}"
+    "Kaynak : ${RENK3} ${kaynak}${RENK2}" \
+    "Süre   : ${RENK3} ${parca_suresi_n}${RENK0}"
 
   mplayer_calistir "${dinletilecek_sure}"
 }
 
 kuran_dinlet() { # kuran_dinlet_yonetimi {{{
-  local dinletilecek_sure okuyan kaynak sure i
   local sure_no="$2"
+  local -a sureler
 
   renk_denetle
 
@@ -102,15 +112,15 @@ kuran_dinlet() { # kuran_dinlet_yonetimi {{{
     secim) sure_no_denetimi; kuran_dinletimi ;;
     hatim)
       for ((i=1; i<=114; i++))
-      {
+      do
         sure_no=$i
         sure_no_denetimi; kuran_dinletimi; sleep 1
-      } ;;
+      done ;;
 
     rastgele)
       sure_no=$(( RANDOM % 114 ))
       (( ! sure_no )) && sure_no=114
-        sure_no_denetimi; kuran_dinletimi ;;
+      sure_no_denetimi; kuran_dinletimi ;;
 
     gunluk)
       read -ra sureler <<<$SURELER

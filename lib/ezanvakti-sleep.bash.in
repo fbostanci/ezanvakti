@@ -27,7 +27,7 @@ ezv_sleep_pid_denetle() {
 
   if [[ -f /tmp/.ezv_sleep.pid && -n $(ps -p "$( < /tmp/.ezv_sleep.pid)" -o comm=) ]]
   then
-      printf "%s: Yalnızca bir örneği çalışabilir.\n" "${AD}" >&2
+      printf '%s: Yalnızca bir örneği çalışabilir.\n' "${AD}" >&2
       exit 1
   else
       printf "$ypid" > /tmp/.ezv_sleep.pid
@@ -83,7 +83,7 @@ cuma_selasi() {
     -t $EZAN_BILDIRIM_SURESI"000"
 
   [[ ! -f ${CUMA_SELASI} ]] && {
-    printf '%s: cuma selası ses dosyası bulunamadı.' "${AD}" >&2
+    printf '%s: cuma selası ses dosyası bulunamadı.\n' "${AD}" >&2
     return 0
   }
 
@@ -186,13 +186,13 @@ ezan_oku() {
   bilesen_yukle mplayer_yonetici
 
   [[ ! -f ${vakit_ezani} ]] && {
-    printf '%s: vaktin ses dosyası bulunamadı.' "${AD}" >&2
+    printf '%s: vaktin ses dosyası bulunamadı.\n' "${AD}" >&2
     sleep 1m; return 0
   }
 
   [[ ! -f ${EZAN_DUASI} ]] && {
     EZAN_DUASI_OKU=0
-    printf '%s: ezan duası ses dosyası bulunamadı.' "${AD}" >&2
+    printf '%s: ezan duası ses dosyası bulunamadı.\n' "${AD}" >&2
   }
   # Oynatıcı duraklatma etkin mi ezan okumadan değeri
   # denetle ve fonksiyonu çağır.
@@ -240,7 +240,7 @@ vakit_animsat() {
 
     [[ ! -f ${UYARI_SESI} ]] && {
       SESLI_UYARI=0
-      printf '%s: uyarı ses dosyası bulunamadı.' "${AD}" >&2
+      printf '%s: uyarı ses dosyası bulunamadı.\n' "${AD}" >&2
     }
 
     (( SESLI_UYARI )) && {

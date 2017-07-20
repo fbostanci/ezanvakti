@@ -266,6 +266,10 @@ g_vakitleri_yaz() {
          "$aksam_n" "${yatsi}" "$yatsi_n"
 }
 
+mplayer_sure_al() {
+  mplayer -vo null -ao null -frames 0 -identify "$1" 2>/dev/null | gawk  -F"=" '/^ID_LENGTH/ {print int($2);}'
+}
+
 g_secim_goster() {
   yad --title "${AD^} $SURUM - ${secim_basligi}" --text-info --filename=/tmp/ezanvakti-6 \
       --width=560 --height=300 --wrap --button='gtk-close' --window-icon=ezanvakti \
@@ -273,9 +277,15 @@ g_secim_goster() {
 }
 
 pencere_bilgi() {
-  yad --form --separator=' ' --title="${AD^} $SURUM" --text "${mplayer_ileti}" \
-      --image=ezanvakti --window-icon=ezanvakti \
-      --button='gtk-cancel:127' --button='gtk-close:0' --mouse --fixed
+  local parca_suresi parca_suresi_n
+
+  parca_suresi="$(mplayer_sure_al "$1")"
+  parca_suresi_n=$(printf '%02d sa: %02d dk: %02d sn' \
+                    $(( parca_suresi / 3600 )) $(( parca_suresi % 3600 / 60 )) $(( parca_suresi % 60 )) )
+
+  yad --form --separator=' ' --title="${AD^} $SURUM" --image=ezanvakti --window-icon=ezanvakti \
+      --text "${mplayer_ileti}\n Süre        : $parca_suresi_n" --mouse --fixed \
+      --button='gtk-cancel:127' --button='gtk-close:0' --timeout=$parca_suresi
 
   case $? in
     *)
@@ -341,11 +351,11 @@ case $donus in
         dinletilecek_sure="http://www.listen2quran.com/listen/${okuyucu}/$sure.mp3"
     fi
 
-    mplayer_ileti="$(gawk -v sira=$sure '{if(NR==sira) print $4;}' < ${VERI_DIZINI}/veriler/sure_bilgisi) suresi dinletiliyor..\
+    mplayer_ileti="$(gawk -v sira=$sure '{if(NR==sira) print $4;}' < ${VERI_DIZINI}/veriler/sure_bilgisi) suresi dinletiliyor\
     \n\n Okuyan : ${str}"
-    pencere_bilgi & mplayer_calistir "${dinletilecek_sure}"
-    # FIXME: yad pid bul
-    pkill yad >/dev/null 2>&1; ozel_pencere ;;
+
+    pencere_bilgi "${dinletilecek_sure}" & mplayer_calistir "${dinletilecek_sure}"
+    ozel_pencere ;;
   153)
     exit 0 ;;
 esac
