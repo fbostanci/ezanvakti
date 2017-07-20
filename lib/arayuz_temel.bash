@@ -284,8 +284,6 @@ pencere_bilgi() {
     # internet erişimini denetle.
     if ! ping -q -c 1 -W 1 google.com &>/dev/null
     then
-        yad --text="${AD}: internet erişimi algılanamadı\n" --title="${AD^} $SURUM" \
-            --timeout 5 --center --sticky --fixed
         return 1
     fi
   fi
