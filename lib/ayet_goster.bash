@@ -31,7 +31,7 @@ ayet_goster() {
 
   bildirim)
     notify-send "Günlük Ayet ($(sed -n "${satir}p" ${VERI_DIZINI}/veriler/sureler_ayetler))" \
-      "$(sed -n "${satir}p" "${TEFSIR}")" -t $AYET_BILDIRIM_SURESI"000" -h int:transient:1
+      "$(sed -n "${satir}p" "${TEFSIR}")" -t $AYET_BILDIRIM_SURESI"000"
     exit 0 ;;
 
   esac

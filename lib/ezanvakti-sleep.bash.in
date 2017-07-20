@@ -54,7 +54,7 @@ gun_animsat() {
     # eğer ozel_ileti boş (null) dönmemişse bildirimi gönder.
     [[ -n ${ozel_ileti} ]] && {
       notify-send "${AD^}" "${ozel_ileti}" -t $GUN_ANIMSAT"000" \
-        -i ezanvakti -h int:transient:1
+        -i ezanvakti
     }
   }
 }
@@ -79,17 +79,25 @@ cuma_selasi() {
 
   notify-send "${ILCE} için" \
     "Cuma Selası (Öğle: $ogle_n)\n Okuyan: ${SELA_OKUYAN}" \
-    -i ezanvakti -u critical -h int:transient:1 \
+    -i ezanvakti -u critical  \
     -t $EZAN_BILDIRIM_SURESI"000"
+
+  [[ ! -f ${CUMA_SELASI} ]] && {
+    printf '%s: cuma selası ses dosyası bulunamadı.' "${AD}" >&2
+    return 0
+  }
 
   bilesen_yukle mplayer_yonetici
   # Oynatıcı duraklatma etkin mi ezan okumadan değeri
   # denetle ve fonksiyonu çağır.
-  (( OYNATICI_DURAKLAT )) && {
-    oynatici_duraklat
-    mplayer_calistir "${CUMA_SELASI}"
-    oynatici_devam
-  } || mplayer_calistir "${CUMA_SELASI}"
+  if (( OYNATICI_DURAKLAT ))
+  then
+      oynatici_duraklat
+      mplayer_calistir "${CUMA_SELASI}"
+      oynatici_devam
+  else
+      mplayer_calistir "${CUMA_SELASI}"
+  fi
   return 0
 }
 
@@ -107,11 +115,14 @@ ezan_vakitlerini_al() {
 
   elif (( UNIXSAAT <= ogle ))
   then
-      (( ACILISTA_BASLAT == 2 )) && {
-        rm_sim='İftar'
-        simdiki=''
-        rm_vakit_saati_n="${aksam_n}"
-      } || simdiki='Öğle'
+      if (( ACILISTA_BASLAT == 2 ))
+      then
+          rm_sim='İftar'
+          simdiki=''
+          rm_vakit_saati_n="${aksam_n}"
+      else
+          simdiki='Öğle'
+      fi
 
       vakit_ezani="${OGLE_EZANI}"
       vakit_saati_n=$ogle_n
@@ -120,11 +131,14 @@ ezan_vakitlerini_al() {
 
   elif (( UNIXSAAT <= ikindi ))
   then
-      (( ACILISTA_BASLAT == 2 )) && {
-        rm_sim='İftar'
-        simdiki=''
-        rm_vakit_saati_n="${aksam_n}"
-      } || simdiki='İkindi'
+      if (( ACILISTA_BASLAT == 2 ))
+      then
+          rm_sim='İftar'
+          simdiki=''
+          rm_vakit_saati_n="${aksam_n}"
+      else
+          simdiki='İkindi'
+      fi
 
       vakit_ezani="${IKINDI_EZANI}"
       vakit_saati_n=$ikindi_n
@@ -165,7 +179,7 @@ ezan_oku() {
 
   notify-send "${ILCE} için" \
     "${simdiki} ${ileti}\n$vakit_saati_n" \
-    -i ezanvakti -u critical -h int:transient:1 \
+    -i ezanvakti -u critical \
     -t $EZAN_BILDIRIM_SURESI"000"
 
   (( ezan_okunsun_mu )) || { sleep 1m; return 0; }
@@ -222,7 +236,12 @@ vakit_animsat() {
     [[ ${simdiki} = @(İmsak|İftar) ]] && ileti='vakti olacak.' || ileti='ezanı okunacak.'
     notify-send "${AD^}" "$VAKIT_ANIMSAT dakika sonra $simdiki ${ileti}" \
       -u critical -t $BILGI_BILDIRIM_SURESI"000" \
-      -i ezanvakti -h int:transient:1
+      -i ezanvakti
+
+    [[ ! -f ${UYARI_SESI} ]] && {
+      SESLI_UYARI=0
+      printf '%s: uyarı ses dosyası bulunamadı.' "${AD}" >&2
+    }
 
     (( SESLI_UYARI )) && {
       bilesen_yukle mplayer_yonetici
@@ -254,11 +273,11 @@ ezanvakti_bekle() {
 
   if (( $(( vakit_saati - 60 )) == UNIXSAAT ))
   then
-      printf '%b %b' "${RENK7}${RENK4}${simdiki} vakti için bekleniyor.${RENK0}"\
+      printf '%b %b' "${RENK7}${RENK4}${simdiki} vakti için bekleniyor...${RENK0}"\
                      "${RENK2}(${RENK5}${vakit_saati_n}${RENK2})${RENK0}\r"
       sleep $(( vakit_saati - $(date +%s) ))
   else
-      printf '%b %b' "${RENK7}${RENK4}${simdiki} vakti için bekleniyor.${RENK0}"\
+      printf '%b %b' "${RENK7}${RENK4}${simdiki} vakti için bekleniyor...${RENK0}"\
                      "${RENK2}(${RENK5}${vakit_saati_n}${RENK2})${RENK0}\r"
 #     set -e
       while (( vakit_saati != UNIXSAAT ))

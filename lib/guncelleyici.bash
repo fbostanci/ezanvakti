@@ -261,7 +261,7 @@ SON
 
     renk_denetle
     notify-send "${AD^} $SURUM" "${EZANVERI_ADI} dosyası başarıyla güncellendi." \
-      -i ezanvakti -t $GUNCELLEME_BILDIRIM_SURESI"000" -h int:transient:1
+      -i ezanvakti -t $GUNCELLEME_BILDIRIM_SURESI"000"
     :> /tmp/eznvrgncldntle_$(date +%d%m%y)
   } || {
     printf "${RENK7}${RENK8} [${RENK1}BAŞARISIZ${RENK8}]${RENK0}\n"
@@ -271,7 +271,7 @@ SON
     printf "${RENK7}${RENK4}\n!!! YENIDEN DENEYIN !!!${RENK0}\n"
 
     notify-send "${AD^} $SURUM" "${EZANVERI_ADI} dosyasının güncellenmesi başarısız oldu." \
-      -i ezanvakti -t $GUNCELLEME_BILDIRIM_SURESI"000" -h int:transient:1
+      -i ezanvakti -t $GUNCELLEME_BILDIRIM_SURESI"000"
 
     rm -f /tmp/ezanveri-$$ &>/dev/null
     exit 1
