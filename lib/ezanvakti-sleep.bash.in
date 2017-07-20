@@ -185,15 +185,6 @@ ezan_oku() {
   (( ezan_okunsun_mu )) || { sleep 1m; return 0; }
   bilesen_yukle mplayer_yonetici
 
-  [[ ! -f ${vakit_ezani} ]] && {
-    printf '%s: vaktin ses dosyası bulunamadı.\n' "${AD}" >&2
-    sleep 1m; return 0
-  }
-
-  [[ ! -f ${EZAN_DUASI} ]] && {
-    EZAN_DUASI_OKU=0
-    printf '%s: ezan duası ses dosyası bulunamadı.\n' "${AD}" >&2
-  }
   # Oynatıcı duraklatma etkin mi ezan okumadan değeri
   # denetle ve fonksiyonu çağır.
   if (( OYNATICI_DURAKLAT ))
@@ -237,11 +228,6 @@ vakit_animsat() {
     notify-send "${AD^}" "$VAKIT_ANIMSAT dakika sonra $simdiki ${ileti}" \
       -u critical -t $BILGI_BILDIRIM_SURESI"000" \
       -i ezanvakti
-
-    [[ ! -f ${UYARI_SESI} ]] && {
-      SESLI_UYARI=0
-      printf '%s: uyarı ses dosyası bulunamadı.\n' "${AD}" >&2
-    }
 
     (( SESLI_UYARI )) && {
       bilesen_yukle mplayer_yonetici

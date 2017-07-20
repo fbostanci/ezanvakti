@@ -286,6 +286,12 @@ pencere_bilgi() {
     then
         return 1
     fi
+  else
+      if [[ ! -f ${dinletilecek_oge} ]]
+      then
+          printf '%s: istenen ses dosyası bulunamadı.\n' "${AD}" >&2
+          return 1
+      fi
   fi
 
   parca_suresi="$(mplayer_sure_al "$1")"
