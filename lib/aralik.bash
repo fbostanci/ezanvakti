@@ -56,8 +56,6 @@ ayet_araligi_goster() {
       elif (( ${#sure_kod} == 2 ))
       then
           sure_kod=0$sure_kod
-      else
-          sure_kod="$sure_kod"
       fi
   fi
 

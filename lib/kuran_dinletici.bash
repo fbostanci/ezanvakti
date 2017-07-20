@@ -50,7 +50,7 @@ mplayer_kuran_sure_al() {
 }
 
 kuran_dinletimi() {
-  local parca_suresi parca_suresi_n
+  local parca_suresi parca_suresi_n okuyan kaynak dinletilecek_sure
 
   clear
   printf '%b%b\n\n' \
