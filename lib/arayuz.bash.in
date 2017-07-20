@@ -43,7 +43,7 @@ done
 arayuz() {
   g_vakitleri_al
 
-  local strng donus str str2
+  local strng donus str str2 sure sure_sifirli
 
 strng=$(yad --form --text "$(printf "${GELISMIS_ARAYUZ_BICIMI}" \
   "<span foreground=\'${ARAYUZ_TARIH_SAAT_RENGI}\'>${TARIH} \($(hicri_tarih_al)\)</span>" \
@@ -99,7 +99,7 @@ then
     elif [[ $str = Yatsı ]]
     then
         mplayer_ileti=" Yatsı ezanı dinletiliyor\n\n Okuyan : ${EZAN_OKUYAN}"
-        pencere_bilgi"${YATSI_EZANI}" & mplayer_calistir "${YATSI_EZANI}"
+        pencere_bilgi "${YATSI_EZANI}" & mplayer_calistir "${YATSI_EZANI}"
         arayuz
 
     elif [[ $str = Sela ]]
