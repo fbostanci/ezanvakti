@@ -175,7 +175,7 @@ ezan_oku() {
   [[ ${simdiki} = @(İmsak|İftar) ]] && ileti='vakti' || ileti='namazı vakti'
   printf '%b%b\n' \
     "${RENK7}${RENK3}${ILCE}${RENK2} " \
-    "için ${RENK3}${simdiki}${RENK2} ${ileti}${RENK5} $vakit_saati_n${RENK0}"
+    "için ${RENK3}${simdiki}${RENK2} ${ileti}${RENK5} ${vakit_saati_n}${RENK0}"
 
   notify-send "${ILCE} için" \
     "${simdiki} ${ileti}\n$vakit_saati_n" \
@@ -185,6 +185,10 @@ ezan_oku() {
   (( ezan_okunsun_mu )) || { sleep 1m; return 0; }
   bilesen_yukle mplayer_yonetici
 
+  [[ ! -f ${vakit_ezani} ]] && {
+    printf '%s: vaktin ses dosyası -> %s <- bulunamadı.\n' "${AD}" "${vakit_ezani}" >&2
+    sleep 1m; return 1
+  }
   # Oynatıcı duraklatma etkin mi ezan okumadan değeri
   # denetle ve fonksiyonu çağır.
   if (( OYNATICI_DURAKLAT ))
@@ -233,7 +237,7 @@ vakit_animsat() {
       bilesen_yukle mplayer_yonetici
       mplayer_calistir "${UYARI_SESI}"
     }
-    sleep 60; vakit_animsat
+    sleep 1m; vakit_animsat
   }
 }
 
