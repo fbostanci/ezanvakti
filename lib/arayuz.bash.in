@@ -41,9 +41,8 @@ done
 }
 
 arayuz() {
+  local strng donus str str2 sure sure_sifirli mplayer_ileti secim_basligi
   g_vakitleri_al
-
-  local strng donus str str2 sure sure_sifirli
 
 strng=$(yad --form --text "$(printf "${GELISMIS_ARAYUZ_BICIMI}" \
   "<span foreground=\'${ARAYUZ_TARIH_SAAT_RENGI}\'>${TARIH} \($(hicri_tarih_al)\)</span>" \
@@ -80,7 +79,7 @@ then
 
     elif [[ $str = Öğle ]]
     then
-        mplayer_ileti=" Öğle ezanı dinletiliyor..\n\n Okuyan : ${EZAN_OKUYAN}"
+        mplayer_ileti=" Öğle ezanı dinletiliyor\n\n Okuyan : ${EZAN_OKUYAN}"
         pencere_bilgi "${OGLE_EZANI}" & mplayer_calistir "${OGLE_EZANI}"
         arayuz
 

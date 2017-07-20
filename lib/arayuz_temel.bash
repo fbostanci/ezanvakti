@@ -267,7 +267,7 @@ g_vakitleri_yaz() {
 }
 
 mplayer_sure_al() {
-  mplayer -vo null -ao null -frames 0 -identify "$1" 2>/dev/null | gawk  -F"=" '/^ID_LENGTH/ {print int($2);}'
+  mplayer -vo null -ao null -frames 0 -identify "$1" 2>/dev/null | gawk  -F'=' '/^ID_LENGTH/ {print int($2);}'
 }
 
 g_secim_goster() {
@@ -281,11 +281,11 @@ pencere_bilgi() {
 
   if [[ $1 =~ ^http.* ]]
   then
-    # internet erişimini denetle.
-    if ! ping -q -c 1 -W 1 google.com &>/dev/null
-    then
-        return 1
-    fi
+      # internet erişimini denetle.
+      if ! ping -q -c 1 -W 1 google.com &>/dev/null
+      then
+          return 1
+      fi
   else
       if [[ ! -f ${1} ]]
       then
@@ -311,7 +311,7 @@ pencere_bilgi() {
 }
 
 ozel_pencere() {
-  local strng donus str str2
+  local strng donus str str2 sure dinletilecek_sure okuyucu mplayer_ileti
 
 strng=$(yad --form \
 --field=Okuyucu:CB \
