@@ -279,6 +279,17 @@ g_secim_goster() {
 pencere_bilgi() {
   local parca_suresi parca_suresi_n
 
+  if [[ $1 =~ ^http.* ]]
+  then
+    # internet erişimini denetle.
+    if ! ping -q -c 1 -W 1 google.com &>/dev/null
+    then
+        yad --text="${AD}: internet erişimi algılanamadı\n" --title="${AD^} $SURUM" \
+            --timeout 5 --center --sticky --fixed
+        return 1
+    fi
+  fi
+
   parca_suresi="$(mplayer_sure_al "$1")"
   parca_suresi_n=$(printf '%02d sa: %02d dk: %02d sn' \
                     $(( parca_suresi / 3600 )) $(( parca_suresi % 3600 / 60 )) $(( parca_suresi % 60 )) )
