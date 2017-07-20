@@ -12,9 +12,15 @@ mplayer_calistir() {
     # internet erişimini denetle.
     if ! ping -q -c 1 -W 1 google.com &>/dev/null
     then
-        printf '%s: İnternet erişimi algılanamadı.\n' "${AD}" >&2
+        printf '%s: internet erişimi algılanamadı.\n' "${AD}" >&2
         return 1
     fi
+  else
+      if [[ ! -f ${dinletilecek_oge} ]]
+      then
+          printf '%s: istenen ses dosyası bulunamadı.\n' "${AD}" >&2
+          return 1
+      fi
   fi
 
   rm -f /tmp/mplayer-$$.pipe 2>/dev/null
