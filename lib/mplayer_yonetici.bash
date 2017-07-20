@@ -18,7 +18,7 @@ mplayer_calistir() {
   else
       if [[ ! -f ${dinletilecek_oge} ]]
       then
-          printf '%s: istenen ses dosyası bulunamadı.\n' "${AD}" >&2
+          printf '%s: istenilen ses dosyası -> %s <- bulunamadı.\n' "${AD}" "${dinletilecek_oge}" >&2
           return 1
       fi
   fi

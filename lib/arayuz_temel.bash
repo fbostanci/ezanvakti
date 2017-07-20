@@ -287,9 +287,9 @@ pencere_bilgi() {
         return 1
     fi
   else
-      if [[ ! -f ${dinletilecek_oge} ]]
+      if [[ ! -f ${1} ]]
       then
-          printf '%s: istenen ses dosyası bulunamadı.\n' "${AD}" >&2
+          printf '%s: istenilen ses dosyası -> %s <- bulunamadı.\n' "${AD}" "${1}" >&2
           return 1
       fi
   fi

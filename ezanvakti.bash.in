@@ -108,7 +108,7 @@ case $1 in
     case $1 in
       -s|--sabah)
         ezan_dinlet Sabah "${SABAH_EZANI}" ;;
-      -o|--[oö][gğ]le)
+      -[oö]|--[oö][gğ]le)
         ezan_dinlet Öğle "${OGLE_EZANI}" ;;
       -i|--ikindi)
         ezan_dinlet İkindi  "${IKINDI_EZANI}" ;;
