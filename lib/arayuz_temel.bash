@@ -77,7 +77,7 @@ g_vakitleri_al() {
       v_kalan="$kalan_sure"
       vakit_bilgisi='<b>Şimdi Yatsı Vakti</b>'
 
-  elif (( UNIXSAAT > sabah )) && (( UNIXSAAT < gunes ))
+  elif (( UNIXSAAT >= sabah )) && (( UNIXSAAT < gunes ))
   then
       bekleme_suresi $ogle_n; kalan
       v_ileti='Öğle ezanına kalan süre :'
@@ -133,7 +133,7 @@ g_vakitleri_al() {
       v_kalan="$kalan_sure"
       vakit_bilgisi='<b>Şimdi Kerahat Vakti 5</b>'
 
-  elif ((UNIXSAAT >= aksam )) && (( UNIXSAAT < yatsi ))
+  elif (( UNIXSAAT >= aksam )) && (( UNIXSAAT < yatsi ))
   then
       bekleme_suresi $yatsi_n; kalan
       v_ileti='Yatsı ezanına kalan süre :'
