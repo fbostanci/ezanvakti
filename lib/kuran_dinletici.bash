@@ -51,6 +51,7 @@ mplayer_kuran_sure_al() {
 
 kuran_dinletimi() {
   local parca_suresi parca_suresi_n okuyan kaynak dinletilecek_sure
+  local sure_adi sure_ayet_sayisi cuz yer
 
   clear
   export $(gawk -v sira=$sure '{if(NR==sira) {printf \
