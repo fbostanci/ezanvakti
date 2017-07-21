@@ -201,7 +201,6 @@ case $1 in
   --g[uü]nler)
     bilesen_yukle dini_gunler
     gunler ;;
-#  --s[ıi]f[ıi]rla) bilesen_yukle ayarlari_sifirla; ayarlari_sifirla ;;
   --renk|--renk-[öo][gğ]ren)
     bilesen_yukle renk_ogren
     renk_ogren ;;
