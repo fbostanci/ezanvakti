@@ -53,10 +53,13 @@ kuran_dinletimi() {
   local parca_suresi parca_suresi_n okuyan kaynak dinletilecek_sure
 
   clear
+  export $(gawk -v sira=$sure '{if(NR==sira) {printf \
+    "sure_adi=%s\nsure_ayet_sayisi=%s\ncuz=%s\nyer=%s",$4,$2,$5,$6}}' \
+    < ${VERI_DIZINI}/veriler/sure_bilgisi)
+
   printf '%b%b\n\n' \
     "${RENK7}${RENK3}" \
-    "$(gawk -v sure=$sure 'BEGIN{gsub("^0*","",sure);} NR==sure {print($4);}' \
-    ${VERI_DIZINI}/veriler/sure_bilgisi)${RENK2} suresi dinletiliyor...${RENK0}"
+    "${sure_adi}${RENK2} suresi dinletiliyor...${RENK0}"
 
   # Öncelikle kullanıcının girdiği dizinde dosya
   # var mı denetle. Yoksa çevrimiçi dinletime yönel.
@@ -86,18 +89,20 @@ kuran_dinletimi() {
 
 
   bilesen_yukle mplayer_yonetici
-  ucbirim_basligi "$(gawk -v sure=$sure 'BEGIN{gsub("^0*","",sure);} NR==sure {print($4);}' \
-    ${VERI_DIZINI}/veriler/sure_bilgisi) Suresi"
+  ucbirim_basligi "${sure_adi} Suresi"
 
   parca_suresi="$(mplayer_kuran_sure_al "${dinletilecek_sure}")"
   parca_suresi_n=$(printf '%02d saat : %02d dakika : %02d saniye' \
                     $(( parca_suresi / 3600 )) $(( parca_suresi % 3600 / 60 )) $(( parca_suresi % 60 )) )
 
-  printf '%b%b\n%b\n%b\n' \
+  printf '%b%b\n%b\n%b\n%b\n%b\n%b\n' \
     "${RENK7}${RENK2}" \
-    "Okuyan : ${RENK3} ${okuyan}${RENK2}" \
-    "Kaynak : ${RENK3} ${kaynak}${RENK2}" \
-    "Süre   : ${RENK3} ${parca_suresi_n}${RENK0}"
+    "Ayet sayısı : ${RENK3} ${sure_ayet_sayisi}${RENK2}" \
+    "Cüz         : ${RENK3} ${cuz}${RENK2}" \
+    "İndiği yer  : ${RENK3} ${yer}${RENK2}" \
+    "Okuyan      : ${RENK3} ${okuyan}${RENK2}" \
+    "Süre        : ${RENK3} ${parca_suresi_n}${RENK2}" \
+    "Kaynak      : ${RENK3} ${kaynak}${RENK0}"
 
   mplayer_calistir "${dinletilecek_sure}"
 }
