@@ -12,14 +12,16 @@ declare -r BILESEN_DIZINI="@libdir@/${AD}"
 declare -r VERI_DIZINI="@datadir@/${AD}"
 
 EZANVAKTI_DIZINI="${XDG_CONFIG_HOME:-$HOME/.config}/${AD}"
+EZANVAKTI_ONT_AYAR=@sysconfdir@/${AD}.conf
 EZANVAKTI_AYAR="${EZANVAKTI_DIZINI}/ayarlar"
+
 
 [[ ! -d   ${EZANVAKTI_DIZINI} ]] && mkdir -p "${EZANVAKTI_DIZINI}"
 [[ ! -f   ${EZANVAKTI_AYAR}   ]] &&
-  sed "s:\(EZANVERI_DIZINI=\).*:\1\'${EZANVAKTI_DIZINI}\':" < @sysconfdir@/${AD}.conf > "${EZANVAKTI_AYAR}"
+  sed "s:\(EZANVERI_DIZINI=\).*:\1\'${EZANVAKTI_DIZINI}\':" < "${EZANVAKTI_ONT_AYAR}" > "${EZANVAKTI_AYAR}"
 
 # Öntanımlı ayarları al.
-. @sysconfdir@/${AD}.conf
+. "${EZANVAKTI_ONT_AYAR}"
 
 #  Öntanımlı ayarlardan gelen değerlerin üzerine yazılacak.
 #
