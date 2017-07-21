@@ -57,7 +57,7 @@ yad --plug=190707 --tabnum=2 --form \
 --field='Ezan Duası Oku:CHK' \
 --field='Vakit anımsat için sesli uyarı:CHK' \
 --field='Ezan Okunma Süresi Farkı (sn):NUM' \
---field='Sela Okunma Süresi Farkı (sn):NUM' \
+--field='Sela Okunma Süresi Farkı (dk):NUM' \
 --field='Vakit animsat:NUM' \
 --field='Sabah Ezanı:FL' \
 --field='Öğle Ezanı:FL' \
@@ -549,7 +549,7 @@ yad --notebook --key=190707 \
               ${BILESEN_DIZINI}/ezanvakti-sleep.bash &
               disown
           fi
-         }
+        }
         arayuz ;;
 
 # _SES_SEVIYE=$(sed -n 's:[,|.].*::p' <<<${list[8]})
