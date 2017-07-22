@@ -45,7 +45,7 @@ arayuz() {
   g_vakitleri_al
 
 strng=$(yad --form --text "$(printf "${GELISMIS_ARAYUZ_BICIMI}" \
-  "<span foreground=\'${ARAYUZ_TARIH_SAAT_RENGI}\'>${TARIH} \($(hicri_tarih_al)\)</span>" \
+  "<span foreground=\'${ARAYUZ_TARIH_SAAT_RENGI}\'>$(date +%d.%m.%Y) \($(hicri_tarih_al)\)</span>" \
   "<span foreground=\'${ARAYUZ_TARIH_SAAT_RENGI}\'>$(date +%H:%M:%S)</span>" \
   "<span foreground=\'${ARAYUZ_KONUM_RENGI}\'>${ILCE} / ${ULKE}</span>" \
   "<span foreground=\'${ARAYUZ_CIZGI_RENGI}\'>${elx}</span>" \
