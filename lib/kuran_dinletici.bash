@@ -96,8 +96,9 @@ kuran_dinletimi() {
   parca_suresi_n=$(printf '%02d saat : %02d dakika : %02d saniye' \
                     $(( parca_suresi / 3600 )) $(( parca_suresi % 3600 / 60 )) $(( parca_suresi % 60 )) )
 
-  printf '%b%b\n%b\n%b\n%b\n%b\n%b\n' \
+  printf '%b%b\n%b\n%b\n%b\n%b\n%b\n%b\n' \
     "${RENK7}${RENK2}" \
+    "Sure no     : ${RENK3} ${sure}${RENK2}" \
     "Ayet sayısı : ${RENK3} ${sure_ayet_sayisi}${RENK2}" \
     "Cüz         : ${RENK3} ${cuz}${RENK2}" \
     "İndiği yer  : ${RENK3} ${yer}${RENK2}" \
