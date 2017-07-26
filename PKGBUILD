@@ -11,7 +11,7 @@ makedepends=()
 depends=('bash' 'sed' 'gawk' 'grep' 'libnotify' 'mplayer' 'perl-www-mechanize' 'yad')
 optdepends=('bash-completion: bash tab completion support')
 source=("https://github.com/fbostanci/ezanvakti/archive/v$pkgver.tar.gz")
-md5sums=('2cce4dbd39c2c214277c9caa9c4e14c1')
+md5sums=('236bdbe3575d103087e51ca6c5015ffe')
 
 package() {
   cd "$pkgname-$pkgver"
