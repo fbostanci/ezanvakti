@@ -15,27 +15,31 @@ ezv_conky() {
 ezv_conky_iftar() {
   ezanveri_denetle; bugun
 
-  (( UNIXSAAT < aksam )) && {
+  if (( UNIXSAAT < aksam ))
+  then
     bekleme_suresi $aksam_n; kalan
     echo -e "İftar : $aksam_n\nKalan : $kalan_sure" |
       sed 's:saat:sa:;s:dakika:dk:;s:saniye:sn:'
-  } || {
-    (( UNIXSAAT >= aksam )) && {
+  else
       # Yarının aksam vakti ezanveri dosyasında var mı denetle önc..
-      [[ -z $(grep $(date -d 'tomorrow' +%d.%m.%Y) "${EZANVERI}") ]] && {
-        (( GUNCELLEME_YAP )) && { bilesen_yukle guncelleyici; guncelleme_yap; } || {
-          printf "${EZANVERI_ADI} dosyanızda yarına ait veri bulunmuyor.\n"
-          exit 1
-        }
-      }
-      export $(gawk '{printf "aksam_n=%s", $6}' \
-        <(grep $(date -d 'tomorrow' +%d.%m.%Y) "${EZANVERI}"))
-      bekleme_suresi_yarin $aksam_n; kalan
+      if [[ -z $(grep -o $(date -d 'tomorrow' +%d.%m.%Y) "${EZANVERI}") ]]
+      then
+          if (( GUNCELLEME_YAP ))
+          then
+              bilesen_yukle guncelleyici
+              guncelleme_yap
+          else
+              printf '%s: %s dosyanızda yarına ait veri bulunmuyor.\n' "${AD}" "${EZANVERI_ADI}"
+              exit 1
+          fi
+     fi
+     export $(gawk '{printf "aksam_n=%s", $6}' \
+       <(grep $(date -d 'tomorrow' +%d.%m.%Y) "${EZANVERI}"))
+     bekleme_suresi_yarin $aksam_n; kalan
 
-      echo -e "İftar : $aksam_n (Yarın)\nKalan : $kalan_sure" |
-        sed 's:saat:sa:;s:dakika:dk:;s:saniye:sn:'
-    }
-  }
+     echo -e "İftar : $aksam_n (Yarın)\nKalan : $kalan_sure" |
+       sed 's:saat:sa:;s:dakika:dk:;s:saniye:sn:'
+  fi
 }
 
 # vim: set ft=sh ts=2 sw=2 et:
