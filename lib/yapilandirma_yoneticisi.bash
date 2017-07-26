@@ -533,6 +533,8 @@ yad --notebook --key=190707 \
           bilesen_yukle guncelleyici
           gorsel_guncelleme_yap
         }
+#       # source
+        . "${EZANVAKTI_AYAR}"
 
         (( _YENIDEN_BASLATMA_GEREKLI )) && {
           if (( ! ACILISTA_BASLAT ))
