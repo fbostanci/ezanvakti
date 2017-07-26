@@ -93,7 +93,7 @@ ayet_araligi_goster() {
           exit 1
 
       fi
-      if (( ilk_sayi == 0 )) || (( ikinci_sayi == 0 ))
+      if (( ilk_sayi == 0 || ikinci_sayi == 0 ))
       then
           printf '%s: %s Suresi için ayet aralığını yanlış girdiniz.\n' "${AD}" "${sure_adi}" >&2
           exit 1

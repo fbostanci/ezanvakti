@@ -25,7 +25,7 @@ sure_listesi+='!95-Tin!96-Alak!97-Kadir!98-Beyyine!99-Zilzal!100-Adiyat!101-Kari
 sure_listesi+='!103-Asr!104-Hümeze!105-Fil!106-Kureyş!107-Maun!108-Kevser!109-Kafirun!110-Nasr'
 sure_listesi+='!111-Tebbet!112-İhlas!113-Felak!114-Nas'
 
-tamamlama_listesi='!Ayarlar!Ayet!Sabah!Öğle!İkindi!Akşam!Yatsı!yapilandirma!Hadis!Esma-ül Hüsna'
+tamamlama_listesi='!Ayarlar!Ayet!Sabah!Öğle!İkindi!Akşam!Yatsı!Sela!yapilandirma!Hadis!Esma-ül Hüsna'
 tamamlama_listesi+='!Bilgi!Aylık Vakitler!Haftalık Vakitler!Dini Günler ve Geceler!hakkında'
 tamamlama_listesi+="!about!güncelle!yardım!arayuz2!Kerahat!000!özel pencere!$sure_listesi"
 
