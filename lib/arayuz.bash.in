@@ -226,15 +226,15 @@ then
 
             elif [[ ${KURAN_OKUYAN} = AlGhamdi ]]
             then
-                okuyan="Saad el Ghamdi"
+                okuyan='Saad el Ghamdi'
                 dinletilecek_sure="http://www.listen2quran.com/listen/${KURAN_OKUYAN}/$sure_sifirli.mp3"
             elif [[ ${KURAN_OKUYAN} = AsShatree ]]
             then
-                okuyan="As Shatry"
+                okuyan='As Shatry'
                 dinletilecek_sure="http://www.listen2quran.com/listen/${KURAN_OKUYAN}/$sure_sifirli.mp3"
             elif [[ ${KURAN_OKUYAN} = AlAjmy ]]
             then
-                okuyan="Ahmad el Ajmy"
+                okuyan='Ahmad el Ajmy'
                 dinletilecek_sure="http://www.listen2quran.com/listen/${KURAN_OKUYAN}/$sure_sifirli.mp3"
             else
                 printf '%s: Desteklenmeyen KURAN_OKUYAN adı: %s\n' "${AD}" "${KURAN_OKUYAN}" >&2

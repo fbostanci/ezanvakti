@@ -205,7 +205,7 @@ case $1 in
     bilesen_yukle renk_ogren
     renk_ogren ;;
   --config|--yap[ıi]land[ıi]rma)
-    ${EDITOR:-${nano:-vim}} "${EZANVAKTI_AYAR}" ;;
+    ${EDITOR:-nano} "${EZANVAKTI_AYAR}" ;;
   --kalan)
     bilesen_yukle kalan
     kalan_sure ;;
