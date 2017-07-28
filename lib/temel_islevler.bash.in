@@ -83,7 +83,7 @@ ucbirim_basligi() {
 
    case $TERM in
      rxvt*|xterm*|aterm)
-       echo -n -e "\033]0;${AD^} ${SURUM}: $@\007" ;;
+       echo -n -e "\033]0;${AD^}: $@\007" ;;
    esac
 }
 
@@ -116,7 +116,7 @@ gorsel_guncelleme_yap() {
   then
       (
         guncelleme_yap
-      ) | yad  --progress --title="${AD^} $SURUM" --progress-text="${EZANVERI_ADI} güncelleniyor" \
+      ) | yad  --progress --title="${AD^}" --progress-text="${EZANVERI_ADI} güncelleniyor" \
                --pulsate --auto-close --width=300 --center --fixed --no-buttons --window-icon=ezanvakti
   else
       guncelleme_yap

@@ -61,7 +61,7 @@ strng=$(yad --form --text "$(printf "${GELISMIS_ARAYUZ_BICIMI}" \
 ${secim_listesi} \
 --field="<span foreground=\'${ARAYUZ_SECKE_ADLARI_RENGI}\'>Başlatıcı</span>:CE" \
 "${tamamlama_listesi}" --button='gtk-ok:150' --button="gtk-close:121" \
---image=ezanvakti --window-icon=ezanvakti --title "${AD^} $SURUM" --center --fixed)
+--image=ezanvakti --window-icon=ezanvakti --title "${AD^}" --center --fixed)
 
 donus=$(echo $?)
 

@@ -15,12 +15,10 @@ mplayer_calistir() {
           printf '%s: internet erişimi algılanamadı.\n' "${AD}" >&2
           return 1
       fi
-  else
-      if [[ ! -f ${dinletilecek_oge} ]]
-      then
-          printf '%s: istenilen ses dosyası -> %s <- bulunamadı.\n' "${AD}" "${dinletilecek_oge}" >&2
-          return 1
-      fi
+  elif [[ ! -f ${dinletilecek_oge} ]]
+  then
+      printf '%s: istenilen ses dosyası -> %s <- bulunamadı.\n' "${AD}" "${dinletilecek_oge}" >&2
+      return 1
   fi
 
   rm -f /tmp/mplayer-$$.pipe 2>/dev/null

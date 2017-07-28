@@ -21,7 +21,7 @@ ayet_araligi_goster() {
       exit 1
   fi
 
-  if [[ -z ${sure_kod} || -z ${ayet_kod} ]]
+  if [[ -z ${ayet_kod} ]]
   then
       printf "%s: Kullanım: <sure_kodu> <ayet_aralığı>\n" "${AD}" >&2
       exit 1

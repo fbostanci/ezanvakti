@@ -112,7 +112,7 @@ yad --plug=190707 --tabnum=4 --form \
 "${ARAYUZ_SECILI_VAKIT_RENGI}" "${ARAYUZ_KALAN_SURE_RENGI}" \
 "${ARAYUZ_SECKE_ADLARI_RENGI}" > $ayr4 &
 yad --notebook --key=190707 \
---title "${AD^} ${SURUM} - Yapılandırma Yöneticisi" \
+--title "${AD^} - Yapılandırma Yöneticisi" \
 --tab="Ezanveri Ayarları" --tab="Ezan Ayarları" \
 --tab="Bildirim Ayarları" --tab="Renk Ayarları" \
 --fixed --center --tab-pos=top --buttons-layout='spread' \

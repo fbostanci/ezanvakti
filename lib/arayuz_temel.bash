@@ -262,8 +262,8 @@ g_vakitleri_yaz() {
   fi
 
   printf "${VAKIT_BICIMI}" "${sabah}" "$sabah_n" "${gunes}" \
-         "$gunes_n" "${ogle}" "$ogle_n" "${ikindi}" "$ikindi_n" "${aksam}" \
-         "$aksam_n" "${yatsi}" "$yatsi_n"
+         "$gunes_n" "${ogle}" "$ogle_n" "${ikindi}" "$ikindi_n" \
+         "${aksam}" "$aksam_n" "${yatsi}" "$yatsi_n"
 }
 
 mplayer_sure_al() {
@@ -271,7 +271,7 @@ mplayer_sure_al() {
 }
 
 g_secim_goster() {
-  yad --title "${AD^} $SURUM - ${secim_basligi}" --text-info --filename=/tmp/ezanvakti-6 \
+  yad --title "${AD^} - ${secim_basligi}" --text-info --filename=/tmp/ezanvakti-6 \
       --width=560 --height=300 --wrap --button='gtk-close' --window-icon=ezanvakti \
       --back="$ARKAPLAN_RENGI" --fore="$YAZI_RENGI" --mouse --sticky
 }
@@ -286,19 +286,17 @@ pencere_bilgi() {
       then
           return 1
       fi
-  else
-      if [[ ! -f ${1} ]]
-      then
-          printf '%s: istenilen ses dosyası -> %s <- bulunamadı.\n' "${AD}" "${1}" >&2
-          return 1
-      fi
+  elif [[ ! -f ${1} ]]
+  then
+      printf '%s: istenilen ses dosyası -> %s <- bulunamadı.\n' "${AD}" "${1}" >&2
+      return 1
   fi
 
   parca_suresi="$(mplayer_sure_al "$1")"
   parca_suresi_n=$(printf '%02d sa: %02d dk: %02d sn' \
                     $(( parca_suresi / 3600 )) $(( parca_suresi % 3600 / 60 )) $(( parca_suresi % 60 )) )
 
-  yad --form --separator=' ' --title="${AD^} $SURUM" --image=ezanvakti --window-icon=ezanvakti \
+  yad --form --separator=' ' --title="${AD^}" --image=ezanvakti --window-icon=ezanvakti \
       --text "${mplayer_ileti}\n Süre        : $parca_suresi_n" --mouse --fixed \
       --button='gtk-cancel:127' --button='gtk-close:0' --timeout=$parca_suresi
 
@@ -320,7 +318,7 @@ strng=$(yad --form \
 "${sure_listesi}" \
 --button='gtk-go-back:151' --button='gtk-media-play:152' --button='gtk-quit:153' \
 --image=ezanvakti --window-icon=ezanvakti \
---title "${AD^} $SURUM" --sticky --center --fixed)
+--title "${AD^}" --sticky --center --fixed)
 
 donus=$(echo $?)
 
