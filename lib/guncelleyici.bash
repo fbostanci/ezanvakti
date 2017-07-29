@@ -269,7 +269,7 @@ SON
     . "${EZANVAKTI_AYAR}"
 
     renk_denetle
-    notify-send "${AD^} $SURUM" "${EZANVERI_ADI} dosyası başarıyla güncellendi." \
+    notify-send "${AD^}" "${EZANVERI_ADI} dosyası başarıyla güncellendi." \
       -i ezanvakti -t $GUNCELLEME_BILDIRIM_SURESI"000"
     :> /tmp/eznvrgncldntle_$(date +%d%m%y)
   } || {
@@ -279,7 +279,7 @@ SON
     rm -f /tmp/ezv-perl-hata-$$ &>/dev/null
     printf "${RENK7}${RENK4}\n!!! YENIDEN DENEYIN !!!${RENK0}\n"
 
-    notify-send "${AD^} $SURUM" "${EZANVERI_ADI} dosyasının güncellenmesi başarısız oldu." \
+    notify-send "${AD^}" "${EZANVERI_ADI} dosyasının güncellenmesi başarısız oldu." \
       -i ezanvakti -t $GUNCELLEME_BILDIRIM_SURESI"000"
 
     rm -f /tmp/ezanveri-$$ &>/dev/null
