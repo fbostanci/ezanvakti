@@ -22,7 +22,8 @@ bilgi_goster() {
     ucbirim)
       (( ! ${RENK:-RENK_KULLAN} )) && printf "*${alinan_yanit}\n" || {
         gawk -v r0=${RENK0} -v r3=${RENK3} -v r7=${RENK7} -v r7=${RENK8} \
-          '{if (NR==1) {printf "%s%s%s%s\n",r7,r3,$0,r0;} else if (NR>1) {printf "%s%s%s%s\n",r7,r8,$0,r0;} }' <<< "${alinan_yanit}"
+          '{if (NR==1) {printf "%s%s%s%s\n",r7,r3,$0,r0;} \
+            else if (NR>1) {printf "%s%s%s%s\n",r7,r8,$0,r0;} }' <<< "${alinan_yanit}"
       } ;;
 
     bildirim)
@@ -39,7 +40,8 @@ hadis_goster() {
     ucbirim)
       (( ! ${RENK:-RENK_KULLAN} )) && printf "${alinan_yanit}\n" || {
         gawk -v r0=${RENK0} -v r3=${RENK3} -v r7=${RENK7} -v r7=${RENK8} \
-          '{if (NR==1) {printf "%s%s%s%s\n",r7,r3,$0,r0;} else if (NR>1) {printf "%s%s%s%s\n",r7,r8,$0,r0;} }' <<< "${alinan_yanit}"
+          '{if (NR==1) {printf "%s%s%s%s\n",r7,r3,$0,r0;} \
+            else if (NR>1) {printf "%s%s%s%s\n",r7,r8,$0,r0;} }' <<< "${alinan_yanit}"
       } ;;
     bildirim)
       notify-send "$secilen. hadis" "$(sed '1d' <<<"${alinan_yanit}")" \
@@ -53,7 +55,8 @@ esma_goster() {
 
   (( ! ${RENK:-RENK_KULLAN} )) && printf "${alinan_yanit}\n" || {
     gawk -v r0=${RENK0} -v r3=${RENK3} -v r7=${RENK7} -v r7=${RENK8} \
-      '{if (NR==1) {printf "%s%s%s%s\n",r7,r3,$0,r0;} else if (NR>1) {printf "%s%s%s%s\n",r7,r8,$0,r0;} }' <<< "${alinan_yanit}"
+      '{if (NR==1) {printf "%s%s%s%s\n",r7,r3,$0,r0;} \
+        else if (NR>1) {printf "%s%s%s%s\n",r7,r8,$0,r0;} }' <<< "${alinan_yanit}"
   }
 }
 
