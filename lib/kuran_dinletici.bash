@@ -14,7 +14,7 @@ sure_no_denetimi() { # sure_no_yonetimi {{{
 
   elif (( ! ${#sure_no} ))
   then
-      printf "${AD}: Bu özelliğin kullanımı için ek olarak sure kodu girmelisiniz.\n"
+      printf '%s: bu özelliğin kullanımı için ek olarak sure kodu girmelisiniz.\n' "${AD}" >&2
       exit 1
 
   elif (( ${#sure_no} > 3 ))
@@ -46,7 +46,8 @@ sure_no_denetimi() { # sure_no_yonetimi {{{
 } # }}}
 
 mplayer_kuran_sure_al() {
-  mplayer -vo null -ao null -frames 0 -identify "$1" 2>/dev/null | gawk  -F"=" '/^ID_LENGTH/ {print int($2);}'
+  mplayer -vo null -ao null -frames 0 -identify "$1" 2>/dev/null | \
+  gawk  -F"=" '/^ID_LENGTH/ {print int($2);}'
 }
 
 kuran_dinletimi() {
@@ -94,7 +95,9 @@ kuran_dinletimi() {
 
   parca_suresi="$(mplayer_kuran_sure_al "${dinletilecek_sure}")"
   parca_suresi_n=$(printf '%02d saat : %02d dakika : %02d saniye' \
-                    $(( parca_suresi / 3600 )) $(( parca_suresi % 3600 / 60 )) $(( parca_suresi % 60 )) )
+                          $(( parca_suresi / 3600 )) \
+                          $(( parca_suresi % 3600 / 60 )) \
+                          $(( parca_suresi % 60 )) )
 
   printf '%b%b\n%b\n%b\n%b\n%b\n%b\n%b\n' \
     "${RENK7}${RENK2}" \
@@ -121,7 +124,8 @@ kuran_dinlet() { # kuran_dinlet_yonetimi {{{
       for ((i=1; i<=114; i++))
       do
         sure_no=$i
-        sure_no_denetimi; kuran_dinletimi; sleep 1
+        sure_no_denetimi; kuran_dinletimi
+        sleep 1
       done ;;
 
     rastgele)
@@ -135,7 +139,8 @@ kuran_dinlet() { # kuran_dinlet_yonetimi {{{
       for i in ${sureler[@]}
       do
         sure_no=$i
-        sure_no_denetimi; kuran_dinletimi; sleep 1
+        sure_no_denetimi; kuran_dinletimi
+        sleep 1
       done ;;
 
   esac

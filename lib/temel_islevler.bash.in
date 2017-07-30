@@ -17,8 +17,8 @@ EZANVAKTI_AYAR="${EZANVAKTI_DIZINI}/ayarlar"
 
 
 [[ ! -d   ${EZANVAKTI_DIZINI} ]] && mkdir -p "${EZANVAKTI_DIZINI}"
-[[ ! -f   ${EZANVAKTI_AYAR}   ]] &&
-  sed "s:\(EZANVERI_DIZINI=\).*:\1\'${EZANVAKTI_DIZINI}\':" < "${EZANVAKTI_ONT_AYAR}" > "${EZANVAKTI_AYAR}"
+[[ ! -f   ${EZANVAKTI_AYAR}   ]] && sed "s:\(EZANVERI_DIZINI=\).*:\1\'${EZANVAKTI_DIZINI}\':" \
+  < "${EZANVAKTI_ONT_AYAR}" > "${EZANVAKTI_AYAR}"
 
 # Öntanımlı ayarları al.
 . "${EZANVAKTI_ONT_AYAR}"
@@ -117,7 +117,8 @@ gorsel_guncelleme_yap() {
       (
         guncelleme_yap
       ) | yad  --progress --title="${AD^}" --progress-text="${EZANVERI_ADI} güncelleniyor" \
-               --pulsate --auto-close --width=300 --center --fixed --no-buttons --window-icon=ezanvakti
+               --pulsate --auto-close --width=300 --center --fixed \
+               --no-buttons --window-icon=ezanvakti
   else
       guncelleme_yap
   fi
@@ -130,7 +131,10 @@ ezanveri_denetle() {
   local ksatir
 
   [[ ! -f ${EZANVERI} ]] && { # ezanveri dosyası yoksa
-    (( GUNCELLEME_YAP )) && { bilesen_yukle guncelleyici; guncelleme_yap; } || {
+    (( GUNCELLEME_YAP )) && {
+      bilesen_yukle guncelleyici
+      guncelleme_yap
+    } || {
       printf '%s: %s dosyası bulunamadı.\n' "${AD}" "${EZANVERI}"
       exit 1
     }
@@ -138,7 +142,10 @@ ezanveri_denetle() {
 
   # Bugüne ait tarih ezanveri dosyasında yoksa
   [[ -z $(grep -o "^$(date +%d.%m.%Y)" "${EZANVERI}") ]] && {
-    (( GUNCELLEME_YAP )) && { bilesen_yukle guncelleyici; guncelleme_yap; } || {
+    (( GUNCELLEME_YAP )) && {
+      bilesen_yukle guncelleyici
+      guncelleme_yap
+    } || {
       printf '%s: %s dosyası güncel değil.\n' "${AD}" "${EZANVERI}"
       exit 1
     }
@@ -200,7 +207,9 @@ bekleme_suresi_yarin() {
 # saat, dakika ve saniyeye çeviren fonksiyon
 kalan() {
   kalan_sure=$(printf '%02d saat : %02d dakika : %02d saniye' \
-    $(( bekle / 3600 )) $(( bekle % 3600 / 60 )) $(( bekle % 60 )) )
+                      $(( bekle / 3600 )) \
+                      $(( bekle % 3600 / 60 )) \
+                      $(( bekle % 60 )) )
 }
 
 # vim: set ft=sh ts=2 sw=2 et:
