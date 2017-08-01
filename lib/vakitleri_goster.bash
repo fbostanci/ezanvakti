@@ -81,7 +81,7 @@ vakitler() { # {{{
         , r7,r3,$1,r2,$2,$3,$4,$5,$6,$7,r0}' ;;
 
     bildirim)
-      notify-send "Ezanvakti ${SURUM} - vakitler" \
+      notify-send "${AD^} - vakitler" \
         "$(printf '%s\n%s\n%s\n%s\n%s' \
         "Sabah   $sabah_n   $sabah_kalan" \
         "Öğle    $ogle_n    $ogle_kalan" \
