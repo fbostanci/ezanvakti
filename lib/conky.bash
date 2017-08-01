@@ -8,8 +8,8 @@ ezv_conky() {
   ezanveri_denetle; bugun
 
   printf "${CONKY_BICIMI}" 'Sabah' "$sabah_n" 'Güneş' \
-    "$gunes_n" 'Öğle' "$ogle_n" 'İkindi' "$ikindi_n" 'Akşam' \
-    "$aksam_n" 'Yatsı' "$yatsi_n"
+    "$gunes_n" 'Öğle' "$ogle_n" 'İkindi' "$ikindi_n" \
+    'Akşam' "$aksam_n" 'Yatsı' "$yatsi_n"
 }
 
 ezv_conky_iftar() {
