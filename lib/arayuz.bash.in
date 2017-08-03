@@ -28,21 +28,9 @@ do
   elx+="${ARAYUZ_CIZGI_SIMGESI}"
 done
 
-(( GUN_ANIMSAT )) && {
-  if grep -q $(date +%d.%m.%Y) ${VERI_DIZINI}/veriler/gunler
-  then
-      ozel_ileti="\n\nBugün:  <b>$(grep $(date +%d.%m.%Y) ${VERI_DIZINI}/veriler/gunler | cut -d' ' -f2-)</b>"
-  elif grep -q $(date -d 'tomorrow' +%d.%m.%Y) ${VERI_DIZINI}/veriler/gunler
-  then
-      ozel_ileti="\n\nYarın:  <b>$(grep $(date -d 'tomorrow' +%d.%m.%Y) ${VERI_DIZINI}/veriler/gunler | cut -d' ' -f2-)</b>"
-  else
-      ozel_ileti=''
-  fi
-}
-
 arayuz() {
   local strng donus str str2 sure sure_sifirli mplayer_ileti secim_basligi
-  g_vakitleri_al
+  g_vakitleri_al; g_gun_animsat
 
 strng=$(yad --form --text "$(printf "${GELISMIS_ARAYUZ_BICIMI}" \
   "<span foreground=\'${ARAYUZ_TARIH_SAAT_RENGI}\'>$(date +%d.%m.%Y) \($(hicri_tarih_al)\)</span>" \
@@ -111,64 +99,73 @@ then
     then
         secim_basligi='Günlük Ayet'
         bilesen_yukle ayet_goster
-        ayet_goster ucbirim > /tmp/ezanvakti-6
-        g_secim_goster; arayuz
+        ayet_goster ucbirim > "${cikti_dosyasi}"
+        g_secim_goster; temizlik
+        arayuz
 
     elif [[ $str = Hadis ]]
     then
         secim_basligi='40 Hadis'
         bilesen_yukle bilgi_goster
-        hadis_goster ucbirim > /tmp/ezanvakti-6
-        g_secim_goster; arayuz
+        hadis_goster ucbirim > "${cikti_dosyasi}"
+        g_secim_goster; temizlik
+        arayuz
 
     elif [[ $str = Esma-ül Hüsna ]]
     then
         secim_basligi='Esma-ül Hüsna'
         bilesen_yukle bilgi_goster
-        esma_goster ucbirim > /tmp/ezanvakti-6
-        g_secim_goster; arayuz
+        esma_goster ucbirim > "${cikti_dosyasi}"
+        g_secim_goster; temizlik
+        arayuz
 
     elif [[ $str = Bilgi ]]
     then
         secim_basligi='Dini Bilgiler'
         bilesen_yukle bilgi_goster
-        bilgi_goster ucbirim > /tmp/ezanvakti-6
-        g_secim_goster; arayuz
+        bilgi_goster ucbirim > "${cikti_dosyasi}"
+        g_secim_goster; temizlik
+        arayuz
 
     elif [[ $str = Günlük Vakitler ]]
     then
         secim_basligi='Günlük Vakitler'
         bilesen_yukle vakitleri_goster
-        vakitler tum_vakitler > /tmp/ezanvakti-6
-        g_secim_goster; arayuz
+        vakitler tum_vakitler > "${cikti_dosyasi}"
+        g_secim_goster; temizlik
+        arayuz
 
     elif [[ $str = Aylık Vakitler ]]
     then
         secim_basligi='Aylık Vakitler'
         bilesen_yukle vakitleri_goster
-        vakitler aylik > /tmp/ezanvakti-6
-        g_secim_goster; arayuz
+        vakitler aylik > "${cikti_dosyasi}"
+        g_secim_goster; temizlik
+        arayuz
 
     elif [[ $str = Haftalık Vakitler ]]
     then
         secim_basligi='Haftalık Vakitler'
         bilesen_yukle vakitleri_goster
-        vakitler haftalik > /tmp/ezanvakti-6
-        g_secim_goster; arayuz
+        vakitler haftalik > "${cikti_dosyasi}"
+        g_secim_goster; temizlik
+        arayuz
 
     elif [[ $str = @(Kerahat Vakitleri|Kerahat) ]]
     then
         secim_basligi='Kerahat Vakitleri'
         bilesen_yukle kerahat
-        kerahat_vakitleri ucbirim > /tmp/ezanvakti-6
-        g_secim_goster; arayuz
+        kerahat_vakitleri ucbirim > "${cikti_dosyasi}"
+        g_secim_goster; temizlik
+        arayuz
 
     elif [[ $str = Dini Günler ve Geceler ]]
     then
         secim_basligi="$(date +%Y) Dini Günler ve Geceler"
         bilesen_yukle dini_gunler
-        gunler > /tmp/ezanvakti-6
-        g_secim_goster; arayuz
+        gunler > "${cikti_dosyasi}"
+        g_secim_goster; temizlik
+        arayuz
 
     elif [[ $str = @(Ayarlar|yapilandirma|Yapılandırma Yöneticisi)  ]]
     then
@@ -182,7 +179,8 @@ then
     elif [[ $str = güncelle ]]
     then
         bilesen_yukle guncelleyici
-        gorsel_guncelleme_yap; arayuz
+        gorsel_guncelleme_yap
+        arayuz
 
     elif [[ $str = @(hakkında|about) ]]
     then
@@ -197,9 +195,10 @@ then
     elif [[ $str = yardım ]]
     then
         bilesen_yukle kullanim
-        betik_kullanimi > /tmp/ezanvakti-6
-        sed -i '$d' /tmp/ezanvakti-6
-        g_secim_goster; arayuz
+        betik_kullanimi > "${cikti_dosyasi}"
+        sed -i '$d' "${cikti_dosyasi}"
+        g_secim_goster; temizlik
+        arayuz
 
     elif [[ $(grep [0-9] <<<$str) ]]
     then
@@ -246,7 +245,8 @@ then
         mplayer_ileti="$(gawk -v sira=$sure '{if(NR==sira) print $4;}' < ${VERI_DIZINI}/veriler/sure_bilgisi)"
         mplayer_ileti+=" suresi dinletiliyor\n\n Okuyan : ${okuyan}"
 
-        pencere_bilgi "${dinletilecek_sure}" & kuran_dinlet secim $sure
+        pencere_bilgi "${dinletilecek_sure}" &
+        kuran_dinlet secim $sure
         arayuz
 
     else

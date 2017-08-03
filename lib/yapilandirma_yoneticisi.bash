@@ -31,6 +31,9 @@ ayr2=/tmp/ezanvakti_ayr2
 ayr3=/tmp/ezanvakti_ayr3
 ayr4=/tmp/ezanvakti_ayr4
 #ayr4=$(mktemp --tmpdir tab4.XXXXXXXX)
+temizlik() {
+  rm -f $ayr1 $ayr2 $ayr3 $ayr4 &>/dev/null
+}
 
 ipcrm -M 190707  > /dev/null 2>&1
 
@@ -122,9 +125,10 @@ yad --notebook --key=190707 \
 
  case $? in
     171)
-        arayuz ;;
+        temizlik; arayuz ;;
     172)
-        xdg-open "${EZANVAKTI_AYAR}"; arayuz ;;
+        xdg-open "${EZANVAKTI_AYAR}"
+        temizlik; arayuz ;;
     174)
         IFS="|"
         liste1=(); liste2=(); liste3=(); liste4=()
@@ -200,7 +204,7 @@ yad --notebook --key=190707 \
             _ACILISTA_BASLAT=2
         fi
 
-        if [[ ${ACILISTA_BASLAT} != ${_ACILISTA_BASLAT} ]]
+        if (( ACILISTA_BASLAT != _ACILISTA_BASLAT ))
         then
             sed -i "s:\(ACILISTA_BASLAT=\).*:\1$_ACILISTA_BASLAT:" "${EZANVAKTI_AYAR}"
             _YENIDEN_BASLATMA_GEREKLI=1
@@ -423,40 +427,40 @@ yad --notebook --key=190707 \
             _YENIDEN_BASLATMA_GEREKLI=1
         fi
 
-        if [[ ${SES} != ${liste3[6]} ]]
+        if (( SES != liste3[6] ))
         then
             sed -i "s:\(SES=\).*:\1\'${liste3[6]}\':" "${EZANVAKTI_AYAR}"
             _YENIDEN_BASLATMA_GEREKLI=1
         fi
 
-        if [[ ${GUN_ANIMSAT} != ${liste3[7]} ]]
+        if (( GUN_ANIMSAT != liste3[7] ))
         then
             sed -i "s:\(GUN_ANIMSAT=\).*:\1\'${liste3[7]}\':" "${EZANVAKTI_AYAR}"
             _YENIDEN_BASLATMA_GEREKLI=1
         fi
 
-        if [[ ${EZAN_BILDIRIM_SURESI} != ${liste3[8]} ]]
+        if (( EZAN_BILDIRIM_SURESI != liste3[8] ))
         then
             sed -i "s:\(EZAN_BILDIRIM_SURESI=\).*:\1\'${liste3[8]}\':" "${EZANVAKTI_AYAR}"
             _YENIDEN_BASLATMA_GEREKLI=1
         fi
 
-        if [[ ${AYET_BILDIRIM_SURESI} != ${liste3[9]} ]]
+        if (( AYET_BILDIRIM_SURESI != liste3[9] ))
         then
             sed -i "s:\(AYET_BILDIRIM_SURESI=\).*:\1\'${liste3[9]}\':" "${EZANVAKTI_AYAR}"
         fi
 
-        if [[ ${HADIS_BILDIRIM_SURESI} != ${liste3[10]} ]]
+        if (( HADIS_BILDIRIM_SURESI != liste3[10] ))
         then
             sed -i "s:\(HADIS_BILDIRIM_SURESI=\).*:\1\'${liste3[10]}\':" "${EZANVAKTI_AYAR}"
         fi
 
-        if [[ ${BILGI_BILDIRIM_SURESI} != ${liste3[11]} ]]
+        if (( BILGI_BILDIRIM_SURESI != liste3[11] ))
         then
             sed -i "s:\(BILGI_BILDIRIM_SURESI=\).*:\1\'${liste3[11]}\':" "${EZANVAKTI_AYAR}"
         fi
 
-        if [[ ${GUNCELLEME_BILDIRIM_SURESI} != ${liste3[12]} ]]
+        if (( GUNCELLEME_BILDIRIM_SURESI != liste3[12] ))
         then
             sed -i "s:\(GUNCELLEME_BILDIRIM_SURESI=\).*:\1\'${liste3[12]}\':" "${EZANVAKTI_AYAR}"
         fi
@@ -552,11 +556,11 @@ yad --notebook --key=190707 \
               disown
           fi
         }
-        arayuz ;;
-
+        temizlik; arayuz ;;
 # _SES_SEVIYE=$(sed -n 's:[,|.].*::p' <<<${list[8]})
 
     121)
+        temizlik
         exit 0 ;;
  esac
 }

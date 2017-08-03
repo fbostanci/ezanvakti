@@ -32,6 +32,7 @@ tamamlama_listesi+="!about!güncelle!yardım!arayuz2!Kerahat!000!özel pencere!
 secim_listesi='!Günlük Vakitler!Haftalık Vakitler!Aylık Vakitler!Kerahat Vakitleri'
 secim_listesi+='!Dini Günler ve Geceler!Ayet!Hadis!Bilgi!Esma-ül Hüsna!Yapılandırma Yöneticisi'
 
+cikti_dosyasi='/tmp/ezanvakti-6'
 # düz komut çıktıları için rengi sıfırla.
 export RENK_KULLAN=0 RENK=0
 acilisa_baslatici_ekle
@@ -39,7 +40,8 @@ acilisa_baslatici_ekle
 arayuz_pid_denetle() {
   local ypid=$$
 
-  if [[ -f /tmp/.ezanvakti_yad_arayuz.pid && -n $(ps -p $( < /tmp/.ezanvakti_yad_arayuz.pid) -o comm=) ]]
+  if [[ -f /tmp/.ezanvakti_yad_arayuz.pid && \
+        -n $(ps -p $( < /tmp/.ezanvakti_yad_arayuz.pid) -o comm=) ]]
   then
       printf "%s: Yalnızca bir arayüz örneği çalışabilir.\n" "${AD}" >&2
       exit 1
@@ -51,13 +53,32 @@ arayuz_pid_denetle() {
 arayuz2_pid_denetle() {
   local ypid=$$
 
-  if [[ -f /tmp/.ezanvakti_yad_arayuz2.pid && -n $(ps -p $( < /tmp/.ezanvakti_yad_arayuz2.pid) -o comm=) ]]
+  if [[ -f /tmp/.ezanvakti_yad_arayuz2.pid && \
+        -n $(ps -p $( < /tmp/.ezanvakti_yad_arayuz2.pid) -o comm=) ]]
   then
       printf "%s: Yalnızca bir arayüz2 örneği çalışabilir.\n" "${AD}" >&2
       exit 1
   else
       printf "$ypid" > /tmp/.ezanvakti_yad_arayuz2.pid
   fi
+}
+
+temizlik() {
+  rm -f "${cikti_dosyasi}" &>/dev/null
+}
+
+g_gun_animsat() {
+  (( GUN_ANIMSAT )) && {
+    if grep -q $(date +%d.%m.%Y) ${VERI_DIZINI}/veriler/gunler
+    then
+        ozel_ileti="\n\nBugün:  <b>$(grep $(date +%d.%m.%Y) ${VERI_DIZINI}/veriler/gunler | cut -d' ' -f2-)</b>"
+    elif grep -q $(date -d 'tomorrow' +%d.%m.%Y) ${VERI_DIZINI}/veriler/gunler
+    then
+        ozel_ileti="\n\nYarın:  <b>$(grep $(date -d 'tomorrow' +%d.%m.%Y) ${VERI_DIZINI}/veriler/gunler | cut -d' ' -f2-)</b>"
+    else
+        ozel_ileti=''
+    fi
+  }
 }
 
 g_vakitleri_al() {
@@ -272,7 +293,7 @@ mplayer_sure_al() {
 }
 
 g_secim_goster() {
-  yad --title "${AD^} - ${secim_basligi}" --text-info --filename=/tmp/ezanvakti-6 \
+  yad --title "${AD^} - ${secim_basligi}" --text-info --filename="${cikti_dosyasi}" \
       --width=560 --height=300 --wrap --button='gtk-close' --window-icon=ezanvakti \
       --back="$ARKAPLAN_RENGI" --fore="$YAZI_RENGI" --mouse --sticky
 }
@@ -367,10 +388,11 @@ case $donus in
         dinletilecek_sure="http://www.listen2quran.com/listen/${okuyucu}/$sure.mp3"
     fi
 
-    mplayer_ileti="$(gawk -v sira=$sure '{if(NR==sira) print $4;}' < ${VERI_DIZINI}/veriler/sure_bilgisi) suresi dinletiliyor\
-    \n\n Okuyan : ${str}"
+    mplayer_ileti="$(gawk -v sira=$sure '{if(NR==sira) print $4;}' \
+      < ${VERI_DIZINI}/veriler/sure_bilgisi) suresi dinletiliyor\n\n Okuyan : ${str}"
 
-    pencere_bilgi "${dinletilecek_sure}" & mplayer_calistir "${dinletilecek_sure}"
+    pencere_bilgi "${dinletilecek_sure}" & 
+    mplayer_calistir "${dinletilecek_sure}"
     ozel_pencere ;;
   153)
     exit 0 ;;

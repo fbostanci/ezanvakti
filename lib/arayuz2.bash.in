@@ -12,7 +12,7 @@
 arayuz2_pid_denetle
 
 arayuz2() {
-  g_vakitleri_al
+  g_vakitleri_al; g_gun_animsat
 
 yad --title "${AD^}" \
 --text="$(g_vakitleri_yaz)\n\n<span foreground=\'${ARAYUZ_SIMDIKI_VAKIT_RENGI}\'>${vakit_bilgisi}${ozel_ileti}</span>\
