@@ -9,7 +9,8 @@ bilesen_yukle arayuz_temel
 eylem_pid_denetle() {
   local ypid=$$
 
-  if [[ -f /tmp/.ezanvakti_eylem_menu.pid && -n $(ps -p $( < /tmp/.ezanvakti_eylem_menu.pid) -o comm=) ]]
+  if [[ -f /tmp/.ezanvakti_eylem_menu.pid && \
+        -n $(ps -p $( < /tmp/.ezanvakti_eylem_menu.pid) -o comm=) ]]
   then
       printf "%s: Yalnızca bir arayüz örneği çalışabilir.\n" "${AD}" >&2
       exit 1
@@ -25,26 +26,26 @@ eylem_menu() {
     vakitler)
       secim_basligi='Günlük Vakitler'
       bilesen_yukle vakitleri_goster
-      vakitler tum_vakitler > /tmp/ezanvakti-6
-      g_secim_goster ;;
+      vakitler tum_vakitler > "${cikti_dosyasi}"
+      g_secim_goster; temizlik ;;
 
     v7)
       secim_basligi='Haftalık Vakitler'
       bilesen_yukle vakitleri_goster
-      vakitler haftalik > /tmp/ezanvakti-6
-      g_secim_goster ;;
+      vakitler haftalik > "${cikti_dosyasi}"
+      g_secim_goster; temizlik ;;
 
     v30)
       secim_basligi='Aylık Vakitler'
       bilesen_yukle vakitleri_goster
-      vakitler aylik > /tmp/ezanvakti-6
-      g_secim_goster ;;
+      vakitler aylik > "${cikti_dosyasi}"
+      g_secim_goster; temizlik ;;
 
     kerahat)
       secim_basligi='Kerahat Vakitleri'
       bilesen_yukle kerahat
-      kerahat_vakitleri ucbirim > /tmp/ezanvakti-6
-      g_secim_goster ;;
+      kerahat_vakitleri ucbirim > "${cikti_dosyasi}"
+      g_secim_goster; temizlik ;;
 
     kuran)
       bilesen_yukle mplayer_yonetici
@@ -54,32 +55,32 @@ eylem_menu() {
     gunler)
       secim_basligi="$(date +%Y) Dini Günler ve Geceler"
       bilesen_yukle dini_gunler
-      gunler > /tmp/ezanvakti-6
-      g_secim_goster ;;
+      gunler > "${cikti_dosyasi}"
+      g_secim_goster; temizlik ;;
 
     ayet)
       secim_basligi='Günlük Ayet'
       bilesen_yukle ayet_goster
-      ayet_goster ucbirim > /tmp/ezanvakti-6
-      g_secim_goster ;;
+      ayet_goster ucbirim > "${cikti_dosyasi}"
+      g_secim_goster; temizlik ;;
 
     hadis)
       secim_basligi='40 Hadis'
       bilesen_yukle bilgi_goster
-      hadis_goster ucbirim > /tmp/ezanvakti-6
-      g_secim_goster ;;
+      hadis_goster ucbirim > "${cikti_dosyasi}"
+      g_secim_goster; temizlik ;;
 
     bilgi)
       secim_basligi='Dini Bilgiler'
       bilesen_yukle bilgi_goster
-      bilgi_goster ucbirim > /tmp/ezanvakti-6
-      g_secim_goster ;;
+      bilgi_goster ucbirim > "${cikti_dosyasi}"
+      g_secim_goster; temizlik ;;
 
     esma)
       secim_basligi='Esma-ül Hüsna'
       bilesen_yukle bilgi_goster
-      esma_goster ucbirim > /tmp/ezanvakti-6
-      g_secim_goster ;;
+      esma_goster ucbirim > "${cikti_dosyasi}"
+      g_secim_goster; temizlik ;;
 
     yapilandirma)
       bilesen_yukle yapilandirma_yoneticisi
@@ -89,9 +90,9 @@ eylem_menu() {
     yardim)
       secim_basligi='Kullanım'
       bilesen_yukle kullanim
-      betik_kullanimi > /tmp/ezanvakti-6
-      sed -i '$d' /tmp/ezanvakti-6
-      g_secim_goster ;;
+      betik_kullanimi > "${cikti_dosyasi}"
+      sed -i '$d' "${cikti_dosyasi}"
+      g_secim_goster; temizlik ;;
 
     hakkinda)
       bilesen_yukle hakkinda
@@ -99,4 +100,3 @@ eylem_menu() {
 
   esac
 }
-

@@ -29,7 +29,8 @@ ezv_conky_iftar() {
               bilesen_yukle guncelleyici
               guncelleme_yap
           else
-              printf '%s: %s dosyanızda yarına ait veri bulunmuyor.\n' "${AD}" "${EZANVERI_ADI}" >&2
+              printf '%s: %s dosyanızda yarına ait veri bulunmuyor.\n' \
+                "${AD}" "${EZANVERI_ADI}" >&2
               exit 1
           fi
      fi
