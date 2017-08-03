@@ -34,10 +34,10 @@ case $1 in
 
   conky)
     printf '%b\n%b\n%b\n%b\n%b\n'\
-      "Kerahat vakti 1 : $sabah_n - $gunes_n arası"\
-      "Kerahat vakti 2 : $gunes_n - $kv_gunes arası"\
-      "Kerahat vakti 3 : $kv_ogle - $ogle_n arası"\
-      "Kerahat vakti 4 : $ikindi_n - $kv_aksam arası"\
-      "Kerahat vakti 5 : $kv_aksam - $aksam_n arası" ;;
+      "Kerahat v1 : $sabah_n - $gunes_n arası"\
+      "Kerahat v2 : $gunes_n - $kv_gunes arası"\
+      "Kerahat v3 : $kv_ogle - $ogle_n arası"\
+      "Kerahat v4 : $ikindi_n - $kv_aksam arası"\
+      "Kerahat v5 : $kv_aksam - $aksam_n arası" ;;
 esac
 }

@@ -63,7 +63,7 @@ vakitler() { # {{{
 
       printf "\n${RENK7}${RENK6}Tarih        Sabah   Güneş   Öğle    İkindi  Akşam   Yatsı${RENK0}\n"
       gawk -v r0=${RENK0} -v r2=${RENK2} -v r3=${RENK3} -v r7=${RENK7} \
-        '/^[0-9][0-9]\.[0-9]*\.[0-9]*/ \
+        '/^[0-9]{2}.[0-9]{2}.[0-9]{4}/ \
         {printf "%s%s%s%s   %s   %s   %s   %s   %s   %s%s\n"\
         , r7,r3,$1,r2,$2,$3,$4,$5,$6,$7,r0}' "${EZANVERI}" ;;
 
@@ -75,7 +75,7 @@ vakitler() { # {{{
       fi
 
       printf "\n${RENK7}${RENK6}Tarih        Sabah   Güneş   Öğle    İkindi  Akşam   Yatsı${RENK0}\n"
-      grep '^[0-9][0-9]\.[0-9]*\.[0-9]*' "${EZANVERI}" | grep -B7 $(date -d 'next week' +%d.%m.%Y) |
+      grep -E '^[0-9]{2}.[0-9]{2}.[0-9]{4}' "${EZANVERI}" | grep -B7 $(date -d 'next week' +%d.%m.%Y) |
         gawk -v r0=${RENK0} -v r2=${RENK2} -v r3=${RENK3} -v r7=${RENK7} \
         '{printf "%s%s%s%s   %s   %s   %s   %s   %s   %s%s\n"\
         , r7,r3,$1,r2,$2,$3,$4,$5,$6,$7,r0}' ;;
@@ -83,11 +83,11 @@ vakitler() { # {{{
     bildirim)
       notify-send "${AD^} - vakitler" \
         "$(printf '%s\n%s\n%s\n%s\n%s' \
-        "Sabah   $sabah_n   $sabah_kalan" \
-        "Öğle    $ogle_n    $ogle_kalan" \
-        "İkindi   $ikindi_n    $ikindi_kalan" \
-        "Akşam  $aksam_n    $aksam_kalan" \
-        "Yatsı     $yatsi_n    $yatsi_kalan" | sed 's:saat:sa:;s:dakika:dk:;s:saniye:sn:')" \
+        "Sabah $sabah_n $sabah_kalan" \
+        "Öğle $ogle_n $ogle_kalan" \
+        "İkindi $ikindi_n $ikindi_kalan" \
+        "Akşam $aksam_n $aksam_kalan" \
+        "Yatsı $yatsi_n $yatsi_kalan" | sed 's:saat:sa:;s:dakika:dk:;s:saniye:sn:')" \
         -t $BILGI_BILDIRIM_SURESI"000" ;;
 
     tum_vakitler)
