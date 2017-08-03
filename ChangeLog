@@ -3,6 +3,18 @@
 
 
 /×××××××××××××××××××××××××××××
+× Ezanvakti 6.3.2
+×××××××××××××××××××××××××××××/
+2017-08-03 Fatih BOSTANCI <faopera@gmail.com>
+
+ *  temel_islevler.bash: kalan gün hesabı hatası düzeltildi.
+ *  arayüz ve yapilandirma_yoneticisinde içerik dosyalarını çıkışta silme.
+ *  arayüzlerden ${SURUM} bilgisi kaldırıldı.
+ *  kod düzenlemeleri ve geliştirmeler
+ *  man dosyası güncellendi.
+
+
+/×××××××××××××××××××××××××××××
 × Ezanvakti 6.3.1
 ×××××××××××××××××××××××××××××/
 2017-07-26 Fatih BOSTANCI <faopera@gmail.com>
