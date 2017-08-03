@@ -6,7 +6,7 @@
 
 if ! [[ -x $(type -p yad) ]]
 then
-    printf "%s: Bu özellik YAD gerektirmektedir...\n" "${AD}" >&2
+    printf '%s: Bu özellik YAD gerektirmektedir.\n' "${AD}" >&2
     exit 1
 fi
 
@@ -267,7 +267,8 @@ g_vakitleri_yaz() {
 }
 
 mplayer_sure_al() {
-  mplayer -vo null -ao null -frames 0 -identify "$1" 2>/dev/null | gawk  -F'=' '/^ID_LENGTH/ {print int($2);}'
+  mplayer -vo null -ao null -frames 0 -identify "$1" 2>/dev/null | \
+    gawk  -F'=' '/^ID_LENGTH/ {print int($2);}'
 }
 
 g_secim_goster() {
@@ -294,7 +295,9 @@ pencere_bilgi() {
 
   parca_suresi="$(mplayer_sure_al "$1")"
   parca_suresi_n=$(printf '%02d sa: %02d dk: %02d sn' \
-                    $(( parca_suresi / 3600 )) $(( parca_suresi % 3600 / 60 )) $(( parca_suresi % 60 )) )
+                          $(( parca_suresi / 3600 )) \
+                          $(( parca_suresi % 3600 / 60 )) \
+                          $(( parca_suresi % 60 )) )
 
   yad --form --separator=' ' --title="${AD^}" --image=ezanvakti --window-icon=ezanvakti \
       --text "${mplayer_ileti}\n Süre        : $parca_suresi_n" --mouse --fixed \

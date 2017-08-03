@@ -18,7 +18,7 @@ ezv_conky_iftar() {
   if (( UNIXSAAT < aksam ))
   then
     bekleme_suresi $aksam_n; kalan
-    echo -e "İftar : $aksam_n\nKalan : $kalan_sure" |
+    echo -e "İftar : $aksam_n\nKalan : $kalan_sure" | \
       sed 's:saat:sa:;s:dakika:dk:;s:saniye:sn:'
   else
       # Yarının aksam vakti ezanveri dosyasında var mı denetle önc..
@@ -29,7 +29,7 @@ ezv_conky_iftar() {
               bilesen_yukle guncelleyici
               guncelleme_yap
           else
-              printf '%s: %s dosyanızda yarına ait veri bulunmuyor.\n' "${AD}" "${EZANVERI_ADI}"
+              printf '%s: %s dosyanızda yarına ait veri bulunmuyor.\n' "${AD}" "${EZANVERI_ADI}" >&2
               exit 1
           fi
      fi
@@ -37,7 +37,7 @@ ezv_conky_iftar() {
        <(grep $(date -d 'tomorrow' +%d.%m.%Y) "${EZANVERI}"))
      bekleme_suresi_yarin $aksam_n; kalan
 
-     echo -e "İftar : $aksam_n (Yarın)\nKalan : $kalan_sure" |
+     echo -e "İftar : $aksam_n (Yarın)\nKalan : $kalan_sure" | \
        sed 's:saat:sa:;s:dakika:dk:;s:saniye:sn:'
   fi
 }
