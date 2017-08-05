@@ -116,9 +116,9 @@ gorsel_guncelleme_yap() {
   then
       (
         guncelleme_yap
-      ) | yad  --progress --title="${AD^}" --progress-text="${EZANVERI_ADI} güncelleniyor" \
+      ) | yad  --progress --undecorated --progress-text="${EZANVERI_ADI} güncelleniyor" \
                --pulsate --auto-close --width=300 --center --fixed \
-               --no-buttons --window-icon=ezanvakti
+               --no-buttons --skip-taskbar
   else
       guncelleme_yap
   fi
