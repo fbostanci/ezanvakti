@@ -76,7 +76,7 @@ ayet_araligi_goster() {
           exit 1
       fi
 
-      ayet_baslama=$((sure_baslama+ayet_kod))
+      ayet_baslama=$(( sure_baslama + ayet_kod ))
       ayet_bitis=$ayet_baslama
   elif [[ $int_ayet_kod = - ]]
   then
