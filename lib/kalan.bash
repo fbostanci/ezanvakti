@@ -16,8 +16,11 @@ bekleme_goster() {
     # Her 12 saniyede bir süreyi sapmaya karşı düzelt.
     (( bekle % 12 == 0 )) && bekleme_suresi ${vakit_saati}
 
-    printf "${RENK7}${RENK2}Kalan süre:${RENK5} %02d saat : %02d dakika : %02d saniye ${RENK2}(${RENK1}${vakit_saati}${RENK2})${RENK0}\r" \
-      $(( bekle / 3600 )) $(( bekle % 3600 / 60 )) $(( bekle % 60 ))
+    printf "${RENK7}${RENK2}Kalan süre:${RENK5} %02d saat : %02d dakika : %02d saniye ${RENK2}(${RENK1}%s${RENK2})${RENK0}\r" \
+            $(( bekle / 3600 )) \
+            $(( bekle % 3600 / 60 )) \
+            $(( bekle % 60 )) \
+            "${vakit_saati}"
     (( bekle-- ))
     sleep 1
   done

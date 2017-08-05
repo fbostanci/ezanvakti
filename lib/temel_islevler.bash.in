@@ -16,8 +16,8 @@ EZANVAKTI_ONT_AYAR=@sysconfdir@/${AD}.conf
 EZANVAKTI_AYAR="${EZANVAKTI_DIZINI}/ayarlar"
 
 
-[[ ! -d   ${EZANVAKTI_DIZINI} ]] && mkdir -p "${EZANVAKTI_DIZINI}"
-[[ ! -f   ${EZANVAKTI_AYAR}   ]] && sed "s:\(EZANVERI_DIZINI=\).*:\1\'${EZANVAKTI_DIZINI}\':" \
+[[ ! -d ${EZANVAKTI_DIZINI} ]] && mkdir -p "${EZANVAKTI_DIZINI}"
+[[ ! -f ${EZANVAKTI_AYAR}   ]] && sed "s:\(EZANVERI_DIZINI=\).*:\1\'${EZANVAKTI_DIZINI}\':" \
   < "${EZANVAKTI_ONT_AYAR}" > "${EZANVAKTI_AYAR}"
 
 # Öntanımlı ayarları al.
