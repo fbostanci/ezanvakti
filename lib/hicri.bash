@@ -18,7 +18,7 @@
 
 
 hicri_tarih_al() {
-  local adjust date manth year a b c d e jd wd l n z m d y gun ay yil
+  local adjust date month year a b c d e jd wd l n z m d y gun ay yil
   local -a hicri_aylar
 
   # date adjustment, use positive number to add days, negative number to substract, '0' for none.
