@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 #
-#                          Ezanveri İstemci 2.0
+#                          Ezanveri İstemci 2.1
 #
 ##
 ##          Copyright (c) 2010-2017 Fatih Bostancı  <faopera@gmail.com>
@@ -40,28 +40,35 @@ $mech->agent_alias( 'Linux Mozilla' );
 $mech->get($baglanti);
 
 $mech->submit_form(
-	form_number => 2,
-	fields => {
-		Country => $ulke,
-		State   => $sehir,
-		City    => $ilce,
-		period  => 'Aylik'
-	},
+  form_number => 2,
+  fields => {
+    Country => $ulke,
+    State   => $sehir,
+    City    => $ilce,
+    period  => 'Aylik'
+  },
 );
 
 $sonuc = $mech->content();
 
 my @vakitler;
-while ($sonuc =~/(?<=<td class="tCenter">)(.*?)(?=<\/td>)/g) {
+while ($sonuc =~/<td.*?>(.*?)<\/td>/g) {
   push @vakitler, $1;
 }
 
 my $satir = 0;
+my $oge = 1;
+
 foreach my $m (@vakitler) {
     if ($satir and length $m > 5) {
         print "\n";
     }
-    print $m, "  ";
+    if ($oge%8 == 0) {
+      print $m;
+    } else {
+      print $m, "  ";
+    }
     $satir = 1;
+    $oge++
 }
 print "\n";

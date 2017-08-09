@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-#                           Ezanvakti Güncelleme  Bileşeni 2.3
+#                           Ezanvakti Güncelleme  Bileşeni 2.4
 #
 #
 
@@ -244,8 +244,9 @@ printf "${RENK7}${RENK8} [${RENK2}BAŞARILI${RENK8}]${RENK0}\n"
 printf '%-60b' \
   "${RENK7}${RENK8}${EZANVERI_ADI} dosyası güncelleniyor..${RENK0}"
 
-printf "Tarih        Sabah   Güneş   Öğle    İkindi  Akşam   Yatsı   Kıble\n" >> /tmp/ezanveri-$$
-${BILESEN_DIZINI}/ezanveri_istemci.pl "${ulke_kodu}" "${sehir_kodu}" "${ilce_kodu}" 2> /tmp/ezv-perl-hata-$$ >> /tmp/ezanveri-$$
+printf 'Tarih       Sabah  Güneş  Öğle   İkindi Akşam  Yatsı  Kıble\n' >> /tmp/ezanveri-$$
+${BILESEN_DIZINI}/ezanveri_istemci.pl "${ulke_kodu}" "${sehir_kodu}" "${ilce_kodu}" \
+  2> /tmp/ezv-perl-hata-$$ >> /tmp/ezanveri-$$
 
 cat << SON >> /tmp/ezanveri-$$
 
