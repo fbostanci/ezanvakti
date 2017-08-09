@@ -50,4 +50,18 @@ $mech->submit_form(
 );
 
 $sonuc = $mech->content();
-print $sonuc;
+
+my @vakitler;
+while ($sonuc =~/(?<=<td class="tCenter">)(.*?)(?=<\/td>)/g) {
+  push @vakitler, $1;
+}
+
+my $satir = 0;
+foreach my $m (@vakitler) {
+    if ($satir and length $m > 5) {
+        print "\n";
+    }
+    print $m, "  ";
+    $satir = 1;
+}
+print "\n";
