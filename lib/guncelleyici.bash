@@ -245,9 +245,7 @@ printf '%-60b' \
   "${RENK7}${RENK8}${EZANVERI_ADI} dosyası güncelleniyor..${RENK0}"
 
 printf "Tarih        Sabah   Güneş   Öğle    İkindi  Akşam   Yatsı   Kıble\n" >> /tmp/ezanveri-$$
-${BILESEN_DIZINI}/ezanveri_istemci.pl "${ulke_kodu}" "${sehir_kodu}" "${ilce_kodu}" 2>/tmp/ezv-perl-hata-$$ |
-sed -n 's:<td class=".*">\(.*\)</td>:\1:p' | sed -e 's:^ *::' -e 's:[^[:print:]]: :g' |
-sed -e 'N;N;N;N;N;N;N;s:\n:  :g' -e 's:[[:blank:]]*$::'  >> /tmp/ezanveri-$$
+${BILESEN_DIZINI}/ezanveri_istemci.pl "${ulke_kodu}" "${sehir_kodu}" "${ilce_kodu}" 2> /tmp/ezv-perl-hata-$$ >> /tmp/ezanveri-$$
 
 cat << SON >> /tmp/ezanveri-$$
 
