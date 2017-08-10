@@ -67,7 +67,8 @@ ayet_araligi_goster() {
   then
       if (( ayet_kod > sure_ayet_sayisi ))
       then
-          printf '%s: %s Suresi %s ayetten oluşmaktadır.\n' "${AD}" "${sure_adi}" "$sure_ayet_sayisi" >&2
+          printf '%s: %s Suresi %s ayetten oluşmaktadır.\n' \
+            "${AD}" "${sure_adi}" "$sure_ayet_sayisi" >&2
           exit 1
       fi
       if (( ayet_kod == 0 ))
@@ -89,7 +90,8 @@ ayet_araligi_goster() {
       fi
       if (( ikinci_sayi > sure_ayet_sayisi ))
       then
-          printf '%s: %s Suresi %s ayetten oluşmaktadır.\n' "${AD}" "${sure_adi}" "$sure_ayet_sayisi" >&2
+          printf '%s: %s Suresi %s ayetten oluşmaktadır.\n' \
+            "${AD}" "${sure_adi}" "$sure_ayet_sayisi" >&2
           exit 1
 
       fi

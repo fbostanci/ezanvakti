@@ -187,7 +187,7 @@ then
         else
             arayuz_denetle
             [[ ${ulke} = TURKIYE ]] && g_sehir=${sehir} ||
-                                      g_sehir=$(head -1 ${VERI_DIZINI}/ulkeler/${ulke}_ilceler/${sehir}| cut -d, -f1)
+                                       g_sehir=$(head -1 ${VERI_DIZINI}/ulkeler/${ulke}_ilceler/${sehir}| cut -d, -f1)
 
             if (( arayuz == 1 ))
             then
@@ -198,7 +198,8 @@ then
             elif (( arayuz == 2 ))
             then
                 ilce=$(yad --entry --entry-text ${g_sehir} $(cut -d, -f1 < ${VERI_DIZINI}/ulkeler/${ulke}_ilceler/${sehir}) \
-                      --width=300 --sticky --center --window-icon=ezanvakti --title 'İlçe belirleme' --text 'Bulunduğunuz ilçeyi seçin')
+                      --width=300 --sticky --center --window-icon=ezanvakti --title 'İlçe belirleme' \
+                      --text 'Bulunduğunuz ilçeyi seçin')
                 (( $? == 1 )) && exit 1
 
             elif (( arayuz == 3 ))
