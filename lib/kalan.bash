@@ -76,6 +76,7 @@ kalan_sure() {
     (( bekle-- ))
     sleep 1
   done
+  kalan_sure
 }
 
 # vim: set ft=sh ts=2 sw=2 et:
