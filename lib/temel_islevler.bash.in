@@ -190,7 +190,7 @@ bugun() {
   ikindi=$(date -d "$ikindi_n" +%s)
   aksam=$(date -d "$aksam_n" +%s)
   yatsi=$(date -d "$yatsi_n" +%s)
-  yeni_gun=$(( $(date -d '23:59:59' +%s) + 1 ))
+  yeni_gun=$(date -d 'tomorrow 00:00' +%s)
 }
 
 # Eğer hedef süre bugün içerisindeyse bu fonksiyon kullanılacak.

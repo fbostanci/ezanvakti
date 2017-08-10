@@ -56,11 +56,11 @@ while ($sonuc =~/<td.*?>(.*?)<\/td>/g) {
   push @vakitler, $1;
 }
 
-my $satir = 0;
+my $bos = 0;
 my $oge = 1;
 
 foreach my $v (@vakitler) {
-    if ($satir and length $v > 5) {
+    if ($bos and length $v > 5) {
         print "\n";
     }
     if ($oge%8 == 0) {
@@ -68,7 +68,7 @@ foreach my $v (@vakitler) {
     } else {
       print $v, "  ";
     }
-    $satir = 1;
+    $bos = 1;
     $oge++;
 }
 print "\n";
