@@ -115,12 +115,12 @@ gorsel_guncelleme_yap() {
   if  [[ -x $(type -p yad) ]]
   then
       (
-        guncelleme_yap
+        guncelleme_yap "$1"
       ) | yad  --progress --undecorated --progress-text="${EZANVERI_ADI} güncelleniyor" \
                --pulsate --auto-close --width=300 --center --fixed \
                --no-buttons --skip-taskbar
   else
-      guncelleme_yap
+      guncelleme_yap "$1"
   fi
 }
 

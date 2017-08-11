@@ -280,7 +280,7 @@ ezanvakti_bekle() {
 
 ezv_sleep_pid_denetle; ezanveri_denetle
 gun_animsat; vakit_animsat &
-(( $(date +%u) == 5 )) && (( CUMA_SELASI_OKU )) && cuma_selasi &
+(( $(date +%u) == 5 && CUMA_SELASI_OKU )) && cuma_selasi &
 ezanvakti_bekle
 
 # vim: set ft=sh ts=2 sw=2 et:
