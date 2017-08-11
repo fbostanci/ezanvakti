@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-#                           Ezanvakti Güncelleme  Bileşeni 2.4
+#                           Ezanvakti Güncelleme  Bileşeni 2.5
 #
 #
 
@@ -10,6 +10,12 @@ guncelleme_yap() { ### Ana fonksiyon {{{
   local -a pmler
 
   SECONDS=0
+  if [[ $1 = yenile ]]
+  then
+      ULKE=''
+      SEHIR=''
+      ILCE=''
+  fi
   test x"${ULKE}"  = x"" && ULKE=yok_boyle_bir_yer
   test x"${SEHIR}" = x"" && SEHIR=yok_boyle_bir_yer
   test x"${ILCE}"  = x"" && ILCE=yok_boyle_bir_yer

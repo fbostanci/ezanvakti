@@ -182,6 +182,12 @@ then
         gorsel_guncelleme_yap
         arayuz
 
+    elif [[ $str = güncelle yeni ]]
+    then
+        bilesen_yukle guncelleyici
+        gorsel_guncelleme_yap yenile
+        arayuz
+
     elif [[ $str = @(hakkında|about) ]]
     then
         bilesen_yukle hakkinda

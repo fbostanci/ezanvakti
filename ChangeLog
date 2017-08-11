@@ -3,6 +3,18 @@
 
 
 /×××××××××××××××××××××××××××××
+× Ezanvakti 6.3.3
+×××××××××××××××××××××××××××××/
+2017-08-12 Fatih BOSTANCI <faopera@gmail.com>
+
+ *  vakitleri alma ve düzenleme tamamen ezanveri_istemci.pl ile yapılıyor.
+ *  kalan.bash yeniden yazıldı.
+ *  guncelleyici.bash: sıfırdan konum seçimleri yapma. (--guncelle --yenile)
+ *  --conky --kerahat çıktısı sadeleştirildi.
+ *  kod düzenlemeleri ve geliştirmeler
+
+
+/×××××××××××××××××××××××××××××
 × Ezanvakti 6.3.2
 ×××××××××××××××××××××××××××××/
 2017-08-03 Fatih BOSTANCI <faopera@gmail.com>

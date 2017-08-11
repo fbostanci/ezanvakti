@@ -28,7 +28,7 @@ case $1 in
       "${RENK8}Hiçbir namaz kılınmaz.\n\n"\
       "${RENK2}Kerahat Vakti 4${RENK3} : $ikindi_n - $kv_aksam${RENK2} arası\n"\
       "${RENK8}İkindi namazından sonra nafile namazı kılınmaz.\n"\
-      "ancak kerahat vakti girinceye kadar kaza namazı kılınır.\n\n"\
+      "ancak kerahat vakti 5 girinceye kadar kaza namazı kılınır.\n\n"\
       "${RENK2}Kerahat vakti 5${RENK3} : $kv_aksam - $aksam_n${RENK2} arası\n"\
       "${RENK8}O günün ikindi namazı farzı hariç olmak üzere başka bir namaz kılınmaz.${RENK0}\n\n" ;;
 

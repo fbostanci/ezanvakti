@@ -196,8 +196,11 @@ case $1 in
     bilesen_yukle bilgi_goster
     esma_goster ucbirim ;;
   --g[uü]ncelle)
-    bilesen_yukle guncelleyici
-    guncelleme_yap ;;
+    bilesen_yukle guncelleyici; shift
+    case $1 in
+      -y|--yenile) guncelleme_yap yenile ;;
+      *) guncelleme_yap ;;
+    esac ;;
   --g[uü]nler)
     bilesen_yukle dini_gunler
     gunler ;;
