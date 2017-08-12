@@ -3,10 +3,10 @@
 #                          Ezanveri İstemci 2.1
 #
 ##
-##          Copyright (c) 2010-2017 Fatih Bostancı  <faopera@gmail.com>
+##       Copyright (c) 2010-2017 Fatih Bostancı <fbostanci@vivaldi.net>
 ##
-##                   https://gitlab.com/fbostanci/ezanvakti
-##                   https://github.com/fbostanci/ezanvakti
+##                https://gitlab.com/fbostanci/ezanvakti
+##                https://github.com/fbostanci/ezanvakti
 ##
 ## This program is free software; you can redistribute it and/or modify
 ## it under the terms of the GNU General Public License as published by
