@@ -30,7 +30,7 @@ Genel Özellikleri
 *  Arayüzde hicri tarih gösterimi
 *  Arayüz HTML renk özelleştirmeleri
 *  Cuma günü isteğe bağlı sela okunması (süre ayarlı)
-*  Sistem açılışında 3 farklı kipte çalışabilme<br>
+*  Sistem açılışında 3 farklı kip<br>
    <pre>
     1: beş vakit (normal kip)
     2: ramazan (yalnızca iftar ve imsak vakitlerinde ezan  okunur.)
