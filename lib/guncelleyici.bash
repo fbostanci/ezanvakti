@@ -1,12 +1,12 @@
 #!/bin/bash
 #
-#                           Ezanvakti Güncelleme  Bileşeni 2.6
+#                           Ezanvakti Güncelleme  Bileşeni 2.7
 #
 #
 
 guncelleme_yap() { ### Ana fonksiyon {{{
   local arayuz au ulke sehir ilce varsayilan_sehir pm varsayilan_ilce dn
-  local ulke_kodu sehir_kodu ilce_kodu stn pay
+  local ulke_kodu sehir_kodu ilce_kodu stn basamak_payi renk_payi bas_renksiz_payi
   local e=0 denetim=0
   local -a pmler
 
@@ -24,6 +24,14 @@ guncelleme_yap() { ### Ana fonksiyon {{{
   test x"${ILCE}"  = x"" && ILCE=yok_boyle_bir_yer
   renk_denetle
 
+  if [[ ${RENK:-RENK_KULLAN} == 0 ]]
+  then
+      renksiz_payi=17
+      bas_renksiz_payi=11
+  else
+      renksiz_payi=0
+      bas_renksiz_payi=0
+  fi
 ### Perl denetleme {{{
 printf '%b%s%b' "${RENK7}${RENK8}" \
   'Perl bileşenleri denetleniyor...' "${RENK0}"
@@ -40,8 +48,8 @@ do
 done
 
 (( ${#pmler[@]} )) && {
-  printf '%b%*b%b' "${RENK7}${RENK8}" $(( stn - 18 )) \
-    "[${RENK1}  BAŞARISIZ ${RENK8}]" "${RENK0}\n"
+  printf '%b%*b' "${RENK7}${RENK8}" $(( stn - 13 - renksiz_payi )) \
+    "[${RENK1}  BAŞARISIZ ${RENK8}]${RENK0}\n"
   printf '\n%b\n' \
     "${RENK7}${RENK3}Aşağıdaki perl bileşen(ler)i bulunamadı.${RENK0}"
 
@@ -54,8 +62,8 @@ done
   exit 1
 }
 
-printf '%b%*b%b' "${RENK7}${RENK8}" $(( stn - 18 )) \
-  "[${RENK2}  BAŞARILI  ${RENK8}]" "${RENK0}\n"
+printf '%b%*b' "${RENK7}${RENK8}" $(( stn - 13 - renksiz_payi )) \
+  "[${RENK2}  BAŞARILI  ${RENK8}]${RENK0}\n"
 #}}}
 
 arayuz_denetle() { ### Arayüz denetle {{{
@@ -79,8 +87,8 @@ arayuz_denetle() { ### Arayüz denetle {{{
       au=Zenity
 
   else
-      printf '%b%*b%b' "${RENK7}${RENK8}" $(( stn - 19 )) \
-        "[${RENK1}  BAŞARISIZ ${RENK8}]" "${RENK0}\n"
+      printf '%b%*b' "${RENK7}${RENK8}" $(( stn - 14 - renksiz_payi )) \
+        "[${RENK1}  BAŞARISIZ ${RENK8}]${RENK0}\n"
       printf '\n%b\n%b\n%b\n' \
         "${RENK7}${RENK3}Bu özellik YAD, Zenity ya da Kdialog ile çalışmaktadır." \
         "Sisteminizde istenen uygulamalardan herhangi biri bulunamadı." \
@@ -88,8 +96,8 @@ arayuz_denetle() { ### Arayüz denetle {{{
       exit 1
 
   fi
-  printf '%b%*b%b' "${RENK7}${RENK8}" $(( stn - 19 )) \
-    "[${RENK2}  BAŞARILI  ${RENK8}]" "${RENK0}\n"
+  printf '%b%*b' "${RENK7}${RENK8}" $(( stn - 14 - renksiz_payi )) \
+    "[${RENK2}  BAŞARILI  ${RENK8}]${RENK0}\n"
   printf '%b\n' \
     "${RENK7}${RENK3} ->${RENK8} Kullanılacak uygulama:${RENK2} ${au}${RENK0}"
 }
@@ -245,14 +253,14 @@ printf '%b%s%b' "${RENK7}${RENK8}" \
 # internet erişimini denetle.
 if ! ping -q -c 1 -W 1 google.com &>/dev/null
 then
-    printf '%b%*b' "${RENK7}${RENK8}" $(( stn - 13 )) \
+    printf '%b%*b' "${RENK7}${RENK8}" $(( stn - 13 - renksiz_payi )) \
       "[${RENK1}  BAŞARISIZ ${RENK8}]${RENK0}\n"
     printf '\n%b\n' \
       "${RENK7}${RENK3}İnternet erişimi algılanamadı.${RENK0}"
     exit 1
 fi
 
-printf '%b%*b' "${RENK7}${RENK8}" $(( stn - 13 )) \
+printf '%b%*b' "${RENK7}${RENK8}" $(( stn - 13 - renksiz_payi )) \
   "[${RENK2}  BAŞARILI  ${RENK8}]${RENK0}\n"
 #}}}
 
@@ -278,7 +286,7 @@ SON
 
   (( $(wc -l < /tmp/ezanveri-$$) >= 20 )) && {
     mv -f /tmp/ezanveri-$$ "${EZANVERI}"
-    printf '%b%*b' "${RENK7}${RENK8}" $(( stn - ${#EZANVERI_ADI} - 6 )) \
+    printf '%b%*b' "${RENK7}${RENK8}" $(( stn - ${#EZANVERI_ADI} - 6 - renksiz_payi )) \
       "[${RENK2}  BAŞARILI  ${RENK8}]${RENK0}\n"
 
     rm -f /tmp/ezv-perl-hata-$$ &>/dev/null
@@ -289,7 +297,7 @@ SON
       -i ezanvakti -t $GUNCELLEME_BILDIRIM_SURESI"000"
     :> /tmp/eznvrgncldntle_$(date +%d%m%y)
   } || {
-    printf '%b%*b' "${RENK7}${RENK8}" $(( stn - ${#EZANVERI_ADI} - 7 )) \
+    printf '%b%*b' "${RENK7}${RENK8}" $(( stn - ${#EZANVERI_ADI} - 7 - renksiz_payi )) \
       "[${RENK1}  BAŞARISIZ ${RENK8}]${RENK0}"
     printf "${RENK7}${RENK3}\n$( < /tmp/ezv-perl-hata-$$)${RENK0}\n"
 
@@ -306,18 +314,19 @@ SON
 
 if (( ${#SECONDS} == 1 ))
 then
-    pay='18'
+    basamak_payi='18'
 elif (( ${#SECONDS} == 2 ))
 then
-    pay='16'
+    basamak_payi='16'
 elif (( ${#SECONDS} == 3 ))
 then
-    pay='14'
+    basamak_payi='14'
 else
-    pay='12'
+    basamak_payi='12'
 fi
 printf '%b%*b' "${RENK7}${RENK8}Güncelleme için geçen süre: " \
-  $(( stn - ${#SECONDS} - pay )) "${RENK2}${SECONDS} saniye${RENK0}\n"
+  $(( stn - ${#SECONDS} - basamak_payi - bas_renksiz_payi )) \
+  "${RENK2}${SECONDS} saniye${RENK0}\n"
 } #}}}
 
 # vim: set ft=sh ts=2 sw=2 et:
