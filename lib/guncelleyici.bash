@@ -1,15 +1,18 @@
 #!/bin/bash
 #
-#                           Ezanvakti Güncelleme  Bileşeni 2.5
+#                           Ezanvakti Güncelleme  Bileşeni 2.6
 #
 #
 
 guncelleme_yap() { ### Ana fonksiyon {{{
-  local arayuz au ulke sehir ilce varsayilan_sehir pm varsayilan_ilce dn ulke_kodu sehir_kodu ilce_kodu
+  local arayuz au ulke sehir ilce varsayilan_sehir pm varsayilan_ilce dn
+  local ulke_kodu sehir_kodu ilce_kodu stn pay
   local e=0 denetim=0
   local -a pmler
 
   SECONDS=0
+  stn=$(tput cols)
+
   if [[ $1 = yenile ]]
   then
       ULKE=''
@@ -22,8 +25,8 @@ guncelleme_yap() { ### Ana fonksiyon {{{
   renk_denetle
 
 ### Perl denetleme {{{
-printf '%-59b' \
-  "${RENK7}${RENK8}Perl bileşenleri denetleniyor..${RENK0}"
+printf '%b%s%b' "${RENK7}${RENK8}" \
+  'Perl bileşenleri denetleniyor...' "${RENK0}"
 
 # Perl bileşenlerini denetle.
 for pm in 'WWW::Mechanize'
@@ -37,7 +40,8 @@ do
 done
 
 (( ${#pmler[@]} )) && {
-  printf "${RENK7}${RENK8} [${RENK1}BAŞARISIZ${RENK8}]${RENK0}\n"
+  printf '%b%*b%b' "${RENK7}${RENK8}" $(( stn - 18 )) \
+    "[${RENK1}  BAŞARISIZ ${RENK8}]" "${RENK0}\n"
   printf '\n%b\n' \
     "${RENK7}${RENK3}Aşağıdaki perl bileşen(ler)i bulunamadı.${RENK0}"
 
@@ -50,13 +54,14 @@ done
   exit 1
 }
 
-printf "${RENK7}${RENK8} [${RENK2}BAŞARILI${RENK8}]${RENK0}\n"
+printf '%b%*b%b' "${RENK7}${RENK8}" $(( stn - 18 )) \
+  "[${RENK2}  BAŞARILI  ${RENK8}]" "${RENK0}\n"
 #}}}
 
 arayuz_denetle() { ### Arayüz denetle {{{
   (( denetim )) && return 0 || denetim=1
-  printf '%-60b' \
-    "${RENK7}${RENK8}Arayüz uygulaması denetleniyor..${RENK0}"
+  printf '%b%s%b' "${RENK7}${RENK8}" \
+    'Arayüz uygulaması denetleniyor...' "${RENK0}"
 
   if test -x "$(type -p kdialog)"
   then
@@ -74,15 +79,17 @@ arayuz_denetle() { ### Arayüz denetle {{{
       au=Zenity
 
   else
-      printf "${RENK7}${RENK8} [${RENK1}BAŞARISIZ${RENK8}]${RENK0}\n"
+      printf '%b%*b%b' "${RENK7}${RENK8}" $(( stn - 19 )) \
+        "[${RENK1}  BAŞARISIZ ${RENK8}]" "${RENK0}\n"
       printf '\n%b\n%b\n%b\n' \
         "${RENK7}${RENK3}Bu özellik YAD, Zenity ya da Kdialog ile çalışmaktadır." \
-        "Sisteminizde istenen uygulamalar bulunamadı." \
+        "Sisteminizde istenen uygulamalardan herhangi biri bulunamadı." \
         "Konum bilgilerinizi ayarlar dosyasına elle girip yeniden deneyin.${RENK0}"
       exit 1
 
   fi
-  printf "${RENK7}${RENK8} [${RENK2}BAŞARILI${RENK8}]${RENK0}\n"
+  printf '%b%*b%b' "${RENK7}${RENK8}" $(( stn - 19 )) \
+    "[${RENK2}  BAŞARILI  ${RENK8}]" "${RENK0}\n"
   printf '%b\n' \
     "${RENK7}${RENK3} ->${RENK8} Kullanılacak uygulama:${RENK2} ${au}${RENK0}"
 }
@@ -232,24 +239,26 @@ fi
 
 unset IFS
 
-printf '%-60b' \
-  "${RENK7}${RENK8}İnternet erişimi denetleniyor..${RENK0}"
+printf '%b%s%b' "${RENK7}${RENK8}" \
+  'İnternet erişimi denetleniyor...' "${RENK0}"
 
 # internet erişimini denetle.
 if ! ping -q -c 1 -W 1 google.com &>/dev/null
 then
-    printf "${RENK7}${RENK8} [${RENK1}BAŞARISIZ${RENK8}]${RENK0}\n"
+    printf '%b%*b' "${RENK7}${RENK8}" $(( stn - 13 )) \
+      "[${RENK1}  BAŞARISIZ ${RENK8}]${RENK0}\n"
     printf '\n%b\n' \
       "${RENK7}${RENK3}İnternet erişimi algılanamadı.${RENK0}"
     exit 1
 fi
 
-printf "${RENK7}${RENK8} [${RENK2}BAŞARILI${RENK8}]${RENK0}\n"
+printf '%b%*b' "${RENK7}${RENK8}" $(( stn - 13 )) \
+  "[${RENK2}  BAŞARILI  ${RENK8}]${RENK0}\n"
 #}}}
 
 ### Güncelleme işlemi {{{
-printf '%-60b' \
-  "${RENK7}${RENK8}${EZANVERI_ADI} dosyası güncelleniyor..${RENK0}"
+printf '%b%b' "${RENK7}${RENK8}" \
+  "${EZANVERI_ADI} dosyası güncelleniyor...${RENK0}"
 
 printf 'Tarih       Sabah  Güneş  Öğle   İkindi Akşam  Yatsı  Kıble\n' >> /tmp/ezanveri-$$
 ${BILESEN_DIZINI}/ezanveri_istemci.pl "${ulke_kodu}" "${sehir_kodu}" "${ilce_kodu}" \
@@ -269,7 +278,8 @@ SON
 
   (( $(wc -l < /tmp/ezanveri-$$) >= 20 )) && {
     mv -f /tmp/ezanveri-$$ "${EZANVERI}"
-    printf "${RENK7}${RENK8} [${RENK2}BAŞARILI${RENK8}]${RENK0}\n"
+    printf '%b%*b' "${RENK7}${RENK8}" $(( stn - ${#EZANVERI_ADI} - 6 )) \
+      "[${RENK2}  BAŞARILI  ${RENK8}]${RENK0}\n"
 
     rm -f /tmp/ezv-perl-hata-$$ &>/dev/null
     . "${EZANVAKTI_AYAR}"
@@ -279,7 +289,8 @@ SON
       -i ezanvakti -t $GUNCELLEME_BILDIRIM_SURESI"000"
     :> /tmp/eznvrgncldntle_$(date +%d%m%y)
   } || {
-    printf "${RENK7}${RENK8} [${RENK1}BAŞARISIZ${RENK8}]${RENK0}\n"
+    printf '%b%*b' "${RENK7}${RENK8}" $(( stn - ${#EZANVERI_ADI} - 7 )) \
+      "[${RENK1}  BAŞARISIZ ${RENK8}]${RENK0}"
     printf "${RENK7}${RENK3}\n$( < /tmp/ezv-perl-hata-$$)${RENK0}\n"
 
     rm -f /tmp/ezv-perl-hata-$$ &>/dev/null
@@ -293,9 +304,20 @@ SON
 
   } #}}}
 
-printf '%-60b%b' \
-  "${RENK7}${RENK8}Güncelleme için geçen süre: " \
-  "${RENK2}${SECONDS} saniye${RENK0}\n"
+if (( ${#SECONDS} == 1 ))
+then
+    pay='18'
+elif (( ${#SECONDS} == 2 ))
+then
+    pay='16'
+elif (( ${#SECONDS} == 3 ))
+then
+    pay='14'
+else
+    pay='12'
+fi
+printf '%b%*b' "${RENK7}${RENK8}Güncelleme için geçen süre: " \
+  $(( stn - ${#SECONDS} - pay )) "${RENK2}${SECONDS} saniye${RENK0}\n"
 } #}}}
 
 # vim: set ft=sh ts=2 sw=2 et:
