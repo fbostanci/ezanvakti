@@ -24,7 +24,7 @@ guncelleme_yap() { ### Ana fonksiyon {{{
   test x"${ILCE}"  = x"" && ILCE=yok_boyle_bir_yer
   renk_denetle
 
-  if [[ ${RENK:-RENK_KULLAN} == 0 ]]
+  if (( ! ${RENK:-RENK_KULLAN} ))
   then
       renksiz_payi=17
       bas_renksiz_payi=11
