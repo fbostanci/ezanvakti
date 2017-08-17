@@ -6,7 +6,7 @@
 
 guncelleme_yap() { ### Ana fonksiyon {{{
   local arayuz au ulke sehir ilce varsayilan_sehir pm varsayilan_ilce dn
-  local ulke_kodu sehir_kodu ilce_kodu stn basamak_payi renk_payi bas_renksiz_payi
+  local ulke_kodu sehir_kodu ilce_kodu stn basamak_payi renksiz_payi bas_renksiz_payi
   local e=0 denetim=0
   local -a pmler
 
