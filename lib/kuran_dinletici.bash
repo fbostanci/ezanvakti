@@ -82,7 +82,8 @@ kuran_dinletimi() {
       then
           okuyan='Ahmad el Ajmy'
       else
-          printf '%s: Deskteklenmeyen KURAN_OKUYAN adı: %s\n' "${AD}" "${KURAN_OKUYAN}" >&2
+          printf '%s: Deskteklenmeyen KURAN_OKUYAN adı: %s\n' \
+            "${AD}" "${KURAN_OKUYAN}" >&2
           exit 1
       fi
       dinletilecek_sure="http://www.listen2quran.com/listen/${KURAN_OKUYAN}/$sure.mp3"

@@ -31,5 +31,7 @@ Copyright (c) 2010-$(date +%Y) Fatih Bostancı
 GPL 3 ile lisanslanmıştır.\n" \
   --title "${AD^} - Hakkında" --fixed --image-on-top \
   --button='gtk-close' --sticky --center \
-  --image=ezanvakti --window-icon=ezanvakti
+  --image=${AD} --window-icon=${AD}
 }
+
+# vim: set ft=sh ts=2 sw=2 et:

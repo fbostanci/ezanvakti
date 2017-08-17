@@ -61,3 +61,5 @@ siradaki_vakit() { # {{{
 }
 
 # }}}
+
+# vim: set ft=sh ts=2 sw=2 et:

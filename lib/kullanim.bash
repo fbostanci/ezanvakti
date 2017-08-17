@@ -97,3 +97,5 @@ betik_kullanimi() {
 
   Çıkmak için 'q' tuşuna basınız."  | less -R
 }
+
+# vim: set ft=sh ts=2 sw=2 et:
