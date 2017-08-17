@@ -4,13 +4,6 @@
 #
 #
 #set -x
-# TODO: 2.0 için yapılacaklar
-# haftalık ve aylık vakitler çıktılarını göstermeyi ekle.@TMM
-# dini günler gösterimini ekle.@TMM
-# ana betik bağımlığını azalt . Ortak yeni fonksiyonlar yaz.@TMM
-# Çoklu çalışmayı engelle.@TMM
-# sistem tepsisi desteği .(?)
-# arayüzde html kod denemeleri.@TMM
 
 . @libdir@/@AD@/temel_islevler.bash
 . @libdir@/@AD@/arayuz_temel.bash
@@ -49,7 +42,7 @@ strng=$(yad --form --text "$(printf "${GELISMIS_ARAYUZ_BICIMI}" \
 ${secim_listesi} \
 --field="<span foreground=\'${ARAYUZ_SECKE_ADLARI_RENGI}\'>Başlatıcı</span>:CE" \
 "${tamamlama_listesi}" --button='gtk-ok:150' --button="gtk-close:121" \
---image=ezanvakti --window-icon=ezanvakti --title "${AD^}" --center --fixed)
+--image=${AD} --window-icon=${AD} --title "${AD^}" --center --fixed)
 
 donus=$(echo $?)
 

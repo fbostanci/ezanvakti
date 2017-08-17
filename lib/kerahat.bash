@@ -41,3 +41,5 @@ case $1 in
       "Kerahat v5 : $kv_aksam <-> $aksam_n" ;;
 esac
 }
+
+# vim: set ft=sh ts=2 sw=2 et:

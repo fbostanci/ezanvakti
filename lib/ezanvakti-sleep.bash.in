@@ -54,7 +54,7 @@ gun_animsat() {
 
     # eğer ozel_ileti boş (null) dönmemişse bildirimi gönder.
     [[ -n ${ozel_ileti} ]] && {
-      notify-send "${AD^}" "${ozel_ileti}" -t $GUN_ANIMSAT"000" -i ezanvakti
+      notify-send "${AD^}" "${ozel_ileti}" -t $GUN_ANIMSAT"000" -i ${AD}
     }
   }
 }
@@ -179,14 +179,15 @@ ezan_oku() {
 
   notify-send "${ILCE} için" \
     "${simdiki} ${ileti}\n$vakit_saati_n" \
-    -i ezanvakti -u critical \
+    -i ${AD} -u critical \
     -t $EZAN_BILDIRIM_SURESI"000"
 
   (( ezan_okunsun_mu )) || { sleep 1m; return 0; }
   bilesen_yukle mplayer_yonetici
 
   [[ ! -f ${vakit_ezani} ]] && {
-    printf '%s: vaktin ses dosyası -> %s <- bulunamadı.\n' "${AD}" "${vakit_ezani}" >&2
+    printf '%s: vaktin ses dosyası -> %s <- bulunamadı.\n' \
+      "${AD}" "${vakit_ezani}" >&2
     sleep 1m; return 1
   }
   # Oynatıcı duraklatma etkin mi ezan okumadan değeri
@@ -231,7 +232,7 @@ vakit_animsat() {
     [[ ${simdiki} = @(İmsak|İftar) ]] && ileti='vakti olacak.' || ileti='ezanı okunacak.'
     notify-send "${AD^}" "$VAKIT_ANIMSAT dakika sonra $simdiki ${ileti}" \
       -u critical -t $BILGI_BILDIRIM_SURESI"000" \
-      -i ezanvakti
+      -i ${AD}
 
     (( SESLI_UYARI )) && {
       bilesen_yukle mplayer_yonetici

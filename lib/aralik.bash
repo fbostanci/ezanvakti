@@ -8,7 +8,8 @@ ayet_araligi_goster() {
   renk_denetle
 
   local sure_kod=$1 ayet_kod=$2
-  local sure_adi sure_baslama sure_ayet_sayisi int_ayet_kod ayet_baslama ayet_bitis satir
+  local sure_adi sure_baslama sure_ayet_sayisi int_ayet_kod 
+  local ayet_baslama ayet_bitis satir
 
   if [[ -f ${KULLANICI_TEFSIR_DIZINI}/${TEFSIR_SAHIBI} ]]
   then
@@ -17,13 +18,14 @@ ayet_araligi_goster() {
   then
       TEFSIR="${VERI_DIZINI}/tefsirler/${TEFSIR_SAHIBI}"
   else
-      printf '%s: %s tefsir dosyası bulunamadı.\n' "${AD}" "${TEFSIR_SAHIBI}" >&2
+      printf '%s: %s tefsir dosyası bulunamadı.\n' \
+        "${AD}" "${TEFSIR_SAHIBI}" >&2
       exit 1
   fi
 
   if [[ -z ${ayet_kod} ]]
   then
-      printf "%s: Kullanım: <sure_kodu> <ayet_aralığı>\n" "${AD}" >&2
+      printf '%s: Kullanım: <sure_kodu> <ayet_aralığı>\n' "${AD}" >&2
       exit 1
   fi
 
@@ -73,7 +75,8 @@ ayet_araligi_goster() {
       fi
       if (( ayet_kod == 0 ))
       then
-          printf '%s: %s Suresi için ayet aralığını yanlış girdiniz.\n' "${AD}" "${sure_adi}" >&2
+          printf '%s: %s Suresi için ayet aralığını yanlış girdiniz.\n' \
+            "${AD}" "${sure_adi}" >&2
           exit 1
       fi
 
@@ -84,7 +87,8 @@ ayet_araligi_goster() {
       export $(gawk -F'-' '{printf "ilk_sayi=%d\nikinci_sayi=%d", $1,$2}' <<<$ayet_kod)
       if (( ilk_sayi > ikinci_sayi ))
       then
-          printf '%s: %s Suresi için ayet aralığını yanlış girdiniz.\n' "${AD}" "${sure_adi}"  >&2
+          printf '%s: %s Suresi için ayet aralığını yanlış girdiniz.\n' \
+            "${AD}" "${sure_adi}"  >&2
           exit 1
 
       fi
@@ -97,14 +101,16 @@ ayet_araligi_goster() {
       fi
       if (( ilk_sayi == 0 || ikinci_sayi == 0 ))
       then
-          printf '%s: %s Suresi için ayet aralığını yanlış girdiniz.\n' "${AD}" "${sure_adi}" >&2
+          printf '%s: %s Suresi için ayet aralığını yanlış girdiniz.\n' \
+            "${AD}" "${sure_adi}" >&2
           exit 1
       fi
 
       ayet_baslama=$(( sure_baslama + ilk_sayi ))
       ayet_bitis=$(( sure_baslama + ikinci_sayi ))
   else
-      printf '%s: %s Suresi için ayet aralığını yanlış girdiniz.\n' "${AD}" "${sure_adi}" >&2
+      printf '%s: %s Suresi için ayet aralığını yanlış girdiniz.\n' \
+        "${AD}" "${sure_adi}" >&2
       exit 1
   fi
 
@@ -117,3 +123,5 @@ ayet_araligi_goster() {
       "${RENK8}$(sed -n "${satir}p" "${TEFSIR}")${RENK0}"
   done
 }
+
+# vim: set ft=sh ts=2 sw=2 et:

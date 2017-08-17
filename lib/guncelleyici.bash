@@ -124,7 +124,7 @@ then
     elif (( arayuz == 2 ))
     then
         ulke=$(yad --entry --entry-text 'TURKIYE' $(cut -d, -f1 < ${VERI_DIZINI}/ulkeler/AAA-ULKELER) \
-              --width=300 --sticky --center --window-icon=ezanvakti \
+              --width=300 --sticky --center --window-icon=${AD} \
               --title 'Ülke belirleme'  --text 'Bulunduğunuz ülkeyi seçin')
         (( $? == 1 )) && exit 1
 
@@ -171,7 +171,7 @@ then
     elif (( arayuz == 2 ))
     then
         sehir=$(yad --entry --entry-text ${varsayilan_sehir} $(cut -d, -f1 < ${VERI_DIZINI}/ulkeler/${ulke}) \
-                --width=300 --sticky --center --window-icon=ezanvakti \
+                --width=300 --sticky --center --window-icon=${AD} \
                 --title 'Şehir belirleme' --text 'Bulunduğunuz şehri seçin')
         (( $? == 1 )) && exit 1
 
@@ -219,7 +219,7 @@ then
             elif (( arayuz == 2 ))
             then
                 ilce=$(yad --entry --entry-text ${g_sehir} $(cut -d, -f1 < ${VERI_DIZINI}/ulkeler/${ulke}_ilceler/${sehir}) \
-                      --width=300 --sticky --center --window-icon=ezanvakti --title 'İlçe belirleme' \
+                      --width=300 --sticky --center --window-icon=${AD} --title 'İlçe belirleme' \
                       --text 'Bulunduğunuz ilçeyi seçin')
                 (( $? == 1 )) && exit 1
 
@@ -294,7 +294,7 @@ SON
 
     renk_denetle
     notify-send "${AD^}" "${EZANVERI_ADI} dosyası başarıyla güncellendi." \
-      -i ezanvakti -t $GUNCELLEME_BILDIRIM_SURESI"000"
+      -i ${AD} -t $GUNCELLEME_BILDIRIM_SURESI"000"
     :> /tmp/eznvrgncldntle_$(date +%d%m%y)
   } || {
     printf '%b%*b' "${RENK7}${RENK8}" $(( stn - ${#EZANVERI_ADI} - 7 - renksiz_payi )) \
@@ -305,7 +305,7 @@ SON
     printf "${RENK7}${RENK4}\n!!! YENIDEN DENEYIN !!!${RENK0}\n"
 
     notify-send "${AD^}" "${EZANVERI_ADI} dosyasının güncellenmesi başarısız oldu." \
-      -i ezanvakti -t $GUNCELLEME_BILDIRIM_SURESI"000"
+      -i ${AD} -t $GUNCELLEME_BILDIRIM_SURESI"000"
 
     rm -f /tmp/ezanveri-$$ &>/dev/null
     exit 1

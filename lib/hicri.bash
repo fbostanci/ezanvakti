@@ -57,3 +57,5 @@ hicri_tarih_al() {
 
   echo "$gun $ay $yil"
 }
+
+# vim: set ft=sh ts=2 sw=2 et:

@@ -43,7 +43,7 @@ arayuz_pid_denetle() {
   if [[ -f /tmp/.ezanvakti_yad_arayuz.pid && \
         -n $(ps -p $( < /tmp/.ezanvakti_yad_arayuz.pid) -o comm=) ]]
   then
-      printf "%s: Yalnızca bir arayüz örneği çalışabilir.\n" "${AD}" >&2
+      printf '%s: Yalnızca bir arayüz örneği çalışabilir.\n' "${AD}" >&2
       exit 1
   else
       printf "$ypid" > /tmp/.ezanvakti_yad_arayuz.pid
@@ -56,7 +56,7 @@ arayuz2_pid_denetle() {
   if [[ -f /tmp/.ezanvakti_yad_arayuz2.pid && \
         -n $(ps -p $( < /tmp/.ezanvakti_yad_arayuz2.pid) -o comm=) ]]
   then
-      printf "%s: Yalnızca bir arayüz2 örneği çalışabilir.\n" "${AD}" >&2
+      printf '%s: Yalnızca bir arayüz2 örneği çalışabilir.\n' "${AD}" >&2
       exit 1
   else
       printf "$ypid" > /tmp/.ezanvakti_yad_arayuz2.pid
@@ -294,7 +294,7 @@ mplayer_sure_al() {
 
 g_secim_goster() {
   yad --title "${AD^} - ${secim_basligi}" --text-info --filename="${cikti_dosyasi}" \
-      --width=560 --height=300 --wrap --button='gtk-close' --window-icon=ezanvakti \
+      --width=560 --height=300 --wrap --button='gtk-close' --window-icon=${AD} \
       --back="$ARKAPLAN_RENGI" --fore="$YAZI_RENGI" --mouse --sticky
 }
 
@@ -320,7 +320,7 @@ pencere_bilgi() {
                           $(( parca_suresi % 3600 / 60 )) \
                           $(( parca_suresi % 60 )) )
 
-  yad --form --separator=' ' --title="${AD^}" --image=ezanvakti --window-icon=ezanvakti \
+  yad --form --separator=' ' --title="${AD^}" --image=${AD} --window-icon=${AD} \
       --text "${mplayer_ileti}\n Süre        : $parca_suresi_n" --mouse --fixed \
       --button='gtk-cancel:127' --button='gtk-close:0' --timeout=$parca_suresi
 
@@ -341,7 +341,7 @@ strng=$(yad --form \
 --field=Sure:CB \
 "${sure_listesi}" \
 --button='gtk-go-back:151' --button='gtk-media-play:152' --button='gtk-quit:153' \
---image=ezanvakti --window-icon=ezanvakti \
+--image=${AD} --window-icon=${AD} \
 --title "${AD^}" --sticky --center --fixed)
 
 donus=$(echo $?)

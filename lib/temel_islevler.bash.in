@@ -26,8 +26,11 @@ EZANVAKTI_AYAR="${EZANVAKTI_DIZINI}/ayarlar"
 #  Öntanımlı ayarlardan gelen değerlerin üzerine yazılacak.
 #
 # Kullanıcı ayarlarını al.
-. "${EZANVAKTI_AYAR}" ||
-  { printf '%s: %s dosyası okunabilir değil.\n' "${AD}" "${EZANVAKTI_AYAR}"; exit 1; }
+. "${EZANVAKTI_AYAR}" || {
+  printf '%s: %s dosyası okunabilir değil.\n' \
+    "${AD}" "${EZANVAKTI_AYAR}"
+  exit 1
+}
 
 EZANVERI="${EZANVAKTI_DIZINI}/${EZANVERI_ADI}"
 MPLAYER="mplayer -really-quiet -softvol -volume $SES"
@@ -106,7 +109,8 @@ bilesen_yukle() {
 }
 
 hatali_kullanim() {
-  printf "%s: -- \`%s' geçerli değil.\nYardım için '%s --yardım' kullanın.\n" "${AD}" "$1" "${AD}" >&2
+  printf "%s: -- \`%s' geçerli değil.\nYardım için '%s --yardım' kullanın.\n" \
+    "${AD}" "$1" "${AD}" >&2
   exit 1
 }
 
@@ -164,7 +168,7 @@ ezanveri_denetle() {
     # ayrıca dosyaya tarih uzantısı da ekledik.
     [[ ! -f /tmp/eznvrgncldntle_$(date +%d%m%y) ]] && {
       notify-send "${AD^}" "${EZANVERI_ADI} dosyanız\n\t$ksatir gün\nsonra güncelliğini yitirecek." \
-        -i ezanvakti -t $GUNCELLEME_BILDIRIM_SURESI"000" -h int:transient:1
+        -i ${AD} -t $GUNCELLEME_BILDIRIM_SURESI"000" -h int:transient:1
       :> /tmp/eznvrgncldntle_$(date +%d%m%y)
     }
   }
