@@ -138,7 +138,7 @@ CUMA_SELASI_OKU=1
 
 # Cuma günü öğle vaktinden 
 # kaç dakika önce sela okunsun ?
-SELA_OKUNMA_SURESI_FARKI=60
+SELA_OKUNMA_SURESI_FARKI=55
 
 # Ezan okuyan
 EZAN_OKUYAN='İsmail COŞAR'

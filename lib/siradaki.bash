@@ -57,6 +57,10 @@ siradaki_vakit() { # {{{
     conky_siradaki)
       printf "${siradaki_vakit} : $siradaki_vakit_kalan\n"  |
         sed 's:saat:sa:;s:dakika:dk:;s:saniye:sn:' ;;
+    bildirim)
+    notify-send "${AD^} - Sıradaki vakit" \
+      "$(printf "${siradaki_vakit} : $siradaki_vakit_kalan\n" | sed 's:saat:sa:;s:dakika:dk:;s:saniye:sn:')" \
+      -t $BILGI_BILDIRIM_SURESI"000" -i ${AD} ;;
   esac
 }
 

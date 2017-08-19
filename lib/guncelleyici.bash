@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-#                           Ezanvakti Güncelleme  Bileşeni 2.7
+#                           Ezanvakti Güncelleme  Bileşeni 2.8
 #
 #
 
@@ -265,6 +265,12 @@ printf '%b%*b' "${RENK7}${RENK8}" $(( stn - 13 - renksiz_payi )) \
 #}}}
 
 ### Güncelleme işlemi {{{
+(( ! denetim )) && {
+  printf "${RENK7}${RENK3} ->${RENK8} Seçilmiş ülke:${RENK2}  ${ulke}${RENK0}\n"
+  printf "${RENK7}${RENK3} ->${RENK8} Seçilmiş şehir:${RENK2} ${sehir}${RENK0}\n"
+  printf "${RENK7}${RENK3} ->${RENK8} Seçilmiş ilçe:${RENK2}  ${ilce}${RENK0}\n"
+}
+
 printf '%b%b' "${RENK7}${RENK8}" \
   "${EZANVERI_ADI} dosyası güncelleniyor...${RENK0}"
 

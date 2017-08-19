@@ -43,4 +43,10 @@ ezv_conky_iftar() {
   fi
 }
 
+iftar_bildirim() {
+  notify-send "${AD^} - iftar" \
+  "$(ezv_conky_iftar)" -t $BILGI_BILDIRIM_SURESI"000"\
+  -i ${AD}
+}
+
 # vim: set ft=sh ts=2 sw=2 et:

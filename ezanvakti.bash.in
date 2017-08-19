@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-#                 Ezanvakti 6.3  -  GNU/Linux Ezan Vakti Bildirici
+#                 Ezanvakti 6.4  -  GNU/Linux Ezan Vakti Bildirici
 #
 ##
 ##      Copyright (c) 2010-2017  Fatih Bostancı  <fbostanci@vivaldi.net>
@@ -52,8 +52,13 @@ case $1 in
         bilesen_yukle vakitleri_goster
         vakitler yatsi ;;
       -t|--s[ıi]radaki)
-        bilesen_yukle siradaki
-        siradaki_vakit siradaki ;;
+        bilesen_yukle siradaki; shift
+        case $2 in
+          -o|-b|--bildirim|--osd)
+            siradaki_vakit bildirim ;;
+        '')
+            siradaki_vakit siradaki ;;
+        esac ;;
       -k|--kerahat)
         bilesen_yukle kerahat
         kerahat_vakitleri ucbirim ;;
@@ -87,7 +92,15 @@ case $1 in
     vakitler yatsi ;;
   -vt|--vt)
     bilesen_yukle siradaki
-    siradaki_vakit siradaki ;;
+    case $2 in
+      -o|-b|--bildirim|--osd)
+        siradaki_vakit bildirim ;;
+      '')
+        siradaki_vakit siradaki ;;
+    esac ;;
+  -vt[ob]|--vt[ob])
+    bilesen_yukle siradaki
+    siradaki_vakit bildirim ;;
   -vk|--vk)
     bilesen_yukle kerahat
     kerahat_vakitleri ucbirim ;;
@@ -160,8 +173,14 @@ case $1 in
     bilesen_yukle aralik; shift
     ayet_araligi_goster "$1" "$2" ;;
   --iftar)
-    bilesen_yukle iftar
-    ezv_iftar ;;
+    case $2 in
+      -o|-b|--bildirim|--osd)
+        bilesen_yukle conky
+        iftar_bildirim ;;
+      *)
+        bilesen_yukle iftar
+        ezv_iftar ;;
+    esac ;;
   --conky)
     case $2 in
       -s|--s[ıi]radaki)
