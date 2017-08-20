@@ -26,10 +26,10 @@ yapilandirma() {
 
 _GUNCELLEME_GEREKLI=0
 _YENIDEN_BASLATMA_GEREKLI=0
-ayr1=/tmp/ezanvakti_ayr1
-ayr2=/tmp/ezanvakti_ayr2
-ayr3=/tmp/ezanvakti_ayr3
-ayr4=/tmp/ezanvakti_ayr4
+ayr1=/tmp/${AD}_ayr1
+ayr2=/tmp/${AD}_ayr2
+ayr3=/tmp/${AD}_ayr3
+ayr4=/tmp/${AD}_ayr4
 #ayr4=$(mktemp --tmpdir tab4.XXXXXXXX)
 temizlik() {
   rm -f $ayr1 $ayr2 $ayr3 $ayr4 &>/dev/null
@@ -543,16 +543,16 @@ yad --notebook --key=190707 \
         (( _YENIDEN_BASLATMA_GEREKLI )) && {
           if (( ! ACILISTA_BASLAT ))
           then
-              if pgrep ezanvakti-sleep
+              if pgrep ${AD}-sleep
               then
-                  pkill ezanvakti-sleep
+                  pkill ${AD}-sleep
               fi
           else
-              if pgrep ezanvakti-sleep
+              if pgrep ${AD}-sleep
               then
-                  pkill ezanvakti-sleep
+                  pkill ${AD}-sleep
               fi
-              ${BILESEN_DIZINI}/ezanvakti-sleep.bash &
+              ${BILESEN_DIZINI}/${AD}-sleep &
               disown
           fi
         }

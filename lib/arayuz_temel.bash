@@ -32,7 +32,7 @@ tamamlama_listesi+="!about!güncelle!güncelle yeni!yardım!arayuz2!Kerahat!000
 secim_listesi='!Günlük Vakitler!Haftalık Vakitler!Aylık Vakitler!Kerahat Vakitleri'
 secim_listesi+='!Dini Günler ve Geceler!Ayet!Hadis!Bilgi!Esma-ül Hüsna!Yapılandırma Yöneticisi'
 
-cikti_dosyasi='/tmp/ezanvakti-6'
+cikti_dosyasi="/tmp/${AD}-6"
 # düz komut çıktıları için rengi sıfırla.
 export RENK_KULLAN=0 RENK=0
 acilisa_baslatici_ekle
@@ -40,26 +40,26 @@ acilisa_baslatici_ekle
 arayuz_pid_denetle() {
   local ypid=$$
 
-  if [[ -f /tmp/.ezanvakti_yad_arayuz.pid && \
-        -n $(ps -p $( < /tmp/.ezanvakti_yad_arayuz.pid) -o comm=) ]]
+  if [[ -f /tmp/.${AD}_yad_arayuz.pid && \
+        -n $(ps -p $( < /tmp/.${AD}_yad_arayuz.pid) -o comm=) ]]
   then
       printf '%s: Yalnızca bir arayüz örneği çalışabilir.\n' "${AD}" >&2
       exit 1
   else
-      printf "$ypid" > /tmp/.ezanvakti_yad_arayuz.pid
+      printf "$ypid" > /tmp/.${AD}_yad_arayuz.pid
   fi
 }
 
 arayuz2_pid_denetle() {
   local ypid=$$
 
-  if [[ -f /tmp/.ezanvakti_yad_arayuz2.pid && \
-        -n $(ps -p $( < /tmp/.ezanvakti_yad_arayuz2.pid) -o comm=) ]]
+  if [[ -f /tmp/.${AD}_yad_arayuz2.pid && \
+        -n $(ps -p $( < /tmp/.${AD}_yad_arayuz2.pid) -o comm=) ]]
   then
       printf '%s: Yalnızca bir arayüz2 örneği çalışabilir.\n' "${AD}" >&2
       exit 1
   else
-      printf "$ypid" > /tmp/.ezanvakti_yad_arayuz2.pid
+      printf "$ypid" > /tmp/.${AD}_yad_arayuz2.pid
   fi
 }
 
@@ -68,13 +68,16 @@ temizlik() {
 }
 
 g_gun_animsat() {
+  local gunler="${VERI_DIZINI}/veriler/gunler"
   (( GUN_ANIMSAT )) && {
-    if grep -q $(date +%d.%m.%Y) ${VERI_DIZINI}/veriler/gunler
+    if grep -q $(date +%d.%m.%Y) "${gunler}"
     then
-        ozel_ileti="\n\nBugün:  <b>$(grep $(date +%d.%m.%Y) ${VERI_DIZINI}/veriler/gunler | cut -d' ' -f2-)</b>"
-    elif grep -q $(date -d 'tomorrow' +%d.%m.%Y) ${VERI_DIZINI}/veriler/gunler
+        ozel_ileti='\n\nBugün:  <b>'
+        ozel_ileti+="$(grep $(date +%d.%m.%Y) "${gunler}" | cut -d' ' -f2-)</b>"
+    elif grep -q $(date -d 'tomorrow' +%d.%m.%Y) "${gunler}"
     then
-        ozel_ileti="\n\nYarın:  <b>$(grep $(date -d 'tomorrow' +%d.%m.%Y) ${VERI_DIZINI}/veriler/gunler | cut -d' ' -f2-)</b>"
+        ozel_ileti='\n\nYarın:  <b>'
+        ozel_ileti+="$(grep $(date -d 'tomorrow' +%d.%m.%Y) "${gunler}" | cut -d' ' -f2-)</b>"
     else
         ozel_ileti=''
     fi
@@ -340,7 +343,8 @@ strng=$(yad --form \
 '!Saad el Ghamdi!As Shatry!Ahmad el Ajmy!Yerel Okuyucu' \
 --field=Sure:CB \
 "${sure_listesi}" \
---button='gtk-go-back:151' --button='gtk-media-play:152' --button='gtk-quit:153' \
+--button='gtk-go-back:151' --button='gtk-media-play:152' \
+--button='gtk-quit:153' \
 --image=${AD} --window-icon=${AD} \
 --title "${AD^}" --sticky --center --fixed)
 

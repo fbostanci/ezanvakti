@@ -1,6 +1,6 @@
 #
 #
-#               Ezanvakti 6.3 Makefile
+#               Ezanvakti 6.4 Makefile
 #
 #
 
@@ -29,14 +29,14 @@ ifeq "$(DUZELTME)" ""
 endif
 
 BETIKLER = ezanvakti.bash lib/temel_islevler.bash lib/arayuz.bash \
-	lib/arayuz2.bash lib/ezanvakti-sleep.bash data/ezanvakti.desktop \
+	lib/arayuz2.bash lib/ezanvakti-sleep data/ezanvakti.desktop \
 	data/ayarlar
 
 all: $(BETIKLER)
 
 $(BETIKLER): ${BETIKLER:=.in}
 	@echo '	YAP' $@
-	@$(SED) -e 's:@AD@:$(AD):' \
+	@$(SED) -e 's:@AD@:$(AD):g' \
 		-e 's:@SURUM@:$(SURUM):' \
 		-e 's:@DUZELTME@:$(DUZELTME):' \
 		-e 's:@bindir@:$(bindir):' \
@@ -59,6 +59,7 @@ install: $(BETIKLER)
 
 	$(INSTALL) -vm755 ezanvakti.bash $(DESTDIR)$(bindir)/$(AD)
 	$(INSTALL) -vm755 lib/ezanveri_istemci.pl $(DESTDIR)$(libdir)/$(AD)/ezanveri_istemci.pl
+	$(INSTALL) -vm755 lib/ezanvakti-sleep $(DESTDIR)$(libdir)/$(AD)/$(AD)-sleep
 	$(INSTALL) -vm755 data/ezanvakti.desktop $(DESTDIR)$(appdeskdir)/$(AD).desktop
 
 	$(INSTALL) -vm644 data/ayarlar $(DESTDIR)$(sysconfdir)/$(AD).conf

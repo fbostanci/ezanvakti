@@ -51,7 +51,7 @@ acilisa_baslatici_ekle() {
             '[Desktop Entry]'\
             'Type=Application'\
             'Name=@AD@'\
-            'Exec=@libdir@/@AD@/ezanvakti-sleep.bash 657a616e76616b7469'\
+            'Exec=@libdir@/@AD@/@AD@-sleep 657a616e76616b7469'\
             'Comment=GNU/Linux icin ezan vakti bildirici'\
             'Terminal=false' > "${baslatici}"
           chmod 755 "${baslatici}"
@@ -139,7 +139,8 @@ ezanveri_denetle() {
       bilesen_yukle guncelleyici
       guncelleme_yap
     } || {
-      printf '%s: %s dosyası bulunamadı.\n' "${AD}" "${EZANVERI}"
+      printf '%s: %s dosyası bulunamadı.\n' \
+        "${AD}" "${EZANVERI}"
       exit 1
     }
   }
@@ -166,10 +167,11 @@ ezanveri_denetle() {
     # Betiğin mevcut oturum boyunca sadece ilk çalışmada bildirim vermesi
     # için çerez dosya denetimi ekledik. Gün değişimi durumu için (mevcut oturum devam ediyorsa)
     # ayrıca dosyaya tarih uzantısı da ekledik.
-    [[ ! -f /tmp/eznvrgncldntle_$(date +%d%m%y) ]] && {
-      notify-send "${AD^}" "${EZANVERI_ADI} dosyanız\n\t$ksatir gün\nsonra güncelliğini yitirecek." \
+    [[ ! -f /tmp/.${AD}_eznvrgncldntle_$(date +%d%m%y) ]] && {
+      notify-send "${AD^}" \
+        "${EZANVERI_ADI} dosyanız\n\t$ksatir gün\nsonra güncelliğini yitirecek." \
         -i ${AD} -t $GUNCELLEME_BILDIRIM_SURESI"000" -h int:transient:1
-      :> /tmp/eznvrgncldntle_$(date +%d%m%y)
+      :> /tmp/.${AD}_eznvrgncldntle_$(date +%d%m%y)
     }
   }
 }
