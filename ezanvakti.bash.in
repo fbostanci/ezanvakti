@@ -106,7 +106,7 @@ case $1 in
   -vt[ob]|--vt[ob])
     bilesen_yukle siradaki
     siradaki_vakit bildirim ;;
-  -vk[ob]|--vt[ob])
+  -vk[ob]|--vk[ob])
     bilesen_yukle kerahat
     kerahat_vakitleri bildirim ;;
   -vk|--vk)
