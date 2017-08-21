@@ -170,7 +170,7 @@ ezanveri_denetle() {
     [[ ! -f /tmp/.${AD}_eznvrgncldntle_$(date +%d%m%y) ]] && {
       notify-send "${AD^}" \
         "${EZANVERI_ADI} dosyanız\n\t$ksatir gün\nsonra güncelliğini yitirecek." \
-        -i ${AD} -t $GUNCELLEME_BILDIRIM_SURESI"000" -h int:transient:1
+        -i ${AD} -t $GUNCELLEME_BILDIRIM_SURESI"000"
       :> /tmp/.${AD}_eznvrgncldntle_$(date +%d%m%y)
     }
   }

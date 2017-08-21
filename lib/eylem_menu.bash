@@ -9,13 +9,13 @@ bilesen_yukle arayuz_temel
 eylem_pid_denetle() {
   local ypid=$$
 
-  if [[ -f /tmp/.ezanvakti_eylem_menu.pid && \
-        -n $(ps -p $( < /tmp/.ezanvakti_eylem_menu.pid) -o comm=) ]]
+  if [[ -f /tmp/.${AD}_eylem_menu.pid && \
+        -n $(ps -p $( < /tmp/.${AD}_eylem_menu.pid) -o comm=) ]]
   then
       printf '%s: Yalnızca bir arayüz örneği çalışabilir.\n' "${AD}" >&2
       exit 1
   else
-      printf "$ypid" > /tmp/.ezanvakti_eylem_menu.pid
+      printf "$ypid" > /tmp/.${AD}_eylem_menu.pid
   fi
 }
 

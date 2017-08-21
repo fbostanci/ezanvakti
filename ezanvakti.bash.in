@@ -1,12 +1,12 @@
 #!/bin/bash
 #
-#                 Ezanvakti 6.4  -  GNU/Linux Ezan Vakti Bildirici
+#              Ezanvakti 6.4  -  GNU/Linux Ezan Vakti Bildirici
 #
 ##
-##      Copyright (c) 2010-2017  Fatih Bostancı  <fbostanci@vivaldi.net>
+##    Copyright (c) 2010-2017  Fatih Bostancı  <fbostanci@vivaldi.net>
 ##
-##                  https://gitlab.com/fbostanci/ezanvakti
-##                  https://github.com/fbostanci/ezanvakti
+##              https://gitlab.com/fbostanci/ezanvakti
+##              https://github.com/fbostanci/ezanvakti
 ##
 ## This program is free software; you can redistribute it and/or modify
 ## it under the terms of the GNU General Public License as published by
@@ -56,7 +56,7 @@ case $1 in
         case $2 in
           -o|-b|--bildirim|--osd)
             siradaki_vakit bildirim ;;
-        '')
+          '')
             siradaki_vakit siradaki ;;
         esac ;;
       -k|--kerahat)
@@ -76,8 +76,9 @@ case $1 in
       --osd|--bildirim)
         bilesen_yukle vakitleri_goster
         vakitler bildirim ;;
-      '') bilesen_yukle vakitleri_goster
-          vakitler tum_vakitler ;;
+      '')
+        bilesen_yukle vakitleri_goster
+        vakitler tum_vakitler ;;
       ?*) hatali_kullanim "$2" ;;
     esac ;;
   -vs|--vs)
