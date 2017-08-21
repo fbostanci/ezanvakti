@@ -88,7 +88,7 @@ vakitler() { # {{{
         "İkindi $ikindi_n $ikindi_kalan" \
         "Akşam $aksam_n $aksam_kalan" \
         "Yatsı $yatsi_n $yatsi_kalan" | sed 's:saat:sa:;s:dakika:dk:;s:saniye:sn:')" \
-        -t $BILGI_BILDIRIM_SURESI"000" ;;
+        -i ${AD} -t $BILGI_BILDIRIM_SURESI"000" ;;
 
     tum_vakitler)
       printf '%b%b%b%b%b%b\n' \

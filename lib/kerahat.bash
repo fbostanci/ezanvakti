@@ -39,6 +39,16 @@ case $1 in
       "Kerahat v3 : $kv_ogle <-> $ogle_n"\
       "Kerahat v4 : $ikindi_n <-> $kv_aksam"\
       "Kerahat v5 : $kv_aksam <-> $aksam_n" ;;
+
+  bildirim)
+    notify-send "${AD^} - Kerahat vakitleri" \
+      "$(printf '%b\n%b\n%b\n%b\n%b\n'\
+      "Kerahat v1 : $sabah_n ~ $gunes_n"\
+      "Kerahat v2 : $gunes_n ~ $kv_gunes"\
+      "Kerahat v3 : $kv_ogle ~ $ogle_n"\
+      "Kerahat v4 : $ikindi_n ~ $kv_aksam"\
+      "Kerahat v5 : $kv_aksam ~ $aksam_n")" \
+      -i ${AD} -t $BILGI_BILDIRIM_SURESI"000" ;;
 esac
 }
 

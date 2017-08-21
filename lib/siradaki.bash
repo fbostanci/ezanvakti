@@ -10,7 +10,7 @@ siradaki_vakit() { # {{{
 
   local istek="$1" siradaki_vakit siradaki_vakit_kalan ileti
 
-  [[ ${istek} = conky_siradaki ]] && RENK2=''
+  [[ ${istek} = conky_siradaki || ${istek} = bildirim ]] && RENK2=''
 
   if (( UNIXSAAT < sabah ))
   then

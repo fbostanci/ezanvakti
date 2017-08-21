@@ -60,8 +60,13 @@ case $1 in
             siradaki_vakit siradaki ;;
         esac ;;
       -k|--kerahat)
-        bilesen_yukle kerahat
-        kerahat_vakitleri ucbirim ;;
+        bilesen_yukle kerahat; shift
+        case $2 in
+          -o|-b|--bildirim|--osd)
+            kerahat_vakitleri bildirim ;;
+          '')
+            kerahat_vakitleri ucbirim ;;
+        esac ;;
       7|--haftal[ıi]k)
         bilesen_yukle vakitleri_goster
         vakitler haftalik ;;
@@ -101,9 +106,17 @@ case $1 in
   -vt[ob]|--vt[ob])
     bilesen_yukle siradaki
     siradaki_vakit bildirim ;;
+  -vk[ob]|--vt[ob])
+    bilesen_yukle kerahat
+    kerahat_vakitleri bildirim ;;
   -vk|--vk)
     bilesen_yukle kerahat
-    kerahat_vakitleri ucbirim ;;
+    case $2 in
+      -o|-b|--bildirim|--osd)
+        kerahat_vakitleri bildirim ;;
+      '')
+        kerahat_vakitleri ucbirim ;;
+    esac ;;
   -v7|--v7)
     bilesen_yukle vakitleri_goster
     vakitler haftalik ;;

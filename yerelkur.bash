@@ -7,6 +7,12 @@
 #
 # Bu betiği kaynak kod dizini içerisinde çalıştırın.
 
+[[ $(id -u) == 0 ]] && {
+  printf '%s: root haklarıyla çalıştırılamaz.\n' "${0##*/}" >&2
+  exit 1
+}
+
+
 AD=ezv-devel
 bindir=$HOME/bin
 
@@ -34,4 +40,4 @@ xdg-desktop-menu forceupdate
 
 make clean
 
-[[ -z $(echo $PATH | grep -o ${bindir}) ]] && echo -e "\n\n${bindir} PATH üzerinde değil."
+[[ -z $(grep -o ${bindir} <<<$PATH) ]] && echo -e "\n\n${bindir} PATH üzerinde değil."
