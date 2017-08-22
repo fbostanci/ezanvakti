@@ -138,7 +138,7 @@ case $1 in
       -[oö]|--[oö][gğ]le)
         ezan_dinlet Öğle "${OGLE_EZANI}" ;;
       -i|--ikindi)
-        ezan_dinlet İkindi  "${IKINDI_EZANI}" ;;
+        ezan_dinlet İkindi "${IKINDI_EZANI}" ;;
       -a|--ak[sş]am)
         ezan_dinlet Akşam "${AKSAM_EZANI}" ;;
       -y|--yats[ıi])
