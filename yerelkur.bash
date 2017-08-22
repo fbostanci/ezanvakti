@@ -12,11 +12,10 @@
   exit 1
 }
 
-
 AD=ezv-devel
 bindir=$HOME/bin
 
-[[ $1 = '--kur' ]] && eylem=install
+[[ $1 = --kur ]] && eylem=install
 [[ $1 = --@(kald[iı]r) ]] && eylem=uninstall
 [[ -z $1 ]] && {
 echo "Kullanım
@@ -26,6 +25,42 @@ echo "Kullanım
               Yerel kurulumu kaldırır.
 " >&2
 exit 1
+}
+
+[[ $1 = --kur ]] && {
+  BAG=('bash' 'sed' 'gawk' 'grep' 'make' 'notify-send' 'yad' 'mplayer')
+  PL_BAG=('WWW::Mechanize')
+
+  for b in ${BAG[@]}
+  do
+    hash $b 2>/dev/null || KUR_BUNU+=("$b")
+  done
+
+  # Perl bileşenlerini denetle.
+  for pm in ${PL_BAG[@]}
+  do
+      perl -M${pm} -e 1 2>/dev/null
+      dn=$(echo $?)
+
+      if [[ $dn -ne 0 ]]
+      then
+          KUR_BUNU+=("$pm")
+      fi
+  done
+
+  (( ${#KUR_BUNU[@]} )) && {
+    e=0
+    printf '%s\n' \
+      'Aşağıdaki bağımlılıklar bulunamadı.' >&2
+
+    for pm in ${KUR_BUNU[@]}
+    do
+        printf '%s\n' \
+          " -> ${KUR_BUNU[$e]}"
+        ((e++))
+    done
+    exit 1
+  }
 }
 
 make clean
@@ -39,5 +74,7 @@ gtk-update-icon-cache -f -t $HOME/.local/share/icons/hicolor
 xdg-desktop-menu forceupdate
 
 make clean
-
-[[ -z $(grep -o ${bindir} <<<$PATH) ]] && echo -e "\n\n${bindir} PATH üzerinde değil."
+[[ $1 = --kur ]] && {
+  [[ -z $(grep -o ${bindir} <<<$PATH) ]] && \
+    echo -e "\n\n${bindir} PATH üzerinde değil."
+}

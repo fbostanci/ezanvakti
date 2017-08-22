@@ -119,7 +119,7 @@ yad --notebook --key=190707 \
 --tab="Ezanveri Ayarları" --tab="Ezan Ayarları" \
 --tab="Bildirim Ayarları" --tab="Renk Ayarları" \
 --fixed --center --tab-pos=top --buttons-layout='spread' \
---window-icon=ezanvakti \
+--window-icon=${AD} \
 --button='gtk-go-back:171' --button='gtk-open:172' \
 --button='gtk-save:174' --button='gtk-quit:121'
 
