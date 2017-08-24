@@ -22,7 +22,7 @@ ezv_conky_iftar() {
       sed 's:saat:sa:;s:dakika:dk:;s:saniye:sn:'
   else
       # Yarının aksam vakti ezanveri dosyasında var mı denetle önc..
-      if ! grep -qo $(date -d 'tomorrow' +%d.%m.%Y) "${EZANVERI}"
+      if ! grep -qo "^$(date -d 'tomorrow' +%d.%m.%Y)" "${EZANVERI}"
       then
           if (( GUNCELLEME_YAP ))
           then

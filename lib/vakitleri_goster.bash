@@ -65,7 +65,7 @@ vakitler() { # {{{
     yatsi)
       printf "${RENK7}${RENK2}\nYatsı ezanı  ${RENK3}: $yatsi_n $yatsi_kalan${RENK0}\n\n" ;;
     aylik)
-      if ! grep -qo $(date -d 'next week' +%d.%m.%Y) "${EZANVERI}"
+      if ! grep -qo "^$(date -d 'next week' +%d.%m.%Y)" "${EZANVERI}"
       then
           printf "${RENK3}7 günlük veri bulunmuyor..${RENK0}\n"
           exit 1

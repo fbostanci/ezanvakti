@@ -19,7 +19,7 @@ ezv_iftar() {
         "${RENK7}${RENK2}Kalan süre  : ${RENK3}$kalan_sure${RENK0}"
   else
       # Yarının aksam vakti ezanveri dosyasında var mı denetle önc..
-      if [[ -z $(grep -o $(date -d 'tomorrow' +%d.%m.%Y) "${EZANVERI}") ]]
+      if ! grep -qo "^$(date -d 'tomorrow' +%d.%m.%Y)" "${EZANVERI}"
       then
           if (( GUNCELLEME_YAP ))
           then

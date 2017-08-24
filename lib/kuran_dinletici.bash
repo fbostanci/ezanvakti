@@ -47,7 +47,7 @@ sure_no_denetimi() { # sure_no_yonetimi {{{
 
 mplayer_kuran_sure_al() {
   mplayer -vo null -ao null -frames 0 -identify "$1" 2>/dev/null | \
-  gawk  -F"=" '/^ID_LENGTH/ {print int($2);}'
+  gawk  -F'=' '/^ID_LENGTH/ {print int($2);}'
 }
 
 kuran_dinletimi() {

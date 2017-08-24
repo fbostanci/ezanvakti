@@ -43,6 +43,7 @@ kalan_sure() {
   renk_denetle
   clear
 
+  local printf_bicim
   ucbirim_basligi "Kalan Süre Gösterici"
   siradaki_vakit
   printf "${RENK7}${RENK4}${siradaki_ezan} için bekleniyor...${RENK0}\n"
@@ -68,7 +69,11 @@ kalan_sure() {
       fi
     }
 
-    printf "${RENK7}${RENK2}Kalan süre:${RENK5} %02d saat : %02d dakika : %02d saniye ${RENK2}(${RENK1}%s${RENK2})${RENK0}\r" \
+    printf_bicim="${RENK7}${RENK2}Kalan süre:"
+    printf_bicim+="${RENK5} %02d saat : %02d dakika : %02d saniye "
+    printf_bicim+="${RENK2}(${RENK1}%s${RENK2})${RENK0}\r"
+
+    printf "${printf_bicim}" \
             $(( bekle / 3600 )) \
             $(( bekle % 3600 / 60 )) \
             $(( bekle % 60 )) \

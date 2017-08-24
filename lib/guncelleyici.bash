@@ -79,17 +79,17 @@ arayuz_denetle() { ### Arayüz denetle {{{
   printf '%b%s%b' "${RENK7}${RENK8}" \
     'Arayüz uygulaması denetleniyor...' "${RENK0}"
 
-  if [[ -x "$(type -p kdialog)" ]]
+  if [[ -x $(type -p kdialog) ]]
   then
       arayuz=1
       au=Kdialog
 
-  elif [[ -x "$(type -p yad)" ]]
+  elif [[ -x $(type -p yad) ]]
   then
       arayuz=2
       au=Yad
 
-  elif [[ -x "$(type -p zenity)" ]]
+  elif [[ -x $(type -p zenity) ]]
   then
       arayuz=3
       au=Zenity

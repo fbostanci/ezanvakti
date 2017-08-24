@@ -147,17 +147,18 @@ ezanveri_denetle() {
   }
 
   # Bugüne ait tarih ezanveri dosyasında yoksa
-  [[ -z $(grep -o "^$(date +%d.%m.%Y)" "${EZANVERI}") ]] && {
-    if (( GUNCELLEME_YAP ))
-    then
-        bilesen_yukle guncelleyici
-        guncelleme_yap
-    else
-        printf '%s: %s dosyası güncel değil.\n' \
-          "${AD}" "${EZANVERI}"
-        exit 1
-    fi
-  }
+  if ! grep -qo "^$(date +%d.%m.%Y)" "${EZANVERI}"
+  then
+      if (( GUNCELLEME_YAP ))
+      then
+          bilesen_yukle guncelleyici
+          guncelleme_yap
+      else
+          printf '%s: %s dosyası güncel değil.\n' \
+            "${AD}" "${EZANVERI}"
+          exit 1
+      fi
+  fi
 
   # ezanveri dosyasından tarih bloğunu ayıklayıp son tarih satır no dan bugünkünü çıkardık.
   ksatir=$(gawk '$1 ~ /^[0-9]{2}.[0-9]{2}.[0-9]{4}/ {t++} END{tsatir=t;}; \
