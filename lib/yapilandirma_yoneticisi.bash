@@ -21,16 +21,26 @@ yapilandirma() {
 (( SESLI_UYARI       )) && d0=TRUE || d0=FALSE
 (( CUMA_SELASI_OKU   )) && ds=TRUE || ds=FALSE
 (( $(gawk -F'=' '/^RENK_KULLAN/{print($2);}' "${EZANVAKTI_AYAR}") )) && d9=TRUE || d9=FALSE
-(( ACILISTA_BASLAT == 0 )) && _CALISMA_KIPI='Kapalı' || {
-(( ACILISTA_BASLAT == 1 )) && _CALISMA_KIPI='Beş vakit' || _CALISMA_KIPI='Ramazan'; }
+
+if (( ACILISTA_BASLAT == 0 ))
+then
+    _CALISMA_KIPI='Kapalı'
+elif (( ACILISTA_BASLAT == 1 ))
+then
+    _CALISMA_KIPI='Beş vakit'
+else
+    _CALISMA_KIPI='Ramazan'
+fi
 
 _GUNCELLEME_GEREKLI=0
 _YENIDEN_BASLATMA_GEREKLI=0
+
 ayr1=/tmp/${AD}_ayr1
 ayr2=/tmp/${AD}_ayr2
 ayr3=/tmp/${AD}_ayr3
 ayr4=/tmp/${AD}_ayr4
 #ayr4=$(mktemp --tmpdir tab4.XXXXXXXX)
+
 temizlik() {
   rm -f $ayr1 $ayr2 $ayr3 $ayr4 &>/dev/null
 }

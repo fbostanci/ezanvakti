@@ -111,7 +111,12 @@ ezan_vakitlerini_al() {
 
   if (( UNIXSAAT <= sabah ))
   then
-      (( ACILISTA_BASLAT == 2 )) && simdiki='İmsak' || simdiki='Sabah'
+      if (( ACILISTA_BASLAT == 2 ))
+      then
+          simdiki='İmsak'
+      else
+          simdiki='Sabah'
+      fi
       vakit_ezani="${SABAH_EZANI}"
       vakit_saati_n=$sabah_n
       vakit_saati=$(( sabah + EZAN_OKUNMA_SURESI_FARKI ))
@@ -151,7 +156,12 @@ ezan_vakitlerini_al() {
 
   elif (( UNIXSAAT <= aksam ))
   then
-      (( ACILISTA_BASLAT == 2 )) && simdiki='İftar' || simdiki='Akşam'
+      if (( ACILISTA_BASLAT == 2 ))
+      then
+          simdiki='İftar'
+      else
+          simdiki='Akşam'
+      fi
       vakit_ezani="${AKSAM_EZANI}"
       vakit_saati_n=$aksam_n
       vakit_saati=$(( aksam + EZAN_OKUNMA_SURESI_FARKI ))
@@ -159,7 +169,12 @@ ezan_vakitlerini_al() {
 
   elif (( UNIXSAAT <= yatsi ))
   then
-      (( ACILISTA_BASLAT == 2 )) && simdiki='' || simdiki='Yatsı'
+      if (( ACILISTA_BASLAT == 2 ))
+      then
+          simdiki=''
+      else
+          simdiki='Yatsı'
+      fi
       vakit_ezani="${YATSI_EZANI}"
       vakit_saati_n=$yatsi_n
       vakit_saati=$(( yatsi + EZAN_OKUNMA_SURESI_FARKI ))
@@ -176,7 +191,12 @@ ezan_oku() {
   local ileti
   clear
 
-  [[ ${simdiki} = @(İmsak|İftar) ]] && ileti='vakti' || ileti='namazı vakti'
+  if [[ ${simdiki} = @(İmsak|İftar) ]]
+  then
+      ileti='vakti'
+  else
+      ileti='namazı vakti'
+  fi
   printf '%b%b\n' \
     "${RENK7}${RENK3}${ILCE}${RENK2} " \
     "için ${RENK3}${simdiki}${RENK2} ${ileti}${RENK5} ${vakit_saati_n}${RENK0}"
@@ -233,7 +253,13 @@ vakit_animsat() {
         done
     fi
 
-    [[ ${simdiki} = @(İmsak|İftar) ]] && ileti='vakti olacak.' || ileti='ezanı okunacak.'
+    if [[ ${simdiki} = @(İmsak|İftar) ]]
+    then
+        ileti='vakti olacak.'
+    else
+        ileti='ezanı okunacak.'
+    fi
+
     notify-send "${AD^}" "$VAKIT_ANIMSAT dakika sonra $simdiki ${ileti}" \
       -u critical -t $BILGI_BILDIRIM_SURESI"000" \
       -i ${AD}

@@ -69,19 +69,20 @@ temizlik() {
 
 g_gun_animsat() {
   local gunler="${VERI_DIZINI}/veriler/gunler"
-  (( GUN_ANIMSAT )) && {
-    if grep -q $(date +%d.%m.%Y) "${gunler}"
-    then
-        ozel_ileti='\n\nBugün:  <b>'
-        ozel_ileti+="$(grep $(date +%d.%m.%Y) "${gunler}" | cut -d' ' -f2-)</b>"
-    elif grep -q $(date -d 'tomorrow' +%d.%m.%Y) "${gunler}"
-    then
-        ozel_ileti='\n\nYarın:  <b>'
-        ozel_ileti+="$(grep $(date -d 'tomorrow' +%d.%m.%Y) "${gunler}" | cut -d' ' -f2-)</b>"
-    else
-        ozel_ileti=''
-    fi
-  }
+  if (( GUN_ANIMSAT ))
+  then
+      if grep -q $(date +%d.%m.%Y) "${gunler}"
+      then
+          ozel_ileti='\n\nBugün:  <b>'
+          ozel_ileti+="$(grep $(date +%d.%m.%Y) "${gunler}" | cut -d' ' -f2-)</b>"
+      elif grep -q $(date -d 'tomorrow' +%d.%m.%Y) "${gunler}"
+      then
+          ozel_ileti='\n\nYarın:  <b>'
+          ozel_ileti+="$(grep $(date -d 'tomorrow' +%d.%m.%Y) "${gunler}" | cut -d' ' -f2-)</b>"
+      else
+          ozel_ileti=''
+      fi
+  fi
 }
 
 g_vakitleri_al() {

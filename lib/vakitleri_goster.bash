@@ -13,35 +13,45 @@ vakitler() { # {{{
   # --osd/bildirim için renkleri sıfırla
   [[ ${istek} = bildirim ]] && { RENK1=''; RENK2=''; }
 
-  (( UNIXSAAT < sabah )) && {
-    bekleme_suresi $sabah_n; kalan
-    sabah_kalan="${RENK2} $kalan_sure"
+  if (( UNIXSAAT < sabah ))
+  then
+      bekleme_suresi $sabah_n; kalan
+      sabah_kalan="${RENK2} $kalan_sure"
+  else
+      sabah_kalan="${RENK1} OKUNDU"
+  fi
 
-  } || sabah_kalan="${RENK1} OKUNDU"
+  if (( UNIXSAAT < ogle ))
+  then
+      bekleme_suresi $ogle_n; kalan
+      ogle_kalan="${RENK2} $kalan_sure"
+  else
+      ogle_kalan="${RENK1} OKUNDU"
+  fi
 
-  (( UNIXSAAT < ogle )) && {
-    bekleme_suresi $ogle_n; kalan
-    ogle_kalan="${RENK2} $kalan_sure"
+  if (( UNIXSAAT < ikindi ))
+  then
+      bekleme_suresi $ikindi_n; kalan
+      ikindi_kalan="${RENK2} $kalan_sure"
+  else
+      ikindi_kalan="${RENK1} OKUNDU"
+  fi
 
-  } || ogle_kalan="${RENK1} OKUNDU"
+  if (( UNIXSAAT < aksam ))
+  then
+      bekleme_suresi $aksam_n; kalan
+      aksam_kalan="${RENK2} $kalan_sure"
+  else
+      aksam_kalan="${RENK1} OKUNDU"
+  fi
 
-  (( UNIXSAAT < ikindi )) && {
-    bekleme_suresi $ikindi_n; kalan
-    ikindi_kalan="${RENK2} $kalan_sure"
-
-  } || ikindi_kalan="${RENK1} OKUNDU"
-
-  (( UNIXSAAT < aksam )) && {
-    bekleme_suresi $aksam_n; kalan
-    aksam_kalan="${RENK2} $kalan_sure"
-
-  } || aksam_kalan="${RENK1} OKUNDU"
-
-  (( UNIXSAAT < yatsi )) && {
-    bekleme_suresi $yatsi_n; kalan
-    yatsi_kalan="${RENK2} $kalan_sure"
-
-  } || yatsi_kalan="${RENK1} OKUNDU"
+  if (( UNIXSAAT < yatsi ))
+  then
+      bekleme_suresi $yatsi_n; kalan
+      yatsi_kalan="${RENK2} $kalan_sure"
+  else
+      yatsi_kalan="${RENK1} OKUNDU"
+  fi
 
   case ${istek} in
     sabah)

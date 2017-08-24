@@ -7,10 +7,13 @@
 ezan_dinlet() {
   local vakit="$1" vakit_ezani="$2" ileti
 
-  [[ "${vakit}" = "Cuma selası" ]] && {
-    ileti=''
-    EZAN_OKUYAN="${SELA_OKUYAN}"
-  } || ileti='ezanı '
+  if [[ "${vakit}" = "Cuma selası" ]]
+  then
+      ileti=''
+      EZAN_OKUYAN="${SELA_OKUYAN}"
+  else
+      ileti='ezanı '
+  fi
 
   bilesen_yukle mplayer_yonetici
 

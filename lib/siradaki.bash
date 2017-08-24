@@ -51,7 +51,12 @@ siradaki_vakit() { # {{{
 
   case $istek in
     siradaki)
-      [[ $siradaki_vakit = "Yeni gün" ]] && ileti="$siradaki_vakit" || ileti="$siradaki_vakit ezanı"
+      if [[ $siradaki_vakit = "Yeni gün" ]]
+      then
+          ileti="$siradaki_vakit"
+      else
+          ileti="$siradaki_vakit ezanı"
+      fi
       printf "${RENK7}${RENK3}\n${ileti}  ${RENK3}: $siradaki_vakit_kalan${RENK0}\n\n" ;;
 
     conky_siradaki)

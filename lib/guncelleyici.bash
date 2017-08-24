@@ -19,9 +19,10 @@ guncelleme_yap() { ### Ana fonksiyon {{{
       SEHIR=''
       ILCE=''
   fi
-  test x"${ULKE}"  = x"" && ULKE=yok_boyle_bir_yer
-  test x"${SEHIR}" = x"" && SEHIR=yok_boyle_bir_yer
-  test x"${ILCE}"  = x"" && ILCE=yok_boyle_bir_yer
+
+  [[ -z "${ULKE}"  ]] && ULKE=yok_boyle_bir_yer
+  [[ -z "${SEHIR}" ]] && SEHIR=yok_boyle_bir_yer
+  [[ -z "${ILCE}"  ]] && ILCE=yok_boyle_bir_yer
   renk_denetle
 
   if (( ! ${RENK:-RENK_KULLAN} ))
@@ -47,9 +48,11 @@ do
     fi
 done
 
-(( ${#pmler[@]} )) && {
+if (( ${#pmler[@]} ))
+then
   printf '%b%*b' "${RENK7}${RENK8}" $(( stn - 13 - renksiz_payi )) \
     "[${RENK1}  BAŞARISIZ ${RENK8}]${RENK0}\n"
+
   printf '\n%b\n' \
     "${RENK7}${RENK3}Aşağıdaki perl bileşen(ler)i bulunamadı.${RENK0}"
 
@@ -60,14 +63,19 @@ done
       ((e++))
   done
   exit 1
-}
+fi
 
 printf '%b%*b' "${RENK7}${RENK8}" $(( stn - 13 - renksiz_payi )) \
   "[${RENK2}  BAŞARILI  ${RENK8}]${RENK0}\n"
 #}}}
 
 arayuz_denetle() { ### Arayüz denetle {{{
-  (( denetim )) && return 0 || denetim=1
+  if (( denetim ))
+  then
+      return 0
+  else
+      denetim=1
+  fi
   printf '%b%s%b' "${RENK7}${RENK8}" \
     'Arayüz uygulaması denetleniyor...' "${RENK0}"
 
@@ -89,6 +97,7 @@ arayuz_denetle() { ### Arayüz denetle {{{
   else
       printf '%b%*b' "${RENK7}${RENK8}" $(( stn - 14 - renksiz_payi )) \
         "[${RENK1}  BAŞARISIZ ${RENK8}]${RENK0}\n"
+
       printf '\n%b\n%b\n%b\n' \
         "${RENK7}${RENK3}Bu özellik YAD, Zenity ya da Kdialog ile çalışmaktadır." \
         "Sisteminizde istenen uygulamalardan herhangi biri bulunamadı." \
@@ -98,6 +107,7 @@ arayuz_denetle() { ### Arayüz denetle {{{
   fi
   printf '%b%*b' "${RENK7}${RENK8}" $(( stn - 14 - renksiz_payi )) \
     "[${RENK2}  BAŞARILI  ${RENK8}]${RENK0}\n"
+
   printf '%b\n' \
     "${RENK7}${RENK3} ->${RENK8} Kullanılacak uygulama:${RENK2} ${au}${RENK0}"
 }
@@ -265,11 +275,12 @@ printf '%b%*b' "${RENK7}${RENK8}" $(( stn - 13 - renksiz_payi )) \
 #}}}
 
 ### Güncelleme işlemi {{{
-(( ! denetim )) && {
-  printf "${RENK7}${RENK3} ->${RENK8} Seçilmiş ülke:${RENK2}  ${ulke}${RENK0}\n"
-  printf "${RENK7}${RENK3} ->${RENK8} Seçilmiş şehir:${RENK2} ${sehir}${RENK0}\n"
-  printf "${RENK7}${RENK3} ->${RENK8} Seçilmiş ilçe:${RENK2}  ${ilce}${RENK0}\n"
-}
+if (( ! denetim ))
+then
+    printf "${RENK7}${RENK3} ->${RENK8} Seçilmiş ülke:${RENK2}  ${ulke}${RENK0}\n"
+    printf "${RENK7}${RENK3} ->${RENK8} Seçilmiş şehir:${RENK2} ${sehir}${RENK0}\n"
+    printf "${RENK7}${RENK3} ->${RENK8} Seçilmiş ilçe:${RENK2}  ${ilce}${RENK0}\n"
+fi
 
 printf '%b%b' "${RENK7}${RENK8}" \
   "${EZANVERI_ADI} dosyası güncelleniyor...${RENK0}"
@@ -290,7 +301,8 @@ cat << SON >> /tmp/ezanveri-$$
 SON
 
 
-  (( $(wc -l < /tmp/ezanveri-$$) >= 20 )) && {
+if (( $(wc -l < /tmp/ezanveri-$$) >= 20 ))
+then
     mv -f /tmp/ezanveri-$$ "${EZANVERI}"
     printf '%b%*b' "${RENK7}${RENK8}" $(( stn - ${#EZANVERI_ADI} - 6 - renksiz_payi )) \
       "[${RENK2}  BAŞARILI  ${RENK8}]${RENK0}\n"
@@ -302,7 +314,7 @@ SON
     notify-send "${AD^}" "${EZANVERI_ADI} dosyası başarıyla güncellendi." \
       -i ${AD} -t $GUNCELLEME_BILDIRIM_SURESI"000"
     :> /tmp/.${AD}_eznvrgncldntle_$(date +%d%m%y)
-  } || {
+else
     printf '%b%*b' "${RENK7}${RENK8}" $(( stn - ${#EZANVERI_ADI} - 7 - renksiz_payi )) \
       "[${RENK1}  BAŞARISIZ ${RENK8}]${RENK0}"
     printf "${RENK7}${RENK3}\n$( < /tmp/ezv-perl-hata-$$)${RENK0}\n"
@@ -316,7 +328,7 @@ SON
     rm -f /tmp/ezanveri-$$ &>/dev/null
     exit 1
 
-  } #}}}
+fi #}}}
 
 if (( ${#SECONDS} == 1 ))
 then
