@@ -199,7 +199,7 @@ then
         g_secim_goster; temizlik
         arayuz
 
-    elif [[ $(grep [0-9] <<<$str) ]]
+    elif grep -q [0-9] <<<$str
     then
         sure=$(cut -d'-' -f1 <<<$str)
 

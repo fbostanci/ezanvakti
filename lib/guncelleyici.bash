@@ -79,17 +79,17 @@ arayuz_denetle() { ### Arayüz denetle {{{
   printf '%b%s%b' "${RENK7}${RENK8}" \
     'Arayüz uygulaması denetleniyor...' "${RENK0}"
 
-  if test -x "$(type -p kdialog)"
+  if [[ -x "$(type -p kdialog)" ]]
   then
       arayuz=1
       au=Kdialog
 
-  elif test -x "$(type -p yad)"
+  elif [[ -x "$(type -p yad)" ]]
   then
       arayuz=2
       au=Yad
 
-  elif test -x "$(type -p zenity)"
+  elif [[ -x "$(type -p zenity)" ]]
   then
       arayuz=3
       au=Zenity
@@ -120,7 +120,7 @@ IFS="
 #                         ÜLKE İŞLEMLERİ                             #
 ######################################################################
 
-if [[ -z $(grep -w ${ULKE} ${VERI_DIZINI}/ulkeler/AAA-ULKELER) ]]
+if ! grep -qw ${ULKE} ${VERI_DIZINI}/ulkeler/AAA-ULKELER
 then
     arayuz_denetle
 
@@ -161,7 +161,7 @@ ulke_kodu=$(grep -w ${ulke} ${VERI_DIZINI}/ulkeler/AAA-ULKELER | cut -d, -f2)
 
 # Şehir bilgisi şehirler dosyasındakine uygun girilmiş mi?
 # Uygunsa bilgiyi kullan, uygun değilse kullanıcıdan al.
-if [[ -z $(grep -w ${SEHIR} ${VERI_DIZINI}/ulkeler/${ulke}) ]]
+if ! grep -qw ${SEHIR} ${VERI_DIZINI}/ulkeler/${ulke}
 then
     arayuz_denetle
 
@@ -208,7 +208,7 @@ sehir_kodu=$(grep -w ${sehir} ${VERI_DIZINI}/ulkeler/${ulke} | cut -d, -f2)
 
 if [[ ${ulke} = @(TURKIYE|ABD|KANADA) ]]
 then
-    if [[ -z $(grep -w ${ILCE} ${VERI_DIZINI}/ulkeler/${ulke}_ilceler/${sehir}) ]]
+    if ! grep -qw ${ILCE} ${VERI_DIZINI}/ulkeler/${ulke}_ilceler/${sehir}
     then
         if [[ $(wc -l < ${VERI_DIZINI}/ulkeler/${ulke}_ilceler/${sehir}) -eq 1 ]]
         then
