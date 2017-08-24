@@ -50,19 +50,19 @@ done
 
 if (( ${#pmler[@]} ))
 then
-  printf '%b%*b' "${RENK7}${RENK8}" $(( stn - 13 - renksiz_payi )) \
-    "[${RENK1}  BAŞARISIZ ${RENK8}]${RENK0}\n"
+    printf '%b%*b' "${RENK7}${RENK8}" $(( stn - 13 - renksiz_payi )) \
+      "[${RENK1}  BAŞARISIZ ${RENK8}]${RENK0}\n"
 
-  printf '\n%b\n' \
-    "${RENK7}${RENK3}Aşağıdaki perl bileşen(ler)i bulunamadı.${RENK0}"
+    printf '\n%b\n' \
+      "${RENK7}${RENK3}Aşağıdaki perl bileşen(ler)i bulunamadı.${RENK0}"
 
-  for pm in ${pmler[@]}
-  do
-      printf '%b\n' \
-        "${RENK7}${RENK1} ->${RENK8} ${pmler[$e]}${RENK0}"
-      ((e++))
-  done
-  exit 1
+    for pm in ${pmler[@]}
+    do
+        printf '%b\n' \
+          "${RENK7}${RENK1} ->${RENK8} ${pmler[$e]}${RENK0}"
+        ((e++))
+    done
+    exit 1
 fi
 
 printf '%b%*b' "${RENK7}${RENK8}" $(( stn - 13 - renksiz_payi )) \
