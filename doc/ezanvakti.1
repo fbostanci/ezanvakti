@@ -105,6 +105,20 @@ için listen2quran.com sitesi kullanılmaktadır. Kuran dinlemek
 için ek olarak aşağıdakilerden uygun seçeneği de girmeniz
 gereklidir.
 .TP
+\fInormal kullanımlar için\fP :
+.TP 5
+.B \      -s, \-\-secim, \-\-seçim
+Değişken olarak \fI<sure_kodu>\fP verildiğinde o kodla ilişik sureyi dinletir.
+.TP 5
+.B \      -r, \-\-rastgele
+1-114 arası rastgele bir sure seçer ve dinletir.
+.TP 5
+.B \      -h, \-\-hatim
+1'den 114'e kadar tüm sureleri sırayla okur.
+.TP 5
+.B \      -g, \-\-gunluk, \-\-günlük
+\'ayarlar' dosyasında SURELER için girilen numaralara ait sureleri dinletir ve çıkar.
+.TP
 Kuran dinletimi için de birleşik komut desteği vardır.
 .TP 5
 .B \      -ks, \-\-ks
@@ -119,20 +133,6 @@ Değişken olarak \fI<sure_kodu>\fP verildiğinde o kodla ilişik sureyi dinleti
 .B \      -kg, \-\-kg
 \'ayarlar' dosyasında SURELER için girilen numaralara ait sureleri dinletmenin
 birleşik komutudur.
-.TP
-\fInormal kullanımlar için ek olarak\fP :
-.TP 5
-.B \      -s, \-\-secim, \-\-seçim
-Değişken olarak \fI<sure_kodu>\fP verildiğinde o kodla ilişik sureyi dinletir.
-.TP 5
-.B \      -r, \-\-rastgele
-1-114 arası rastgele bir sure seçer ve dinletir.
-.TP 5
-.B \      -h, \-\-hatim
-1'den 114'e kadar tüm sureleri sırayla okur.
-.TP 5
-.B \      -g, \-\-gunluk, \-\-günlük
-\'ayarlar' dosyasında SURELER için girilen numaralara ait sureleri dinletir ve çıkar.
 .TP
 .B \-\-sureler
 Sureleri dinlemek için gerekli olan kod numaralarını ve sure adlarını görüntüler ve çıkar.
@@ -178,7 +178,7 @@ Ayet gösteriminde istenen surenin istenen ayet aralığını gösterir.
 ör: ezanvakti \-\-aralık \2 \55\-\61 \2. surenin \55. ve \61. ayetleri dahil olmak üzere aradaki ayetleri gösterir.
 .TP
 .B \-\-dinle \fI[ek_seçenek]\fP
-istediğiniz zaman istediğiniz vakite ait ezanı dinletir. Dinlemek istediğiniz
+istediğiniz zaman istediğiniz vakte ait ezanı dinletir. Dinlemek istediğiniz
 vakit için girmeniz gereken ek seçenekler:
 .TP 5
 .B \      -s, \-\-sabah
