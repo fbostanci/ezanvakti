@@ -50,7 +50,7 @@ install: $(BETIKLER)
 	$(INSTALL) -vd $(DESTDIR)$(bindir)
 	$(INSTALL) -vd $(DESTDIR)$(libdir)/$(AD)
 	$(INSTALL) -vd $(DESTDIR)$(sysconfdir)
-	$(INSTALL) -vd $(DESTDIR)$(datadir)/$(AD)/{veriler,tefsirler,simgeler,ulkeler{,/TURKIYE_ilceler,/ABD_ilceler,/KANADA_ilceler}}
+	$(INSTALL) -vd $(DESTDIR)$(datadir)/$(AD)/{veriler,mealler,simgeler,ulkeler{,/TURKIYE_ilceler,/ABD_ilceler,/KANADA_ilceler}}
 	$(INSTALL) -vd $(DESTDIR)$(sounddir)/$(AD)
 	$(INSTALL) -vd $(DESTDIR)$(completiondir)
 	$(INSTALL) -vd $(DESTDIR)$(mandir)/man{1,5}
@@ -115,10 +115,10 @@ install: $(BETIKLER)
 		$(INSTALL) -vm644 data/simgeler/ezanvakti"$$m".png $(DESTDIR)$(icondir)/$$m"x"$$m/apps/$(AD).png; \
 	done
 
-	for t in data/tefsirler/*; \
+	for t in data/mealler/*; \
 	do \
 		t_dosya=$$(basename $$t); \
-		$(INSTALL) -vm644 $$t $(DESTDIR)$(datadir)/$(AD)/tefsirler/$$t_dosya; \
+		$(INSTALL) -vm644 $$t $(DESTDIR)$(datadir)/$(AD)/mealler/$$t_dosya; \
 	done
 
 uninstall:

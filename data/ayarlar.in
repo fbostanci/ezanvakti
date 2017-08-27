@@ -41,11 +41,11 @@ ACILISTA_BASLAT=1
 #                           #
 
 
-# Kullanıcı tefsir dosyalarının bulunduğu dizin
-KULLANICI_TEFSIR_DIZINI=Bilinmeyen
+# Yerel meal dosyalarının bulunduğu dizin
+YEREL_MEAL_DIZINI=Bilinmeyen
 
-# Ayet gösteriminde kullanılmasını istediğiniz tefsir
-TEFSIR_SAHIBI=diyanet
+# Ayet gösteriminde kullanılmasını istediğiniz meal
+MEAL_SAHIBI=diyanet
 
 # Kuran dinlemek için, yerel sure dizini
 YEREL_SURE_DIZINI=Bilinmeyen

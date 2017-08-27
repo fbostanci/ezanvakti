@@ -8,17 +8,17 @@ Bu dosyayı düzenleyerek \-uygulama üzerinde düzenlemeler yapmaya gereksinim 
 çalışacaktır.
 .TP
 .B EZANVERI_ADI
-Ezanveri dosyanız için farklı bir ad kullanmak istiyorsanız bu değere yeni adı girin.
+Ezanveri dosyası için farklı bir ad kullanmak istiyorsanız bu değere yeni adı girin.
 .TP
 .B ULKE
-Ezanveri dosyanızı güncelleme işleminde taban olarak kullanılacak ülke adıdır.
+Ezanveri dosyası güncelleme işleminde kullanılacak ülke adıdır.
 .TP
 .B SEHIR
-Ezanveri dosyanızı güncellemede kullanılacak şehir adıdır.
+Ezanveri dosyası güncellemede kullanılacak şehir adıdır.
 .TP
 .B ILCE
-Uygulama bildirimlerinde bulunduğunuz ilçeyi göstermek için ve ayrıca ezanveri dosyanızı güncelleme
-işleminde taban olarak kullanılacak ilçe adıdır.
+Uygulama bildirimlerinde bulunduğunuz ilçeyi göstermek ve ezanveri dosyanızı güncelleme
+işlemi için kullanılacak ilçe adıdır.
 .TP
 .B GUNCELLEME_YAP
 Ezanveri dosyasının güncel kalması için, son 7 gün bildirim baloncuğu ile uyarı yapılmaktadır.
@@ -35,13 +35,13 @@ Uygulamanın sistem açılışında çalışma kipini belirleyen değerdir. Kip 
 1 ve 2 kipi için uygulama açılışa başlatıcı ekleyecektir ve sonraki sistem açılışlarında
 bu kiple çalışacaktır.
 .TP
-.B KULLANICI_TEFSIR_DIZINI
-Türkçe Kuran ayetleri gösteriminde kullanılacak tefsir dosyaları için, ek olarak
-kullanıcının belirleyeceği dizine de bakması için kullanılacak bilgidir. Kullanılacak tefsir
-için uygulama iki dizine de bakar. (diğer dizin root kullanıcısı üzerindedir.)
+.B YEREL_MEAL_DIZINI
+Türkçe Kuran ayetleri gösteriminde kullanılacak meal dosyası seçiminde uygulamanın
+kullanıcının belirleyeceği dizine de bakması için kullanılacak bilgidir. Kullanılacak meal
+dosyası için uygulama iki dizine de bakar. (diğer dizin root kullanıcısı üzerindedir.)
 .TP
-.B TEFSIR_SAHIBI
-Tefsir dizinlerindeki hangi dosyanın kullanılacağını belirten değerdir. Öntanımlı olarak
+.B MEAL_SAHIBI
+Meal dizinlerindeki hangi dosyanın kullanılacağını belirten değerdir. Öntanımlı olarak
 diyanet gelmektedir.
 
 Ek seçenekler olarak 'diyanet' değeri yerine;
@@ -66,8 +66,9 @@ istiyorsanız, dosyalarınızın bulunduğu konumu buraya girin. Sure ses dosyal
 .B \-\-sureler
 seçeneği.)
 değişkeni ile görüntüleyeceğiniz listedeki gibi numaralarla adlandırılmalıdır.
-Uygulama eğer istenen sureyi, belirttiğiniz dizinde bulamazsa, çevrimiçi olarak
-dinletmeyi deneyecektir.
+Ses dosyaları bu dizin içinde KURAN_OKUYAN değeriyle adlandırılmış
+alt dizin içerisine konmalıdır. Uygulama eğer istenen sureyi, belirttiğiniz
+dizinde bulamazsa, çevrimiçi olarak dinletmeyi deneyecektir. 
 .TP
 .B KURAN_OKUYAN
 Çevrimiçi ya da yerel dizinden Kuran dinleme işleminde farklı bir
@@ -125,7 +126,7 @@ işlemi sonrası durumu kullanıcıya bildirmek amaçlı çıkan bildirim balonc
 ekrandaki bekleme süresidir. Öntanımlı değer 15 saniyedir.
 .TP
 .B GUN_ANIMSAT
-Dini günler ve geceler için masaüstüne bildirim baloncuğu açar.  Girilen sayı bildirimin
+Dini günler ve geceler için masaüstüne bildirim baloncuğu açar. Girilen sayı bildirimin
 masaüstünde bekleme süresidir. Eğer bildirim yapılmasını istemiyorsanız değeri 0 olarak girin.
 Öntanımlı bu bu özellik açık gelmektedir ve değeri 15 saniyedir.
 .TP
@@ -144,7 +145,7 @@ Ezan okuma/dinletme ve Kuran dinleme işlemleri için kullanılan Mplayer
 uygulaması için kullanılacak ses değeridir. Öntanımlı 100'dür.
 .TP
 .B OYNATICI_DURAKLAT
-Vakit ezanı okunacağı zaman, betiğin tanıdığı oynatıcıları ezan okunurken duraklatıp;
+Vakit ezanı okunacağı zaman, uygulamanın tanıdığı oynatıcıları ezan okunurken duraklatıp;
 ezan bitimiyle oynatıcının devam etmesini sağlayan değerdir. Öntanımlı bu özellik kapalı gelmektedir.
 Duraklatmayı açmak için 1; kapatmak için 0 değerini girin. Bu özellik sadece vakitlerde okunan
 ezanlar içindir. Ezan dinleme işleminde etkisizdir.
@@ -167,6 +168,10 @@ okunmasını istiyorsanız 120 değerini girin. Önüne \'+' işareti koymayın.
 Ezanveri dosyanızdaki asıl vakit saatleri değişmemektedir.
 Dolayısıyla gösterilen vakit saatleri de değişmez. Değişen
 sadece ezanın okunma saati ve ezana kalan sürelerdir.
+.TP
+.B SELA_OKUNMA_SURESI_FARKI
+Cuma günü sela okunması etkin ise selanın öğle ezanı vaktinden
+kaç dakika önce okunacağını belirten değerdir.
 .TP
 .B SABAH_EZANI_OKU
 Sabah vakti için ezan okunup okunmayacağını belirten değerdir.
@@ -198,43 +203,46 @@ Kapalı olduğunda ezan okunmaz ama bildirimler ekrana gönderilir.
 Öntanımlı etkin konumda gelmektedir. Değeri etkinleştirme için 1;
 kapatma için 0 olarak belirleyin.
 .TP
+.B CUMA_SELASI_OKU
+Cuma günü öğle vaktinden önce sela okunup okunmayacağını belirten
+değerdir.
+.TP
 .B EZAN_OKUYAN
 Ezan okunurken yapılacak bildirim için, ezanı okuyan kişinin adıdır.
 .TP
+.B SELA_OKUYAN
+Cuma selası yapılacak bildirim için, selayı okuyan kişinin adıdır.
+.TP
 .B SABAH_EZANI
 Sabah ezanının okunması için kullanılacak ses dosyasının
-bulunduğu dizindir. Eğer farklı bir ses dosyası kullanmak
-istiyorsanız; bu değere, ses dosyasının konumunu girin.
+bulunduğu konumdur.
 .TP
 .B OGLE_EZANI
 Öğle ezanının okunması için kullanılacak ses dosyasının
-bulunduğu dizindir. Eğer farklı bir ses dosyası kullanmak
-istiyorsanız; bu değere, ses dosyasının konumunu girin.
+bulunduğu konumdur.
 .TP
 .B IKINDI_EZANI
 İkindi ezanının okunması için kullanılacak ses dosyasının
-bulunduğu dizindir. Eğer farklı bir ses dosyası kullanmak
-istiyorsanız; bu değere, ses dosyasının konumunu girin.
+bulunduğu konumdur.
 .TP
 .B AKSAM_EZANI
 Akşam ezanının okunması için kullanılacak ses dosyasının
-bulunduğu dizindir. Eğer farklı bir ses dosyası kullanmak
-istiyorsanız; bu değere, ses dosyasının konumunu girin.
+bulunduğu konumdur.
 .TP
 .B YATSI_EZANI
 Yatsı ezanının okunması için kullanılacak ses dosyasının
-bulunduğu dizindir. Eğer farklı bir ses dosyası kullanmak
-istiyorsanız; bu değere, ses dosyasının konumunu girin.
+bulunduğu konumdur.
+.TP
+.B CUMA_SELASI
+Cuma selası ses dosyasının bulunduğu konumdur.
 .TP
 .B EZAN_DUASI
 Ezan okumadan sonra, dinletilecek ezan duası için
-kullanılacak ses dosyasının bulunduğu dizindir. Eğer
-farklı bir ses dosyası kullanmak istiyorsanız bu değere,
-ses dosyasının konumunu girin.
+kullanılacak ses dosyasının bulunduğu konumdur.
 .TP
 .B UYAR_SESI
 Vakit anımsatıcı da sesli uyarı olarak kullanılacak uyarı
-sesinin bulunduğu dizindir.
+sesinin bulunduğu konumdur.
 .LP
 .SH GELiŞMiŞ AYARLAR
 Arayüzlerde ve Conky uygulamasında değişik yazı tipi ve
@@ -272,7 +280,7 @@ Conky vakit çıktısına ait değerdir. %s değerleri sıralı vakit adı-vakit
 ikililerini temsil etmektedir.
 .TP
 .B VAKIT_BICIMI
-Arayüzlerde gösterilen vakitlere ait değerdir.  %s değerleri sıralı vakit adı-vakit saati
+Arayüzlerde gösterilen vakitlere ait değerdir. %s değerleri sıralı vakit adı-vakit saati
 ikililerini temsil etmektedir.
 .TP
 .B ARAYUZ_CIZGI_SIMGESI

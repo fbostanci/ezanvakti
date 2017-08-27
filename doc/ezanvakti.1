@@ -37,6 +37,12 @@ Yatsı vakti gösterimi için birleşik komuttur.
 .B \      -vk, \-\-vk
 Kerahat vakitleri gösterimi için birleşik komuttur.
 .TP 5
+.B \      -vkb, \-\-vkb
+Kerahat vakitlerini uçbirim yerine bildirim baloncuğunda gösterimi
+için birleşik komuttur.
+Bildirim baloncuğunun ekranda bekleme süresini
+BILGI_GOSTERIM_SURESI değeri belirlemektedir.
+.TP 5
 .B \      -v7, \-\-v7
 7 günlük vakit gösterimi için birleşik komuttur.
 .TP 5
@@ -50,8 +56,14 @@ Bildirim baloncuğunun ekranda bekleme süresini
 BILGI_GOSTERIM_SURESI değeri belirlemektedir.
 .TP 5
 .B \      -vt, \-\-vt
-Sıradaki vakit ve vakte ne kadar süre kaldığının
-gösterimi için birleşik komuttur.
+Sıradaki vakit ve vakte ne kadar süre kaldığını
+uçbirimde gösterimi için birleşik komuttur.
+.TP 5
+.B \      -vtb, \-\-vtb
+Sıradaki vakit ve vakte ne kadar süre kaldığını
+bildirim baloncuğunda gösterimi için birleşik komuttur.
+Bildirim baloncuğunun ekranda bekleme süresini
+BILGI_GOSTERIM_SURESI değeri belirlemektedir.
 .PP
 \fInormal kullanımlar için ek olarak\fP :
 .TP 5
@@ -79,7 +91,7 @@ Bulunduğunuz yer için o güne ait kerahat vakitlerini gösterir ve çıkar.
 .B \      30, \-\-aylik, \-\-aylık
 30 günlük vakitleri listeler ve çıkar.
 .TP 5
-.B \     \-\-osd, \-\-bildirim
+.B \      -b, \-o, \-\-bildirim, \-\-osd
 Vakitler çıktısını uçbirim yerine bildirim baloncuğuna yönlendirir.
 Bildirim baloncuğunun ekranda bekleme süresini
 BILGI_GOSTERIM_SURESI değeri belirlemektedir.
@@ -135,6 +147,13 @@ Ayeti uçbirim yerine bildirim baloncuğunda görüntüler ve çıkar.
 .TP
 .B \-\-iftar
 İftar vaktine ne kadar süre kaldığını görüntüler ve çıkar.
+.PP
+\fIek olarak\fP
+.TP 5
+.B \      -b, \-o, \-\-bildirim, \-\-osd
+İftar vakti kalan süre bilgisini uçbrim yerine bildirim baloncuğunda gösterir.
+Bildirim baloncuğunun ekranda bekleme süresini
+BILGI_GOSTERIM_SURESI değeri belirlemektedir.
 .TP
 .B \-\-conky
 Conky alanına günlük ezan vakitlerini eklemek isteyenler için renksiz

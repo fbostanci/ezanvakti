@@ -11,15 +11,15 @@ ayet_araligi_goster() {
   local sure_adi sure_baslama sure_ayet_sayisi int_ayet_kod 
   local ayet_baslama ayet_bitis satir
 
-  if [[ -f ${KULLANICI_TEFSIR_DIZINI}/${TEFSIR_SAHIBI} ]]
+  if [[ -f ${YEREL_MEAL_DIZINI}/${MEAL_SAHIBI} ]]
   then
-      TEFSIR="${KULLANICI_TEFSIR_DIZINI}/${TEFSIR_SAHIBI}"
-  elif [[ -f ${VERI_DIZINI}/tefsirler/${TEFSIR_SAHIBI} ]]
+      MEAL="${YEREL_MEAL_DIZINI}/${MEAL_SAHIBI}"
+  elif [[ -f ${VERI_DIZINI}/mealler/${MEAL_SAHIBI} ]]
   then
-      TEFSIR="${VERI_DIZINI}/tefsirler/${TEFSIR_SAHIBI}"
+      MEAL="${VERI_DIZINI}/mealler/${MEAL_SAHIBI}"
   else
       printf '%s: %s tefsir dosyası bulunamadı.\n' \
-        "${AD}" "${TEFSIR_SAHIBI}" >&2
+        "${AD}" "${MEAL_SAHIBI}" >&2
       exit 1
   fi
 
@@ -120,7 +120,7 @@ ayet_araligi_goster() {
       "${VERI_DIZINI}/veriler/sureler_ayetler")"\
       "${RENK2} Genel sıra: ${RENK3}${satir}/6236 ${RENK2}"\
       "${RENK2}Cüz:${RENK3} ${cuz} ${RENK2}İndiği yer: ${RENK3}${yer}${RENK5})"\
-      "${RENK8}$(sed -n "${satir}p" "${TEFSIR}")${RENK0}"
+      "${RENK8}$(sed -n "${satir}p" "${MEAL}")${RENK0}"
   done
 }
 

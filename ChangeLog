@@ -11,9 +11,13 @@
  *  sıradaki vakit için bildirim (-vtb)
  *  Kerahat vakitleri için bildirim (--kerahat --bildirim)
  *  guncelleyici.bash: güncelleme işleminde konum
-    bilgileri de gösteriliyor.
+     bilgileri de gösteriliyor.
  *  Yerel kullanıcı dizinine kolay kurulum için
     yerelkur.bash betiği eklendi.
+ *  KULLANICI_TEFSIR_DIZINI -> YEREL_MEAL_DIZINI
+     olarak adlandırıldı.
+ *  TEFSIR_SAHIBI -> MEAL_SAHIBI olarak adlandırıldı.
+ 
 
 /×××××××××××××××××××××××××××××
 × Ezanvakti 6.3.4

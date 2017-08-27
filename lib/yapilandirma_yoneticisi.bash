@@ -54,15 +54,15 @@ yad --plug=190707 --tabnum=1 --form \
 --field='İlçe:' \
 --field='Otomatik Ezanveri Güncelleme:CHK' \
 --field='Uygulama çalışma kipi:CB' \
---field='\nTefsir ve Kuran okuyucu seçimleri:LBL' \
---field='Kullanılacak Tefsir:CB' \
+--field='\nMeal ve Kuran okuyucu seçimleri:LBL' \
+--field='Kullanılacak Meal:CB' \
 --field='Kuran okuyan:CB' \
 --field='\nEzan ve sela okuyan adları:LBL' \
 --field='Ezan okuyan:' \
 --field='Sela okuyan:' \
 "${EZANVERI_ADI}" "${ULKE}" "${SEHIR}" \
 "${ILCE}" "$d1" "^${_CALISMA_KIPI}!Beş vakit!Ramazan!Kapalı" " " \
-"^${TEFSIR_SAHIBI}!diyanet!ozturk!ates!yazir"  \
+"^${MEAL_SAHIBI}!diyanet!ozturk!ates!yazir"  \
 "^${KURAN_OKUYAN}!AlGhamdi!AsShatree!AlAjmy" " " \
 "${EZAN_OKUYAN}" "${SELA_OKUYAN}" > $ayr1 &
 yad --plug=190707 --tabnum=2 --form \
@@ -220,9 +220,9 @@ yad --notebook --key=190707 \
             _YENIDEN_BASLATMA_GEREKLI=1
         fi
 
-        if [[ ${liste1[7]} != ${TEFSIR_SAHIBI} ]]
+        if [[ ${liste1[7]} != ${MEAL_SAHIBI} ]]
         then
-            sed -i "s:\(TEFSIR_SAHIBI=\).*:\1\'${liste1[7]}\':" "${EZANVAKTI_AYAR}"
+            sed -i "s:\(MEAL_SAHIBI=\).*:\1\'${liste1[7]}\':" "${EZANVAKTI_AYAR}"
         fi
 
         if [[ ${liste1[8]} != ${KURAN_OKUYAN} ]]
