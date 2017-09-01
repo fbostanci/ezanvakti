@@ -73,6 +73,9 @@ case $1 in
       30|--ayl[ıi]k)
         bilesen_yukle vakitleri_goster
         vakitler aylik ;;
+      -m|--bayram)
+        bilesen_yukle bayram_namazi
+        bayram_namazi_vakti ;;
       --osd|--bildirim)
         bilesen_yukle vakitleri_goster
         vakitler bildirim ;;
@@ -96,6 +99,9 @@ case $1 in
   -vy|--vy)
     bilesen_yukle vakitleri_goster
     vakitler yatsi ;;
+  -vm|--vm)
+    bilesen_yukle bayram_namazi
+    bayram_namazi_vakti ;;
   -vt|--vt)
     bilesen_yukle siradaki
     case $2 in
@@ -251,9 +257,6 @@ case $1 in
   -h|--help|--yard[iı]m)
     bilesen_yukle kullanim
     betik_kullanimi ;;
-  -vm)
-    bilesen_yukle bayram_namazi
-    bayram_namazi_vakti ;;
   ?*) hatali_kullanim "$1" ;;
 esac
 

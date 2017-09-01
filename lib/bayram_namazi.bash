@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-#
+# Ezanvakti bayram namazı vakitleri bileşeni
 #
 #
 
@@ -47,15 +47,14 @@ bayram_namazi_vakti() {
       exit 1
   fi
 
-
   ${BILESEN_DIZINI}/ezanveri_istemci.pl "${ulke_kodu}" "${sehir_kodu}" "${ilce_kodu}" 'bayram' \
     2> /tmp/ezv-perl-hata-$$ > /tmp/ezv-bayram-vakitleri-$$
 
   # bayram tarihlerini al.
   export $(gawk -v r="[0-9]{2}.[0-9]{2}.$(date +%Y) RAMAZAN BAYRAMI 1. GÜN" \
                 -v k="[0-9]{2}.[0-9]{2}.$(date +%Y) KURBAN BAYRAMI 1. GÜN" \
-          '$0 ~ r {print "ramazan="$1}
-           $0 ~ k {print "kurban="$1}' <${VERI_DIZINI}/veriler/gunler)
+           '$0 ~ r {print "ramazan="$1}
+            $0 ~ k {print "kurban="$1}' <${VERI_DIZINI}/veriler/gunler)
 
   # bayram namazı vakitlerini al.
   ramazan_nv=$(gawk -F'=' '/ramazan_namaz_vakti/{print $2}' < /tmp/ezv-bayram-vakitleri-$$)
@@ -75,3 +74,5 @@ bayram_namazi_vakti() {
     "${RENK2}Ramazan bayramı namazı ${RENK5}: ${ramazan} ${RENK3}$ramazan_nv\n" \
     "${RENK2}Kurban bayramı namazı  ${RENK5}: ${kurban} ${RENK3}$kurban_nv${RENK0}\n" 
 }
+
+# vim: set ts=2 sw=2 et:
