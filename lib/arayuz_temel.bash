@@ -308,7 +308,7 @@ pencere_bilgi() {
   if [[ $1 =~ ^http.* ]]
   then
       # internet erişimini denetle.
-      if ! ping -q -c 1 -W 1 google.com &>/dev/null
+      if ! ping -q -c 1 -W 1 google.com > /dev/null 2>&1
       then
           return 1
       fi
@@ -331,7 +331,7 @@ pencere_bilgi() {
   case $? in
     *)
       echo stop > /tmp/mplayer-$$.pipe 2>/dev/null
-      rm -f /tmp/mplayer-$$.pipe &>/dev/null
+      rm -f /tmp/mplayer-$$.pipe 2>/dev/null
       ;;
   esac
 }

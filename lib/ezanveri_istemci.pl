@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 #
-#                          Ezanveri İstemci 2.1
+#                          Ezanveri İstemci 2.2
 #
 ##
 ##       Copyright (c) 2010-2017 Fatih Bostancı <fbostanci@vivaldi.net>
@@ -17,23 +17,37 @@
 ## but WITHOUT ANY WARRANTY; without even the implied warranty of
 ## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 ## GNU General Public License for more details.
-## 
+##
 ## You should have received a copy of the GNU General Public License
 ## along with this program. If not, see http://www.gnu.org/licenses/.
 #
 #
-
 use strict;
 use warnings;
 use open ':std', ':encoding(UTF-8)';
 use WWW::Mechanize;
 
+#my $ulke = 2;
+#my $sehir = 563;
+#my $ilce = 9786;
 my $ulke = $ARGV[0];
 my $sehir = $ARGV[1];
 my $ilce = $ARGV[2];
-
-my $baglanti = "http://www.diyanet.gov.tr/tr/PrayerTime/WorldPrayerTimes";
+my $baglanti;
+my $period;
 my $sonuc;
+my $rsonuc;
+my $ksonuc;
+my $bos = 0;
+my $oge = 1;
+
+if (defined $ARGV[3]) { # bayram namazı
+  $baglanti = "http://www.diyanet.gov.tr/tr/PrayerTime/HolidayPrayerTimes";
+  $period = '';
+}else{ # ezan vakitleri
+  $baglanti = "http://www.diyanet.gov.tr/tr/PrayerTime/WorldPrayerTimes";
+  $period = 'Aylik';
+}
 
 my $mech = WWW::Mechanize->new();
 $mech->agent_alias( 'Linux Mozilla' );
@@ -45,30 +59,35 @@ $mech->submit_form(
     Country => $ulke,
     State   => $sehir,
     City    => $ilce,
-    period  => 'Aylik'
+    period  => $period
   },
 );
 
 $sonuc = $mech->content();
-
 my @vakitler;
 while ($sonuc =~/<td.*?>(.*?)<\/td>/g) {
   push @vakitler, $1;
 }
 
-my $bos = 0;
-my $oge = 1;
-
-foreach my $v (@vakitler) {
-    if ($bos and length $v > 5) {
-        print "\n";
-    }
-    if ($oge%8 == 0) {
-      print $v;
-    } else {
-      print $v, "  ";
-    }
-    $bos = 1;
-    $oge++;
+if (!defined $ARGV[3]) {
+  foreach my $v (@vakitler) {
+      if ($bos and length $v > 5) {
+          print "\n";
+      }
+      if ($oge%8 == 0) {
+        print $v;
+      } else {
+        print $v, "  ";
+      }
+      $bos = 1;
+      $oge++;
+  }
+}else{
+  $vakitler[0] =~ m/(.*)\:\s+(.*)$/;
+  $rsonuc = $2;
+  $vakitler[1] =~ m/(.*)\:\s+(.*)$/;
+  $ksonuc = $2;
+  print "ramazan_namaz_vakti=",$rsonuc,"\n";
+  print "kurban_namaz_vakti=",$ksonuc;
 }
 print "\n";

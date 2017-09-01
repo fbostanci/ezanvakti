@@ -261,7 +261,7 @@ printf '%b%s%b' "${RENK7}${RENK8}" \
   'İnternet erişimi denetleniyor...' "${RENK0}"
 
 # internet erişimini denetle.
-if ! ping -q -c 1 -W 1 google.com &>/dev/null
+if ! ping -q -c 1 -W 1 google.com > /dev/null 2>&1
 then
     printf '%b%*b' "${RENK7}${RENK8}" $(( stn - 13 - renksiz_payi )) \
       "[${RENK1}  BAŞARISIZ ${RENK8}]${RENK0}\n"
@@ -319,13 +319,13 @@ else
       "[${RENK1}  BAŞARISIZ ${RENK8}]${RENK0}"
     printf "${RENK7}${RENK3}\n$( < /tmp/ezv-perl-hata-$$)${RENK0}\n"
 
-    rm -f /tmp/ezv-perl-hata-$$ &>/dev/null
+    rm -f /tmp/ezv-perl-hata-$$ > /dev/null 2>&1
     printf "${RENK7}${RENK4}\n!!! YENIDEN DENEYIN !!!${RENK0}\n"
 
     notify-send "${AD^}" "${EZANVERI_ADI} dosyasının güncellenmesi başarısız oldu." \
       -i ${AD} -t $GUNCELLEME_BILDIRIM_SURESI"000"
 
-    rm -f /tmp/ezanveri-$$ &>/dev/null
+    rm -f /tmp/ezanveri-$$ > /dev/null 2>&1
     exit 1
 
 fi #}}}

@@ -10,7 +10,7 @@ mplayer_calistir() {
   if [[ ${dinletilecek_oge} =~ ^http.* ]]
   then
       # internet erişimini denetle.
-      if ! ping -q -c 1 -W 1 google.com &>/dev/null
+      if ! ping -q -c 1 -W 1 google.com > /dev/null 2>&1
       then
           printf '%s: internet erişimi algılanamadı.\n' "${AD}" >&2
           return 1

@@ -3,7 +3,7 @@
 #       Ezanvakti Kuran dinletme bileşeni
 #
 #
-
+# TODO: sure no sayısal denetimleri geliştir.
 sure_no_denetimi() { # sure_no_yonetimi {{{
   if [[ -n $(tr -d 0-9 <<<$sure_no) ]]
   then
@@ -12,7 +12,11 @@ sure_no_denetimi() { # sure_no_yonetimi {{{
         'Sure kodu olarak 1-114 arası sayısal bir değer giriniz.'
       exit 1
 
-  elif (( ! ${#sure_no} ))
+  else
+      sure_no="$((10#${sure_no}))"
+  fi
+
+  if (( ! ${#sure_no} ))
   then
       printf '%s: bu özelliğin kullanımı için ek olarak sure kodu girmelisiniz.\n' "${AD}" >&2
       exit 1

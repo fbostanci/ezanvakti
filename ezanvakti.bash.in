@@ -251,6 +251,9 @@ case $1 in
   -h|--help|--yard[iı]m)
     bilesen_yukle kullanim
     betik_kullanimi ;;
+  -vm)
+    bilesen_yukle bayram_namazi
+    bayram_namazi_vakti ;;
   ?*) hatali_kullanim "$1" ;;
 esac
 
