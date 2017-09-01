@@ -28,6 +28,7 @@ Genel Özellikleri
 *  Sıradaki vakit, ve vakte ne kadar süre kaldığını gösterme. (-vt)
 *  Arayüzden ve uçbirimden kerahat vakitlerini gösterebilme. (-vk)
 *  Bulunduğunuz konum için bayram namazı vakitlerini gösterme. (-vm)
+*  Cuma hutbesi indirme ve açma (--hutbe)
 *  Arayüzde hicri tarih gösterimi
 *  Arayüz HTML renk özelleştirmeleri
 *  Cuma günü isteğe bağlı sela okunması (süre ayarlı)

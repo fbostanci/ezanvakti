@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Ezanvakti bayram namazı vakitleri bileşeni
+#     Ezanvakti bayram namazı vakitleri bileşeni
 #
 #
 

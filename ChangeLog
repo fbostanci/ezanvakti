@@ -8,6 +8,7 @@
 2017-xx-xx Fatih BOSTANCI <fbostanci@vivaldi.net>
 
  *  Bayram namazı vakitlerini gösterme (--vakitler --bayram)
+ *  Cuma hutbesi indirme ve açma (--hutbe)
  *  iftar vakti için bildirim (--iftar --bildirim)
  *  sıradaki vakit için bildirim (-vtb)
  *  Kerahat vakitleri için bildirim (--kerahat --bildirim)

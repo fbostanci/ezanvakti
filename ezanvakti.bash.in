@@ -251,6 +251,9 @@ case $1 in
   --kalan)
     bilesen_yukle kalan
     kalan_sure ;;
+  --hutbe)
+    bilesen_yukle cuma_hutbesi
+    hutbe_indir ;;
   -V|--s[uü]r[uü]m|--version)
     bilesen_yukle hakkinda
     surum_goster ;;
