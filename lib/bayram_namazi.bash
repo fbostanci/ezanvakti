@@ -36,7 +36,7 @@ bayram_namazi_vakti() {
       ilce_kodu="${sehir_kodu}"
   fi
 
-  printf '%b%s%b\r' "${RENK7}${RENK8}" \
+  printf '\n%b%s%b\r' "${RENK7}${RENK8}" \
     'Bayram namazı vakitleri alınıyor...' "${RENK0}"
 
   # internet erişimini denetle.
@@ -57,9 +57,19 @@ bayram_namazi_vakti() {
           '$0 ~ r {print "ramazan="$1}
            $0 ~ k {print "kurban="$1}' <${VERI_DIZINI}/veriler/gunler)
 
+  # bayram namazı vakitlerini al.
   ramazan_nv=$(gawk -F'=' '/ramazan_namaz_vakti/{print $2}' < /tmp/ezv-bayram-vakitleri-$$)
   kurban_nv=$(gawk -F'=' '/kurban_namaz_vakti/{print $2}' < /tmp/ezv-bayram-vakitleri-$$)
-  # TODO: perl hata denetimleri ekle.
+  rm -f /tmp/ezv-bayram-vakitleri-$$ > /dev/null 2>&1
+
+  [[ -z ${ramazan_nv} || -z ${kurban_nv} ]] && {
+    printf "${RENK7}${RENK3}\n$( < /tmp/ezv-perl-hata-$$)${RENK0}\n"
+    rm -f /tmp/ezv-perl-hata-$$ > /dev/null 2>&1
+    printf "${RENK7}${RENK4}\n!!! YENIDEN DENEYIN !!!${RENK0}\n"
+    exit 1
+  }
+
+  rm -f /tmp/ezv-perl-hata-$$ > /dev/null 2>&1
   printf '%b%b%b\n' \
     "${RENK7}${RENK3}${ILCE}${RENK5} için bayram namazı vakitleri $(date +'%d.%m.%Y %H:%M:%S')\n\n" \
     "${RENK2}Ramazan bayramı namazı ${RENK5}: ${ramazan} ${RENK3}$ramazan_nv\n" \

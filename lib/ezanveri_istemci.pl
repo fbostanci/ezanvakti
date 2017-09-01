@@ -40,13 +40,14 @@ my $rsonuc;
 my $ksonuc;
 my $bos = 0;
 my $oge = 1;
+my @vakitler;
 
-if (defined $ARGV[3]) { # bayram namazı
-  $baglanti = "http://www.diyanet.gov.tr/tr/PrayerTime/HolidayPrayerTimes";
-  $period = '';
-}else{ # ezan vakitleri
+if (!defined $ARGV[3]) { # ezan vakitleri
   $baglanti = "http://www.diyanet.gov.tr/tr/PrayerTime/WorldPrayerTimes";
   $period = 'Aylik';
+} else { # bayram namazı
+  $baglanti = "http://www.diyanet.gov.tr/tr/PrayerTime/HolidayPrayerTimes";
+  $period = '';
 }
 
 my $mech = WWW::Mechanize->new();
@@ -62,9 +63,8 @@ $mech->submit_form(
     period  => $period
   },
 );
-
 $sonuc = $mech->content();
-my @vakitler;
+
 while ($sonuc =~/<td.*?>(.*?)<\/td>/g) {
   push @vakitler, $1;
 }
@@ -82,7 +82,7 @@ if (!defined $ARGV[3]) {
       $bos = 1;
       $oge++;
   }
-}else{
+} else {
   $vakitler[0] =~ m/(.*)\:\s+(.*)$/;
   $rsonuc = $2;
   $vakitler[1] =~ m/(.*)\:\s+(.*)$/;

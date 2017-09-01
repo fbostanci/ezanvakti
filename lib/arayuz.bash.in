@@ -152,6 +152,23 @@ then
         g_secim_goster; temizlik
         arayuz
 
+    elif [[ $str = Bayram namazı vakitleri ]]
+    then
+        secim_basligi="$(date +%Y) Bayram namazı vakitleri"
+        bilesen_yukle bayram_namazi
+        (
+          echo 'yad gürültü istiyor'
+          bayram_namazi_vakti > "${cikti_dosyasi}"
+          echo 'yad gürültü istiyor'
+          sed -i 's:.*\.\.\.::g' "${cikti_dosyasi}"
+          echo 'yad gürültü istiyor'
+        ) | yad --progress --pulsate --auto-close --undecorated \
+                --progress-text='Bayram namazı vakitleri alınıyor...' \
+                --pulsate --auto-close --width=300 --center --fixed \
+                --no-buttons --skip-taskbar
+        g_secim_goster; temizlik
+        arayuz
+
     elif [[ $str = Dini Günler ve Geceler ]]
     then
         secim_basligi="$(date +%Y) Dini Günler ve Geceler"
