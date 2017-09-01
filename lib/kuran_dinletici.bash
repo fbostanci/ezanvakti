@@ -21,13 +21,6 @@ sure_no_denetimi() { # sure_no_yonetimi {{{
       printf '%s: bu özelliğin kullanımı için ek olarak sure kodu girmelisiniz.\n' "${AD}" >&2
       exit 1
 
-  elif (( ${#sure_no} > 3 ))
-  then
-      printf '%b\n%b\n' \
-        "${AD}: hatalı sure_no: \`$sure_no' " \
-        'Girilen sure kodunun basamak sayısı <= 3 olmalı.'
-      exit 1
-
   elif (( sure_no < 1 || sure_no > 114 ))
   then
       printf '%b\n%b\n' \

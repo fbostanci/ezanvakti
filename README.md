@@ -1,8 +1,8 @@
-Son Güncelleme:  Mon, 17 Jul 2017 18:15:50 +0300
+Son Güncelleme:  Fri, 01 Sep 2017 22:03:05 +0300
 
 <br>
 
-Ezanvakti 6.3 GNU/Linux için ezan vakti bildirici
+Ezanvakti 6.4 GNU/Linux için ezan vakti bildirici
 ====
 
 <br>
@@ -27,6 +27,7 @@ Genel Özellikleri
 *  İftar vaktine ne kadar süre kaldığını gösterme. (--iftar)
 *  Sıradaki vakit, ve vakte ne kadar süre kaldığını gösterme. (-vt)
 *  Arayüzden ve uçbirimden kerahat vakitlerini gösterebilme. (-vk)
+*  Bulunduğunuz konum için bayram namazı vakitlerini gösterme. (-vm)
 *  Arayüzde hicri tarih gösterimi
 *  Arayüz HTML renk özelleştirmeleri
 *  Cuma günü isteğe bağlı sela okunması (süre ayarlı)
