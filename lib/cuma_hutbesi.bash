@@ -28,7 +28,7 @@ hutbe_var_mi() {
 export -f hutbe_var_mi
 
 hutbe_indir() {
-  local cuma regex
+  local cuma regex e i
   local -a indir acilacak
 
 case $1 in
@@ -49,14 +49,26 @@ case $1 in
     ${WGET} http://www.diyanet.nl/cuma-hutbeleri/ -O /tmp/ezv-hutbe-$$
 
     indir=("$(grep -Eo "${regex}" /tmp/ezv-hutbe-$$)")
-    acilacak=("$(grep -Eo "${cuma}.*TR.docx" /tmp/ezv-hutbe-$$)")
+    rm -f /tmp/ezv-hutbe-$$ > /dev/null 2>&1
 
-    # TODO: Hutbe var mı denetle yoksa indir.
-    ${WGET} ${indir[@]} -P ${HUTBE_DIZINI}
+    for i in ${indir[@]}
+    do
+      acilacak+=("$(echo $i | gawk -F'/' '{print($(NF))}')")
+    done
 
+    e=0
     for i in ${acilacak[@]}
     do
-      xdg-open ${HUTBE_DIZINI}/$i
+      if [[ -f ${HUTBE_DIZINI}/$i ]]
+      then
+          xdg-open  ${HUTBE_DIZINI}/$i
+      else
+          ${WGET} ${indir[$e]} -P ${HUTBE_DIZINI}
+          xdg-open  ${HUTBE_DIZINI}/$i
+      fi
+     ((e++))
     done ;;
 esac
 }
+
+# vim: set ft=sh ts=2 sw=2 et:
