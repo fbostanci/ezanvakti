@@ -33,7 +33,7 @@ hutbe_indir() {
 
 case $1 in
   listele)
-    yad --title "Ezv hutbe indirici" --window-icon=${AD} --html --browser\
+    yad --title "${AD} hutbe indirici" --window-icon=${AD} --html --browser \
       --uri="http://www.diyanet.nl/cuma-hutbeleri/" \
       --width=620 --height=600 \
       --uri-handler="bash -c 'hutbe_var_mi %s'" ;;
