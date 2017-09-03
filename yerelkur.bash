@@ -12,20 +12,23 @@
   exit 1
 }
 
-AD=ezv-devel
+AD=ezanvakti
 bindir=$HOME/bin
 
-[[ $1 = --kur ]] && eylem=install
-[[ $1 = --@(kald[iı]r) ]] && eylem=uninstall
-[[ -z $1 ]] && {
-echo "Kullanım
-        --kur
-              Yerel kurulum yapar.
-        --kaldır
-              Yerel kurulumu kaldırır.
+case $1 in
+  --kur) eylem=install ;;
+  --kald[iı]r) eylem=uninstall ;;
+    *)
+echo  "\
+  Kullanım:
+     --kur
+        Yerel kurulum yapar.
+
+     --kaldır
+        Yerel kurulumu kaldırır.
 " >&2
-exit 1
-}
+exit 1 ;;
+esac
 
 [[ $1 = --kur ]] && {
   BAG=('bash' 'sed' 'gawk' 'grep' 'make' 'notify-send' 'yad' 'mplayer')

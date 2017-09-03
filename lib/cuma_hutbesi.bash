@@ -59,6 +59,9 @@ case $1 in
     e=0
     for i in ${acilacak[@]}
     do
+      printf \
+        "${RENK7}${RENK3}$i${RENK8} dosyası açılacak.${RENK0}\n"
+
       if [[ -f ${HUTBE_DIZINI}/$i ]]
       then
           xdg-open  ${HUTBE_DIZINI}/$i
@@ -66,7 +69,7 @@ case $1 in
           ${WGET} ${indir[$e]} -P ${HUTBE_DIZINI}
           xdg-open  ${HUTBE_DIZINI}/$i
       fi
-     ((e++))
+      ((e++))
     done ;;
 esac
 }

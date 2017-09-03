@@ -1,4 +1,8 @@
-
+#
+#
+#     Ezanvakti bash tamamlama betiği
+#
+#
 _ezanvakti() {
   local cur prev kuran_uzun vakitler_uzun dinle_uzun
   local butun_uzun bildirim_uzun nglob_ayar ezanvakti_exec
@@ -18,7 +22,7 @@ _ezanvakti() {
 
   dinle_uzun='--sabah --ogle --ikindi --aksam --yatsi --cuma'
   vakitler_uzun='--sabah --ogle --ikindi --aksam --yatsi \
-  --aylik --haftalik --bildirim --siradaki --kerahat'
+  --aylik --haftalik --bildirim --siradaki --kerahat --bayram'
 
   kuran_uzun='--secim --rastgele --hatim --gunluk'
   conky_uzun='--iftar --siradaki --kerahat'
@@ -28,14 +32,14 @@ _ezanvakti() {
 --esma --bilgi --hadis --kuran --dinle --arayuz --arayuz2 \
 --gui --gui2 --bilgi --sureler --yapilandirma --guncelle \
 --yardim  --surum --gunler --aralik --kalan --config \
---renk --eylem'
+--renk --eylem --hutbe'
 
   case "$prev" in
 
     *$ezanvakti)
      COMPREPLY=( $(compgen -W "${butun_uzun}" -- $cur) ) ;;
 
-    --ayet|--hadis|--bilgi)
+    --ayet|--hadis|--bilgi|--iftar)
       COMPREPLY=( $(compgen -W "${bildirim_uzun}"  -- $cur) ) ;;
 
     -v|--vakitler)

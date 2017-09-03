@@ -4,24 +4,24 @@
 #
 #
 
-SHELL         = /bin/bash
-DESTDIR       =
-AD            = ezanvakti
-SURUM         = $(shell cat VERSION)
-DUZELTME      = $(shell git log -1 --pretty=format:'%ad' --abbrev-commit --date=short 2>/dev/null | tr -d -- '-')
-PREFIX        = /usr/local
-INSTALL       = /usr/bin/env install
-SED           = /bin/sed
+SHELL          = /bin/bash
+DESTDIR        =
+AD             = ezanvakti
+SURUM          = $(shell cat VERSION)
+DUZELTME       = $(shell git log -1 --pretty=format:'%ad' --abbrev-commit --date=short 2>/dev/null | tr -d -- '-')
+PREFIX         = /usr/local
+INSTALL        = /usr/bin/env install
+SED            = /bin/sed
 
-bindir        = $(PREFIX)/bin
-libdir        = $(PREFIX)/lib
-sysconfdir    = $(PREFIX)/etc
-datadir       = $(PREFIX)/share
-completiondir = $(PREFIX)/share/bash-completion/completions
-mandir        = $(PREFIX)/share/man
-sounddir      = $(PREFIX)/share/sounds
-icondir       = $(PREFIX)/share/icons/hicolor
-appdeskdir    = $(PREFIX)/share/applications
+bindir         = $(PREFIX)/bin
+libdir         = $(PREFIX)/lib
+sysconfdir     = $(PREFIX)/etc
+datadir        = $(PREFIX)/share
+completionsdir = $(PREFIX)/share/bash-completion/completions
+mandir         = $(PREFIX)/share/man
+sounddir       = $(PREFIX)/share/sounds
+icondir        = $(PREFIX)/share/icons/hicolor
+appdeskdir     = $(PREFIX)/share/applications
 
 
 ifeq "$(DUZELTME)" ""
@@ -52,7 +52,7 @@ install: $(BETIKLER)
 	$(INSTALL) -vd $(DESTDIR)$(sysconfdir)
 	$(INSTALL) -vd $(DESTDIR)$(datadir)/$(AD)/{veriler,mealler,simgeler,ulkeler{,/TURKIYE_ilceler,/ABD_ilceler,/KANADA_ilceler}}
 	$(INSTALL) -vd $(DESTDIR)$(sounddir)/$(AD)
-	$(INSTALL) -vd $(DESTDIR)$(completiondir)
+	$(INSTALL) -vd $(DESTDIR)$(completionsdir)
 	$(INSTALL) -vd $(DESTDIR)$(mandir)/man{1,5}
 	$(INSTALL) -vd $(DESTDIR)$(appdeskdir)
 	$(INSTALL) -vd $(DESTDIR)$(icondir)/{16x16,22x22,32x32,48x48,64x64,96x96}/apps
@@ -63,7 +63,7 @@ install: $(BETIKLER)
 	$(INSTALL) -vm755 data/ezanvakti.desktop $(DESTDIR)$(appdeskdir)/$(AD).desktop
 
 	$(INSTALL) -vm644 data/ayarlar $(DESTDIR)$(sysconfdir)/$(AD).conf
-	$(INSTALL) -vm644 data/ezanvakti_completion $(DESTDIR)$(completiondir)/$(AD)
+	$(INSTALL) -vm644 data/ezanvakti_completion $(DESTDIR)$(completionsdir)/$(AD)
 	# man
 	$(INSTALL) -vm644 doc/ezanvakti.1 $(DESTDIR)$(mandir)/man1/$(AD).1
 	$(INSTALL) -vm644 doc/ezanvakti-ayarlar.5 $(DESTDIR)$(mandir)/man5/$(AD)-ayarlar.5
@@ -127,7 +127,7 @@ uninstall:
 	@rm -rf $(DESTDIR)$(datadir)/$(AD)
 	@rm -rf $(DESTDIR)$(sounddir)/$(AD)
 	@rm -f  $(DESTDIR)$(sysconfdir)/$(AD).conf
-	@rm -f  $(DESTDIR)$(completiondir)/$(AD)
+	@rm -f  $(DESTDIR)$(completionsdir)/$(AD)
 	@rm -f  $(DESTDIR)$(mandir)/man1/$(AD).1*
 	@rm -f  $(DESTDIR)$(mandir)/man5/$(AD)-ayarlar.5*
 	@rm -f  $(DESTDIR)$(appdeskdir)/$(AD).desktop
