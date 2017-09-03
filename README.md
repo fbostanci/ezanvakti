@@ -1,5 +1,11 @@
 Son Güncelleme:  Fri, 01 Sep 2017 22:03:05 +0300
 
+[![GitHub release](https://img.shields.io/github/release/fbostanci/ezanvakti.svg?style=plastic)](https://github.com/fbostanci/ezanvakti)
+[![GitHub tag](https://img.shields.io/github/tag/fbostanci/ezanvakti.svg?style=plastic)](https://github.com/fbostanci/ezanvakti)
+[![license](https://img.shields.io/github/license/fbostanci/ezanvakti.svg?style=plastic)](https://github.com/fbostanci/ezanvakti)
+[![AUR](https://img.shields.io/aur/version/ezanvakti.svg?style=plastic)](https://github.com/fbostanci/ezanvakti)
+[![GitHub issues](https://img.shields.io/github/issues/fbostanci/ezanvakti.svg?style=plastic)](https://github.com/fbostanci/ezanvakti/issues)
+
 <br>
 
 Ezanvakti 6.4 GNU/Linux için ezan vakti bildirici
