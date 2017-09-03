@@ -12,7 +12,7 @@
   exit 1
 }
 
-AD=ezanvakti
+AD=${AD:-ezv-devel}
 bindir=$HOME/bin
 
 case $1 in
