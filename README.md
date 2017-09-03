@@ -3,7 +3,7 @@ Son Güncelleme:  Fri, 01 Sep 2017 22:03:05 +0300
 <p align="center">
 <a href="https://github.com/jarun/googler/releases/latest"><img src="https://img.shields.io/github/release/fbostanci/ezanvakti.svg?maxAge=600" alt="Latest release" /></a>
 <a href="https://aur.archlinux.org/packages/ezanvakti"><img src="https://img.shields.io/aur/version/ezanvakti.svg?maxAge=600" alt="AUR" /></a>
-<a href="https://github.com/jarun/googler/blob/master/LICENSE"><img src="https://img.shields.io/badge/license-GPLv3-yellow.svg?maxAge=2592000" alt="License" /></a>
+<a href="https://github.com/fbostanci/ezanvakti/blob/master/COPYING"><img src="https://img.shields.io/badge/license-GPLv3-yellow.svg?maxAge=2592000" alt="License" /></a>
 </a>
 </p>
 
