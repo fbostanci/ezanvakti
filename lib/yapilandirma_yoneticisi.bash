@@ -42,10 +42,10 @@ ayr4=/tmp/${AD}_ayr4
 #ayr4=$(mktemp --tmpdir tab4.XXXXXXXX)
 
 temizlik() {
-  rm -f $ayr1 $ayr2 $ayr3 $ayr4 &>/dev/null
+  rm -f $ayr1 $ayr2 $ayr3 $ayr4 > /dev/null 2>&1
 }
 
-ipcrm -M 190707  > /dev/null 2>&1
+ipcrm -M 190707 > /dev/null 2>&1
 
 yad --plug=190707 --tabnum=1 --form \
 --field='Ezanveri Adı:' \

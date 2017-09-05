@@ -1,20 +1,5 @@
 # TODO:
 
-# ana betiği böl.  ###TAMAM###
-# debian paketleme dosyalarını paylaşıma aç. ###TAMAM###
-# isteğe bağlı sesli uyarılar ###TAMAM###
-# gelişmiş arayüz e son özelikleri(dini günler; aylık,haftalık vakitler) ekle. ###TAMAM###
-# oynatici_duraklat için uygulama durumunu denetleme geliştir. ###TAMAM###
-# yapılandırma yöneticisini yeni pencerelere böl. Kapsamını arttır. ### TAMAM ###
-# --vakitler/-v için birleşik komut kullanımı desteği sağla. (ezanvakti -vi gibi) ###TAMAM###
-# makefile geliştir. ( dist oluşturma , tane tane dosya kurulumu ) ###TAMAM###
-# gelişmiş arayüz bileşeninin ana betik gereksinimini olabildiğince azalt. ###TAMAM###
-# Makefile üzerinden uygulamanın adı değişebilsin.###TAMAM###
-# Conky sonraki vakit cıktısı ###TAMAM###
-# Conky ve conky-iftar bilesenlerini birlestir. ###TAMAM###
-# Hadis,esma ve bilgi bilesenlerini birlestir. ###TAMAM###
-# ilçeleri de ekle. ###TAMAM###
-# man dosyasını 2 ye böl. (1. ve 5. bölümler) ###TAMAM###
-# ubuntu unity özel menü desteği###TAMAM###
-# man dosyalarını güncelle. ###TAMAM###
-# Ubuntu yamalarını güncelle. ###TAMAM###
+# ses oynatımı için ffplay kullan mplayer desteğini sürdür.
+# imsak kalan gösterimi (uçbirim/bildirim)
+# aralik.bash ve kuran_dinletici.bash sayısal denetimleri geliştir.

@@ -21,7 +21,6 @@ ayet_goster() {
   satir=$(( RANDOM % 6236 ))
   (( ! satir )) && satir=6236
 
-
   case $1 in
     ucbirim)
     printf '%b%b%b\n' \
