@@ -5,7 +5,7 @@
 #
 # TODO: sure no sayısal denetimleri geliştir.
 sure_no_denetimi() { # sure_no_yonetimi {{{
-  if [[ -n $(tr -d 0-9 <<<$sure_no) ]]
+  if [[ -n ${sure_no//[[:digit:]]/} ]]
   then
       printf '%b\n%b\n' \
         "${AD}: hatalı sure_no: \`$sure_no' " \
@@ -13,7 +13,7 @@ sure_no_denetimi() { # sure_no_yonetimi {{{
       exit 1
 
   else
-      sure_no="$((10#${sure_no}))"
+      sure_no="$(sed 's/^0*//' <<<$sure_no)"
   fi
 
   if (( ! ${#sure_no} ))

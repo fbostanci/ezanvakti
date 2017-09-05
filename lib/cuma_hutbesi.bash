@@ -56,7 +56,7 @@ case $1 in
       acilacak+=("$(echo $i | gawk -F'/' '{print($(NF))}')")
     done
 
-    e=0
+    e=0; renk_denetle
     for i in ${acilacak[@]}
     do
       printf \
