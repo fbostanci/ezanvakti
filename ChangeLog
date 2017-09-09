@@ -9,6 +9,7 @@
 
  *  Bayram namazı vakitlerini gösterme (--vakitler --bayram)
  *  Cuma hutbesi indirme ve açma (--hutbe)
+ *  ses dosyası oynatımında mplayer yanında ffplay desteği
  *  iftar vakti için bildirim (--iftar --bildirim)
  *  sıradaki vakit için bildirim (-vtb)
  *  Kerahat vakitleri için bildirim (--kerahat --bildirim)

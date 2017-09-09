@@ -1,4 +1,4 @@
-Son Güncelleme:  Mon, 04 Sep 2017 22:00:44 +0300
+Son Güncelleme:  Sat, 09 Sep 2017 15:42:06 +0300
 
 [![GitHub release](https://img.shields.io/github/release/fbostanci/ezanvakti.svg?style=plastic)](https://github.com/fbostanci/ezanvakti)
 [![GitHub tag](https://img.shields.io/github/tag/fbostanci/ezanvakti.svg?style=plastic)](https://github.com/fbostanci/ezanvakti)
@@ -78,7 +78,7 @@ BAĞIMLILIKLAR
 *    gawk
 *    grep
 *    libnotify
-*    mplayer
+*    ffmpeg ya da mplayer
 *    perl-www-mechanize
 
 <br>
