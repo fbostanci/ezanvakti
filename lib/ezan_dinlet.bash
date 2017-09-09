@@ -15,11 +15,11 @@ ezan_dinlet() {
       ileti='ezanı '
   fi
 
-  bilesen_yukle mplayer_yonetici
+  bilesen_yukle oynatici_yonetici
 
   printf "${RENK7}${RENK2}${vakit}${RENK3} ${ileti}dinletiliyor\n\n${RENK0}"
   printf "${RENK7}${RENK3}Okuyan : ${RENK2}${EZAN_OKUYAN}\n\n${RENK0}"
-  mplayer_calistir "${vakit_ezani}"
+  oynatici_calistir "${vakit_ezani}"
 }
 
 # vim: set ft=sh ts=2 sw=2 et:

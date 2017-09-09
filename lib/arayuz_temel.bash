@@ -293,11 +293,6 @@ g_vakitleri_yaz() {
          "${aksam}" "$aksam_n" "${yatsi}" "$yatsi_n"
 }
 
-mplayer_sure_al() {
-  mplayer -vo null -ao null -frames 0 -identify "$1" 2>/dev/null | \
-    gawk  -F'=' '/^ID_LENGTH/ {print int($2);}'
-}
-
 g_secim_goster() {
   yad --title "${AD^} - ${secim_basligi}" --text-info --filename="${cikti_dosyasi}" \
       --width=560 --height=300 --wrap --button='gtk-close' --window-icon=${AD} \
@@ -305,7 +300,7 @@ g_secim_goster() {
 }
 
 pencere_bilgi() {
-  local parca_suresi parca_suresi_n
+  local parca_suresi_n
 
   if [[ $1 =~ ^http.* ]]
   then
@@ -320,26 +315,22 @@ pencere_bilgi() {
       return 1
   fi
 
-  parca_suresi="$(mplayer_sure_al "$1")"
-  parca_suresi_n=$(printf '%02d sa: %02d dk: %02d sn' \
-                          $(( parca_suresi / 3600 )) \
-                          $(( parca_suresi % 3600 / 60 )) \
-                          $(( parca_suresi % 60 )) )
+  parca_suresi_n="$(oynatici_sure_al "$1")"
 
   yad --form --separator=' ' --title="${AD^}" --image=${AD} --window-icon=${AD} \
-      --text "${mplayer_ileti}\n Süre        : $parca_suresi_n" --mouse --fixed \
+      --text "${oynatici_ileti}\n Süre        : $parca_suresi_n" --mouse --fixed \
       --button='gtk-cancel:127' --button='gtk-close:0' --timeout=$parca_suresi
 
   case $? in
     *)
-      echo stop > /tmp/mplayer-$$.pipe 2>/dev/null
-      rm -f /tmp/mplayer-$$.pipe 2>/dev/null
+      echo stop > /tmp/ezv-oynatici-$$.pipe 2>/dev/null
+      rm -f /tmp/ezv-oynatici-$$.pipe 2>/dev/null
       ;;
   esac
 }
 
 ozel_pencere() {
-  local strng donus str str2 sure dinletilecek_sure okuyucu mplayer_ileti
+  local strng donus str str2 sure dinletilecek_sure okuyucu oynatici_ileti
 
 strng=$(yad --form \
 --field=Okuyucu:CB \
@@ -395,11 +386,11 @@ case $donus in
         dinletilecek_sure="http://www.listen2quran.com/listen/${okuyucu}/$sure.mp3"
     fi
 
-    mplayer_ileti="$(gawk -v sira=$sure '{if(NR==sira) print $4;}' \
+    oynatici_ileti="$(gawk -v sira=$sure '{if(NR==sira) print $4;}' \
       < ${VERI_DIZINI}/veriler/sure_bilgisi) suresi dinletiliyor\n\n Okuyan : ${str}"
 
     pencere_bilgi "${dinletilecek_sure}" & 
-    mplayer_calistir "${dinletilecek_sure}"
+    oynatici_calistir "${dinletilecek_sure}"
     ozel_pencere ;;
 
   153)
