@@ -12,7 +12,7 @@
 # pid denetimi yapılsın.
 arayuz_pid_denetle
 
-bilesen_yukle mplayer_yonetici
+bilesen_yukle oynatici_yonetici
 bilesen_yukle hicri
 
 elx=''
@@ -22,7 +22,7 @@ do
 done
 
 arayuz() {
-  local strng donus str str2 sure sure_sifirli mplayer_ileti secim_basligi
+  local strng donus str str2 sure sure_sifirli oynatici_ileti secim_basligi
   g_vakitleri_al; g_gun_animsat
 
 strng=$(yad --form --text "$(printf "${GELISMIS_ARAYUZ_BICIMI}" \
@@ -54,38 +54,38 @@ if (( donus == 150 ))
 then
     if [[ $str = Sabah ]]
     then
-        mplayer_ileti=" Sabah ezanı dinletiliyor\n\n Okuyan : ${EZAN_OKUYAN}"
-        pencere_bilgi "${SABAH_EZANI}" & mplayer_calistir "${SABAH_EZANI}"
+        oynatici_ileti=" Sabah ezanı dinletiliyor\n\n Okuyan : ${EZAN_OKUYAN}"
+        pencere_bilgi "${SABAH_EZANI}" & oynatici_calistir "${SABAH_EZANI}"
         arayuz
 
     elif [[ $str = Öğle ]]
     then
-        mplayer_ileti=" Öğle ezanı dinletiliyor\n\n Okuyan : ${EZAN_OKUYAN}"
-        pencere_bilgi "${OGLE_EZANI}" & mplayer_calistir "${OGLE_EZANI}"
+        oynatici_ileti=" Öğle ezanı dinletiliyor\n\n Okuyan : ${EZAN_OKUYAN}"
+        pencere_bilgi "${OGLE_EZANI}" & oynatici_calistir "${OGLE_EZANI}"
         arayuz
 
     elif [[ $str = İkindi ]]
     then
-        mplayer_ileti=" İkindi ezanı dinletiliyor\n\n Okuyan : ${EZAN_OKUYAN}"
-        pencere_bilgi "$IKINDI_EZANI" & mplayer_calistir "${IKINDI_EZANI}"
+        oynatici_ileti=" İkindi ezanı dinletiliyor\n\n Okuyan : ${EZAN_OKUYAN}"
+        pencere_bilgi "$IKINDI_EZANI" & oynatici_calistir "${IKINDI_EZANI}"
         arayuz
 
     elif [[ $str = Akşam ]]
     then
-        mplayer_ileti=" Akşam ezanı dinletiliyor\n\n Okuyan : ${EZAN_OKUYAN}"
-        pencere_bilgi "${AKSAM_EZANI}" & mplayer_calistir "${AKSAM_EZANI}"
+        oynatici_ileti=" Akşam ezanı dinletiliyor\n\n Okuyan : ${EZAN_OKUYAN}"
+        pencere_bilgi "${AKSAM_EZANI}" & oynatici_calistir "${AKSAM_EZANI}"
         arayuz
 
     elif [[ $str = Yatsı ]]
     then
-        mplayer_ileti=" Yatsı ezanı dinletiliyor\n\n Okuyan : ${EZAN_OKUYAN}"
-        pencere_bilgi "${YATSI_EZANI}" & mplayer_calistir "${YATSI_EZANI}"
+        oynatici_ileti=" Yatsı ezanı dinletiliyor\n\n Okuyan : ${EZAN_OKUYAN}"
+        pencere_bilgi "${YATSI_EZANI}" & oynatici_calistir "${YATSI_EZANI}"
         arayuz
 
     elif [[ $str = Sela ]]
     then
-        mplayer_ileti=" Cuma selası dinletiliyor\n\n Okuyan : ${SELA_OKUYAN}"
-        pencere_bilgi "${CUMA_SELASI}" & mplayer_calistir "${CUMA_SELASI}"
+        oynatici_ileti=" Cuma selası dinletiliyor\n\n Okuyan : ${SELA_OKUYAN}"
+        pencere_bilgi "${CUMA_SELASI}" & oynatici_calistir "${CUMA_SELASI}"
         arayuz
 
     elif [[ $str = Ayet ]]
@@ -270,8 +270,8 @@ then
         fi
 
         bilesen_yukle kuran_dinletici
-        mplayer_ileti="$(gawk -v sira=$sure '{if(NR==sira) print $4;}' < ${VERI_DIZINI}/veriler/sure_bilgisi)"
-        mplayer_ileti+=" suresi dinletiliyor\n\n Okuyan : ${okuyan}"
+        oynatici_ileti="$(gawk -v sira=$sure '{if(NR==sira) print $4;}' < ${VERI_DIZINI}/veriler/sure_bilgisi)"
+        oynatici_ileti+=" suresi dinletiliyor\n\n Okuyan : ${okuyan}"
 
         pencere_bilgi "${dinletilecek_sure}" &
         kuran_dinlet secim $sure

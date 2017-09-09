@@ -42,13 +42,8 @@ sure_no_denetimi() { # sure_no_yonetimi {{{
 
 } # }}}
 
-mplayer_kuran_sure_al() {
-  mplayer -vo null -ao null -frames 0 -identify "$1" 2>/dev/null | \
-  gawk  -F'=' '/^ID_LENGTH/ {print int($2);}'
-}
-
 kuran_dinletimi() {
-  local parca_suresi parca_suresi_n okuyan kaynak dinletilecek_sure
+  local parca_suresi_n okuyan kaynak dinletilecek_sure
   local sure_adi sure_ayet_sayisi cuz yer
 
   clear
@@ -88,14 +83,10 @@ kuran_dinletimi() {
   fi
 
 
-  bilesen_yukle mplayer_yonetici
+  bilesen_yukle oynatici_yonetici
   ucbirim_basligi "${sure_adi} Suresi"
 
-  parca_suresi="$(mplayer_kuran_sure_al "${dinletilecek_sure}")"
-  parca_suresi_n=$(printf '%02d saat : %02d dakika : %02d saniye' \
-                          $(( parca_suresi / 3600 )) \
-                          $(( parca_suresi % 3600 / 60 )) \
-                          $(( parca_suresi % 60 )) )
+  parca_suresi_n="$(oynatici_sure_al "${dinletilecek_sure}")"
 
   printf '%b%b\n%b\n%b\n%b\n%b\n%b\n%b\n' \
     "${RENK7}${RENK2}" \
@@ -107,7 +98,7 @@ kuran_dinletimi() {
     "Süre        : ${RENK3} ${parca_suresi_n}${RENK2}" \
     "Kaynak      : ${RENK3} ${kaynak}${RENK0}"
 
-  mplayer_calistir "${dinletilecek_sure}"
+  oynatici_calistir "${dinletilecek_sure}"
 }
 
 kuran_dinlet() { # kuran_dinlet_yonetimi {{{
