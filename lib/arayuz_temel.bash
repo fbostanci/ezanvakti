@@ -39,38 +39,46 @@ cikti_dosyasi="/tmp/${AD}-6"
 export RENK_KULLAN=0 RENK=0
 acilisa_baslatici_ekle
 
+# arayüz ve bileşenlerinin
+# çoklu çalışmasını önlemek için
+# denetleme fonksiyonu
 arayuz_pid_denetle() {
-  local ypid=$$
+  # p=1: arayuz1
+  # p=2: arayuz2
+  # p=3: eylem_menu
+  local p="$1" ypid=$$
 
-  if [[ -f /tmp/.${AD}_yad_arayuz.pid && \
-        -n $(ps -p $( < /tmp/.${AD}_yad_arayuz.pid) -o comm=) ]]
+  if (( p == 1 ))
   then
-      printf '%s: Yalnızca bir arayüz örneği çalışabilir.\n' "${AD}" >&2
-      exit 1
+      p='arayuz'
+  elif (( p == 2 ))
+  then
+      p='arayuz2'
+  elif (( p == 3 ))
+  then
+      p='eylem_menu'
   else
-      printf "$ypid" > /tmp/.${AD}_yad_arayuz.pid
+      printf '%s: desteklenmeyen istek: %s\n' "${AD}" "${p}" >&2
+      return 1
   fi
-}
 
-arayuz2_pid_denetle() {
-  local ypid=$$
-
-  if [[ -f /tmp/.${AD}_yad_arayuz2.pid && \
-        -n $(ps -p $( < /tmp/.${AD}_yad_arayuz2.pid) -o comm=) ]]
+  if [[ -f /tmp/.${AD}_yad_${p}.pid && \
+        -n $(ps -p $( < /tmp/.${AD}_yad_${p}.pid) -o comm=) ]]
   then
-      printf '%s: Yalnızca bir arayüz2 örneği çalışabilir.\n' "${AD}" >&2
+      printf '%s: Yalnızca bir %s örneği çalışabilir.\n' "${AD}" "${p}" >&2
       exit 1
   else
-      printf "$ypid" > /tmp/.${AD}_yad_arayuz2.pid
+      printf "$ypid" > /tmp/.${AD}_yad_${p}.pid
   fi
 }
 
 temizlik() {
-  rm -f "${cikti_dosyasi}" &>/dev/null
+  rm -f "${cikti_dosyasi}" > /dev/null 2>&1
 }
 
 g_gun_animsat() {
   local gunler="${VERI_DIZINI}/veriler/gunler"
+
   if (( GUN_ANIMSAT ))
   then
       if grep -q "^$(date +%d.%m.%Y)" "${gunler}"
@@ -300,7 +308,7 @@ g_secim_goster() {
 }
 
 pencere_bilgi() {
-  local parca_suresi_n
+  local parca_suresi parca_suresi_n
 
   if [[ $1 =~ ^http.* ]]
   then
@@ -309,13 +317,18 @@ pencere_bilgi() {
       then
           return 1
       fi
+
   elif [[ ! -f ${1} ]]
   then
       printf '%s: istenilen ses dosyası -> %s <- bulunamadı.\n' "${AD}" "${1}" >&2
       return 1
   fi
 
-  parca_suresi_n="$(oynatici_sure_al "$1")"
+  parca_suresi="$(oynatici_sure_al "$1")"
+  parca_suresi_n=$(printf '%02d saat : %02d dakika : %02d saniye' \
+                          $(( parca_suresi / 3600 )) \
+                          $(( parca_suresi % 3600 / 60 )) \
+                          $(( parca_suresi % 60 )))
 
   yad --form --separator=' ' --title="${AD^}" --image=${AD} --window-icon=${AD} \
       --text "${oynatici_ileti}\n Süre        : $parca_suresi_n" --mouse --fixed \

@@ -105,7 +105,6 @@ cuma_selasi() {
   return 0
 }
 
-
 ezan_vakitlerini_al() {
   bugun
 

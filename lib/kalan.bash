@@ -57,7 +57,7 @@ kalan_sure() {
 
   while (( bekle ))
   do
-    # sistemin askıya alınma durumuna karşı 
+    # sistemin askıya alınma durumuna karşı
     # her 59 saniyede bir vakitleri yine al.
     (( bekle % 59 == 0 )) && siradaki_vakit
     # Her 12 saniyede bir süreyi sapmaya karşı düzelt.

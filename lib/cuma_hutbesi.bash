@@ -48,12 +48,12 @@ case $1 in
 
     ${WGET} http://www.diyanet.nl/cuma-hutbeleri/ -O /tmp/ezv-hutbe-$$
 
-    indir=("$(grep -Eo "${regex}" /tmp/ezv-hutbe-$$)")
+    indir=( "$(grep -Eo "${regex}" /tmp/ezv-hutbe-$$)" )
     rm -f /tmp/ezv-hutbe-$$ > /dev/null 2>&1
 
     for i in ${indir[@]}
     do
-      acilacak+=("$(echo $i | gawk -F'/' '{print($(NF))}')")
+      acilacak+=( "$(echo $i | gawk -F'/' '{print($(NF))}')" )
     done
 
     e=0; renk_denetle

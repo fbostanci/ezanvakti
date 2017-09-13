@@ -10,7 +10,7 @@
 
 # Yalnıca bir arayüz örneği çalışması için
 # pid denetimi yapılsın.
-arayuz_pid_denetle
+arayuz_pid_denetle 1
 
 bilesen_yukle oynatici_yonetici
 bilesen_yukle hicri
