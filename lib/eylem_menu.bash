@@ -6,21 +6,8 @@
 
 bilesen_yukle arayuz_temel
 
-eylem_pid_denetle() {
-  local ypid=$$
-
-  if [[ -f /tmp/.${AD}_eylem_menu.pid && \
-        -n $(ps -p $( < /tmp/.${AD}_eylem_menu.pid) -o comm=) ]]
-  then
-      printf '%s: Yalnızca bir arayüz örneği çalışabilir.\n' "${AD}" >&2
-      exit 1
-  else
-      printf "$ypid" > /tmp/.${AD}_eylem_menu.pid
-  fi
-}
-
 eylem_menu() {
-  eylem_pid_denetle
+  arayuz_pid_denetle 3
 
   case $1 in
     vakitler)

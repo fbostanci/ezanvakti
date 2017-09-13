@@ -140,17 +140,17 @@ case $1 in
     bilesen_yukle ezan_dinlet; shift
     case $1 in
       -s|--sabah)
-        ezan_dinlet Sabah "${SABAH_EZANI}" ;;
+        ezan_dinlet Sabah ;;
       -[oö]|--[oö][gğ]le)
-        ezan_dinlet Öğle "${OGLE_EZANI}" ;;
+        ezan_dinlet Öğle ;;
       -i|--ikindi)
-        ezan_dinlet İkindi "${IKINDI_EZANI}" ;;
+        ezan_dinlet İkindi ;;
       -a|--ak[sş]am)
-        ezan_dinlet Akşam "${AKSAM_EZANI}" ;;
+        ezan_dinlet Akşam ;;
       -y|--yats[ıi])
-        ezan_dinlet Yatsı "${YATSI_EZANI}" ;;
+        ezan_dinlet Yatsı ;;
       -c|--cuma)
-        ezan_dinlet 'Cuma selası' "${CUMA_SELASI}" ;;
+        ezan_dinlet Cuma ;;
       *) hatali_kullanim "${1:-null}" ;;
     esac ;;
   --kuran)

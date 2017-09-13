@@ -314,6 +314,7 @@ then
     notify-send "${AD^}" "${EZANVERI_ADI} dosyası başarıyla güncellendi." \
       -i ${AD} -t $GUNCELLEME_BILDIRIM_SURESI"000"
     :> /tmp/.${AD}_eznvrgncldntle_$(date +%d%m%y)
+
 else
     printf '%b%*b' "${RENK7}${RENK8}" $(( stn - ${#EZANVERI_ADI} - 7 - renksiz_payi )) \
       "[${RENK1}  BAŞARISIZ ${RENK8}]${RENK0}"

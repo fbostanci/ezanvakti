@@ -43,7 +43,7 @@ sure_no_denetimi() { # sure_no_yonetimi {{{
 } # }}}
 
 kuran_dinletimi() {
-  local parca_suresi_n okuyan kaynak dinletilecek_sure
+  local parca_suresi parca_suresi_n okuyan kaynak dinletilecek_sure
   local sure_adi sure_ayet_sayisi cuz yer
 
   clear
@@ -86,7 +86,11 @@ kuran_dinletimi() {
   bilesen_yukle oynatici_yonetici
   ucbirim_basligi "${sure_adi} Suresi"
 
-  parca_suresi_n="$(oynatici_sure_al "${dinletilecek_sure}")"
+  parca_suresi="$(oynatici_sure_al "${dinletilecek_sure}")"
+  parca_suresi_n=$(printf '%02d saat : %02d dakika : %02d saniye' \
+                          $(( parca_suresi / 3600 )) \
+                          $(( parca_suresi % 3600 / 60 )) \
+                          $(( parca_suresi % 60 )) )
 
   printf '%b%b\n%b\n%b\n%b\n%b\n%b\n%b\n' \
     "${RENK7}${RENK2}" \
