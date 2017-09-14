@@ -9,7 +9,7 @@
 
 # Yalnıca bir arayüz2 örneği çalışması için
 # pid denetimi yapılsın.
-arayuz2_pid_denetle 2
+arayuz_pid_denetle 2
 
 arayuz2() {
   g_vakitleri_al; g_gun_animsat

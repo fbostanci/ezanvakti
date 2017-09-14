@@ -325,10 +325,7 @@ pencere_bilgi() {
   fi
 
   parca_suresi="$(oynatici_sure_al "$1")"
-  parca_suresi_n=$(printf '%02d saat : %02d dakika : %02d saniye' \
-                          $(( parca_suresi / 3600 )) \
-                          $(( parca_suresi % 3600 / 60 )) \
-                          $(( parca_suresi % 60 )))
+  oynatici_sure_cevir
 
   yad --form --separator=' ' --title="${AD^}" --image=${AD} --window-icon=${AD} \
       --text "${oynatici_ileti}\n Süre        : $parca_suresi_n" --mouse --fixed \

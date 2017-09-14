@@ -238,4 +238,10 @@ oynatici_sure_al() {
   fi
 }
 
+oynatici_sure_cevir() {
+  parca_suresi_n=$(printf '%02d saat : %02d dakika : %02d saniye' \
+                          $(( parca_suresi / 3600 )) \
+                          $(( parca_suresi % 3600 / 60 )) \
+                          $(( parca_suresi % 60 )) )
+}
 # vim: set ft=sh ts=2 sw=2 et:

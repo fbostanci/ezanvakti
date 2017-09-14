@@ -87,10 +87,7 @@ kuran_dinletimi() {
   ucbirim_basligi "${sure_adi} Suresi"
 
   parca_suresi="$(oynatici_sure_al "${dinletilecek_sure}")"
-  parca_suresi_n=$(printf '%02d saat : %02d dakika : %02d saniye' \
-                          $(( parca_suresi / 3600 )) \
-                          $(( parca_suresi % 3600 / 60 )) \
-                          $(( parca_suresi % 60 )) )
+  oynatici_sure_cevir
 
   printf '%b%b\n%b\n%b\n%b\n%b\n%b\n%b\n' \
     "${RENK7}${RENK2}" \

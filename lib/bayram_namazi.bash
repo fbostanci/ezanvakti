@@ -36,8 +36,8 @@ bayram_namazi_vakti() {
       ilce_kodu="${sehir_kodu}"
   fi
 
-  printf '\n%b%s%b\r' "${RENK7}${RENK8}" \
-    'Bayram namazı vakitleri alınıyor...' "${RENK0}"
+  printf '\n%b%s%b\r' "${RENK7}${RENK3}${ILCE} ${RENK8}" \
+    'için bayram namazı vakitleri alınıyor...' "${RENK0}"
 
   # internet erişimini denetle.
   if ! ping -q -c 1 -W 1 google.com > /dev/null 2>&1
