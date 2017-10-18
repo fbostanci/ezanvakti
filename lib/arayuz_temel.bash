@@ -325,7 +325,7 @@ pencere_bilgi() {
   fi
 
   parca_suresi="$(oynatici_sure_al "$1")"
-  oynatici_sure_cevir
+  parca_suresi_n="$(oynatici_sure_cevir)"
 
   yad --form --separator=' ' --title="${AD^}" --image=${AD} --window-icon=${AD} \
       --text "${oynatici_ileti}\n Süre        : $parca_suresi_n" --mouse --fixed \

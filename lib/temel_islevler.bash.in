@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 #
-#                           Ezanvakti Temel İşlevler Bileşeni 1.4
+#                           Ezanvakti Temel İşlevler Bileşeni 1.5
 #
 
 declare -r AD="@AD@"
@@ -225,7 +225,6 @@ kalan() {
 # oynatılacak ses dosyasının
 # parça süresini al.
 oynatici_sure_al() {
-
   if [[ -x $(type -p ffprobe) ]]
   then
       ffprobe -i "$1"  -show_entries format=duration \
@@ -239,9 +238,11 @@ oynatici_sure_al() {
 }
 
 oynatici_sure_cevir() {
-  parca_suresi_n=$(printf '%02d saat : %02d dakika : %02d saniye' \
-                          $(( parca_suresi / 3600 )) \
-                          $(( parca_suresi % 3600 / 60 )) \
-                          $(( parca_suresi % 60 )) )
+  (( ! parca_suresi )) && return 1
+
+  printf '%02d saat : %02d dakika : %02d saniye' \
+         $(( parca_suresi / 3600 )) \
+         $(( parca_suresi % 3600 / 60 )) \
+         $(( parca_suresi % 60 ))
 }
 # vim: set ft=sh ts=2 sw=2 et:
