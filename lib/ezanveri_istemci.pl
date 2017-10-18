@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 #
-#                          Ezanveri İstemci 2.2
+#                          Ezanveri İstemci 2.3
 #
 ##
 ##       Copyright (c) 2010-2017 Fatih Bostancı <fbostanci@vivaldi.net>
@@ -34,7 +34,6 @@ my $ulke = $ARGV[0];
 my $sehir = $ARGV[1];
 my $ilce = $ARGV[2];
 my $baglanti;
-my $period;
 my $sonuc;
 my $rsonuc;
 my $ksonuc;
@@ -43,11 +42,9 @@ my $oge = 1;
 my @vakitler;
 
 if (!defined $ARGV[3]) { # ezan vakitleri
-  $baglanti = "http://www.diyanet.gov.tr/tr/PrayerTime/WorldPrayerTimes";
-  $period = 'Aylik';
+  $baglanti = "http://namazvakitleri.diyanet.gov.tr/tr-TR";
 } else { # bayram namazı
   $baglanti = "http://www.diyanet.gov.tr/tr/PrayerTime/HolidayPrayerTimes";
-  $period = '';
 }
 
 my $mech = WWW::Mechanize->new();
@@ -55,12 +52,11 @@ $mech->agent_alias( 'Linux Mozilla' );
 $mech->get($baglanti);
 
 $mech->submit_form(
-  form_number => 2,
+  form_number => 1,
   fields => {
-    Country => $ulke,
-    State   => $sehir,
-    City    => $ilce,
-    period  => $period
+    ulkeId  => $ulke,
+    ilId    => $sehir,
+    ilceId  => $ilce,
   },
 );
 $sonuc = $mech->content();

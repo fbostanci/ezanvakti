@@ -87,7 +87,7 @@ kuran_dinletimi() {
   ucbirim_basligi "${sure_adi} Suresi"
 
   parca_suresi="$(oynatici_sure_al "${dinletilecek_sure}")"
-  oynatici_sure_cevir
+  parca_suresi_n="$(oynatici_sure_cevir)"
 
   printf '%b%b\n%b\n%b\n%b\n%b\n%b\n%b\n' \
     "${RENK7}${RENK2}" \
