@@ -25,6 +25,7 @@
 use strict;
 use warnings;
 use open ':std', ':encoding(UTF-8)';
+use Time::Piece;
 use WWW::Mechanize;
 
 # my $ulke = 2;
@@ -39,6 +40,7 @@ my $rsonuc;
 my $ksonuc;
 my $bos = 0;
 my $oge = 1;
+my $t = localtime;
 my @vakitler;
 
 if (!defined $ARGV[3]) { # ezan vakitleri
@@ -66,7 +68,7 @@ while ($sonuc =~/<td class="text-center">(.*?)<\/td>/g) {
 }
 
 if (!defined $ARGV[3]) {
-  shift @vakitler for ( 1..6 );
+  unshift (@vakitler, $t->dmy("."));
   foreach my $v (@vakitler) {
       $v =~s/<.+?>//g;
       if ($bos and length $v > 5) {
