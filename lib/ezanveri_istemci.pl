@@ -27,9 +27,9 @@ use warnings;
 use open ':std', ':encoding(UTF-8)';
 use WWW::Mechanize;
 
-#my $ulke = 2;
-#my $sehir = 563;
-#my $ilce = 9786;
+# my $ulke = 2;
+# my $sehir = 563;
+# my $ilce = 9786;
 my $ulke = $ARGV[0];
 my $sehir = $ARGV[1];
 my $ilce = $ARGV[2];
@@ -43,7 +43,7 @@ my @vakitler;
 
 if (!defined $ARGV[3]) { # ezan vakitleri
   $baglanti = "http://namazvakitleri.diyanet.gov.tr/tr-TR";
-} else { # bayram namazı
+} else { # bayram namazı - ADRES ÇALIŞMIYOR.
   $baglanti = "http://www.diyanet.gov.tr/tr/PrayerTime/HolidayPrayerTimes";
 }
 
@@ -61,16 +61,18 @@ $mech->submit_form(
 );
 $sonuc = $mech->content();
 
-while ($sonuc =~/<td.*?>(.*?)<\/td>/g) {
+while ($sonuc =~/<td class="text-center">(.*?)<\/td>/g) {
   push @vakitler, $1;
 }
 
 if (!defined $ARGV[3]) {
+  shift @vakitler for ( 1..6 );
   foreach my $v (@vakitler) {
+      $v =~s/<.+?>//g;
       if ($bos and length $v > 5) {
           print "\n";
       }
-      if ($oge%8 == 0) {
+      if ($oge%7 == 0) {
         print $v;
       } else {
         print $v, "  ";
