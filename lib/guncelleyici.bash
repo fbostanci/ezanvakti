@@ -38,7 +38,7 @@ printf '%b%s%b' "${RENK7}${RENK8}" \
   'Perl bileşenleri denetleniyor...' "${RENK0}"
 
 # Perl bileşenlerini denetle.
-for pm in 'WWW::Mechanize'
+for pm in 'WWW::Mechanize' 'Time::Piece'
 do
     perl -M${pm} -e 1 2>/dev/null
     dn=$(echo $?)
@@ -285,7 +285,7 @@ fi
 printf '%b%b' "${RENK7}${RENK8}" \
   "${EZANVERI_ADI} dosyası güncelleniyor...${RENK0}"
 
-printf 'Tarih       Sabah  Güneş  Öğle   İkindi Akşam  Yatsı  Kıble\n' >> /tmp/ezanveri-$$
+printf 'Tarih       Sabah  Güneş  Öğle   İkindi Akşam  Yatsı\n' >> /tmp/ezanveri-$$
 ${BILESEN_DIZINI}/ezanveri_istemci.pl "${ulke_kodu}" "${sehir_kodu}" "${ilce_kodu}" \
   2> /tmp/ezv-perl-hata-$$ >> /tmp/ezanveri-$$
 
@@ -294,7 +294,7 @@ cat << SON >> /tmp/ezanveri-$$
 
 
 # BİLGİ: ${sehir} / ${ilce} için 30 günlük ezan vakitleridir.
-# Çizelge, 'http://www.diyanet.gov.tr/tr/PrayerTime/WorldPrayerTimes'
+# Çizelge, 'http://namazvakitleri.diyanet.gov.tr/tr-TR'
 # adresinden ${AD} uygulaması tarafından istenerek oluşturulmuştur.
 
 # Son güncelleme : $(date +%c)
