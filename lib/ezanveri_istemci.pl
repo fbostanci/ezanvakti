@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 #
-#                          Ezanveri İstemci 2.3
+#                          Ezanveri İstemci 2.6
 #
 ##
 ##       Copyright (c) 2010-2017 Fatih Bostancı <fbostanci@vivaldi.net>
@@ -25,7 +25,6 @@
 use strict;
 use warnings;
 use open ':std', ':encoding(UTF-8)';
-use Time::Piece;
 use WWW::Mechanize;
 
 # my $ulke = 2;
@@ -34,43 +33,25 @@ use WWW::Mechanize;
 my $ulke = $ARGV[0];
 my $sehir = $ARGV[1];
 my $ilce = $ARGV[2];
-my $baglanti;
+
 my $sonuc;
 my $rsonuc;
 my $ksonuc;
 my $bos = 0;
 my $oge = 1;
-my $t = localtime;
 my @vakitler;
-
-if (!defined $ARGV[3]) { # ezan vakitleri
-  $baglanti = "http://namazvakitleri.diyanet.gov.tr/tr-TR";
-} else { # bayram namazı - ADRES ÇALIŞMIYOR.
-  $baglanti = "http://www.diyanet.gov.tr/tr/PrayerTime/HolidayPrayerTimes";
-}
+my $baglanti = "http://namazvakitleri.diyanet.gov.tr/tr-TR/$ilce";
 
 my $mech = WWW::Mechanize->new();
 $mech->agent_alias( 'Linux Mozilla' );
 $mech->get($baglanti);
-
-$mech->submit_form(
-  form_number => 1,
-  fields => {
-    ulkeId  => $ulke,
-    ilId    => $sehir,
-    ilceId  => $ilce,
-  },
-);
 $sonuc = $mech->content();
 
-while ($sonuc =~/<td class="text-center">(.*?)<\/td>/g) {
-  push @vakitler, $1;
-}
-
 if (!defined $ARGV[3]) {
-  unshift (@vakitler, $t->dmy("."));
+  while ($sonuc =~/<td>(.*?)<\/td>/g) {
+    push @vakitler, $1;
+  }
   foreach my $v (@vakitler) {
-      $v =~s/<.+?>//g;
       if ($bos and length $v > 5) {
           print "\n";
       }
@@ -83,10 +64,12 @@ if (!defined $ARGV[3]) {
       $oge++;
   }
 } else {
-  $vakitler[0] =~ m/(.*)\:\s+(.*)$/;
-  $rsonuc = $2;
-  $vakitler[1] =~ m/(.*)\:\s+(.*)$/;
-  $ksonuc = $2;
+  while ($sonuc =~/<span class="bayram-info-value-top">(.*?)<\/span>/g) {
+    push @vakitler, $1;
+  }
+  $rsonuc = $vakitler[1];
+  $ksonuc = $vakitler[3];
+
   print "ramazan_namaz_vakti=",$rsonuc,"\n";
   print "kurban_namaz_vakti=",$ksonuc;
 }
