@@ -38,7 +38,7 @@ printf '%b%s%b' "${RENK7}${RENK8}" \
   'Perl bileşenleri denetleniyor...' "${RENK0}"
 
 # Perl bileşenlerini denetle.
-for pm in 'WWW::Mechanize' 'Time::Piece'
+for pm in 'WWW::Mechanize' 'HTML::Entities'
 do
     perl -M${pm} -e 1 2>/dev/null
     dn=$(echo $?)

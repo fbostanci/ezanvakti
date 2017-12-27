@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 #
-#                          Ezanveri İstemci 2.6
+#                          Ezanveri İstemci 2.7
 #
 ##
 ##       Copyright (c) 2010-2017 Fatih Bostancı <fbostanci@vivaldi.net>
@@ -26,6 +26,7 @@ use strict;
 use warnings;
 use open ':std', ':encoding(UTF-8)';
 use WWW::Mechanize;
+use HTML::Entities;
 
 # my $ulke = 2;
 # my $sehir = 563;
@@ -37,6 +38,8 @@ my $ilce = $ARGV[2];
 my $sonuc;
 my $rsonuc;
 my $ksonuc;
+my $rtarih;
+my $ktarih;
 my $bos = 0;
 my $oge = 1;
 my @vakitler;
@@ -67,10 +70,14 @@ if (!defined $ARGV[3]) {
   while ($sonuc =~/<span class="bayram-info-value-top">(.*?)<\/span>/g) {
     push @vakitler, $1;
   }
+  $rtarih = decode_entities($vakitler[0]);
   $rsonuc = $vakitler[1];
+  $ktarih = decode_entities($vakitler[2]);
   $ksonuc = $vakitler[3];
 
+  print "ramazan_bayrami_tarihi=",$rtarih,"\n";
   print "ramazan_namaz_vakti=",$rsonuc,"\n";
+  print "kurban_bayrami_tarihi=",$ktarih,"\n";
   print "kurban_namaz_vakti=",$ksonuc;
 }
 print "\n";
