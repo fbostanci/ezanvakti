@@ -79,7 +79,7 @@ BAĞIMLILIKLAR
 *    grep
 *    libnotify
 *    ffmpeg ya da mplayer
-*    perl-www-mechanize
+*    wget
 
 <br>
 

@@ -58,7 +58,6 @@ install: $(BETIKLER)
 	$(INSTALL) -vd $(DESTDIR)$(icondir)/{16x16,22x22,32x32,48x48,64x64,96x96}/apps
 
 	$(INSTALL) -vm755 ezanvakti.bash $(DESTDIR)$(bindir)/$(AD)
-	$(INSTALL) -vm755 lib/ezanveri_istemci.pl $(DESTDIR)$(libdir)/$(AD)/ezanveri_istemci.pl
 	$(INSTALL) -vm755 lib/ezanvakti-sleep $(DESTDIR)$(libdir)/$(AD)/$(AD)-sleep
 	$(INSTALL) -vm755 data/ezanvakti.desktop $(DESTDIR)$(appdeskdir)/$(AD).desktop
 
