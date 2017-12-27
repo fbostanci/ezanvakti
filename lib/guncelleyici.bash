@@ -5,10 +5,9 @@
 #
 
 guncelleme_yap() { ### Ana fonksiyon {{{
-  local arayuz au ulke sehir ilce varsayilan_sehir pm varsayilan_ilce dn
-  local ulke_kodu sehir_kodu ilce_kodu stn basamak_payi renksiz_payi bas_renksiz_payi
+  local arayuz au ulke sehir ilce varsayilan_sehir varsayilan_ilce dn stn
+  local ulke_kodu sehir_kodu ilce_kodu basamak_payi renksiz_payi bas_renksiz_payi
   local e=0 denetim=0
-  local -a pmler
 
   SECONDS=0
   stn=$(tput cols)
@@ -33,41 +32,6 @@ guncelleme_yap() { ### Ana fonksiyon {{{
       renksiz_payi=0
       bas_renksiz_payi=0
   fi
-### Perl denetleme {{{
-printf '%b%s%b' "${RENK7}${RENK8}" \
-  'Perl bileşenleri denetleniyor...' "${RENK0}"
-
-# Perl bileşenlerini denetle.
-for pm in 'WWW::Mechanize' 'HTML::Entities'
-do
-    perl -M${pm} -e 1 2>/dev/null
-    dn=$(echo $?)
-    if [[ $dn -ne 0 ]]
-    then
-        pmler+=("$pm")
-    fi
-done
-
-if (( ${#pmler[@]} ))
-then
-    printf '%b%*b' "${RENK7}${RENK8}" $(( stn - 13 - renksiz_payi )) \
-      "[${RENK1}  BAŞARISIZ ${RENK8}]${RENK0}\n"
-
-    printf '\n%b\n' \
-      "${RENK7}${RENK3}Aşağıdaki perl bileşen(ler)i bulunamadı.${RENK0}"
-
-    for pm in ${pmler[@]}
-    do
-        printf '%b\n' \
-          "${RENK7}${RENK1} ->${RENK8} ${pmler[$e]}${RENK0}"
-        ((e++))
-    done
-    exit 1
-fi
-
-printf '%b%*b' "${RENK7}${RENK8}" $(( stn - 13 - renksiz_payi )) \
-  "[${RENK2}  BAŞARILI  ${RENK8}]${RENK0}\n"
-#}}}
 
 arayuz_denetle() { ### Arayüz denetle {{{
   if (( denetim ))
@@ -285,15 +249,16 @@ fi
 printf '%b%b' "${RENK7}${RENK8}" \
   "${EZANVERI_ADI} dosyası güncelleniyor...${RENK0}"
 
-printf 'Tarih       Sabah  Güneş  Öğle   İkindi Akşam  Yatsı\n' >> /tmp/ezanveri-$$
-${BILESEN_DIZINI}/ezanveri_istemci.pl "${ulke_kodu}" "${sehir_kodu}" "${ilce_kodu}" \
-  2> /tmp/ezv-perl-hata-$$ >> /tmp/ezanveri-$$
+printf '#Tarih       Sabah   Güneş   Öğle    İkindi  Akşam   Yatsı\n' >> /tmp/ezanveri-$$
+wget -q "http://namazvakitleri.diyanet.gov.tr/tr-TR/${ilce_kodu}" -O - | \
+sed -n 's:<td>\(.*\)</td>:\1:p' | sed -e 's:^ *::' -e 's:[^[:print:]]: :g' | \
+sed -e 'N;N;N;N;N;N;s:\n:  :g' -e 's:[[:blank:]]*$::' >> /tmp/ezanveri-$$
 
 cat << SON >> /tmp/ezanveri-$$
 
 
 
-# BİLGİ: ${sehir} / ${ilce} için 30 günlük ezan vakitleridir.
+# BİLGİ: ${ilce} / ${sehir} için 30 günlük ezan vakitleridir.
 # Çizelge, 'http://namazvakitleri.diyanet.gov.tr/tr-TR'
 # adresinden ${AD} uygulaması tarafından istenerek oluşturulmuştur.
 
@@ -306,8 +271,6 @@ then
     mv -f /tmp/ezanveri-$$ "${EZANVERI}"
     printf '%b%*b' "${RENK7}${RENK8}" $(( stn - ${#EZANVERI_ADI} - 6 - renksiz_payi )) \
       "[${RENK2}  BAŞARILI  ${RENK8}]${RENK0}\n"
-
-    rm -f /tmp/ezv-perl-hata-$$ &>/dev/null
     . "${EZANVAKTI_AYAR}"
 
     renk_denetle
@@ -318,9 +281,6 @@ then
 else
     printf '%b%*b' "${RENK7}${RENK8}" $(( stn - ${#EZANVERI_ADI} - 7 - renksiz_payi )) \
       "[${RENK1}  BAŞARISIZ ${RENK8}]${RENK0}"
-    printf "${RENK7}${RENK3}\n$( < /tmp/ezv-perl-hata-$$)${RENK0}\n"
-
-    rm -f /tmp/ezv-perl-hata-$$ > /dev/null 2>&1
     printf "${RENK7}${RENK4}\n!!! YENIDEN DENEYIN !!!${RENK0}\n"
 
     notify-send "${AD^}" "${EZANVERI_ADI} dosyasının güncellenmesi başarısız oldu." \

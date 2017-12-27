@@ -1,8 +1,14 @@
-ezanvakti (20170904-1~distroguide~zesty) zesty; urgency=medium
+ezanvakti (20171226-1~distroguide~artful) artful; urgency=medium
 
-  * 6.4
+  * 6.3.4-3 -bayram namaz vakit gosterimi
 
- -- Fatih Bostancı <faopera@gmail.com>  Mon, 04 Sep 2017 22:00:44 +0300
+ -- Fatih Bostancı <faopera@gmail.com>  Tue, 26 Dec 2017 16:59:49 +0300
+
+ezanvakti (20170902-1~distroguide~zesty) zesty; urgency=medium
+
+  * 6.3.4
+
+ -- Fatih Bostancı <faopera@gmail.com>  Sat, 02 Sep 2017 13:38:16 +0300
 
 ezanvakti (20170818-1~distroguide~zesty) zesty; urgency=medium
 
