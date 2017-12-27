@@ -5,7 +5,7 @@
 #
 
 bayram_namazi_vakti() {
-  local ulke_kodu sehir_kodu ilce_kodu ramazan kurban ramazan_nv kurban_nv
+  local ulke_kodu sehir_kodu ilce_kodu ramazan_bt kurban_bt ramazan_nv kurban_nv
   renk_denetle
 
   [[ -z "${ULKE}"  ]] && ULKE=yok_boyle_bir_yer
@@ -50,18 +50,16 @@ bayram_namazi_vakti() {
   ${BILESEN_DIZINI}/ezanveri_istemci.pl "${ulke_kodu}" "${sehir_kodu}" "${ilce_kodu}" 'bayram' \
     2> /tmp/ezv-perl-hata-$$ > /tmp/ezv-bayram-vakitleri-$$
 
-  # bayram tarihlerini al.
-  export $(gawk -v r="[0-9]{2}.[0-9]{2}.$(date +%Y) RAMAZAN BAYRAMI 1. GÜN" \
-                -v k="[0-9]{2}.[0-9]{2}.$(date +%Y) KURBAN BAYRAMI 1. GÜN" \
-           '$0 ~ r {print "ramazan="$1}
-            $0 ~ k {print "kurban="$1}' <${VERI_DIZINI}/veriler/gunler)
 
-  # bayram namazı vakitlerini al.
+  # bayram namazı tarihlerini ve vakitlerini al.
+  ramazan_bt="$(gawk -F'=' '/ramazan_bayrami_tarihi/{print $2}' < /tmp/ezv-bayram-vakitleri-$$)"
   ramazan_nv=$(gawk -F'=' '/ramazan_namaz_vakti/{print $2}' < /tmp/ezv-bayram-vakitleri-$$)
+  kurban_bt="$(gawk -F'=' '/kurban_bayrami_tarihi/{print $2}' < /tmp/ezv-bayram-vakitleri-$$)"
   kurban_nv=$(gawk -F'=' '/kurban_namaz_vakti/{print $2}' < /tmp/ezv-bayram-vakitleri-$$)
+  
   rm -f /tmp/ezv-bayram-vakitleri-$$ > /dev/null 2>&1
 
-  [[ -z ${ramazan_nv} || -z ${kurban_nv} ]] && {
+  [[ -z ${ramazan_bt} || -z ${kurban_bt} || -z ${ramazan_nv} || -z ${kurban_nv} ]] && {
     printf "${RENK7}${RENK3}\n$( < /tmp/ezv-perl-hata-$$)${RENK0}\n"
     rm -f /tmp/ezv-perl-hata-$$ > /dev/null 2>&1
     printf "${RENK7}${RENK4}\n!!! YENIDEN DENEYIN !!!${RENK0}\n"
@@ -70,9 +68,9 @@ bayram_namazi_vakti() {
 
   rm -f /tmp/ezv-perl-hata-$$ > /dev/null 2>&1
   printf '%b%b%b\n' \
-    "${RENK7}${RENK3}${ILCE}${RENK5} için bayram namazı vakitleri $(date +'%d.%m.%Y %H:%M:%S')\n\n" \
-    "${RENK2}Ramazan bayramı namazı ${RENK5}: ${ramazan} ${RENK3}$ramazan_nv\n" \
-    "${RENK2}Kurban bayramı namazı  ${RENK5}: ${kurban} ${RENK3}$kurban_nv${RENK0}\n" 
+    "${RENK7}${RENK3}${ILCE}${RENK5} için bayram namazı vakitleri ($(date +'%d.%m.%Y %H:%M:%S'))\n\n" \
+    "${RENK2}Ramazan bayramı namazı ${RENK3}: ${ramazan_nv} ${RENK2}$ramazan_bt\n" \
+    "${RENK2}Kurban bayramı namazı  ${RENK3}: ${kurban_nv} ${RENK2}$kurban_bt${RENK0}\n" 
 }
 
 # vim: set ts=2 sw=2 et:
