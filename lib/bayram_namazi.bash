@@ -47,8 +47,8 @@ bayram_namazi_vakti() {
       exit 1
   fi
 
-  ${BILESEN_DIZINI}/ezanveri_istemci.pl "${ulke_kodu}" "${sehir_kodu}" "${ilce_kodu}" 'bayram' \
-    2> /tmp/ezv-perl-hata-$$ > /tmp/ezv-bayram-vakitleri-$$
+  wget -q "http://namazvakitleri.diyanet.gov.tr/tr-TR/${ilce_kodu}" -O - | \
+  sed -n 's:<span class="bayram-info-value-top">\(.*\)</span>:\1:p' > /tmp/ezv-bayram-vakitleri-$$
 
 
   # bayram namazı tarihlerini ve vakitlerini al.
@@ -60,8 +60,7 @@ bayram_namazi_vakti() {
   rm -f /tmp/ezv-bayram-vakitleri-$$ > /dev/null 2>&1
 
   [[ -z ${ramazan_bt} || -z ${kurban_bt} || -z ${ramazan_nv} || -z ${kurban_nv} ]] && {
-    printf "${RENK7}${RENK3}\n$( < /tmp/ezv-perl-hata-$$)${RENK0}\n"
-    rm -f /tmp/ezv-perl-hata-$$ > /dev/null 2>&1
+
     printf "${RENK7}${RENK4}\n!!! YENIDEN DENEYIN !!!${RENK0}\n"
     exit 1
   }

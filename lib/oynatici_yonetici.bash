@@ -4,6 +4,30 @@
 #
 #
 
+# oynatılacak ses dosyasının
+# parça süresini al.
+oynatici_sure_al() {
+  if [[ -x $(type -p ffprobe) ]]
+  then
+      ffprobe -i "$1"  -show_entries format=duration \
+        -v quiet -of csv="p=0" | cut -d. -f1
+
+  elif [[ -x $(type -p mplayer) ]]
+  then
+      mplayer -vo null -ao null -frames 0 -identify "$1" 2>/dev/null | \
+        gawk  -F'=' '/^ID_LENGTH/ {print int($2);}'
+  fi
+}
+
+oynatici_sure_cevir() {
+  (( ! parca_suresi )) && return 1
+
+  printf '%02d saat : %02d dakika : %02d saniye' \
+         $(( parca_suresi / 3600 )) \
+         $(( parca_suresi % 3600 / 60 )) \
+         $(( parca_suresi % 60 ))
+}
+
 oynatici_calistir() {
   local dinletilecek_oge="$1"
 
