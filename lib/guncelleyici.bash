@@ -250,7 +250,7 @@ printf '%b%b' "${RENK7}${RENK8}" \
   "${EZANVERI_ADI} dosyası güncelleniyor...${RENK0}"
 
 printf '#Tarih       Sabah   Güneş   Öğle    İkindi  Akşam   Yatsı\n' >> /tmp/ezanveri-$$
-wget -q "http://namazvakitleri.diyanet.gov.tr/tr-TR/${ilce_kodu}" -O - | \
+indirici "http://namazvakitleri.diyanet.gov.tr/tr-TR/${ilce_kodu}" | \
 sed -n 's:<td>\(.*\)</td>:\1:p' | sed -e 's:^ *::' -e 's:[^[:print:]]: :g' | \
 sed -e 'N;N;N;N;N;N;s:\n:  :g' -e 's:[[:blank:]]*$::' >> /tmp/ezanveri-$$
 

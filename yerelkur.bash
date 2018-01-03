@@ -31,24 +31,11 @@ exit 1 ;;
 esac
 
 [[ $1 = --kur ]] && {
-  BAG=('bash' 'sed' 'gawk' 'grep' 'make' 'notify-send' 'yad' 'mplayer')
-  PL_BAG=('WWW::Mechanize')
+  BAG=('bash' 'sed' 'gawk' 'grep' 'make' 'notify-send' 'yad' 'mplayer' 'wget')
 
   for b in ${BAG[@]}
   do
     hash $b 2>/dev/null || KUR_BUNU+=("$b")
-  done
-
-  # Perl bileşenlerini denetle.
-  for pm in ${PL_BAG[@]}
-  do
-      perl -M${pm} -e 1 2>/dev/null
-      dn=$(echo $?)
-
-      if [[ $dn -ne 0 ]]
-      then
-          KUR_BUNU+=("$pm")
-      fi
   done
 
   (( ${#KUR_BUNU[@]} )) && {

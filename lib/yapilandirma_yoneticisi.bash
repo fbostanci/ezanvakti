@@ -130,7 +130,7 @@ yad --notebook --key=190707 \
 --tab="Bildirim Ayarları" --tab="Renk Ayarları" \
 --fixed --center --tab-pos=top --buttons-layout='spread' \
 --window-icon=${AD} \
---button='gtk-go-back:171' --button='gtk-open:172' \
+--button='gtk-home:171' --button='gtk-open:172' \
 --button='gtk-save:174' --button='gtk-quit:121'
 
  case $? in
