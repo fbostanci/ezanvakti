@@ -100,7 +100,7 @@ g_vakitleri_al() {
 
   local kerahat_suresi kv_gunes kv_ogle kv_aksam
 
-  kerahat_suresi=2700 #45 dk
+  kerahat_suresi=$(( KERAHAT_SURESI * 60 ))
   kv_gunes=$(( gunes + kerahat_suresi ))
   kv_ogle=$(( ogle - kerahat_suresi ))
   kv_aksam=$(( aksam - kerahat_suresi ))

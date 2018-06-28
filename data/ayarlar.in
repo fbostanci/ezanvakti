@@ -146,6 +146,9 @@ EZAN_OKUYAN='İsmail COŞAR'
 # Sela okuyan
 SELA_OKUYAN='Şemsi ÖZÇİCEK'
 
+# Kerahat vakti süresi (dk olarak)
+KERAHAT_SURESI=45
+
 # Sabah ezanı ses dosyası
 SABAH_EZANI=@sounddir@/@AD@/sabah_saba.ogg
 
