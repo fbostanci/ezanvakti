@@ -9,7 +9,7 @@ kerahat_vakitleri() {
 
   local kerahat_suresi kv_gunes kv_ogle kv_aksam
 
-  kerahat_suresi='45 minutes' #dk
+  kerahat_suresi="$KERAHAT_SURESI minutes" #dk
   kv_gunes=$(date -d "$gunes_n $kerahat_suresi" +%H:%M)
   kv_ogle=$(date -d "-$kerahat_suresi $ogle_n" +%H:%M)
   kv_aksam=$(date -d "-$kerahat_suresi $aksam_n" +%H:%M)
