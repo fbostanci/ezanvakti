@@ -266,7 +266,7 @@ cat << SON >> /tmp/ezanveri-$$
 
 
 # BİLGİ: ${ilce} / ${sehir} için 30 günlük ezan vakitleridir.
-# Çizelge, 'http://namazvakitleri.diyanet.gov.tr/tr-TR'
+# Çizelge, 'http://namazvakitleri.diyanet.gov.tr'
 # adresinden ${AD} uygulaması tarafından istenerek oluşturulmuştur.
 
 # Son güncelleme : $(date +%c)

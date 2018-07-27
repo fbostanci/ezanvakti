@@ -18,7 +18,7 @@ ayet_araligi_goster() {
   then
       MEAL="${VERI_DIZINI}/mealler/${MEAL_SAHIBI}"
   else
-      printf '%s: %s tefsir dosyası bulunamadı.\n' \
+      printf '%s: %s meal dosyası bulunamadı.\n' \
         "${AD}" "${MEAL_SAHIBI}" >&2
       exit 1
   fi
