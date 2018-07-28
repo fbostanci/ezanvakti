@@ -4,6 +4,7 @@
 #
 #
 
+# TODO: Hutbe içerik sitesi değiştirilecek.
 if ! [[ -x $(type -p wget) ]]
 then
     printf '%s: Bu özellik wget gerektirmektedir.\n' "${AD}" >&2
@@ -40,11 +41,15 @@ case $1 in
   *)
     if [[ $(date +%u) == 5 ]]
     then
-        cuma=$(date +%d-%m-%Y)
+        cuma=$(date +%d)
+        ay=$(date +%m)
+        yil=$(date +%Y)
     else
         cuma=$(date -d 'last friday' +%d-%m-%Y)
+        ay=$(date -d 'last friday' +%m)
+        yil=$(date -d 'last friday' +%Y)
     fi
-    regex="http://www.diyanet.nl/wp-content/uploads/$(date +%Y)/*/.*${cuma}.*TR.docx"
+    regex="https://diyanet.nl/wp-content/uploads/${yil}/${ay}/${cuma}-Turkce.pdf"
 
     ${WGET} http://www.diyanet.nl/cuma-hutbeleri/ -O /tmp/ezv-hutbe-$$
 
