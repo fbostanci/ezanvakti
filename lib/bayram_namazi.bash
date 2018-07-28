@@ -65,11 +65,10 @@ bayram_namazi_vakti() {
     exit 1
   }
 
-  rm -f /tmp/ezv-perl-hata-$$ > /dev/null 2>&1
   printf '%b%b%b\n' \
     "${RENK7}${RENK3}${ILCE}${RENK5} için bayram namazı vakitleri ($(date +'%d.%m.%Y %H:%M:%S'))\n\n" \
     "${RENK2}Ramazan bayramı namazı ${RENK3}: ${ramazan_nv} ${RENK2}${ramazan_bt}\n" \
-    "${RENK2}Kurban bayramı namazı  ${RENK3}: ${kurban_nv} ${RENK2}${kurban_bt}${RENK0}\n" 
+    "${RENK2}Kurban bayramı namazı  ${RENK3}: ${kurban_nv} ${RENK2}${kurban_bt}${RENK0}\n"
 }
 
 # vim: set ts=2 sw=2 et:
