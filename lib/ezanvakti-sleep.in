@@ -11,8 +11,9 @@ calisma_kodu="$1"
 
 acilisa_baslatici_ekle
 [[ ${calisma_kodu} = 657a616e76616b7469 ]] && (( ! ACILISTA_BASLAT )) && exit 0
+# 657a616e76616b7469 = ezanvakti onaltılık değeri
 
-bilesen_yukle mplayer_yonetici
+bilesen_yukle oynatici_yonetici
 (( OYNATICI_DURAKLAT )) && bilesen_yukle oynatici_duraklat
 renk_denetle
 
@@ -91,16 +92,16 @@ cuma_selasi() {
     return 0
   }
 
-  bilesen_yukle mplayer_yonetici
+  bilesen_yukle oynatici_yonetici
   # Oynatıcı duraklatma etkin mi ezan okumadan değeri
   # denetle ve fonksiyonu çağır.
   if (( OYNATICI_DURAKLAT ))
   then
       oynatici_duraklat
-      mplayer_calistir "${CUMA_SELASI}"
+      oynatici_calistir "${CUMA_SELASI}"
       oynatici_devam
   else
-      mplayer_calistir "${CUMA_SELASI}"
+      oynatici_calistir "${CUMA_SELASI}"
   fi
   return 0
 }
@@ -206,7 +207,7 @@ ezan_oku() {
     -t $EZAN_BILDIRIM_SURESI"000"
 
   (( ezan_okunsun_mu )) || { sleep 1m; return 0; }
-  bilesen_yukle mplayer_yonetici
+  bilesen_yukle oynatici_yonetici
 
   [[ ! -f ${vakit_ezani} ]] && {
     printf '%s: vaktin ses dosyası -> %s <- bulunamadı.\n' \
@@ -218,12 +219,12 @@ ezan_oku() {
   if (( OYNATICI_DURAKLAT ))
   then
       oynatici_duraklat
-      mplayer_calistir "${vakit_ezani}"
-      (( EZAN_DUASI_OKU )) && mplayer_calistir "${EZAN_DUASI}"
+      oynatici_calistir "${vakit_ezani}"
+      (( EZAN_DUASI_OKU )) && oynatici_calistir "${EZAN_DUASI}"
       oynatici_devam
   else
-      mplayer_calistir "${vakit_ezani}"
-      (( EZAN_DUASI_OKU )) && mplayer_calistir "${EZAN_DUASI}"
+      oynatici_calistir "${vakit_ezani}"
+      (( EZAN_DUASI_OKU )) && oynatici_calistir "${EZAN_DUASI}"
   fi
   clear
 }
@@ -264,8 +265,8 @@ vakit_animsat() {
       -i ${AD}
 
     (( SESLI_UYARI )) && {
-      bilesen_yukle mplayer_yonetici
-      mplayer_calistir "${UYARI_SESI}"
+      bilesen_yukle oynatici_yonetici
+      oynatici_calistir "${UYARI_SESI}"
     }
     sleep 1m; vakit_animsat
   }

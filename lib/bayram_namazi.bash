@@ -12,15 +12,15 @@ bayram_namazi_vakti() {
   [[ -z "${SEHIR}" ]] && SEHIR=yok_boyle_bir_yer
   [[ -z "${ILCE}"  ]] && ILCE=yok_boyle_bir_yer
 
-  if ! grep -qw ${ULKE} ${VERI_DIZINI}/ulkeler/AAA-ULKELER
+  if ! grep -qw "${ULKE}" ${VERI_DIZINI}/ulkeler/AAA-ULKELER
   then
       bilesen_yukle guncelleyici
       guncelleme_yap
-  elif ! grep -qw ${SEHIR} ${VERI_DIZINI}/ulkeler/${ULKE}
+  elif ! grep -qw "${SEHIR}" ${VERI_DIZINI}/ulkeler/${ULKE}
   then
       bilesen_yukle guncelleyici
       guncelleme_yap
-  elif ! grep -qw ${ILCE} ${VERI_DIZINI}/ulkeler/${ULKE}_ilceler/${SEHIR}
+  elif ! grep -qw "${ILCE}" ${VERI_DIZINI}/ulkeler/${ULKE}_ilceler/${SEHIR}
   then
       bilesen_yukle guncelleyici
       guncelleme_yap
@@ -56,7 +56,7 @@ bayram_namazi_vakti() {
   ramazan_nv="$(gawk -F'=' '/RamazanBayramNamaziSaati/{print $2}' < /tmp/ezv-bayram-vakitleri-$$)"
   kurban_bt="$(gawk -F'=' '/KurbanBayramNamaziTarihi/{print $2}' < /tmp/ezv-bayram-vakitleri-$$)"
   kurban_nv="$(gawk -F'=' '/KurbanBayramNamaziSaati/{print $2}' < /tmp/ezv-bayram-vakitleri-$$)"
-  
+
   rm -f /tmp/ezv-bayram-vakitleri-$$ > /dev/null 2>&1
 
   [[ -z ${ramazan_bt} || -z ${kurban_bt} || -z ${ramazan_nv} || -z ${kurban_nv} ]] && {

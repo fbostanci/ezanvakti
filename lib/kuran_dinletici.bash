@@ -13,15 +13,16 @@ sure_no_denetimi() { # sure_no_yonetimi {{{
       exit 1
 
   else
-      sure_no="$(sed 's/^0*//' <<<$sure_no)"
+      if (( ! ${#sure_no} ))
+      then
+          printf '%s: bu özelliğin kullanımı için ek olarak sure kodu girmelisiniz.\n' "${AD}" >&2
+          exit 1
+     else
+         sure_no="$(sed 's/^0*//' <<<$sure_no)"
+    fi
   fi
 
-  if (( ! ${#sure_no} ))
-  then
-      printf '%s: bu özelliğin kullanımı için ek olarak sure kodu girmelisiniz.\n' "${AD}" >&2
-      exit 1
-
-  elif (( sure_no < 1 || sure_no > 114 ))
+  if (( sure_no > 114 ))
   then
       printf '%b\n%b\n' \
         "${AD}: hatalı sure_no: \`$sure_no' " \
