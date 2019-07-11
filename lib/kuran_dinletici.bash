@@ -3,8 +3,9 @@
 #       Ezanvakti Kuran dinletme bileşeni
 #
 #
-# TODO: sure no sayısal denetimleri geliştir.
+# 
 sure_no_denetimi() { # sure_no_yonetimi {{{
+  sure_no="$(sed 's/^0*//' <<<$sure_no)"
   if [[ -n ${sure_no//[[:digit:]]/} ]]
   then
       printf '%b\n%b\n' \
@@ -12,17 +13,14 @@ sure_no_denetimi() { # sure_no_yonetimi {{{
         'Sure kodu olarak 1-114 arası sayısal bir değer giriniz.'
       exit 1
 
-  else
-      if (( ! ${#sure_no} ))
-      then
+  elif (( ! ${#sure_no} ))
+  then
           printf '%s: bu özelliğin kullanımı için ek olarak sure kodu girmelisiniz.\n' "${AD}" >&2
           exit 1
-     else
-         sure_no="$(sed 's/^0*//' <<<$sure_no)"
-    fi
+
   fi
 
-  if (( sure_no > 114 ))
+  if (( sure_no < 1 || sure_no > 114 ))
   then
       printf '%b\n%b\n' \
         "${AD}: hatalı sure_no: \`$sure_no' " \
