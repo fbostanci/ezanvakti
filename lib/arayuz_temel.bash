@@ -304,7 +304,7 @@ g_vakitleri_yaz() {
 g_secim_goster() {
   yad --title "${AD^} - ${secim_basligi}" --text-info --filename="${cikti_dosyasi}" \
       --width=560 --height=300 --wrap --button='gtk-close' --window-icon=${AD} \
-      --back="$ARKAPLAN_RENGI" --fore="$YAZI_RENGI" --mouse --sticky
+      --mouse --sticky
 }
 
 pencere_bilgi() {
