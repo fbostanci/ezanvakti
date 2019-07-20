@@ -16,8 +16,8 @@ AD=${AD:-ezv-devel}
 bindir=$HOME/bin
 
 case $1 in
-  --kur) eylem=install ;;
-  --kald[iı]r) eylem=uninstall ;;
+  --kur|--install) eylem=install ;;
+  --kald[iı]r|--uninstall) eylem=uninstall ;;
     *)
 echo  "\
   Kullanım:
@@ -31,11 +31,26 @@ exit 1 ;;
 esac
 
 [[ $1 = --kur ]] && {
-  BAG=('bash' 'sed' 'gawk' 'grep' 'make' 'notify-send' 'yad' 'mplayer' 'wget')
+  BAG=('bash' 'sed' 'gawk' 'grep' 'make' 'notify-send' 'yad' 'mplyer|ffmpeg' 'wget|curl')
+
 
   for b in ${BAG[@]}
   do
-    hash $b 2>/dev/null || KUR_BUNU+=("$b")
+    if [[ $b =~ '|' ]]
+    then
+        b1=$(cut -d'|' -f1 <<<$b)
+        b2=$(cut -d'|' -f2 <<<$b)
+        
+        if ! hash $b1 2>/dev/null
+        then
+            if ! hash $b2 2>/dev/null
+            then
+                KUR_BUNU+=("$b1 ya da $b2")
+            fi
+        fi
+    else
+        hash $b 2>/dev/null || KUR_BUNU+=("$b")
+    fi
   done
 
   (( ${#KUR_BUNU[@]} )) && {
@@ -43,7 +58,7 @@ esac
     printf '%s\n' \
       'Aşağıdaki bağımlılıklar bulunamadı.' >&2
 
-    for pm in ${KUR_BUNU[@]}
+    for pm in "${KUR_BUNU[@]}"
     do
         printf '%s\n' \
           " -> ${KUR_BUNU[$e]}"

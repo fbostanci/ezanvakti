@@ -141,6 +141,10 @@ yad --notebook --key=190707 \
         temizlik; arayuz ;;
     174)
         IFS="|"
+        # liste1: ezanveri ayarları
+        # liste2: Ezan ayarları
+        # liste3: Bildirim ayarları
+        # liste4: Renk ayarları
         liste1=(); liste2=(); liste3=(); liste4=()
 
         read -ra liste1 < "$ayr1"

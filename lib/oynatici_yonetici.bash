@@ -19,6 +19,8 @@ oynatici_sure_al() {
   fi
 }
 
+# parca_suresi değerinden gelen saniyeyi saat,dakika ve saniyeye
+# çevirir.
 oynatici_sure_cevir() {
   (( ! parca_suresi )) && return 1
 
