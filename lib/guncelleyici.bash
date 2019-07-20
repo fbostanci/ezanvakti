@@ -19,6 +19,7 @@ guncelleme_yap() { ### Ana fonksiyon {{{
       ILCE=''
   fi
 
+  # konum bilgileri boş ise
   [[ -z "${ULKE}"  ]] && ULKE=yok_boyle_bir_yer
   [[ -z "${SEHIR}" ]] && SEHIR=yok_boyle_bir_yer
   [[ -z "${ILCE}"  ]] && ILCE=yok_boyle_bir_yer
