@@ -261,6 +261,7 @@ sed -n 's:<td>\(.*\)</td>:\1:p' | sed -e 's:^ *::' -e 's:[^[:print:]]: :g' -e \
  s: Kasım :.11.:;s: Aralık :.12.:' | \
 sed -e 'N;N;N;N;N;N;s:\n:  :g' -e 's:[[:blank:]]*$::' >> /tmp/ezanveri-$$
 sed -i -r '1!{s:\S+::2;}' /tmp/ezanveri-$$
+sed -i '2,8d' /tmp/ezanveri-$$
 
 cat << SON >> /tmp/ezanveri-$$
 
