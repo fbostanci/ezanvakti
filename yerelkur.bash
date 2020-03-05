@@ -31,7 +31,7 @@ exit 1 ;;
 esac
 
 [[ $1 = --kur ]] && {
-  BAG=('bash' 'sed' 'gawk' 'grep' 'make' 'notify-send' 'yad' 'mplyer|ffmpeg' 'wget|curl')
+  BAG=('bash' 'sed' 'gawk' 'grep' 'make' 'notify-send' 'yad' 'mplayer|ffmpeg' 'wget|curl')
 
 
   for b in ${BAG[@]}

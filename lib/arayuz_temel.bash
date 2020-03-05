@@ -303,7 +303,7 @@ g_vakitleri_yaz() {
 
 g_secim_goster() {
   yad --title "${AD^} - ${secim_basligi}" --text-info --filename="${cikti_dosyasi}" \
-      --width=560 --height=300 --wrap --button='gtk-close' --window-icon=${AD} \
+      --width=560 --height=300 --wrap --button='yad-close' --window-icon=${AD} \
       --mouse --sticky
 }
 
@@ -329,7 +329,7 @@ pencere_bilgi() {
 
   yad --form --separator=' ' --title="${AD^}" --image=${AD} --window-icon=${AD} \
       --text "${oynatici_ileti}\n Süre        : $parca_suresi_n" --mouse --fixed \
-      --button='gtk-cancel:127' --button='gtk-close:0' --timeout=$parca_suresi
+      --button='yad-cancel:127' --button='yad-close:0' --timeout=$parca_suresi
 
   case $? in
     *)
@@ -348,7 +348,7 @@ strng=$(yad --form \
 --field=Sure:CB \
 "${sure_listesi}" \
 --button='gtk-go-back:151' --button='gtk-media-play:152' \
---button='gtk-quit:153' \
+--button='yad-quit:153' \
 --image=${AD} --window-icon=${AD} \
 --title "${AD^}" --sticky --center --fixed)
 

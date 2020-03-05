@@ -283,7 +283,7 @@ ezanvakti_bekle() {
     then
         rm_sim_ileti="${rm_sim} vakti"
     else
-        rm_sim_ileti='Yeni güm'
+        rm_sim_ileti='Yeni gün'
         rm_vakit_saati_n='00:00'
     fi
 
