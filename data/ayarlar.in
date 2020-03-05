@@ -210,11 +210,6 @@ RENK7='\033[40m'
 # Beyaz
 RENK8='\033[0;1m'
 
-# Metin kutusu arka plan rengi
-ARKAPLAN_RENGI='#000000'
-
-# Metin kutusu yazı rengi
-YAZI_RENGI='#FFBD4D'
 
 #                                #
 #*******Arayüz Renk Ayarları*****#

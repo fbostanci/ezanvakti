@@ -18,7 +18,7 @@ yad --title "${AD^}" \
 --text="$(g_vakitleri_yaz)\n\n<span foreground=\'${ARAYUZ_SIMDIKI_VAKIT_RENGI}\'>${vakit_bilgisi}${ozel_ileti}</span>\
 \n\n<span foreground=\'${ARAYUZ_KALAN_SURE_RENGI}\'>${v_ileti}\n${v_kalan}</span>" \
 --image=${AD} --window-icon=${AD} --mouse --fixed --sticky \
---button='gtk-refresh:172' --button='gtk-close'
+--button='yad-refresh:172' --button='yad-close'
 
 case $? in
   172)
