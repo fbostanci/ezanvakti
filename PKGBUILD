@@ -1,4 +1,4 @@
-# Maintainer: Fatih Bostancı <faopera@gmail.com>
+# Maintainer: Fatih Bostancı <ironic@yaani.com>
 
 pkgname=ezanvakti
 pkgver=6.3.4

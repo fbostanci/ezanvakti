@@ -3,7 +3,7 @@
 #              Ezanvakti 6.4  -  GNU/Linux Ezan Vakti Bildirici
 #
 ##
-##    Copyright (c) 2010-2019  Fatih Bostancı  <fbostanci@vivaldi.net>
+##    Copyright (c) 2010-2020  Fatih Bostancı  <ironic@yaani.com>
 ##
 ##              https://gitlab.com/fbostanci/ezanvakti
 ##              https://github.com/fbostanci/ezanvakti
@@ -152,6 +152,14 @@ case $1 in
       -c|--cuma)
         ezan_dinlet Cuma ;;
       *) hatali_kullanim "${1:-null}" ;;
+    esac ;;
+  --qt)
+    bilesen_yukle qtezv; shift
+    case $1 in
+        v)
+        ezv_qt_vakitler ;;
+        k)
+        ezv_qt_konum ;;
     esac ;;
   --kuran)
     bilesen_yukle kuran_dinletici; shift
