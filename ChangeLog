@@ -5,7 +5,7 @@
 /×××××××××××××××××××××××××××××
 × Ezanvakti 6.4
 ×××××××××××××××××××××××××××××/
-201x-xx-xx Fatih BOSTANCI <fbostanci@vivaldi.net>
+201x-xx-xx Fatih BOSTANCI <ironic@yaani.com>
 
  *  Bayram namazı vakitlerini gösterme (--vakitler --bayram)
  *  Cuma hutbesi indirme ve açma (--hutbe)
@@ -25,7 +25,7 @@
 /×××××××××××××××××××××××××××××
 × Ezanvakti 6.3.4
 ×××××××××××××××××××××××××××××/
-2017-08-17 Fatih BOSTANCI <fbostanci@vivaldi.net>
+2017-08-17 Fatih BOSTANCI <ironic@yaani.com>
 
  *  guncelleyici.bash: uçbirim çıktıları geometriye uyduruldu.
  *  simgeler için ${AD} değeri kullanılıyor.
@@ -35,7 +35,7 @@
 /×××××××××××××××××××××××××××××
 × Ezanvakti 6.3.3
 ×××××××××××××××××××××××××××××/
-2017-08-12 Fatih BOSTANCI <fbostanci@vivaldi.net>
+2017-08-12 Fatih BOSTANCI <ironic@yaani.com>
 
  *  vakitleri alma ve düzenleme tamamen ezanveri_istemci.pl ile yapılıyor.
  *  kalan.bash yeniden yazıldı.
@@ -47,7 +47,7 @@
 /×××××××××××××××××××××××××××××
 × Ezanvakti 6.3.2
 ×××××××××××××××××××××××××××××/
-2017-08-03 Fatih BOSTANCI <fbostanci@vivaldi.net>
+2017-08-03 Fatih BOSTANCI <ironic@yaani.com>
 
  *  temel_islevler.bash: kalan gün hesabı hatası düzeltildi.
  *  arayüz ve yapilandirma_yoneticisinde içerik dosyalarını çıkışta silme.
@@ -59,7 +59,7 @@
 /×××××××××××××××××××××××××××××
 × Ezanvakti 6.3.1
 ×××××××××××××××××××××××××××××/
-2017-07-26 Fatih BOSTANCI <fbostanci@vivaldi.net>
+2017-07-26 Fatih BOSTANCI <ironic@yaani.com>
 
  *  guncelleyici.bash: güncelleme hatası düzeltildi.
  *  Türkiye ilçeleri güncellendi.
@@ -68,7 +68,7 @@
 /×××××××××××××××××××××××××××××
 × Ezanvakti 6.3
 ×××××××××××××××××××××××××××××/
-2017-07-22 Fatih BOSTANCI <fbostanci@vivaldi.net>
+2017-07-22 Fatih BOSTANCI <ironic@yaani.com>
 
  *  ezanvakti-sleep ve vakit_animsat hesaplama algoritması değiştirildi.
     Bu sayede sistem uykuya ya da askıya alındığında oluşan yanlış ezan okuma
@@ -103,7 +103,7 @@
 /×××××××××××××××××××××××××××××
 × Ezanvakti 6.2
 ×××××××××××××××××××××××××××××/
-2017-07-07 Fatih BOSTANCI <fbostanci@vivaldi.net>
+2017-07-07 Fatih BOSTANCI <ironic@yaani.com>
 
  *  Gelişmiş ve basit arayüzde yazı renkleri özelleştirmeleri (html renkleri kullanılıyor.)
  *  Desktop actions (Ezanvakti simgesi sağ tık menüsü) desteği (--eylem)
@@ -112,7 +112,7 @@
 /×××××××××××××××××××××××××××××
 × Ezanvakti 6.1
 ×××××××××××××××××××××××××××××/
-2017-06-30 Fatih BOSTANCI <fbostanci@vivaldi.net>
+2017-06-30 Fatih BOSTANCI <ironic@yaani.com>
 
  *  Vakitler ve conky için sıradaki vakit gösterimi(-vt, --conky --siradaki)
  *  Vakitler ve conky için kerahat vakitleri gösterimi(-vk, --conky --kerahat)
@@ -123,7 +123,7 @@
 /×××××××××××××××××××××××××××××
 × Ezanvakti 6.0
 ×××××××××××××××××××××××××××××/
-2017-04-05 Fatih BOSTANCI <fbostanci@vivaldi.net>
+2017-04-05 Fatih BOSTANCI <ironic@yaani.com>
 
  *  İlçe desteği (TÜRKİYE/ABD/KANADA için)
  *  Uygulama bileşenlere ayrıldı ve daha modüler hale getirildi.
@@ -146,7 +146,7 @@
 /×××××××××××××××××××××××××××××
 × Ezanvakti 5.7.2
 ×××××××××××××××××××××××××××××/
-2015-01-09 Fatih BOSTANCI <fbostanci@vivaldi.net>
+2015-01-09 Fatih BOSTANCI <ironic@yaani.com>
 
  *  Tüm vakit ezanlarının isteğe bağlı okunabilmesi özelliği eklendi.
  *  Utopic için paketleme yapıldı.
@@ -155,7 +155,7 @@
 /×××××××××××××××××××××××××××××
 × Ezanvakti 5.7.1
 ×××××××××××××××××××××××××××××/
-2014-05-28 Fatih BOSTANCI <fbostanci@vivaldi.net>
+2014-05-28 Fatih BOSTANCI <ironic@yaani.com>
 
  *  Diyanet sitesindeki değişiklikten dolayı oluşan güncelleme hatası giderildi.
 
@@ -163,7 +163,7 @@
 /×××××××××××××××××××××××××××××
 × Ezanvakti 5.7
 ×××××××××××××××××××××××××××××/
-2011-09-06 Fatih BOSTANCI <fbostanci@vivaldi.net>
+2011-09-06 Fatih BOSTANCI <ironic@yaani.com>
 
  *  Uygulama geneli uçbirim çıktıları için renk kullanma/kullanmama seçimi yapılabilmesi
  *  Renk kodları artık yapılandırma dosyasından okunuyor ve renk özelleştirmeleri yapılabilir.
@@ -181,7 +181,7 @@
 /×××××××××××××××××××××××××××××
 × Ezanvakti 5.6
 ×××××××××××××××××××××××××××××/
-2011-08-18 Fatih BOSTANCI <fbostanci@vivaldi.net>
+2011-08-18 Fatih BOSTANCI <ironic@yaani.com>
 
  *  Dini günler ve geceler için anımsatıcı
  *  --gunler ile içinde bulunduğunuz yıla ait dini günlerin listesi
@@ -192,7 +192,7 @@
 /×××××××××××××××××××××××××××××
 × Ezanvakti 5.5
 ×××××××××××××××××××××××××××××/
-2011-08-07 Fatih BOSTANCI <fbostanci@vivaldi.net>
+2011-08-07 Fatih BOSTANCI <ironic@yaani.com>
 
  *  Ezanveri güncelleme sorunu çözüldü.
  *  html2text bağımlılığı yerine artık perl-html-tree kullanılıyor.
@@ -208,7 +208,7 @@
 /×××××××××××××××××××××××××××××
 × Ezanvakti 5.4
 ×××××××××××××××××××××××××××××/
-2011-06-09 Fatih BOSTANCI <fbostanci@vivaldi.net>
+2011-06-09 Fatih BOSTANCI <ironic@yaani.com>
 
  *  Mplayer denetimi; artık sadece hedef mplayer kopyası sonlandırılıyor.
  *  Tekli vakit gösteriminde artık vakit saatleri de gösteriliyor.
@@ -222,7 +222,7 @@
 /×××××××××××××××××××××××××××××
 × Ezanvakti 5.3
 ×××××××××××××××××××××××××××××/
-2011-04-06 Fatih BOSTANCI <fbostanci@vivaldi.net>
+2011-04-06 Fatih BOSTANCI <ironic@yaani.com>
 
  *  Diyanetin sitesinde yaptığı değişiklik sonucu oluşan güncelleme hatası giderildi.
  *  Vakit ezanlarında oynatıcı duraklatma desteği moc, qmmp, cmus için de eklendi.
@@ -240,7 +240,7 @@
 /×××××××××××××××××××××××××××××
 × Ezanvakti 5.2
 ×××××××××××××××××××××××××××××/
-2011-01-31 Fatih BOSTANCI <fbostanci@vivaldi.net>
+2011-01-31 Fatih BOSTANCI <ironic@yaani.com>
 
  *  Vakit ezanları okunurken, betiğin tanıdığı oynatıcıları duraklatma. Öntanımlı olarak kapalı gelmekte.
     desteklenenler: ( Amarok, Audacious, Aqualunq, Banshee, Clementine, Deadbeef, Exaile, Rhythmbox )
@@ -255,7 +255,7 @@
 /×××××××××××××××××××××××××××××
 × Ezanvakti 5.1
 ×××××××××××××××××××××××××××××/
-2010-12-16 Fatih BOSTANCI <fbostanci@vivaldi.net>
+2010-12-16 Fatih BOSTANCI <ironic@yaani.com>
 
  *  Gelişmiş arayüz geliştirmeleri
  *  Çeşitli renk düzenlemeleri
@@ -266,7 +266,7 @@
 /×××××××××××××××××××××××××××××
 × Ezanvakti 5.0
 ×××××××××××××××××××××××××××××/
-2010-12-11 Fatih BOSTANCI <fbostanci@vivaldi.net>
+2010-12-11 Fatih BOSTANCI <ironic@yaani.com>
 
  *  Gelişmiş ve basit arayüz
  *  Gelişmiş arayüz için menü başlatıcı
@@ -277,7 +277,7 @@
 /×××××××××××××××××××××××××××××
 × Ezanvakti 4.5
 ×××××××××××××××××××××××××××××/
-2010-12-09 Fatih BOSTANCI <fbostanci@vivaldi.net>
+2010-12-09 Fatih BOSTANCI <ironic@yaani.com>
 
  *  Diyanet sitesindeki tüm ülkeler için ezanveri güncelleme desteği
  *  Geç ezan okuma değişkeni
@@ -288,7 +288,7 @@
 /×××××××××××××××××××××××××××××
 × Ezanvakti 4.1
 ×××××××××××××××××××××××××××××/
-2010-11-14 Fatih BOSTANCI <fbostanci@vivaldi.net>
+2010-11-14 Fatih BOSTANCI <ironic@yaani.com>
 
  *  Otomatik ezanveri dosyası güncelleme (öntanımlı kapalı gelmekte)
  *  Kullanıcı tefsir dizini
@@ -303,7 +303,7 @@
 /×××××××××××××××××××××××××××××
 × Ezanvakti 4.0
 ×××××××××××××××××××××××××××××/
-2010-11-06 Fatih BOSTANCI <fbostanci@vivaldi.net>
+2010-11-06 Fatih BOSTANCI <ironic@yaani.com>
 
  *  Günlük ezan vakitlerini kalan sürelerle birlikte görüntüleme
  *  Kuran' ın Türkçe çevirilerini kullanarak rastgele bir ayet gösterme
@@ -321,7 +321,7 @@
 /×××××××××××××××××××××××××××××
 × Ezanvakti 3.3
 ×××××××××××××××××××××××××××××/
-2010-10-01 Fatih BOSTANCI <fbostanci@vivaldi.net>
+2010-10-01 Fatih BOSTANCI <ironic@yaani.com>
 
  *  Kod geliştirme & temizlik
  *  Küçük yazım hataları giderildi.
@@ -330,7 +330,7 @@
 /×××××××××××××××××××××××××××××
 × Ezanvakti 3.2
 ×××××××××××××××××××××××××××××/
-2010-09-30 Fatih BOSTANCI <fbostanci@vivaldi.net>
+2010-09-30 Fatih BOSTANCI <ironic@yaani.com>
 
  *  Ezanveri dosyasının güncellenmesi için son 7 gün( her gün)  uyarı verme özelliği
  *  Çeşitli düzenlemeler
@@ -339,7 +339,7 @@
 /×××××××××××××××××××××××××××××
 × Ezanvakti 3.1
 ×××××××××××××××××××××××××××××/
-2010-08-29 Fatih BOSTANCI <fbostanci@vivaldi.net>
+2010-08-29 Fatih BOSTANCI <ironic@yaani.com>
 
  *  Sure numaralarında sıfır ekleme zorunluluğu kaldırıldı. Betik girilen sayıya göre sıfır ekliyor.
  *  Çeşitli kod iyileştirmeleri
@@ -348,7 +348,7 @@
 /×××××××××××××××××××××××××××××
 × Ezanvakti 3.0
 ×××××××××××××××××××××××××××××/
-2010-08-04 Fatih BOSTANCI <fbostanci@vivaldi.net>
+2010-08-04 Fatih BOSTANCI <ironic@yaani.com>
 
  *  GNOME bağımlılıklarını kaldırıldı. Betik artık KDE ve XFCE  üzerinde de çalışabilir.
  *  Ses oynatımında mplayer kullanıyor artık.
@@ -359,7 +359,7 @@
 /×××××××××××××××××××××××××××××
 × Ezanvakti 2.2
 ×××××××××××××××××××××××××××××/
-2010-08-01 Fatih BOSTANCI <fbostanci@vivaldi.net>
+2010-08-01 Fatih BOSTANCI <ironic@yaani.com>
 
  *  denetle(), ve yardim() fonk. geliştirmeleri
  *  Küçük hatalar düzeltildi.
@@ -368,7 +368,7 @@
 /×××××××××××××××××××××××××××××
 × Ezanvakti 2.1
 ×××××××××××××××××××××××××××××/
-2011-07-31 Fatih BOSTANCI <fbostanci@vivaldi.net>
+2011-07-31 Fatih BOSTANCI <ironic@yaani.com>
 
  *  Ezanveri denetimi geliştirildi.
 
@@ -376,7 +376,7 @@
 /×××××××××××××××××××××××××××××
 × Ezanvakti 2.0
 ×××××××××××××××××××××××××××××/
-2010-07-31 Fatih BOSTANCI <fbostanci@vivaldi.net>
+2010-07-31 Fatih BOSTANCI <ironic@yaani.com>
 
  *  İftar saati ve iftara kalan süreyi gösterme desteği eklendi.
  *  Ramazan ayı için sadece imsak ve iftar da bildirim yapan özel bir kip eklendi.
@@ -386,7 +386,7 @@
 /×××××××××××××××××××××××××××××
 × Ezanvakti 1.6
 ×××××××××××××××××××××××××××××/
-2010-07-30 Fatih BOSTANCI <fbostanci@vivaldi.net>
+2010-07-30 Fatih BOSTANCI <ironic@yaani.com>
 
  *  Her vakit için vaktin makamına uygun ezan.
  *  Ezandan sonra Türkçe ezan duası
@@ -398,7 +398,7 @@
 /×××××××××××××××××××××××××××××
 × Ezanvakti 1.0
 ×××××××××××××××××××××××××××××/
-2010-07-27 Fatih BOSTANCI <fbostanci@vivaldi.net>
+2010-07-27 Fatih BOSTANCI <ironic@yaani.com>
 
  *  Hello World!
 

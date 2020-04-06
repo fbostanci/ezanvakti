@@ -6,6 +6,19 @@
 # ezanvakti yapabilirsiniz.
 #
 # Bu betiği kaynak kod dizini içerisinde çalıştırın.
+#
+# Örnek kurulum komutları:
+# export AD=ezanvakti-yerel
+# bash yerelkur.bash --kur
+#
+# Örnek kaldırma komutları:
+# ezanvakti-yerel adıyla kurulu ise
+# export AD= ezanvakti-yerel
+# bash yerelkur.bash --kaldir
+#
+# AD belirlenmemişse ezv-devel olarak  kurar ve
+# kaldırırken de ezv-devel'i arar.
+#
 
 [[ $(id -u) == 0 ]] && {
   printf '%s: root haklarıyla çalıştırılamaz.\n' "${0##*/}" >&2
