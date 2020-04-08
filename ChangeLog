@@ -3,12 +3,13 @@
 
 
 /×××××××××××××××××××××××××××××
-× Ezanvakti 6.4
+× Ezanvakti 7.0
 ×××××××××××××××××××××××××××××/
-201x-xx-xx Fatih BOSTANCI <ironic@yaani.com>
+2020-xx-xx Fatih BOSTANCI <ironic@yaani.com>
 
+ *  Qt arayüz desteği
+ *  Qt arayüze yardımcı olacak qtezv.bash betiği eklendi.
  *  Bayram namazı vakitlerini gösterme (--vakitler --bayram)
- *  Cuma hutbesi indirme ve açma (--hutbe)
  *  ses dosyası oynatımında mplayer yanında ffplay desteği
  *  iftar vakti için bildirim (--iftar --bildirim)
  *  sıradaki vakit için bildirim (-vtb)
@@ -20,6 +21,9 @@
  *  KULLANICI_TEFSIR_DIZINI -> YEREL_MEAL_DIZINI
      olarak adlandırıldı.
  *  TEFSIR_SAHIBI -> MEAL_SAHIBI olarak adlandırıldı.
+ *  Ayet aralığı gösterme ve kuran dinletmede
+    girilen sure numarası denetimi geliştirildi.
+
  
 
 /×××××××××××××××××××××××××××××

@@ -16,7 +16,7 @@ Ezanvakti 6.4 GNU/Linux için ezan vakti bildirici
 HAKKINDA
 ==
 
-Ezanvakti  T.C. Diyanet İşleri Başkanlığı sitesinden bulunduğunuz ülke
+Ezanvakti, T.C. Diyanet İşleri Başkanlığı sitesinden bulunduğunuz ülke
 ve şehir için aylık bazda ezan vakitleri çizelgesini alarak vakti
 geldiğinde ezan okuyan ve bildirim veren bir uygulamadır.
 
@@ -34,7 +34,6 @@ Genel Özellikleri
 *  Sıradaki vakit, ve vakte ne kadar süre kaldığını gösterme. (-vt)
 *  Arayüzden ve uçbirimden kerahat vakitlerini gösterebilme. (-vk)
 *  Bulunduğunuz konum için bayram namazı vakitlerini gösterme. (-vm)
-*  Cuma hutbesi indirme ve açma (--hutbe)
 *  Arayüzde hicri tarih gösterimi
 *  Arayüz HTML renk özelleştirmeleri
 *  Cuma günü isteğe bağlı sela okunması (süre ayarlı)

@@ -246,6 +246,13 @@ ARAYUZ_KALAN_SURE_RENGI='#8f5902'
 # Arayüz seçke adları rengi
 ARAYUZ_SECKE_ADLARI_RENGI='#9c72f6'
 
+# Metin kutusu arka plan rengi
+ARKAPLAN_RENGI='#000000'
+
+# Metin kutusu yazı rengi
+YAZI_RENGI='#FFBD4D'
+
+
 #                           #
 #*****Gelişmiş Ayarlar******#
 #                           #
@@ -258,6 +265,6 @@ GELISMIS_ARAYUZ_BICIMI='%-107s%s\n%s\n%s\n\t\t\t\t%s\n%s\n\n%s\n\n\t\t\t %s\n\t\
 CONKY_BICIMI='%-14s%s\n%-15s%s\n%-17s%s\n%-17s%s\n%-14s%s\n%-17s%s\n'
 
 # Printf arayüzlerdeki vakit çıktısı biçimi
-VAKIT_BICIMI='\t\t\t%s\t\t%s\n\t\t\t%s\t\t%s\n\t\t\t%s\t\t%s\n\t\t\t%s\t\t%s\n\t\t\t%s\t%s\n\t\t\t%s\t\t%s'
+VAKIT_BICIMI='\t\t\t%s\t\t%s\n\t\t\t%s\t\t%s\n\t\t\t%s\t\t%s\n\t\t\t%s\t\t%s\n\t\t\t%s\t\t%s\n\t\t\t%s\t\t%s'
 
 ###AYARLAR SON###
