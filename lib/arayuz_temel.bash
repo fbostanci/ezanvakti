@@ -28,11 +28,9 @@ sure_listesi+='!111-Tebbet!112-İhlas!113-Felak!114-Nas'
 tamamlama_listesi='!Ayarlar!Ayet!Sabah!Öğle!İkindi!Akşam!Yatsı!Sela!yapilandirma!Hadis!Esma-ül Hüsna'
 tamamlama_listesi+='!Bilgi!Aylık Vakitler!Haftalık Vakitler!Dini Günler ve Geceler!hakkında!Bayram Namazı Vakitleri'
 tamamlama_listesi+="!about!güncelle!güncelle yeni!yardım!arayuz2!Kerahat!000!özel pencere!$sure_listesi"
-tamamlama_listesi+='!Son Cuma Hutbesini indir'
 
 secim_listesi='!Günlük Vakitler!Haftalık Vakitler!Aylık Vakitler!Kerahat Vakitleri!Bayram Namazı Vakitleri'
-secim_listesi+='!Dini Günler ve Geceler!Ayet!Hadis!Bilgi!Esma-ül Hüsna!Son Cuma Hutbesini indir'
-secim_listesi+='!Cuma Hutbelerini listele!Yapılandırma Yöneticisi'
+secim_listesi+='!Dini Günler ve Geceler!Ayet!Hadis!Bilgi!Esma-ül Hüsna!Yapılandırma Yöneticisi'
 
 cikti_dosyasi="/tmp/${AD}-6"
 # düz komut çıktıları için rengi sıfırla.
@@ -304,7 +302,7 @@ g_vakitleri_yaz() {
 g_secim_goster() {
   yad --title "${AD^} - ${secim_basligi}" --text-info --filename="${cikti_dosyasi}" \
       --width=560 --height=300 --wrap --button='yad-close' --window-icon=${AD} \
-      --mouse --sticky
+      --back="$ARKAPLAN_RENGI" --fore="$YAZI_RENGI" --mouse --sticky
 }
 
 pencere_bilgi() {
@@ -335,6 +333,7 @@ pencere_bilgi() {
     *)
       echo stop > /tmp/ezv-oynatici-$$.pipe 2>/dev/null
       rm -f /tmp/ezv-oynatici-$$.pipe 2>/dev/null
+      pkill ffplay
       ;;
   esac
 }
@@ -347,7 +346,7 @@ strng=$(yad --form \
 '!Saad el Ghamdi!As Shatry!Ahmad el Ajmy!Yerel Okuyucu' \
 --field=Sure:CB \
 "${sure_listesi}" \
---button='gtk-go-back:151' --button='gtk-media-play:152' \
+--button='Geri:151' --button='Oynat:152' \
 --button='yad-quit:153' \
 --image=${AD} --window-icon=${AD} \
 --title "${AD^}" --sticky --center --fixed)

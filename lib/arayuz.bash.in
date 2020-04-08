@@ -177,17 +177,17 @@ then
         g_secim_goster; temizlik
         arayuz
 
-    elif [[ $str = Son Cuma Hutbesini indir ]]
-    then
-        bilesen_yukle cuma_hutbesi
-        hutbe_indir
-        arayuz
-
-    elif [[ $str = Cuma Hutbelerini listele ]]
-    then
-        bilesen_yukle cuma_hutbesi
-        hutbe_indir listele
-        arayuz
+#     elif [[ $str = Son Cuma Hutbesini indir ]]
+#     then
+#         bilesen_yukle cuma_hutbesi
+#         hutbe_indir
+#         arayuz
+# 
+#     elif [[ $str = Cuma Hutbelerini listele ]]
+#     then
+#         bilesen_yukle cuma_hutbesi
+#         hutbe_indir listele
+#         arayuz
 
     elif [[ $str = @(Ayarlar|yapilandirma|Yapılandırma Yöneticisi)  ]]
     then

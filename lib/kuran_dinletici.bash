@@ -5,7 +5,7 @@
 #
 # 
 sure_no_denetimi() { # sure_no_yonetimi {{{
-  sure_no="$(sed 's/^0*//' <<<$sure_no)"
+
   if [[ -n ${sure_no//[[:digit:]]/} ]]
   then
       printf '%b\n%b\n' \
@@ -27,7 +27,13 @@ sure_no_denetimi() { # sure_no_yonetimi {{{
         'Girilen sure kodu 1 <= sure_kodu <= 114 arasında olmalı.'
       exit 1
 
-  else  # Girilen sure koduna göre değişkenin önüne sıfır ekle.
+  else      
+      # sure_no 000001 gibiyse hata verme sıfırları sil, devam et.
+      if (( ${#sure_no} > 3 ))
+      then
+          sure_no="$(sed 's/^0*//' <<<$sure_no)"
+      fi
+      # Girilen sure koduna göre değişkenin önüne sıfır ekle.
       if (( ${#sure_no} == 1 ))
       then
           sure=00$sure_no

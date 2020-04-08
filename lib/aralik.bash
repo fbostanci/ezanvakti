@@ -29,28 +29,30 @@ ayet_araligi_goster() {
       exit 1
   fi
 
-  if [[ -n $(tr -d 0-9 <<<"$sure_kod") ]]
+  if [[ -n ${sure_kod//[[:digit:]]/} ]]
   then
       printf '%s\n%s\n' \
         "${AD}: hatalı sure_kodu: \`$sure_kod' " \
         'Sure kodu olarak 1-114 arası sayısal bir değer giriniz.' >&2
       exit 1
 
-  elif (( ${#sure_kod} > 3 ))
-  then
-      printf '%s\n%s\n' \
-        "${AD}: hatalı sure_kodu: \`$sure_kod' " \
-        'Girilen sure kodunun basamak sayısı <= 3 olmalı.' >&2
-      exit 1
+  fi
 
-  elif (( sure_kod < 1 || sure_kod > 114 ))
+  if (( sure_kod < 1 || sure_kod > 114 ))
   then
       printf '%s\n%s\n' \
         "${AD}: hatalı sure_kodu: \`$sure_kod' " \
         'Girilen sure kodu 1 <= sure_kodu <= 114 arasında olmalı.' >&2
       exit 1
 
-  else  # Girilen sure koduna göre değişkenin önüne sıfır ekle.
+  else
+      # sure_kod 000001 gibiyse hata verme sıfırları sil, devam et.
+      if (( ${#sure_kod} > 3 ))
+      then
+          sure_kod="$(sed 's/^0*//' <<<$sure_kod)"
+      fi
+  
+      # Girilen sure koduna göre değişkenin önüne sıfır ekle.
       if (( ${#sure_kod} == 1 ))
       then
           sure_kod=00$sure_kod
