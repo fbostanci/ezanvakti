@@ -155,12 +155,7 @@ case $1 in
     esac ;;
   --qt)
     bilesen_yukle qtezv; shift
-    case $1 in
-        v)
-        ezv_qt_vakitler ;;
-        k)
-        ezv_qt_konum ;;
-    esac ;;
+    ezv_qt_basla "$@" ;;
   --kuran)
     bilesen_yukle kuran_dinletici; shift
     case $1 in

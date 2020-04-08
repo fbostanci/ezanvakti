@@ -15,11 +15,14 @@ sure_no_denetimi() { # sure_no_yonetimi {{{
 
   elif (( ! ${#sure_no} ))
   then
-          printf '%s: bu özelliğin kullanımı için ek olarak sure kodu girmelisiniz.\n' "${AD}" >&2
-          exit 1
+      printf '%s: bu özelliğin kullanımı için ek olarak sure kodu girmelisiniz.\n' "${AD}" >&2
+      exit 1
 
   fi
 
+  # sure_no 000001 gibiyse hata verme öndeki sıfırları sil, devam et.
+  # ayrıca 08, 09 için oluşan sayı hatasını da çözüyor.
+  sure_no="$(sed 's/^0*//' <<<$sure_no)"
   if (( sure_no < 1 || sure_no > 114 ))
   then
       printf '%b\n%b\n' \
@@ -28,11 +31,6 @@ sure_no_denetimi() { # sure_no_yonetimi {{{
       exit 1
 
   else      
-      # sure_no 000001 gibiyse hata verme sıfırları sil, devam et.
-      if (( ${#sure_no} > 3 ))
-      then
-          sure_no="$(sed 's/^0*//' <<<$sure_no)"
-      fi
       # Girilen sure koduna göre değişkenin önüne sıfır ekle.
       if (( ${#sure_no} == 1 ))
       then

@@ -38,6 +38,9 @@ ayet_araligi_goster() {
 
   fi
 
+  # sure_kod 000001 gibiyse hata verme öndeki sıfırları sil, devam et.
+  # ayrıca 08, 09 sayı hatasını da çözüyor.
+  sure_kod="$(sed 's/^0*//' <<<$sure_kod)"
   if (( sure_kod < 1 || sure_kod > 114 ))
   then
       printf '%s\n%s\n' \
@@ -45,13 +48,7 @@ ayet_araligi_goster() {
         'Girilen sure kodu 1 <= sure_kodu <= 114 arasında olmalı.' >&2
       exit 1
 
-  else
-      # sure_kod 000001 gibiyse hata verme sıfırları sil, devam et.
-      if (( ${#sure_kod} > 3 ))
-      then
-          sure_kod="$(sed 's/^0*//' <<<$sure_kod)"
-      fi
-  
+  else  
       # Girilen sure koduna göre değişkenin önüne sıfır ekle.
       if (( ${#sure_kod} == 1 ))
       then
@@ -66,6 +63,7 @@ ayet_araligi_goster() {
     "sure_adi=%s\nsure_baslama=%s\nsure_ayet_sayisi=%s\ncuz=%s\nyer=%s",$4,$3,$2,$5,$6}}' \
     < ${VERI_DIZINI}/veriler/sure_bilgisi)
 
+  ayet_kod="$(sed 's/^0*//' <<<$ayet_kod)"
   int_ayet_kod=$(tr -d 0-9 <<<"$ayet_kod")
   if [[ -z $int_ayet_kod ]]
   then

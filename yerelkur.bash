@@ -1,9 +1,10 @@
 #!/bin/bash
 #
-# ezanvakti uygulamasının kullanıcı dizinine kurulumunu yapar.
+# ezanvakti uygulamasının kullanıcı dizinine($HOME) kurulumunu yapar.
+#
 # ezanvakti uygulamasının kurulu olma ve bu kurulumla çakışma durumuna
-# karşı farklı bir adla kurulum yapar. Kurulu olmadığından eminseniz AD değerini
-# ezanvakti yapabilirsiniz.
+# karşı farklı bir adla kurulum yapar. 
+# Kurulu olmadığından eminseniz AD değerini ezanvakti yapabilirsiniz.
 #
 # Bu betiği kaynak kod dizini içerisinde çalıştırın.
 #
@@ -13,10 +14,10 @@
 #
 # Örnek kaldırma komutları:
 # ezanvakti-yerel adıyla kurulu ise
-# export AD= ezanvakti-yerel
+# export AD=ezanvakti-yerel
 # bash yerelkur.bash --kaldir
 #
-# AD belirlenmemişse ezv-devel olarak  kurar ve
+# AD belirlenmemişse ezv-devel olarak kurar ve
 # kaldırırken de ezv-devel'i arar.
 #
 
@@ -30,7 +31,7 @@ bindir=$HOME/bin
 
 case $1 in
   --kur|--install) eylem=install ;;
-  --kald[iı]r|--uninstall) eylem=uninstall ;;
+  --kald[iı]r|--uninstall|--remove) eylem=uninstall ;;
     *)
 echo  "\
   Kullanım:
@@ -43,7 +44,7 @@ echo  "\
 exit 1 ;;
 esac
 
-[[ $1 = --kur ]] && {
+[[ ${eylem} = install ]] && {
   BAG=('bash' 'sed' 'gawk' 'grep' 'make' 'notify-send' 'yad' 'mplayer|ffmpeg' 'wget|curl')
 
 
@@ -92,7 +93,7 @@ gtk-update-icon-cache -f -t $HOME/.local/share/icons/hicolor
 xdg-desktop-menu forceupdate
 
 make clean
-[[ $1 = --kur ]] && {
+[[ ${eylem} = install ]] && {
   [[ -z $(grep -o ${bindir} <<<$PATH) ]] && \
     echo -e "\n\n${bindir} PATH üzerinde değil."
 }
