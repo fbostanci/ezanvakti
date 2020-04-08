@@ -91,7 +91,7 @@ VAKIT_ANIMSAT=15
 # verilmemesi için: 0
 SESLI_UYARI=1
 
-# Mplayer ses seviyesi (0-100 arası)
+# Oynatıcı ses seviyesi (0-100 arası)
 SES=100
 
 # Desteklenen oynatıcıyı ezan okunması bitene kadar duraklatma
