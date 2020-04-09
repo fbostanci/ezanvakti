@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-#              Ezanvakti 6.4  -  GNU/Linux Ezan Vakti Bildirici
+#              Ezanvakti 7.0  -  GNU/Linux Ezan Vakti Bildirici
 #
 ##
 ##    Copyright (c) 2010-2020  Fatih Bostancı  <ironic@yaani.com>
@@ -195,6 +195,15 @@ case $1 in
   --aral[ıi]k)
     bilesen_yukle aralik; shift
     ayet_araligi_goster "$1" "$2" ;;
+      --imsak)
+    case $2 in
+      -o|-b|--bildirim|--osd)
+        bilesen_yukle conky
+        imsak_bildirim ;;
+      *)
+        bilesen_yukle imsak
+        ezv_imsak ;;
+    esac ;;
   --iftar)
     case $2 in
       -o|-b|--bildirim|--osd)
@@ -209,6 +218,9 @@ case $1 in
       -s|--s[ıi]radaki)
         bilesen_yukle siradaki
         siradaki_vakit conky_siradaki ;;
+      -m|--imsak)
+        bilesen_yukle conky
+        ezv_conky_imsak ;;
       -i|--iftar)
         bilesen_yukle conky
         ezv_conky_iftar ;;

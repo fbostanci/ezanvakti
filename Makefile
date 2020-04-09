@@ -1,6 +1,6 @@
 #
 #
-#               Ezanvakti 6.4 Makefile
+#               Ezanvakti 7.0 Makefile
 #
 #
 
@@ -50,7 +50,7 @@ install: $(BETIKLER)
 	$(INSTALL) -vd $(DESTDIR)$(bindir)
 	$(INSTALL) -vd $(DESTDIR)$(libdir)/$(AD)
 	$(INSTALL) -vd $(DESTDIR)$(sysconfdir)
-	$(INSTALL) -vd $(DESTDIR)$(datadir)/$(AD)/{veriler,mealler,simgeler,ulkeler{,/TURKIYE_ilceler,/ABD_ilceler,/KANADA_ilceler}}
+	$(INSTALL) -vd $(DESTDIR)$(datadir)/$(AD)/{veriler,mealler,simgeler,ulkeler{,/TURKIYE_ilceler,/ABD_ilceler,/ALMANYA_ilceler,/KANADA_ilceler}}
 	$(INSTALL) -vd $(DESTDIR)$(sounddir)/$(AD)
 	$(INSTALL) -vd $(DESTDIR)$(completionsdir)
 	$(INSTALL) -vd $(DESTDIR)$(mandir)/man{1,5}
@@ -95,6 +95,12 @@ install: $(BETIKLER)
 	do \
 		u_dosya="$$(basename "$$u")"; \
 		$(INSTALL) -vm644 "$$u" $(DESTDIR)$(datadir)/$(AD)/ulkeler/ABD_ilceler/"$$u_dosya"; \
+	done
+
+	for a in data/ulkeler/ALMANYA_ilceler/*; \
+	do \
+		a_dosya="$$(basename "$$a")"; \
+		$(INSTALL) -vm644 "$$a" $(DESTDIR)$(datadir)/$(AD)/ulkeler/ALMANYA_ilceler/"$$a_dosya"; \
 	done
 
 	for k in data/ulkeler/KANADA_ilceler/*; \

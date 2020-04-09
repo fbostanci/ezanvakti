@@ -171,7 +171,7 @@ sehir_kodu=$(grep -w ${sehir} ${VERI_DIZINI}/ulkeler/${ulke} | cut -d, -f2)
 #                         İLÇE İŞLEMLERİ                             #
 ######################################################################
 
-if [[ ${ulke} = @(TURKIYE|ABD|KANADA) ]]
+if [[ ${ulke} = @(TURKIYE|ABD|ALMANYA|KANADA) ]]
 then
     if ! grep -qw ${ILCE} ${VERI_DIZINI}/ulkeler/${ulke}_ilceler/${sehir}
     then
