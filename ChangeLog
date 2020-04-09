@@ -5,12 +5,13 @@
 /×××××××××××××××××××××××××××××
 × Ezanvakti 7.0
 ×××××××××××××××××××××××××××××/
-2020-xx-xx Fatih BOSTANCI <ironic@yaani.com>
+2020-04-xx Fatih BOSTANCI <ironic@yaani.com>
 
  *  Qt arayüz desteği
  *  Qt arayüze yardımcı olacak qtezv.bash betiği eklendi.
  *  Bayram namazı vakitlerini gösterme (--vakitler --bayram)
  *  ses dosyası oynatımında mplayer yanında ffplay desteği
+ *  imsak vakti kalan gösterimi (--imsak)
  *  iftar vakti için bildirim (--iftar --bildirim)
  *  sıradaki vakit için bildirim (-vtb)
  *  Kerahat vakitleri için bildirim (--kerahat --bildirim)
@@ -23,8 +24,8 @@
  *  TEFSIR_SAHIBI -> MEAL_SAHIBI olarak adlandırıldı.
  *  Ayet aralığı gösterme ve kuran dinletmede
     girilen sure numarası denetimi geliştirildi.
+ *  ALMANYA, ilçe desteği.
 
- 
 
 /×××××××××××××××××××××××××××××
 × Ezanvakti 6.3.4
@@ -85,16 +86,16 @@
     ek olarak -b, -o, --bildirim, ya da --osd girilmesi gerekiyor.
  *  --ayet --aa kaldırıldı. Ayet aralık için yalnızca --aralik var.
  *  --ramazan kaldırıldı.
- *  ACILISTA_BASLAT ile ezanvakti-sleep betiğine sistem açılışında
+ *  ACILISTA_BASLAT: ile ezanvakti-sleep betiğine sistem açılışında
     3 farklı kipte çalışabilme özelliği eklendi.
-    kipler:
-    1: Beş vakit ezan (normal çalıştırma)
-    2: Ramazan (Yalnızca İftar ve İmsak vakitleri için ezan okunma ve bildirim var.)
-    0: Kapalı. Sistem açılışında arka planda başlamaz.
- *  ACILISTA_BASLAT değerini belirleme yapılandırma yöneticisi üzerinden de yapılıyor.
+  *  kipler:
+  *  1: Beş vakit ezan (normal çalıştırma)
+  *  2: Ramazan (Yalnızca İftar ve İmsak vakitleri için ezan okunma ve bildirim var.)
+  *  0: Kapalı. Sistem açılışında arka planda başlamaz.
+ *  ACILISTA_BASLAT: değerini belirleme yapılandırma yöneticisi üzerinden de yapılıyor.
  *  Arayüzde yapılan değişiklikler eğer ezanvakti-sleep betiğinin çalışmasını ilgilendiriyorsa
     otomatik yeniden başlatma eklendi.
- *  Uygulama otomatik başlatıcısını kendi ekliyor. (Eğer ACILISTA_BASLAT 0 değilse)
+ *  Uygulama otomatik başlatıcısını kendi ekliyor: (Eğer ACILISTA_BASLAT 0 değilse)
  *  /etc/autostart başlatıcısı kaldırıldı.
  *  Uygulamanın kullandığı simgeler sistem icons dizinlerine eklendi.
  *  OKUYAN --> KURAN_OKUYAN olarak adlandırıldı.
@@ -129,7 +130,7 @@
 ×××××××××××××××××××××××××××××/
 2017-04-05 Fatih BOSTANCI <ironic@yaani.com>
 
- *  İlçe desteği (TÜRKİYE/ABD/KANADA için)
+ *  İlçe desteği: (TÜRKİYE/ABD/KANADA için)
  *  Uygulama bileşenlere ayrıldı ve daha modüler hale getirildi.
  *  Gelişmiş arayüze haftalık aylık vakit gösterimi eklendi.
  *  Yapılandırma yöneticisi YAD yenilikleri sayesinde sekmeli kullanıma geçirildi.
@@ -143,8 +144,8 @@
  *  Uygulama kurulurken uygulamanın adını değiştirebilme (make ile).
  *  Man dosyası iki parçaya ayrıldı ve güncellendi.
  *  Birçok küçük geliştirme yapıldı.
- *  Gitorious kapandığı için uygulama Gitlab'a taşındı. (https://gitlab.com/fbostanci/ezanvakti)
- *  Github'a da yansı depo olarak eklendi. (https://github.com/fbostanci/ezanvakti)
+ *  Gitorious kapandığı için uygulama Gitlab'a taşındı: (https://gitlab.com/fbostanci/ezanvakti)
+ *  Github'a da yansı depo olarak eklendi: (https://github.com/fbostanci/ezanvakti)
 
 
 /×××××××××××××××××××××××××××××
@@ -178,7 +179,7 @@
  *  Artık root dizininden de ayarlar dosyası okunduğu için sürümler arası geçişlerde ayarlar dosyasi silinmesi zorunlu değil.
      Eksik ayarlar için öntanımlı değerler kullanılacak.
  *  Unity menü desteği
- *  Uygulama launchpad deposuna taşındı. (https://launchpad.net/~fbostanci/+archive/distroguide)
+ *  Uygulama launchpad deposuna taşındı: (https://launchpad.net/~fbostanci/+archive/distroguide)
  *  Man dosyası güncellendi.
 
 
@@ -214,7 +215,7 @@
 ×××××××××××××××××××××××××××××/
 2011-06-09 Fatih BOSTANCI <ironic@yaani.com>
 
- *  Mplayer denetimi; artık sadece hedef mplayer kopyası sonlandırılıyor.
+ *  Mplayer denetimi: artık sadece hedef mplayer kopyası sonlandırılıyor.
  *  Tekli vakit gösteriminde artık vakit saatleri de gösteriliyor.
  *  Güncelleyici bileşeni YAD için de (diğerleri KDialog, Zenity) destekleniyor.
  *  Hatalı kullanımlarda artık yardım çıktısı yerine bilgilendirici uyarı gösteriliyor.
