@@ -22,7 +22,7 @@ hicri_tarih_al() {
   local -a hicri_aylar
 
   # date adjustment, use positive number to add days, negative number to substract, '0' for none.
-  adjust=1
+  adjust=$HICRI_TARIH_DUZELTME
 
   date=$(date +%-d -d "$adjust day")
   month=$(date +%-m)
