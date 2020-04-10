@@ -75,7 +75,10 @@ betik_kullanimi() {
     ${B}--iftar${R}
         İftar vaktine ne kadar süre kaldığını görüntüler.
 
-    ${B}--conky${R} [-s, -i, -k]
+    ${B}--imsak${R}
+        İmsak vaktine ne kadar süre kaldığını görüntüler.
+
+    ${B}--conky${R} [-s, -i, -k, -m]
         Conky alanında günlük ezan vakitlerini eklemek
         isteyenler için renksiz ve kısa çıktı verir.
 

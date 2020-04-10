@@ -1,4 +1,4 @@
-.TH "Ezanvakti" "5" "2017\-09\-04" "Ezanvakti 6\&.4" "Ezanvakti Yapılandırma Yönergeleri"
+.TH "Ezanvakti" "5" "2020\-04\-11" "Ezanvakti 7\&.0" "Ezanvakti Yapılandırma Yönergeleri"
 .LP
 .SH AYARLAR Dosyası İşlemleri
 Uygulama ilk çalıştırmada \fI~/.config/ezanvakti\fP dizinini \-eğer yoksa\- oluşturmaktadır.
@@ -98,15 +98,6 @@ süresidir. Öntanımlı değer 60 saniyedir. Ubuntu GNOME ortamındaki,
 Notify-OSD için bekleme süresi belirleme öntanımlı olarak kapalı gelmektedir.
 Yamalanmış Notify-OSD sürümüyle bu sorun aşılmaktadır.
 
-UBUNTU kullanıcıları öntanımlı süreyi değiştirmek için aşağıdaki komutlarla
-yamalanmış sürümü sistemlerine kurabilirler.
-
-.B sudo add-apt-repository ppa:leolik/leolik
-
-.B sudo apt-get update && sudo apt-get upgrade
-
-.B pkill notify-osd
-
 .TP
 .B AYET_BILDIRIM_SURESI
 Türkçe ayet gösterimi için kulanılan bildirim baloncuğunun ekrandaki bekleme
@@ -155,7 +146,7 @@ Desteklenen oynatıcılar: Spotify, Deadbeef, Clementine, Amarok, Rhythmbox,
                 Moc, Qmmp, Juk
 .TP 
 .B EZAN_DUASI_OKU
-Ezan okuma işleminden sonra,  Türkçe ezan duası da okunmasını belirleyen değerdir.
+Ezan okuma işleminden sonra, Türkçe ezan duası da okunmasını belirleyen değerdir.
 Öntanımlı olarak okunma açık gelmektedir. (1 değeri.) Eğer okunmamasını istiyorsanız
 değeri 0 olarak belirleyin.
 .TP
@@ -318,6 +309,11 @@ değeridir.
 .TP
 .B YAZI_RENGI
 Gösterilen kutucuktaki içerik için yazı tipi renk değeridir.
+.TP
+.B HICRI_TARIH_DUZELTME
+Hicri tarih bazen kayma yapabilmektedir. Gün ekleme ya da çıkarma işlemi gerekebilir.
+ör: 1 gün eklemek için 1 ya da +1, 1 gün çıkarmak için -1
+ekleme ya da çıkarma gerekmiyorsa 0 olarak değeri girin.
 .LP
 .SH HATA BİLDİRİMİ
 https://gitlab.com/fbostanci/ezanvakti/issues
