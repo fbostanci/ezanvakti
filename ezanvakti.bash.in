@@ -262,7 +262,14 @@ case $1 in
     bilesen_yukle renk_ogren
     renk_ogren ;;
   --config|--yap[ıi]land[ıi]rma)
-    ${EDITOR:-nano} "${EZANVAKTI_AYAR}" ;;
+    shift
+    case $1 in
+      --gui|--aray[uü]z)
+        bilesen_yukle yapilandirma_bagimsiz
+        yapilandirma_ayri ;;
+      *)
+        ${EDITOR:-nano} "${EZANVAKTI_AYAR}" ;;
+    esac ;;
   --kalan)
     bilesen_yukle kalan
     kalan_sure ;;
