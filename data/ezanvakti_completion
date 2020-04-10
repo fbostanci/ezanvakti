@@ -6,7 +6,7 @@
 _ezanvakti() {
   local cur prev kuran_uzun vakitler_uzun dinle_uzun
   local butun_uzun bildirim_uzun nglob_ayar ezanvakti_exec
-  local ezanvakti conky_uzun
+  local ezanvakti conky_uzun config_uzun
 
   nglob_ayar=$(shopt -p nullglob)
   shopt -s nullglob
@@ -35,6 +35,8 @@ _ezanvakti() {
 --yardim  --surum --gunler --aralik --kalan --config \
 --renk --imsak'
 
+  config_uzun='--gui --arayuz'
+
   case "$prev" in
 
     *$ezanvakti)
@@ -54,6 +56,9 @@ _ezanvakti() {
 
     --kuran)
       COMPREPLY=( $(compgen -W "${kuran_uzun}"  -- $cur) ) ;;
+
+    --config|--yap[ıi]land[ıi]rma)
+      COMPREPLY=( $(compgen -W "${config_uzun}"  -- $cur) ) ;;
 
   esac
 

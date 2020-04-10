@@ -62,7 +62,7 @@ oynatici_calistir() {
 
   elif [[ -x $(type -p ffplay) ]]
   then
-      ffplay -loglevel quiet -volume ${SES} -nodisp \
+      ffplay -autoexit -loglevel quiet -volume ${SES} -nodisp \
         -i "${dinletilecek_oge}" 2>/dev/null
 
   else

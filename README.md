@@ -35,7 +35,7 @@ Genel Özellikleri
 *  Sıradaki vakit, ve vakte ne kadar süre kaldığını gösterme. (-vt)
 *  Arayüzden ve uçbirimden kerahat vakitlerini gösterebilme. (-vk)
 *  Bulunduğunuz konum için bayram namazı vakitlerini gösterme. (-vm)
-*  Qt arayüz desteği [Ezanvakti Qt arayüzü Github](https://github.com/fbostanci/ezanvakti-qt-gui) [Ezanvakti Qt arayüzü Gitlab](https://gitlab.com/fbostanci/ezanvakti-qt-gui)
+*  Qt arayüz desteği [Github](https://github.com/fbostanci/ezanvakti-qt-gui) [Gitlab](https://gitlab.com/fbostanci/ezanvakti-qt-gui)
 *  Arayüzde hicri tarih gösterimi
 *  Arayüz HTML renk özelleştirmeleri
 *  Cuma günü isteğe bağlı sela okunması (süre ayarlı)
@@ -87,7 +87,7 @@ BAĞIMLILIKLAR
 **EK ÖZELLİKLERİN KULLANIMI  İÇİN GEREKLİ (kullanmak isteniyorsa) BAĞIMLILIKLAR**
 
 *  bash-completion  (Bash tamamlama desteği)
-*  yad   (Arayüz desteği)
+*  yad >=6.0  (Arayüz desteği)
 
 <br><br>
 
