@@ -63,22 +63,22 @@ SURELER='67 44 55 36 59 1 6'
 #                           #
 
 
-#*/ Ezan okunurken bildirimin gösterilme süresi (saniye olarak)
+# Ezan okunurken bildirimin gösterilme süresi (saniye olarak)
 EZAN_BILDIRIM_SURESI=60
 
-#*/ Ayet bildirim baloncuğunun gösterilme süresi (saniye olarak)
+# Ayet bildirim baloncuğunun gösterilme süresi (saniye olarak)
 AYET_BILDIRIM_SURESI=30
 
-#*/ Hadis bildirim baloncuğunun gösterilme süresi (saniye olarak)
+# Hadis bildirim baloncuğunun gösterilme süresi (saniye olarak)
 HADIS_BILDIRIM_SURESI=25
 
-#*/ Diyanet bilgi bildirim baloncuğu gösterilme süresi (saniye olarak)
+# Diyanet bilgi bildirim baloncuğu gösterilme süresi (saniye olarak)
 BILGI_BILDIRIM_SURESI=20
 
-#*/ Ezanveri dosyasının son 7 gün çıkan, güncelleme anımsatması bildirim süresi (saniye olarak)
+# Ezanveri dosyasının son 7 gün çıkan, güncelleme anımsatması bildirim süresi (saniye olarak)
 GUNCELLEME_BILDIRIM_SURESI=15
 
-#*/ Dini günler ve geceler için önceden bildirim yapılması
+# Dini günler ve geceler için önceden bildirim yapılması
 # yapılmaması için 0 girin.
 # yapılması için 0'dan büyük bir sayı girin.
 # Gireceğeniz sayı aynı zamanda bildirimin ekranda bekleme süresidir. (saniye olarak)
@@ -101,8 +101,6 @@ SES=100
 # duraklatılmaması için: 0
 OYNATICI_DURAKLAT=0
 
-# BİLGİ: '*/' olarak işaretlenen ayarlar Ubuntu ortamında, öntanımlı olarak etkisizdir.
-# Yamalanmış libnotify-bin sürüm işlemleri için man dosyasına bakın.
 
 #                           #
 #*******Ezan Ayarları*******#
@@ -116,6 +114,10 @@ EZAN_DUASI_OKU=1
 
 # Ezanların vaktinden önce ya da sonra okunma süresi (saniye olarak)
 EZAN_OKUNMA_SURESI_FARKI=0
+
+# Cuma günü öğle vaktinden 
+# kaç dakika önce sela okunsun ?
+SELA_OKUNMA_SURESI_FARKI=55
 
 # Ezanların okunması için: 1
 # okunmaması için: 0
@@ -137,10 +139,6 @@ YATSI_EZANI_OKU=1
 
 # Cuma selası okunsun mu?
 CUMA_SELASI_OKU=1
-
-# Cuma günü öğle vaktinden 
-# kaç dakika önce sela okunsun ?
-SELA_OKUNMA_SURESI_FARKI=55
 
 # Ezan okuyan
 EZAN_OKUYAN='İsmail COŞAR'

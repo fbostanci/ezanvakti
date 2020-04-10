@@ -29,8 +29,8 @@ tamamlama_listesi='!Ayarlar!Ayet!Sabah!Öğle!İkindi!Akşam!Yatsı!Sela!yapilan
 tamamlama_listesi+='!Bilgi!Aylık Vakitler!Haftalık Vakitler!Dini Günler ve Geceler!hakkında!Bayram Namazı Vakitleri'
 tamamlama_listesi+="!about!güncelle!güncelle yeni!yardım!arayuz2!Kerahat!000!özel pencere!$sure_listesi"
 
-secim_listesi='!Günlük Vakitler!Haftalık Vakitler!Aylık Vakitler!Kerahat Vakitleri!Bayram Namazı Vakitleri'
-secim_listesi+='!Dini Günler ve Geceler!Ayet!Hadis!Bilgi!Esma-ül Hüsna!Yapılandırma Yöneticisi'
+secim_listesi='!Yapılandırma Yöneticisi!Kerahat Vakitleri!Dini Günler ve Geceler!Günlük Vakitler!Haftalık Vakitler'
+secim_listesi+='!Aylık Vakitler!Ayet!Hadis!Bilgi!Esma-ül Hüsna!Bayram Namazı Vakitleri'
 
 cikti_dosyasi="/tmp/${AD}-6"
 # düz komut çıktıları için rengi sıfırla.

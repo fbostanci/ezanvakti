@@ -1,4 +1,4 @@
-.TH "Ezanvakti" "1" "2017\-09\-04" "Ezanvakti 6\&.4" "Ezanvakti Kullanım Yönergeleri"
+.TH "Ezanvakti" "1" "2017\-09\-11" "Ezanvakti 6\&.4" "Ezanvakti Kullanım Yönergeleri"
 .SH "AD"
 Ezanvakti 6\.4 \- GNU/Linux için Ezan Vakti Bildirici
 .SH "KULLANIM ŞEKLİ"
@@ -161,6 +161,16 @@ Ayeti uçbirim yerine bildirim baloncuğunda görüntüler ve çıkar.
 Bildirim baloncuğunun ekranda bekleme süresini
 BILGI_GOSTERIM_SURESI değeri belirlemektedir.
 .TP
+.B \-\-imsak
+İmsak vaktine ne kadar süre kaldığını görüntüler ve çıkar.
+.PP
+\fIek olarak\fP
+.TP 5
+.B \      -b, \-o, \-\-bildirim, \-\-osd
+İmsak vakti kalan süre bilgisini uçbrim yerine bildirim baloncuğunda gösterir.
+Bildirim baloncuğunun ekranda bekleme süresini
+BILGI_GOSTERIM_SURESI değeri belirlemektedir.
+.TP
 .B \-\-conky
 Conky alanına günlük ezan vakitlerini eklemek isteyenler için renksiz
 ve kısa çıktı verir.
@@ -169,6 +179,10 @@ ve kısa çıktı verir.
 .TP 5
 .B \      -i, \-\-iftar
 Conky alanında iftar vaktine ne kadar süre kaldığını görmek isteyenler için
+renksiz ve kısa çıktı verir.
+.TP
+.B \      -m, \-\-imsak
+Conky alanında imsak vaktine ne kadar süre kaldığını görmek isteyenler için
 renksiz ve kısa çıktı verir.
 .TP
 .B \      -s, \-\-sıradaki, \-\-siradaki
@@ -185,6 +199,7 @@ Ayet gösteriminde istenen surenin istenen ayet aralığını gösterir.
 .TP
 .B \-\-hutbe
 Son cuma hutbesini indirir ve varsayılan belge açıcıyla belgeyi açar.
+Şu an etkin değildir.
 .TP
 .B \-\-dinle \fI[ek_seçenek]\fP
 istediğiniz zaman istediğiniz vakte ait ezanı dinletir. Dinlemek istediğiniz

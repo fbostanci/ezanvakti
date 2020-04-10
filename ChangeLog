@@ -5,13 +5,14 @@
 /×××××××××××××××××××××××××××××
 × Ezanvakti 7.0
 ×××××××××××××××××××××××××××××/
-2020-04-xx Fatih BOSTANCI <ironic@yaani.com>
+2020-04-11 Fatih BOSTANCI <ironic@yaani.com>
 
  *  Qt arayüz desteği
  *  Qt arayüze yardımcı olacak qtezv.bash betiği eklendi.
  *  Bayram namazı vakitlerini gösterme (--vakitler --bayram)
  *  ses dosyası oynatımında mplayer yanında ffplay desteği
  *  imsak vakti kalan gösterimi (--imsak)
+    conky imsak vakti kalan gösterimi (--conky --imsak)
  *  iftar vakti için bildirim (--iftar --bildirim)
  *  sıradaki vakit için bildirim (-vtb)
  *  Kerahat vakitleri için bildirim (--kerahat --bildirim)
@@ -19,12 +20,17 @@
      bilgileri de gösteriliyor.
  *  Yerel kullanıcı dizinine kolay kurulum için
     yerelkur.bash betiği eklendi.
+ *  HICRI_TARIH_DUZELTME: hicri tarihte yaşanan aymalar için
+     düzeltme değeri eklendi.
  *  KULLANICI_TEFSIR_DIZINI -> YEREL_MEAL_DIZINI
      olarak adlandırıldı.
  *  TEFSIR_SAHIBI -> MEAL_SAHIBI olarak adlandırıldı.
  *  Ayet aralığı gösterme ve kuran dinletmede
     girilen sure numarası denetimi geliştirildi.
  *  ALMANYA, ilçe desteği.
+ *  man dosyaları güncellendi.
+ *  PKGBUILD dosyası güncellendi.
+ *  bash tamamlama betiği güncellendi.
 
 
 /×××××××××××××××××××××××××××××
@@ -36,7 +42,7 @@
  *  simgeler için ${AD} değeri kullanılıyor.
  *  man dosyası hata bildirimi eklemeleri
 
- 
+
 /×××××××××××××××××××××××××××××
 × Ezanvakti 6.3.3
 ×××××××××××××××××××××××××××××/

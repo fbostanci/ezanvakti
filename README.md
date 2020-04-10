@@ -1,4 +1,4 @@
-Son Güncelleme:  Sat, 09 Sep 2017 15:42:06 +0300
+Son Güncelleme:  Fri, 10 Apr 2020
 
 [![GitHub release](https://img.shields.io/github/release/fbostanci/ezanvakti.svg?style=plastic)](https://github.com/fbostanci/ezanvakti)
 [![GitHub tag](https://img.shields.io/github/tag/fbostanci/ezanvakti.svg?style=plastic)](https://github.com/fbostanci/ezanvakti)
@@ -8,7 +8,7 @@ Son Güncelleme:  Sat, 09 Sep 2017 15:42:06 +0300
 
 <br>
 
-Ezanvakti 6.4 GNU/Linux için ezan vakti bildirici
+Ezanvakti 7.0 GNU/Linux için ezan vakti bildirici
 ====
 
 <br>
@@ -31,9 +31,11 @@ Genel Özellikleri
    toplu/tekil gösterme. (--vakitler)
 *  Vakitlerde ezan okunma/okunmama seçimi.
 *  İftar vaktine ne kadar süre kaldığını gösterme. (--iftar)
+*  İmsak vaktine ne kadar süre kaldığını gösterme. (--imsak)
 *  Sıradaki vakit, ve vakte ne kadar süre kaldığını gösterme. (-vt)
 *  Arayüzden ve uçbirimden kerahat vakitlerini gösterebilme. (-vk)
 *  Bulunduğunuz konum için bayram namazı vakitlerini gösterme. (-vm)
+*  Qt arayüz desteği [Ezanvakti Qt arayüzü Github](https://github.com/fbostanci/ezanvakti-qt-gui) [Ezanvakti Qt arayüzü Gitlab](https://gitlab.com/fbostanci/ezanvakti-qt-gui)
 *  Arayüzde hicri tarih gösterimi
 *  Arayüz HTML renk özelleştirmeleri
 *  Cuma günü isteğe bağlı sela okunması (süre ayarlı)
@@ -63,7 +65,7 @@ Genel Özellikleri
 *  Sesli vakit anımsatma
 *  Başlatıcı sağ tık seçke desteği (unity/desktop actions özelliği)
 *  Geniş özelleştirme desteği.
-*  Basit seviye arayüz desteği.
+*  Basit seviye arayüz(yad) desteği.
 
 [Ekran görüntüleri için tıklayınız.](https://gitlab.com/fbostanci/ezanvakti/wikis/ekran-goruntuleri)
 =
