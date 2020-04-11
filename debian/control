@@ -7,6 +7,6 @@ Standards-Version: 4.3.0
 
 Package: ezanvakti
 Architecture: all
-Depends: ${shlibs:Depends}, ${misc:Depends}, yad, libnotify-bin, ffmpeg, gawk, bash-completion
+Depends: ${misc:Depends}, yad, libnotify-bin, mplayer | ffmpeg, gawk, bash-completion, wget | curl
 Description: ezanvakti
  GNU/Linux icin ezan vakti bildirici.
