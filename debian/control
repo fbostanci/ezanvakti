@@ -1,12 +1,12 @@
 Source: ezanvakti
 Section: misc
-Priority: extra
+Priority: optional
 Maintainer: Fatih Bostanci <faopera@gmail.com>
-Build-Depends: debhelper (>= 9)
-Standards-Version: 3.9.8
+Build-Depends: debhelper (>= 12~)
+Standards-Version: 4.3.0
 
 Package: ezanvakti
 Architecture: all
-Depends: ${perl:Depends}, ${misc:Depends}, yad (>= 0.36.0), libnotify-bin, mplayer, libwww-mechanize-perl, sed, gawk, bash-completion
+Depends: ${shlibs:Depends}, ${misc:Depends}, yad, libnotify-bin, ffmpeg, gawk, bash-completion
 Description: ezanvakti
  GNU/Linux icin ezan vakti bildirici.

@@ -1,3 +1,9 @@
+ezanvakti (7.0-1~distroguide~focal) focal; urgency=medium
+
+  * 7.0 -ilk gönderim
+
+ -- Fatih Bostancı <faopera@gmail.com>  Sat, 11 Apr 2020 18:09:13 +0300
+
 ezanvakti (20171226-1~distroguide~artful) artful; urgency=medium
 
   * 6.3.4-3 -bayram namaz vakit gosterimi
