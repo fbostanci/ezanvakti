@@ -265,8 +265,8 @@ case $1 in
     shift
     case $1 in
       --gui|--aray[uü]z)
-        bilesen_yukle yapilandirma_bagimsiz
-        yapilandirma_ayri ;;
+        bilesen_yukle eylem_menu
+        eylem_menu yapilandirma ;;
       *)
         ${EDITOR:-nano} "${EZANVAKTI_AYAR}" ;;
     esac ;;

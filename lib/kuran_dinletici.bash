@@ -30,7 +30,7 @@ sure_no_denetimi() { # sure_no_yonetimi {{{
         'Girilen sure kodu 1 <= sure_kodu <= 114 arasında olmalı.'
       exit 1
 
-  else      
+  else
       # Girilen sure koduna göre değişkenin önüne sıfır ekle.
       if (( ${#sure_no} == 1 ))
       then
