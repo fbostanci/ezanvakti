@@ -4,9 +4,8 @@
 #
 #
 
-bilesen_yukle arayuz_temel
-
 eylem_menu() {
+  bilesen_yukle arayuz_temel
   arayuz_pid_denetle 3
 
   case $1 in
@@ -35,8 +34,8 @@ eylem_menu() {
       g_secim_goster; temizlik ;;
 
     kuran)
-      bilesen_yukle mplayer_yonetici
-      arayuz() { true; }
+      bilesen_yukle oynatici_yonetici
+      arayuz() { ozel_pencere; }
       ozel_pencere ;;
 
     gunler)
@@ -71,7 +70,7 @@ eylem_menu() {
 
     yapilandirma)
       bilesen_yukle yapilandirma_yoneticisi
-      arayuz() { true; }
+      arayuz() { yapilandirma; }
       yapilandirma ;;
 
     yardim)

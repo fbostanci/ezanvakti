@@ -8,7 +8,7 @@ ayet_araligi_goster() {
   renk_denetle
 
   local sure_kod=$1 ayet_kod=$2
-  local sure_adi sure_baslama sure_ayet_sayisi int_ayet_kod 
+  local sure_adi sure_baslama sure_ayet_sayisi int_ayet_kod
   local ayet_baslama ayet_bitis satir
 
   if [[ -f ${YEREL_MEAL_DIZINI}/${MEAL_SAHIBI} ]]
@@ -48,7 +48,7 @@ ayet_araligi_goster() {
         'Girilen sure kodu 1 <= sure_kodu <= 114 arasında olmalı.' >&2
       exit 1
 
-  else  
+  else
       # Girilen sure koduna göre değişkenin önüne sıfır ekle.
       if (( ${#sure_kod} == 1 ))
       then
