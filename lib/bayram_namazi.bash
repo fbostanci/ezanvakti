@@ -29,7 +29,7 @@ bayram_namazi_vakti() {
   ulke_kodu=$(grep -w ${ULKE} ${VERI_DIZINI}/ulkeler/AAA-ULKELER | cut -d, -f2)
   sehir_kodu=$(grep -w ${SEHIR} ${VERI_DIZINI}/ulkeler/${ULKE} | cut -d, -f2)
 
-  if [[ ${ULKE} = @(TURKIYE|ABD|KANADA) ]]
+  if [[ ${ULKE} = @(TURKIYE|ABD|ALMANYA|KANADA) ]]
   then
       ilce_kodu=$(grep -w ${ILCE} ${VERI_DIZINI}/ulkeler/${ULKE}_ilceler/${SEHIR} | cut -d, -f2)
   else

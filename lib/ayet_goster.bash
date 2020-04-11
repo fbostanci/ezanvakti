@@ -28,7 +28,7 @@ ayet_goster() {
       "$(sed -n "${satir}p" ${VERI_DIZINI}/veriler/sureler_ayetler) $satir/6236${RENK2})${RENK8}\n\n" \
       "$(sed -n "${satir}p" "${MEAL}")${RENK0}" ;;
 
-  bildirim)
+    bildirim)
     notify-send "Günlük Ayet ($(sed -n "${satir}p" ${VERI_DIZINI}/veriler/sureler_ayetler))" \
       "$(sed -n "${satir}p" "${MEAL}")" -t $AYET_BILDIRIM_SURESI"000"
     exit 0 ;;
