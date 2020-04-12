@@ -1,4 +1,4 @@
-Son Güncelleme:  Fri, 10 Apr 2020
+Son Güncelleme:  Sun, 12 Apr 2020 18:52:55 +0300
 
 [![GitHub release](https://img.shields.io/github/release/fbostanci/ezanvakti.svg?style=plastic)](https://github.com/fbostanci/ezanvakti)
 [![GitHub tag](https://img.shields.io/github/tag/fbostanci/ezanvakti.svg?style=plastic)](https://github.com/fbostanci/ezanvakti)
@@ -93,6 +93,22 @@ BAĞIMLILIKLAR
 
 KURULUM ve KALDIRMA
 ===
+<br>
+
+**Pardus için Launchpad PPA üzerinden kurulum:**
+
+Bu depoda Pardus 19 XFCE için öntanımlı ayarlar özelleştirilmiştir.
+
+`echo 'deb http://ppa.launchpad.net/fbostanci/pardus/ubuntu eoan main' | sudo tee /etc/apt/sources.list.d/ezanvakti-eoan.list`
+
+`sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 1651E3776FB72115`
+
+`sudo apt-get update`
+
+`sudo apt-get install ezanvakti`
+
+<br>
+
 **Archlinux için kurulum:**
 
 [AUR](https://aur.archlinux.org/) üzerinde uygulama bulunmaktadır.
@@ -108,6 +124,8 @@ PKGBUILD dosyasının bulunduğu dizinde `makepkg -si` komutunu girin.
 
 **Ubuntu için Launchpad PPA üzerinden kurulum:**
 
+Depo ubuntu 19.10 ve 20.04 içindir.
+
 `sudo add-apt-repository ppa:fbostanci/distroguide`
 
 `sudo apt-get update`
@@ -116,7 +134,7 @@ PKGBUILD dosyasının bulunduğu dizinde `makepkg -si` komutunu girin.
 
 <br>
 
-**Diğer dağıtımlar için kurulum:**
+**Diğer dağıtımlar için (kaynak koddan) kurulum:**
 
 `sudo make PREFIX=/usr sysconfdir=/etc install`
 
