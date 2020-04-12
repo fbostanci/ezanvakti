@@ -2,8 +2,6 @@
 %:
 	dh  $@
 
-override_dh_installchangelogs:
-	dh_installchangelogs ChangeLog
 override_dh_auto_build:
 	dh_auto_build -- PREFIX=/usr sysconfdir=/etc
 override_dh_auto_install:
