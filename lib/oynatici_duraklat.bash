@@ -46,7 +46,7 @@ oynatici_duraklat() {
     [[ -n $(pgrep ${oynatici}) ]] && {
       if [[ ${oynatici} = spotify ]]
       then
-          if dbus_sorgu spotify;
+          if dbus_sorgu spotify
           then
               dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify \
               /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause > /dev/null 2>&1
@@ -55,12 +55,14 @@ oynatici_duraklat() {
 
       elif [[ ${oynatici} = deadbeef ]]
       then
-          deadbeef --pause > /dev/null 2>&1
-          DURDURULAN+=('deadbeef')
-
+          if dbus_sorgu deadbeef
+          then
+              deadbeef --pause > /dev/null 2>&1
+              DURDURULAN+=('deadbeef')
+          fi
       elif [[ ${oynatici} = clementine ]]
       then
-          if qdbus_sorgu clementine;
+          if qdbus_sorgu clementine
           then
               clementine --pause > /dev/null 2>&1
               DURDURULAN+=('clementine')
@@ -68,7 +70,7 @@ oynatici_duraklat() {
 
       elif [[ ${oynatici} = amarok ]]
       then
-          if qdbus_sorgu amarok;
+          if qdbus_sorgu amarok
           then
               amarok --pause  > /dev/null 2>&1
               DURDURULAN+=('amarok')
@@ -76,9 +78,11 @@ oynatici_duraklat() {
 
       elif [[ ${oynatici} = rhythmbox ]]
       then
-          rhythmbox-client --pause  > /dev/null 2>&1
-          DURDURULAN+=('rhytmbox')
-
+          if dbus_sorgu rhythmbox
+          then
+              rhythmbox-client --pause  > /dev/null 2>&1
+              DURDURULAN+=('rhytmbox')
+          fi
       elif [[ ${oynatici} = aqulung ]]
       then
           aqualung --pause > /dev/null 2>&1
@@ -86,7 +90,7 @@ oynatici_duraklat() {
 
       elif [[ ${oynatici} = audacious ]]
       then
-          if dbus_sorgu audacious;
+          if dbus_sorgu audacious
           then
               audacious --pause > /dev/null 2>&1
               DURDURULAN+=('audacious')
@@ -94,14 +98,18 @@ oynatici_duraklat() {
 
       elif [[ ${oynatici} = banshee ]]
       then
-          banshee --pause > /dev/null 2>&1
-          DURDURULAN+=('banshee')
-
+          if dbus_sorgu banshee
+          then
+              banshee --pause > /dev/null 2>&1
+              DURDURULAN+=('banshee')
+          fi
       elif [[ ${oynatici} = exaile ]]
       then
-          exaile --play-pause > /dev/null 2>&1
-          DURDURULAN+=('exaile')
-
+          if dbus_sorgu exaile
+          then
+              exaile --play-pause > /dev/null 2>&1
+              DURDURULAN+=('exaile')
+         fi
       elif [[ ${oynatici} = moc ]]
       then
           moc --pause > /dev/null 2>&1
@@ -117,7 +125,7 @@ oynatici_duraklat() {
 
       elif [[ ${oynatici} = qmmp ]]
       then
-          if qdbus_sorgu qmmp;
+          if qdbus_sorgu qmmp
           then
               qmmp --pause > /dev/null 2>&1
               DURDURULAN+=('qmmp')
@@ -125,7 +133,7 @@ oynatici_duraklat() {
 
       elif [[ ${oynatici} = juk ]]
       then
-          if qdbus_sorgu juk;
+          if qdbus_sorgu juk
           then
               qdbus org.kde.juk /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Pause
               DURDURULAN+=('juk')

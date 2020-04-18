@@ -91,7 +91,7 @@ yad --plug=190707 --tabnum=3 --form \
 --field='Akşam ezanı okunsun:CHK' \
 --field='Yatsı ezanı okunsun:CHK' \
 --field='Cuma selası okunsun:CHK' \
---field='Mplayer ses seviyesi:SCL' \
+--field='Oynatici ses seviyesi:SCL' \
 --field='Dini gün anımsat (sn. 0 ise kapalı):NUM' \
 --field='Ezan Bildirim Süresi (sn):NUM' \
 --field='Ayet Bildirim Süresi (sn):NUM' \

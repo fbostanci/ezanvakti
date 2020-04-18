@@ -107,6 +107,8 @@ Bu depoda Pardus 19 XFCE için öntanımlı ayarlar özelleştirilmiştir.
 
 `sudo apt-get install ezanvakti`
 
+Pardus deposundaki Qt sürümleri, Ubuntu tarafında bionic(18.04) ile uyumludur. Bu sebeple Qt arayüzü depoya eklenmemiştir.
+
 <br>
 
 **Archlinux için kurulum:**
@@ -131,6 +133,10 @@ Depo ubuntu 19.10 ve 20.04 içindir.
 `sudo apt-get update`
 
 `sudo apt-get install ezanvakti`
+
+Qt arayüzü kullanmak için:
+
+`sudo apt-get install ezanvakti-qt-gui`
 
 <br>
 
