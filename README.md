@@ -35,7 +35,7 @@ Genel Özellikleri
 *  Sıradaki vakit, ve vakte ne kadar süre kaldığını gösterme. (-vt)
 *  Arayüzden ve uçbirimden kerahat vakitlerini gösterebilme. (-vk)
 *  Bulunduğunuz konum için bayram namazı vakitlerini gösterme. (-vm)
-*  Qt arayüz desteği [Github](https://github.com/fbostanci/ezanvakti-qt-gui) [Gitlab](https://gitlab.com/fbostanci/ezanvakti-qt-gui)
+*  Qt arayüz desteği [Gitlab](https://gitlab.com/fbostanci/ezanvakti-qt-gui) [Github](https://github.com/fbostanci/ezanvakti-qt-gui)
 *  Arayüzde hicri tarih gösterimi
 *  Arayüz HTML renk özelleştirmeleri
 *  Cuma günü isteğe bağlı sela okunması (süre ayarlı)
@@ -99,7 +99,7 @@ KURULUM ve KALDIRMA
 
 Bu depoda Pardus 19 XFCE için öntanımlı ayarlar özelleştirilmiştir.
 
-`echo 'deb http://ppa.launchpad.net/fbostanci/pardus/ubuntu eoan main' | sudo tee /etc/apt/sources.list.d/ezanvakti-eoan.list`
+`echo 'deb http://ppa.launchpad.net/fbostanci/pardus/ubuntu bionic main' | sudo tee /etc/apt/sources.list.d/ezanvakti-bionic.list`
 
 `sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 1651E3776FB72115`
 
@@ -107,7 +107,11 @@ Bu depoda Pardus 19 XFCE için öntanımlı ayarlar özelleştirilmiştir.
 
 `sudo apt-get install ezanvakti`
 
-Pardus deposundaki Qt sürümleri, Ubuntu tarafında bionic(18.04) ile uyumludur. Bu sebeple Qt arayüzü depoya eklenmemiştir.
+Qt arayüzü kullanmak için:
+
+`sudo apt-get install ezanvakti-qt-gui`
+
+Pardus deposundaki Qt sürümleri, Ubuntu bionic(18.04) ile uyumludur. Bu sebeple bionic deposu seçilmiştir.
 
 <br>
 
@@ -163,7 +167,7 @@ Uygulamanın kullanımı ve yapılandırma ayarları için man dosyasına bakın
 <br>
 
 Kullanım için:
- `man ezanvakti`
+`man ezanvakti`
 
 Yapılandırma bilgileri için:
 `man 5 ezanvakti-ayarlar`

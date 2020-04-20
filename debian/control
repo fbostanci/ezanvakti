@@ -4,6 +4,7 @@ Priority: optional
 Maintainer: Fatih Bostanci <faopera@gmail.com>
 Build-Depends: debhelper (>= 12~)
 Standards-Version: 4.3.0
+Homepage: https://gitlab.com/fbostanci/ezanvakti
 
 Package: ezanvakti
 Architecture: all
