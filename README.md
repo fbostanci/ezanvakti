@@ -14,7 +14,7 @@ Ezanvakti 7.0 GNU/Linux için ezan vakti bildirici
 
 |***YAD Arayüz 1***| ***YAD Arayüz 2***| ***QT Arayüz*** |
 | :-------: | :-------: | :-------: |
-|![yad_gui](uploads/44585586f8d1317828b4b10f09fcb2b3/yad_gui.png)|![yadgui2](uploads/66ee4e1b3b4dd05b85ee416f9b084cc0/yadgui2.png)|![ezanvakti-qt-gui-1](uploads/8fa462cfa97ad07c6015d86079b63db6/ezanvakti-qt-gui-1.png)|
+|![yad_gui](https://gitlab.com/fbostanci/ezanvakti/-/wikis/uploads/44585586f8d1317828b4b10f09fcb2b3/yad_gui.png)|![yadgui2](https://gitlab.com/fbostanci/ezanvakti/-/wikis/uploads/66ee4e1b3b4dd05b85ee416f9b084cc0/yadgui2.png)|![ezanvakti-qt-gui](https://gitlab.com/fbostanci/ezanvakti/-/wikis/uploads/8fa462cfa97ad07c6015d86079b63db6/ezanvakti-qt-gui-1.png)|
 
 <br>
 
