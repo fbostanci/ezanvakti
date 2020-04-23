@@ -1,0 +1,28 @@
+#!/bin/bash
+#
+#                           Ezanvakti YAD Arayüz 3  Bileşeni 1.3
+#
+#
+
+. @libdir@/@AD@/temel_islevler.bash
+. @libdir@/@AD@/arayuz_temel.bash
+
+# Yalnıca bir arayüz3 örneği çalışması için
+# pid denetimi yapılsın.
+arayuz_pid_denetle 3
+
+arayuz2() {
+  g_vakitleri_al; g_gun_animsat
+
+yad --title "${AD^}" \
+--text="$(g_vakitleri_yaz)\n\n<span foreground=\'${ARAYUZ_SIMDIKI_VAKIT_RENGI}\'>${vakit_bilgisi}${ozel_ileti}</span>\
+\n\n<span foreground=\'${ARAYUZ_KALAN_SURE_RENGI}\'>${v_ileti}\n${v_kalan}</span>" \
+--image=${AD} --window-icon=${AD} --mouse --fixed --sticky \
+--button='yad-refresh:172' --button='yad-close'
+
+case $? in
+  172)
+    arayuz2
+    ;;
+esac
+}; arayuz2

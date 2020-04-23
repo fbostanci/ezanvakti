@@ -6,7 +6,7 @@
 
 eylem_menu() {
   bilesen_yukle arayuz_temel
-  arayuz_pid_denetle 3
+  arayuz_pid_denetle 4
 
   case $1 in
     vakitler)

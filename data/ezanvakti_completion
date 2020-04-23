@@ -31,8 +31,8 @@ _ezanvakti() {
 
   butun_uzun='--vakitler --conky --iftar --ayet \
 --esma --bilgi --hadis --kuran --dinle --arayuz --arayuz2 \
---gui --gui2 --bilgi --sureler --yapilandirma --guncelle \
---yardim  --surum --gunler --aralik --kalan --config \
+--arayuz3 --gui --gui2 --gui3 --bilgi --sureler --yapilandirma \
+--guncelle --yardim  --surum --gunler --aralik --kalan --config \
 --renk --imsak'
 
   config_uzun='--gui --arayuz'

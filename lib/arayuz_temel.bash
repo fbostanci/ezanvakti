@@ -43,7 +43,8 @@ acilisa_baslatici_ekle
 arayuz_pid_denetle() {
   # p=1: arayuz1
   # p=2: arayuz2
-  # p=3: eylem_menu
+  # p=3: arayuz3
+  # p=4: eylem_menu
   local p="$1" ypid=$$
 
   if (( p == 1 ))
@@ -52,6 +53,9 @@ arayuz_pid_denetle() {
   elif (( p == 2 ))
   then
       p='arayuz2'
+  elif (( p == 3 ))
+  then
+      p='arayuz3'
   elif (( p == 3 ))
   then
       p='eylem_menu'

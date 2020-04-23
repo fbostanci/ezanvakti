@@ -28,6 +28,7 @@
 
 [[ $1 = --@(gui|aray[uü]z)   ]] && exec @libdir@/@AD@/arayuz.bash
 [[ $1 = --@(gui2|aray[uü]z2) ]] && exec @libdir@/@AD@/arayuz2.bash
+[[ $1 = --@(gui3|aray[uü]z3) ]] && exec @libdir@/@AD@/arayuz3.bash
 [[ $1 = ''                   ]] && exec @libdir@/@AD@/@AD@-sleep
 
 . @libdir@/@AD@/temel_islevler.bash

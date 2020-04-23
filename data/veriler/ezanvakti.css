@@ -1,0 +1,25 @@
+/* https://developer.gnome.org/gtk3/stable/gtk-migrating-GtkStyleContext-css.html */
+
+/* Renk kodları için yad --color komutuyla
+ * açılan paleti kullanabilirsiniz.
+*/
+
+/*YAD Penceresi için
+ * background-color: artalan rengi
+ * color: yazı rengi
+*/
+* {
+    background-color: #403E3B;
+    color: #F1E7D3;
+}
+
+/*Kutucukların iç bölgesi için
+ * color: yazı rengi
+ * background: artalan rengi
+ * font: yazı tipi
+*/
+*:disabled {
+  color: #F5AD0E;
+  background: #46443F;
+  font: 16px Arial, sans-serif;
+}
