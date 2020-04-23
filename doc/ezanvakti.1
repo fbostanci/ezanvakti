@@ -1,6 +1,6 @@
-.TH "Ezanvakti" "1" "2020\-04\-11" "Ezanvakti 7\&.0" "Ezanvakti Kullanım Yönergeleri"
+.TH "Ezanvakti" "1" "2020\-04\-23" "Ezanvakti 7\&.1" "Ezanvakti Kullanım Yönergeleri"
 .SH "AD"
-Ezanvakti 7\.0 \- GNU/Linux için Ezan Vakti Bildirici
+Ezanvakti 7\.1 \- GNU/Linux için Ezan Vakti Bildirici
 .SH "KULLANIM ŞEKLİ"
 .B ezanvakti
 .RI [ seçenek ]
@@ -248,10 +248,16 @@ Soru ve yanıtı uçbirim yerine bildirim baloncuğunda görüntüler ve çıkar
 İçinde bulunduğunuz yıla ait dini günler ve geceleri liste halinde görüntüler ve çıkar.
 .TP
 .B  \-\-arayuz, \-\-arayüz, \-\-gui
-Ezanvakti gelişmiş arayüz bileşenini başlatır.
+Ezanvakti gelişmiş arayüz YAD bileşenini başlatır.
 .TP
 .B  \-\-arayuz2, \-\-arayüz2, \-\-gui2
-Ezanvakti basit arayüz bileşenini başlatır.
+Ezanvakti YAD arayüz 2 bileşenini başlatır. Bu arayüzde tarih, saat ve vakitler
+anlık olarak değişmektedir. Arayüz2 renk özelleştirmelerinizi
+\fI~/.config/ezanvakti\fP konumunda oluşturacağınız \fIezanvakti.css\fP dosyası
+üzerinden yapabilirsiniz. Öntanımlı dosya konumu: /usr/share/ezanvakti/veriler/ezanvakti.css
+.TP
+.B  \-\-arayuz3, \-\-arayüz3, \-\-gui3
+Ezanvakti basit arayüz YAD bileşenini başlatır.
 .TP
 .B \ -\-guncelle, \-\-güncelle
 Ezanveri dosyasını 30 günlük vakitleri içerecek şekilde günceller/oluşturur.

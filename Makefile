@@ -1,6 +1,6 @@
 #
 #
-#               Ezanvakti 7.0 Makefile
+#               Ezanvakti 7.1 Makefile
 #
 #
 

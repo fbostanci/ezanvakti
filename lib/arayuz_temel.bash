@@ -56,7 +56,7 @@ arayuz_pid_denetle() {
   elif (( p == 3 ))
   then
       p='arayuz3'
-  elif (( p == 3 ))
+  elif (( p == 4 ))
   then
       p='eylem_menu'
   else
