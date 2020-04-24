@@ -1,0 +1,43 @@
+#!/bin/bash
+#
+#  Ezanvakti Uçbirim Arayüzü 1.0
+#
+#
+. @libdir@/@AD@/temel_islevler.bash
+
+bilesen_yukle siradaki
+bilesen_yukle kerahat
+bilesen_yukle simple_curses
+
+ucbirim_basligi "Uçbirim arayüzü"
+
+
+main() {
+    window "Ezanvakti 7.1 Uçbirim Arayüzü " "green"
+      append "$(date '+%d.%m.%Y  %H:%M:%S')" 
+      append "${ULKE}"
+      append "${ILCE}"
+      addsep
+      append "$(siradaki_vakit conky_siradaki)"
+    endwin
+
+    window "Vakitler" "yellow" "%50" "black"
+      bugun
+      append "Sabah  $sabah_n"
+      append "Guneş  $gunes_n"
+      append "Oğle   $ogle_n"
+      append "Ikindi $ikindi_n"
+      append "Akşam  $aksam_n"
+      append "Yatsı  $yatsi_n"
+    endwin
+    col_right
+ 
+    window "Kerahat Vakitleri" "yellow" "%50" "black"
+      append "$(kerahat_vakitleri conky)"
+      append " "
+    endwin
+}
+
+main_loop 1
+
+# vim: set ft=sh ts=2 sw=2 et:

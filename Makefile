@@ -30,7 +30,7 @@ endif
 
 BETIKLER = ezanvakti.bash lib/temel_islevler.bash lib/arayuz.bash \
 	lib/arayuz2.bash lib/arayuz3.bash lib/ezanvakti-sleep \
-	data/ezanvakti.desktop data/ayarlar
+	lib/ucbirim_tui.bash data/ezanvakti.desktop data/ayarlar
 
 all: $(BETIKLER)
 

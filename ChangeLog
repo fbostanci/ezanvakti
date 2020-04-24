@@ -14,6 +14,7 @@
    -> Kullanıcı kendi css özelleştirmesini ~/.config/ezanvakti
       içerisine ekleyeceği ezanvakti.css dosyasında yapabilir.
    -> Örnek/varsayılan dosya konumu /usr/share/ezanvakti/veriler/ezanvakti.css
+ * ucbirim_tui.bash: Uçbirimden ncurses tarzı çalışan arayüz eklendi. (--ucbirim)
  * man dosyaları ve bash tamamlama betiği güncellendi.
 
 

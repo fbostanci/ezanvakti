@@ -261,7 +261,7 @@ YAZI_RENGI='#FFBD4D'
 # ör: 1 gün eklemek için 1 ya da +1
 #     1 gün çıkarmak için -1
 #     ekleme ya da çıkarma gerekmiyorsa 0
-HICRI_TARIH_DUZELTME=1
+HICRI_TARIH_DUZELTME=0
 
 # Printf arayuz yazı biçimi
 GELISMIS_ARAYUZ_BICIMI='%-107s%s\n%s\n%s\n\t\t\t\t%s\n%s\n\n%s\n\n\t\t\t %s\n\t\t\t %s'
