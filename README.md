@@ -130,6 +130,7 @@ Pardus deposundaki Qt sürümleri, Ubuntu bionic(18.04) ile uyumludur. Bu sebepl
 AUR yardımcı uygulamanızla güncel sürümü kurabilirsiniz.
 
 ör: Pacaur kullanıyorsanız:
+
 `pacaur -Sa ezanvakti`
 
 Qt arayüzü kullanmak için:
@@ -181,6 +182,8 @@ Kullanım için:
 
 Yapılandırma bilgileri için:
 `man 5 ezanvakti-ayarlar`
+
+Man dosyalarını pdf olarak indirmek için [wiki sayfasına](https://gitlab.com/fbostanci/ezanvakti/-/wikis/home) bakabilirsiniz.
 
 <br><br>
 
