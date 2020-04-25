@@ -129,11 +129,12 @@ Pardus deposundaki Qt sürümleri, Ubuntu bionic(18.04) ile uyumludur. Bu sebepl
 [AUR](https://aur.archlinux.org/) üzerinde uygulama bulunmaktadır.
 AUR yardımcı uygulamanızla güncel sürümü kurabilirsiniz.
 
-ör: Yaourt kullanıyorsanız:
-`yaourt -S ezanvakti`
+ör: Pacaur kullanıyorsanız:
+`pacaur -Sa ezanvakti`
 
-Kaynak kod üzerinden kurulum için
-PKGBUILD dosyasının bulunduğu dizinde `makepkg -si` komutunu girin.
+Qt arayüzü kullanmak için:
+
+`pacaur -Sa ezanvakti-qt-gui`
 
 <br>
 
