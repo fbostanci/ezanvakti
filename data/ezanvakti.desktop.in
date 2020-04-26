@@ -3,7 +3,6 @@ Version=1.0
 Type=Application
 Name=@AD@
 Comment=GNU/Linux için Ezan vakti bildirici
-TryExec=@AD@
 Exec=@bindir@/@AD@ --arayuz
 Icon=@AD@
 Terminal=false
