@@ -16,22 +16,13 @@ ezan_dinlet() {
 
   else
       ileti='ezanı '
-      if [[ ${vakit} = Sabah ]]
-      then
-          vakit_ezani="${SABAH_EZANI}"
-      elif [[ ${vakit} = Öğle ]]
-      then
-          vakit_ezani="${OGLE_EZANI}"
-      elif [[ ${vakit} = İkindi ]]
-      then
-          vakit_ezani="${IKINDI_EZANI}"
-      elif [[ ${vakit} = Akşam ]]
-      then
-          vakit_ezani="${AKSAM_EZANI}"
-      elif [[ ${vakit} = Yatsı ]]
-      then
-          vakit_ezani="${YATSI_EZANI}"
-      fi
+      case ${vakit} in
+        Sabah)  vakit_ezani="${SABAH_EZANI}" ;;
+        Öğle)   vakit_ezani="${OGLE_EZANI}" ;;
+        İkindi) vakit_ezani="${IKINDI_EZANI}" ;;
+        Akşam)  vakit_ezani="${AKSAM_EZANI}" ;;
+        Yatsı)  vakit_ezani="${YATSI_EZANI}" ;;
+      esac
   fi
 
   bilesen_yukle oynatici_yonetici

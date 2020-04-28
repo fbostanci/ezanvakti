@@ -92,20 +92,20 @@ then
     if (( arayuz == 1 ))
     then
         ulke=$(kdialog --combobox 'Bulunduğunuz ülkeyi seçin' --title 'Ülke belirleme' \
-              --default 'TURKIYE' $(cut -d, -f1 < ${VERI_DIZINI}/ulkeler/AAA-ULKELER))
+              --default 'TÜRKİYE' $(cut -d, -f1 < ${VERI_DIZINI}/ulkeler/AAA-ULKELER))
         (( $? == 1 )) && exit 1
 
 
     elif (( arayuz == 2 ))
     then
-        ulke=$(yad --entry --entry-text 'TURKIYE' $(cut -d, -f1 < ${VERI_DIZINI}/ulkeler/AAA-ULKELER) \
+        ulke=$(yad --entry --entry-text 'TÜRKİYE' $(cut -d, -f1 < ${VERI_DIZINI}/ulkeler/AAA-ULKELER) \
               --width=300 --sticky --center --window-icon=${AD} \
               --title 'Ülke belirleme'  --text 'Bulunduğunuz ülkeyi seçin')
         (( $? == 1 )) && exit 1
 
     elif (( arayuz == 3 ))
     then
-        ulke=$(zenity --entry --entry-text 'TURKIYE' $(cut -d, -f1 < ${VERI_DIZINI}/ulkeler/AAA-ULKELER) \
+        ulke=$(zenity --entry --entry-text 'TÜRKİYE' $(cut -d, -f1 < ${VERI_DIZINI}/ulkeler/AAA-ULKELER) \
               --title 'Ülke belirleme' --text 'Bulunduğunuz ülkeyi seçin')
         (( $? == 1 )) && exit 1
     fi
@@ -130,9 +130,9 @@ if ! grep -qw ${SEHIR} ${VERI_DIZINI}/ulkeler/${ulke}
 then
     arayuz_denetle
 
-    if [[ ${ulke} = TURKIYE ]]
+    if [[ ${ulke} = TÜRKİYE ]]
     then
-        varsayilan_sehir=ISTANBUL
+        varsayilan_sehir='İSTANBUL'
     else
         varsayilan_sehir=$(head -1 ${VERI_DIZINI}/ulkeler/${ulke} | cut -d, -f1)
     fi
@@ -171,7 +171,7 @@ sehir_kodu=$(grep -w ${sehir} ${VERI_DIZINI}/ulkeler/${ulke} | cut -d, -f2)
 #                         İLÇE İŞLEMLERİ                             #
 ######################################################################
 
-if [[ ${ulke} = @(TURKIYE|ABD|ALMANYA|KANADA) ]]
+if [[ ${ulke} = @(TÜRKİYE|ABD|ALMANYA|KANADA) ]]
 then
     if ! grep -qw ${ILCE} ${VERI_DIZINI}/ulkeler/${ulke}_ilceler/${sehir}
     then
@@ -182,7 +182,7 @@ then
 
         else
             arayuz_denetle
-            [[ ${ulke} = TURKIYE ]] && g_sehir=${sehir} ||
+            [[ ${ulke} = TÜRKİYE ]] && g_sehir=${sehir} ||
                                        g_sehir=$(head -1 ${VERI_DIZINI}/ulkeler/${ulke}_ilceler/${sehir}| cut -d, -f1)
 
             if (( arayuz == 1 ))
@@ -226,7 +226,7 @@ printf '%b%s%b' "${RENK7}${RENK8}" \
   'İnternet erişimi denetleniyor...' "${RENK0}"
 
 # internet erişimini denetle.
-if ! ping -q -c 1 -W 1 google.com > /dev/null 2>&1
+if ! internet_erisimi_var_mi
 then
     printf '%b%*b' "${RENK7}${RENK8}" $(( stn - 13 - renksiz_payi )) \
       "[${RENK1}  BAŞARISIZ ${RENK8}]${RENK0}\n"

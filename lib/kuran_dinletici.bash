@@ -85,12 +85,13 @@ kuran_dinletimi() {
       kaynak='http://www.listen2quran.com'
   fi
 
-
   bilesen_yukle oynatici_yonetici
   ucbirim_basligi "${sure_adi} Suresi"
 
-  parca_suresi="$(oynatici_sure_al "${dinletilecek_sure}")"
-  parca_suresi_n="$(oynatici_sure_cevir)"
+  # verilen ses dosyasının süresini sa,dk,ve sn'ye çevirip
+  # parca_suresi_n değişkenine atar. (oynatici_yonetici.bash)
+  oynatici_sure_al "${dinletilecek_sure}"
+
 
   printf '%b%b\n%b\n%b\n%b\n%b\n%b\n%b\n' \
     "${RENK7}${RENK2}" \

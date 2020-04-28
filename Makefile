@@ -1,6 +1,6 @@
 #
 #
-#               Ezanvakti 7.1 Makefile
+#               Ezanvakti 7.2 Makefile
 #
 #
 
@@ -50,7 +50,7 @@ install: $(BETIKLER)
 	$(INSTALL) -vd $(DESTDIR)$(bindir)
 	$(INSTALL) -vd $(DESTDIR)$(libdir)/$(AD)
 	$(INSTALL) -vd $(DESTDIR)$(sysconfdir)
-	$(INSTALL) -vd $(DESTDIR)$(datadir)/$(AD)/{veriler,mealler,simgeler,ulkeler{,/TURKIYE_ilceler,/ABD_ilceler,/ALMANYA_ilceler,/KANADA_ilceler}}
+	$(INSTALL) -vd $(DESTDIR)$(datadir)/$(AD)/{veriler,mealler,simgeler,ulkeler{,/TÜRKİYE_ilceler,/ABD_ilceler,/ALMANYA_ilceler,/KANADA_ilceler}}
 	$(INSTALL) -vd $(DESTDIR)$(sounddir)/$(AD)
 	$(INSTALL) -vd $(DESTDIR)$(completionsdir)
 	$(INSTALL) -vd $(DESTDIR)$(mandir)/man{1,5}
@@ -85,10 +85,10 @@ install: $(BETIKLER)
 		$(INSTALL) -vm644 "$$i" $(DESTDIR)$(datadir)/$(AD)/ulkeler/"$$i_dosya"; \
 	done
 
-	for s in data/ulkeler/TURKIYE_ilceler/*; \
+	for s in data/ulkeler/TÜRKİYE_ilceler/*; \
 	do \
 		s_dosya="$$(basename "$$s")"; \
-		$(INSTALL) -vm644 "$$s" $(DESTDIR)$(datadir)/$(AD)/ulkeler/TURKIYE_ilceler/"$$s_dosya"; \
+		$(INSTALL) -vm644 "$$s" $(DESTDIR)$(datadir)/$(AD)/ulkeler/TÜRKİYE_ilceler/"$$s_dosya"; \
 	done
 
 	for u in data/ulkeler/ABD_ilceler/*; \

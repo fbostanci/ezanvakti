@@ -17,8 +17,8 @@ ezv_conky_imsak() {
 
   if (( UNIXSAAT < sabah ))
   then
-    bekleme_suresi $sabah_n; kalan
-    echo -e "İmsak : $sabah_n\nKalan : $kalan_sure" | \
+      bekleme_suresi $sabah_n; kalan
+      echo -e "İmsak : $sabah_n\nKalan : $kalan_sure" | \
       sed 's:saat:sa:;s:dakika:dk:;s:saniye:sn:'
   else
       # Yarının sabah vakti ezanveri dosyasında var mı denetle önc..
@@ -48,8 +48,8 @@ ezv_conky_iftar() {
 
   if (( UNIXSAAT < aksam ))
   then
-    bekleme_suresi $aksam_n; kalan
-    echo -e "İftar : $aksam_n\nKalan : $kalan_sure" | \
+      bekleme_suresi $aksam_n; kalan
+      echo -e "İftar : $aksam_n\nKalan : $kalan_sure" | \
       sed 's:saat:sa:;s:dakika:dk:;s:saniye:sn:'
   else
       # Yarının aksam vakti ezanveri dosyasında var mı denetle önc..

@@ -78,25 +78,6 @@ temizlik() {
   rm -f "${cikti_dosyasi}" > /dev/null 2>&1
 }
 
-g_gun_animsat() {
-  local gunler="${VERI_DIZINI}/veriler/gunler"
-
-  if (( GUN_ANIMSAT ))
-  then
-      if grep -q "^$(date +%d.%m.%Y)" "${gunler}"
-      then
-          ozel_ileti='\n\nBugün:  <b>'
-          ozel_ileti+="$(grep $(date +%d.%m.%Y) "${gunler}" | cut -d' ' -f2-)</b>"
-      elif grep -q "^$(date -d 'tomorrow' +%d.%m.%Y)" "${gunler}"
-      then
-          ozel_ileti='\n\nYarın:  <b>'
-          ozel_ileti+="$(grep $(date -d 'tomorrow' +%d.%m.%Y) "${gunler}" | cut -d' ' -f2-)</b>"
-      else
-          ozel_ileti=''
-      fi
-  fi
-}
-
 g_vakitleri_al() {
   ezanveri_denetle; bugun
 
@@ -310,12 +291,11 @@ g_secim_goster() {
 }
 
 pencere_bilgi() {
-  local parca_suresi parca_suresi_n
 
   if [[ $1 =~ ^http.* ]]
   then
       # internet erişimini denetle.
-      if ! ping -q -c 1 -W 1 google.com > /dev/null 2>&1
+      if ! internet_erisimi_var_mi
       then
           return 1
       fi
@@ -326,8 +306,10 @@ pencere_bilgi() {
       return 1
   fi
 
-  parca_suresi="$(oynatici_sure_al "$1")"
-  parca_suresi_n="$(oynatici_sure_cevir)"
+  # verilen ses dosyasının süresini alır. (oynatici_yonetici.bash)
+  # $parca_suresi = saniye cinsinden süre
+  # $parca_suresi_n = sürenin sa,dk,ve sn'ye çevrilmiş hali
+  oynatici_sure_al "$1"
 
   yad --form --separator=' ' --title="${AD^}" --image=${AD} --window-icon=${AD} \
       --text "${oynatici_ileti}\n Süre        : $parca_suresi_n" --mouse --fixed \
@@ -402,7 +384,7 @@ case $donus in
     oynatici_ileti="$(gawk -v sira=$sure '{if(NR==sira) print $4;}' \
       < ${VERI_DIZINI}/veriler/sure_bilgisi) suresi dinletiliyor\n\n Okuyan : ${str}"
 
-    pencere_bilgi "${dinletilecek_sure}" & 
+    pencere_bilgi "${dinletilecek_sure}" &
     oynatici_calistir "${dinletilecek_sure}"
     ozel_pencere ;;
 

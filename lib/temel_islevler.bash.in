@@ -33,7 +33,6 @@ EZANVAKTI_AYAR="${EZANVAKTI_DIZINI}/ayarlar"
 }
 
 EZANVERI="${EZANVAKTI_DIZINI}/${EZANVERI_ADI}"
-MPLAYER="mplayer -really-quiet -softvol -volume $SES"
 declare -A YUKLENEN_BILESENLER
 
 acilisa_baslatici_ekle() {
@@ -128,6 +127,37 @@ gorsel_guncelleme_yap() {
   fi
 }
 
+# Dini günler için anımsatıcı
+gun_animsat() {
+  local bildirim_ver="${1:-e}"
+  local gunler="${VERI_DIZINI}/veriler/gunler"
+  # Eğer GUN_ANIMSAT değeri sıfır değilse girilen saniye değerini
+  # bildirimin bekleme süresi olarak kullan.
+
+  (( GUN_ANIMSAT )) && {
+    if grep -q "^$(date +%d.%m.%Y)" "${gunler}"
+    then
+        ozel_ileti='\n\nBugün:  <b>'
+        ozel_ileti+="$(grep $(date +%d.%m.%Y) "${gunler}" | cut -d' ' -f2-)</b>"
+    elif grep -q "^$(date -d 'tomorrow' +%d.%m.%Y)" "${gunler}"
+    then
+        ozel_ileti='\n\nYarın:  <b>'
+        ozel_ileti+="$(grep $(date -d 'tomorrow' +%d.%m.%Y) "${gunler}" | cut -d' ' -f2-)</b>"
+    else
+        ozel_ileti=''
+    fi
+
+    case "${bildirim_ver}" in
+    "h") return 0 ;;
+    "e") # eğer ozel_ileti boş (null) dönmemişse bildirimi gönder.
+            [[ -n ${ozel_ileti} ]] && {
+              notify-send "${AD^}" "${ozel_ileti}" \
+              -t $GUN_ANIMSAT"000" -i ${AD}
+            } ;;
+    esac
+  }
+}
+
 # Ezanveri dosyası gerektiren işlemlerde ilk önce bu fonksiyon çağrılacak.
 #
 # ezanveri dosyasının kullanıldığı işlemler için olumsuz durumları denetle.
@@ -220,6 +250,15 @@ kalan() {
                       $(( bekle / 3600 )) \
                       $(( bekle % 3600 / 60 )) \
                       $(( bekle % 60 )) )
+}
+
+internet_erisimi_var_mi() {
+  if ping -q -c 1 -W 1 google.com > /dev/null 2>&1
+  then
+      return 0
+  else
+      return 1
+  fi
 }
 
 indirici() {

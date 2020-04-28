@@ -23,7 +23,7 @@ done
 
 arayuz() {
   local strng donus str str2 sure sure_sifirli oynatici_ileti secim_basligi
-  g_vakitleri_al; g_gun_animsat
+  g_vakitleri_al; gun_animsat h
 
 strng=$(yad --form --text "$(printf "${GELISMIS_ARAYUZ_BICIMI}" \
   "<span foreground=\'${ARAYUZ_TARIH_SAAT_RENGI}\'>$(date +%d.%m.%Y) \($(hicri_tarih_al)\)</span>" \
