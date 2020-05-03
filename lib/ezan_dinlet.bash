@@ -6,6 +6,7 @@
 
 ezan_dinlet() {
   local vakit="$1" ileti
+  bilesen_yukle oynatici_yonetici
 
   if [[ ${vakit} = Cuma ]]
   then
@@ -13,7 +14,6 @@ ezan_dinlet() {
       vakit='Cuma Selası'
       vakit_ezani="${CUMA_SELASI}"
       EZAN_OKUYAN="${SELA_OKUYAN}"
-
   else
       ileti='ezanı '
       case ${vakit} in
@@ -24,8 +24,6 @@ ezan_dinlet() {
         Yatsı)  vakit_ezani="${YATSI_EZANI}" ;;
       esac
   fi
-
-  bilesen_yukle oynatici_yonetici
 
   printf "${RENK7}${RENK2}${vakit}${RENK3} ${ileti}dinletiliyor\n\n${RENK0}"
   printf "${RENK7}${RENK3}Okuyan : ${RENK2}${EZAN_OKUYAN}\n\n${RENK0}"

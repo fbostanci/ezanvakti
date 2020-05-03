@@ -2,16 +2,25 @@
 #
 #
 #
-#                           Ezanvakti Sleep Yöntemi  Bileşeni 1.5
+#                           Ezanvakti Sleep Yöntemi  Bileşeni 1.6
 #
 
 calisma_kodu="$1"
 
 . @libdir@/@AD@/temel_islevler.bash
-
+# ezanveri_denetle, renk_denetle, bugun, gun_animsat ve
+# acilisa_baslatici_ekle temel_islevler.bash ile yuklendi.
 acilisa_baslatici_ekle
+# Kullanıcının kendi isteğiyle uygulamayı başlatması ile
+# uygulamanın başlatmasını ayırmak için özel kod denetimi yapıyoruz.
+#
+# Uygulama ezanvakti-sleep bileşenini başlatırken özel kodla çağırıyor.
+# ACILISTA_BASLAT=0 ise de çıkış yapıyor.
+#
+# Kullanıcı kendi isteğiyle (ezanvakti komutuyla) bileşeni başlatabilir.
+# ACILISTA_BASLAT=0 olması önemsenmez, beş vakit kipinde başlar.
 [[ ${calisma_kodu} = 657a616e76616b7469 ]] && (( ! ACILISTA_BASLAT )) && exit 0
-#                   #657a616e76616b7469 = ezanvakti onaltılık değeri
+#                   #657a616e76616b7469 = ezanvakti onaltılık sayı değeri
 
 bilesen_yukle oynatici_yonetici
 (( OYNATICI_DURAKLAT )) && bilesen_yukle oynatici_duraklat
@@ -44,16 +53,18 @@ ezv_sleep_pid_denetle() {
 
 cuma_selasi() {
   local sela_vakti
-  ezan_vakitlerini_al
+  bugun
 
   sela_vakti=$(( ogle - SELA_OKUNMA_SURESI_FARKI * 60 ))
+  # Uygulama çalıştığında sela_vakti
+  # geçmiş ise fonksiyon çalışmasın.
   (( sela_vakti < UNIXSAAT )) && return 0
-
+  # ezanvakti_bekle fonksiyonu içinde çalışma
+  # mantığı anlatılıyor.
   if (( $(( sela_vakti - 60 )) == UNIXSAAT ))
   then
       sleep $(( sela_vakti - $(date +%s) ))
   else
-#     set -e
       while (( sela_vakti != UNIXSAAT ))
       do
         sleep 59; cuma_selasi
@@ -65,11 +76,6 @@ cuma_selasi() {
     -i ezanvakti -u critical  \
     -t $EZAN_BILDIRIM_SURESI"000"
 
-  [[ ! -f ${CUMA_SELASI} ]] && {
-    printf '%s: cuma selası ses dosyası bulunamadı.\n' "${AD}" >&2
-    return 0
-  }
-
   bilesen_yukle oynatici_yonetici
   if (( OYNATICI_DURAKLAT ))
   then
@@ -80,87 +86,6 @@ cuma_selasi() {
       oynatici_calistir "${CUMA_SELASI}"
   fi
   return 0
-}
-
-ezan_vakitlerini_al() {
-  bugun
-
-  if (( UNIXSAAT <= sabah ))
-  then
-      if (( ACILISTA_BASLAT == 2 ))
-      then
-          simdiki='İmsak'
-      else
-          simdiki='Sabah'
-      fi
-      vakit_ezani="${SABAH_EZANI}"
-      vakit_saati_n=$sabah_n
-      vakit_saati=$(( sabah + EZAN_OKUNMA_SURESI_FARKI ))
-      ezan_okunsun_mu=${SABAH_EZANI_OKU}
-
-  elif (( UNIXSAAT <= ogle ))
-  then
-      if (( ACILISTA_BASLAT == 2 ))
-      then
-          rm_sim='İftar'
-          simdiki=''
-          rm_vakit_saati_n="${aksam_n}"
-      else
-          simdiki='Öğle'
-      fi
-
-      vakit_ezani="${OGLE_EZANI}"
-      vakit_saati_n=$ogle_n
-      vakit_saati=$(( ogle + EZAN_OKUNMA_SURESI_FARKI ))
-      ezan_okunsun_mu=${OGLE_EZANI_OKU}
-
-  elif (( UNIXSAAT <= ikindi ))
-  then
-      if (( ACILISTA_BASLAT == 2 ))
-      then
-          rm_sim='İftar'
-          simdiki=''
-          rm_vakit_saati_n="${aksam_n}"
-      else
-          simdiki='İkindi'
-      fi
-
-      vakit_ezani="${IKINDI_EZANI}"
-      vakit_saati_n=$ikindi_n
-      vakit_saati=$(( ikindi + EZAN_OKUNMA_SURESI_FARKI ))
-      ezan_okunsun_mu=${IKINDI_EZANI_OKU}
-
-  elif (( UNIXSAAT <= aksam ))
-  then
-      if (( ACILISTA_BASLAT == 2 ))
-      then
-          simdiki='İftar'
-      else
-          simdiki='Akşam'
-      fi
-      vakit_ezani="${AKSAM_EZANI}"
-      vakit_saati_n=$aksam_n
-      vakit_saati=$(( aksam + EZAN_OKUNMA_SURESI_FARKI ))
-      ezan_okunsun_mu=${AKSAM_EZANI_OKU}
-
-  elif (( UNIXSAAT <= yatsi ))
-  then
-      if (( ACILISTA_BASLAT == 2 ))
-      then
-          simdiki=''
-      else
-          simdiki='Yatsı'
-      fi
-      vakit_ezani="${YATSI_EZANI}"
-      vakit_saati_n=$yatsi_n
-      vakit_saati=$(( yatsi + EZAN_OKUNMA_SURESI_FARKI ))
-      ezan_okunsun_mu=${YATSI_EZANI_OKU}
-
-  elif (( UNIXSAAT <= yeni_gun ))
-  then
-      vakit_saati=$yeni_gun
-      simdiki=
-  fi
 }
 
 ezan_oku() {
@@ -181,17 +106,12 @@ ezan_oku() {
     "${simdiki} ${ileti}\n$vakit_saati_n" \
     -i ${AD} -u critical \
     -t $EZAN_BILDIRIM_SURESI"000"
-  # geçerli vaktin ezanı okunması
+  # Geçerli vaktin ezanı okunması
   # istenmiyorsa 1 dakikalık bekleme yapıyor.
   # aksi halde 1 dakika boyunca fonksiyon tekrar edecek.
   (( ezan_okunsun_mu )) || { sleep 1m; return 0; }
   bilesen_yukle oynatici_yonetici
 
-  [[ ! -f ${vakit_ezani} ]] && {
-    printf '%s: vaktin ses dosyası -> %s <- bulunamadı.\n' \
-      "${AD}" "${vakit_ezani}" >&2
-    sleep 1m; return 1
-  }
   # Oynatıcı duraklatma etkin mi ezan okumadan değeri
   # denetle ve fonksiyonu çağır. (oynatici_duraklat.bash)
   if (( OYNATICI_DURAKLAT ))
@@ -214,12 +134,11 @@ vakit_animsat() {
   # Kullanıcı anımsatma değerini sıfır olarak belirlememişse
   (( VAKIT_ANIMSAT )) && {
     ezan_vakitlerini_al
-
-    [[ -z $simdiki ]] && { sleep 59; vakit_animsat; }
-
+    # VAKIT_ANIMSAT değerini saniyeye çevirdik.
     dakika_saniye=$(( VAKIT_ANIMSAT * 60 ))
     animsatici_saniye=$(( vakit_saati - dakika_saniye ))
-
+    # ezanvakti_bekle fonksiyonu içinde çalışma
+    # mantığı anlatılıyor.
     if (( $(( animsatici_saniye - 60 )) == UNIXSAAT ))
     then
         sleep $(( animsatici_saniye - $(date +%s) ))
@@ -246,38 +165,120 @@ vakit_animsat() {
       bilesen_yukle oynatici_yonetici
       oynatici_calistir "${UYARI_SESI}"
     }
+    # Tekrardan aynı uyarıyı vermesin diye
+    # 1 dk bekletiyoruz.
     sleep 1m; vakit_animsat
   }
 }
 
-# Vakitlerde ezan okunmasının ve bildirimin yönetildiği özyinelemeli ana fonksiyon.
+ezan_vakitlerini_al() {
+  bugun
+
+  if (( UNIXSAAT <= sabah ))
+  then
+      if (( ACILISTA_BASLAT == 2 ))
+      then
+          simdiki='İmsak'
+      else
+          simdiki='Sabah'
+      fi
+      vakit_ezani="${SABAH_EZANI}"
+      vakit_saati_n=$sabah_n
+      vakit_saati=$(( sabah + EZAN_OKUNMA_SURESI_FARKI ))
+      ezan_okunsun_mu=${SABAH_EZANI_OKU}
+
+  elif (( UNIXSAAT <= ogle ))
+  then
+      if (( ACILISTA_BASLAT == 2 ))
+      then
+          simdiki='İftar'
+          vakit_saati_n="${aksam_n}"
+          vakit_saati=$(( aksam + EZAN_OKUNMA_SURESI_FARKI ))
+      else
+          simdiki='Öğle'
+          vakit_saati_n=$ogle_n
+          vakit_saati=$(( ogle + EZAN_OKUNMA_SURESI_FARKI ))
+      fi
+      # ramazan kipinde burayı zaten
+      # kullanmayacak. Aynı durum
+      # aşağıdaki benzer vakitlerde de var.
+      vakit_ezani="${OGLE_EZANI}"
+      ezan_okunsun_mu=${OGLE_EZANI_OKU}
+
+  elif (( UNIXSAAT <= ikindi ))
+  then
+      if (( ACILISTA_BASLAT == 2 ))
+      then
+          simdiki='İftar'
+          vakit_saati_n="${aksam_n}"
+          vakit_saati=$(( aksam + EZAN_OKUNMA_SURESI_FARKI ))
+      else
+          simdiki='İkindi'
+          vakit_saati_n=$ikindi_n
+          vakit_saati=$(( ikindi + EZAN_OKUNMA_SURESI_FARKI ))
+      fi
+      vakit_ezani="${IKINDI_EZANI}"
+      ezan_okunsun_mu=${IKINDI_EZANI_OKU}
+
+  elif (( UNIXSAAT <= aksam ))
+  then
+      if (( ACILISTA_BASLAT == 2 ))
+      then
+          simdiki='İftar'
+      else
+          simdiki='Akşam'
+      fi
+      vakit_ezani="${AKSAM_EZANI}"
+      vakit_saati_n=$aksam_n
+      vakit_saati=$(( aksam + EZAN_OKUNMA_SURESI_FARKI ))
+      ezan_okunsun_mu=${AKSAM_EZANI_OKU}
+
+  elif (( UNIXSAAT <= yatsi ))
+  then
+      if (( ACILISTA_BASLAT == 2 ))
+      then
+          simdiki='İmsak'
+          vakit_saati_n=$ysabah_n
+          vakit_saati=$(( yeni_gun - $(date '+%s') + ysabah + EZAN_OKUNMA_SURESI_FARKI ))
+      else
+          simdiki='Yatsı'
+          vakit_saati_n=$yatsi_n
+          vakit_saati=$(( yatsi + EZAN_OKUNMA_SURESI_FARKI ))
+      fi
+      vakit_ezani="${YATSI_EZANI}"
+      ezan_okunsun_mu=${YATSI_EZANI_OKU}
+
+  elif (( UNIXSAAT <= yeni_gun ))
+  then
+      if (( ACILISTA_BASLAT == 2 ))
+      then
+          simdiki='İmsak'
+      else
+          simdiki='Sabah (yarın)'
+      fi
+      vakit_ezani="${SABAH_EZANI}"
+      vakit_saati_n=$ysabah_n
+      vakit_saati=$((yeni_gun - $(date '+%s') + ysabah + EZAN_OKUNMA_SURESI_FARKI ))
+      ezan_okunsun_mu=${SABAH_EZANI_OKU}
+  fi
+}
+
+# Vakitlerde ezan okunmasının ve bildirimin
+# yönetildiği özyinelemeli ana fonksiyon.
 ezanvakti_bekle() {
-  local ileti rm_sim_ileti
   ezan_vakitlerini_al
 
-  [[ -z $simdiki ]] && {
-
-    if [[ -n ${rm_sim} ]]
-    then
-        rm_sim_ileti="${rm_sim} vakti"
-    else
-        rm_sim_ileti='Yeni gün'
-        rm_vakit_saati_n='00:00'
-    fi
-
-    printf '%b %b' "${RENK7}${RENK4}${rm_sim_ileti} için bekleniyor...${RENK0}"\
-                   "${RENK2}(${RENK5}${rm_vakit_saati_n}${RENK2})${RENK0}\r"
-    sleep 59; ezanvakti_bekle
-  }
-
+  printf '%b %b' "${RENK7}${RENK4}${simdiki} vakti için bekleniyor...${RENK0}"\
+                 "${RENK2}(${RENK5}${vakit_saati_n}${RENK2})${RENK0}\r"
+  # son 60 saniye için 1. koşul sleep
+  # diğer süre için 2. koşul sleep
+  #
+  # 2. koşul her 59 saniyede bir
+  # fonksiyonu tekrardan çağıracak.
   if (( $(( vakit_saati - 60 )) == UNIXSAAT ))
   then
-      printf '%b %b' "${RENK7}${RENK4}${simdiki} vakti için bekleniyor...${RENK0}"\
-                     "${RENK2}(${RENK5}${vakit_saati_n}${RENK2})${RENK0}\r"
       sleep $(( vakit_saati - $(date +%s) ))
   else
-      printf '%b %b' "${RENK7}${RENK4}${simdiki} vakti için bekleniyor...${RENK0}"\
-                     "${RENK2}(${RENK5}${vakit_saati_n}${RENK2})${RENK0}\r"
 #     set -e
       while (( vakit_saati != UNIXSAAT ))
       do
@@ -289,6 +290,7 @@ ezanvakti_bekle() {
 
 ezv_sleep_pid_denetle; ezanveri_denetle
 gun_animsat; vakit_animsat &
+# Haftanın 5. günü ve CUMA_SELASI_OKU=1 ise
 (( $(date +%u) == 5 && CUMA_SELASI_OKU )) && cuma_selasi &
 ezanvakti_bekle
 

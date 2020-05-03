@@ -34,8 +34,8 @@ siradaki_vakit() {
 
   elif (( UNIXSAAT < yeni_gun ))
   then
-      siradaki_ezan='Yeni gün'
-      siradaki_ezan_vakti='00:00'
+      siradaki_ezan='Sabah (yarın) ezanı'
+      siradaki_ezan_vakti=$ysabah_n
   fi
 }
 
@@ -48,9 +48,9 @@ kalan_sure() {
   siradaki_vakit
   printf "${RENK7}${RENK4}${siradaki_ezan} için bekleniyor...${RENK0}\n"
 
-  if [[ ${siradaki_ezan} = "Yeni gün" ]]
+  if [[ ${siradaki_ezan} = "Sabah (yarın) ezanı" ]]
   then
-      bekle=$(( yeni_gun - $(date +%s) ))
+      bekleme_suresi_yarin ${siradaki_ezan_vakti}
   else
       bekleme_suresi ${siradaki_ezan_vakti}
   fi
@@ -62,9 +62,9 @@ kalan_sure() {
     (( bekle % 59 == 0 )) && siradaki_vakit
     # Her 12 saniyede bir süreyi sapmaya karşı düzelt.
     (( bekle % 12 == 0 )) && {
-      if [[ ${siradaki_ezan} = "Yeni gün" ]]
+      if [[ ${siradaki_ezan} = "Sabah (yarın) ezanı" ]]
       then
-          bekle=$(( yeni_gun - $(date +%s) ))
+          bekleme_suresi_yarin ${siradaki_ezan_vakti}
       else
           bekleme_suresi ${siradaki_ezan_vakti}
       fi

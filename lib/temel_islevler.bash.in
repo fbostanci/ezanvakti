@@ -174,7 +174,6 @@ gun_animsat() {
   local gunler="${VERI_DIZINI}/veriler/gunler"
   # Eğer GUN_ANIMSAT değeri sıfır değilse girilen saniye değerini
   # bildirimin bekleme süresi olarak kullan.
-
   (( GUN_ANIMSAT )) && {
     if grep -q "^$(date +%d.%m.%Y)" "${gunler}"
     then
@@ -191,10 +190,10 @@ gun_animsat() {
     case "${bildirim_ver}" in
     h) return 0 ;;
     e) # eğer ozel_ileti boş (null) dönmemişse bildirimi gönder.
-            [[ -n ${ozel_ileti} ]] && {
-              notify-send "${AD^}" "${ozel_ileti}" \
-              -t $GUN_ANIMSAT"000" -i ${AD}
-            } ;;
+       [[ -n ${ozel_ileti} ]] && {
+         notify-send "${AD^}" "${ozel_ileti}" \
+           -t $GUN_ANIMSAT"000" -i ${AD}
+       } ;;
     esac
   }
 }
@@ -255,15 +254,16 @@ ezanveri_denetle() {
 bugun() {
   TARIH=$(date +%d.%m.%Y)
   SAAT=$(date +%H:%M)
+  local YTARIH=$(date -d tomorrow '+%d.%m.%Y')
 
   # 08, 09 için oluşan sekizli sayı hatasının önüne geçmek için saatin,
   # sayısal karşılaştırmalarda kullanılması için saati UNIX ikilik saatine çevirdik.
   UNIXSAAT=$(date -d "$SAAT" +%s)
 
-  export $(gawk 'BEGIN{tarih = strftime("%d.%m.%Y")} {if($1 ~ tarih) \
+  export $(gawk -v tarih=$TARIH -v ytarih=$YTARIH '{if($1 ~ tarih) \
     {printf \
     "sabah_n=%s\ngunes_n=%s\nogle_n=%s\nikindi_n=%s\naksam_n=%s\nyatsi_n=%s"\
-    , $2,$3,$4,$5,$6,$7}}' "${EZANVERI}")
+    , $2,$3,$4,$5,$6,$7};if($1 ~ ytarih) {printf "\nysabah_n=%s",$2}}' "${EZANVERI}")
 
   sabah=$(date -d "$sabah_n" +%s)
   gunes=$(date -d "$gunes_n" +%s)
@@ -271,6 +271,7 @@ bugun() {
   ikindi=$(date -d "$ikindi_n" +%s)
   aksam=$(date -d "$aksam_n" +%s)
   yatsi=$(date -d "$yatsi_n" +%s)
+  ysabah=$(date -d "tomorrow $ysabah_n" +%s)
   yeni_gun=$(date -d 'tomorrow 00:00' +%s)
 }
 
