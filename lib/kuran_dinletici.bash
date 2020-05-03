@@ -3,66 +3,27 @@
 #       Ezanvakti Kuran dinletme bileşeni
 #
 #
-# 
-sure_no_denetimi() { # sure_no_yonetimi {{{
-
-  if [[ -n ${sure_no//[[:digit:]]/} ]]
-  then
-      printf '%b\n%b\n' \
-        "${AD}: hatalı sure_no: \`$sure_no' " \
-        'Sure kodu olarak 1-114 arası sayısal bir değer giriniz.'
-      exit 1
-
-  elif (( ! ${#sure_no} ))
-  then
-      printf '%s: bu özelliğin kullanımı için ek olarak sure kodu girmelisiniz.\n' "${AD}" >&2
-      exit 1
-
-  fi
-
-  # sure_no 000001 gibiyse hata verme öndeki sıfırları sil, devam et.
-  # ayrıca 08, 09 için oluşan sayı hatasını da çözüyor.
-  sure_no="$(sed 's/^0*//' <<<$sure_no)"
-  if (( sure_no < 1 || sure_no > 114 ))
-  then
-      printf '%b\n%b\n' \
-        "${AD}: hatalı sure_no: \`$sure_no' " \
-        'Girilen sure kodu 1 <= sure_kodu <= 114 arasında olmalı.'
-      exit 1
-
-  else
-      # Girilen sure koduna göre değişkenin önüne sıfır ekle.
-      if (( ${#sure_no} == 1 ))
-      then
-          sure=00$sure_no
-      elif (( ${#sure_no} == 2 ))
-      then
-          sure=0$sure_no
-      else
-          sure=$sure_no
-      fi
-  fi
-
-} # }}}
+#
 
 kuran_dinletimi() {
   local parca_suresi parca_suresi_n okuyan kaynak dinletilecek_sure
   local sure_adi sure_ayet_sayisi cuz yer
 
-  clear
-  export $(gawk -v sira=$sure '{if(NR==sira) {printf \
+  sure_no_denetle "$1"
+  export $(gawk -v sira=$sure_kod '{if(NR==sira) {printf \
     "sure_adi=%s\nsure_ayet_sayisi=%s\ncuz=%s\nyer=%s",$4,$2,$5,$6}}' \
     < ${VERI_DIZINI}/veriler/sure_bilgisi)
 
+  clear
   printf '%b%b\n\n' \
     "${RENK7}${RENK3}" \
     "${sure_adi}${RENK2} suresi dinletiliyor...${RENK0}"
 
   # Öncelikle kullanıcının girdiği dizinde dosya
   # var mı denetle. Yoksa çevrimiçi dinletime yönel.
-  if [[ -f ${YEREL_SURE_DIZINI}/$sure.mp3 ]]
+  if [[ -f ${YEREL_SURE_DIZINI}/$sure_kod.mp3 ]]
   then
-      dinletilecek_sure="${YEREL_SURE_DIZINI}/$sure.mp3"
+      dinletilecek_sure="${YEREL_SURE_DIZINI}/$sure_kod.mp3"
       kaynak='Yerel Dizin'
       okuyan='Yerel Okuyucu'
   else
@@ -81,7 +42,7 @@ kuran_dinletimi() {
             "${AD}" "${KURAN_OKUYAN}" >&2
           exit 1
       fi
-      dinletilecek_sure="http://www.listen2quran.com/listen/${KURAN_OKUYAN}/$sure.mp3"
+      dinletilecek_sure="http://www.listen2quran.com/listen/${KURAN_OKUYAN}/$sure_kod.mp3"
       kaynak='http://www.listen2quran.com'
   fi
 
@@ -92,10 +53,9 @@ kuran_dinletimi() {
   # parca_suresi_n değişkenine atar. (oynatici_yonetici.bash)
   oynatici_sure_al "${dinletilecek_sure}"
 
-
   printf '%b%b\n%b\n%b\n%b\n%b\n%b\n%b\n' \
     "${RENK7}${RENK2}" \
-    "Sure no     : ${RENK3} ${sure}${RENK2}" \
+    "Sure no     : ${RENK3} ${sure_kod}${RENK2}" \
     "Ayet sayısı : ${RENK3} ${sure_ayet_sayisi}${RENK2}" \
     "Cüz         : ${RENK3} ${cuz}${RENK2}" \
     "İndiği yer  : ${RENK3} ${yer}${RENK2}" \
@@ -107,36 +67,28 @@ kuran_dinletimi() {
 }
 
 kuran_dinlet() { # kuran_dinlet_yonetimi {{{
-  local sure_no="$2"
   local -a sureler
-
   renk_denetle
 
   case $1 in
-    secim) sure_no_denetimi; kuran_dinletimi ;;
+    secim) kuran_dinletimi "${2:-null}";;
     hatim)
       for ((i=1; i<=114; i++))
       do
-        sure_no=$i
-        sure_no_denetimi; kuran_dinletimi
+        kuran_dinletimi "$i"
         sleep 1
       done ;;
-
     rastgele)
       sure_no=$(( RANDOM % 114 ))
       (( ! sure_no )) && sure_no=114
-      sure_no_denetimi; kuran_dinletimi ;;
-
+      kuran_dinletimi "$sure_no" ;;
     gunluk)
       read -ra sureler <<<$SURELER
-
       for i in ${sureler[@]}
       do
-        sure_no=$i
-        sure_no_denetimi; kuran_dinletimi
+        kuran_dinletimi "$i"
         sleep 1
       done ;;
-
   esac
 } # }}}
 

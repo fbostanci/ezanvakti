@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 #
-#                           Ezanvakti Temel İşlevler Bileşeni 1.5
+#                           Ezanvakti Temel İşlevler Bileşeni
 #
 
 declare -r AD="@AD@"
@@ -63,7 +63,7 @@ acilisa_baslatici_ekle() {
 # Karar verme önceliği env olarak tanımlıysa RENK değişkenine verildi.
 # RENK null ise ayarlar dosyasından okunan RENK_KULLAN değerini kullanacak.
 #
-# Renk kullan sıfırsa renkleri sıfırla.
+# RENK_KULLAN=0 ise renkleri sıfırla.
 renk_denetle() {
   [[ ! -t 1 ]] || [[ ! $DISPLAY ]] && { RENK_KULLAN=0; RENK=0; }
     (( ! ${RENK:-RENK_KULLAN} )) && {
@@ -77,6 +77,47 @@ renk_denetle() {
       RENK7=''
       RENK8=''
     }
+}
+
+meal_denetle() {
+  if [[ -f ${YEREL_MEAL_DIZINI}/${MEAL_SAHIBI} ]]
+  then
+       MEAL="${YEREL_MEAL_DIZINI}/${MEAL_SAHIBI}"
+  elif [[ -f ${VERI_DIZINI}/mealler/${MEAL_SAHIBI} ]]
+  then
+      MEAL="${VERI_DIZINI}/mealler/${MEAL_SAHIBI}"
+  else
+      printf "${RENK3}${MEAL_SAHIBI} dosyası bulunamadı.${RENK0}\n" >&2
+      exit 1
+  fi
+}
+
+sure_no_denetle() {
+  sure_kod="$1"
+  if [[ -n ${sure_kod//[[:digit:]]/} ]]
+  then
+      printf '%s\n%s\n' \
+        "${AD}: hatalı sure_kodu: \`$sure_kod' " \
+        'Sure kodu olarak 1-114 arası sayısal bir değer giriniz.' >&2
+      exit 1
+  fi
+
+  # sure_kod 000001 gibiyse hata verme öndeki sıfırları sil, devam et.
+  # ayrıca 08, 09 sayı hatasını da çözüyor.
+  sure_kod="$(sed 's/^0*//' <<<$sure_kod)"
+  if (( sure_kod < 1 || sure_kod > 114 ))
+  then
+      printf '%s\n%s\n' \
+        "${AD}: hatalı sure_kodu: \`${sure_kod:-0}' " \
+        'Girilen sure kodu 1 <= sure_kodu <= 114 arasında olmalı.' >&2
+      exit 1
+  else
+      # Girilen sure koduna göre değişkenin önüne sıfır ekle.
+      case "${#sure_kod}" in
+        1) sure_kod=00$sure_kod ;;
+        2) sure_kod=0$sure_kod ;;
+      esac
+  fi
 }
 
 # Uçbirim pencere başlığını belirle.
@@ -148,8 +189,8 @@ gun_animsat() {
     fi
 
     case "${bildirim_ver}" in
-    "h") return 0 ;;
-    "e") # eğer ozel_ileti boş (null) dönmemişse bildirimi gönder.
+    h) return 0 ;;
+    e) # eğer ozel_ileti boş (null) dönmemişse bildirimi gönder.
             [[ -n ${ozel_ileti} ]] && {
               notify-send "${AD^}" "${ozel_ileti}" \
               -t $GUN_ANIMSAT"000" -i ${AD}

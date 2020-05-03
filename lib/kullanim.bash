@@ -17,9 +17,6 @@ betik_kullanimi() {
 
   ucbirim_basligi "yardim"
   echo -e "
-    ${B}--dinle${R} [-s,-o,-i,-a,-y,-c]
-        İstediğiniz zaman, istediğiniz vakte ait ezanı dinletir.
-
     ${B}-v, --vakitler${R}
         Toplu olarak günlük ezan vakitlerini görüntüler.
 
@@ -29,11 +26,24 @@ betik_kullanimi() {
         [7,30]
             7/30 günlük vakitleri görüntüler.
 
+        [--siradaki]
+            Sıradaki vakit ve vakte kalan süreyi görüntüler.
+
+        [--kerahat]
+            Kerahat vakitlerini görüntüler.
+
+        [--bayram]
+           Bayram namazı vakitlerini görüntüler.
+
         [--bildirim]
-            Vakit çıktılarını uçbirim yerine bildirim baloncuğuna yönlendirir.
+            Vakitler,kerahat ve sıradaki çıktılarını uçbirim yerine
+            bildirim baloncuğuna yönlendirir.
 
     ${B}--kuran${R} [-s <sure_kodu>, -r, -g, -h]
         Çevrimiçi olarak ya da yerel dizinden Kuran dinletir.
+
+    ${B}--dinle${R} [-s,-o,-i,-a,-y,-c]
+        İstediğiniz zaman, istediğiniz vakte ait ezanı dinletir.
 
     ${B}--sureler${R}
         Sureleri dinlemek için gerekli olan kod numaralarını

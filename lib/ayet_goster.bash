@@ -5,18 +5,7 @@
 #
 
 ayet_goster() {
-  renk_denetle
-
-  if [[ -f ${YEREL_MEAL_DIZINI}/${MEAL_SAHIBI} ]]
-  then
-       MEAL="${YEREL_MEAL_DIZINI}/${MEAL_SAHIBI}"
-  elif [[ -f ${VERI_DIZINI}/mealler/${MEAL_SAHIBI} ]]
-  then
-      MEAL="${VERI_DIZINI}/mealler/${MEAL_SAHIBI}"
-  else
-      printf "${RENK3}${MEAL_SAHIBI} dosyası bulunamadı.${RENK0}\n" >&2
-      exit 1
-  fi
+  renk_denetle; meal_denetle
 
   satir=$(( RANDOM % 6236 ))
   (( ! satir )) && satir=6236

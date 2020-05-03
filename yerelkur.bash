@@ -20,14 +20,14 @@
 # AD belirlenmemişse ezv-devel olarak kurar ve
 # kaldırırken de ezv-devel'i arar.
 #
+AD=${AD:-ezv-devel}
+bindir=$HOME/.local/bin
 
 [[ $(id -u) == 0 ]] && {
   printf '%s: root haklarıyla çalıştırılamaz.\n' "${0##*/}" >&2
   exit 1
 }
 
-AD=${AD:-ezv-devel}
-bindir=$HOME/bin
 
 case $1 in
   --kur|--install) eylem=install ;;
@@ -54,7 +54,7 @@ esac
     then
         b1=$(cut -d'|' -f1 <<<$b)
         b2=$(cut -d'|' -f2 <<<$b)
-        
+
         if ! hash $b1 2>/dev/null
         then
             if ! hash $b2 2>/dev/null

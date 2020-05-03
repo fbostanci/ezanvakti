@@ -5,66 +5,26 @@
 #
 
 ayet_araligi_goster() {
-  renk_denetle
+  renk_denetle; meal_denetle
 
-  local sure_kod=$1 ayet_kod=$2
+  local ayet_kod=$2 ayet_baslama ayet_bitis satir
   local sure_adi sure_baslama sure_ayet_sayisi int_ayet_kod
-  local ayet_baslama ayet_bitis satir
-
-  if [[ -f ${YEREL_MEAL_DIZINI}/${MEAL_SAHIBI} ]]
-  then
-      MEAL="${YEREL_MEAL_DIZINI}/${MEAL_SAHIBI}"
-  elif [[ -f ${VERI_DIZINI}/mealler/${MEAL_SAHIBI} ]]
-  then
-      MEAL="${VERI_DIZINI}/mealler/${MEAL_SAHIBI}"
-  else
-      printf '%s: %s meal dosyası bulunamadı.\n' \
-        "${AD}" "${MEAL_SAHIBI}" >&2
-      exit 1
-  fi
 
   if [[ -z ${ayet_kod} ]]
   then
       printf '%s: Kullanım: <sure_kodu> <ayet_aralığı>\n' "${AD}" >&2
       exit 1
   fi
-
-  if [[ -n ${sure_kod//[[:digit:]]/} ]]
-  then
-      printf '%s\n%s\n' \
-        "${AD}: hatalı sure_kodu: \`$sure_kod' " \
-        'Sure kodu olarak 1-114 arası sayısal bir değer giriniz.' >&2
-      exit 1
-
-  fi
-
-  # sure_kod 000001 gibiyse hata verme öndeki sıfırları sil, devam et.
-  # ayrıca 08, 09 sayı hatasını da çözüyor.
-  sure_kod="$(sed 's/^0*//' <<<$sure_kod)"
-  if (( sure_kod < 1 || sure_kod > 114 ))
-  then
-      printf '%s\n%s\n' \
-        "${AD}: hatalı sure_kodu: \`$sure_kod' " \
-        'Girilen sure kodu 1 <= sure_kodu <= 114 arasında olmalı.' >&2
-      exit 1
-
-  else
-      # Girilen sure koduna göre değişkenin önüne sıfır ekle.
-      if (( ${#sure_kod} == 1 ))
-      then
-          sure_kod=00$sure_kod
-      elif (( ${#sure_kod} == 2 ))
-      then
-          sure_kod=0$sure_kod
-      fi
-  fi
-
+  sure_no_denetle "$1"
+  # sure_kod ile ilişik surenin bilgilerini ilgili değişkenlere atadık.
   export $(gawk -v sira=$sure_kod '{if(NR==sira) {printf \
     "sure_adi=%s\nsure_baslama=%s\nsure_ayet_sayisi=%s\ncuz=%s\nyer=%s",$4,$3,$2,$5,$6}}' \
     < ${VERI_DIZINI}/veriler/sure_bilgisi)
 
   ayet_kod="$(sed 's/^0*//' <<<$ayet_kod)"
   int_ayet_kod=$(tr -d 0-9 <<<"$ayet_kod")
+  # int_ayet_kod; boşsa ayet, aralık olarak değil de
+  # tekil ayet numarası olarak girilmiş.
   if [[ -z $int_ayet_kod ]]
   then
       if (( ayet_kod > sure_ayet_sayisi ))
@@ -79,11 +39,14 @@ ayet_araligi_goster() {
             "${AD}" "${sure_adi}" >&2
           exit 1
       fi
-
+      # tekil ayet gösterimi için ayet_baslama ve ayet_bitis aynı oldu.
       ayet_baslama=$(( sure_baslama + ayet_kod ))
       ayet_bitis=$ayet_baslama
+
+  # int_ayet_kod '-' olarak dönüyorsa ayet aralığı var.
   elif [[ $int_ayet_kod = - ]]
   then
+      # ayet aralığı a-b ise ilk_sayi=a ve ikinci_sayi=b oldu.
       export $(gawk -F'-' '{printf "ilk_sayi=%d\nikinci_sayi=%d", $1,$2}' <<<$ayet_kod)
       if (( ilk_sayi > ikinci_sayi ))
       then

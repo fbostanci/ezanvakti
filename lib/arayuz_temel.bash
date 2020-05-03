@@ -47,22 +47,13 @@ arayuz_pid_denetle() {
   # p=4: eylem_menu
   local p="$1" ypid=$$
 
-  if (( p == 1 ))
-  then
-      p='arayuz'
-  elif (( p == 2 ))
-  then
-      p='arayuz2'
-  elif (( p == 3 ))
-  then
-      p='arayuz3'
-  elif (( p == 4 ))
-  then
-      p='eylem_menu'
-  else
-      printf '%s: desteklenmeyen istek: %s\n' "${AD}" "${p}" >&2
-      return 1
-  fi
+  case $p in
+    1) p='arayuz1' ;;
+    2) p='arayuz2' ;;
+    3) p='arayuz3' ;;
+    4) p='eylem_menu' ;;
+    *) printf '%s: desteklenmeyen istek: %s\n' "${AD}" "${p}" >&2; return 1 ;;
+  esac
 
   if [[ -f /tmp/.${AD}_yad_${p}.pid && \
         -n $(ps -p $( < /tmp/.${AD}_yad_${p}.pid) -o comm=) ]]
@@ -109,14 +100,14 @@ g_vakitleri_al() {
       v_kalan="$kalan_sure"
       vakit_bilgisi='<b>Güneş Doğuş Vakti</b>'
 
-  elif (( UNIXSAAT > gunes && UNIXSAAT <= kv_gunes ))
+  elif (( UNIXSAAT > gunes && UNIXSAAT < kv_gunes ))
   then
       bekleme_suresi $ogle_n; kalan
       v_ileti='Öğle ezanına kalan süre :'
       v_kalan="$kalan_sure"
       vakit_bilgisi='<b>Şimdi Kerahat Vakti 2</b>'
 
-  elif (( UNIXSAAT > kv_gunes && UNIXSAAT < kv_ogle ))
+  elif (( UNIXSAAT >= kv_gunes && UNIXSAAT < kv_ogle ))
   then
       bekleme_suresi $ogle_n; kalan
       v_ileti='Öğle ezanına kalan süre :'

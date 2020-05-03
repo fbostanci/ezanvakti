@@ -9,3 +9,4 @@ v7.2
 - [ ] arayuz_temel.bash kod temizliği
 - [ ] yapilandirma_yoneticisi.bash sekme içeriklerini ikili yap.
 - [ ] man dosya yazımı geliştir.
+- [ ] yeni gün yerine yarın sabah vaktini işleme al.
