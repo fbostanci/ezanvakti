@@ -11,43 +11,49 @@ siradaki_vakit_al() { # {{{
   then
       bekleme_suresi $sabah_n; kalan
       siradaki_vakit_adi="Sabah"
+      siradaki_ezan_vakti=$sabah_n
       siradaki_vakit_kalan="$kalan_sure"
 
   elif (( UNIXSAAT < ogle ))
   then
       bekleme_suresi $ogle_n; kalan
       siradaki_vakit_adi="Öğle"
+      siradaki_ezan_vakti=$ogle_n
       siradaki_vakit_kalan="$kalan_sure"
 
   elif (( UNIXSAAT < ikindi ))
   then
       bekleme_suresi $ikindi_n; kalan
       siradaki_vakit_adi="İkindi"
+      siradaki_ezan_vakti=$ikindi_n
       siradaki_vakit_kalan="$kalan_sure"
 
   elif (( UNIXSAAT < aksam ))
   then
       bekleme_suresi $aksam_n; kalan
       siradaki_vakit_adi="Akşam"
+      siradaki_ezan_vakti=$aksam_n
       siradaki_vakit_kalan="$kalan_sure"
 
   elif (( UNIXSAAT < yatsi ))
   then
       bekleme_suresi $yatsi_n; kalan
       siradaki_vakit_adi="Yatsı"
+      siradaki_ezan_vakti=$yatsi_n
       siradaki_vakit_kalan="$kalan_sure"
 
   elif  (( UNIXSAAT < yeni_gun ))
   then
       bekleme_suresi_yarin $ysabah_n; kalan
       siradaki_vakit_adi="Sabah (yarın)"
+      siradaki_ezan_vakti=$ysabah_n
       siradaki_vakit_kalan="$kalan_sure"
   fi
 }
 
 siradaki_vakit() {
   local istek="$1"
-  renk_denetle
+  siradaki_vakit_al; renk_denetle
 
   case $istek in
     siradaki)
@@ -83,7 +89,7 @@ kalan_sure() {
             $(( bekle / 3600 )) \
             $(( bekle % 3600 / 60 )) \
             $(( bekle % 60 )) \
-            "${siradaki_vakit_kalan}"
+            "${siradaki_ezan_vakti}"
     (( bekle-- ))
     sleep 1
   done

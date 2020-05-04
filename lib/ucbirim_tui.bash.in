@@ -14,7 +14,7 @@ ucbirim_basligi "Uçbirim arayüzü"
 
 main() {
     window "Ezanvakti 7.1 Uçbirim Arayüzü " "green"
-      append "$(date '+%d.%m.%Y  %H:%M:%S')" 
+      append "$(date '+%d.%m.%Y  %H:%M:%S')"
       append "${ULKE}"
       append "${ILCE}"
       addsep
@@ -31,7 +31,7 @@ main() {
       append "Yatsı  $yatsi_n"
     endwin
     col_right
- 
+
     window "Kerahat Vakitleri" "yellow" "%50" "black"
       append "$(kerahat_vakitleri conky)"
       append " "

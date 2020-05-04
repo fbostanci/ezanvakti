@@ -239,7 +239,7 @@ ezan_vakitlerini_al() {
       then
           simdiki='İmsak'
           vakit_saati_n=$ysabah_n
-          vakit_saati=$(( yeni_gun - $(date '+%s') + ysabah + EZAN_OKUNMA_SURESI_FARKI ))
+          vakit_saati=$(( $(date -d "tomorrow $ysabah_n" +%s) - $(date +%s) + EZAN_OKUNMA_SURESI_FARKI ))
       else
           simdiki='Yatsı'
           vakit_saati_n=$yatsi_n
@@ -258,7 +258,7 @@ ezan_vakitlerini_al() {
       fi
       vakit_ezani="${SABAH_EZANI}"
       vakit_saati_n=$ysabah_n
-      vakit_saati=$((yeni_gun - $(date '+%s') + ysabah + EZAN_OKUNMA_SURESI_FARKI ))
+      vakit_saati=$(( $(date -d "tomorrow $ysabah_n" +%s) - $(date +%s) + EZAN_OKUNMA_SURESI_FARKI ))
       ezan_okunsun_mu=${SABAH_EZANI_OKU}
   fi
 }
