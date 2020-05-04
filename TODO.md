@@ -4,9 +4,11 @@ TODO
 v7.2
 ----
 
+- [x] iftar.bash, imsak.bash bileşenlerini birleştir.
+- [x] siradaki.bash, kalan.bash kod temizliği/birleştir.
+- [x] conky.bash kod temizliği
+- [x] bilgi_goster.bash kod temizliği/ortak fonk.
 - [ ] Kuran oyanıtımı için özel yad penceresi tasarla.
-- [ ] bilgi_goster.bash kod temizliği/ortak fonk.
 - [ ] arayuz_temel.bash kod temizliği
-- [ ] yapilandirma_yoneticisi.bash sekme içeriklerini ikili yap.
 - [ ] man dosya yazımı geliştir.
-- [ ] yeni gün yerine yarın sabah vaktini işleme al.
+- [x] yeni gün yerine yarın sabah vaktini işleme al.

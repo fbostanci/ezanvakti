@@ -8,7 +8,7 @@ Son Güncelleme:  Thu, 23 Apr 2020 15:58:09 +0300
 
 <br>
 
-Ezanvakti 7.1 GNU/Linux için ezan vakti bildirici
+Ezanvakti 7.2 GNU/Linux için ezan vakti bildirici
 ====
 <br>
 

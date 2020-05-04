@@ -273,7 +273,7 @@ case $1 in
         ${EDITOR:-nano} "${EZANVAKTI_AYAR}" ;;
     esac ;;
   --kalan)
-    bilesen_yukle kalan
+    bilesen_yukle siradaki
     kalan_sure ;;
 #   --hutbe)
 #     bilesen_yukle cuma_hutbesi
