@@ -21,25 +21,9 @@ ezv_conky_imsak() {
       echo -e "İmsak : $sabah_n\nKalan : $kalan_sure" | \
       sed 's:saat:sa:;s:dakika:dk:;s:saniye:sn:'
   else
-      # Yarının sabah vakti ezanveri dosyasında var mı denetle önc..
-      if ! grep -qo "^$(date -d 'tomorrow' +%d.%m.%Y)" "${EZANVERI}"
-      then
-          if (( GUNCELLEME_YAP ))
-          then
-              bilesen_yukle guncelleyici
-              guncelleme_yap
-          else
-              printf '%s: %s dosyanızda yarına ait veri bulunmuyor.\n' \
-                "${AD}" "${EZANVERI_ADI}" >&2
-              exit 1
-          fi
-     fi
-     export $(gawk '{printf "sabah_n=%s", $2}' \
-       <(grep $(date -d 'tomorrow' +%d.%m.%Y) "${EZANVERI}"))
-     bekleme_suresi_yarin $sabah_n; kalan
-
-     echo -e "İmsak : $sabah_n (Yarın)\nKalan : $kalan_sure" | \
-       sed 's:saat:sa:;s:dakika:dk:;s:saniye:sn:'
+      bekleme_suresi_yarin $ysabah_n; kalan
+      echo -e "İmsak : $ysabah_n (Yarın)\nKalan : $kalan_sure" | \
+        sed 's:saat:sa:;s:dakika:dk:;s:saniye:sn:'
   fi
 }
 
@@ -50,27 +34,13 @@ ezv_conky_iftar() {
   then
       bekleme_suresi $aksam_n; kalan
       echo -e "İftar : $aksam_n\nKalan : $kalan_sure" | \
-      sed 's:saat:sa:;s:dakika:dk:;s:saniye:sn:'
+        sed 's:saat:sa:;s:dakika:dk:;s:saniye:sn:'
   else
-      # Yarının aksam vakti ezanveri dosyasında var mı denetle önc..
-      if ! grep -qo "^$(date -d 'tomorrow' +%d.%m.%Y)" "${EZANVERI}"
-      then
-          if (( GUNCELLEME_YAP ))
-          then
-              bilesen_yukle guncelleyici
-              guncelleme_yap
-          else
-              printf '%s: %s dosyanızda yarına ait veri bulunmuyor.\n' \
-                "${AD}" "${EZANVERI_ADI}" >&2
-              exit 1
-          fi
-     fi
-     export $(gawk '{printf "aksam_n=%s", $6}' \
-       <(grep $(date -d 'tomorrow' +%d.%m.%Y) "${EZANVERI}"))
-     bekleme_suresi_yarin $aksam_n; kalan
-
-     echo -e "İftar : $aksam_n (Yarın)\nKalan : $kalan_sure" | \
-       sed 's:saat:sa:;s:dakika:dk:;s:saniye:sn:'
+      export $(gawk '{printf "yaksam_n=%s", $6}' \
+        <(grep $(date -d 'tomorrow' +%d.%m.%Y) "${EZANVERI}"))
+      bekleme_suresi_yarin $yaksam_n; kalan
+      echo -e "İftar : $yaksam_n (Yarın)\nKalan : $kalan_sure" | \
+        sed 's:saat:sa:;s:dakika:dk:;s:saniye:sn:'
   fi
 }
 
@@ -79,7 +49,6 @@ imsak_bildirim() {
   "$(ezv_conky_imsak)" -i ${AD} \
   -t $BILGI_BILDIRIM_SURESI"000"
 }
-
 
 iftar_bildirim() {
   notify-send "${AD^} - iftar" \

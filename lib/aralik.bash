@@ -53,14 +53,12 @@ ayet_araligi_goster() {
           printf '%s: %s Suresi için ayet aralığını yanlış girdiniz.\n' \
             "${AD}" "${sure_adi}"  >&2
           exit 1
-
       fi
       if (( ikinci_sayi > sure_ayet_sayisi ))
       then
           printf '%s: %s Suresi %s ayetten oluşmaktadır.\n' \
             "${AD}" "${sure_adi}" "$sure_ayet_sayisi" >&2
           exit 1
-
       fi
       if (( ilk_sayi == 0 || ikinci_sayi == 0 ))
       then

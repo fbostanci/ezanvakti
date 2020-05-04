@@ -203,7 +203,7 @@ case $1 in
         bilesen_yukle conky
         imsak_bildirim ;;
       *)
-        bilesen_yukle imsak
+        bilesen_yukle iftarimsak
         ezv_imsak ;;
     esac ;;
   --iftar)
@@ -212,7 +212,7 @@ case $1 in
         bilesen_yukle conky
         iftar_bildirim ;;
       *)
-        bilesen_yukle iftar
+        bilesen_yukle iftarimsak
         ezv_iftar ;;
     esac ;;
   --conky)
