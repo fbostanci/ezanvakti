@@ -68,51 +68,43 @@ install: $(BETIKLER)
 
 	for l in lib/*.bash; \
 	do \
-		l_dosya="$$(basename $$l)"; \
-		$(INSTALL) -vm755 $$l $(DESTDIR)$(libdir)/$(AD)/$$l_dosya; \
+		$(INSTALL) -vm755 $$l $(DESTDIR)$(libdir)/$(AD); \
 	done
 
 	for v in data/veriler/*; \
 	do \
-		v_dosya="$$(basename "$$v")"; \
-		$(INSTALL) -vm644 "$$v" $(DESTDIR)$(datadir)/$(AD)/veriler/"$$v_dosya"; \
+		$(INSTALL) -vm644 "$$v" $(DESTDIR)$(datadir)/$(AD)/veriler; \
 	done
 
 	for i in data/ulkeler/*; \
 	do \
 		[[ -d "$$i" ]] && continue; \
-		i_dosya="$$(basename "$$i")"; \
-		$(INSTALL) -vm644 "$$i" $(DESTDIR)$(datadir)/$(AD)/ulkeler/"$$i_dosya"; \
+		$(INSTALL) -vm644 "$$i" $(DESTDIR)$(datadir)/$(AD)/ulkeler; \
 	done
 
 	for s in data/ulkeler/TÜRKİYE_ilceler/*; \
 	do \
-		s_dosya="$$(basename "$$s")"; \
-		$(INSTALL) -vm644 "$$s" $(DESTDIR)$(datadir)/$(AD)/ulkeler/TÜRKİYE_ilceler/"$$s_dosya"; \
+		$(INSTALL) -vm644 "$$s" $(DESTDIR)$(datadir)/$(AD)/ulkeler/TÜRKİYE_ilceler; \
 	done
 
 	for u in data/ulkeler/ABD_ilceler/*; \
 	do \
-		u_dosya="$$(basename "$$u")"; \
-		$(INSTALL) -vm644 "$$u" $(DESTDIR)$(datadir)/$(AD)/ulkeler/ABD_ilceler/"$$u_dosya"; \
+		$(INSTALL) -vm644 "$$u" $(DESTDIR)$(datadir)/$(AD)/ulkeler/ABD_ilceler; \
 	done
 
 	for a in data/ulkeler/ALMANYA_ilceler/*; \
 	do \
-		a_dosya="$$(basename "$$a")"; \
-		$(INSTALL) -vm644 "$$a" $(DESTDIR)$(datadir)/$(AD)/ulkeler/ALMANYA_ilceler/"$$a_dosya"; \
+		$(INSTALL) -vm644 "$$a" $(DESTDIR)$(datadir)/$(AD)/ulkeler/ALMANYA_ilceler; \
 	done
 
 	for k in data/ulkeler/KANADA_ilceler/*; \
 	do \
-		k_dosya="$$(basename "$$k")"; \
-		$(INSTALL) -vm644 "$$k" $(DESTDIR)$(datadir)/$(AD)/ulkeler/KANADA_ilceler/"$$k_dosya"; \
+		$(INSTALL) -vm644 "$$k" $(DESTDIR)$(datadir)/$(AD)/ulkeler/KANADA_ilceler; \
 	done
 
 	for e in  ezanlar/*.ogg; \
 	do \
-		e_dosya=$$(basename "$$e"); \
-		$(INSTALL) -vm644 $$e $(DESTDIR)$(sounddir)/$(AD)/$$e_dosya; \
+		$(INSTALL) -vm644 $$e $(DESTDIR)$(sounddir)/$(AD); \
 	done
 
 	for m in 16 22 32 48 64 96; \
@@ -122,8 +114,7 @@ install: $(BETIKLER)
 
 	for t in data/mealler/*; \
 	do \
-		t_dosya=$$(basename $$t); \
-		$(INSTALL) -vm644 $$t $(DESTDIR)$(datadir)/$(AD)/mealler/$$t_dosya; \
+		$(INSTALL) -vm644 $$t $(DESTDIR)$(datadir)/$(AD)/mealler; \
 	done
 
 uninstall:

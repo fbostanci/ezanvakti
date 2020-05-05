@@ -61,7 +61,7 @@ Genel Özellikleri
 *  3 farklı okuyucu seçimli Kuran dinletme. (--kuran <seçenek>)<br>
    Seçenekler:<br>
    <pre>
-   seçim: (-s <sure_no>)
+   seçim: (-s sure_no)
    rastgele: (-r)
    hatim: (-h)
    günlük: (-g)</pre>
