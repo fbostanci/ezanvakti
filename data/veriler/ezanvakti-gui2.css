@@ -1,4 +1,8 @@
-/* https://developer.gnome.org/gtk3/stable/gtk-migrating-GtkStyleContext-css.html */
+/* https://developer.gnome.org/gtk3/stable/chap-css-overview.html */
+
+
+/*Ezanvakti arayüz 2 css dosyası*/
+
 
 /* Renk kodları için yad --color komutuyla
  * açılan paleti kullanabilirsiniz.
@@ -11,6 +15,7 @@
 * {
     background-color: #403E3B;
     color: #F1E7D3;
+    font: 16px Arial, sans-serif;
 }
 
 /*Kutucukların iç bölgesi için
@@ -22,4 +27,9 @@
   color: #F5AD0E;
   background: #46443F;
   font: 16px Arial, sans-serif;
+}
+
+button, entry {
+  /*color: #ff00ea;*/
+  background: #403E3B;
 }

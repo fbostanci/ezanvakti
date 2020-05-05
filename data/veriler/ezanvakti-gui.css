@@ -1,0 +1,26 @@
+/* https://developer.gnome.org/gtk3/stable/chap-css-overview.html */
+
+
+/*Ezanvakti arayüz 1 css dosyası*/
+
+
+/* Renk kodları için yad --color komutuyla
+ * açılan paleti kullanabilirsiniz.
+*/
+
+/*YAD Penceresi için
+ * background-color: artalan rengi
+ * color: yazı rengi
+*/
+* {
+    background-color: #46443F;
+    color: #F1E7D3;
+    font: 15px Arial, sans-serif;
+}
+
+
+button, entry {
+  /*color: #ff00ea;*/
+  background: #46443F;
+  font: 12px Arial, sans-serif;
+}

@@ -221,31 +221,31 @@ RENK8='\033[0;1m'
 ARAYUZ_CIZGI_SIMGESI='@'
 
 # Arayüz çizgi karakter uzunluğu
-ARAYUZ_CIZGI_UZUNLUGU=26
+ARAYUZ_CIZGI_UZUNLUGU=25
 
 # Arayüz tarih ve saat rengi
-ARAYUZ_TARIH_SAAT_RENGI='#5c3566'
+ARAYUZ_TARIH_SAAT_RENGI='#E9B96E'
 
 # Arayüz ilçe / ülke rengi
-ARAYUZ_KONUM_RENGI='#5c3566'
+ARAYUZ_KONUM_RENGI='#E9B96E'
 
 # Arayüz çizgi rengi
-ARAYUZ_CIZGI_RENGI='#3465a4'
+ARAYUZ_CIZGI_RENGI='#729FCF'
 
 # Arayüz şimdiki vakit rengi
-ARAYUZ_SIMDIKI_VAKIT_RENGI='#4e9a06'
+ARAYUZ_SIMDIKI_VAKIT_RENGI='#73D216'
 
 # Arayüzdeki vakitlerin rengi
-ARAYUZ_VAKITLER_RENGI='#ce5c00'
+ARAYUZ_VAKITLER_RENGI='#F57900'
 
 # Arayüzdeki seçili vakit rengi
-ARAYUZ_SECILI_VAKIT_RENGI='#8ae234'
+ARAYUZ_SECILI_VAKIT_RENGI='#8AE234'
 
 # Arayüzde sıradaki vakte kalan süre bilgisi rengi
-ARAYUZ_KALAN_SURE_RENGI='#8f5902'
+ARAYUZ_KALAN_SURE_RENGI='#E9B96E'
 
 # Arayüz seçke adları rengi
-ARAYUZ_SECKE_ADLARI_RENGI='#9c72f6'
+ARAYUZ_SECKE_ADLARI_RENGI='#BABDB6'
 
 # Metin kutusu arka plan rengi
 ARKAPLAN_RENGI='#000000'
@@ -265,7 +265,7 @@ YAZI_RENGI='#FFBD4D'
 HICRI_TARIH_DUZELTME=0
 
 # Printf arayuz yazı biçimi
-GELISMIS_ARAYUZ_BICIMI='%-107s%s\n%s\n%s\n\t\t\t\t%s\n%s\n\n%s\n\n\t\t\t %s\n\t\t\t %s'
+GELISMIS_ARAYUZ_BICIMI='%-94s%s\n%s\n%s\n\t\t\t\t%s\n%s\n\n%s\n\n\t\t\t %s\n\t\t\t %s'
 
 # Printf conky çıktısı biçimi
 CONKY_BICIMI='%-14s%s\n%-15s%s\n%-17s%s\n%-17s%s\n%-14s%s\n%-18s%s\n'

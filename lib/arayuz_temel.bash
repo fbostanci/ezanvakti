@@ -10,6 +10,28 @@ then
     exit 1
 fi
 
+# --arayuz css dosyası
+if [[ -f ${EZANVAKTI_DIZINI}/ezanvakti-gui.css ]]
+then
+    EZV_CSS="${EZANVAKTI_DIZINI}/ezanvakti-gui.css"
+else
+    EZV_CSS="${VERI_DIZINI}/veriler/ezanvakti-gui.css"
+fi
+# --arayuz2 css dosyası
+if [[ -f ${EZANVAKTI_DIZINI}/ezanvakti-gui2.css ]]
+then
+    EZV_CSS2="${EZANVAKTI_DIZINI}/ezanvakti-gui2.css"
+else
+    EZV_CSS2="${VERI_DIZINI}/veriler/ezanvakti-gui2.css"
+fi
+# --arayuz3 css dosyası
+if [[ -f ${EZANVAKTI_DIZINI}/ezanvakti-gui3.css ]]
+then
+    EZV_CSS3="${EZANVAKTI_DIZINI}/ezanvakti-gui3.css"
+else
+    EZV_CSS3="${VERI_DIZINI}/veriler/ezanvakti-gui3.css"
+fi
+
 sure_listesi='!1-Fatiha!2-Bakara!3-Al-i İmran!4-Nisa!5-Maide!6-Enam!7-Araf!8-Enfal!9-Tevbe!10-Yunus'
 sure_listesi+='!11-Hud!12-Yusuf!13-Rad!14-İbrahim!15-Hicr!16-Nahl!17-İsra!18-Kehf!19-Meryem!20-Taha'
 sure_listesi+='!21-Enbiya!22-Hac!23-Müminun!24-Nur!25-Furkan!26-Şuara!27-Neml!28-Kasas!29-Ankebut'

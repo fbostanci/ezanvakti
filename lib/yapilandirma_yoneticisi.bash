@@ -4,6 +4,13 @@
 #
 #
 
+# --config --gui css dosyası
+if [[ -f ${EZANVAKTI_DIZINI}/ezanvakti-config.css ]]
+then
+    EZV_CSS4="${EZANVAKTI_DIZINI}/ezanvakti-config.css"
+else
+    EZV_CSS4="${VERI_DIZINI}/veriler/ezanvakti-config.css"
+fi
 yapilandirma() {
   local d1 d2 d3 d4 d5 d6 d7 d8 d9 d0 ds ayr1 ayr2 ayr3 ayr4
   local _GUNCELLEME_YAP _OYNATICI_DURAKLAT _EZAN_DUASI_OKU _RENK_KULLAN _GUNCELLEME_GEREKLI
@@ -129,7 +136,7 @@ yad --notebook --key=190707 \
 --tab="Ezanveri Ayarları" --tab="Ezan Ayarları" \
 --tab="Bildirim Ayarları" --tab="Renk Ayarları" \
 --fixed --center --tab-pos=top --buttons-layout='spread' \
---window-icon=${AD} \
+--window-icon=${AD} --gtkrc="${EZV_CSS4}" \
 --button='gtk-home:171' --button='yad-open:172' \
 --button='yad-save:174' --button='yad-quit:121'
 
