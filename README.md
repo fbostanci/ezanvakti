@@ -50,16 +50,21 @@ Genel Özellikleri
 *  Cuma günü isteğe bağlı sela okunması (süre ayarlı)
 *  Sistem açılışında 3 farklı kip<br>
    <pre>
-    1: beş vakit (normal kip)
-    2: ramazan (yalnızca iftar ve imsak vakitlerinde ezan  okunur.)
+    1: beş vakit (öntanımlı kip)
+    2: ramazan (yalnızca iftar ve imsak vakitlerinde ezan okunur.)
     0: kapalı (arkada çalışmaz.)</pre>
 *  Her vakit için farklı makamda ezan ve ezan duası.
 *  Vakit ezanı okunurken desteklenen müzik oynatıcıyı ezan bitimine kadar duraklatma.<br>
    <pre>Desteklenen oynatıcılar: Spotify, Deadbeef, Clementine, Amarok, Rhythmbox,
                             Aqualung, Audacious, Banshee, Exaile, Cmus,
                             Moc, Qmmp, Juk</pre>
-*  3 farklı okuyucu seçimli Kuran dinletme. (--kuran)<br>
-   Ayrıca hatim, rastgele, seçim ya da kullanıcının belirlediği sure dizisini dinletme kipleri
+*  3 farklı okuyucu seçimli Kuran dinletme. (--kuran <seçenek>)<br>
+   Seçenekler:<br>
+   <pre>
+   seçim: (-s <sure_no>)
+   rastgele: (-r)
+   hatim: (-h)
+   günlük: (-g)</pre>
 *  Sureleri; sure adı, ayet sayısı, sure numarası, cüz no ve indiği yer şeklinde listeleme. (--sureler)
 *  İstenen surenin istenen ayet aralığını gösterme. (--aralik)
 *  40 hadisten rastgele bir hadisi uçbirimden ya da bildirim baloncuğunda gösterme. (--hadis)

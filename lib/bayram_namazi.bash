@@ -5,6 +5,7 @@
 #
 
 bayram_namazi_vakti() {
+  echo "diyanet içerik sunduğu zaman güncellenecek"; exit 1
   local ulke_kodu sehir_kodu ilce_kodu ramazan_bt kurban_bt ramazan_nv kurban_nv
   renk_denetle
 
@@ -40,14 +41,14 @@ bayram_namazi_vakti() {
     'için bayram namazı vakitleri alınıyor...' "${RENK0}"
 
   # internet erişimini denetle.
-  if ! ping -q -c 1 -W 1 google.com > /dev/null 2>&1
+  if ! internet_erisimi_var_mi
   then
       printf '\n%b\n' \
         "${RENK7}${RENK3}İnternet erişimi algılanamadı.${RENK0}"
       exit 1
   fi
 
-  indirici "https://ezanvakti.herokuapp.com/bayram?ilce=${ilce_kodu}" | \
+  indirici "${ilce_kodu}" | \
   sed 's:,:\n:g;s:"::g;s:[{}]::g'| sed 's:\::=:'  > /tmp/ezv-bayram-vakitleri-$$
 
 

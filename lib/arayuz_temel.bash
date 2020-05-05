@@ -282,21 +282,6 @@ g_secim_goster() {
 }
 
 pencere_bilgi() {
-
-  if [[ $1 =~ ^http.* ]]
-  then
-      # internet erişimini denetle.
-      if ! internet_erisimi_var_mi
-      then
-          return 1
-      fi
-
-  elif [[ ! -f ${1} ]]
-  then
-      printf '%s: istenilen ses dosyası -> %s <- bulunamadı.\n' "${AD}" "${1}" >&2
-      return 1
-  fi
-
   # verilen ses dosyasının süresini alır. (oynatici_yonetici.bash)
   # $parca_suresi = saniye cinsinden süre
   # $parca_suresi_n = sürenin sa,dk,ve sn'ye çevrilmiş hali

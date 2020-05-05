@@ -19,33 +19,7 @@ kuran_dinletimi() {
     "${RENK7}${RENK3}" \
     "${sure_adi}${RENK2} suresi dinletiliyor...${RENK0}"
 
-  # Öncelikle kullanıcının girdiği dizinde dosya
-  # var mı denetle. Yoksa çevrimiçi dinletime yönel.
-  if [[ -f ${YEREL_SURE_DIZINI}/$sure_kod.mp3 ]]
-  then
-      dinletilecek_sure="${YEREL_SURE_DIZINI}/$sure_kod.mp3"
-      kaynak='Yerel Dizin'
-      okuyan='Yerel Okuyucu'
-  else
-      # Seçilen okuyucu koduna göre okuyucunun tam adını yeni değere ata.
-      if [[ ${KURAN_OKUYAN} = AlGhamdi ]]
-      then
-          okuyan='Saad el Ghamdi'
-      elif [[ ${KURAN_OKUYAN} = AsShatree ]]
-      then
-          okuyan='As Shatry'
-      elif [[ ${KURAN_OKUYAN} = AlAjmy ]]
-      then
-          okuyan='Ahmad el Ajmy'
-      else
-          printf '%s: Deskteklenmeyen KURAN_OKUYAN adı: %s\n' \
-            "${AD}" "${KURAN_OKUYAN}" >&2
-          exit 1
-      fi
-      dinletilecek_sure="http://www.listen2quran.com/listen/${KURAN_OKUYAN}/$sure_kod.mp3"
-      kaynak='http://www.listen2quran.com'
-  fi
-
+  kuran_okuyan_denetle "$sure_kod"
   bilesen_yukle oynatici_yonetici
   ucbirim_basligi "${sure_adi} Suresi"
 
@@ -91,6 +65,5 @@ kuran_dinlet() { # kuran_dinlet_yonetimi {{{
       done ;;
   esac
 } # }}}
-
 
 # vim: set ft=sh ts=2 sw=2 et:

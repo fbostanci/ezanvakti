@@ -7,8 +7,12 @@
 
 [[ ! -x $(type -p jq)   ]] && { echo "jq gerekli"; exit 1; }
 [[ ! -x $(type -p wget) ]] && { echo "wget gerekli"; exit 1; }
-mkdir -p ulkeler
-wget -q https://ezanvakti.herokuapp.com/ulkeler -O -| jq '.[] | (.UlkeAdi, .UlkeID)' | paste -d, - - | tr -d '"' > ulkeler/AAA-ULKELER
+[[ ! -d ulkeler ]] && mkdir ulkeler
+
+wget -q "https://namazvakitleri.diyanet.gov.tr/tr-TR" -O - | \
+  sed -n '/<select class="country-select region-select".*>/,/<\/select>/p'| \
+  sed -n 's:<option value="\(.*\)">\(.*\)</option>:\2,\1:p' | \
+  sed -e 's:[^[:print:]]::g' -e 's:^[[:blank:]]*::' -e 's:\&#220\;:Ü:' > ulkeler/AAA-ULKELER
 
 toplam=$(wc -l < ulkeler/AAA-ULKELER)
 n=1

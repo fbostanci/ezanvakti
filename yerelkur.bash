@@ -83,11 +83,7 @@ esac
 }
 
 make clean
-make PREFIX=$HOME \
-     bindir=${bindir} \
-     icondir=$HOME/.local/share/icons/hicolor \
-     appdeskdir=$HOME/.local/share/applications \
-     AD=${AD} ${eylem}
+make PREFIX=$HOME/.local bindir=${bindir} AD=${AD} ${eylem}
 
 gtk-update-icon-cache -f -t $HOME/.local/share/icons/hicolor
 xdg-desktop-menu forceupdate

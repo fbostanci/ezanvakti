@@ -23,7 +23,6 @@ sounddir       = $(PREFIX)/share/sounds
 icondir        = $(PREFIX)/share/icons/hicolor
 appdeskdir     = $(PREFIX)/share/applications
 
-
 ifeq "$(DUZELTME)" ""
 	DUZELTME = $(shell date +%Y%m%d)
 endif
@@ -50,7 +49,7 @@ install: $(BETIKLER)
 	$(INSTALL) -vd $(DESTDIR)$(bindir)
 	$(INSTALL) -vd $(DESTDIR)$(libdir)/$(AD)
 	$(INSTALL) -vd $(DESTDIR)$(sysconfdir)
-	$(INSTALL) -vd $(DESTDIR)$(datadir)/$(AD)/{veriler,mealler,simgeler,ulkeler{,/TÜRKİYE_ilceler,/ABD_ilceler,/ALMANYA_ilceler,/KANADA_ilceler}}
+	$(INSTALL) -vd $(DESTDIR)$(datadir)/$(AD)/{veriler,mealler,simgeler,ulkeler{,/TÜRKİYE,/ABD,/ALMANYA,/KANADA}_ilceler}
 	$(INSTALL) -vd $(DESTDIR)$(sounddir)/$(AD)
 	$(INSTALL) -vd $(DESTDIR)$(completionsdir)
 	$(INSTALL) -vd $(DESTDIR)$(mandir)/man{1,5}
@@ -81,6 +80,7 @@ install: $(BETIKLER)
 
 	for i in data/ulkeler/*; \
 	do \
+		[[ -d "$$i" ]] && continue; \
 		i_dosya="$$(basename "$$i")"; \
 		$(INSTALL) -vm644 "$$i" $(DESTDIR)$(datadir)/$(AD)/ulkeler/"$$i_dosya"; \
 	done
