@@ -23,6 +23,8 @@ sounddir       = $(PREFIX)/share/sounds
 icondir        = $(PREFIX)/share/icons/hicolor
 appdeskdir     = $(PREFIX)/share/applications
 
+ILCELI_ULKELER = TÜRKİYE ABD ALMANYA KANADA
+
 ifeq "$(DUZELTME)" ""
 	DUZELTME = $(shell date +%Y%m%d)
 endif
@@ -82,24 +84,12 @@ install: $(BETIKLER)
 		$(INSTALL) -vm644 "$$i" $(DESTDIR)$(datadir)/$(AD)/ulkeler; \
 	done
 
-	for s in data/ulkeler/TÜRKİYE_ilceler/*; \
+	for ulke in $(ILCELI_ULKELER); \
 	do \
-		$(INSTALL) -vm644 "$$s" $(DESTDIR)$(datadir)/$(AD)/ulkeler/TÜRKİYE_ilceler; \
-	done
-
-	for u in data/ulkeler/ABD_ilceler/*; \
-	do \
-		$(INSTALL) -vm644 "$$u" $(DESTDIR)$(datadir)/$(AD)/ulkeler/ABD_ilceler; \
-	done
-
-	for a in data/ulkeler/ALMANYA_ilceler/*; \
-	do \
-		$(INSTALL) -vm644 "$$a" $(DESTDIR)$(datadir)/$(AD)/ulkeler/ALMANYA_ilceler; \
-	done
-
-	for k in data/ulkeler/KANADA_ilceler/*; \
-	do \
-		$(INSTALL) -vm644 "$$k" $(DESTDIR)$(datadir)/$(AD)/ulkeler/KANADA_ilceler; \
+		for ilce in data/ulkeler/"$$ulke"_ilceler/*; \
+		do \
+			$(INSTALL) -vm644 "$$ilce" $(DESTDIR)$(datadir)/$(AD)/ulkeler/"$$ulke"_ilceler; \
+		done \
 	done
 
 	for e in  ezanlar/*.ogg; \
