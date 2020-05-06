@@ -42,7 +42,7 @@ strng=$(yad --form --text "$(printf "${GELISMIS_ARAYUZ_BICIMI}" \
 ${secim_listesi} \
 --field="<span foreground=\'${ARAYUZ_SECKE_ADLARI_RENGI}\'>Başlatıcı</span>:CE" \
 "${tamamlama_listesi}" --button='yad-ok:150' --button="yad-close:121" \
---image=${AD} --window-icon=${AD} --title "${AD^}" --center --fixed --gtkrc="${EZV_CSS}")
+${simge_goster} --window-icon=${AD} --title "${AD^}" --center --fixed --gtkrc="${EZV_CSS}")
 
 donus=$(echo $?)
 
@@ -215,11 +215,6 @@ then
         bilesen_yukle hakkinda
         g_hakkinda; arayuz
 
-    elif [[ $str = arayuz2 ]]
-    then
-        bilesen_yukle arayuz2
-        arayuz2; arayuz
-
     elif [[ $str = yardım ]]
     then
         bilesen_yukle kullanim
@@ -228,7 +223,7 @@ then
         g_secim_goster; temizlik
         arayuz
 
-    elif grep -q [0-9] <<<$str
+    elif grep -q '[0-9]' <<<$str
     then
         sure=$(cut -d'-' -f1 <<<$str)
 
@@ -236,37 +231,12 @@ then
         then
             ozel_pencere
         else
-            if (( ${#sure} == 1 ))
-            then
-                sure_sifirli=00$sure
-            elif (( ${#sure} == 2 ))
-            then
-                sure_sifirli=0$sure
-            else
-                sure_sifirli=$sure
-            fi
-
-            if [[ -f "${YEREL_SURE_DIZINI}/$sure_sifirli.mp3" ]]
-            then
-                okuyan='Yerel Okuyucu'
-                dinletilecek_sure="${YEREL_SURE_DIZINI}/$sure_sifirli.mp3"
-
-            elif [[ ${KURAN_OKUYAN} = AlGhamdi ]]
-            then
-                okuyan='Saad el Ghamdi'
-                dinletilecek_sure="http://www.listen2quran.com/listen/${KURAN_OKUYAN}/$sure_sifirli.mp3"
-            elif [[ ${KURAN_OKUYAN} = AsShatree ]]
-            then
-                okuyan='As Shatry'
-                dinletilecek_sure="http://www.listen2quran.com/listen/${KURAN_OKUYAN}/$sure_sifirli.mp3"
-            elif [[ ${KURAN_OKUYAN} = AlAjmy ]]
-            then
-                okuyan='Ahmad el Ajmy'
-                dinletilecek_sure="http://www.listen2quran.com/listen/${KURAN_OKUYAN}/$sure_sifirli.mp3"
-            else
-                printf '%s: Desteklenmeyen KURAN_OKUYAN adı: %s\n' "${AD}" "${KURAN_OKUYAN}" >&2
-                exit 1
-            fi
+            # $sure değerini denetleyip
+            # sure_kod değişkenine atayacak. (temel_islevler.bash)
+            sure_no_denetle "$sure"
+            # okuyan, kaynak, dinletilecek_sure
+            # değerlerini bu fonksiyon gönderiyor. (temel_islevler.bash)
+            kuran_okuyan_denetle "$sure_kod"
         fi
 
         bilesen_yukle kuran_dinletici

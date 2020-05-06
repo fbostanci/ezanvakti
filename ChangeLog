@@ -3,6 +3,30 @@
 
 
 /×××××××××××××××××××××××××××××
+× Ezanvakti 7.2
+×××××××××××××××××××××××××××××/
+2020-05-xx Fatih BOSTANCI <ironic@yaani.com>
+
+ * Yatsı vaktinden sonra artık yarının sabah vakti hesaplanıyor.
+ * listele.bash: Uygulama dosya konumları listeleyici. (--listele)
+ * YAD arayüzleri ve yapılandırma yöneticisi için ayrı ayrı css dosyası
+    kullanabilme.
+    -> ezanvakti-gui.css: arayüz1 css dosyası
+    -> ezanvakti-gui2.css: arayüz2 css dosyası
+    -> ezanvakti-gui3.css: arayüz3 css dosyası
+    -> ezanvakti-config.css yapılandırma yoneticisi css dosyası
+ * YAD css dosyası kullanımıyla birlikte arayüzlerde yazı tipi ve boyutu
+    farklılığından oluşan kayma sorunu çözüldü.
+ * iftarimsak.bash: iftar.bash ve imsak.bash bileşenleri birleştirildi.
+ * kalan.bash: siradaki.bash ile birleştirildi.
+ * YAD arayüz ve arayüz3 pencerelerinde simge göster/gösterme seçimi
+   -> ARAYUZ_SIMGE_GOSTER değeri.
+ * Makefile geliştirmeleri.
+ * Tüm ülke, şehir, ilçe dosyaları güncellendi.
+ * Bir çok kod geliştirmesi/temizlik yapıldı.
+
+
+/×××××××××××××××××××××××××××××
 × Ezanvakti 7.1
 ×××××××××××××××××××××××××××××/
 2020-04-23 Fatih BOSTANCI <ironic@yaani.com>
@@ -162,7 +186,7 @@
  *  Surelerin listelenmesinde sure adı ve ayet sayısı yanına cüz no indiği yer
     bilgileri de eklendi.
  *  Oynatici_duraklat: Juk ve Spotify desteği
- *  Oynatici_duraklat artık sadece uygulama müzik çaldığında durdurma yapıyor.
+ *  Oynatici_duraklat: artık sadece uygulama müzik çaldığında durdurma yapıyor.
  *  Makefile geliştirmeleri.
  *  Uygulama kurulurken uygulamanın adını değiştirebilme (make ile).
  *  Man dosyası iki parçaya ayrıldı ve güncellendi.
@@ -196,10 +220,12 @@
  *  Uygulama geneli uçbirim çıktıları için renk kullanma/kullanmama seçimi yapılabilmesi
  *  Renk kodları artık yapılandırma dosyasından okunuyor ve renk özelleştirmeleri yapılabilir.
  *  Renk kodları için özel betik eklendi. (/usr/share/ezanvakti/bilesenler/renk_ogren)
- *  Gelişmiş arayüzle tümleşik çalışan özel Kuran dinleme penceresi eklendi. (Kuran dinle listesi 000-Özel Pencere girdisi ile başlatılıyor.)
+ *  Gelişmiş arayüzle tümleşik çalışan özel Kuran dinleme penceresi eklendi. 
+     (Kuran dinle listesi 000-Özel Pencere girdisi ile başlatılıyor.)
  *  Yapılandırma yöneticisi çeşitli geliştirme ve yeniliklerle yeni sürüme yükseltildi.
  *  Aylık ve haftalık vakitlerin listelenebilmesi (--vakitler --aylik/30 ve --vakitler --haftalik/7 )
- *  Artık root dizininden de ayarlar dosyası okunduğu için sürümler arası geçişlerde ayarlar dosyasi silinmesi zorunlu değil.
+ *  Artık root dizininden de ayarlar dosyası okunduğu için sürümler arası 
+     geçişlerde ayarlar dosyasi silinmesi zorunlu değil.
      Eksik ayarlar için öntanımlı değerler kullanılacak.
  *  Unity menü desteği
  *  Uygulama launchpad deposuna taşındı: (https://launchpad.net/~fbostanci/+archive/distroguide)
@@ -274,7 +300,8 @@
     desteklenenler: ( Amarok, Audacious, Aqualunq, Banshee, Clementine, Deadbeef, Exaile, Rhythmbox )
  *  Betik  kurulumla birlikte otomatik olarak  başlangıca ekleniyor.
  *  Arayüzlerde Güneş doğuş vakti gösterimi
- *  Otomatik ezanveri güncelleme artık açık geliyor. Ayrıca ezanveri dosyasının olmadığı ya da güncel olmadığı durumlar için de destekleniyor.
+ *  Otomatik ezanveri güncelleme artık açık geliyor. Ayrıca ezanveri dosyasının
+     olmadığı ya da güncel olmadığı durumlar için de destekleniyor.
  *  Conky çıktısı düzenlemeleri
  *  Çevrimiçi kuran dinletiminde kullanılan sitenin yaptığı sunucu değişikliği betiğe uygulandı.
  *  Kod geliştirmeleri ve küçük hataların düzeltimi
@@ -299,7 +326,7 @@
  *  Gelişmiş ve basit arayüz
  *  Gelişmiş arayüz için menü başlatıcı
  *  Güncel man dosyası
- *  Çeşitli düzenlemeler 
+ *  Çeşitli düzenlemeler
 
 
 /×××××××××××××××××××××××××××××
@@ -335,12 +362,14 @@
 
  *  Günlük ezan vakitlerini kalan sürelerle birlikte görüntüleme
  *  Kuran' ın Türkçe çevirilerini kullanarak rastgele bir ayet gösterme
- *  Diyanet sitesindeki "Bunları biliyor musunuz?" bölümünden rastgele bir soru ve sorunun yanıtını gösterme
+ *  Diyanet sitesindeki "Bunları biliyor musunuz?" bölümünden
+     rastgele bir soru ve sorunun yanıtını gösterme
  *  40 hadis ten rastgele bir hadis seçerek gösterme
  *  Esma-ül Hüsna' dan rastgele bir ad seçip gösterme
  *  Ezanlar artık saniyesi saniyesine okuyor.
  *  Ayrıntılı bir man dosyası
- *  Ezan vakitlerinin yer aldığı dosyayı, diyanet in sitesine bağlanarak aylık bazda içeriği alarak kendini güncelleme
+ *  Ezan vakitlerinin yer aldığı dosyayı, diyanet in sitesine bağlanarak
+     aylık bazda içeriği alarak kendini güncelleme
  *  Yapılandırma dosyasından ayarları okuma ve çeşitli özelleştirmeler
  *  Çevrimiçi kuran dinletimi için artık quranlisten.com sitesini kullanıyor.
  *  Kuran dinletiminde rastgele sure ve hatim kipi
@@ -408,7 +437,7 @@
 
  *  İftar saati ve iftara kalan süreyi gösterme desteği eklendi.
  *  Ramazan ayı için sadece imsak ve iftar da bildirim yapan özel bir kip eklendi.
- *  Conky için de iftar saatini ve iftara kalan süreyi gösterme eklendi. 
+ *  Conky için de iftar saatini ve iftara kalan süreyi gösterme eklendi.
 
 
 /×××××××××××××××××××××××××××××
@@ -421,7 +450,7 @@
  *  İstediğiniz herhangi bir zamanda, istediğiniz makamın ezanını dinleme özelliği eklendi.
  *  Yardım bölümü eklendi.
  *  Conky profilinde günlük vakitlerin gösterimi için özel çıktı
-  
+
 
 /×××××××××××××××××××××××××××××
 × Ezanvakti 1.0

@@ -253,7 +253,11 @@ ARKAPLAN_RENGI='#000000'
 # Metin kutusu yazı rengi
 YAZI_RENGI='#FFBD4D'
 
-
+# Arayüz ve arayüz3 pencerelerinde
+# ezanvakti simgesi
+# gösterilmesi için: 1
+# gösterilmemesi için: 0
+ARAYUZ_SIMGE_GOSTER=1
 #                           #
 #*****Gelişmiş Ayarlar******#
 #                           #

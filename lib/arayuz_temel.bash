@@ -32,6 +32,13 @@ else
     EZV_CSS3="${VERI_DIZINI}/veriler/ezanvakti-gui3.css"
 fi
 
+if (( ARAYUZ_SIMGE_GOSTER ))
+then
+    simge_goster="--image=${AD}"
+else
+    simge_goster=''
+fi
+
 sure_listesi='!1-Fatiha!2-Bakara!3-Al-i İmran!4-Nisa!5-Maide!6-Enam!7-Araf!8-Enfal!9-Tevbe!10-Yunus'
 sure_listesi+='!11-Hud!12-Yusuf!13-Rad!14-İbrahim!15-Hicr!16-Nahl!17-İsra!18-Kehf!19-Meryem!20-Taha'
 sure_listesi+='!21-Enbiya!22-Hac!23-Müminun!24-Nur!25-Furkan!26-Şuara!27-Neml!28-Kasas!29-Ankebut'
@@ -49,7 +56,7 @@ sure_listesi+='!111-Tebbet!112-İhlas!113-Felak!114-Nas'
 
 tamamlama_listesi='!Ayarlar!Ayet!Sabah!Öğle!İkindi!Akşam!Yatsı!Sela!yapilandirma!Hadis!Esma-ül Hüsna'
 tamamlama_listesi+='!Bilgi!Aylık Vakitler!Haftalık Vakitler!Dini Günler ve Geceler!hakkında!Bayram Namazı Vakitleri'
-tamamlama_listesi+="!about!güncelle!güncelle yeni!yardım!arayuz2!Kerahat!000!özel pencere!$sure_listesi"
+tamamlama_listesi+="!about!güncelle!güncelle yeni!yardım!Kerahat!000!özel pencere!$sure_listesi"
 
 secim_listesi='!Yapılandırma Yöneticisi!Kerahat Vakitleri!Dini Günler ve Geceler!Günlük Vakitler!Haftalık Vakitler'
 secim_listesi+='!Aylık Vakitler!Ayet!Hadis!Bilgi!Esma-ül Hüsna!Bayram Namazı Vakitleri'
@@ -370,9 +377,9 @@ case $donus in
 
     if [[ ${okuyucu} = Yerel Okuyucu ]]
     then
-        if [[ -f "${YEREL_SURE_DIZINI}/$sure.mp3" ]]
+        if [[ -f "${YEREL_SURE_DIZINI}/${KURAN_OKUYAN}/$sure.mp3" ]]
         then
-            dinletilecek_sure="${YEREL_SURE_DIZINI}/$sure.mp3"
+            dinletilecek_sure="${YEREL_SURE_DIZINI}/${KURAN_OKUYAN}/$sure.mp3"
         else
             ozel_pencere
         fi
