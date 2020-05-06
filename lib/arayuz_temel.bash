@@ -180,8 +180,9 @@ g_vakitleri_al() {
 
   elif (( UNIXSAAT < yeni_gun ))
   then
-      v_ileti='Yeni gün için bekleniyor..'
-      v_kalan=
+      bekleme_suresi_yarin $ysabah_n; kalan
+      v_ileti="Sabah ($ysabah_n) ezanına kalan süre:"
+      v_kalan="$kalan_sure"
       vakit_bilgisi='<b>Şimdi Yatsı Vakti</b>'
   fi
 }
