@@ -311,7 +311,8 @@ pencere_bilgi() {
 
   yad --form --separator=' ' --title="${AD^}" --image=${AD} --window-icon=${AD} \
       --text "${oynatici_ileti}\n Süre        : $parca_suresi_n" --mouse --fixed \
-      --button='yad-cancel:127' --button='yad-close:0' --timeout=$parca_suresi
+      --button='yad-cancel:127' --button='yad-close:0' --timeout=$parca_suresi \
+      --gtkrc="${EZV_CSS}"
 
   case $? in
     *)
@@ -332,7 +333,7 @@ strng=$(yad --form \
 "${sure_listesi}" \
 --button='Geri:151' --button='Oynat:152' \
 --button='yad-quit:153' \
---image=${AD} --window-icon=${AD} \
+--image=${AD} --window-icon=${AD} --gtkrc="${EZV_CSS}" \
 --title "${AD^}" --sticky --center --fixed)
 
 donus=$(echo $?)

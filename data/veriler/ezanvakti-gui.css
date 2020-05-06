@@ -14,6 +14,9 @@
 */
 * {
     background-color: #46443F;
+    /*YAD arkaplan resmi.
+     *Ekleyeceğiniz resmin tam konumunu girin.*/
+   /* background-image: url("/nerede/bu/resim"); */
     color: #F1E7D3;
     font: 15px Arial, sans-serif;
 }

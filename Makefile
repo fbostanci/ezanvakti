@@ -51,7 +51,7 @@ install: $(BETIKLER)
 	$(INSTALL) -vd $(DESTDIR)$(bindir)
 	$(INSTALL) -vd $(DESTDIR)$(libdir)/$(AD)
 	$(INSTALL) -vd $(DESTDIR)$(sysconfdir)
-	$(INSTALL) -vd $(DESTDIR)$(datadir)/$(AD)/{veriler,mealler,simgeler,ulkeler{,/TÜRKİYE,/ABD,/ALMANYA,/KANADA}_ilceler}
+	$(INSTALL) -vd $(DESTDIR)$(datadir)/$(AD)/{veriler,mealler,simgeler,ulkeler{/TÜRKİYE,/ABD,/ALMANYA,/KANADA}_ilceler}
 	$(INSTALL) -vd $(DESTDIR)$(sounddir)/$(AD)
 	$(INSTALL) -vd $(DESTDIR)$(completionsdir)
 	$(INSTALL) -vd $(DESTDIR)$(mandir)/man{1,5}
