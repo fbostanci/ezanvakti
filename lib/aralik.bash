@@ -15,7 +15,9 @@ ayet_araligi_goster() {
       printf '%s: Kullanım: <sure_kodu> <ayet_aralığı>\n' "${AD}" >&2
       exit 1
   fi
-  sure_no_denetle "$1" # fonksiyon temel_islevler.bash içinde.
+  # girileni denetleyip
+  # sure_kod değişkenine atayacak.(temel_islevler.bash)
+  sure_no_denetle "$1"
   # sure_kod ile ilişik surenin bilgilerini ilgili değişkenlere atadık.
   export $(gawk -v sira=$sure_kod '{if(NR==sira) {printf \
     "sure_adi=%s\nsure_baslama=%s\nsure_ayet_sayisi=%s\ncuz=%s\nyer=%s",$4,$3,$2,$5,$6}}' \

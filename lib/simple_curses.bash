@@ -24,7 +24,7 @@ bsc_create_buffer(){
         BUFFER_DIR="$TMPDIR"
     else
         BUFFER_DIR="/tmp"
-    fi 
+    fi
     local buffername
     [[ "$1" != "" ]] &&  buffername=$1 || buffername="bashsimplecurses"
 
@@ -71,7 +71,7 @@ bsc_term_init(){
 bsc__nl(){
     BSC_POSY=$((BSC_POSY+1))
     tput cup $BSC_POSY $BSC_POSX >> $BSC_BUFFER
-    #echo 
+    #echo
 }
 
 
@@ -141,9 +141,9 @@ window(){
     local color
     local bgcolor
     title=$1
-    color=$2        
+    color=$2
     bgcolor=$4
-    tput cup $BSC_POSY $BSC_POSX 
+    tput cup $BSC_POSY $BSC_POSX
     bsc_cols=$(tput cols)
     bsc_cols=$((bsc_cols))
     if [[ "$3" != "" ]]; then
@@ -175,7 +175,7 @@ window(){
     #set title color
     setcolor $color
     setbgcolor $bgcolor
-    
+
     echo $title
     reset_colors
     tput rc
@@ -185,7 +185,7 @@ window(){
     bsc__nl
     #then draw bottom line for title
     addsep
-    
+
     BSC_LASTCOLS=$bsc_cols
 
 }
@@ -314,7 +314,7 @@ blinkenlights(){
     text=$1
     color=$2
     color2=$3
-    incolor=$4  
+    incolor=$4
     bgcolor=$5
 
     declare -a params
@@ -341,7 +341,7 @@ blinkenlights(){
 
 #
 #   vumeter <text> <width> <value> <max> [color] [color2] [inactivecolor] [bgcolor]
-#   
+#
 vumeter(){
     local done
     local todo
@@ -378,7 +378,7 @@ vumeter(){
     green=""
     red=""
     rest=""
-    
+
     for i in `seq 1 $(($done))`;do
         green="${green}|"
     done
@@ -408,11 +408,11 @@ progressbar(){
     len=$1
     progress=$2
     max=$3
-    
+
     done=$(( progress * len / max ))
     todo=$(( len - done - 1 ))
     modulo=$(( $(date +%s) % 4 ))
-    
+
     bar="[";
     for (( c=1; c<=done; c++ )); do
         bar="${bar}${_BLOCK}"
@@ -454,7 +454,7 @@ bsc__multiappend(){
         text="${text}${params[0]}"
         unset params[0]
         unset params[1]
-        unset params[2]    
+        unset params[2]
         params=( "${params[@]}" )
     done
     clean_line
@@ -463,7 +463,7 @@ bsc__multiappend(){
     len=$(echo "$text" | wc -c )
     len=$((len-1))
     bsc_left=$((BSC_LASTCOLS/2 - len/2 -1))
-    
+
     params=( "$@")
     [[ "${params[0]}" == "left" ]] && bsc_left=0
     unset params[0]
@@ -495,7 +495,7 @@ bsc__append(){
     len=$(echo "$1" | wc -c )
     len=$((len-1))
     bsc_left=$((BSC_LASTCOLS/2 - len/2 -1))
-    
+
     [[ "$2" == "left" ]] && bsc_left=0
 
     tput cuf $bsc_left
@@ -514,18 +514,18 @@ append_tabbed(){
     [[ $2 == "" ]] && echo "append_tabbed: Second argument needed" >&2 && exit 1
     [[ "$3" != "" ]] && delim=$3 || delim=":"
     clean_line
-    
+
     echo -ne $_VLINE
     local len
     len=$(echo "$1" | wc -c )
     len=$((len-1))
-    bsc_left=$((BSC_LASTCOLS/$2)) 
-    
+    bsc_left=$((BSC_LASTCOLS/$2))
+
     setcolor $4
     setbgcolor $5
     tput sc
 
-    local i 
+    local i
     for i in `seq 0 $(($2))`; do
         tput rc
         tput cuf $((bsc_left*i+1))
@@ -594,7 +594,7 @@ main_loop (){
             }
         else
             sleep $time
-        fi   
+        fi
         BSC_POSX=0
         BSC_POSY=0
     done

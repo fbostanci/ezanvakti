@@ -9,6 +9,8 @@ kuran_dinletimi() {
   local parca_suresi parca_suresi_n okuyan kaynak dinletilecek_sure
   local sure_adi sure_ayet_sayisi cuz yer
 
+  # girileni denetleyip
+  # sure_kod değişkenine atayacak. (temel_islevler.bash)
   sure_no_denetle "$1"
   export $(gawk -v sira=$sure_kod '{if(NR==sira) {printf \
     "sure_adi=%s\nsure_ayet_sayisi=%s\ncuz=%s\nyer=%s",$4,$2,$5,$6}}' \
@@ -19,6 +21,8 @@ kuran_dinletimi() {
     "${RENK7}${RENK3}" \
     "${sure_adi}${RENK2} suresi dinletiliyor...${RENK0}"
 
+  # okuyan, kaynak, dinletilecek_sure
+  # değerlerini bu fonksiyon gönderiyor. (temel_islevler.bash)
   kuran_okuyan_denetle "$sure_kod"
   bilesen_yukle oynatici_yonetici
   ucbirim_basligi "${sure_adi} Suresi"
@@ -36,7 +40,7 @@ kuran_dinletimi() {
     "Okuyan      : ${RENK3} ${okuyan}${RENK2}" \
     "Süre        : ${RENK3} ${parca_suresi_n}${RENK2}" \
     "Kaynak      : ${RENK3} ${kaynak}${RENK0}"
-
+  # (oynatici_yonetici.bash)
   oynatici_calistir "${dinletilecek_sure}"
 }
 

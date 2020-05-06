@@ -33,7 +33,7 @@ _ezanvakti() {
 --esma --bilgi --hadis --kuran --dinle --arayuz --arayuz2 \
 --arayuz3 --ucbirim --gui --gui2 --gui3 --tui --bilgi --sureler \
 --guncelle --yardim  --surum --gunler --aralik --kalan --config \
---renk --imsak --yapilandirma'
+--renk --imsak --yapilandirma --listele'
 
   config_uzun='--gui --arayuz'
 

@@ -86,7 +86,7 @@ meal_denetle() {
 }
 
 kuran_okuyan_denetle() {
-  sure_kod="$1"
+  local sure_kod="$1"
   # Öncelikle kullanıcının girdiği dizinde dosya
   # var mı denetle. Yoksa çevrimiçi dinletime yönel.
   if [[ -f ${YEREL_SURE_DIZINI}/${KURAN_OKUYAN}/$sure_kod.mp3 ]]

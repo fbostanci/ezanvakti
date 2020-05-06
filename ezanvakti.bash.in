@@ -281,6 +281,9 @@ case $1 in
   -V|--s[uü]r[uü]m|--version)
     bilesen_yukle hakkinda
     surum_goster ;;
+  -l|--listele)
+    bilesen_yukle listele
+    listele ;;
   -h|--help|--yard[iı]m)
     bilesen_yukle kullanim
     betik_kullanimi ;;

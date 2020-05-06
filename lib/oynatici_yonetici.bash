@@ -20,7 +20,7 @@ oynatici_sure_al() {
   elif [[ -x $(type -p mplayer) ]]
   then
       parca_suresi=$(mplayer -vo null -ao null -frames 0 -identify "${parca}" 2>/dev/null | \
-        gawk  -F'=' '/^ID_LENGTH/ {print int($2);}')
+        gawk -F'=' '/^ID_LENGTH/ {print int($2);}')
   fi
 
   (( ! parca_suresi )) && return 1
@@ -35,7 +35,7 @@ oynatici_calistir() {
 
   if [[ ${dinletilecek_oge} =~ ^http.* ]]
   then
-      # internet erişimini denetle.
+      # internet erişimini denetle. (temel_islevler.bash)
       if ! internet_erisimi_var_mi
       then
           printf '%s: internet erişimi algılanamadı.\n' "${AD}" >&2
