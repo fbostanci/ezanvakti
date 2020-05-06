@@ -17,13 +17,13 @@ kuran_dinletimi() {
     < ${VERI_DIZINI}/veriler/sure_bilgisi)
 
   clear
+  # okuyan, kaynak, dinletilecek_sure
+  # değerlerini bu fonksiyon gönderiyor. (temel_islevler.bash)
+  kuran_okuyan_denetle "$sure_kod"
   printf '%b%b\n\n' \
     "${RENK7}${RENK3}" \
     "${sure_adi}${RENK2} suresi dinletiliyor...${RENK0}"
 
-  # okuyan, kaynak, dinletilecek_sure
-  # değerlerini bu fonksiyon gönderiyor. (temel_islevler.bash)
-  kuran_okuyan_denetle "$sure_kod"
   bilesen_yukle oynatici_yonetici
   ucbirim_basligi "${sure_adi} Suresi"
 

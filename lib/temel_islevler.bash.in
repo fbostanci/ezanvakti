@@ -95,21 +95,17 @@ kuran_okuyan_denetle() {
       kaynak='Yerel Dizin'
       okuyan="${KURAN_OKUYAN}"
   else
-      # Seçilen okuyucu koduna göre okuyucunun tam adını yeni değere ata.
-      if [[ ${KURAN_OKUYAN} = AlGhamdi ]]
-      then
-          okuyan='Saad el Ghamdi'
-      elif [[ ${KURAN_OKUYAN} = AsShatree ]]
-      then
-          okuyan='As Shatry'
-      elif [[ ${KURAN_OKUYAN} = AlAjmy ]]
-      then
-          okuyan='Ahmad el Ajmy'
-      else
-          printf '%s: Deskteklenmeyen KURAN_OKUYAN adı: %s\n' \
+      # Seçilen KURAN_OKUYAN değerine göre okuyucunun
+      # tam adını okuyucu değişkenine ata.
+      case "${KURAN_OKUYAN}" in
+        AlGhamdi)  okuyan='Saad el Ghamdi' ;;
+        AsShatree) okuyan='As Shatry' ;;
+        AlAjmy)    okuyan='Ahmad el Ajmy' ;;
+        *)
+          printf '%s: Desteklenmeyen KURAN_OKUYAN adı: %s\n' \
             "${AD}" "${KURAN_OKUYAN}" >&2
-          exit 1
-      fi
+          exit 1 ;;
+      esac
       dinletilecek_sure="http://www.listen2quran.com/listen/${KURAN_OKUYAN}/$sure_kod.mp3"
       kaynak='http://www.listen2quran.com'
   fi
