@@ -13,7 +13,7 @@ ucbirim_basligi "Uçbirim arayüzü"
 
 
 main() {
-    window "Ezanvakti 7.1 Uçbirim Arayüzü " "green"
+    window "${AD^} ${SURUM} Uçbirim Arayüzü " "green"
       append "$(date '+%d.%m.%Y  %H:%M:%S')"
       append "${ULKE}"
       append "${ILCE}"

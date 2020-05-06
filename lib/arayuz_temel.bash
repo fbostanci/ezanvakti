@@ -59,7 +59,7 @@ tamamlama_listesi+='!Bilgi!Aylık Vakitler!Haftalık Vakitler!Dini Günler v
 tamamlama_listesi+="!about!güncelle!güncelle yeni!yardım!Kerahat!000!özel pencere!$sure_listesi"
 
 secim_listesi='!Yapılandırma Yöneticisi!Kerahat Vakitleri!Dini Günler ve Geceler!Günlük Vakitler!Haftalık Vakitler'
-secim_listesi+='!Aylık Vakitler!Ayet!Hadis!Bilgi!Esma-ül Hüsna!Bayram Namazı Vakitleri'
+secim_listesi+='!Aylık Vakitler!Ayet!Hadis!Bilgi!Esma-ül Hüsna!' #Bayram Namazı Vakitleri'
 
 cikti_dosyasi="/tmp/${AD}-6"
 # düz komut çıktıları için rengi sıfırla.

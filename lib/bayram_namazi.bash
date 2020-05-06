@@ -5,7 +5,7 @@
 #
 
 bayram_namazi_vakti() {
-  echo "diyanet içerik sunduğu zaman güncellenecek"; exit 1
+  echo "güncellenecek"; exit 1
   local ulke_kodu sehir_kodu ilce_kodu ramazan_bt kurban_bt ramazan_nv kurban_nv
   renk_denetle
 
@@ -48,8 +48,8 @@ bayram_namazi_vakti() {
       exit 1
   fi
 
-  indirici "${ilce_kodu}" | \
-  sed 's:,:\n:g;s:"::g;s:[{}]::g'| sed 's:\::=:'  > /tmp/ezv-bayram-vakitleri-$$
+  indirici "https://namazvakitleri.diyanet.gov.tr/tr-TR/${ilce_kodu}" | \
+  sed -n 's:.*<span.*>\(.*\)</span>.*:\1:p' > /tmp/ezv-bayram-vakitleri-$$
 
 
   # bayram namazı tarihlerini ve vakitlerini al.

@@ -125,21 +125,21 @@ then
         kerahat_vakitleri ucbirim > "${cikti_dosyasi}"
         g_secim_goster; temizlik
         arayuz ;;
-    "Bayram Namazı Vakitleri")
-        secim_basligi="$(date +%Y) Bayram namazı vakitleri"
-        bilesen_yukle bayram_namazi
-        (
-          echo 'yad gürültü istiyor'
-          bayram_namazi_vakti > "${cikti_dosyasi}"
-          echo 'yad gürültü istiyor'
-          sed -i 's:.*\.\.\.::g' "${cikti_dosyasi}"
-          echo 'yad gürültü istiyor'
-        ) | yad --progress --pulsate --auto-close --undecorated \
-                --progress-text='Bayram namazı vakitleri alınıyor...' \
-                --pulsate --auto-close --width=300 --center --fixed \
-                --no-buttons --skip-taskbar
-        g_secim_goster; temizlik
-        arayuz ;;
+#     "Bayram Namazı Vakitleri")
+#         secim_basligi="$(date +%Y) Bayram namazı vakitleri"
+#         bilesen_yukle bayram_namazi
+#         (
+#           echo 'yad gürültü istiyor'
+#           bayram_namazi_vakti > "${cikti_dosyasi}"
+#           echo 'yad gürültü istiyor'
+#           sed -i 's:.*\.\.\.::g' "${cikti_dosyasi}"
+#           echo 'yad gürültü istiyor'
+#         ) | yad --progress --pulsate --auto-close --undecorated \
+#                 --progress-text='Bayram namazı vakitleri alınıyor...' \
+#                 --pulsate --auto-close --width=300 --center --fixed \
+#                 --no-buttons --skip-taskbar
+#         g_secim_goster; temizlik
+#         arayuz ;;
     "Dini Günler ve Geceler")
         secim_basligi="$(date +%Y) Dini Günler ve Geceler"
         bilesen_yukle dini_gunler

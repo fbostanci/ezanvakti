@@ -4,7 +4,6 @@
 #
 #
 
-
 listele() {
   local ezv_sleep kalan_gun
   renk_denetle
@@ -33,3 +32,5 @@ listele() {
   printf "${RENK2}%s-sleep durumu:      %b\n${RENK0}" "${AD}" "${ezv_sleep}"
   printf "${RENK2}Ezanveri dosyası kalan gün:  ${RENK3}%2d${RENK0}\n" "${kalan_gun}"
 }
+
+# vim: set ft=sh ts=2 sw=2 et:
