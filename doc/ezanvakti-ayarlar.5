@@ -65,7 +65,7 @@ istiyorsanız, dosyalarınızın bulunduğu konumu buraya girin. Sure ses dosyal
 (bkz.
 .B \-\-sureler
 seçeneği.)
-değişkeni ile görüntüleyeceğiniz listedeki gibi numaralarla adlandırılmalıdır.
+seçeneği ile görüntüleyeceğiniz listedeki gibi numaralarla adlandırılmalıdır.
 Ses dosyaları bu dizin içinde KURAN_OKUYAN değeriyle adlandırılmış
 alt dizin içerisine konmalıdır. Uygulama eğer istenen sureyi, belirttiğiniz
 dizinde bulamazsa, çevrimiçi olarak dinletmeyi deneyecektir. 
@@ -94,10 +94,7 @@ kodlarındaki 0 ile başlayan sureler için ör: 001 yerine 1 de kullanabilirsin
 .TP
 .B EZAN_BILDIRIM_SURESI
 Ezan okunurken, bildirim baloncuğuyla yapılan uyarının ekrandaki bekleme
-süresidir. Öntanımlı değer 60 saniyedir. Ubuntu GNOME ortamındaki,
-Notify-OSD için bekleme süresi belirleme öntanımlı olarak kapalı gelmektedir.
-Yamalanmış Notify-OSD sürümüyle bu sorun aşılmaktadır.
-
+süresidir. Öntanımlı değer 60 saniyedir.
 .TP
 .B AYET_BILDIRIM_SURESI
 Türkçe ayet gösterimi için kulanılan bildirim baloncuğunun ekrandaki bekleme
@@ -154,7 +151,7 @@ değeri 0 olarak belirleyin.
 Eğer ezanların vaktinden önce ya da sonra okunmasını istiyorsanız, bu değeri
 saniye cinsinden olmak şartıyla değiştirebilirsiniz. Öntanımlı değer
 \'0' dır, Yani ezanı tam vaktinde okur. ör: Ezanların 2 dk önce
-okunması için -120  değerini girin. Eğer ezanların 2 dk sonra
+okunması için \-120  değerini girin. Eğer ezanların 2 dk sonra
 okunmasını istiyorsanız 120 değerini girin.
 Ezanveri dosyanızdaki asıl vakit saatleri değişmemektedir. Değişen
 sadece ezanın okunma saati ve vakitlere kalan sürelerdir.
@@ -250,7 +247,7 @@ gösterilmektedir.
 Gelişmiş arayüz uygulamasına ait yazıların düzen değeridir. Her
 \'%s' değeri arayüzün bir bölümünü ifade etmektedir.
 
-1. %s : Tarih değeridir. - ile aldığı değer saat ile arasındaki
+1. %s : Tarih değeridir. \- ile aldığı değer saat ile arasındaki
 boşluk miktarıdır.
 
 2. %s : Saat değeridir.
@@ -270,11 +267,11 @@ boşluk miktarıdır.
 9. %s: Bir sonraki vakte ne kadar kaldığını gösteren sürenin değeridir.
 .TP
 .B CONKY_BICIMI
-Conky vakit çıktısına ait değerdir. %s değerleri sıralı vakit adı-vakit saati
+Conky vakit çıktısına ait değerdir. %s değerleri sıralı vakit adı\-vakit saati
 ikililerini temsil etmektedir.
 .TP
 .B VAKIT_BICIMI
-Arayüzlerde gösterilen vakitlere ait değerdir. %s değerleri sıralı vakit adı-vakit saati
+Arayüzlerde gösterilen vakitlere ait değerdir. %s değerleri sıralı vakit adı\-vakit saati
 ikililerini temsil etmektedir.
 .TP
 .B ARAYUZ_CIZGI_SIMGESI
@@ -291,7 +288,7 @@ Eğer bir komut için RENK_KULLAN değerini değiştirmeden renk aç/kapat yapma
 komutu çalıştırmadan önce RENK değişkenini belirleyebilirsiniz. Geçici olarak renkleri
 açmak için RENK değerini 1, kapatmak için 0 olarak girin.
 
-ÖR: RENK=0 ezanvakti --vakitler
+ÖR: RENK=0 ezanvakti \-\-vakitler
 komutu RENK_KULLAN değeri ne olursa olsun renksiz çıktı verir.
 .TP
 .B RENK KODLARI
@@ -319,12 +316,12 @@ gosterilmemesi için:0 değerini girin. Öntanımlı simge gösterme etkin gelme
 .TP
 .B HICRI_TARIH_DUZELTME
 Hicri tarih bazen kayma yapabilmektedir. Gün ekleme ya da çıkarma işlemi gerekebilir.
-ör: 1 gün eklemek için 1 ya da +1, 1 gün çıkarmak için -1
+ör: 1 gün eklemek için 1 ya da +1, 1 gün çıkarmak için \-1
 ekleme ya da çıkarma gerekmiyorsa 0 olarak değeri girin.
 
 .SH CSS dosyası ile Arayüz Özelleştirme İşlemleri
 Gtk3 sürümünde css tarzı kodlama ile gtk uygulamalarının genel ayarları yapılabilmektedir.
-YAD \-\-gtkrc  parametresiyle sistem geneli gtk ayarlarına ek, verilen dosyayı da kullanabilmektedir.
+YAD \-\-gtkrc seçeneğiyle sistem geneli gtk ayarlarına ek, verilen dosyayı da kullanabilmektedir.
 Bu sayede diğer gtk uygulamaları etkilenmeden YAD'a özel, özelleştirmeler yapılabilmektedir.
 Öntanımlı css dosyalarının ve kullanıcı css dosya konumunuzu
 .B ezanvakti \-\-listele
