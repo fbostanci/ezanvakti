@@ -93,6 +93,7 @@ BAĞIMLILIKLAR
 *    gawk
 *    grep
 *    libnotify
+*    hicolor-icon-theme
 *    ffmpeg ya da mplayer
 *    wget ya da curl
 

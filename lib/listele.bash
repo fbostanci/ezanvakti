@@ -6,12 +6,11 @@
 
 listele() {
   local ezv_sleep kalan_gun
-  renk_denetle
+  ezanveri_denetle; renk_denetle
 
-  kalan_gun="$(gawk '$1 ~ /^[0-9]{2}.[0-9]{2}.[0-9]{4}/ {t++} END{tsatir=t;}; \
-                    $1 ~ /^[0-9]{2}.[0-9]{2}.[0-9]{4}/ {b++} \
-                    {if($1 ~ strftime("%d.%m.%Y")) bsatir=b;} \
-                    END{print(tsatir-bsatir)}' "${EZANVERI}")"
+  kalan_gun=$(gawk '$1 ~ /^[0-9]{2}.[0-9]{2}.[0-9]{4}/ {t++} END{tsatir=t} \
+                   {if($1 ~ strftime("%d.%m.%Y")) bsatir=t} \
+                   END{print(tsatir-bsatir+1)}' "${EZANVERI}")
 
   if pgrep ${AD}-sleep >/dev/null 2>&1
   then ezv_sleep="${RENK2}çalışıyor"

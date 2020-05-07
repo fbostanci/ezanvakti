@@ -9,7 +9,7 @@ url="https://gitlab.com/fbostanci/ezanvakti"
 license=('GPL3')
 # change curl to wget and ffmpeg to mplayer if wanted
 # isteniyorsa curl yerine wget, ffmpeg yerine mplayer yazilabilir.
-depends=('bash' 'yad' 'sed' 'gawk' 'grep' 'libnotify' 'curl' 'ffmpeg')
+depends=('bash' 'yad' 'sed' 'gawk' 'grep' 'hicolor-icon-theme' 'libnotify' 'curl' 'ffmpeg')
 optdepends=('bash-completion: completion for bash')
 source=("https://github.com/fbostanci/$pkgname/archive/v$pkgver.tar.gz")
 md5sums=('b425122e4ab94d8267e9671e2ac22d35')
