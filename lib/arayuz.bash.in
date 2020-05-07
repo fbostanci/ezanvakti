@@ -27,7 +27,7 @@ arayuz() {
 
 strng=$(yad --form --text "$(printf "${GELISMIS_ARAYUZ_BICIMI}" \
   "<span foreground=\'${ARAYUZ_TARIH_SAAT_RENGI}\'>$(date +%d.%m.%Y) \($(hicri_tarih_al)\)</span>" \
-  "<span foreground=\'${ARAYUZ_TARIH_SAAT_RENGI}\'>$(date +%H:%M:%S)</span>" \
+  "<span foreground=\'${ARAYUZ_TARIH_SAAT_RENGI}\'>$(date +%T)</span>" \
   "<span foreground=\'${ARAYUZ_KONUM_RENGI}\'>${ILCE} / ${ULKE}</span>" \
   "<span foreground=\'${ARAYUZ_CIZGI_RENGI}\'>${elx}</span>" \
   "<span foreground=\'${ARAYUZ_SIMDIKI_VAKIT_RENGI}\'>${vakit_bilgisi}${ozel_ileti}</span>" \

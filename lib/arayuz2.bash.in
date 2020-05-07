@@ -16,7 +16,7 @@ bilesen_yukle siradaki
 
 while true
 do
-  date '+%d.%m.%Y   %H:%M:%S'
+  date '+%d.%m.%Y   %T'
   echo "${ILCE}"
   siradaki_vakit conky_siradaki
   ypid="$(pgrep -lf "yad --plug=$$" | gawk '{ print $1 }')"
