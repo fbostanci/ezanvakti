@@ -32,28 +32,24 @@ betik_kullanimi() {
         [--kerahat]
             Kerahat vakitlerini görüntüler.
 
-        [--bayram]
-           Bayram namazı vakitlerini görüntüler.
-
         [--bildirim]
             Vakitler,kerahat ve sıradaki çıktılarını uçbirim yerine
             bildirim baloncuğuna yönlendirir.
 
-    ${B}--kuran${R} [-s <sure_kodu>, -r, -g, -h]
+    ${B}--kuran${R} [-s <sure_no>, -r, -g, -h]
         Çevrimiçi olarak ya da yerel dizinden Kuran dinletir.
 
     ${B}--dinle${R} [-s,-o,-i,-a,-y,-c]
         İstediğiniz zaman, istediğiniz vakte ait ezanı dinletir.
 
     ${B}--sureler${R}
-        Sureleri dinlemek için gerekli olan kod numaralarını
-        ve sure adlarını görüntüler.
+        Sure bilgilerini listeler.
 
     ${B}--ayet${R}
         Rastgele bir Kuran ayeti seçerek Türkçe anlamını
         bildirim baloncuğunda gösterir.
 
-    ${B}--aralik${R} [<sure_kodu> <ayet_aralığı> ]
+    ${B}--aralik${R} [<sure_no> <ayet_aralığı> ]
         İstenen surenin, istenen ayetleri arasını gösterir.
         ayet aralığı; <ayet_başlangıc_no-ayet_bitis_no>
         şeklinde olmalıdır.
@@ -99,7 +95,13 @@ betik_kullanimi() {
         Gelişmiş arayüz penceresini başlatır.
 
     ${B}--arayuz2${R}
+        Arayüzün anlık güncellendiği arayüz2 penceresini başlatır.
+
+    ${B}--arayuz3${R}
         Basit arayüz penceresini başlatır.
+
+   ${B}--listele${R}
+        Uygulamanın kullandığı dosya ve diznleri listeler.
 
     ${B}-V, --surum, --version${R}
         Betiğin sürüm numarasını gösterir ve çıkar.

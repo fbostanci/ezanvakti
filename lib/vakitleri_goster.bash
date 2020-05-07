@@ -15,7 +15,7 @@ vakitler() { # {{{
 
   if (( UNIXSAAT < sabah ))
   then
-      bekleme_suresi $sabah_n; kalan
+      bekleme_suresi $sabah
       sabah_kalan="${RENK2} $kalan_sure"
   else
       sabah_kalan="${RENK1} OKUNDU"
@@ -23,7 +23,7 @@ vakitler() { # {{{
 
   if (( UNIXSAAT < ogle ))
   then
-      bekleme_suresi $ogle_n; kalan
+      bekleme_suresi $ogle
       ogle_kalan="${RENK2} $kalan_sure"
   else
       ogle_kalan="${RENK1} OKUNDU"
@@ -31,7 +31,7 @@ vakitler() { # {{{
 
   if (( UNIXSAAT < ikindi ))
   then
-      bekleme_suresi $ikindi_n; kalan
+      bekleme_suresi $ikindi
       ikindi_kalan="${RENK2} $kalan_sure"
   else
       ikindi_kalan="${RENK1} OKUNDU"
@@ -39,7 +39,7 @@ vakitler() { # {{{
 
   if (( UNIXSAAT < aksam ))
   then
-      bekleme_suresi $aksam_n; kalan
+      bekleme_suresi $aksam
       aksam_kalan="${RENK2} $kalan_sure"
   else
       aksam_kalan="${RENK1} OKUNDU"
@@ -47,7 +47,7 @@ vakitler() { # {{{
 
   if (( UNIXSAAT < yatsi ))
   then
-      bekleme_suresi $yatsi_n; kalan
+      bekleme_suresi $yatsi
       yatsi_kalan="${RENK2} $kalan_sure"
   else
       yatsi_kalan="${RENK1} OKUNDU"

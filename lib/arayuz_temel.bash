@@ -55,7 +55,7 @@ sure_listesi+='!103-Asr!104-Hümeze!105-Fil!106-Kureyş!107-Maun!108-Kevser!109-
 sure_listesi+='!111-Tebbet!112-İhlas!113-Felak!114-Nas'
 
 tamamlama_listesi='!Ayarlar!Ayet!Sabah!Öğle!İkindi!Akşam!Yatsı!Sela!yapilandirma!Hadis!Esma-ül Hüsna'
-tamamlama_listesi+='!Bilgi!Aylık Vakitler!Haftalık Vakitler!Dini Günler ve Geceler!hakkında!Bayram Namazı Vakitleri'
+tamamlama_listesi+='!Bilgi!Aylık Vakitler!Haftalık Vakitler!Dini Günler ve Geceler!hakkında'
 tamamlama_listesi+="!about!güncelle!güncelle yeni!yardım!Kerahat!000!özel pencere!$sure_listesi"
 
 secim_listesi='!Yapılandırma Yöneticisi!Kerahat Vakitleri!Dini Günler ve Geceler!Günlük Vakitler!Haftalık Vakitler'
@@ -110,77 +110,77 @@ g_vakitleri_al() {
 
   if (( UNIXSAAT < sabah ))
   then
-      bekleme_suresi $sabah_n; kalan
+      bekleme_suresi $sabah
       v_ileti='Sabah ezanına kalan süre :'
       v_kalan="$kalan_sure"
       vakit_bilgisi='<b>Şimdi Yatsı Vakti</b>'
 
   elif (( UNIXSAAT >= sabah && UNIXSAAT < gunes ))
   then
-      bekleme_suresi $ogle_n; kalan
+      bekleme_suresi $ogle
       v_ileti='Öğle ezanına kalan süre :'
       v_kalan="$kalan_sure"
       vakit_bilgisi='<b>Şimdi Kerahat Vakti 1</b>'
 
   elif (( UNIXSAAT == gunes ))
   then
-      bekleme_suresi $ogle_n; kalan
+      bekleme_suresi $ogle
       v_ileti='Öğle ezanına kalan süre :'
       v_kalan="$kalan_sure"
       vakit_bilgisi='<b>Güneş Doğuş Vakti</b>'
 
   elif (( UNIXSAAT > gunes && UNIXSAAT < kv_gunes ))
   then
-      bekleme_suresi $ogle_n; kalan
+      bekleme_suresi $ogle
       v_ileti='Öğle ezanına kalan süre :'
       v_kalan="$kalan_sure"
       vakit_bilgisi='<b>Şimdi Kerahat Vakti 2</b>'
 
   elif (( UNIXSAAT >= kv_gunes && UNIXSAAT < kv_ogle ))
   then
-      bekleme_suresi $ogle_n; kalan
+      bekleme_suresi $ogle
       v_ileti='Öğle ezanına kalan süre :'
       v_kalan="$kalan_sure"
       vakit_bilgisi='<b>Şimdi Kuşluk Vakti</b>'
 
   elif (( UNIXSAAT < ogle && UNIXSAAT >= kv_ogle ))
   then
-      bekleme_suresi $ogle_n; kalan
+      bekleme_suresi $ogle
       v_ileti='Öğle ezanına kalan süre :'
       v_kalan="$kalan_sure"
       vakit_bilgisi='<b>Şimdi Kerahat Vakti 3</b>'
 
   elif (( UNIXSAAT >= ogle && UNIXSAAT < ikindi ))
   then
-      bekleme_suresi $ikindi_n; kalan
+      bekleme_suresi $ikindi
       v_ileti='İkindi ezanına kalan süre :'
       v_kalan="$kalan_sure"
       vakit_bilgisi='<b>Şimdi Öğle Vakti</b>'
 
   elif (( UNIXSAAT >= ikindi && UNIXSAAT < kv_aksam ))
   then
-      bekleme_suresi $aksam_n; kalan
+      bekleme_suresi $aksam
       v_ileti='Akşam ezanına kalan süre :'
       v_kalan="$kalan_sure"
       vakit_bilgisi='<b>Şimdi Kerahat Vakti 4</b>'
 
   elif (( UNIXSAAT < aksam && UNIXSAAT >= kv_aksam ))
   then
-      bekleme_suresi $aksam_n; kalan
+      bekleme_suresi $aksam
       v_ileti='Akşam ezanına kalan süre :'
       v_kalan="$kalan_sure"
       vakit_bilgisi='<b>Şimdi Kerahat Vakti 5</b>'
 
   elif (( UNIXSAAT >= aksam && UNIXSAAT < yatsi ))
   then
-      bekleme_suresi $yatsi_n; kalan
+      bekleme_suresi $yatsi
       v_ileti='Yatsı ezanına kalan süre :'
       v_kalan="$kalan_sure"
       vakit_bilgisi='<b>Şimdi Akşam Vakti</b>'
 
   elif (( UNIXSAAT < yeni_gun ))
   then
-      bekleme_suresi_yarin $ysabah_n; kalan
+      bekleme_suresi $ysabah
       v_ileti="Sabah ($ysabah_n) ezanına kalan süre:"
       v_kalan="$kalan_sure"
       vakit_bilgisi='<b>Şimdi Yatsı Vakti</b>'

@@ -7,7 +7,7 @@
 # tırnak içerisine alarak ekleme yapın.
 #
 # Özelleştirme hakkında daha fazla bilgi için:
-# 'man 5 ezanvakti-ayarlar' komutunu kullanın.
+# 'man 5  @AD@-ayarlar' komutunu kullanın.
 
 
 #                           #
@@ -32,8 +32,8 @@ ILCE=Bilinmeyen
 # yapılmaması için: 0
 GUNCELLEME_YAP=1
 
-# Uygulamanın sistem açılışında başlatılması
-# normal kipte başlatılması için: 1
+# Uygulamanın sistem açılışında
+# normal kipte(5 vakit) başlatılması için: 1
 # ramazan kipi için: 2
 # başlatılmaması için: 0
 ACILISTA_BASLAT=1
@@ -47,7 +47,7 @@ ACILISTA_BASLAT=1
 # Yerel meal dosyalarının bulunduğu dizin
 YEREL_MEAL_DIZINI=Bilinmeyen
 
-# Ayet gösteriminde kullanılmasını istediğiniz meal
+# Ayet gösteriminde kullanılmasını istediğiniz meal dosyası
 MEAL_SAHIBI=diyanet
 
 # Kuran dinlemek için, yerel sure dizini
@@ -80,16 +80,19 @@ BILGI_BILDIRIM_SURESI=20
 GUNCELLEME_BILDIRIM_SURESI=15
 
 # Dini günler ve geceler için önceden bildirim yapılması
-# yapılmaması için 0 girin.
-# yapılması için 0'dan büyük bir sayı girin.
-# Gireceğeniz sayı aynı zamanda bildirimin ekranda bekleme süresidir. (saniye olarak)
+# Gireceğeniz sayı aynı zamanda bildirimin
+# ekranda bekleme süresidir. (saniye olarak)
+# yapılmaması için: 0
+# yapılması için: 0'dan büyük bir sayı girin.
 GUN_ANIMSAT=15
 
-# Girilen dakika için ezan okunmadan önce  bildirim baloncuğuyla yaklaşan vakti anımsatır.
-# Bildirim yapılmaması için değeri 0 olarak girin.
+# Girilen dakika için ezan okunmadan önce
+# bildirim baloncuğuyla yaklaşan vakti anımsatır.
+# Bildirim yapılmaması için: 0
 VAKIT_ANIMSAT=15
 
-# VAKIT_ANIMSAT için sesli uyarı verme
+# VAKIT_ANIMSAT için sesli uyarı
+# Uyarı verilmesi için VAKIT_ANIMSAT > 0 olmalı.
 # verilmesi için: 1
 # verilmemesi için: 0
 SESLI_UYARI=1
@@ -97,7 +100,7 @@ SESLI_UYARI=1
 # Oynatıcı ses seviyesi (0-100 arası)
 SES=100
 
-# Desteklenen oynatıcıyı ezan okunması bitene kadar duraklatma
+# Desteklenen oynatıcıyı ezan okunması bitene kadar
 # duraklatılması için: 1
 # duraklatılmaması için: 0
 OYNATICI_DURAKLAT=0
@@ -114,6 +117,9 @@ OYNATICI_DURAKLAT=0
 EZAN_DUASI_OKU=1
 
 # Ezanların vaktinden önce ya da sonra okunma süresi (saniye olarak)
+# ör: 1 dakika eklemek için 60 ya da +60
+#     1 dakika çıkarmak için -60
+#     ekleme ya da çıkarma gerekmiyorsa 0
 EZAN_OKUNMA_SURESI_FARKI=0
 
 # Cuma günü öğle vaktinden 
@@ -165,11 +171,11 @@ AKSAM_EZANI=@sounddir@/@AD@/aksam_segah.ogg
 # Yatsı ezanı ses dosyası
 YATSI_EZANI=@sounddir@/@AD@/yatsi_ussak.ogg
 
-# Ezan duası ses dosyası
-EZAN_DUASI=@sounddir@/@AD@/ezan_duasi.ogg
-
 # Cuma selası ses dosyası
 CUMA_SELASI=@sounddir@/@AD@/cuma_selasi.ogg
+
+# Ezan duası ses dosyası
+EZAN_DUASI=@sounddir@/@AD@/ezan_duasi.ogg
 
 # Sesli uyarı ses dosyası
 UYARI_SESI=@sounddir@/@AD@/uyari.ogg
@@ -179,7 +185,7 @@ UYARI_SESI=@sounddir@/@AD@/uyari.ogg
 #                                   #
 
 
-# Uçbirim çıktıları için renk kullanılması
+# Uçbirim çıktıları için renk
 # kullanılması için: 1
 # kullanılmaması için: 0
 RENK_KULLAN=1
@@ -258,6 +264,8 @@ YAZI_RENGI='#FFBD4D'
 # gösterilmesi için: 1
 # gösterilmemesi için: 0
 ARAYUZ_SIMGE_GOSTER=1
+
+
 #                           #
 #*****Gelişmiş Ayarlar******#
 #                           #

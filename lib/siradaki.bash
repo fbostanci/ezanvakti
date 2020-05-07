@@ -9,42 +9,42 @@ siradaki_vakit_al() { # {{{
 
   if (( UNIXSAAT < sabah ))
   then
-      bekleme_suresi $sabah_n; kalan
+      bekleme_suresi $sabah
       siradaki_vakit_adi="Sabah"
       siradaki_ezan_vakti=$sabah_n
       siradaki_vakit_kalan="$kalan_sure"
 
   elif (( UNIXSAAT < ogle ))
   then
-      bekleme_suresi $ogle_n; kalan
+      bekleme_suresi $ogle
       siradaki_vakit_adi="Öğle"
       siradaki_ezan_vakti=$ogle_n
       siradaki_vakit_kalan="$kalan_sure"
 
   elif (( UNIXSAAT < ikindi ))
   then
-      bekleme_suresi $ikindi_n; kalan
+      bekleme_suresi $ikindi
       siradaki_vakit_adi="İkindi"
       siradaki_ezan_vakti=$ikindi_n
       siradaki_vakit_kalan="$kalan_sure"
 
   elif (( UNIXSAAT < aksam ))
   then
-      bekleme_suresi $aksam_n; kalan
+      bekleme_suresi $aksam
       siradaki_vakit_adi="Akşam"
       siradaki_ezan_vakti=$aksam_n
       siradaki_vakit_kalan="$kalan_sure"
 
   elif (( UNIXSAAT < yatsi ))
   then
-      bekleme_suresi $yatsi_n; kalan
+      bekleme_suresi $yatsi
       siradaki_vakit_adi="Yatsı"
       siradaki_ezan_vakti=$yatsi_n
       siradaki_vakit_kalan="$kalan_sure"
 
   elif  (( UNIXSAAT < yeni_gun ))
   then
-      bekleme_suresi_yarin $ysabah_n; kalan
+      bekleme_suresi $ysabah
       siradaki_vakit_adi="Sabah (yarın)"
       siradaki_ezan_vakti=$ysabah_n
       siradaki_vakit_kalan="$kalan_sure"
@@ -83,7 +83,7 @@ kalan_sure() {
 
     printf_bicim="${RENK7}${RENK2}Kalan süre:"
     printf_bicim+="${RENK5} %02d saat : %02d dakika : %02d saniye "
-    printf_bicim+="${RENK2}(${RENK1}%s${RENK2})${RENK0}\r"
+    printf_bicim+="${RENK2}(${RENK3}%s${RENK2})${RENK0}\r"
 
     printf "${printf_bicim}" \
             $(( bekle / 3600 )) \

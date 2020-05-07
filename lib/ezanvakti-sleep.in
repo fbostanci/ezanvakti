@@ -2,7 +2,7 @@
 #
 #
 #
-#                           Ezanvakti Sleep Yöntemi  Bileşeni 1.6
+#                           Ezanvakti Sleep Yöntemi  Bileşeni 1.7
 #
 
 calisma_kodu="$1"
@@ -239,7 +239,7 @@ ezan_vakitlerini_al() {
       then
           simdiki='İmsak'
           vakit_saati_n=$ysabah_n
-          vakit_saati=$(( $(date -d "tomorrow $ysabah_n" +%s) - $(date +%s) + EZAN_OKUNMA_SURESI_FARKI ))
+          vakit_saati=$(( ysabah + EZAN_OKUNMA_SURESI_FARKI ))
       else
           simdiki='Yatsı'
           vakit_saati_n=$yatsi_n
@@ -258,7 +258,7 @@ ezan_vakitlerini_al() {
       fi
       vakit_ezani="${SABAH_EZANI}"
       vakit_saati_n=$ysabah_n
-      vakit_saati=$(( $(date -d "tomorrow $ysabah_n" +%s) - $(date +%s) + EZAN_OKUNMA_SURESI_FARKI ))
+      vakit_saati=$(( ysabah + EZAN_OKUNMA_SURESI_FARKI ))
       ezan_okunsun_mu=${SABAH_EZANI_OKU}
   fi
 }

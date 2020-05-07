@@ -17,11 +17,11 @@ ezv_conky_imsak() {
 
   if (( UNIXSAAT < sabah ))
   then
-      bekleme_suresi $sabah_n; kalan
+      bekleme_suresi $sabah
       echo -e "İmsak : $sabah_n\nKalan : $kalan_sure" | \
       sed 's:saat:sa:;s:dakika:dk:;s:saniye:sn:'
   else
-      bekleme_suresi_yarin $ysabah_n; kalan
+      bekleme_suresi $ysabah
       echo -e "İmsak : $ysabah_n (Yarın)\nKalan : $kalan_sure" | \
         sed 's:saat:sa:;s:dakika:dk:;s:saniye:sn:'
   fi
@@ -32,13 +32,13 @@ ezv_conky_iftar() {
 
   if (( UNIXSAAT < aksam ))
   then
-      bekleme_suresi $aksam_n; kalan
+      bekleme_suresi $aksam
       echo -e "İftar : $aksam_n\nKalan : $kalan_sure" | \
         sed 's:saat:sa:;s:dakika:dk:;s:saniye:sn:'
   else
       export $(gawk '{printf "yaksam_n=%s", $6}' \
         <(grep $(date -d 'tomorrow' +%d.%m.%Y) "${EZANVERI}"))
-      bekleme_suresi_yarin $yaksam_n; kalan
+      bekleme_suresi $(date -d "tomorrow $yaksam_n" +%s)
       echo -e "İftar : $yaksam_n (Yarın)\nKalan : $kalan_sure" | \
         sed 's:saat:sa:;s:dakika:dk:;s:saniye:sn:'
   fi

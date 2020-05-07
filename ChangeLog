@@ -11,19 +11,19 @@
  * listele.bash: Uygulama dosya konumları listeleyici. (--listele)
  * YAD arayüzleri ve yapılandırma yöneticisi için ayrı ayrı css dosyası
     kullanabilme.
-    -> ezanvakti-gui.css: arayüz1 css dosyası
-    -> ezanvakti-gui2.css: arayüz2 css dosyası
-    -> ezanvakti-gui3.css: arayüz3 css dosyası
-    -> ezanvakti-config.css yapılandırma yoneticisi css dosyası
+    -> ezanvakti-gui.css    : arayüz1 css dosyası
+    -> ezanvakti-gui2.css   : arayüz2 css dosyası
+    -> ezanvakti-gui3.css   : arayüz3 css dosyası
+    -> ezanvakti-config.css : yapılandırma yoneticisi css dosyası
  * YAD css dosyası kullanımıyla birlikte arayüzlerde yazı tipi ve boyutu
     farklılığından oluşan kayma sorunu çözüldü.
  * iftarimsak.bash: iftar.bash ve imsak.bash bileşenleri birleştirildi.
  * kalan.bash: siradaki.bash ile birleştirildi.
- * YAD arayüz ve arayüz3 pencerelerinde simge göster/gösterme seçimi
+ * YAD arayüz ve arayüz3 pencerelerinde ezanvakti simgesi göster/gösterme seçimi
    -> ARAYUZ_SIMGE_GOSTER değeri.
  * Makefile geliştirmeleri.
  * Tüm ülke, şehir, ilçe dosyaları güncellendi.
- * Bir çok kod geliştirmesi/temizlik yapıldı.
+ * Birçok kod geliştirme/temizlik yapıldı.
 
 
 /×××××××××××××××××××××××××××××
@@ -60,7 +60,7 @@
      bilgileri de gösteriliyor.
  *  Yerel kullanıcı dizinine kolay kurulum için
     yerelkur.bash betiği eklendi.
- *  HICRI_TARIH_DUZELTME: hicri tarihte yaşanan aymalar için
+ *  HICRI_TARIH_DUZELTME: hicri tarihte yaşanan kaymalar için
      düzeltme değeri eklendi.
  *  yapilandirma_yoneticisi: ayrı pencere olarak açılabiliyor. (--config --gui)
  *  KULLANICI_TEFSIR_DIZINI -> YEREL_MEAL_DIZINI

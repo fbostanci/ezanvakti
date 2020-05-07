@@ -155,10 +155,9 @@ Eğer ezanların vaktinden önce ya da sonra okunmasını istiyorsanız, bu değ
 saniye cinsinden olmak şartıyla değiştirebilirsiniz. Öntanımlı değer
 \'0' dır, Yani ezanı tam vaktinde okur. ör: Ezanların 2 dk önce
 okunması için -120  değerini girin. Eğer ezanların 2 dk sonra
-okunmasını istiyorsanız 120 değerini girin. Önüne \'+' işareti koymayın.
-Ezanveri dosyanızdaki asıl vakit saatleri değişmemektedir.
-Dolayısıyla gösterilen vakit saatleri de değişmez. Değişen
-sadece ezanın okunma saati ve ezana kalan sürelerdir.
+okunmasını istiyorsanız 120 değerini girin.
+Ezanveri dosyanızdaki asıl vakit saatleri değişmemektedir. Değişen
+sadece ezanın okunma saati ve vakitlere kalan sürelerdir.
 .TP
 .B SELA_OKUNMA_SURESI_FARKI
 Cuma günü sela okunması etkin ise selanın öğle ezanı vaktinden
@@ -203,6 +202,10 @@ Ezan okunurken yapılacak bildirim için, ezanı okuyan kişinin adıdır.
 .TP
 .B SELA_OKUYAN
 Cuma selası yapılacak bildirim için, selayı okuyan kişinin adıdır.
+.TP
+.B KERAHAT_SURESI
+Kerahat vakitlerini hesaplarken kullanılacak dakika cinsinden süredir.
+Öntanımlı 45 dakikadır.
 .TP
 .B SABAH_EZANI
 Sabah ezanının okunması için kullanılacak ses dosyasının
@@ -289,7 +292,7 @@ komutu çalıştırmadan önce RENK değişkenini belirleyebilirsiniz. Geçici o
 açmak için RENK değerini 1, kapatmak için 0 olarak girin.
 
 ÖR: RENK=0 ezanvakti --vakitler
-komutu RENK_KULLAN değeri ne olursa olsun renksiz çıktı verir. 
+komutu RENK_KULLAN değeri ne olursa olsun renksiz çıktı verir.
 .TP
 .B RENK KODLARI
 Uçbirim çıktılarında kullanılan renkleri isterseniz değiştirebilirsiniz.
@@ -307,10 +310,38 @@ değeridir.
 .B YAZI_RENGI
 Gösterilen kutucuktaki içerik için yazı tipi renk değeridir.
 .TP
+.B ARAYUZ_SIMGE_GOSTER
+Geişmiş arayüz ve arayüz 3 ana penceresinde gösterilen ezanvakti simgesinin
+gösterilme/gösterilmeme durumunu belirleyen değerdir. Özellikle css
+işlemleriyle ile  arayüze arkaplan görüntüsü eklemek isteyenler için
+kolaylık sağlamaktadır. Simge gösterilmesi için:1
+gosterilmemesi için:0 değerini girin. Öntanımlı simge gösterme etkin gelmektedir.
+.TP
 .B HICRI_TARIH_DUZELTME
 Hicri tarih bazen kayma yapabilmektedir. Gün ekleme ya da çıkarma işlemi gerekebilir.
 ör: 1 gün eklemek için 1 ya da +1, 1 gün çıkarmak için -1
 ekleme ya da çıkarma gerekmiyorsa 0 olarak değeri girin.
+
+.SH CSS dosyası ile Arayüz Özelleştirme İşlemleri
+Gtk3 sürümünde css tarzı kodlama ile gtk uygulamalarının genel ayarları yapılabilmektedir.
+YAD \-\-gtkrc  parametresiyle sistem geneli gtk ayarlarına ek, verilen dosyayı da kullanabilmektedir.
+Bu sayede diğer gtk uygulamaları etkilenmeden YAD'a özel, özelleştirmeler yapılabilmektedir.
+Öntanımlı css dosyalarının ve kullanıcı css dosya konumunuzu
+.B ezanvakti \-\-listele
+komutuyla öğrenebilirsiniz.
+
+Kullanılan css dosyaları:
+.br
+ezanvakti\-gui.css   : arayüz 1 için css dosyası
+.br
+ezanvakti\-gui2.css  : arayüz 2 için css dosyası
+.br
+ezanvakti\-gui3.css  : arayüz 3 için css dosyası
+.br
+ezanvakti\-config.css: yapılndırma yöneticisi için css dosyası
+.PP
+Öntanımlı dosyaları kopyalayıp kullanıcı css dizinine ekleyerek
+özelleştirmelerinizi yapabilirsiniz.
 .LP
 .SH HATA BİLDİRİMİ
 https://gitlab.com/fbostanci/ezanvakti/issues

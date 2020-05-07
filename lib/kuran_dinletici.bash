@@ -8,6 +8,7 @@
 kuran_dinletimi() {
   local parca_suresi parca_suresi_n okuyan kaynak dinletilecek_sure
   local sure_adi sure_ayet_sayisi cuz yer
+  trap 'echo;clear;exit 1' SIGINT
 
   # girileni denetleyip
   # sure_kod değişkenine atayacak. (temel_islevler.bash)
