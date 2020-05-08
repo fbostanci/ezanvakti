@@ -8,6 +8,6 @@ Homepage: https://gitlab.com/fbostanci/ezanvakti
 
 Package: ezanvakti
 Architecture: all
-Depends: ${misc:Depends}, yad, libnotify-bin, mplayer | ffmpeg, gawk, bash-completion, wget | curl
+Depends: ${misc:Depends}, yad, libnotify-bin, mplayer | ffmpeg, hicolor-icon-theme, gawk, bash-completion, wget | curl
 Description: ezanvakti
  GNU/Linux icin ezan vakti bildirici.
