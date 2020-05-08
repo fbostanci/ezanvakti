@@ -23,7 +23,7 @@ sounddir       = $(PREFIX)/share/sounds
 icondir        = $(PREFIX)/share/icons/hicolor
 appdeskdir     = $(PREFIX)/share/applications
 
-ILCELI_ULKELER = TÜRKİYE ABD ALMANYA KANADA
+ILCELI_ULKELER = TURKIYE ABD ALMANYA KANADA
 
 ifeq "$(DUZELTME)" ""
 	DUZELTME = $(shell date +%Y%m%d)
@@ -51,7 +51,7 @@ install: $(BETIKLER)
 	$(INSTALL) -vd $(DESTDIR)$(bindir)
 	$(INSTALL) -vd $(DESTDIR)$(libdir)/$(AD)
 	$(INSTALL) -vd $(DESTDIR)$(sysconfdir)
-	$(INSTALL) -vd $(DESTDIR)$(datadir)/$(AD)/{veriler,mealler,ulkeler{/TÜRKİYE,/ABD,/ALMANYA,/KANADA}_ilceler}
+	$(INSTALL) -vd $(DESTDIR)$(datadir)/$(AD)/{veriler,mealler,ulkeler{/TURKIYE,/ABD,/ALMANYA,/KANADA}_ilceler}
 	$(INSTALL) -vd $(DESTDIR)$(sounddir)/$(AD)
 	$(INSTALL) -vd $(DESTDIR)$(completionsdir)
 	$(INSTALL) -vd $(DESTDIR)$(mandir)/man{1,5}
