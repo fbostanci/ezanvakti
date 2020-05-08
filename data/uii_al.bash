@@ -67,7 +67,7 @@ do
 
       printf '[ %3d/%d ] %s -> %s\n' "$n" "$toplam" "$ulke" "${sehir_adi}"
       wget -q "https://namazvakitleri.diyanet.gov.tr/tr-TR/home/GetRegList?ChangeType=state&StateId=${sehir_kodu}&Culture=tr-TR"  -O - |\
-        jq '.StateRegionList[] | (.IlceAdi,.IlceID)' | sed -e 's:\"::g' -e 's/[[:space:]]*$//' | paste -d, - - > "ulkeler/${ulke}_ilceler/${sehir_adi}"
+        jq '.StateRegionList[] | (.IlceAdiEn,.IlceID)' | sed -e 's:\"::g' -e 's/[[:space:]]*$//' | paste -d, - - > "ulkeler/${ulke}_ilceler/${sehir_adi}"
         [[ $(wc -l < "ulkeler/${ulke}_ilceler/${sehir_adi}") == 0 ]] && echo "---> ${ulke}_ilceler/${sehir_adi} hatalı inmiş."
       sleep 0.6
       ((n++))

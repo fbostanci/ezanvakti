@@ -91,17 +91,17 @@ then
     case "$arayuz" in
       1)
         ulke=$(kdialog --combobox 'Bulunduğunuz ülkeyi seçin' --title 'Ülke belirleme' \
-              --default 'TÜRKİYE' $(cut -d, -f1 < ${VERI_DIZINI}/ulkeler/AAA-ULKELER))
+              --default 'TURKIYE' $(cut -d, -f1 < ${VERI_DIZINI}/ulkeler/AAA-ULKELER))
         (( $? == 1 )) && exit 1 ;;
 
       2)
-        ulke=$(yad --entry --entry-text 'TÜRKİYE' $(cut -d, -f1 < ${VERI_DIZINI}/ulkeler/AAA-ULKELER) \
+        ulke=$(yad --entry --entry-text 'TURKIYE' $(cut -d, -f1 < ${VERI_DIZINI}/ulkeler/AAA-ULKELER) \
               --width=300 --sticky --center --window-icon=${AD} \
               --title 'Ülke belirleme'  --text 'Bulunduğunuz ülkeyi seçin')
         (( $? == 1 )) && exit 1 ;;
 
       3)
-        ulke=$(zenity --entry --entry-text 'TÜRKİYE' $(cut -d, -f1 < ${VERI_DIZINI}/ulkeler/AAA-ULKELER) \
+        ulke=$(zenity --entry --entry-text 'TURKIYE' $(cut -d, -f1 < ${VERI_DIZINI}/ulkeler/AAA-ULKELER) \
               --title 'Ülke belirleme' --text 'Bulunduğunuz ülkeyi seçin')
         (( $? == 1 )) && exit 1 ;;
 
@@ -125,9 +125,9 @@ if ! grep -qw ${SEHIR} ${VERI_DIZINI}/ulkeler/${ulke}
 then
     arayuz_denetle
 
-    if [[ ${ulke} = TÜRKİYE ]]
+    if [[ ${ulke} = TURKIYE ]]
     then
-        varsayilan_sehir='İSTANBUL'
+        varsayilan_sehir='ISTANBUL'
     else
         varsayilan_sehir=$(head -1 ${VERI_DIZINI}/ulkeler/${ulke} | cut -d, -f1)
     fi
@@ -163,7 +163,7 @@ sehir_kodu=$(grep -w ${sehir} ${VERI_DIZINI}/ulkeler/${ulke} | cut -d, -f2)
 #                         İLÇE İŞLEMLERİ                             #
 ######################################################################
 
-if [[ ${ulke} = @(TÜRKİYE|ABD|ALMANYA|KANADA) ]]
+if [[ ${ulke} = @(TURKIYE|ABD|ALMANYA|KANADA) ]]
 then
     if ! grep -qw ${ILCE} ${VERI_DIZINI}/ulkeler/${ulke}_ilceler/${sehir}
     then
@@ -174,7 +174,7 @@ then
 
         else
             arayuz_denetle
-            [[ ${ulke} = TÜRKİYE ]] && g_sehir=${sehir} ||
+            [[ ${ulke} = TURKIYE ]] && g_sehir=${sehir} ||
                                        g_sehir=$(head -1 ${VERI_DIZINI}/ulkeler/${ulke}_ilceler/${sehir}| cut -d, -f1)
             case "$arayuz" in
               1)
