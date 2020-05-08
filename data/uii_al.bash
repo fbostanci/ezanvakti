@@ -9,10 +9,10 @@
 [[ ! -x $(type -p wget) ]] && { echo "wget gerekli"; exit 1; }
 [[ ! -d ulkeler ]] && mkdir ulkeler
 
-wget -q "https://namazvakitleri.diyanet.gov.tr/tr-TR" -O - | \
+wget -q "https://namazvakitleri.diyanet.gov.tr/tr-TR/" -O - | \
   sed -n '/<select class="country-select region-select".*>/,/<\/select>/p'| \
   sed -n 's:<option value="\(.*\)">\(.*\)</option>:\2,\1:p' | \
-  sed -e 's:[^[:print:]]::g' -e 's:^[[:blank:]]*::' -e 's:\&#220\;:Ü:' > ulkeler/AAA-ULKELER
+  sed -e 's:[^[:print:]]::g' -e 's:^[[:blank:]]*::' -e 's:T\&#220\;RKİYE:TURKIYE:' > ulkeler/AAA-ULKELER
 
 toplam=$(wc -l < ulkeler/AAA-ULKELER)
 n=1
@@ -22,9 +22,9 @@ do
     ulke_adi="$(echo ${ulke} | cut -d, -f1)"
     printf '[ %3d/%d ] %s\n' "$n" "$toplam" "$ulke_adi"
 
-    if [[ ${ulke_adi} = @(TÜRKİYE|ABD|ALMANYA|KANADA) ]]
+    if [[ ${ulke_adi} = @(TURKIYE|ABD|ALMANYA|KANADA) ]]
     then
-        jq_exec='.StateList[] | (.SehirAdi,.SehirID)'
+        jq_exec='.StateList[] | (.SehirAdiEn,.SehirID)'
     elif [[ ${ulke_adi} = @(LITVANYA|LUBNAN|S. ARABISTAN) ]]
     then
         echo "---> ${ulke_adi} hatalı. Geçici çözüm denenecek."
@@ -54,9 +54,8 @@ do
   ((n++))
 done
 
-for ulke in TÜRKİYE ABD ALMANYA KANADA
+for ulke in TURKIYE ABD ALMANYA KANADA
 do
-    [[ ${ulke} = TÜRKİYE ]] && ulke=TURKIYE
     mkdir -p "ulkeler/${ulke}_ilceler"
     toplam=$(wc -l < ulkeler/${ulke})
     n=1
@@ -74,6 +73,3 @@ do
       ((n++))
     done < "ulkeler/$ulke"
 done
-# Türkçe dizin adı sorun çıkardığı için
-# dizn adını değiştiriyoruz.
-mv ulkeler/{TÜRKİYE,TURKIYE}_ilceler
