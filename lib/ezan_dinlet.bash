@@ -7,6 +7,7 @@
 ezan_dinlet() {
   local vakit="$1" ileti
   bilesen_yukle oynatici_yonetici
+  renk_denetle
 
   if [[ ${vakit} = Cuma ]]
   then

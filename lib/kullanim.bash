@@ -40,19 +40,17 @@ betik_kullanimi() {
         Çevrimiçi olarak ya da yerel dizinden Kuran dinletir.
 
     ${B}--dinle${R} [-s,-o,-i,-a,-y,-c]
-        İstediğiniz zaman, istediğiniz vakte ait ezanı dinletir.
+        Girilen vakte ait ezanı dinletir.
 
     ${B}--sureler${R}
         Sure bilgilerini listeler.
 
     ${B}--ayet${R}
         Rastgele bir Kuran ayeti seçerek Türkçe anlamını
-        bildirim baloncuğunda gösterir.
+        gösterir.
 
     ${B}--aralik${R} [<sure_no> <ayet_aralığı> ]
         İstenen surenin, istenen ayetleri arasını gösterir.
-        ayet aralığı; <ayet_başlangıc_no-ayet_bitis_no>
-        şeklinde olmalıdır.
 
     ${B}--kalan${R}
         Uçbirimde sıradaki vakte ne kadar süre kaldığını
@@ -63,16 +61,14 @@ betik_kullanimi() {
         açar. EDITOR tanımlı değilse nano ile açar.
 
     ${B}--hadis${R}
-        40 hadisten rastgele bir hadis seçerek bildirim
-        baloncuğunda gösterir.
+        40 hadisten rastgele bir hadis seçerek gösterir.
 
     ${B}--bilgi${R}
         Diyanetin sitesinden alınan 'Bunları biliyor musunuz?'
-        kısmından bir soru ve sorunun yanıtını bildirim
-        baloncuğunda gösterir.
+        kısmından bir soru ve sorunun yanıtını gösterir.
 
     ${B}--esma${R}
-        Esma-ül Hüsna dan Allah ın bir adını gösterir.
+        Esma-ül Hüsna dan rastgele bir seçim gösterir.
 
     ${B}--guncelle${R}
         Ezanveri dosyasını 30 günlük vakitleri içerecek
@@ -104,7 +100,7 @@ betik_kullanimi() {
         Uygulamanın kullandığı dosya ve diznleri listeler.
 
     ${B}-V, --surum, --version${R}
-        Betiğin sürüm numarasını gösterir ve çıkar.
+        Uygulamanın sürüm numarasını gösterir ve çıkar.
 
     ${B}-h, --help, --yardim, --yardım${R}
         Bu yardım sayfasını görüntüler ve çıkar.
