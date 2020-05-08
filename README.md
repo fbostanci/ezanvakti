@@ -1,4 +1,4 @@
-Son Güncelleme:  Thu, 23 Apr 2020 15:58:09 +0300
+Son Güncelleme:  Fri, 08 May 2020 21:08:46 +0300
 
 [![GitHub release](https://img.shields.io/github/release/fbostanci/ezanvakti.svg?style=plastic)](https://github.com/fbostanci/ezanvakti)
 [![GitHub tag](https://img.shields.io/github/tag/fbostanci/ezanvakti.svg?style=plastic)](https://github.com/fbostanci/ezanvakti)

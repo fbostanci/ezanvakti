@@ -5,7 +5,7 @@
 /×××××××××××××××××××××××××××××
 × Ezanvakti 7.2
 ×××××××××××××××××××××××××××××/
-2020-05-xx Fatih BOSTANCI <ironic@yaani.com>
+2020-05-08 Fatih BOSTANCI <ironic@yaani.com>
 
  * Yatsı vaktinden sonra artık yarının sabah vakti hesaplanıyor.
  * listele.bash: Uygulama dosya konumları listeleyici. (--listele)
@@ -22,6 +22,7 @@
  * YAD arayüz ve arayüz3 pencerelerinde ezanvakti simgesi göster/gösterme seçimi
    -> ARAYUZ_SIMGE_GOSTER değeri.
  * Makefile geliştirmeleri.
+ * Man dosyaları içerikler düzenlendi/güncellendi. 
  * Tüm ülke, şehir, ilçe dosyaları güncellendi.
  * Birçok kod geliştirme/temizlik yapıldı.
 
