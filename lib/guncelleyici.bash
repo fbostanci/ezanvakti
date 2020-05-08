@@ -165,9 +165,9 @@ sehir_kodu=$(grep -w ${sehir} ${VERI_DIZINI}/ulkeler/${ulke} | cut -d, -f2)
 
 if [[ ${ulke} = @(TÜRKİYE|ABD|ALMANYA|KANADA) ]]
 then
-    # dosya adını TURKIYE_ilceler (tar hatası) olarak
-    # kullandığımız için dizin hatasını önlemek için
-    # ulke adını TURKIYE olarak değiştiriyoruz.
+    # dosya adını TURKIYE_ilceler (Türkçe dizin adı hatası) olarak
+    # kullandığımız için dizin hatasını önlemek için ulke adını
+    # TURKIYE olarak değiştiriyoruz.
     [[ ${ulke} = TÜRKİYE ]] && ulke=TURKIYE
     if ! grep -qw ${ILCE} ${VERI_DIZINI}/ulkeler/${ulke}_ilceler/${sehir}
     then
@@ -233,6 +233,8 @@ printf '%b%*b' "${RENK7}${RENK8}" $(( stn - 13 - renksiz_payi )) \
 ### Güncelleme işlemi {{{
 if (( ! denetim ))
 then
+    # gerek yok ama yanlış gösterilmesin.
+    [[ ${ulke} = TURKIYE ]] && ulke='TÜRKİYE'
     printf "${RENK7}${RENK3} ->${RENK8} Seçilmiş ülke:${RENK2}  ${ulke}${RENK0}\n"
     printf "${RENK7}${RENK3} ->${RENK8} Seçilmiş şehir:${RENK2} ${sehir}${RENK0}\n"
     printf "${RENK7}${RENK3} ->${RENK8} Seçilmiş ilçe:${RENK2}  ${ilce}${RENK0}\n"

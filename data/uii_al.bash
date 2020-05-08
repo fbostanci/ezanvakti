@@ -56,6 +56,7 @@ done
 
 for ulke in TÜRKİYE ABD ALMANYA KANADA
 do
+    [[ ${ulke} = TÜRKİYE ]] && ulke=TURKIYE
     mkdir -p "ulkeler/${ulke}_ilceler"
     toplam=$(wc -l < ulkeler/${ulke})
     n=1
@@ -73,3 +74,6 @@ do
       ((n++))
     done < "ulkeler/$ulke"
 done
+# Türkçe dizin adı sorun çıkardığı için
+# dizn adını değiştiriyoruz.
+mv ulkeler/{TÜRKİYE,TURKIYE}_ilceler
