@@ -165,6 +165,10 @@ sehir_kodu=$(grep -w ${sehir} ${VERI_DIZINI}/ulkeler/${ulke} | cut -d, -f2)
 
 if [[ ${ulke} = @(TÜRKİYE|ABD|ALMANYA|KANADA) ]]
 then
+    # dosya adını TURKIYE_ilceler (tar hatası) olarak
+    # kullandığımız için dizin hatasını önlemek için
+    # ulke adını TURKIYE olarak değiştiriyoruz.
+    [[ ${ulke} = TÜRKİYE ]] && ulke=TURKIYE
     if ! grep -qw ${ILCE} ${VERI_DIZINI}/ulkeler/${ulke}_ilceler/${sehir}
     then
         if [[ $(wc -l < ${VERI_DIZINI}/ulkeler/${ulke}_ilceler/${sehir}) -eq 1 ]]
