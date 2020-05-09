@@ -21,7 +21,7 @@
 # kaldırırken de ezv-devel'i arar.
 #
 AD=${AD:-ezv-devel}
-bindir=$HOME/.local/bin
+bindir="$HOME/.local/bin"
 
 [[ $(id -u) == 0 ]] && {
   printf '%s: root haklarıyla çalıştırılamaz.\n' "${0##*/}" >&2
@@ -68,6 +68,7 @@ esac
   done
 
   (( ${#KUR_BUNU[@]} )) && {
+    KUR_BUNU=("${KUR_BUNU[@]/notify-send/libnotify}")
     e=0
     printf '%s\n' \
       'Aşağıdaki bağımlılıklar bulunamadı.' >&2
@@ -83,9 +84,9 @@ esac
 }
 
 make clean
-make PREFIX=$HOME/.local bindir=${bindir} AD=${AD} ${eylem}
+make PREFIX="$HOME/.local" bindir="${bindir}" AD=${AD} ${eylem}
 
-gtk-update-icon-cache -f -t $HOME/.local/share/icons/hicolor
+gtk-update-icon-cache -f -t "$HOME/.local/share/icons/hicolor"
 xdg-desktop-menu forceupdate
 
 make clean
