@@ -90,6 +90,6 @@ xdg-desktop-menu forceupdate
 
 make clean
 [[ ${eylem} = install ]] && {
-  [[ -z $(grep -o ${bindir} <<<$PATH) ]] && \
-    echo -e "\n\n${bindir} PATH üzerinde değil."
+  [[ :$PATH: == *:${bindir}:* ]] || \
+    echo -e "\n\n\033[0;1m${bindir}\033[1;33m PATH üzerinde değil.\033[0m"
 }

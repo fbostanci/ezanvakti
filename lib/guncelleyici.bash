@@ -35,6 +35,10 @@ guncelleme_yap() { ### Ana fonksiyon {{{
   fi
 
 arayuz_denetle() { ### Arayüz denetle {{{
+  # Ülke, şehir, ilçe seçimlerinde
+  # çağrılıyor. bir kez arayuz
+  # seçildiyse bir daha denetim
+  # yapmasın. (denetim=1 ise)
   if (( denetim ))
   then
       return 0
@@ -227,6 +231,9 @@ printf '%b%*b' "${RENK7}${RENK8}" $(( stn - 13 - renksiz_payi )) \
 #}}}
 
 ### Güncelleme işlemi {{{
+# denetim=0 ise
+# ULKE,SEHIR,ILCE adları
+# sorunsuz, seçim yapılmamış.
 if (( ! denetim ))
 then
     printf "${RENK7}${RENK3} ->${RENK8} Seçilmiş ülke:${RENK2}  ${ulke}${RENK0}\n"
@@ -267,6 +274,8 @@ then
     mv -f /tmp/ezanveri-$$ "${EZANVERI}"
     printf '%b%*b' "${RENK7}${RENK8}" $(( stn - ${#EZANVERI_ADI} - 6 - renksiz_payi )) \
       "[${RENK2}  BAŞARILI  ${RENK8}]${RENK0}\n"
+    # ayarlar dosyasındaki konum bilgileri
+    # değişmiş olabilir. Ayarları yeniden al.
     . "${EZANVAKTI_AYAR}"
 
     renk_denetle
