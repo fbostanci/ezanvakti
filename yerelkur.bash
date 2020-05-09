@@ -3,7 +3,7 @@
 # ezanvakti uygulamasının kullanıcı dizinine($HOME) kurulumunu yapar.
 #
 # ezanvakti uygulamasının kurulu olma ve bu kurulumla çakışma durumuna
-# karşı farklı bir adla kurulum yapar. 
+# karşı farklı bir adla kurulum yapar.
 # Kurulu olmadığından eminseniz AD değerini ezanvakti yapabilirsiniz.
 #
 # Bu betiği kaynak kod dizini içerisinde çalıştırın.
