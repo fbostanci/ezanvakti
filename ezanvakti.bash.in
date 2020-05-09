@@ -27,10 +27,10 @@
 #set -x
 
 [[ $1 = --@(tui|u[cç]birim|terminal) ]] && exec @libdir@/@AD@/ucbirim_tui.bash
-[[ $1 = --@(gui|aray[uü]z)   ]] && exec @libdir@/@AD@/arayuz.bash
-[[ $1 = --@(gui2|aray[uü]z2) ]] && exec @libdir@/@AD@/arayuz2.bash
-[[ $1 = --@(gui3|aray[uü]z3) ]] && exec @libdir@/@AD@/arayuz3.bash
-[[ $1 = ''                   ]] && exec @libdir@/@AD@/@AD@-sleep
+[[ $1 = --@(gui|aray[uü]z)           ]] && exec @libdir@/@AD@/arayuz.bash
+[[ $1 = --@(gui2|aray[uü]z2)         ]] && exec @libdir@/@AD@/arayuz2.bash
+[[ $1 = --@(gui3|aray[uü]z3)         ]] && exec @libdir@/@AD@/arayuz3.bash
+[[ $1 = ''                           ]] && exec @libdir@/@AD@/@AD@-sleep
 
 . @libdir@/@AD@/temel_islevler.bash
 acilisa_baslatici_ekle
@@ -176,7 +176,7 @@ case $1 in
     kuran_dinlet rastgele ;;
   -kh|--kh)
     bilesen_yukle kuran_dinletici
-    kuran_dinlet hatim ;; 
+    kuran_dinlet hatim ;;
   -kg|--kg)
     bilesen_yukle kuran_dinletici
     kuran_dinlet gunluk ;;

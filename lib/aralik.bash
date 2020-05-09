@@ -6,7 +6,8 @@
 
 ayet_araligi_goster() {
   renk_denetle; meal_denetle
-
+  # $1 = sure no = sure_kod
+  # $2 = ayet aralığı = ayet_kod
   local ayet_kod=$2 ayet_baslama ayet_bitis satir
   local sure_adi sure_baslama sure_ayet_sayisi int_ayet_kod
 
@@ -15,7 +16,7 @@ ayet_araligi_goster() {
       printf '%s: Kullanım: <sure_kodu> <ayet_aralığı>\n' "${AD}" >&2
       exit 1
   fi
-  # girileni denetleyip
+  # girileni (sure no) denetleyip
   # sure_kod değişkenine atayacak.(temel_islevler.bash)
   sure_no_denetle "$1"
   # sure_kod ile ilişik surenin bilgilerini ilgili değişkenlere atadık.

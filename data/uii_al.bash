@@ -7,7 +7,7 @@
 
 [[ ! -x $(type -p jq)   ]] && { echo "jq gerekli"; exit 1; }
 [[ ! -x $(type -p wget) ]] && { echo "wget gerekli"; exit 1; }
-[[ ! -d ulkeler ]] && mkdir ulkeler
+[[ ! -d ulkeler         ]] && mkdir ulkeler
 
 wget -q "https://namazvakitleri.diyanet.gov.tr/tr-TR/" -O - | \
   sed -n '/<select class="country-select region-select".*>/,/<\/select>/p'| \
