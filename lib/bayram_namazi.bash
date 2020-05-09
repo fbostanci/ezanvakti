@@ -5,8 +5,7 @@
 #
 
 bayram_namazi_vakti() {
-  echo "güncellenecek"; exit 1
-  local ulke_kodu sehir_kodu ilce_kodu ramazan_bt kurban_bt ramazan_nv kurban_nv
+  local ulke_kodu sehir_kodu ilce_kodu bayram_t bayram_v
   renk_denetle
 
   [[ -z "${ULKE}"  ]] && ULKE=yok_boyle_bir_yer
@@ -49,27 +48,24 @@ bayram_namazi_vakti() {
   fi
 
   indirici "https://namazvakitleri.diyanet.gov.tr/tr-TR/${ilce_kodu}" | \
-  sed -n 's:.*<span.*>\(.*\)</span>.*:\1:p' > /tmp/ezv-bayram-vakitleri-$$
+  sed -n 's:.*<span\ class="bayram-info-value-top">\(.*\)</span>.*:\1:p' > /tmp/ezv-bayram-vakitleri-$$
 
 
-  # bayram namazı tarihlerini ve vakitlerini al.
-  ramazan_bt="$(gawk -F'=' '/RamazanBayramNamaziTarihi/{print $2}' < /tmp/ezv-bayram-vakitleri-$$)"
-  ramazan_nv="$(gawk -F'=' '/RamazanBayramNamaziSaati/{print $2}' < /tmp/ezv-bayram-vakitleri-$$)"
-  kurban_bt="$(gawk -F'=' '/KurbanBayramNamaziTarihi/{print $2}' < /tmp/ezv-bayram-vakitleri-$$)"
-  kurban_nv="$(gawk -F'=' '/KurbanBayramNamaziSaati/{print $2}' < /tmp/ezv-bayram-vakitleri-$$)"
+  # bayram namazı tarihi ve vaktini al.
+  bayram_t="$(head -1 /tmp/ezv-bayram-vakitleri-$$)"
+  bayram_v="$(tail -1 /tmp/ezv-bayram-vakitleri-$$)"
 
   rm -f /tmp/ezv-bayram-vakitleri-$$ > /dev/null 2>&1
 
-  [[ -z ${ramazan_bt} || -z ${kurban_bt} || -z ${ramazan_nv} || -z ${kurban_nv} ]] && {
+  [[ -z ${bayram_t} || -z ${bayram_v} ]] && {
 
     printf "${RENK7}${RENK4}\n!!! YENIDEN DENEYIN !!!${RENK0}\n"
     exit 1
   }
 
-  printf '%b%b%b\n' \
-    "${RENK7}${RENK3}${ILCE}${RENK5} için bayram namazı vakitleri ($(date +'%d.%m.%Y %H:%M:%S'))\n\n" \
-    "${RENK2}Ramazan bayramı namazı ${RENK3}: ${ramazan_nv} ${RENK2}${ramazan_bt}\n" \
-    "${RENK2}Kurban bayramı namazı  ${RENK3}: ${kurban_nv} ${RENK2}${kurban_bt}${RENK0}\n"
+  printf '%b%b\n' \
+    "${RENK7}${RENK3}${ILCE}${RENK5} için bayram namazı vakitleri ($(date +'%d.%m.%Y %T'))\n\n" \
+    "${RENK2}${bayram_t} ${RENK3}: ${bayram_v}${RENK0}\n"
 }
 
 # vim: set ts=2 sw=2 et:

@@ -122,7 +122,7 @@ EZAN_DUASI_OKU=1
 #     ekleme ya da çıkarma gerekmiyorsa 0
 EZAN_OKUNMA_SURESI_FARKI=0
 
-# Cuma günü öğle vaktinden 
+# Cuma günü öğle vaktinden
 # kaç dakika önce sela okunsun ?
 SELA_OKUNMA_SURESI_FARKI=55
 
@@ -280,7 +280,7 @@ HICRI_TARIH_DUZELTME=0
 GELISMIS_ARAYUZ_BICIMI='%-94s%s\n%s\n%s\n\t\t\t\t%s\n%s\n\n%s\n\n\t\t\t %s\n\t\t\t %s'
 
 # Printf conky çıktısı biçimi
-CONKY_BICIMI='%-14s%s\n%-15s%s\n%-17s%s\n%-17s%s\n%-14s%s\n%-18s%s\n'
+CONKY_BICIMI='%-13s%s\n%-15s%s\n%-17s%s\n%-18s%s\n%-14s%s\n%-18s%s\n'
 
 # Printf arayüzlerdeki vakit çıktısı biçimi
 VAKIT_BICIMI='\t\t\t%s\t\t%s\n\t\t\t%s\t\t%s\n\t\t\t%s\t\t%s\n\t\t\t%s\t\t%s\n\t\t\t%s\t\t%s\n\t\t\t%s\t\t%s'

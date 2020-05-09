@@ -22,7 +22,7 @@
  * YAD arayüz ve arayüz3 pencerelerinde ezanvakti simgesi göster/gösterme seçimi
    -> ARAYUZ_SIMGE_GOSTER değeri.
  * Makefile geliştirmeleri.
- * Man dosyaları içerikler düzenlendi/güncellendi. 
+ * Man dosyaları içerikler düzenlendi/güncellendi.
  * Tüm ülke, şehir, ilçe dosyaları güncellendi.
  * Birçok kod geliştirme/temizlik yapıldı.
 
@@ -129,7 +129,7 @@
  *  Gelişmiş arayüze hicri tarih gösterimi eklendi.
  *  Vakit anımsatıcı bildirimle birlikte sesli uyarı da verebiliyor.
  *  Cuma günü isteğe bağlı öğle vaktinden önce sela okunması eklendi. (süre ayarlı)
- *  Uygulama --ayet, --hadis, --bilgi parametreleriyle çalıştığında bildirim 
+ *  Uygulama --ayet, --hadis, --bilgi parametreleriyle çalıştığında bildirim
     baloncuğu açılıyordu, öncelik uçbirime verildi. Bildirim baloncuğu için
     ek olarak -b, -o, --bildirim, ya da --osd girilmesi gerekiyor.
  *  --ayet --aa kaldırıldı. Ayet aralık için yalnızca --aralik var.
@@ -221,11 +221,11 @@
  *  Uygulama geneli uçbirim çıktıları için renk kullanma/kullanmama seçimi yapılabilmesi
  *  Renk kodları artık yapılandırma dosyasından okunuyor ve renk özelleştirmeleri yapılabilir.
  *  Renk kodları için özel betik eklendi. (/usr/share/ezanvakti/bilesenler/renk_ogren)
- *  Gelişmiş arayüzle tümleşik çalışan özel Kuran dinleme penceresi eklendi. 
+ *  Gelişmiş arayüzle tümleşik çalışan özel Kuran dinleme penceresi eklendi.
      (Kuran dinle listesi 000-Özel Pencere girdisi ile başlatılıyor.)
  *  Yapılandırma yöneticisi çeşitli geliştirme ve yeniliklerle yeni sürüme yükseltildi.
  *  Aylık ve haftalık vakitlerin listelenebilmesi (--vakitler --aylik/30 ve --vakitler --haftalik/7 )
- *  Artık root dizininden de ayarlar dosyası okunduğu için sürümler arası 
+ *  Artık root dizininden de ayarlar dosyası okunduğu için sürümler arası
      geçişlerde ayarlar dosyasi silinmesi zorunlu değil.
      Eksik ayarlar için öntanımlı değerler kullanılacak.
  *  Unity menü desteği
