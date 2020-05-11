@@ -66,7 +66,7 @@ siradaki_vakit() {
     siradaki)
       printf "${RENK7}${RENK3}\n${siradaki_vakit_adi} : ${RENK2}$siradaki_vakit_kalan${RENK0}\n\n" ;;
     conky_siradaki)
-      printf "${siradaki_vakit_adi} : ${siradaki_vakit_kalan}\n"  |
+      printf "${siradaki_vakit_adi} : ${siradaki_vakit_kalan}\n"  | \
         sed 's:saat:sa:;s:dakika:dk:;s:saniye:sn:' ;;
     bildirim)
       notify-send "${AD^} - Sıradaki vakit" \

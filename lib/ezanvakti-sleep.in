@@ -20,7 +20,7 @@ acilisa_baslatici_ekle
 # Kullanıcı kendi isteğiyle (ezanvakti komutuyla) bileşeni başlatabilir.
 # ACILISTA_BASLAT=0 olması önemsenmez, beş vakit kipinde başlar.
 [[ ${calisma_kodu} = 657a616e76616b7469 ]] && (( ! ACILISTA_BASLAT )) && exit 0
-#                   #657a616e76616b7469 = ezanvakti onaltılık sayı değeri
+#                    657a616e76616b7469 = ezanvakti onaltılık sayı değeri
 
 bilesen_yukle oynatici_yonetici
 (( OYNATICI_DURAKLAT )) && bilesen_yukle oynatici_duraklat
