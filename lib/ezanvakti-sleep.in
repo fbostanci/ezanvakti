@@ -2,7 +2,7 @@
 #
 #
 #
-#                           Ezanvakti Sleep Yöntemi  Bileşeni 1.7
+#                           Ezanvakti Sleep Yöntemi  Bileşeni 1.8
 #
 
 calisma_kodu="$1"
@@ -92,12 +92,11 @@ ezan_oku() {
   local ileti
   clear
 
-  if [[ ${simdiki} = @(İmsak|İftar) ]]
-  then
-      ileti='vakti'
-  else
-      ileti='namazı vakti'
-  fi
+  case "${simdiki}" in
+    İmsak|İftar|'Gün doğumu') ileti='vakti' ;;
+    *) ileti='namazı vakti' ;;
+  esac
+
   printf '%b%b\n' \
     "${RENK7}${RENK3}${ILCE}${RENK2} " \
     "için ${RENK3}${simdiki}${RENK2} ${ileti}${RENK5} ${vakit_saati_n}${RENK0}"
@@ -150,12 +149,11 @@ vakit_animsat() {
         done
     fi
 
-    if [[ ${simdiki} = @(İmsak|İftar) ]]
-    then
-        ileti='vakti olacak.'
-    else
-        ileti='ezanı okunacak.'
-    fi
+    case "${simdiki}" in
+      İmsak|İftar) ileti='vakti olacak.' ;;
+      'Gün doğumu') simdiki='Güneş'; ileti='doğacak.' ;;
+      *) ileti='ezanı okunacak.' ;;
+    esac
 
     notify-send "${AD^}" "$VAKIT_ANIMSAT dakika sonra $simdiki ${ileti}" \
       -u critical -t $BILGI_BILDIRIM_SURESI"000" \
@@ -187,12 +185,19 @@ ezan_vakitlerini_al() {
       vakit_saati=$(( sabah + EZAN_OKUNMA_SURESI_FARKI ))
       ezan_okunsun_mu=${SABAH_EZANI_OKU}
 
+  elif (( UNIXSAAT <= gunes ))
+  then
+      simdiki='Gün doğumu'
+      vakit_saati_n=${gunes_n}
+      vakit_saati=$gunes
+      ezan_okunsun_mu=0
+
   elif (( UNIXSAAT <= ogle ))
   then
       if (( ACILISTA_BASLAT == 2 ))
       then
           simdiki='İftar'
-          vakit_saati_n="${aksam_n}"
+          vakit_saati_n=${aksam_n}
           vakit_saati=$(( aksam + EZAN_OKUNMA_SURESI_FARKI ))
       else
           simdiki='Öğle'
@@ -210,7 +215,7 @@ ezan_vakitlerini_al() {
       if (( ACILISTA_BASLAT == 2 ))
       then
           simdiki='İftar'
-          vakit_saati_n="${aksam_n}"
+          vakit_saati_n=${aksam_n}
           vakit_saati=$(( aksam + EZAN_OKUNMA_SURESI_FARKI ))
       else
           simdiki='İkindi'

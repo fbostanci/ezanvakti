@@ -14,6 +14,13 @@ siradaki_vakit_al() { # {{{
       siradaki_ezan_vakti=$sabah_n
       siradaki_vakit_kalan="$kalan_sure"
 
+  elif (( UNIXSAAT < gunes ))
+  then
+      bekleme_suresi $gunes
+      siradaki_vakit_adi="Gün doğumu"
+      siradaki_ezan_vakti=$gunes_n
+      siradaki_vakit_kalan="$kalan_sure"
+
   elif (( UNIXSAAT < ogle ))
   then
       bekleme_suresi $ogle
@@ -57,7 +64,7 @@ siradaki_vakit() {
 
   case $istek in
     siradaki)
-      printf "${RENK7}${RENK3}\n${siradaki_vakit_adi} ezanı : ${RENK2}$siradaki_vakit_kalan${RENK0}\n\n" ;;
+      printf "${RENK7}${RENK3}\n${siradaki_vakit_adi} : ${RENK2}$siradaki_vakit_kalan${RENK0}\n\n" ;;
     conky_siradaki)
       printf "${siradaki_vakit_adi} : ${siradaki_vakit_kalan}\n"  |
         sed 's:saat:sa:;s:dakika:dk:;s:saniye:sn:' ;;

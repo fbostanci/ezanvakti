@@ -212,7 +212,8 @@ RENK5='\033[1;36m'
 RENK6='\033[4;1;36m'
 
 # Renk artalanı (siyah)
-RENK7='\033[40m'
+# '\033[40m'
+RENK7=''
 
 # Beyaz
 RENK8='\033[0;1m'
@@ -277,7 +278,7 @@ ARAYUZ_SIMGE_GOSTER=1
 HICRI_TARIH_DUZELTME=0
 
 # Printf arayuz yazı biçimi
-GELISMIS_ARAYUZ_BICIMI='%-94s%s\n%s\n%s\n\t\t\t\t%s\n%s\n\n%s\n\n\t\t\t %s\n\t\t\t %s'
+GELISMIS_ARAYUZ_BICIMI='%-94s%s\n%s\n%s\n\t\t\t\t%s\n%s\n\n%s\n\n\t\t\t%s\n\t\t\t%s'
 
 # Printf conky çıktısı biçimi
 CONKY_BICIMI='%-13s%s\n%-15s%s\n%-17s%s\n%-18s%s\n%-14s%s\n%-18s%s\n'

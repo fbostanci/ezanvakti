@@ -117,8 +117,8 @@ g_vakitleri_al() {
 
   elif (( UNIXSAAT >= sabah && UNIXSAAT < gunes ))
   then
-      bekleme_suresi $ogle
-      v_ileti='Öğle ezanına kalan süre :'
+      bekleme_suresi $gunes
+      v_ileti='Gün doğumuna kalan süre :'
       v_kalan="$kalan_sure"
       vakit_bilgisi='<b>Şimdi Kerahat Vakti 1</b>'
 

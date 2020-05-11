@@ -20,7 +20,7 @@ listele() {
   printf "${RENK2}Kullanıcı ayar dizini:       ${RENK3}%s\n${RENK0}" "${EZANVAKTI_DIZINI}"
   printf "${RENK2}Kullanıcı ayar dosyası:      ${RENK3}%s\n${RENK0}" "${EZANVAKTI_AYAR}"
   printf "${RENK2}Kullanıcı css dosya dizini:  ${RENK3}%s\n${RENK0}" "${EZANVAKTI_DIZINI}"
-  printf "${RENK2}Önatınımlı ayar dosyası:     ${RENK3}%s\n${RENK0}" "${EZANVAKTI_ONT_AYAR}"
+  printf "${RENK2}Öntanımlı ayar dosyası:      ${RENK3}%s\n${RENK0}" "${EZANVAKTI_ONT_AYAR}"
   printf "${RENK2}Bileşen dizini:              ${RENK3}%s\n${RENK0}" "${BILESEN_DIZINI}"
   printf "${RENK2}Veri dizini:                 ${RENK3}%s\n${RENK0}" "${VERI_DIZINI}"
   printf "${RENK2}Öntanımlı ses dosya dizini:  ${RENK3}%s\n${RENK0}" "${VERI_DIZINI/${AD}/}sounds/${AD}"
