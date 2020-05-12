@@ -64,8 +64,7 @@ cuma_selasi() {
   if (( $(( sela_vakti - 60 )) == UNIXSAAT ))
   then
       sleep $(( sela_vakti - $(date +%s) ))
-  elif (( sela_vakti != UNIXSAAT ))
-  then
+  else
       sleep 59; cuma_selasi
   fi
 
@@ -139,8 +138,7 @@ vakit_animsat() {
     if (( $(( animsatici_saniye - 60 )) == UNIXSAAT ))
     then
         sleep $(( animsatici_saniye - $(date +%s) ))
-    elif (( animsatici_saniye != UNIXSAAT ))
-    then
+    else
         sleep 59; vakit_animsat
     fi
 
@@ -151,8 +149,7 @@ vakit_animsat() {
     esac
 
     notify-send "${AD^}" "$VAKIT_ANIMSAT dakika sonra $simdiki ${ileti}" \
-      -u critical -t $BILGI_BILDIRIM_SURESI"000" \
-      -i ${AD}
+      -u critical -t $BILGI_BILDIRIM_SURESI"000" -i ${AD}
 
     (( SESLI_UYARI )) && {
       bilesen_yukle oynatici_yonetici
@@ -278,8 +275,7 @@ ezanvakti_bekle() {
   if (( $(( vakit_saati - 60 )) == UNIXSAAT ))
   then
       sleep $(( vakit_saati - $(date +%s) ))
-  elif (( vakit_saati != UNIXSAAT ))
-  then
+  else
       sleep 59; ezanvakti_bekle
   fi
   ezan_oku; ezanvakti_bekle
