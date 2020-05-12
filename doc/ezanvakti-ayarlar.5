@@ -29,9 +29,15 @@ için değeri 0 yapın. Öntanımlı olarak, otomatik güncelleme açık gelmekt
 .TP
 .B ACILISTA_BASLAT
 Uygulamanın sistem açılışında çalışma kipini belirleyen değerdir. Kip değerleri şunlardır.
+
 0: Uygulama açılışta kendiliğinden çalışmaz.
+
 1: Uygulama açılışta normal (5 vakit ezan) kipte çalışır.
-2: Uygulama açılışta ramazan kipiyle (Yalnızca imsak ve iftar vakitleri için) çalışır.
+
+2: Uygulama açılışta ramazan kipiyle çalışır.
+.br
+Ramazan kipinde yalnızca iftar ve imsak vakitleri için anımsatma ve ezan okunma yapılır.
+
 1 ve 2 kipi için uygulama açılışa başlatıcı ekleyecektir ve sonraki sistem açılışlarında
 bu kiple çalışacaktır.
 .TP
@@ -68,7 +74,7 @@ seçeneği.)
 seçeneği ile görüntüleyeceğiniz listedeki gibi numaralarla adlandırılmalıdır.
 Ses dosyaları bu dizin içinde KURAN_OKUYAN değeriyle adlandırılmış
 alt dizin içerisine konmalıdır. Uygulama eğer istenen sureyi, belirttiğiniz
-dizinde bulamazsa, çevrimiçi olarak dinletmeyi deneyecektir. 
+dizinde bulamazsa, çevrimiçi olarak dinletmeyi deneyecektir.
 .TP
 .B KURAN_OKUYAN
 Çevrimiçi ya da yerel dizinden Kuran dinleme işleminde farklı bir
@@ -141,7 +147,7 @@ ezanlar içindir. Ezan dinleme işleminde etkisizdir.
 Desteklenen oynatıcılar: Spotify, Deadbeef, Clementine, Amarok, Rhythmbox,
                 Aqualung, Audacious, Banshee, Exaile, Cmus,
                 Moc, Qmmp, Juk
-.TP 
+.TP
 .B EZAN_DUASI_OKU
 Ezan okuma işleminden sonra, Türkçe ezan duası da okunmasını belirleyen değerdir.
 Öntanımlı olarak okunma açık gelmektedir. (1 değeri.) Eğer okunmamasını istiyorsanız
@@ -288,7 +294,7 @@ Eğer bir komut için RENK_KULLAN değerini değiştirmeden renk aç/kapat yapma
 komutu çalıştırmadan önce RENK değişkenini belirleyebilirsiniz. Geçici olarak renkleri
 açmak için RENK değerini 1, kapatmak için 0 olarak girin.
 
-ÖR: RENK=0 ezanvakti \-\-vakitler
+ÖR: RENK=0 ezanvakti \-\-gunler
 komutu RENK_KULLAN değeri ne olursa olsun renksiz çıktı verir.
 .TP
 .B RENK KODLARI

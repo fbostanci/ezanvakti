@@ -168,7 +168,7 @@ case $1 in
       -g|--g[uü]nl[uü]k)
         kuran_dinlet gunluk ;;
       -s|--se[cç]im)
-        kuran_dinlet secim "$2" ;;
+        shift; kuran_dinlet secim "$@" ;;
       *) hatali_kullanim "${1:-null}" ;;
     esac ;;
   -kr|--kr)
@@ -182,7 +182,7 @@ case $1 in
     kuran_dinlet gunluk ;;
   -ks|--ks)
     bilesen_yukle kuran_dinletici
-    kuran_dinlet secim "$2" ;;
+    shift; kuran_dinlet secim "$@" ;;
   --sureler)
     bilesen_yukle sureler_ayetler
     sureler_ayetler ;;

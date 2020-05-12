@@ -50,7 +50,9 @@ kuran_dinlet() { # kuran_dinlet_yonetimi {{{
   renk_denetle
 
   case $1 in
-    secim) kuran_dinletimi "${2:-null}";;
+    secim) shift; for dsure in "${@:-null}"
+           do kuran_dinletimi "${dsure}"
+           done;;
     hatim)
       for ((i=1; i<=114; i++))
       do
