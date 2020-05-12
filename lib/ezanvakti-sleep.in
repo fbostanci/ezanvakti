@@ -2,7 +2,7 @@
 #
 #
 #
-#                           Ezanvakti Sleep Yöntemi  Bileşeni 1.8
+#                           Ezanvakti Sleep Yöntemi  Bileşeni 1.9
 #
 
 calisma_kodu="$1"
@@ -64,11 +64,9 @@ cuma_selasi() {
   if (( $(( sela_vakti - 60 )) == UNIXSAAT ))
   then
       sleep $(( sela_vakti - $(date +%s) ))
-  else
-      while (( sela_vakti != UNIXSAAT ))
-      do
-        sleep 59; cuma_selasi
-      done
+  elif (( sela_vakti != UNIXSAAT ))
+  then
+      sleep 59; cuma_selasi
   fi
 
   notify-send "${ILCE} için" \
@@ -141,12 +139,9 @@ vakit_animsat() {
     if (( $(( animsatici_saniye - 60 )) == UNIXSAAT ))
     then
         sleep $(( animsatici_saniye - $(date +%s) ))
-    else
-#       set -e
-        while (( animsatici_saniye != UNIXSAAT ))
-        do
-          sleep 59; vakit_animsat
-        done
+    elif (( animsatici_saniye != UNIXSAAT ))
+    then
+        sleep 59; vakit_animsat
     fi
 
     case "${simdiki}" in
@@ -283,12 +278,9 @@ ezanvakti_bekle() {
   if (( $(( vakit_saati - 60 )) == UNIXSAAT ))
   then
       sleep $(( vakit_saati - $(date +%s) ))
-  else
-#     set -e
-      while (( vakit_saati != UNIXSAAT ))
-      do
-        sleep 59; ezanvakti_bekle
-      done
+  elif (( vakit_saati != UNIXSAAT ))
+  then
+      sleep 59; ezanvakti_bekle
   fi
   ezan_oku; ezanvakti_bekle
 }

@@ -76,7 +76,6 @@ Genel Özellikleri
 *  Aylık ya da haftalık vakitleri listeleme. (-v7, -v30)
 *  Conky uygulamasında kullanım için özel çıktılar. (--conky)
 *  Sıradaki ezan vaktini (süre ayarlı) ve dini günleri anımsatma.
-*  Sesli vakit anımsatma
 *  Başlatıcı sağ tık seçke desteği (unity/desktop actions özelliği)
 *  Geniş özelleştirme desteği.
 *  Basit seviye arayüz(yad) desteği.
@@ -112,7 +111,6 @@ KURULUM ve KALDIRMA
 
 **Pardus için Launchpad PPA üzerinden kurulum:**
 
-Bu depoda Pardus 19 XFCE için öntanımlı ayarlar özelleştirilmiştir.
 
 `echo 'deb http://ppa.launchpad.net/fbostanci/pardus/ubuntu bionic main' | sudo tee /etc/apt/sources.list.d/ezanvakti-bionic.list`
 
@@ -147,7 +145,7 @@ Qt arayüzü kullanmak için:
 
 **Ubuntu için Launchpad PPA üzerinden kurulum:**
 
-Depo ubuntu 19.10 ve 20.04 içindir.
+Depo Ubuntu 18.04, 19.10 ve 20.04 içindir.
 
 `sudo add-apt-repository ppa:fbostanci/distroguide`
 

@@ -355,26 +355,16 @@ case $donus in
     [[ -z $str2 ]] && ozel_pencere
     sure=$(cut -d'-' -f1 <<<"$str2")
 
-    if [[ ${str} = Saad el Ghamdi ]]
-    then
-        okuyucu=AlGhamdi
-    elif [[ ${str} = As Shatry ]]
-    then
-        okuyucu=AsShatree
-    elif [[ ${str} = Ahmad el Ajmy ]]
-    then
-        okuyucu=AlAjmy
-    else
-        okuyucu='Yerel Okuyucu'
-    fi
-
-    if (( ${#sure} == 1 ))
-    then
-        sure=00$sure
-    elif (( ${#sure} == 2 ))
-    then
-        sure=0$sure
-    fi
+    case "${str}" in
+      'Saad el Ghamdi') okuyucu=AlGhamdi ;;
+      'As Shatry') okuyucu=AsShatree ;;
+      'Ahmad el Ajmy') okuyucu=AlAjmy ;;
+      *) okuyucu='Yerel Okuyucu' ;;
+    esac
+    case "${#sure}" in
+      1) sure=00$sure ;;
+      2) sure=0$sure ;;
+    esac
 
     if [[ ${okuyucu} = Yerel Okuyucu ]]
     then
