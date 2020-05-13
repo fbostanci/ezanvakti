@@ -27,7 +27,7 @@ done | yad --plug="$$" --tabnum=1 --form --cycle-read --columns=1 \
 
 while true
 do
-  ezv_conky
+  ezv_arayuz2
   ypid="$(pgrep -lf "yad --plug=$$" | gawk '{ print $1 }')"
   [ -z "$ypid" ] && break
   sleep 59

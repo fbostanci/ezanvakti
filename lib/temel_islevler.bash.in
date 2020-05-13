@@ -26,7 +26,7 @@ EZANVAKTI_AYAR="${EZANVAKTI_DIZINI}/ayarlar"
 #
 # Kullanıcı ayarlarını al.
 . "${EZANVAKTI_AYAR}" || {
-  printf '%s: %s dosyası okunabilir değil.\n' \
+  printf '%s: %s dosyası okunabilir değil ya da hatalı.\n' \
     "${AD}" "${EZANVAKTI_AYAR}"
   exit 1
 }

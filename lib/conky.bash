@@ -12,6 +12,14 @@ ezv_conky() {
     'Akşam' "$aksam_n" 'Yatsı' "$yatsi_n"
 }
 
+ezv_arayuz2() {
+  ezanveri_denetle; bugun
+
+  printf '%-13s%s\n%-15s%s\n%-17s%s\n%-18s%s\n%-14s%s\n%-18s%s\n' \
+         'Sabah' "$sabah_n" 'Güneş' "$gunes_n" 'Öğle' "$ogle_n" \
+         'İkindi' "$ikindi_n" 'Akşam' "$aksam_n" 'Yatsı' "$yatsi_n"
+}
+
 ezv_conky_imsak() {
   ezanveri_denetle; bugun
 

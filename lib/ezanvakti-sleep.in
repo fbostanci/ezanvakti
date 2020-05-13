@@ -12,9 +12,9 @@ calisma_kodu="$1"
 # acilisa_baslatici_ekle temel_islevler.bash ile yuklendi.
 acilisa_baslatici_ekle
 # Kullanıcının kendi isteğiyle uygulamayı başlatması ile
-# uygulamanın başlatmasını ayırmak için özel kod denetimi yapıyoruz.
+# uygulamanın başlatıcısını ayırmak için özel kod denetimi yapıyoruz.
 #
-# Uygulama ezanvakti-sleep bileşenini başlatırken özel kodla çağırıyor.
+# Uygulama başlatıcısı ezanvakti-sleep bileşenini özel kodla çağırıyor.
 # ACILISTA_BASLAT=0 ise de çıkış yapıyor.
 #
 # Kullanıcı kendi isteğiyle (ezanvakti komutuyla) bileşeni başlatabilir.
@@ -73,7 +73,6 @@ cuma_selasi() {
     -i ezanvakti -u critical  \
     -t $EZAN_BILDIRIM_SURESI"000"
 
-  bilesen_yukle oynatici_yonetici
   if (( OYNATICI_DURAKLAT ))
   then
       oynatici_duraklat
@@ -106,7 +105,6 @@ ezan_oku() {
   # istenmiyorsa 1 dakikalık bekleme yapıyor.
   # aksi halde 1 dakika boyunca fonksiyon tekrar edecek.
   (( ezan_okunsun_mu )) || { sleep 1m; return 0; }
-  bilesen_yukle oynatici_yonetici
 
   # Oynatıcı duraklatma etkin mi ezan okumadan değeri
   # denetle ve fonksiyonu çağır. (oynatici_duraklat.bash)
@@ -130,7 +128,7 @@ vakit_animsat() {
   # Kullanıcı anımsatma değerini sıfır olarak belirlememişse
   (( VAKIT_ANIMSAT )) && {
     ezan_vakitlerini_al
-    # VAKIT_ANIMSAT değerini saniyeye çevirdik.
+    # VAKIT_ANIMSAT dk. değerini saniyeye çevirdik.
     dakika_saniye=$(( VAKIT_ANIMSAT * 60 ))
     animsatici_saniye=$(( vakit_saati - dakika_saniye ))
     # ezanvakti_bekle fonksiyonu içinde çalışma
@@ -151,10 +149,7 @@ vakit_animsat() {
     notify-send "${AD^}" "$VAKIT_ANIMSAT dakika sonra $simdiki ${ileti}" \
       -u critical -t $BILGI_BILDIRIM_SURESI"000" -i ${AD}
 
-    (( SESLI_UYARI )) && {
-      bilesen_yukle oynatici_yonetici
-      oynatici_calistir "${UYARI_SESI}"
-    }
+    (( SESLI_UYARI )) && oynatici_calistir "${UYARI_SESI}"
     # Tekrardan aynı uyarıyı vermesin diye
     # 1 dk bekletiyoruz.
     sleep 1m; vakit_animsat
