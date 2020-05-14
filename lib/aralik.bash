@@ -25,7 +25,7 @@ ayet_araligi_goster() {
     < ${VERI_DIZINI}/veriler/sure_bilgisi)
 
   ayet_kod="$(sed 's/^0*//' <<<$ayet_kod)"
-  int_ayet_kod=$(tr -d 0-9 <<<"$ayet_kod")
+  int_ayet_kod="${ayet_kod//[[:digit:]]/}"
   # int_ayet_kod; boşsa ayet, aralık olarak değil de
   # tekil ayet numarası olarak girilmiş.
   if [[ -z $int_ayet_kod ]]

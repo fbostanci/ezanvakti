@@ -1,4 +1,5 @@
 /* https://developer.gnome.org/gtk3/stable/chap-css-overview.html */
+/* YAD man dosyası WIDGETS NAMES bölümü*/
 
 
 /*Ezanvakti arayüz 3 css dosyası*/
@@ -12,13 +13,13 @@
  * background-color: artalan rengi
  * color: yazı rengi
 */
-* {
-    background-color: #403E3B;
+#yad-dialog-window {
+    background-color: #46443F;
     /*YAD arkaplan resmi.
      *Ekleyeceğiniz resmin tam konumunu girin.*/
    /* background-image: url("/nerede/bu/resim"); */
     color: #F1E7D3;
-    font: 16px Arial, sans-serif;
+    font: 15px Arial, sans-serif;
 }
 
 button, entry {
@@ -26,5 +27,4 @@ button, entry {
   background: #46443F;
   font: 12px Arial, sans-serif;
 }
-
 

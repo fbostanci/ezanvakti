@@ -1,4 +1,5 @@
 /* https://developer.gnome.org/gtk3/stable/chap-css-overview.html */
+/* YAD man dosyası WIDGETS NAMES bölümü*/
 
 
 /*Ezanvakti yapılandırma yöneticisi css dosyası*/
@@ -12,16 +13,16 @@
  * background-color: artalan rengi
  * color: yazı rengi
 */
-* {
+#yad-notebook-widget {
     background-color: #46443F;
     color: #F1E7D3;
     font: 15px Arial, sans-serif;
 }
 
 
-button, entry {
+#yad-form-button {
   /*color: #ff00ea;*/
   background: #46443F;
   font: 12px Arial, sans-serif;
 }
- 
+

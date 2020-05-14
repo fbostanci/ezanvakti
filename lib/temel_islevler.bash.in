@@ -75,7 +75,7 @@ renk_denetle() {
 meal_denetle() {
   if [[ -f ${YEREL_MEAL_DIZINI}/${MEAL_SAHIBI} ]]
   then
-       MEAL="${YEREL_MEAL_DIZINI}/${MEAL_SAHIBI}"
+      MEAL="${YEREL_MEAL_DIZINI}/${MEAL_SAHIBI}"
   elif [[ -f ${VERI_DIZINI}/mealler/${MEAL_SAHIBI} ]]
   then
       MEAL="${VERI_DIZINI}/mealler/${MEAL_SAHIBI}"
