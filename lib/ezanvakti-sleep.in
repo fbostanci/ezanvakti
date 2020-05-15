@@ -58,7 +58,7 @@ cuma_selasi() {
   sela_vakti=$(( ogle - SELA_OKUNMA_SURESI_FARKI * 60 ))
   # Uygulama çalıştığında sela_vakti
   # geçmiş ise fonksiyon çalışmasın.
-  (( sela_vakti < UNIXSAAT )) && return 0
+  (( sela_vakti < UNIXSAAT )) && exit 0
   # ezanvakti_bekle fonksiyonu içinde çalışma
   # mantığı anlatılıyor.
   if (( $(( sela_vakti - 60 )) == UNIXSAAT ))
@@ -81,7 +81,7 @@ cuma_selasi() {
   else
       oynatici_calistir "${CUMA_SELASI}"
   fi
-  return 0
+  exit 0
 }
 
 ezan_oku() {
