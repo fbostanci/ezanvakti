@@ -1,6 +1,6 @@
-.TH "Ezanvakti" "1" "2020\-05\-08" "Ezanvakti 7\&.2" "Ezanvakti Kullanım Yönergeleri"
+.TH "Ezanvakti" "1" "2020\-05\-19" "Ezanvakti 7\&.3" "Ezanvakti Kullanım Yönergeleri"
 .SH "AD"
-Ezanvakti 7\.2 \- GNU/Linux için Ezan Vakti Bildirici
+Ezanvakti 7\.3 \- GNU/Linux için Ezan Vakti Bildirici
 .SH "KULLANIM ŞEKLİ"
 .B ezanvakti
 .RI [ seçenek ]
@@ -282,8 +282,8 @@ Uçbirim ekranında özyinelemeli olarak sıradaki vakti ve vakte ne kadar süre
 .TP
 .B \-\-guncelle, \-\-güncelle
 Ezanveri dosyasını 30 günlük vakitleri içerecek şekilde günceller/oluşturur.
-Mevcut ezanveri dosyanızın adını ve konumunu ayrıca bulunduğunuz ülke ve şehri 'ayarlar'
-dosyasından okur ve günceller. Ülke ve şehir olarak girilen değerler güncellenme için kullanılan
+Mevcut ezanveri dosyanızın adını ve konumunuzu 'ayarlar'dosyasından okur.
+Ülke ve şehir olarak girilen değerler güncellenme için kullanılan
 dosyalardaki gibi yazılmamışsa, ekrana bulunduğunuz ülke ve şehri soran pencereler çıkar
 ve seçilen ülke ve şehre göre işlem yapar. Aynı zamanda bir sonraki güncelleme işlemlerini
 kolaylaştırmak adına 'ayarlar' dosyanıza seçtiğiniz ülke ve şehir adını işler.
@@ -314,7 +314,7 @@ Yapılandırma yöneticisini açar.
 .B \-l, \-\-listele
 Uygulamanın kullandığı önemli dosya ve dizinlerin konumunu listeler. Ayrıca ezanveri dosyanızın
 kalan gün sayısını ve arka planda çalışan  ezan vakitlerini yöneten ezanvakti\-sleep
-bileşeni çalışma durumunu gösterir.
+bileşeninin çalışma durumunu gösterir.
 
 .SS Diğer Seçenekler
 .TP
@@ -344,9 +344,9 @@ bağımsız renksiz olarak gösterir.
 .PP
 55. sureyi dinletir.
 .TP
-\fIörnek 5:\fP ezanvakti \-\-ks 11 12 13
+\fIörnek 5:\fP ezanvakti \-ks 11 14 26
 .PP
-Sırasıyla 11. 12. ve 13. sureleri dinletir.
+Sırasıyla 11. 14. ve 26. sureleri dinletir.
 Liste istenildiği kadar uzatılabilir.
 .TP
 \fIörnek 6:\fP ezanvakti \-\-guncelle \-y

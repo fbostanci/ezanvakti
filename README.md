@@ -1,4 +1,4 @@
-Son Güncelleme:  Fri, 08 May 2020 21:08:46 +0300
+Son Güncelleme:  Fri, 19 May 2020 00:29:17 +0300
 
 [![GitHub release](https://img.shields.io/github/release/fbostanci/ezanvakti.svg?style=plastic)](https://github.com/fbostanci/ezanvakti)
 [![GitHub tag](https://img.shields.io/github/tag/fbostanci/ezanvakti.svg?style=plastic)](https://github.com/fbostanci/ezanvakti)
@@ -8,7 +8,7 @@ Son Güncelleme:  Fri, 08 May 2020 21:08:46 +0300
 
 <br>
 
-Ezanvakti 7.2 GNU/Linux için ezan vakti bildirici
+Ezanvakti 7.3 GNU/Linux için ezan vakti bildirici
 ====
 <br>
 

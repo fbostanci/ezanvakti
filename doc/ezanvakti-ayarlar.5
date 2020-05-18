@@ -1,8 +1,8 @@
-.TH "Ezanvakti" "5" "2020\-05\-08" "Ezanvakti 7\&.2" "Ezanvakti Yapılandırma Yönergeleri"
+.TH "Ezanvakti" "5" "2020\-05\-19" "Ezanvakti 7\&.3" "Ezanvakti Yapılandırma Yönergeleri"
 .LP
 .SH AYARLAR Dosyası İşlemleri
-Uygulama ilk çalıştırmada \fI~/.config/ezanvakti\fP dizinini \-eğer yoksa\- oluşturmaktadır.
-Dosya içeriğine ayrıca öntanımlı ayarların bulunduğu 'ayarlar' dosyasını yazmaktadır.
+Uygulama ilk kez çalıştırıldığında \fI~/.config/ezanvakti\fP dizinini \-eğer yoksa\- oluşturmaktadır.
+Dizin içine ayrıca öntanımlı ayarların bulunduğu 'ayarlar' dosyasını yazmaktadır.
 Bu dosyayı düzenleyerek \-uygulama üzerinde düzenlemeler yapmaya gereksinim duymadan\- kendi
 özelleştirmelerinizi yapabilirsiniz. Uygulama açılışta bu dosyadaki değerlere göre
 çalışacaktır.
@@ -42,7 +42,7 @@ Ramazan kipinde yalnızca iftar ve imsak vakitleri için anımsatma ve ezan okut
 bu kiple çalışacaktır.
 .TP
 .B YEREL_MEAL_DIZINI
-Türkçe Kuran ayetleri gösteriminde kullanılacak meal dosyası seçiminde uygulamanın
+Türkçe Kuran ayetleri gösteriminde kullanılacak meal dosyası için uygulamanın,
 kullanıcının belirleyeceği dizine de bakması için kullanılacak bilgidir. Kullanılacak meal
 dosyası için uygulama iki dizine de bakar. (diğer dizin root kullanıcısı üzerindedir.)
 .TP
@@ -132,7 +132,7 @@ açık gelmektedir ve değeri 15 dakikadır.
 .B SESLI_UYARI
 Vakitlerden önce yapılan anımsatmayla birlikte sesli uyarı da verilmesini belirleyen değerdir.
 Vakit anımsatmalarında sesli uyarı da almak için 1, almamak için 0 girin. Sesli uyarı alabilmeniz
-için VAKIT_ANIMSAT etkin olmalıdır.
+için VAKIT_ANIMSAT etkin olmalıdır. Öntanımlı açık gelmektedir.
 .TP
 .B SES
 Ezan okuma/dinletme ve Kuran dinleme işlemleri için kullanılan mplayer/ffplay
@@ -151,7 +151,7 @@ Desteklenen oynatıcılar: Spotify, Deadbeef, Clementine, Amarok, Rhythmbox,
 .B EZAN_DUASI_OKU
 Ezan okuma işleminden sonra, Türkçe ezan duası da okunmasını belirleyen değerdir.
 Öntanımlı olarak okunma açık gelmektedir. (1 değeri.) Eğer okunmamasını istiyorsanız
-değeri 0 olarak belirleyin.
+değeri 0 olarak belirleyin. Öntanımlı açık gelmektedir.
 .TP
 .B EZAN_OKUNMA_SURESI_FARKI
 Eğer ezanların vaktinden önce ya da sonra okunmasını istiyorsanız, bu değeri
@@ -164,41 +164,41 @@ sadece ezanın okunma saati ve vakitlere kalan sürelerdir.
 .TP
 .B SELA_OKUNMA_SURESI_FARKI
 Cuma günü sela okunması etkin ise selanın öğle ezanı vaktinden
-kaç dakika önce okunacağını belirten değerdir.
+kaç dakika önce okunacağını belirten değerdir. Öntanımlı 55 dakikadır.
 .TP
 .B SABAH_EZANI_OKU
 Sabah vakti için ezan okunup okunmayacağını belirten değerdir.
 Kapalı olduğunda ezan okunmaz ama bildirimler ekrana gönderilir.
 Öntanımlı etkin konumda gelmektedir. Değeri etkinleştirme için 1;
-kapatma için 0 olarak belirleyin.
+kapatma için 0 olarak belirleyin. Öntanımlı açık gelmektedir.
 .TP
 .B OGLE_EZANI_OKU
 Öğle vakti için ezan okunup okunmayacağını belirten değerdir.
 Kapalı olduğunda ezan okunmaz ama bildirimler ekrana gönderilir.
 Öntanımlı etkin konumda gelmektedir. Değeri etkinleştirme için 1;
-kapatma için 0 olarak belirleyin.
+kapatma için 0 olarak belirleyin. Öntanımlı açık gelmektedir.
 .TP
 .B IKINDI_EZANI_OKU
 İkindi vakti için ezan okunup okunmayacağını belirten değerdir.
 Kapalı olduğunda ezan okunmaz ama bildirimler ekrana gönderilir.
 Öntanımlı etkin konumda gelmektedir. Değeri etkinleştirme için 1;
-kapatma için 0 olarak belirleyin.
+kapatma için 0 olarak belirleyin. Öntanımlı açık gelmektedir.
 .TP
 .B AKSAM_EZANI_OKU
 Akşam vakti için ezan okunup okunmayacağını belirten değerdir.
 Kapalı olduğunda ezan okunmaz ama bildirimler ekrana gönderilir.
 Öntanımlı etkin konumda gelmektedir. Değeri etkinleştirme için 1;
-kapatma için 0 olarak belirleyin.
+kapatma için 0 olarak belirleyin. Öntanımlı açık gelmektedir.
 .TP
 .B YATSI_EZANI_OKU
 Yatsı vakti için ezan okunup okunmayacağını belirten değerdir.
 Kapalı olduğunda ezan okunmaz ama bildirimler ekrana gönderilir.
 Öntanımlı etkin konumda gelmektedir. Değeri etkinleştirme için 1;
-kapatma için 0 olarak belirleyin.
+kapatma için 0 olarak belirleyin. Öntanımlı açık gelmektedir.
 .TP
 .B CUMA_SELASI_OKU
 Cuma günü öğle vaktinden önce sela okunup okunmayacağını belirten
-değerdir.
+değerdir. Öntanımlı açık gelmektedir.
 .TP
 .B EZAN_OKUYAN
 Ezan okunurken yapılacak bildirim için, ezanı okuyan kişinin adıdır.

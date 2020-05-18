@@ -3,28 +3,45 @@
 
 
 /×××××××××××××××××××××××××××××
+× Ezanvakti 7.3
+×××××××××××××××××××××××××××××/
+2020-05-19 Fatih BOSTANCI <ironic@yaani.com>
+
+ *  Sabah vaktinden sonra gün doğumu vakti hesaplanıyor.
+    -> Gün doğumu için VAKIT_ANIMSAT desteği.
+    -> Gün doğumu vaktinde bildirim verme.
+    -> Arayüzlerde ve kalan süre göstericide gösterme.
+ *  Çoklu sure dinletimi.
+    -> Aynı anda girilen birden fazla sureyi sırasıyla dinletme.
+ *  CSS dosyalarında gtk yerine yad fonksiyonları kullanılıyor.
+ *  yerelkur.bash: PATH denetimi geliştirldi.
+ *  ezanvakti-sleep: kod geliştirmeleri/temizlik.
+ *  man dosyaları düzenlendi.
+
+
+/×××××××××××××××××××××××××××××
 × Ezanvakti 7.2
 ×××××××××××××××××××××××××××××/
 2020-05-08 Fatih BOSTANCI <ironic@yaani.com>
 
- * Yatsı vaktinden sonra artık yarının sabah vakti hesaplanıyor.
- * listele.bash: Uygulama dosya konumları listeleyici. (--listele)
- * YAD arayüzleri ve yapılandırma yöneticisi için ayrı ayrı css dosyası
-    kullanabilme.
-    -> ezanvakti-gui.css    : arayüz1 css dosyası
-    -> ezanvakti-gui2.css   : arayüz2 css dosyası
-    -> ezanvakti-gui3.css   : arayüz3 css dosyası
-    -> ezanvakti-config.css : yapılandırma yoneticisi css dosyası
- * YAD css dosyası kullanımıyla birlikte arayüzlerde yazı tipi ve boyutu
-    farklılığından oluşan kayma sorunu çözüldü.
- * iftarimsak.bash: iftar.bash ve imsak.bash bileşenleri birleştirildi.
- * kalan.bash: siradaki.bash ile birleştirildi.
- * YAD arayüz ve arayüz3 pencerelerinde ezanvakti simgesi göster/gösterme seçimi
-   -> ARAYUZ_SIMGE_GOSTER değeri.
- * Makefile geliştirmeleri.
- * Man dosyaları içerikler düzenlendi/güncellendi.
- * Tüm ülke, şehir, ilçe dosyaları güncellendi.
- * Birçok kod geliştirme/temizlik yapıldı.
+ *  Yatsı vaktinden sonra artık yarının sabah vakti hesaplanıyor.
+ *  listele.bash: Uygulama dosya konumları listeleyici. (--listele)
+ *  YAD arayüzleri ve yapılandırma yöneticisi için ayrı ayrı css dosyası
+     kullanabilme.
+     -> ezanvakti-gui.css    : arayüz1 css dosyası
+     -> ezanvakti-gui2.css   : arayüz2 css dosyası
+     -> ezanvakti-gui3.css   : arayüz3 css dosyası
+     -> ezanvakti-config.css : yapılandırma yoneticisi css dosyası
+ *  YAD css dosyası kullanımıyla birlikte arayüzlerde yazı tipi ve boyutu
+     farklılığından oluşan kayma sorunu çözüldü.
+ *  iftarimsak.bash: iftar.bash ve imsak.bash bileşenleri birleştirildi.
+ *  kalan.bash: siradaki.bash ile birleştirildi.
+ *  YAD arayüz ve arayüz3 pencerelerinde ezanvakti simgesi göster/gösterme seçimi
+    -> ARAYUZ_SIMGE_GOSTER değeri.
+ *  Makefile geliştirmeleri.
+ *  Man dosyaları içerikler düzenlendi/güncellendi.
+ *  Tüm ülke, şehir, ilçe dosyaları güncellendi.
+ *  Birçok kod geliştirme/temizlik yapıldı.
 
 
 /×××××××××××××××××××××××××××××
@@ -32,15 +49,15 @@
 ×××××××××××××××××××××××××××××/
 2020-04-23 Fatih BOSTANCI <ironic@yaani.com>
 
- * arayuz2.bash:-> arayuz3.bash olarak adlandırıldı. ( --arayuz3)
- * arayuz2.bash: Tarih, saat ve vakitlerin anlık güncellendiği
-    yeni arayüz olarak eklendi.
- * arayuz2.bash: renk özelleştirmeleri css ile yapılabiliyor.
-   -> Kullanıcı kendi css özelleştirmesini ~/.config/ezanvakti
-      içerisine ekleyeceği ezanvakti.css dosyasında yapabilir.
-   -> Örnek/varsayılan dosya konumu /usr/share/ezanvakti/veriler/ezanvakti.css
- * ucbirim_tui.bash: Uçbirimden ncurses tarzı çalışan arayüz eklendi. (--ucbirim)
- * man dosyaları ve bash tamamlama betiği güncellendi.
+ *  arayuz2.bash:-> arayuz3.bash olarak adlandırıldı. ( --arayuz3)
+ *  arayuz2.bash: Tarih, saat ve vakitlerin anlık güncellendiği
+     yeni arayüz olarak eklendi.
+ *  arayuz2.bash: renk özelleştirmeleri css ile yapılabiliyor.
+     -> Kullanıcı kendi css özelleştirmesini ~/.config/ezanvakti
+        içerisine ekleyeceği ezanvakti.css dosyasında yapabilir.
+     -> Örnek/varsayılan dosya konumu /usr/share/ezanvakti/veriler/ezanvakti.css
+ *  ucbirim_tui.bash: Uçbirimden ncurses tarzı çalışan arayüz eklendi. (--ucbirim)
+ *  man dosyaları ve bash tamamlama betiği güncellendi.
 
 
 /×××××××××××××××××××××××××××××
@@ -136,13 +153,13 @@
  *  --ramazan kaldırıldı.
  *  ACILISTA_BASLAT: ile ezanvakti-sleep betiğine sistem açılışında
     3 farklı kipte çalışabilme özelliği eklendi.
-  *  kipler:
-  *  1: Beş vakit ezan (normal çalıştırma)
-  *  2: Ramazan (Yalnızca İftar ve İmsak vakitleri için ezan okunma ve bildirim var.)
-  *  0: Kapalı. Sistem açılışında arka planda başlamaz.
+  * kipler:
+     -> 1: Beş vakit ezan (normal çalıştırma)
+     -> 2: Ramazan (Yalnızca İftar ve İmsak vakitleri için ezan okunma ve bildirim var.)
+     -> 0: Kapalı. Sistem açılışında arka planda başlamaz.
  *  ACILISTA_BASLAT: değerini belirleme yapılandırma yöneticisi üzerinden de yapılıyor.
- *  Arayüzde yapılan değişiklikler eğer ezanvakti-sleep betiğinin çalışmasını ilgilendiriyorsa
-    otomatik yeniden başlatma eklendi.
+ *  Arayüzde yapılan değişiklikler eğer ezanvakti-sleep betiğinin
+    çalışmasını ilgilendiriyorsa otomatik yeniden başlatma eklendi.
  *  Uygulama otomatik başlatıcısını kendi ekliyor: (Eğer ACILISTA_BASLAT 0 değilse)
  *  /etc/autostart başlatıcısı kaldırıldı.
  *  Uygulamanın kullandığı simgeler sistem icons dizinlerine eklendi.
@@ -390,7 +407,7 @@
 ×××××××××××××××××××××××××××××/
 2010-09-30 Fatih BOSTANCI <ironic@yaani.com>
 
- *  Ezanveri dosyasının güncellenmesi için son 7 gün( her gün)  uyarı verme özelliği
+ *  Ezanveri dosyasının güncellenmesi için son 7 gün( her gün)  uyarı verme özelliği.
  *  Çeşitli düzenlemeler
 
 
@@ -399,7 +416,8 @@
 ×××××××××××××××××××××××××××××/
 2010-08-29 Fatih BOSTANCI <ironic@yaani.com>
 
- *  Sure numaralarında sıfır ekleme zorunluluğu kaldırıldı. Betik girilen sayıya göre sıfır ekliyor.
+ *  Sure numaralarında sıfır ekleme zorunluluğu kaldırıldı.
+    -> Betik girilen sayıya göre sıfır ekliyor.
  *  Çeşitli kod iyileştirmeleri
 
 
@@ -408,7 +426,8 @@
 ×××××××××××××××××××××××××××××/
 2010-08-04 Fatih BOSTANCI <ironic@yaani.com>
 
- *  GNOME bağımlılıklarını kaldırıldı. Betik artık KDE ve XFCE  üzerinde de çalışabilir.
+ *  GNOME bağımlılıklarını kaldırıldı.
+    -> Betik artık KDE ve XFCE  üzerinde de çalışabilir.
  *  Ses oynatımında mplayer kullanıyor artık.
  *  Uçbirimden kuran sureleri dinleme desteği. (-k, –kuran  <sure_kodu>)
  *  Sure kodlarını öğrenmek için özel değişken (–sureler değişkeni)

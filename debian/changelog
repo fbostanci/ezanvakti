@@ -1,3 +1,9 @@
+ezanvakti (7.3-1~distroguide~focal) focal; urgency=medium
+
+  * 7.3
+
+ -- Fatih Bostancı <faopera@gmail.com>  Fri, 19 May 2020 13:28:21 +0300
+
 ezanvakti (7.2-1~distroguide~focal) focal; urgency=medium
 
   * 7.2
@@ -92,19 +98,19 @@ ezanvakti (20140603-1~distroguide~trusty) trusty; urgency=low
 ezanvakti (20120505-1~distroguide~precise) precise; urgency=low
 
   * Guncelleme sorunu duzeltildi.
- 
+
  -- Fatih Bostanci <faopera@gmail.com>  Sat, 05 May 2012 15:37:49 +0300
 
 ezanvakti (20120418-1~distroguide~lucid) lucid; urgency=low
 
   * Ubuntu uyumsuzluklar, giderildi.
- 
+
  -- Fatih Bostanci <faopera@gmail.com>  Wed, 18 Apr 2012 18:26:19 +0300
 
 ezanvakti (20120405-1~distroguide~lucid) lucid; urgency=low
 
   * 6.0 gelistirmelerinden 5.7 ye uygun olanlar eklendi.
- 
+
  -- Fatih Bostanci <faopera@gmail.com>  Sat, 07 Apr 2012 00:17:07 +0300
 
 ezanvakti (20110912-1~distroguide~lucid) lucid; urgency=low
