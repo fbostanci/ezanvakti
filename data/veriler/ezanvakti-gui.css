@@ -12,7 +12,7 @@
  * background-color: artalan rengi
  * color: yazı rengi
 */
-#yad-dialog-window {
+* {
     background-color: #46443F;
     /*YAD arkaplan resmi.
      *Ekleyeceğiniz resmin tam konumunu girin.*/
@@ -22,14 +22,8 @@
 }
 
 
-#yad-form-combo {
-  /*color: #ff00ea;*/
-  background: #46443F;
-  font: 15px Arial, sans-serif;
-}
-
 button, entry {
-  /*color: #ff00ea;*/
+color: #F1E7D3;
   background: #46443F;
-  font: 12px Arial, sans-serif;
+  font: 14px Arial, sans-serif;
 }

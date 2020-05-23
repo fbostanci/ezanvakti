@@ -13,16 +13,15 @@
  * background-color: artalan rengi
  * color: yazı rengi
 */
-#yad-notebook-widget {
+* {
     background-color: #46443F;
     color: #F1E7D3;
     font: 15px Arial, sans-serif;
 }
 
 
-#yad-form-button {
-  /*color: #ff00ea;*/
+button, entry {
+color: #F1E7D3;
   background: #46443F;
-  font: 12px Arial, sans-serif;
+  font: 14px Arial, sans-serif;
 }
-

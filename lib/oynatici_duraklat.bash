@@ -156,7 +156,7 @@ oynatici_devam() {
       qmmp)
           qmmp --play > /dev/null 2>&1 ;;
       juk)
-          qdbus org.kde.juk /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Pause ;;
+          qdbus org.kde.juk /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Play ;;
     esac
   done
 }

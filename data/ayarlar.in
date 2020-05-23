@@ -73,10 +73,10 @@ AYET_BILDIRIM_SURESI=30
 # Hadis bildirim baloncuğunun gösterilme süresi (saniye olarak)
 HADIS_BILDIRIM_SURESI=25
 
-# Diyanet bilgi bildirim baloncuğu gösterilme süresi (saniye olarak)
+# Bilgi bildirim baloncuğu gösterilme süresi (saniye olarak)
 BILGI_BILDIRIM_SURESI=20
 
-# Ezanveri dosyasının son 7 gün çıkan, güncelleme anımsatması bildirim süresi (saniye olarak)
+# Ezanveri güncellenme bildirim süresi (saniye olarak)
 GUNCELLEME_BILDIRIM_SURESI=15
 
 # Dini günler ve geceler için önceden bildirim yapılması
@@ -277,7 +277,7 @@ ARAYUZ_SIMGE_GOSTER=1
 #     ekleme ya da çıkarma gerekmiyorsa 0
 HICRI_TARIH_DUZELTME=0
 
-# Printf arayuz yazı biçimi
+# Printf arayuz yerleşim biçimi
 GELISMIS_ARAYUZ_BICIMI='%-94s%s\n%s\n%s\n\t\t\t\t%s\n%s\n\n%s\n\n\t\t\t%s\n\t\t\t%s'
 
 # Printf conky çıktısı biçimi

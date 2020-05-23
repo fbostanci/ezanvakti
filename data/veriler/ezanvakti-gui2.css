@@ -12,7 +12,7 @@
  * background-color: artalan rengi
  * color: yazı rengi
 */
-#yad-paned-widget {
+* {
     background-color: #46443F;
     /*YAD arkaplan resmi.
      *Ekleyeceğiniz resmin tam konumunu girin.*/
@@ -30,4 +30,9 @@
   color: #F5AD0E;
   background: #46443F;
   font: 16px Arial, sans-serif;
+}
+
+button, entry {
+  background: #46443F;
+  font: 12px Arial, sans-serif;
 }
