@@ -251,7 +251,7 @@ sed -n 's:<td>\(.*\)</td>:\1:p' | sed -e 's:^ *::' -e 's:[^[:print:]]: :g' -e \
  s: Mart :.03.:;s: Nisan :.04.:;
  s: Mayıs :.05.:;s: Haziran :.06.:;
  s: Temmuz :.07.:;s: Ağustos :.08.:;
- s: Eylül :.09.:;s: Ekim :.10.:;
+ s: Eyl&#252;l :.09.:;s: Ekim :.10.:;
  s: Kasım :.11.:;s: Aralık :.12.:' | \
 sed -e 'N;N;N;N;N;N;s:\n:  :g' -e 's:[[:blank:]]*$::' >> /tmp/ezanveri-$$
 sed -i -r '1!{s:\S+::2;}' /tmp/ezanveri-$$
