@@ -1,9 +1,9 @@
 #!/bin/bash
 #
-#         Ezanvakti 7.3  -  GNU/Linux Ezan Vakti Bildirici
+#         Ezanvakti 7.4  -  GNU/Linux Ezan Vakti Bildirici
 #
 ##
-##    Copyright (c) 2010-2020  Fatih Bostancı  <ironic@yaani.com>
+##    Copyright (c) 2010-2021  Fatih Bostancı  <ironic@yaani.com>
 ##
 ##              https://gitlab.com/fbostanci/ezanvakti
 ##              https://github.com/fbostanci/ezanvakti
@@ -75,6 +75,9 @@ case $1 in
       30|--ayl[ıi]k)
         bilesen_yukle vakitleri_goster
         vakitler aylik ;;
+      -n|--nafile)
+        bilesen_yukle nafile
+        nafile_namaz_vakitleri ;;
       -m|--bayram)
         bilesen_yukle bayram_namazi
         bayram_namazi_vakti ;;
@@ -101,6 +104,9 @@ case $1 in
   -vy|--vy)
     bilesen_yukle vakitleri_goster
     vakitler yatsi ;;
+  -vn|--vn)
+    bilesen_yukle nafile
+    nafile_namaz_vakitleri ;;
   -vm|--vm)
     bilesen_yukle bayram_namazi
     bayram_namazi_vakti ;;
@@ -206,9 +212,6 @@ case $1 in
         bilesen_yukle iftarimsak
         ezv_imsak ;;
     esac ;;
-  --nafile)
-    bilesen_yukle nafile
-    nafile_namaz_vakitleri ;;
   --iftar)
     case $2 in
       -o|-b|--bildirim|--osd)

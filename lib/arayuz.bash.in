@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-#                           Ezanvakti YAD Arayüz 1 Bileşeni 2.2
+#                           Ezanvakti YAD Arayüz 1 Bileşeni 2.3
 #
 #
 #set -x
@@ -119,27 +119,33 @@ then
         vakitler haftalik > "${cikti_dosyasi}"
         g_secim_goster; temizlik
         arayuz ;;
+    "Nafile Namaz Vakitleri")
+        secim_basligi='Nafile Namaz Vakitleri'
+        bilesen_yukle nafile
+        nafile_namaz_vakitleri ucbirim > "${cikti_dosyasi}"
+        g_secim_goster; temizlik
+        arayuz ;;
     Kerahat*)
         secim_basligi='Kerahat Vakitleri'
         bilesen_yukle kerahat
         kerahat_vakitleri ucbirim > "${cikti_dosyasi}"
         g_secim_goster; temizlik
         arayuz ;;
-#     "Bayram Namazı Vakitleri")
-#         secim_basligi="$(date +%Y) Bayram namazı vakitleri"
-#         bilesen_yukle bayram_namazi
-#         (
-#           echo 'yad gürültü istiyor'
-#           bayram_namazi_vakti > "${cikti_dosyasi}"
-#           echo 'yad gürültü istiyor'
-#           sed -i 's:.*\.\.\.::g' "${cikti_dosyasi}"
-#           echo 'yad gürültü istiyor'
-#         ) | yad --progress --pulsate --auto-close --undecorated \
-#                 --progress-text='Bayram namazı vakitleri alınıyor...' \
-#                 --pulsate --auto-close --width=300 --center --fixed \
-#                 --no-buttons --skip-taskbar
-#         g_secim_goster; temizlik
-#         arayuz ;;
+     "Bayram Namazı Vakitleri")
+         secim_basligi="$(date +%Y) Bayram namazı vakitleri"
+         bilesen_yukle bayram_namazi
+         (
+           echo 'yad gürültü istiyor'
+           bayram_namazi_vakti > "${cikti_dosyasi}"
+           echo 'yad gürültü istiyor'
+           sed -i 's:.*\.\.\.::g' "${cikti_dosyasi}"
+           echo 'yad gürültü istiyor'
+         ) | yad --progress --pulsate --auto-close --undecorated \
+                 --progress-text='Bayram namazı vakitleri alınıyor...' \
+                 --pulsate --auto-close --width=300 --center --fixed \
+                 --no-buttons --skip-taskbar
+         g_secim_goster; temizlik
+         arayuz ;;
     "Dini Günler ve Geceler")
         secim_basligi="$(date +%Y) Dini Günler ve Geceler"
         bilesen_yukle dini_gunler

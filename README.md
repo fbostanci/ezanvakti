@@ -8,7 +8,7 @@ Son Güncelleme:  Fri, 19 May 2020 00:29:17 +0300
 
 <br>
 
-Ezanvakti 7.3 GNU/Linux için ezan vakti bildirici
+Ezanvakti 7.4 GNU/Linux için ezan vakti bildirici
 ====
 <br>
 
@@ -41,6 +41,7 @@ Genel Özellikleri
 *  Vakitlerde ezan okunma/okunmama seçimi.
 *  İftar vaktine ne kadar süre kaldığını gösterme. (--iftar)
 *  İmsak vaktine ne kadar süre kaldığını gösterme. (--imsak)
+*  Nafile namaz vakitleri hesaplama. (--nafile)
 *  Sıradaki vakit, ve vakte ne kadar süre kaldığını gösterme. (-vt)
 *  Arayüzden ve uçbirimden kerahat vakitlerini gösterebilme. (-vk)
 *  Bulunduğunuz konum için bayram namazı vakitlerini gösterme. (-vm)

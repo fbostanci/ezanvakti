@@ -30,7 +30,7 @@ nafile_namaz_vakitleri() {
                       $(( toplam_gece_suresi / 3600 )) \
                       $(( toplam_gece_suresi % 3600 / 60 )))
 
-  printf '%b%b%b%b%b%b%b%b%b\n' \
+  printf '%b%b%b%b%b%b%b%b%b\n\n' \
     "${RENK7}${RENK3}\n${ILCE}${RENK5} için nafile namaz vakitleri (${TARIH} $(date +%T))\n" \
     "${RENK7}${RENK2}\nİşrak vakti    ${RENK3}: $israk_vakti${RENK0}" \
     "${RENK7}${RENK2}\nKuşluk vakti   ${RENK3}: $israk_vakti - $kv_ogle arası${RENK0}" \
