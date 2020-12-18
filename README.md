@@ -75,7 +75,6 @@ Genel Özellikleri
 *  Dini günler ve geceler için bir gün önceden bildirim verme.
 *  Aylık ya da haftalık vakitleri listeleme. (-v7, -v30)
 *  Conky uygulamasında kullanım için özel çıktılar. (--conky)
-*  Sıradaki ezan vaktini (süre ayarlı) ve dini günleri anımsatma.
 *  Başlatıcı sağ tık seçke desteği (unity/desktop actions özelliği)
 *  Geniş özelleştirme desteği.
 *  Basit seviye arayüz(yad) desteği.

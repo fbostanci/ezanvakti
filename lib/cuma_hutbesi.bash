@@ -35,7 +35,7 @@ hutbe_indir() {
 case $1 in
   listele)
     yad --title "${AD} hutbe indirici" --window-icon=${AD} --html --browser \
-      --uri="http://www.diyanet.nl/cuma-hutbeleri/" \
+      --uri="http://www.ditib.de/media/Image/hutbe/hutbe_14082020_tr.pdf" \
       --width=620 --height=600 \
       --uri-handler="bash -c 'hutbe_var_mi %s'" ;;
   *)
@@ -45,11 +45,11 @@ case $1 in
         ay=$(date +%m)
         yil=$(date +%Y)
     else
-        cuma=$(date -d 'last friday' +%d-%m-%Y)
+        cuma=$(date -d 'last friday' +%d%m%Y)
         ay=$(date -d 'last friday' +%m)
         yil=$(date -d 'last friday' +%Y)
     fi
-    regex="https://diyanet.nl/wp-content/uploads/${yil}/${ay}/${cuma}-Turkce.pdf"
+    regex="http://www.ditib.de/media/Image/hutbe/hutbe_${cuma}${ay}${yil}_tr.pdf"
 
     ${WGET} http://www.diyanet.nl/cuma-hutbeleri/ -O /tmp/ezv-hutbe-$$
 

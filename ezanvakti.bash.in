@@ -206,6 +206,9 @@ case $1 in
         bilesen_yukle iftarimsak
         ezv_imsak ;;
     esac ;;
+  --nafile)
+    bilesen_yukle nafile
+    nafile_namaz_vakitleri ;;
   --iftar)
     case $2 in
       -o|-b|--bildirim|--osd)
