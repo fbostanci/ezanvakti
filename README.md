@@ -41,7 +41,7 @@ Genel Özellikleri
 *  Vakitlerde ezan okunma/okunmama seçimi.
 *  İftar vaktine ne kadar süre kaldığını gösterme. (--iftar)
 *  İmsak vaktine ne kadar süre kaldığını gösterme. (--imsak)
-*  Nafile namaz vakitleri hesaplama. (--nafile)
+*  Nafile namaz vakitleri hesaplama. (-vn)
 *  Sıradaki vakit, ve vakte ne kadar süre kaldığını gösterme. (-vt)
 *  Arayüzden ve uçbirimden kerahat vakitlerini gösterebilme. (-vk)
 *  Bulunduğunuz konum için bayram namazı vakitlerini gösterme. (-vm)

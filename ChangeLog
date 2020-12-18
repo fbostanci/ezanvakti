@@ -3,6 +3,18 @@
 
 
 /×××××××××××××××××××××××××××××
+× Ezanvakti 7.4
+×××××××××××××××××××××××××××××/
+2021-xx-xx Fatih BOSTANCI <ironic@yaani.com>
+
+ *  nafile.bash: Nafile namaz vakitleri hesaplama. (--vakitler --nafile)
+ *  Vakitlerde eylül ayı için oluşan hata düzeltildi.
+ *  bayram_namazi.bash: içerik alımında eskiye dönüldü.
+ *  CSS dosyaları düzenlendi.
+ *  Man dosyaları güncellendi.
+
+
+/×××××××××××××××××××××××××××××
 × Ezanvakti 7.3
 ×××××××××××××××××××××××××××××/
 2020-05-19 Fatih BOSTANCI <ironic@yaani.com>

@@ -9,11 +9,26 @@ nafile_namaz_vakitleri() {
   renk_denetle
 
   local kerahat_suresi toplam_gece_suresi gece_ucte_bir gece_ikide_bir \
-        gece_ucte_iki israk_vakti kv_ogle
+        gece_ucte_iki israk_vakti kv_ogle dun daksam
 
   kerahat_suresi="$KERAHAT_SURESI minutes" #dk
   kv_ogle=$(date -d "-$kerahat_suresi $ogle_n" +%H:%M)
-  toplam_gece_suresi=$(( ysabah - aksam ))
+
+  if (( UNIXSAAT < sabah ))
+  then
+      dun=$(date -d yesterday '+%d.%m.%Y')
+      if grep -qo "^$dun" "${EZANVERI}"
+      then
+          export $(gawk -v tarih=$dun '{if($1 ~ tarih) \
+                     {printf "daksam_n=%s", $6}}' "${EZANVERI}")
+          daksam=$(date -d "yesterday $daksam_n" +%s)
+          toplam_gece_suresi=$(( sabah - daksam ))
+      else
+          toplam_gece_suresi=$(( ysabah - aksam ))
+      fi
+  else
+      toplam_gece_suresi=$(( ysabah - aksam ))
+  fi
 
   gece_ucte_bir=$(gawk -v sure=$toplam_gece_suresi \
                     "BEGIN { print int( sure / 3)}")
