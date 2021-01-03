@@ -66,10 +66,11 @@ Genel Özellikleri
    rastgele: (-r)
    hatim: (-h)
    günlük: (-g)</pre>
+*  61 tane okuyucu seçimli özel kuran dinletimi (--kuran --arayuz)
 *  Sureleri; sure adı, ayet sayısı, sure numarası, cüz no ve indiği yer şeklinde listeleme. (--sureler)
 *  İstenen surenin istenen ayet aralığını gösterme. (--aralik)
 *  40 hadisten rastgele bir hadisi uçbirimden ya da bildirim baloncuğunda gösterme. (--hadis)
-*  Esma-ül Hüsna'dan rastgele bir adı  uçbirimden ya da bildirim baloncuğunda gösterme. (--esma)
+*  Esma-ül Hüsna'dan rastgele bir adı  uçbirimde gösterme. (--esma)
 *  Diyanet sitesinden alınmış soru-yanıtlardan rastgele birini  uçbirimden
    ya da bildirim baloncuğunda gösterme. (--bilgi)
 *  İçinde bulunulan yıla ait dini günleri ve geceleri listeleme. (--gunler)

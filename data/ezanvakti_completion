@@ -25,7 +25,7 @@ _ezanvakti() {
   --aylik --haftalik --bildirim --siradaki --kerahat \
   --bayram --nafile'
 
-  kuran_uzun='--secim --rastgele --hatim --gunluk'
+  kuran_uzun='--secim --rastgele --hatim --gunluk --arayuz'
   conky_uzun='--iftar --siradaki --kerahat --imsak'
   bildirim_uzun='--bildirim --osd'
 

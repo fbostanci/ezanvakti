@@ -8,6 +8,7 @@
 2021-xx-xx Fatih BOSTANCI <ironic@yaani.com>
 
  *  nafile.bash: Nafile namaz vakitleri hesaplama. (--vakitler --nafile)
+ *  kuran_ozel_pen.bash: 61 tane okuyucu seçimli özel kuran dinletimi (--kuran --arayuz)
  *  Vakitlerde eylül ayı için oluşan hata düzeltildi.
  *  bayram_namazi.bash: içerik alımında eskiye dönüldü.
  *  CSS dosyaları düzenlendi.

@@ -169,6 +169,8 @@ then
         bilesen_yukle yapilandirma_yoneticisi
         yapilandirma ;;
     "özel pencere")
+        ayz=1
+        bilesen_yukle kuran_ozel_pen
         ozel_pencere ;;
     "güncelle")
         bilesen_yukle guncelleyici
@@ -192,6 +194,8 @@ then
 
         if [[ $sure = 000 ]]
         then
+            ayz=1
+            bilesen_yukle kuran_ozel_pen
             ozel_pencere
         else
             # $sure değerini denetleyip

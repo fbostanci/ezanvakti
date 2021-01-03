@@ -71,6 +71,9 @@ kuran_dinlet() { # kuran_dinlet_yonetimi {{{
         kuran_dinletimi "$i"
         sleep 1
       done ;;
+    arayuz)
+      bilesen_yukle kuran_ozel_pen
+      ozel_pencere ;;
   esac
 } # }}}
 
