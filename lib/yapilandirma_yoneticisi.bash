@@ -137,8 +137,8 @@ yad --notebook --key=190707 \
 --tab="Bildirim Ayarları" --tab="Renk Ayarları" \
 --fixed --center --tab-pos=top --buttons-layout='spread' \
 --window-icon=${AD} --gtkrc="${EZV_CSS4}" \
---button='gtk-home:171' --button='yad-open:172' \
---button='yad-save:174' --button='yad-quit:121'
+--button=" Ana Sayfa!${VERI_DIZINI}/simgeler/anasayfa.png":171 \
+--button='yad-open:172' --button='yad-save:174' --button='yad-quit:121'
 
  case $? in
     171)

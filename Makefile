@@ -51,7 +51,7 @@ install: $(BETIKLER)
 	$(INSTALL) -vd $(DESTDIR)$(bindir)
 	$(INSTALL) -vd $(DESTDIR)$(libdir)/$(AD)
 	$(INSTALL) -vd $(DESTDIR)$(sysconfdir)
-	$(INSTALL) -vd $(DESTDIR)$(datadir)/$(AD)/{veriler,mealler,ulkeler{/TURKIYE,/ABD,/ALMANYA,/KANADA}_ilceler}
+	$(INSTALL) -vd $(DESTDIR)$(datadir)/$(AD)/{veriler,mealler,simgeler,ulkeler{/TURKIYE,/ABD,/ALMANYA,/KANADA}_ilceler}
 	$(INSTALL) -vd $(DESTDIR)$(sounddir)/$(AD)
 	$(INSTALL) -vd $(DESTDIR)$(completionsdir)
 	$(INSTALL) -vd $(DESTDIR)$(mandir)/man{1,5}
@@ -106,6 +106,10 @@ install: $(BETIKLER)
 	do \
 		$(INSTALL) -vm644 $$t $(DESTDIR)$(datadir)/$(AD)/mealler; \
 	done
+
+	$(INSTALL) -vm644 data/simgeler/anasayfa.png $(DESTDIR)$(datadir)/$(AD)/simgeler
+	$(INSTALL) -vm644 data/simgeler/geri.png $(DESTDIR)$(datadir)/$(AD)/simgeler
+	$(INSTALL) -vm644 data/simgeler/oynat.png $(DESTDIR)$(datadir)/$(AD)/simgeler
 
 uninstall:
 	@rm -f  $(DESTDIR)$(bindir)/$(AD)

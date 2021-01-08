@@ -26,10 +26,14 @@ okuyucular+='!Mahmood Ali Al-Bana!Nabil ar-Rifai!Nasser Al Qatami!Saud ash-Shura
 okuyucular+='!Sahl Yasin!Salah Bukhatir!Sudais and Shuraym!Salah al-Budair!Salah Al-Hashim'
 okuyucular+='!Wadee Hammadi Al Yamani!Yasser ad-Dussary'
 
+[[ -z ${v_okuyucu} ]] && v_okuyucu='Abu Bakr al-Shatri'
+[[ -z ${v_sure}    ]] && v_sure='001-Fatiha'
+
 pencere=$(yad --form \
---field=Okuyucu:CB "${okuyucular}" \
---field=Sure:CB "${sure_listesi}" \
---button='Geri:151' --button='Oynat:152' \
+--field=Okuyucu:CB "^${v_okuyucu}${okuyucular}" \
+--field=Sure:CB "^${v_sure}${sure_listesi}" \
+--button=" Geri!${VERI_DIZINI}/simgeler/geri.png":151 \
+--button=" Oynat!${VERI_DIZINI}/simgeler/oynat.png":152 \
 --button='yad-quit:153' --image=${AD} \
 --window-icon=${AD} --gtkrc="${EZV_CSS}" \
 --title "${AD^}" --sticky --center --fixed)
@@ -120,6 +124,8 @@ case $donus in
       1) sure=00$sure ;;
       2) sure=0$sure ;;
     esac
+    v_okuyucu="$str"
+    v_sure="$str2"
 
     if [[ ${oky} = Yerel Okuyucu ]]
     then
