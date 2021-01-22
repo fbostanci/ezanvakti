@@ -39,12 +39,14 @@ cikis_yap() {
 # pid dosyası yoksa kendi pid değerini
 # dosyaya yazar çalışmaya başlar.
 ezv_sleep_pid_denetle() {
-  local ypid=$$
+  local mpid ypid=$$
 
   if [[ -f /tmp/.${AD}_sleep.pid && \
         -n $(ps -p "$( < /tmp/.${AD}_sleep.pid)" -o comm=) ]]
   then
-      printf '%s: Yalnızca bir örneği çalışabilir.\n' "${AD}" >&2
+      mpid="$( < /tmp/.${AD}_sleep.pid)"
+      printf '%s: Yalnızca bir %s örneği çalışabilir. (pid: %d)\n' \
+        "${AD}" "${AD}-sleep" "$mpid" >&2
       exit 1
   else
       printf "$ypid" > /tmp/.${AD}_sleep.pid

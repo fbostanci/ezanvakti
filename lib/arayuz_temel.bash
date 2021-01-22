@@ -59,9 +59,9 @@ tamamlama_listesi+='!Bilgi!Aylık Vakitler!Haftalık Vakitler!Dini Günler v
 tamamlama_listesi+='!Nafile Namaz Vakitleri!about!güncelle!güncelle yeni!yardım!Kerahat!000'
 tamamlama_listesi+="!özel pencere!$sure_listesi"
 
-secim_listesi='!Yapılandırma Yöneticisi!Kerahat Vakitleri!Dini Günler ve Geceler'
-secim_listesi+='!Nafile Namaz Vakitleri!Günlük Vakitler!Haftalık Vakitler'
-secim_listesi+='!Aylık Vakitler!Ayet!Hadis!Bilgi!Esma-ül Hüsna!Bayram Namazı Vakitleri'
+secim_listesi='!Yapılandırma Yöneticisi!Kerahat Vakitleri!Nafile Namaz Vakitleri'
+secim_listesi+='!Haftalık Vakitler!Aylık Vakitler'
+secim_listesi+='!Dini Günler ve Geceler!Ayet!Hadis!Bilgi!Esma-ül Hüsna'
 
 cikti_dosyasi="/tmp/${AD}-6"
 # düz komut çıktıları için rengi sıfırla.
@@ -76,7 +76,7 @@ arayuz_pid_denetle() {
   # p=2: arayuz2
   # p=3: arayuz3
   # p=4: eylem_menu
-  local p="$1" ypid=$$
+  local mpid p="$1" ypid=$$
 
   case $p in
     1) p='arayuz1' ;;
@@ -89,7 +89,9 @@ arayuz_pid_denetle() {
   if [[ -f /tmp/.${AD}_yad_${p}.pid && \
         -n $(ps -p $( < /tmp/.${AD}_yad_${p}.pid) -o comm=) ]]
   then
-      printf '%s: Yalnızca bir %s örneği çalışabilir.\n' "${AD}" "${p}" >&2
+      mpid="$( < /tmp/.${AD}_yad_${p}.pid)"
+      printf '%s: Yalnızca bir %s örneği çalışabilir. (pid: %d)\n' \
+        "${AD}" "${p}" "$mpid"  >&2
       exit 1
   else
       printf "$ypid" > /tmp/.${AD}_yad_${p}.pid

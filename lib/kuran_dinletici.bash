@@ -61,8 +61,7 @@ kuran_dinlet() { # kuran_dinlet_yonetimi {{{
         sleep 1
       done ;;
     rastgele)
-      sure_no=$(( RANDOM % 114 ))
-      (( ! sure_no )) && sure_no=114
+      sure_no=$(( RANDOM % 114 + 1 ))
       kuran_dinletimi "$sure_no" ;;
     gunluk)
       read -ra sureler <<<$SURELER

@@ -8,8 +8,7 @@
 # rastgele bir sayı seç. Seçilen sayı için içerik_al ile gelen
 # dosya üzerinde işlem yapıp içeriği alinan_yanit değişkenine ata.
 secim_yap() {
-  secilen=$(( RANDOM % $1 ))
-  (( ! secilen )) && secilen=$1
+  secilen=$(( RANDOM % $1 + 1 ))
 
   alinan_yanit="$(sed -n "/#$secilen<#/,/#>$secilen#/p" ${icerik_al} | sed '1d;$d')"
 }
@@ -19,7 +18,7 @@ ucbirimde_goster() {
   then
       printf "* ${alinan_yanit}\n"
   else
-      gawk -v r0=${RENK0} -v r3=${RENK3} -v r7=${RENK7} -v r7=${RENK8} \
+      gawk -v r0=${RENK0} -v r3=${RENK3} -v r7=${RENK7} -v r8=${RENK8} \
         '{if (NR==1) {printf "%s%s%s%s\n",r7,r3,$0,r0;} \
           else if (NR>1) {printf "%s%s%s%s\n",r7,r8,$0,r0;} }' <<< "${alinan_yanit}"
   fi

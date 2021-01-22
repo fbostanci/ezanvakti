@@ -7,8 +7,7 @@
 ayet_goster() {
   renk_denetle; meal_denetle
 
-  satir=$(( RANDOM % 6236 ))
-  (( ! satir )) && satir=6236
+  satir=$(( RANDOM % 6236 + 1 ))
 
   case $1 in
     ucbirim)

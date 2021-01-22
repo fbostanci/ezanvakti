@@ -49,7 +49,7 @@ oynatici_duraklat() {
           if dbus_sorgu spotify
           then
               dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify \
-              /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause > /dev/null 2>&1
+                /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause > /dev/null 2>&1
               DURDURULAN+=('spotify')
           fi ;;
         deadbeef)
@@ -118,7 +118,8 @@ oynatici_duraklat() {
         juk)
           if qdbus_sorgu juk
           then
-              qdbus org.kde.juk /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Pause
+              qdbus org.kde.juk /org/mpris/MediaPlayer2 \
+                org.mpris.MediaPlayer2.Player.Pause > /dev/null 2>&1
               DURDURULAN+=('juk')
           fi ;;
       esac
@@ -156,7 +157,8 @@ oynatici_devam() {
       qmmp)
           qmmp --play > /dev/null 2>&1 ;;
       juk)
-          qdbus org.kde.juk /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Play ;;
+          qdbus org.kde.juk /org/mpris/MediaPlayer2 \
+            org.mpris.MediaPlayer2.Player.Play /dev/null 2>&1 ;;
     esac
   done
 }

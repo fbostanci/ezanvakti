@@ -1,12 +1,12 @@
 #
 #
-#     Ezanvakti bash tamamlama betiği
+#     @AD@ bash tamamlama betiği
 #
 #
-_ezanvakti() {
+_@AD@() {
   local cur prev kuran_uzun vakitler_uzun dinle_uzun
   local butun_uzun bildirim_uzun nglob_ayar ezanvakti_exec
-  local ezanvakti conky_uzun config_uzun
+  local @AD@ conky_uzun config_uzun
 
   nglob_ayar=$(shopt -p nullglob)
   shopt -s nullglob
@@ -15,7 +15,7 @@ _ezanvakti() {
   cur=${COMP_WORDS[COMP_CWORD]}
   prev=${COMP_WORDS[COMP_CWORD-1]}
 
-  ezanvakti_exec=$(type -P ezanvakti)
+  ezanvakti_exec=$(type -P @AD@)
   [[ -z "$ezanvakti_exec" ]] && return 0
 
   ezanvakti=$(basename "$ezanvakti_exec")
@@ -65,4 +65,4 @@ _ezanvakti() {
 $nglob_ayar
 }
 
-complete -F _ezanvakti ezanvakti
+complete -F _@AD@ @AD@
