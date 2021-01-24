@@ -1,11 +1,12 @@
-Son Güncelleme:  Fri, 19 May 2020 00:29:17 +0300
+Son Güncelleme:  Sun, 24 Jan 2021 20:36:51 +0300
+
 
 [![GitHub release](https://img.shields.io/github/release/fbostanci/ezanvakti.svg?style=plastic)](https://github.com/fbostanci/ezanvakti)
 [![GitHub tag](https://img.shields.io/github/tag/fbostanci/ezanvakti.svg?style=plastic)](https://github.com/fbostanci/ezanvakti)
 [![license](https://img.shields.io/github/license/fbostanci/ezanvakti.svg?style=plastic)](https://github.com/fbostanci/ezanvakti)
-[![AUR](https://img.shields.io/aur/version/ezanvakti.svg?style=plastic)](https://github.com/fbostanci/ezanvakti)
 [![GitHub issues](https://img.shields.io/github/issues/fbostanci/ezanvakti.svg?style=plastic)](https://github.com/fbostanci/ezanvakti/issues)
-
+<br>
+[![Packaging status](https://repology.org/badge/vertical-allrepos/ezanvakti.svg)](https://repology.org/project/ezanvakti/versions)
 <br>
 
 Ezanvakti 7.4 GNU/Linux için ezan vakti bildirici

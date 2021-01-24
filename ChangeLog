@@ -5,12 +5,13 @@
 /×××××××××××××××××××××××××××××
 × Ezanvakti 7.4
 ×××××××××××××××××××××××××××××/
-2021-xx-xx Fatih BOSTANCI <ironic@yaani.com>
+2021-01-24 Fatih BOSTANCI <ironic@yaani.com>
 
  *  nafile.bash: Nafile namaz vakitleri hesaplama. (--vakitler --nafile)
  *  kuran_ozel_pen.bash: 61 tane okuyucu seçimli özel kuran dinletimi (--kuran --arayuz)
  *  Vakitlerde eylül ayı için oluşan hata düzeltildi.
  *  bayram_namazi.bash: içerik alımında eskiye dönüldü.
+ *  bash tamamlama betiği, uygulama adı değiştirmeye uygun hale getirildi.
  *  CSS dosyaları düzenlendi.
  *  Man dosyaları güncellendi.
 
@@ -86,7 +87,7 @@
     conky imsak vakti kalan gösterimi (--conky --imsak)
  *  iftar vakti için bildirim (--iftar --bildirim)
  *  sıradaki vakit için bildirim (-vtb)
- *  Kerahat vakitleri için bildirim (--kerahat --bildirim)
+ *  Kerahat vakitleri için bildirim (-vkb)
  *  guncelleyici.bash: güncelleme işleminde konum
      bilgileri de gösteriliyor.
  *  Yerel kullanıcı dizinine kolay kurulum için
@@ -442,8 +443,8 @@
  *  GNOME bağımlılıklarını kaldırıldı.
     -> Betik artık KDE ve XFCE  üzerinde de çalışabilir.
  *  Ses oynatımında mplayer kullanıyor artık.
- *  Uçbirimden kuran sureleri dinleme desteği. (-k, –kuran  <sure_kodu>)
- *  Sure kodlarını öğrenmek için özel değişken (–sureler değişkeni)
+ *  Uçbirimden kuran sureleri dinleme desteği. (-ks <sure_kodu>)
+ *  Sure kodlarını öğrenmek için özel değişken (--sureler)
 
 
 /×××××××××××××××××××××××××××××

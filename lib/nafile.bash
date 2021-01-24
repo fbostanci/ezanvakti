@@ -1,4 +1,4 @@
-#
+#!/bin/bash
 #
 #    Ezanvakti  nafile namaz vakitleri hesaplama bileşeni
 #
