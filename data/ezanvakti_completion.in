@@ -6,7 +6,7 @@
 _@AD@() {
   local cur prev kuran_uzun vakitler_uzun dinle_uzun
   local butun_uzun bildirim_uzun nglob_ayar ezanvakti_exec
-  local @AD@ conky_uzun config_uzun
+  local @AD@ conky_uzun config_uzun ortam_uzun
 
   nglob_ayar=$(shopt -p nullglob)
   shopt -s nullglob
@@ -21,7 +21,7 @@ _@AD@() {
   ezanvakti=$(basename "$ezanvakti_exec")
 
   dinle_uzun='--sabah --ogle --ikindi --aksam --yatsi --cuma'
-  vakitler_uzun='--sabah --ogle --ikindi --aksam --yatsi \
+  vakitler_uzun='--sabah --ogle --gunes --ikindi --aksam --yatsi \
   --aylik --haftalik --bildirim --siradaki --kerahat \
   --bayram --nafile'
 
@@ -33,14 +33,16 @@ _@AD@() {
 --esma --bilgi --hadis --kuran --dinle --arayuz --arayuz2 \
 --arayuz3 --ucbirim --gui --gui2 --gui3 --tui --bilgi --sureler \
 --guncelle --yardim  --surum --gunler --aralik --kalan --config \
---renk --imsak --yapilandirma --listele'
+--renk --imsak --yapilandirma --listele --ortam'
 
   config_uzun='--gui --arayuz'
+
+  ortam_uzun='--tv --radyo'
 
   case "$prev" in
 
     *$ezanvakti)
-     COMPREPLY=( $(compgen -W "${butun_uzun}" -- $cur) ) ;;
+      COMPREPLY=( $(compgen -W "${butun_uzun}" -- $cur) ) ;;
 
     --ayet|--hadis|--bilgi|--iftar|--imsak)
       COMPREPLY=( $(compgen -W "${bildirim_uzun}"  -- $cur) ) ;;
@@ -59,6 +61,9 @@ _@AD@() {
 
     --config|--yap[ıi]land[ıi]rma)
       COMPREPLY=( $(compgen -W "${config_uzun}"  -- $cur) ) ;;
+
+    --ortam)
+      COMPREPLY=( $(compgen -W "${ortam_uzun}"  -- $cur) ) ;;
 
   esac
 

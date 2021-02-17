@@ -61,8 +61,7 @@ cuma_selasi() {
   # Uygulama çalıştığında sela_vakti
   # geçmiş ise fonksiyon çalışmasın.
   (( sela_vakti < UNIXSAAT )) && exit 0
-  # ezanvakti_bekle fonksiyonu içinde çalışma
-  # mantığı anlatılıyor.
+
   if (( $(( sela_vakti - 60 )) == UNIXSAAT ))
   then
       sleep $(( sela_vakti - $(date +%s) ))
@@ -133,8 +132,7 @@ vakit_animsat() {
     # VAKIT_ANIMSAT dk. değerini saniyeye çevirdik.
     dakika_saniye=$(( VAKIT_ANIMSAT * 60 ))
     animsatici_saniye=$(( vakit_saati - dakika_saniye ))
-    # ezanvakti_bekle fonksiyonu içinde çalışma
-    # mantığı anlatılıyor.
+
     if (( $(( animsatici_saniye - 60 )) == UNIXSAAT ))
     then
         sleep $(( animsatici_saniye - $(date +%s) ))

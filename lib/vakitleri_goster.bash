@@ -8,7 +8,9 @@ vakitler() { # {{{
   ezanveri_denetle; bugun
   renk_denetle
 
-  local istek="$1" siradaki_vakit siradaki_vakit_kalan
+  local sabah_kalan gunes_kalan ogle_kalan ikindi_kalan \
+    aksam_kalan yatsi_kalan
+  local istek="$1"
 
   # --osd/bildirim için renkleri sıfırla
   [[ ${istek} = bildirim ]] && { RENK1=''; RENK2=''; }
@@ -19,6 +21,14 @@ vakitler() { # {{{
       sabah_kalan="${RENK2} $kalan_sure"
   else
       sabah_kalan="${RENK1} OKUNDU"
+  fi
+
+  if (( UNIXSAAT < gunes ))
+  then
+      bekleme_suresi $gunes
+      gunes_kalan="${RENK2} $kalan_sure"
+  else
+      gunes_kalan="${RENK1} DOĞDU"
   fi
 
   if (( UNIXSAAT < ogle ))
@@ -56,6 +66,8 @@ vakitler() { # {{{
   case ${istek} in
     sabah)
       printf "${RENK7}${RENK2}\nSabah ezanı  ${RENK3}: $sabah_n $sabah_kalan${RENK0}\n\n" ;;
+    gunes)
+      printf "${RENK7}${RENK2}\nGüneş        ${RENK3}: $gunes_n $gunes_kalan${RENK0}\n\n" ;;
     ogle)
       printf "${RENK7}${RENK2}\nÖğle ezanı   ${RENK3}: $ogle_n $ogle_kalan${RENK0}\n\n" ;;
     ikindi)

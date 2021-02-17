@@ -31,7 +31,7 @@ oynatici_sure_al() {
 }
 
 oynatici_calistir() {
-  local dinletilecek_oge="$1"
+  local dinletilecek_oge="$1" disp
 
   if [[ ${dinletilecek_oge} =~ ^http.* ]]
   then
@@ -55,16 +55,28 @@ oynatici_calistir() {
   then
       rm -f /tmp/ezv-oynatici-$$.pipe 2>/dev/null
       mkfifo /tmp/ezv-oynatici-$$.pipe
+  # http://www1.mplayerhq.hu/pipermail/mplayer-users/2013-September/086617.html
+      if [[ ${ortam_deger:-h} = e ]]
+      then
+          MPLAYER='mplayer -cache 1000 -cache-min 99'
+          dinletilecek_oge="ffmpeg://${dinletilecek_oge}"
+      else
+          MPLAYER='mplayer'
+      fi
 
-      mplayer -really-quiet -softvol -volume $SES -slave -input \
+      $MPLAYER -really-quiet -softvol -volume $SES -slave -input \
         file=/tmp/ezv-oynatici-$$.pipe "${dinletilecek_oge}" 2>/dev/null
       rm -f /tmp/ezv-oynatici-$$.pipe 2>/dev/null
 
   elif [[ -x $(type -p ffplay) ]]
   then
-      ffplay -autoexit -loglevel quiet -volume ${SES} -nodisp \
-        -i "${dinletilecek_oge}" 2>/dev/null
+      if [[ ${tv_deger:-h} = e ]]
+      then disp=''
+      else disp='-nodisp'
+      fi
 
+      ffplay -autoexit -loglevel quiet -volume ${SES} $disp \
+        -i "${dinletilecek_oge}" 2>/dev/null
   else
       printf '%s: desteklenen bir ses oynatıcısı bulunamadı.\n' "${AD}" >&2
       exit 1

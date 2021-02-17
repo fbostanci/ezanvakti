@@ -3,6 +3,23 @@
 
 
 /×××××××××××××××××××××××××××××
+× Ezanvakti 7.5
+×××××××××××××××××××××××××××××/
+2021-xx-xx Fatih BOSTANCI <ironic@yaani.com>
+
+  *  cokluortam.bash: Radyo ve Tv yayınlarını oynatabilme (--ortam --tv/--radyo).
+     -> Ayarlar dosyasındaki TVLER ve RADYOLAR listesine istediğiniz
+        radyo ve tv adreslerini girebilirsiniz.
+     -> Öntanımlı radyolar: Diyanet ve Diyanet kuran radyo.
+     -> Öntanımlı tvler: Diyanet ve Kabe canlı yayın.
+  * Uçbirimden gündoğumuna kalan süreyi gösterme. (--vakitler --güneş)
+  * İnternet bağlantı denetimi için ping komutu kullanımı bırakıldı.
+     -> Artık wget ve curl ile denetim yapılıyor.
+  * Hutbe indirme yeniden etkin. (--hutbe).
+  * bash tamamlama betiği ve man dosyaları güncellendi.
+
+
+/×××××××××××××××××××××××××××××
 × Ezanvakti 7.4
 ×××××××××××××××××××××××××××××/
 2021-01-24 Fatih BOSTANCI <ironic@yaani.com>
@@ -378,7 +395,7 @@
 2010-11-14 Fatih BOSTANCI <ironic@yaani.com>
 
  *  Otomatik ezanveri dosyası güncelleme (öntanımlı kapalı gelmekte)
- *  Kullanıcı tefsir dizini
+ *  Kullanıcı meal dizini
  *  Yerel sure dizini
  *  Öntanımlı ses ayarı
  *  Bildirim baloncuğu bekleme süreleri değiştirebilme

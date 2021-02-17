@@ -267,6 +267,25 @@ YAZI_RENGI='#FFBD4D'
 ARAYUZ_SIMGE_GOSTER=1
 
 
+#                                #
+#*******Çokluortam Ayarları******#
+#                                #
+
+# Radyolarınızı aşağıdaki biçime uygun şekilde ekleyiniz.
+# [Radyo adı]=yayin_adresi
+RADYOLAR=(
+    [Diyanet Kuran Radyo]=https://eustr73.mediatriple.net/videoonlylive/mtikoimxnztxlive/broadcast_5e3c14192aa92.smil/playlist.m3u8
+    [Diyanet Radyo]=https://eustr73.mediatriple.net/videoonlylive/mtikoimxnztxlive/broadcast_5e3c1171d7d2a.smil/playlist.m3u8
+         )
+
+# Tv adreslerinizi aşağıdaki biçime uygun şekilde ekleyiniz.
+# [Tv adı]=yayin_adresi
+TVLER=(
+    [Diyanet Tv]=https://eustr73.mediatriple.net/videoonlylive/mtikoimxnztxlive/broadcast_5e3bf95a47e07.smil/playlist.m3u8
+    [Kabe Canlı]=https://cdnamd-hls-globecast.akamaized.net/live/ramdisk/saudi_quran/hls1/saudi_quran.m3u8
+      )
+
+
 #                           #
 #*****Gelişmiş Ayarlar******#
 #                           #
@@ -285,5 +304,6 @@ CONKY_BICIMI='%-13s%s\n%-15s%s\n%-17s%s\n%-18s%s\n%-14s%s\n%-18s%s\n'
 
 # Printf arayüzlerdeki vakit çıktısı biçimi
 VAKIT_BICIMI='\t\t\t%s\t\t%s\n\t\t\t%s\t\t%s\n\t\t\t%s\t\t%s\n\t\t\t%s\t\t%s\n\t\t\t%s\t\t%s\n\t\t\t%s\t\t%s'
+
 
 ###AYARLAR SON###

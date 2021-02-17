@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-#         Ezanvakti 7.4  -  GNU/Linux Ezan Vakti Bildirici
+#         Ezanvakti 7.5  -  GNU/Linux Ezan Vakti Bildirici
 #
 ##
 ##    Copyright (c) 2010-2021  Fatih Bostancı  <ironic@yaani.com>
@@ -41,6 +41,9 @@ case $1 in
       -s|--sabah)
         bilesen_yukle vakitleri_goster
         vakitler sabah ;;
+      -g|--g[uü]ne[sş])
+        bilesen_yukle vakitleri_goster
+        vakitler gunes ;;
       -[oö]|--[oö][gğ]le)
         bilesen_yukle vakitleri_goster
         vakitler ogle ;;
@@ -92,6 +95,9 @@ case $1 in
   -vs|--vs)
     bilesen_yukle vakitleri_goster
     vakitler sabah ;;
+  -vg|--vg)
+    bilesen_yukle vakitleri_goster
+    vakitler gunes ;;
   -v[oö]|--v[oö])
     bilesen_yukle vakitleri_goster
     vakitler ogle ;;
@@ -286,9 +292,18 @@ case $1 in
   --kalan)
     bilesen_yukle siradaki
     kalan_sure ;;
-#   --hutbe)
-#     bilesen_yukle cuma_hutbesi
-#     hutbe_indir ;;
+  --hutbe)
+    bilesen_yukle cuma_hutbesi
+    hutbe_goster ;;
+  --ortam)
+    bilesen_yukle cokluortam; shift
+    case $1 in
+      -r|--radyo)
+        radyo_ac ;;
+      -t|--tv)
+        tv_ac ;;
+      *) hatali_kullanim "${1:-null}";;
+    esac ;;
   -V|--s[uü]r[uü]m|--version)
     bilesen_yukle hakkinda
     surum_goster ;;

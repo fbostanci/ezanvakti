@@ -5,7 +5,7 @@
 #
 
 guncelleme_yap() { ### Ana fonksiyon {{{
-  local arayuz au ulke sehir ilce varsayilan_sehir varsayilan_ilce dn stn
+  local arayuz au ulke sehir ilce varsayilan_sehir varsayilan_ilce dn stn ESKI_IFS
   local ulke_kodu sehir_kodu ilce_kodu basamak_payi renksiz_payi bas_renksiz_payi
   local e=0 denetim=0
 
@@ -82,8 +82,7 @@ arayuz_denetle() { ### Arayüz denetle {{{
 }
 #}}}
 ESKI_IFS="$IFS"
-IFS="
-"
+IFS=$'\n'
 ### Ülke işlemleri {{{
 ######################################################################
 #                         ÜLKE İŞLEMLERİ                             #

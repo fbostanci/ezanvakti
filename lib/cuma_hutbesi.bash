@@ -4,79 +4,56 @@
 #
 #
 
-# TODO: Hutbe içerik sitesi değiştirilecek.
-if ! [[ -x $(type -p wget) ]]
-then
-    printf '%s: Bu özellik wget gerektirmektedir.\n' "${AD}" >&2
-    exit 1
-fi
-
-export WGET='wget --quiet --tries=3'
-export HUTBE_DIZINI="${EZANVAKTI_DIZINI}/hutbeler"
-
-hutbe_var_mi() {
-  local hutbe_adresi="$1"
-  local hutbe_adi="$(echo ${hutbe_adresi} | gawk -F'/' '{print($(NF))}')"
-
-  if [[ -f ${HUTBE_DIZINI}/$hutbe_adi ]]
+hutbe_indir() {
+  echo hazır değil; exit 1
+  # adres="$1" dizin="$2"
+  if [[ -x $(type -p wget) ]]
   then
-      xdg-open  ${HUTBE_DIZINI}/$hutbe_adi
+      wget --quiet --tries=3 "$1" -O "$2"
+  elif [[ -x $(type -p curl) ]]
+  then
+      curl -L "$1" -o "$2"
   else
-      ${WGET} ${hutbe_adresi} -P ${HUTBE_DIZINI}
-      xdg-open  ${HUTBE_DIZINI}/$hutbe_adi
+      printf '%s: Bu özellik wget ya da curl gerektirmektedir.\n' "${AD}" >&2
+      exit 1
   fi
 }
-export -f hutbe_var_mi
 
-hutbe_indir() {
-  local cuma regex e i
-  local -a indir acilacak
+hutbe_goster() {
+  local HUTBE_DIZINI="${EZANVAKTI_DIZINI}/hutbeler"
+  local cuma ay yil hutbe_a hutbe_r hutbe_adresi hutbe
 
-case $1 in
-  listele)
-    yad --title "${AD} hutbe indirici" --window-icon=${AD} --html --browser \
-      --uri="http://www.ditib.de/media/Image/hutbe/hutbe_14082020_tr.pdf" \
-      --width=620 --height=600 \
-      --uri-handler="bash -c 'hutbe_var_mi %s'" ;;
-  *)
-    if [[ $(date +%u) == 5 ]]
-    then
-        cuma=$(date +%d)
-        ay=$(date +%m)
-        yil=$(date +%Y)
-    else
-        cuma=$(date -d 'last friday' +%d%m%Y)
-        ay=$(date -d 'last friday' +%m)
-        yil=$(date -d 'last friday' +%Y)
-    fi
-    regex="http://www.ditib.de/media/Image/hutbe/hutbe_${cuma}${ay}${yil}_tr.pdf"
+  if [[ $(date +%u) == 5 ]]
+  then
+      cuma=$(date +%d-%m-%Y)
+      ay=$(date +%m)
+      yil=$(date +%Y)
+  else
+      cuma=$(date -d 'last friday' +%d-%m-%Y)
+      ay=$(date -d 'last friday' +%m)
+      yil=$(date -d 'last friday' +%Y)
+  fi
 
-    ${WGET} http://www.diyanet.nl/cuma-hutbeleri/ -O /tmp/ezv-hutbe-$$
+  hutbe_a="https://diyanet.nl/cuma-hutbeleri/"
+  hutbe_r="https://diyanet.nl/wp-content/uploads/${yil}/${ay}/${cuma}-.*Turks.pdf"
 
-    indir=( "$(grep -Eo "${regex}" /tmp/ezv-hutbe-$$)" )
-    rm -f /tmp/ezv-hutbe-$$ > /dev/null 2>&1
+  hutbe_indir "$hutbe_a" "/tmp/ezv-hutbe-$$"
+  hutbe_adresi="$(grep -Eo "${hutbe_r}" /tmp/ezv-hutbe-$$)"
+  rm -f /tmp/ezv-hutbe-$$ > /dev/null 2>&1
 
-    for i in ${indir[@]}
-    do
-      acilacak+=( "$(echo $i | gawk -F'/' '{print($(NF))}')" )
-    done
+  hutbe="$(echo ${hutbe_adresi} | gawk -F'/' '{print($(NF))}')"
 
-    e=0; renk_denetle
-    for i in ${acilacak[@]}
-    do
+  [[ ! -f ${HUTBE_DIZINI} ]] && mkdir -p "${HUTBE_DIZINI}"
+
+  if [[ -f ${HUTBE_DIZINI}/$hutbe ]]
+  then
       printf \
-        "${RENK7}${RENK3}$i${RENK8} dosyası açılacak.${RENK0}\n"
-
-      if [[ -f ${HUTBE_DIZINI}/$i ]]
-      then
-          xdg-open  ${HUTBE_DIZINI}/$i
-      else
-          ${WGET} ${indir[$e]} -P ${HUTBE_DIZINI}
-          xdg-open  ${HUTBE_DIZINI}/$i
-      fi
-      ((e++))
-    done ;;
-esac
+        "${RENK7}${RENK3}$hutbe${RENK8} dosyası açılacak.${RENK0}\n"
+      xdg-open  "${HUTBE_DIZINI}/$hutbe"
+  else
+      hutbe_indir "${hutbe_adresi}" "${HUTBE_DIZINI}"
+      xdg-open  "${HUTBE_DIZINI}/$hutbe"
+  fi
 }
 
 # vim: set ft=sh ts=2 sw=2 et:
