@@ -167,11 +167,8 @@ bilesen_yukle() {
   done
 }
 
-hatali_kullanim() {
-  printf "%s: -- \`%s' geçerli değil.\nYardım için '%s --yardım' kullanın.\n" \
-    "${AD}" "$1" "${AD}" >&2
-  exit 1
-}
+bilesen_yukle hatali_kullanim
+
 
 gorsel_guncelleme_yap() {
 

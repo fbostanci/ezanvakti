@@ -5,7 +5,6 @@
 #
 
 radyo_ac() {
-  bilesen_yukle oynatici_yonetici
   local radyo
   PS3='Dinlemek istediğiniz radyoyu seçiniz: '
 
@@ -16,6 +15,8 @@ radyo_ac() {
     then
          vlc -I curses "${RADYOLAR[$radyo]}"
     else
+        bilesen_yukle oynatici_yonetici
+        renk_denetle
         ortam_deger=e
         printf "${RENK7}${RENK2} $radyo${RENK3} dinletiliyor...${RENK0}\n"
         oynatici_calistir "${RADYOLAR[$radyo]}"
@@ -27,8 +28,8 @@ radyo_ac() {
 tv_ac() {
   bilesen_yukle oynatici_yonetici
   local tv
-  ortam_deger=e
-  tv_deger=e
+  renk_denetle
+  ortam_deger=e; tv_deger=e
   PS3='Seyretmek istediğiniz yayını seçiniz: '
 
   select tv in "${!TVLER[@]}"
@@ -39,3 +40,5 @@ tv_ac() {
     break
   done
 }
+
+# vim: set ft=sh ts=2 sw=2 et:

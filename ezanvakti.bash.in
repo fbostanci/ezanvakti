@@ -59,7 +59,7 @@ case $1 in
       -t|--s[ıi]radaki)
         bilesen_yukle siradaki; shift
         case $2 in
-          -o|-b|--bildirim|--osd)
+          -b|--bildirim)
             siradaki_vakit bildirim ;;
           '')
             siradaki_vakit siradaki ;;
@@ -67,7 +67,7 @@ case $1 in
       -k|--kerahat)
         bilesen_yukle kerahat; shift
         case $2 in
-          -o|-b|--bildirim|--osd)
+          -b|--bildirim)
             kerahat_vakitleri bildirim ;;
           '')
             kerahat_vakitleri ucbirim ;;
@@ -84,13 +84,13 @@ case $1 in
       -m|--bayram)
         bilesen_yukle bayram_namazi
         bayram_namazi_vakti ;;
-      --osd|--bildirim)
+      -b|--bildirim)
         bilesen_yukle vakitleri_goster
         vakitler bildirim ;;
       '')
         bilesen_yukle vakitleri_goster
         vakitler tum_vakitler ;;
-      ?*) hatali_kullanim "$2" ;;
+      ?*) hatali_kullanim 'v' "$2" ;;
     esac ;;
   -vs|--vs)
     bilesen_yukle vakitleri_goster
@@ -119,21 +119,21 @@ case $1 in
   -vt|--vt)
     bilesen_yukle siradaki
     case $2 in
-      -o|-b|--bildirim|--osd)
+      -b|--bildirim)
         siradaki_vakit bildirim ;;
       '')
         siradaki_vakit siradaki ;;
     esac ;;
-  -vt[ob]|--vt[ob])
+  -vtb|--vtb)
     bilesen_yukle siradaki
     siradaki_vakit bildirim ;;
-  -vk[ob]|--vk[ob])
+  -vkb|--vkb)
     bilesen_yukle kerahat
     kerahat_vakitleri bildirim ;;
   -vk|--vk)
     bilesen_yukle kerahat
     case $2 in
-      -o|-b|--bildirim|--osd)
+      -b|--bildirim)
         kerahat_vakitleri bildirim ;;
       '')
         kerahat_vakitleri ucbirim ;;
@@ -165,7 +165,7 @@ case $1 in
         ezan_dinlet Yatsı ;;
       -c|--cuma)
         ezan_dinlet Cuma ;;
-      *) hatali_kullanim "${1:-null}" ;;
+      *) hatali_kullanim 'd' "${1:-null}" ;;
     esac ;;
   --qt)
     bilesen_yukle qtezv; shift
@@ -183,7 +183,7 @@ case $1 in
         shift; kuran_dinlet secim "$@" ;;
       -a|--gui|--aray[uü]z)
         kuran_dinlet arayuz ;;
-      *) hatali_kullanim "${1:-null}" ;;
+      *) hatali_kullanim 'k' "${1:-null}" ;;
     esac ;;
   -kr|--kr)
     bilesen_yukle kuran_dinletici
@@ -206,9 +206,9 @@ case $1 in
   --ayet)
     bilesen_yukle ayet_goster; shift
     case $1 in
-      -b|-o|--bildirim|--osd)
+      -b|--bildirim)
         ayet_goster bildirim ;;
-      ?*) hatali_kullanim "$1" ;;
+      ?*) hatali_kullanim 'b' "$1" ;;
       '') ayet_goster ucbirim ;;
     esac ;;
   --aral[ıi]k)
@@ -216,7 +216,7 @@ case $1 in
     ayet_araligi_goster "$1" "$2" ;;
       --imsak)
     case $2 in
-      -o|-b|--bildirim|--osd)
+      -b|--bildirim)
         bilesen_yukle conky
         imsak_bildirim ;;
       *)
@@ -225,7 +225,7 @@ case $1 in
     esac ;;
   --iftar)
     case $2 in
-      -o|-b|--bildirim|--osd)
+      -b|--bildirim)
         bilesen_yukle conky
         iftar_bildirim ;;
       *)
@@ -252,17 +252,17 @@ case $1 in
   --hadis)
     bilesen_yukle bilgi_goster; shift
     case $1 in
-      -b|-o|--bildirim|--osd)
+      -b|--bildirim)
         hadis_goster bildirim ;;
-      ?*) hatali_kullanim "$1" ;;
+      ?*) hatali_kullanim 'b' "$1" ;;
       '') hadis_goster ucbirim ;;
     esac ;;
   --bilgi)
     bilesen_yukle bilgi_goster; shift
     case $1 in
-      -b|-o|--bildirim|--osd)
+      -b|--bildirim)
         bilgi_goster bildirim ;;
-      ?*) hatali_kullanim "$1" ;;
+      ?*) hatali_kullanim 'b' "$1" ;;
       '') bilgi_goster ucbirim ;;
     esac ;;
   --esma)
@@ -302,7 +302,7 @@ case $1 in
         radyo_ac ;;
       -t|--tv)
         tv_ac ;;
-      *) hatali_kullanim "${1:-null}";;
+      *) hatali_kullanim 'o' "${1:-null}";;
     esac ;;
   -V|--s[uü]r[uü]m|--version)
     bilesen_yukle hakkinda
@@ -313,7 +313,7 @@ case $1 in
   -h|--help|--yard[iı]m)
     bilesen_yukle kullanim
     betik_kullanimi ;;
-  ?*) hatali_kullanim "$1" ;;
+  ?*) hatali_kullanim 't' "$1" ;;
 esac
 
 # vim: set ts=2 sw=2 et:

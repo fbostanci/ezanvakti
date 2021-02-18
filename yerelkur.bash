@@ -17,10 +17,10 @@
 # export AD=ezanvakti-yerel
 # bash yerelkur.bash --kaldir
 #
-# AD belirlenmemişse ezv-devel olarak kurar ve
-# kaldırırken de ezv-devel'i arar.
+# AD belirlenmemişse ezv-yerel olarak kurar ve
+# kaldırırken de ezv-yerel'i arar.
 #
-AD=${AD:-ezv-devel}
+AD=${AD:-ezv-yerel}
 bindir="$HOME/.local/bin"
 
 [[ $(id -u) == 0 ]] && {

@@ -12,10 +12,13 @@
         radyo ve tv adreslerini girebilirsiniz.
      -> Öntanımlı radyolar: Diyanet ve Diyanet kuran radyo.
      -> Öntanımlı tvler: Diyanet ve Kabe canlı yayın.
+  * hatali_kullanim.bash: Bunu mu demek istediniz desteği.
   * Uçbirimden gündoğumuna kalan süreyi gösterme. (--vakitler --güneş)
   * İnternet bağlantı denetimi için ping komutu kullanımı bırakıldı.
      -> Artık wget ve curl ile denetim yapılıyor.
   * Hutbe indirme yeniden etkin. (--hutbe).
+  * Bildirim parametrelerinden -o ve --osd kaldırıldı.
+  * 2027 yılına kadar dini günler ve geceler eklendi.
   * bash tamamlama betiği ve man dosyaları güncellendi.
 
 

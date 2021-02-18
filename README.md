@@ -120,13 +120,13 @@ KURULUM ve KALDIRMA
 
 `sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 1651E3776FB72115`
 
-`sudo apt-get update`
+`sudo apt update`
 
-`sudo apt-get install ezanvakti`
+`sudo apt install ezanvakti`
 
 Qt arayüzü kullanmak için:
 
-`sudo apt-get install ezanvakti-qt-gui`
+`sudo apt install ezanvakti-qt-gui`
 
 Pardus deposundaki Qt sürümleri, Ubuntu bionic(18.04) ile uyumludur. Bu sebeple bionic deposu seçilmiştir.
 
@@ -134,16 +134,16 @@ Pardus deposundaki Qt sürümleri, Ubuntu bionic(18.04) ile uyumludur. Bu sebepl
 
 **Archlinux için kurulum:**
 
-[AUR](https://aur.archlinux.org/) üzerinde uygulama bulunmaktadır.
+[AUR](https://aur.archlinux.org/packages/ezanvakti/) üzerinde uygulama bulunmaktadır.
 AUR yardımcı uygulamanızla güncel sürümü kurabilirsiniz.
 
-ör: Pacaur kullanıyorsanız:
+ör: Trizen kullanıyorsanız:
 
-`pacaur -Sa ezanvakti`
+`trizen -Sa ezanvakti`
 
 Qt arayüzü kullanmak için:
 
-`pacaur -Sa ezanvakti-qt-gui`
+`trizen -Sa ezanvakti-qt-gui`
 
 <br>
 
@@ -153,13 +153,13 @@ Depo Ubuntu 18.04, 19.10 ve 20.04 içindir.
 
 `sudo add-apt-repository ppa:fbostanci/distroguide`
 
-`sudo apt-get update`
+`sudo apt update`
 
-`sudo apt-get install ezanvakti`
+`sudo apt install ezanvakti`
 
 Qt arayüzü kullanmak için:
 
-`sudo apt-get install ezanvakti-qt-gui`
+`sudo apt install ezanvakti-qt-gui`
 
 <br>
 
@@ -174,6 +174,31 @@ komutunu verin. Eğer paketleme yapıyorsanız, DESTDIR ile paket kurulum dizini
 **kaldırma için:**
 
 `sudo make PREFIX=/usr sysconfdir=/etc uninstall`
+
+komutunu girin.
+
+<br>
+
+**Kullanıcı ($HOME) dizinine kurulum:**
+
+Uçbirimde kaynak kod dizini içerisindeyken
+
+`export AD=ezanvakti`
+
+`bash yerelkur.bash --kur`
+
+komutunu verin. AD girmezseniz ezv-yerel adıyla kuracaktır.
+
+İsterseniz farklı bir AD girebilirsiniz.
+Girdiğiniz AD değerini kaldırma işleminde de belirtmeniz gerekmektedir.
+
+<br>
+
+**kaldırma için:**
+
+`export AD=ezanvakti`
+
+`bash yerelkur.bash --kaldir`
 
 komutunu girin.
 
