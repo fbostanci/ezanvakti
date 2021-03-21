@@ -63,7 +63,7 @@ secim_listesi='!Yapılandırma Yöneticisi!Kerahat Vakitleri!Nafile Namaz Va
 secim_listesi+='!Haftalık Vakitler!Aylık Vakitler'
 secim_listesi+='!Dini Günler ve Geceler!Ayet!Hadis!Bilgi!Esma-ül Hüsna'
 
-cikti_dosyasi="/tmp/${AD}-6"
+cikti_dosyasi="/tmp/${AD}-7"
 # düz komut çıktıları için rengi sıfırla.
 export RENK_KULLAN=0 RENK=0
 acilisa_baslatici_ekle

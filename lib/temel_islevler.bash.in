@@ -167,9 +167,6 @@ bilesen_yukle() {
   done
 }
 
-bilesen_yukle hatali_kullanim
-
-
 gorsel_guncelleme_yap() {
 
   if  [[ -x $(type -p yad) ]]

@@ -34,6 +34,7 @@
 
 . @libdir@/@AD@/temel_islevler.bash
 acilisa_baslatici_ekle
+bilesen_yukle hatali_kullanim
 
 case $1 in
   -v|--v|--vakitler)

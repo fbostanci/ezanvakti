@@ -5,7 +5,6 @@
 #
 
 hutbe_indir() {
-  echo hazır değil; exit 1
   # adres="$1" dizin="$2"
   if [[ -x $(type -p wget) ]]
   then
@@ -35,14 +34,15 @@ hutbe_goster() {
   fi
 
   hutbe_a="https://diyanet.nl/cuma-hutbeleri/"
-  hutbe_r="https://diyanet.nl/wp-content/uploads/${yil}/${ay}/${cuma}-.*Turks.pdf"
+  hutbe_r="https://diyanet.nl/wp-content/uploads/${yil}/${ay}/${cuma}-Vrijdagpreek-ISN-Turks.pdf"
 
   hutbe_indir "$hutbe_a" "/tmp/ezv-hutbe-$$"
-  hutbe_adresi="$(grep -Eo "${hutbe_r}" /tmp/ezv-hutbe-$$)"
-  rm -f /tmp/ezv-hutbe-$$ > /dev/null 2>&1
+  hutbe_adresi="$(grep -o "${hutbe_r}" /tmp/ezv-hutbe-$$)"
+echo hutbe_adresi=$hutbe_adresi
+  #rm -f /tmp/ezv-hutbe-$$ > /dev/null 2>&1
 
   hutbe="$(echo ${hutbe_adresi} | gawk -F'/' '{print($(NF))}')"
-
+echo hutbe=$hutbe
   [[ ! -f ${HUTBE_DIZINI} ]] && mkdir -p "${HUTBE_DIZINI}"
 
   if [[ -f ${HUTBE_DIZINI}/$hutbe ]]
@@ -52,7 +52,7 @@ hutbe_goster() {
       xdg-open  "${HUTBE_DIZINI}/$hutbe"
   else
       hutbe_indir "${hutbe_adresi}" "${HUTBE_DIZINI}"
-      xdg-open  "${HUTBE_DIZINI}/$hutbe"
+      echo  "${HUTBE_DIZINI}/$hutbe"
   fi
 }
 
