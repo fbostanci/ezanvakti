@@ -22,7 +22,7 @@ do
 done
 
 arayuz() {
-  local strng donus str str2 sure sure_sifirli oynatici_ileti secim_basligi
+  local strng donus str str2 sure oynatici_ileti secim_basligi
   g_vakitleri_al; gun_animsat h
 
 strng=$(yad --form --text "$(printf "${GELISMIS_ARAYUZ_BICIMI}" \
@@ -41,8 +41,9 @@ strng=$(yad --form --text "$(printf "${GELISMIS_ARAYUZ_BICIMI}" \
 --field="<span foreground=\'${ARAYUZ_SECKE_ADLARI_RENGI}\'>Seçimler</span>:CB" \
 ${secim_listesi} \
 --field="<span foreground=\'${ARAYUZ_SECKE_ADLARI_RENGI}\'>Başlatıcı</span>:CE" \
-"${tamamlama_listesi}" --button='yad-ok:150' --button='yad-close:121' \
-${simge_goster} --window-icon=${AD} --title "${AD^}" --center --fixed --gtkrc="${EZV_CSS}")
+"${tamamlama_listesi}" --button=yad-about:"bash -c 'ezv_hakkinda'" \
+--button='yad-ok:150' --buttons-layout='edge' \
+${simge_goster} --window-icon=${AD} --title "${AD^}" --center --fixed --css="${EZV_CSS}")
 
 donus=$(echo $?)
 

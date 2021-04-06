@@ -23,7 +23,7 @@ do
   [ -z "$ypid" ] && break
   sleep 1
 done | yad --plug="$$" --tabnum=1 --form --cycle-read --columns=1 \
-  --field="Şu an: :RO" --field="Konum: :RO" --field="Sıradaki: :RO" --gtkrc="${EZV_CSS2}" &
+  --field="Şu an: :RO" --field="Konum: :RO" --field="Sıradaki: :RO" --css="${EZV_CSS2}" &
 
 while true
 do
@@ -33,9 +33,9 @@ do
   sleep 59
 done | yad --plug="$$" --tabnum=2 --center --form --cycle-read --columns=2 \
   --field=" :RO" --field=" :RO" --field=" :RO" --field=" :RO" --field=" :RO" \
-  --field=" :RO" --no-buttons --gtkrc="${EZV_CSS2}" &
+  --field=" :RO" --no-buttons --css="${EZV_CSS2}" &
 
 yad --center --title="${AD^} Arayüz 2" --width=380 --height=295 --paned --key="$$" \
-  --orient=vert --window-icon="${AD}" --button="yad-close" --fixed --gtkrc="${EZV_CSS2}"
+  --orient=vert --window-icon="${AD}" --button="yad-close" --fixed --css="${EZV_CSS2}"
 
 # vim: set ft=sh ts=2 sw=2 et:

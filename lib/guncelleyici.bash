@@ -5,7 +5,7 @@
 #
 
 guncelleme_yap() { ### Ana fonksiyon {{{
-  local arayuz au ulke sehir ilce varsayilan_sehir varsayilan_ilce dn stn ESKI_IFS
+  local arayuz au ulke sehir ilce varsayilan_sehir varsayilan_ilce stn ESKI_IFS
   local ulke_kodu sehir_kodu ilce_kodu basamak_payi renksiz_payi bas_renksiz_payi
   local e=0 denetim=0
 
@@ -40,11 +40,10 @@ arayuz_denetle() { ### Arayüz denetle {{{
   # seçildiyse bir daha denetim
   # yapmasın. (denetim=1 ise)
   if (( denetim ))
-  then
-      return 0
-  else
-      denetim=1
+  then return 0
+  else denetim=1
   fi
+
   printf '%b%s%b' "${RENK7}${RENK8}" \
     'Arayüz uygulaması denetleniyor...' "${RENK0}"
 

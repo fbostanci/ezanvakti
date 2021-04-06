@@ -11,10 +11,8 @@ qdbus_sorgu() {
             org.freedesktop.DBus.Properties.Get org.mpris.MediaPlayer2.Player PlaybackStatus)
 
   if [[ ${komut} = Playing ]]
-  then
-      return 0
-  else
-      return 1
+  then return 0
+  else return 1
   fi
 }
 
@@ -26,10 +24,8 @@ dbus_sorgu() {
         string:'PlaybackStatus' | gawk -F'[\"]' '/string/ {print $2;}')
 
   if [[ ${komut} = Playing ]]
-  then
-      return 0
-  else
-      return 1
+  then return 0
+  else return 1
   fi
 }
 

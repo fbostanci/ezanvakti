@@ -18,7 +18,7 @@ yad --title "${AD^} Arayüz 3" \
 --text="$(g_vakitleri_yaz)\n\n<span foreground=\'${ARAYUZ_SIMDIKI_VAKIT_RENGI}\'>${vakit_bilgisi}${ozel_ileti}</span>\
 \n\n<span foreground=\'${ARAYUZ_KALAN_SURE_RENGI}\'>${v_ileti}\n${v_kalan}</span>" \
 ${simge_goster} --window-icon=${AD} --mouse --fixed --sticky \
---button='yad-refresh:172' --button='yad-close' --gtkrc="${EZV_CSS3}"
+--button='yad-refresh:172' --button='yad-close' --css="${EZV_CSS3}"
 
 case $? in
   172)

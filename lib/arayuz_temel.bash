@@ -98,6 +98,18 @@ arayuz_pid_denetle() {
   fi
 }
 
+export AD SURUM
+ezv_hakkinda() {
+  yad --about --pname="${AD^}" --pversion="${SURUM}" --license='GPL3' \
+    --image="${AD}" --authors='Fatih Bostancı' \
+    --comments='GNU/Linux için ezanvakti bildirici' \
+    --website='https://gitlab.com/fbostanci/ezanvakti' \
+    --website-label='Proje sayfası' \
+    --window-icon="${AD}" --skip-taskbar \
+    --copyright="Copyright © 2010-$(date +%Y), FB <ironic@yaani.com>"
+}
+export -f ezv_hakkinda
+
 temizlik() {
   rm -f "${cikti_dosyasi}" > /dev/null 2>&1
 }

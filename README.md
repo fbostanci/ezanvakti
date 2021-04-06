@@ -105,7 +105,7 @@ BAĞIMLILIKLAR
 **EK ÖZELLİKLERİN KULLANIMI  İÇİN GEREKLİ (kullanmak isteniyorsa) BAĞIMLILIKLAR**
 
 *  bash-completion  (Bash tamamlama desteği)
-*  yad >=6.0  (Arayüz desteği)
+*  yad >=9.0  (Arayüz desteği)
 
 <br><br>
 

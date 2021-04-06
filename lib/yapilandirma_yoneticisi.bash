@@ -136,7 +136,7 @@ yad --notebook --key=190707 \
 --tab="Ezanveri Ayarları" --tab="Ezan Ayarları" \
 --tab="Bildirim Ayarları" --tab="Renk Ayarları" \
 --fixed --center --tab-pos=top --buttons-layout='spread' \
---window-icon=${AD} --gtkrc="${EZV_CSS4}" \
+--window-icon=${AD} --css="${EZV_CSS4}" \
 --button=" Ana Sayfa!${VERI_DIZINI}/simgeler/anasayfa.png":171 \
 --button='yad-open:172' --button='yad-save:174' --button='yad-quit:121'
 
