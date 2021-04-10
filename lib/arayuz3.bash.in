@@ -10,6 +10,7 @@
 # Yalnıca bir arayüz3 örneği çalışması için
 # pid denetimi yapılsın. (arayuz_temel.bash)
 arayuz_pid_denetle 3
+bilesen_yukle arayuz_vakitler
 
 arayuz2() {
   g_vakitleri_al; gun_animsat h
