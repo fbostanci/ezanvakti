@@ -93,9 +93,9 @@ g_vakitleri_al() {
   fi
 }
 
-#FIXME: vakit saatleri renklenmiyor..
 g_vakitleri_yaz() {
   local sabah gunes ogle ikindi aksam yatsi vakitsiz ikindi_kerahat
+  local g_sabah_n g_gunes_n g_ogle_n g_ikindi_n g_aksam_n g_yatsi_n
 
   vakitsiz="<b>Şimdi Kerahat Vakti 2</b>|<b>Şimdi Kerahat Vakti 3</b>"
   vakitsiz+="|<b>Şimdi Kuşluk Vakti</b>"
@@ -103,63 +103,63 @@ g_vakitleri_yaz() {
 
   g_renk_sifirla() {
     sabah="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>Sabah</span>"
-    sabah_n="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>$sabah_n</span>"
+    g_sabah_n="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>$sabah_n</span>"
     gunes="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>Güneş</span>"
-    gunes_n="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>$gunes_n</span>"
+    g_gunes_n="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>$gunes_n</span>"
     ogle="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>Öğle</span>"
-    ogle_n="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>$ogle_n</span>"
+    g_ogle_n="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>$ogle_n</span>"
     ikindi="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>İkindi</span>"
-    ikindi_n="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>$ikindi_n</span>"
+    g_ikindi_n="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>$ikindi_n</span>"
     aksam="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>Akşam</span>"
-    aksam_n="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>$aksam_n</span>"
+    g_aksam_n="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>$aksam_n</span>"
     yatsi="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>Yatsı</span>"
-    yatsi_n="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>$yatsi_n</span>"
+    g_yatsi_n="<span foreground=\'${ARAYUZ_VAKITLER_RENGI}\'>$yatsi_n</span>"
   }
 
   if [[ ${vakit_bilgisi} = '<b>Şimdi Yatsı Vakti</b>'  ]]
   then
       g_renk_sifirla
       yatsi="<span foreground=\'${ARAYUZ_SECILI_VAKIT_RENGI}\'>Yatsı</span>"
-      yatsi_n="<span foreground=\'${ARAYUZ_SECILI_VAKIT_RENGI}\'>$yatsi_n</span>"
+      g_yatsi_n="<span foreground=\'${ARAYUZ_SECILI_VAKIT_RENGI}\'>$yatsi_n</span>"
 
   elif [[ ${vakit_bilgisi} = '<b>Şimdi Kerahat Vakti 1</b>' ]]
   then
       g_renk_sifirla
       sabah="<span foreground=\'${ARAYUZ_SECILI_VAKIT_RENGI}\'>Sabah</span>"
-      sabah_n="<span foreground=\'${ARAYUZ_SECILI_VAKIT_RENGI}\'>$sabah_n</span>"
+      g_sabah_n="<span foreground=\'${ARAYUZ_SECILI_VAKIT_RENGI}\'>$sabah_n</span>"
 
   elif [[ ${vakit_bilgisi} = '<b>Güneş Doğuş Vakti</b>' ]]
   then
       g_renk_sifirla
       gunes="<span foreground=\'${ARAYUZ_SECILI_VAKIT_RENGI}\'>Güneş</span>"
-      gunes_n="<span foreground=\'${ARAYUZ_SECILI_VAKIT_RENGI}\'>$gunes_n</span>"
+      g_gunes_n="<span foreground=\'${ARAYUZ_SECILI_VAKIT_RENGI}\'>$gunes_n</span>"
 
   elif [[ ${vakit_bilgisi} = '<b>Şimdi Öğle Vakti</b>' ]]
   then
       g_renk_sifirla
       ogle="<span foreground=\'${ARAYUZ_SECILI_VAKIT_RENGI}\'>Öğle</span>"
-      ogle_n="<span foreground=\'${ARAYUZ_SECILI_VAKIT_RENGI}\'>$ogle_n</span>"
+      g_ogle_n="<span foreground=\'${ARAYUZ_SECILI_VAKIT_RENGI}\'>$ogle_n</span>"
 
   elif [[ ${vakit_bilgisi} = @(${ikindi_kerahat}) ]]
   then
       g_renk_sifirla
       ikindi="<span foreground=\'${ARAYUZ_SECILI_VAKIT_RENGI}\'>İkindi</span>"
-      ikindi_n="<span foreground=\'${ARAYUZ_SECILI_VAKIT_RENGI}\'>$ikindi_n</span>"
+      g_ikindi_n="<span foreground=\'${ARAYUZ_SECILI_VAKIT_RENGI}\'>$ikindi_n</span>"
 
   elif [[ ${vakit_bilgisi} = '<b>Şimdi Akşam Vakti</b>' ]]
   then
       g_renk_sifirla
       aksam="<span foreground=\'${ARAYUZ_SECILI_VAKIT_RENGI}\'>Akşam</span>"
-      aksam_n="<span foreground=\'${ARAYUZ_SECILI_VAKIT_RENGI}\'>$aksam_n</span>"
+      g_aksam_n="<span foreground=\'${ARAYUZ_SECILI_VAKIT_RENGI}\'>$aksam_n</span>"
 
   elif [[ ${vakit_bilgisi} = @(${vakitsiz}) ]]
   then
       g_renk_sifirla
   fi
 
-  printf "${VAKIT_BICIMI}" "${sabah}" "$sabah_n" "${gunes}" \
-         "$gunes_n" "${ogle}" "$ogle_n" "${ikindi}" "$ikindi_n" \
-         "${aksam}" "$aksam_n" "${yatsi}" "$yatsi_n"
+  printf "${VAKIT_BICIMI}" "${sabah}" "$g_sabah_n" "${gunes}" \
+         "$g_gunes_n" "${ogle}" "$g_ogle_n" "${ikindi}" "$g_ikindi_n" \
+         "${aksam}" "$g_aksam_n" "${yatsi}" "$g_yatsi_n"
 }
 
 # vim: set ft=sh ts=2 sw=2 et:
