@@ -19,6 +19,7 @@ hutbe_indir() {
 }
 
 hutbe_goster() {
+  echo "hazır değil"; exit 0
   local HUTBE_DIZINI="${EZANVAKTI_DIZINI}/hutbeler"
   local cuma ay yil hutbe_a hutbe_r hutbe_adresi hutbe
 
@@ -38,11 +39,11 @@ hutbe_goster() {
 
   hutbe_indir "$hutbe_a" "/tmp/ezv-hutbe-$$"
   hutbe_adresi="$(grep -o "${hutbe_r}" /tmp/ezv-hutbe-$$)"
-echo hutbe_adresi=$hutbe_adresi
+
   #rm -f /tmp/ezv-hutbe-$$ > /dev/null 2>&1
 
   hutbe="$(echo ${hutbe_adresi} | gawk -F'/' '{print($(NF))}')"
-echo hutbe=$hutbe
+
   [[ ! -f ${HUTBE_DIZINI} ]] && mkdir -p "${HUTBE_DIZINI}"
 
   if [[ -f ${HUTBE_DIZINI}/$hutbe ]]

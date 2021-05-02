@@ -74,4 +74,24 @@ arayuz_pid_denetle() {
   fi
 }
 
+pencere_bilgi() {
+  # verilen ses dosyasının süresini alır. (oynatici_yonetici.bash)
+  # $parca_suresi = saniye cinsinden süre
+  # $parca_suresi_n = sürenin sa,dk,ve sn'ye çevrilmiş hali
+  oynatici_sure_al "$1"
+
+  yad --form --separator=' ' --title="${AD^}" --image=${AD} --window-icon=${AD} \
+      --text "${oynatici_ileti}\n Süre        : $parca_suresi_n" --mouse --fixed \
+      --button='yad-cancel:127' --button='yad-close:0' --timeout=$parca_suresi \
+      --css="${EZV_CSS}"
+
+  case $? in
+    *)
+      echo stop > /tmp/ezv-oynatici-$$.pipe 2>/dev/null
+      rm -f /tmp/ezv-oynatici-$$.pipe 2>/dev/null
+      pkill ffplay
+      ;;
+  esac
+}
+
 # vim: set ft=sh ts=2 sw=2 et:

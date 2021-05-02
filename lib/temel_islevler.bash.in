@@ -310,7 +310,7 @@ internet_erisimi_var_mi() {
 
   elif [[ -x $(type -p curl) ]]
   then
-      if curl -s --head  --request GET www.google.com | grep "200 OK" > /dev/null
+      if curl -s --head --request GET www.google.com | grep "200 OK" > /dev/null
       then return 0
       else return 1
       fi

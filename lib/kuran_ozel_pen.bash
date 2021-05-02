@@ -41,8 +41,7 @@ pencere=$(yad --form \
 donus=$(echo $?)
 
 ESKI_IFS="$IFS"
-IFS="
-"
+IFS=$'\n'
 declare -x $(gawk -F'|' '{print "str="$1 "\nstr2="$2}' <<< "$pencere")
 IFS="$ESKI_IFS"
 
@@ -51,7 +50,8 @@ case $donus in
     if (( ${ayz:-0} ))
     then arayuz
     else ozel_pencere
-    fi ;;
+    fi
+    geri_dugmesi=1 ;;
   152)
     [[ -z $str2 ]] && ozel_pencere
     sure=$(cut -d'-' -f1 <<<"$str2")

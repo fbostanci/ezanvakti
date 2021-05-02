@@ -46,26 +46,6 @@ g_secim_goster() {
       --back="$ARKAPLAN_RENGI" --fore="$YAZI_RENGI" --mouse --sticky
 }
 
-pencere_bilgi() {
-  # verilen ses dosyasının süresini alır. (oynatici_yonetici.bash)
-  # $parca_suresi = saniye cinsinden süre
-  # $parca_suresi_n = sürenin sa,dk,ve sn'ye çevrilmiş hali
-  oynatici_sure_al "$1"
-
-  yad --form --separator=' ' --title="${AD^}" --image=${AD} --window-icon=${AD} \
-      --text "${oynatici_ileti}\n Süre        : $parca_suresi_n" --mouse --fixed \
-      --button='yad-cancel:127' --button='yad-close:0' --timeout=$parca_suresi \
-      --gtkrc="${EZV_CSS}"
-
-  case $? in
-    *)
-      echo stop > /tmp/ezv-oynatici-$$.pipe 2>/dev/null
-      rm -f /tmp/ezv-oynatici-$$.pipe 2>/dev/null
-      pkill ffplay
-      ;;
-  esac
-}
-
 export AD SURUM
 ezv_hakkinda() {
   yad --about --pname="${AD^}" --pversion="${SURUM}" --license='GPL3' \
@@ -273,14 +253,16 @@ then
             # değerlerini bu fonksiyon gönderiyor. (temel_islevler.bash)
             kuran_okuyan_denetle "$sure_kod"
         fi
+        [[ ${geri_dugmesi:-0} != 1 ]] && {
+          bilesen_yukle kuran_dinletici
+          oynatici_ileti="$(gawk -v sira=$sure '{if(NR==sira) print $4;}' < ${VERI_DIZINI}/veriler/sure_bilgisi)"
+          oynatici_ileti+=" suresi dinletiliyor\n\n Okuyan : ${okuyan}"
 
-        bilesen_yukle kuran_dinletici
-        oynatici_ileti="$(gawk -v sira=$sure '{if(NR==sira) print $4;}' < ${VERI_DIZINI}/veriler/sure_bilgisi)"
-        oynatici_ileti+=" suresi dinletiliyor\n\n Okuyan : ${okuyan}"
-
-        pencere_bilgi "${dinletilecek_sure}" &
-        kuran_dinlet secim $sure
-        arayuz ;;
+          pencere_bilgi "${dinletilecek_sure}" &
+          kuran_dinlet secim $sure
+          arayuz
+        }
+        ;;
     *)
         arayuz ;;
     esac

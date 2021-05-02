@@ -16,7 +16,6 @@
   * Uçbirimden gündoğumuna kalan süreyi gösterme. (--vakitler --güneş)
   * İnternet bağlantı denetimi için ping komutu kullanımı bırakıldı.
      -> Artık wget ve curl ile denetim yapılıyor.
-  * Hutbe indirme yeniden etkin. (--hutbe).
   * Bildirim parametrelerinden -o ve --osd kaldırıldı.
   * YAD 9 güncellemeleri.
   * 2027 yılına kadar dini günler ve geceler eklendi.

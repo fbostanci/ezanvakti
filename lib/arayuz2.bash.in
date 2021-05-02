@@ -7,7 +7,7 @@
 . @libdir@/@AD@/temel_islevler.bash
 . @libdir@/@AD@/arayuz_temel.bash
 
-# Yalnıca bir arayüz2 örneği çalışması için
+# Yalnızca bir arayüz2 örneği çalışması için
 # pid denetimi yapılsın. (arayuz_temel.bash)
 arayuz_pid_denetle 2
 
