@@ -243,7 +243,7 @@ printf '%b%b' "${RENK7}${RENK8}" \
   "${EZANVERI_ADI} dosyası güncelleniyor...${RENK0}"
 
 printf '#Tarih        Sabah   Güneş   Öğle    İkindi  Akşam   Yatsı\n' >> /tmp/ezanveri-$$
-indirici "http://namazvakitleri.diyanet.gov.tr/tr-TR/${ilce_kodu}" | \
+indirici "https://namazvakitleri.diyanet.gov.tr/tr-TR/${ilce_kodu}" | \
 sed -n 's:<td>\(.*\)</td>:\1:p' | sed -e 's:^ *::' -e 's:[^[:print:]]: :g' -e \
 's: Ocak :.01.:;s: Şubat :.02.:;
  s: Mart :.03.:;s: Nisan :.04.:;

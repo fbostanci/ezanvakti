@@ -49,10 +49,10 @@ g_secim_goster() {
 export AD SURUM
 ezv_hakkinda() {
   yad --about --pname="${AD^}" --pversion="${SURUM}" --license='GPL3' \
-    --image="${AD}" --authors='Fatih Bostancı' \
+    --image="${AD}" --authors='FB' \
     --comments='GNU/Linux için ezanvakti bildirici' \
     --website='https://gitlab.com/fbostanci/ezanvakti' \
-    --website-label='Proje sayfası' \
+    --website-label='Proje Sayfası' \
     --window-icon="${AD}" --skip-taskbar \
     --copyright="Copyright © 2010-$(date +%Y), FB <ironic@yaani.com>"
 }
@@ -88,8 +88,7 @@ strng=$(yad --form --text "$(printf "${GELISMIS_ARAYUZ_BICIMI}" \
 --field="<span foreground=\'${ARAYUZ_SECKE_ADLARI_RENGI}\'>Seçimler</span>:CB" \
 ${secim_listesi} \
 --field="<span foreground=\'${ARAYUZ_SECKE_ADLARI_RENGI}\'>Başlatıcı</span>:CE" \
-"${tamamlama_listesi}" --button=yad-about:"bash -c 'ezv_hakkinda'" \
---button='yad-ok:150' --buttons-layout='edge' \
+"${tamamlama_listesi}" --button='yad-ok:150' --buttons-layout='end' \
 ${simge_goster} --window-icon=${AD} --title "${AD^}" --center --fixed --css="${EZV_CSS}")
 
 donus=$(echo $?)
@@ -229,8 +228,7 @@ then
         gorsel_guncelleme_yap yenile
         arayuz ;;
     hakkında|about)
-        bilesen_yukle hakkinda
-        g_hakkinda; arayuz ;;
+        ezv_hakkinda; arayuz ;;
     yardım)
         bilesen_yukle kullanim
         betik_kullanimi > "${cikti_dosyasi}"
