@@ -133,11 +133,11 @@ yad --plug=190707 --tabnum=4 --form \
 "${ARAYUZ_SECKE_ADLARI_RENGI}" > $ayr4 &
 yad --notebook --key=190707 \
 --title "${AD^} - Yapılandırma Yöneticisi" \
---tab="Ezanveri Ayarları" --tab="Ezan Ayarları" \
---tab="Bildirim Ayarları" --tab="Renk Ayarları" \
+--tab="Ezanveri" --tab="Ezan" \
+--tab="Bildirim" --tab="Renk" \
 --fixed --center --tab-pos=top --buttons-layout='spread' \
 --window-icon=${AD} --css="${EZV_CSS4}" \
---button=" Ana Sayfa!${VERI_DIZINI}/simgeler/anasayfa.png":171 \
+--button=" Ana Pencere!${VERI_DIZINI}/simgeler/anasayfa.png":171 \
 --button='yad-open:172' --button='yad-save:174' --button='yad-quit:121'
 
  case $? in
