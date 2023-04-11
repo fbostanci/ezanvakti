@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-#                           Ezanvakti Güncelleme  Bileşeni 2.9
+#                           Ezanvakti Güncelleme  Bileşeni 3.0
 #
 #
 
@@ -242,7 +242,7 @@ fi
 printf '%b%b' "${RENK7}${RENK8}" \
   "${EZANVERI_ADI} dosyası güncelleniyor...${RENK0}"
 
-printf '#Tarih        Sabah   Güneş   Öğle    İkindi  Akşam   Yatsı\n' >> /tmp/ezanveri-$$
+printf '#Tarih       Sabah  Güneş  Öğle   İkindi Akşam  Yatsı\n' >> /tmp/ezanveri-$$
 indirici "https://namazvakitleri.diyanet.gov.tr/tr-TR/${ilce_kodu}" | \
 sed -n 's:<td>\(.*\)</td>:\1:p' | sed -e 's:^ *::' -e 's:[^[:print:]]: :g' -e \
 's: Ocak :.01.:;s: Şubat :.02.:;
@@ -250,10 +250,11 @@ sed -n 's:<td>\(.*\)</td>:\1:p' | sed -e 's:^ *::' -e 's:[^[:print:]]: :g' -e \
  s: Mayıs :.05.:;s: Haziran :.06.:;
  s: Temmuz :.07.:;s: Ağustos :.08.:;
  s: Eyl&#252;l :.09.:;s: Ekim :.10.:;
- s: Kasım :.11.:;s: Aralık :.12.:' | \
-sed -e 'N;N;N;N;N;N;s:\n:  :g' -e 's:[[:blank:]]*$::' >> /tmp/ezanveri-$$
+ s: Kasım :.11.:;s: Aralık :.12.:'  \
+ -e 's:[[:blank:]]*$::' -e '2~8d' >> /tmp/ezanveri-$$
 sed -i -r '1!{s:\S+::2;}' /tmp/ezanveri-$$
-sed -i '2,8d' /tmp/ezanveri-$$
+sed -i '1!{N;N;N;N;N;N;s:\n:  :g}' /tmp/ezanveri-$$
+
 
 cat << SON >> /tmp/ezanveri-$$
 
