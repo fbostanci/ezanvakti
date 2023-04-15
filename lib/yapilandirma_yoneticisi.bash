@@ -562,18 +562,13 @@ yad --notebook --key=190707 \
         . "${EZANVAKTI_AYAR}"
 
         (( _YENIDEN_BASLATMA_GEREKLI )) && {
-          if (( ! ACILISTA_BASLAT ))
+          if pgrep ${AD}-sleep > /dev/null
           then
-              if pgrep ${AD}-sleep
-              then
-                  pkill ${AD}-sleep
-              fi
-          else
-              if pgrep ${AD}-sleep
-              then
-                  pkill ${AD}-sleep
-              fi
-              ${BILESEN_DIZINI}/${AD}-sleep &
+              pkill ${AD}-sleep
+          fi
+          if (( ACILISTA_BASLAT ))
+          then
+              ${BILESEN_DIZINI}/${AD}-sleep > /dev/null &
               disown
           fi
         }

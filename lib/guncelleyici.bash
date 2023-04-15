@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-#                           Ezanvakti Güncelleme  Bileşeni 3.0
+#                           Ezanvakti Güncelleme  Bileşeni 3.1
 #
 #
 
@@ -294,6 +294,27 @@ else
     exit 1
 
 fi #}}}
+
+# şehir bilgisi değiştiği için ezanvakti-sleep bileşenini
+# yeniden başlat.
+if [[ $1 = yenile ]]
+then
+    if pgrep ${AD}-sleep > /dev/null
+    then
+        pkill ${AD}-sleep
+    fi
+    if (( ACILISTA_BASLAT ))
+    then
+        printf '%b%s%s%b' "${RENK7}${RENK8}" \
+          "${AD}-sleep" ' bileşeni yeniden başlatılıyor...' "${RENK0}"
+
+        ${BILESEN_DIZINI}/${AD}-sleep > /dev/null &
+        disown
+
+        printf '%b%*b' "${RENK7}${RENK8}" $(( stn - ${#AD} - 20 - renksiz_payi )) \
+      "[${RENK2}  BAŞARILI  ${RENK8}]${RENK0}\n"
+    fi
+fi
 
 case "${#SECONDS}" in
   1) basamak_payi='18' ;;
