@@ -8,7 +8,7 @@ pkgdesc="Islamic Prayer Times bash script for Turkish users"
 arch=('any')
 url="https://gitlab.com/fbostanci/ezanvakti"
 license=('GPL3')
-provides=('ezanvakti=7.4')
+provides=('ezanvakti=7.5')
 conflicts=('ezanvakti')
 # change curl to wget and ffmpeg to mplayer if wanted
 # isteniyorsa curl yerine wget, ffmpeg yerine mplayer yazilabilir.

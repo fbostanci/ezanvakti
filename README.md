@@ -1,4 +1,4 @@
-Son Güncelleme:  Sun, 24 Jan 2021 20:36:51 +0300
+Son Güncelleme:  Mon, 17 Apr 2023 19:13:28 +0300
 
 
 [![GitHub release](https://img.shields.io/github/release/fbostanci/ezanvakti.svg?style=plastic)](https://github.com/fbostanci/ezanvakti)
