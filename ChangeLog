@@ -5,7 +5,7 @@
 /×××××××××××××××××××××××××××××
 × Ezanvakti 7.5
 ×××××××××××××××××××××××××××××/
-2021-xx-xx Fatih BOSTANCI <ironic@yaani.com>
+2023-04-17 Fatih BOSTANCI <ironic@yaani.com>
 
   *  cokluortam.bash: Radyo ve Tv yayınlarını oynatabilme (--ortam --tv/--radyo).
      -> Ayarlar dosyasındaki TVLER ve RADYOLAR listesine istediğiniz
@@ -13,11 +13,14 @@
      -> Öntanımlı radyolar: Diyanet ve Diyanet kuran radyo.
      -> Öntanımlı tvler: Diyanet ve Kabe canlı yayın.
   * hatali_kullanim.bash: Bunu mu demek istediniz desteği.
-  * Uçbirimden gündoğumuna kalan süreyi gösterme. (--vakitler --güneş)
+  * Uçbirimden gündoğumuna kalan süreyi gösterme. (--vakitler --gunes)
   * İnternet bağlantı denetimi için ping komutu kullanımı bırakıldı.
      -> Artık wget ve curl ile denetim yapılıyor.
   * Bildirim parametrelerinden -o ve --osd kaldırıldı.
+  * guncelleyici.bash: şehir değişiminde ezanvakti-sleep bileşenini
+     yeniden başlatma
   * YAD 9 güncellemeleri.
+  * Ezanveri güncelleme hatası düzeltildi.
   * 2027 yılına kadar dini günler ve geceler eklendi.
   * bash tamamlama betiği ve man dosyaları güncellendi.
 

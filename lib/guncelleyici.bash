@@ -312,7 +312,7 @@ then
         disown
 
         printf '%b%*b' "${RENK7}${RENK8}" $(( stn - ${#AD} - 20 - renksiz_payi )) \
-      "[${RENK2}  BAŞARILI  ${RENK8}]${RENK0}\n"
+          "[${RENK2}  BAŞARILI  ${RENK8}]${RENK0}\n"
     fi
 fi
 
