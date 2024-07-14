@@ -8,8 +8,8 @@ nafile_namaz_vakitleri() {
   ezanveri_denetle; bugun
   renk_denetle
 
-  local kerahat_suresi toplam_gece_suresi gece_ucte_bir gece_ikide_bir \
-        gece_ucte_iki israk_vakti kv_ogle dun daksam
+  local kerahat_suresi toplam_gece_suresi gece_ucte_bir
+  local gece_ikide_bir gece_ucte_iki israk_vakti kv_ogle dun daksam
 
   kerahat_suresi="$KERAHAT_SURESI minutes" #dk
   kv_ogle=$(date -d "-$kerahat_suresi $ogle_n" +%H:%M)

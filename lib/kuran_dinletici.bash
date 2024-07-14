@@ -6,8 +6,8 @@
 #
 
 kuran_dinletimi() {
-  local parca_suresi parca_suresi_n okuyan kaynak dinletilecek_sure
-  local sure_adi sure_ayet_sayisi cuz yer
+  local parca_suresi parca_suresi_n dinletilecek_sure
+  local sure_adi sure_ayet_sayisi cuz yer okuyan kaynak
   trap 'echo;clear;exit 1' SIGINT
 
   # girileni denetleyip

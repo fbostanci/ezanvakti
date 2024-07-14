@@ -98,16 +98,16 @@ kuran_okuyan_denetle() {
       # Seçilen KURAN_OKUYAN değerine göre okuyucunun
       # tam adını okuyucu değişkenine ata.
       case "${KURAN_OKUYAN}" in
-        AlGhamdi)  okuyan='Saad el Ghamdi' ;;
-        AsShatree) okuyan='As Shatry' ;;
-        AlAjmy)    okuyan='Ahmad el Ajmy' ;;
+        AlGhamdi)  okuyan='Saad el Ghamdi'; KURAN_OKUYAN_K='sa3d_al-ghaamidi/complete' ;;
+        AsShatree) okuyan='As Shatry'; KURAN_OKUYAN_K='abu_bakr_ash-shatri_tarawee7' ;;
+        AlAjmy)    okuyan='Ahmad el Ajmy'; KURAN_OKUYAN_K='ahmed_ibn_3ali_al-3ajamy' ;;
         *)
           printf '%s: Desteklenmeyen KURAN_OKUYAN adı: %s\n' \
             "${AD}" "${KURAN_OKUYAN}" >&2
           exit 1 ;;
       esac
-      dinletilecek_sure="http://www.listen2quran.com/listen/${KURAN_OKUYAN}/$sure_kod.mp3"
-      kaynak='http://www.listen2quran.com'
+      dinletilecek_sure="https://download.quranicaudio.com/quran/${KURAN_OKUYAN_K}/$sure_kod.mp3"
+      kaynak='https://www.quranicaudio.com'
   fi
 }
 

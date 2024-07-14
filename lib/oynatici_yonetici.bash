@@ -31,7 +31,8 @@ oynatici_sure_al() {
 }
 
 oynatici_calistir() {
-  local dinletilecek_oge="$1" disp
+  local dinletilecek_oge="$1"
+  local disp
 
   if [[ ${dinletilecek_oge} =~ ^http.* ]]
   then

@@ -8,8 +8,9 @@ ayet_araligi_goster() {
   renk_denetle; meal_denetle
   # $1 = sure no = sure_kod
   # $2 = ayet aralığı = ayet_kod
-  local ayet_kod=$2 ayet_baslama ayet_bitis satir
-  local sure_adi sure_baslama sure_ayet_sayisi int_ayet_kod
+  local ayet_kod=$2
+  local ayet_baslama ayet_bitis satir sure_adi
+  local sure_baslama sure_ayet_sayisi int_ayet_kod
 
   if [[ -z ${ayet_kod} ]]
   then

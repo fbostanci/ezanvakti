@@ -5,7 +5,8 @@
 #
 
 ezan_dinlet() {
-  local vakit="$1" ileti
+  local vakit="$1"
+  local ileti
   bilesen_yukle oynatici_yonetici
   renk_denetle
 

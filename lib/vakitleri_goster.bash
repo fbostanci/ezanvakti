@@ -8,8 +8,8 @@ vakitler() { # {{{
   ezanveri_denetle; bugun
   renk_denetle
 
-  local sabah_kalan gunes_kalan ogle_kalan ikindi_kalan \
-    aksam_kalan yatsi_kalan
+  local sabah_kalan gunes_kalan ogle_kalan
+  local ikindi_kalan aksam_kalan yatsi_kalan
   local istek="$1"
 
   # --osd/bildirim için renkleri sıfırla

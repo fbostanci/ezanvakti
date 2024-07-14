@@ -254,13 +254,14 @@ sed -n 's:<td>\(.*\)</td>:\1:p' | sed -e 's:^ *::' -e 's:[^[:print:]]: :g' -e \
  -e 's:[[:blank:]]*$::' -e '2~8d' >> /tmp/ezanveri-$$
 sed -i -r '1!{s:\S+::2;}' /tmp/ezanveri-$$
 sed -i '1!{N;N;N;N;N;N;s:\n:  :g}' /tmp/ezanveri-$$
+sed -i '2,39d' /tmp/ezanveri-$$
 
 
 cat << SON >> /tmp/ezanveri-$$
 
 
 
-# BİLGİ: ${ilce} / ${sehir} için 30 günlük ezan vakitleridir.
+# BİLGİ: ${ilce} / ${sehir} için yıllık ezan vakitleridir.
 # Çizelge, 'http://namazvakitleri.diyanet.gov.tr'
 # adresinden ${AD} uygulaması tarafından istenerek oluşturulmuştur.
 

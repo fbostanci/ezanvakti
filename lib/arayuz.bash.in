@@ -189,8 +189,7 @@ then
            echo 'yad gürültü istiyor'
          ) | yad --progress --pulsate --auto-close --undecorated \
                  --progress-text='Bayram namazı vakitleri alınıyor...' \
-                 --pulsate --auto-close --width=300 --center --fixed \
-                 --no-buttons --skip-taskbar
+                 --width=300 --center --fixed --no-buttons --skip-taskbar
          g_secim_goster; temizlik
          arayuz ;;
     "Dini Günler ve Geceler")
