@@ -34,10 +34,10 @@ sure_listesi+='!111-Tebbet!112-İhlas!113-Felak!114-Nas'
 tamamlama_listesi='!Ayarlar!Ayet!Sabah!Öğle!İkindi!Akşam!Yatsı!Sela!yapilandirma!Hadis!Esma-ül Hüsna'
 tamamlama_listesi+='!Bilgi!Aylık Vakitler!Haftalık Vakitler!Dini Günler ve Geceler!hakkında'
 tamamlama_listesi+='!Nafile Namaz Vakitleri!about!güncelle!güncelle yeni!yardım!Kerahat!000'
-tamamlama_listesi+="!özel pencere!$sure_listesi"
+tamamlama_listesi+="!özel pencere!Bayram Namazı Vakitleri!$sure_listesi"
 
 secim_listesi='!Yapılandırma Yöneticisi!Kerahat Vakitleri!Nafile Namaz Vakitleri'
-secim_listesi+='!Haftalık Vakitler!Aylık Vakitler'
+secim_listesi+='!Haftalık Vakitler!Aylık Vakitler!Bayram Namazı Vakitleri'
 secim_listesi+='!Dini Günler ve Geceler!Ayet!Hadis!Bilgi!Esma-ül Hüsna'
 
 g_secim_goster() {

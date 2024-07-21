@@ -77,14 +77,14 @@ vakitler() { # {{{
     yatsi)
       printf "${RENK7}${RENK2}\nYatsı ezanı  ${RENK3}: $yatsi_n $yatsi_kalan${RENK0}\n\n" ;;
     aylik)
-      if ! grep -qo "^$(date -d 'next week' +%d.%m.%Y)" "${EZANVERI}"
+      if ! grep -qo "^$(date -d '30 days' +%d.%m.%Y)" "${EZANVERI}"
       then
-          printf "${RENK3}7 günlük veri bulunmuyor..${RENK0}\n"
+          printf "${RENK3}30 günlük veri bulunmuyor..${RENK0}\n"
           exit 1
       fi
 
       printf "\n${RENK7}${RENK6}Tarih        Sabah   Güneş   Öğle    İkindi  Akşam   Yatsı${RENK0}\n"
-      sed -n "/$(date +%d.%m.%Y)/,/$(date -d '30 days' +%d.%m.%Y)/p" "${EZANVERI}" | \
+      sed -n "/$(date +%d.%m.%Y)/,/$(date -d '30 days' +%d.%m.%Y)/p" "${EZANVERI}" |
         gawk -v r0=${RENK0} -v r2=${RENK2} -v r3=${RENK3} -v r7=${RENK7} \
           '{printf "%s%s%s%s   %s   %s   %s   %s   %s   %s%s\n"\
           , r7,r3,$1,r2,$2,$3,$4,$5,$6,$7,r0}' ;;
@@ -97,7 +97,7 @@ vakitler() { # {{{
       fi
 
       printf "\n${RENK7}${RENK6}Tarih        Sabah   Güneş   Öğle    İkindi  Akşam   Yatsı${RENK0}\n"
-      sed -n "/$(date +%d.%m.%Y)/,/$(date -d '7 days' +%d.%m.%Y)/p" "${EZANVERI}" | \
+      sed -n "/$(date +%d.%m.%Y)/,/$(date -d '7 days' +%d.%m.%Y)/p" "${EZANVERI}" |
         gawk -v r0=${RENK0} -v r2=${RENK2} -v r3=${RENK3} -v r7=${RENK7} \
           '{printf "%s%s%s%s   %s   %s   %s   %s   %s   %s%s\n"\
           , r7,r3,$1,r2,$2,$3,$4,$5,$6,$7,r0}' ;;

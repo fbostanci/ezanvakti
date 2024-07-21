@@ -1,6 +1,6 @@
 #
 #
-#               Ezanvakti 7.5 Makefile
+#               Ezanvakti 7.6 Makefile
 #
 #
 
