@@ -1,4 +1,4 @@
-Son Güncelleme:  Mon, 17 Apr 2023 19:13:28 +0300
+Son Güncelleme:  Mon, 22 Jul 2024 00:39:18 +0300
 
 
 [![GitHub release](https://img.shields.io/github/release/fbostanci/ezanvakti.svg?style=plastic)](https://github.com/fbostanci/ezanvakti)
@@ -9,7 +9,7 @@ Son Güncelleme:  Mon, 17 Apr 2023 19:13:28 +0300
 [![Packaging status](https://repology.org/badge/vertical-allrepos/ezanvakti.svg)](https://repology.org/project/ezanvakti/versions)
 <br>
 
-Ezanvakti 7.5 GNU/Linux için ezan vakti bildirici
+Ezanvakti 7.6 GNU/Linux için ezan vakti bildirici
 ====
 <br>
 
@@ -35,7 +35,7 @@ okuduğundan kullanıcıya geniş özelleştirme desteği sunar.
 
 Genel Özellikleri
 =
-*  Diyanet sitesindeki tüm ülke ve şehirler için aylık vakitleri alma.
+*  Diyanet sitesindeki tüm ülke ve şehirler için yıllık vakitleri alma.
 *  Otomatik ezan vakitleri güncelleme.
 *  Ezan vakitlerini ve vakitlere ne kadar süre kaldığını
    toplu/tekil gösterme. (--vakitler)
@@ -71,7 +71,7 @@ Genel Özellikleri
 *  61 tane okuyucu seçimli özel kuran dinletimi (--kuran --arayuz)
 *  Sureleri; sure adı, ayet sayısı, sure numarası, cüz no ve indiği yer şeklinde listeleme. (--sureler)
 *  İstenen surenin istenen ayet aralığını gösterme. (--aralik)
-*  Cuma hutbesi indirme ve açma. (--hutbe)
+*  Cuma hutbesi görüntüleme. (--hutbe)
 *  40 hadisten rastgele bir hadisi uçbirimden ya da bildirim baloncuğunda gösterme. (--hadis)
 *  Esma-ül Hüsna'dan rastgele bir adı  uçbirimde gösterme. (--esma)
 *  Diyanet sitesinden alınmış soru-yanıtlardan rastgele birini  uçbirimden
@@ -149,7 +149,7 @@ Qt arayüzü kullanmak için:
 
 **Ubuntu için Launchpad PPA üzerinden kurulum:**
 
-Depo Ubuntu 18.04, 19.10 ve 20.04 içindir.
+Depo Ubuntu 24.04 içindir.
 
 `sudo add-apt-repository ppa:fbostanci/distroguide`
 

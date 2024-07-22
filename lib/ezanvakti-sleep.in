@@ -71,7 +71,7 @@ cuma_selasi() {
 
   notify-send "${ILCE} için" \
     "Cuma Selası (Öğle: $ogle_n)\n Okuyan: ${SELA_OKUYAN}" \
-    -i ezanvakti -u critical -t $EZAN_BILDIRIM_SURESI"000"
+    -i ezanvakti -t $EZAN_BILDIRIM_SURESI"000"
 
   if (( OYNATICI_DURAKLAT ))
   then

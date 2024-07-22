@@ -5,7 +5,7 @@
 #
 
 bayram_namazi_vakti() {
-  local ulke_kodu sehir_kodu ilce_kodu bayram_bt  bayram_nv bayram_ad
+  local ulke_kodu sehir_kodu ilce_kodu bayram_bt bayram_nv bayram_ad
   renk_denetle
 
   [[ -z "${ULKE}"  ]] && ULKE=yok_boyle_bir_yer

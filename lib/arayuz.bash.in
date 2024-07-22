@@ -34,11 +34,12 @@ sure_listesi+='!111-Tebbet!112-İhlas!113-Felak!114-Nas'
 tamamlama_listesi='!Ayarlar!Ayet!Sabah!Öğle!İkindi!Akşam!Yatsı!Sela!yapilandirma!Hadis!Esma-ül Hüsna'
 tamamlama_listesi+='!Bilgi!Aylık Vakitler!Haftalık Vakitler!Dini Günler ve Geceler!hakkında'
 tamamlama_listesi+='!Nafile Namaz Vakitleri!about!güncelle!güncelle yeni!yardım!Kerahat!000'
-tamamlama_listesi+="!özel pencere!Bayram Namazı Vakitleri!$sure_listesi"
+tamamlama_listesi+="!özel pencere!Bayram Namazı Vakitleri!Cuma Hutbelerini listele!$sure_listesi"
 
 secim_listesi='!Yapılandırma Yöneticisi!Kerahat Vakitleri!Nafile Namaz Vakitleri'
 secim_listesi+='!Haftalık Vakitler!Aylık Vakitler!Bayram Namazı Vakitleri'
-secim_listesi+='!Dini Günler ve Geceler!Ayet!Hadis!Bilgi!Esma-ül Hüsna'
+secim_listesi+='!Cuma Hutbelerini listele!!Dini Günler ve Geceler!Ayet!Hadis'
+secim_listesi+='!Bilgi!Esma-ül Hüsna'
 
 g_secim_goster() {
   yad --title "${AD^} - ${secim_basligi}" --text-info --filename="${cikti_dosyasi}" \
@@ -199,17 +200,10 @@ then
         g_secim_goster; temizlik
         arayuz ;;
 
-#     elif [[ $str = Son Cuma Hutbesini indir ]]
-#     then
-#         bilesen_yukle cuma_hutbesi
-#         hutbe_indir
-#         arayuz
-#
-#     elif [[ $str = Cuma Hutbelerini listele ]]
-#     then
-#         bilesen_yukle cuma_hutbesi
-#         hutbe_indir listele
-#         arayuz
+    Cuma Hutbelerini listele)
+        bilesen_yukle cuma_hutbesi
+        hutbe_goster
+        arayuz ;;
 
     Ayarlar|yapilandirma|Yapılandırma Yöneticisi)
         bilesen_yukle yapilandirma_yoneticisi

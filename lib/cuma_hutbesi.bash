@@ -6,16 +6,12 @@
 
 
 hutbe_goster() {
-  echo "Hazır değil"; exit 1
-  local HUTBE_DIZINI="${EZANVAKTI_DIZINI}/hutbeler"
-  local HUTBE_ADRESI='https://'
-  export -f indirici
+  local HUTBE_ADRESI='https://dinhizmetleri.diyanet.gov.tr/kategoriler/yayinlarimiz/hutbeler/t%C3%BCrk%C3%A7e#row'
 
-  [[ ! -f ${HUTBE_DIZINI} ]] && mkdir -p "${HUTBE_DIZINI}"
-  yad --html --browser --width=550 --height=450  borders=0 --skip-taskbar \
+  yad --html --browser --width=560 --height=600  borders=0 --skip-taskbar \
     --title "${AD^} - Hutbe Listesi" --window-icon=${AD} --center \
-    --uri="${HUTBE_ADRESI}"  --uri-handler=indirici > /dev/null 2>&1
-    echo $?
+    --uri="${HUTBE_ADRESI}"
 }
 
 # vim: set ft=sh ts=2 sw=2 et:
+
