@@ -3,6 +3,20 @@
 
 
 /×××××××××××××××××××××××××××××
+× Ezanvakti 7.6
+×××××××××××××××××××××××××××××/
+2024-08-00 Fatih BOSTANCI <ironic@yaani.com>
+
+  * guncelleyici.bash: Vakitler artık yıllık alınıyor.
+  * cuma_hutbesi.bash: güncelleştirildi.
+  * kuran_dinletici.bash: listen2quran.com sitesinin kapanmasından dolayı
+     içerik artık quranicaudio.com sitesinden alınıyor.
+  * bayram_namazi.bash: güncelleştirildi.
+  * vakitleri_goster.bash: -v7 ve v-30 oluşan içerik hatası düzeltildi.
+  * Ubuntu 24.04 için .deb paketleme.
+
+
+/×××××××××××××××××××××××××××××
 × Ezanvakti 7.5
 ×××××××××××××××××××××××××××××/
 2023-04-17 Fatih BOSTANCI <ironic@yaani.com>

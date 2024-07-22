@@ -38,7 +38,7 @@ tamamlama_listesi+="!özel pencere!Bayram Namazı Vakitleri!Cuma Hutbelerini
 
 secim_listesi='!Yapılandırma Yöneticisi!Kerahat Vakitleri!Nafile Namaz Vakitleri'
 secim_listesi+='!Haftalık Vakitler!Aylık Vakitler!Bayram Namazı Vakitleri'
-secim_listesi+='!Cuma Hutbelerini listele!!Dini Günler ve Geceler!Ayet!Hadis'
+secim_listesi+='!Cuma Hutbelerini listele!Dini Günler ve Geceler!Ayet!Hadis'
 secim_listesi+='!Bilgi!Esma-ül Hüsna'
 
 g_secim_goster() {
