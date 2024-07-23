@@ -22,7 +22,7 @@ hatali_kullanim() {
               --hadis --kuran --dinle --arayuz --arayuz2
               --arayuz3 --ucbirim --gui --gui2 --gui3 --tui
               --sureler --guncelle --yardim  --surum --gunler
-              --aralik --kalan --config --renk --imsak
+              --aralik --kalan --config --renk --hutbe --imsak
               --yapilandirma --listele --ortam --help)
 
   ortam_uzun=(--tv --radyo)
