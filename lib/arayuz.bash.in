@@ -68,7 +68,7 @@ strng=$(yad --form --text "$(printf "${GELISMIS_ARAYUZ_BICIMI}" \
 --field="<span foreground=\'${ARAYUZ_SECKE_ADLARI_RENGI}\'>Seçimler</span>:CB" \
 ${secim_listesi} \
 --field="<span foreground=\'${ARAYUZ_SECKE_ADLARI_RENGI}\'>Başlatıcı</span>:CE" \
-"${tamamlama_listesi}" --button='yad-ok:150' --buttons-layout='end' \
+"${tamamlama_listesi}" --button='yad-ok:150' --buttons-layout='end' --skip-taskbar \
 ${simge_goster} --window-icon=${AD} --title "${AD^}" --center --fixed --css="${EZV_CSS}")
 
 donus=$(echo $?)
@@ -77,7 +77,10 @@ declare -x $(echo "$strng" | sed 's:|: :g' | gawk '{print "str="$1 "\nstr2="$2}'
 
 [[ -n $str2 ]] && arayuz
 
-if (( donus == 150 ))
+if (( donus == 252 ))
+then exit 0
+
+elif (( donus == 150 ))
 then
     case "$str" in
     "Sabah")

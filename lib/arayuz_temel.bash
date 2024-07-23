@@ -93,7 +93,7 @@ arayuz_pid_denetle() {
 g_secim_goster() {
   yad --title "${AD^} - ${secim_basligi}" --text-info --filename="${cikti_dosyasi}" \
       --width=560 --height=300 --wrap --button='yad-close' --window-icon=${AD} \
-      --back="$ARKAPLAN_RENGI" --fore="$YAZI_RENGI" --mouse --sticky
+      --back="$ARKAPLAN_RENGI" --fore="$YAZI_RENGI" --mouse --sticky --skip-taskbar
 }
 
 temizlik() {
