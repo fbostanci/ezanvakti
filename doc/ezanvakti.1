@@ -1,4 +1,4 @@
-.TH "Ezanvakti" "1" "2023\-04\-17" "Ezanvakti 7\&.6" "Ezanvakti Kullanım Yönergeleri"
+.TH "Ezanvakti" "1" "2024\-08\-00" "Ezanvakti 7\&.6" "Ezanvakti Kullanım Yönergeleri"
 .SH "AD"
 Ezanvakti 7\.5 \- GNU/Linux için Ezan Vakti Bildirici
 .SH "KULLANIM ŞEKLİ"
@@ -35,6 +35,9 @@ Akşam vaktine ne kadar süre kaldığını gösterir ve çıkar.
 .TP
 .B \-y, \-\-yatsi, \-\-yatsı
 Yatsı vaktine ne kadar süre kaldığını gösterir ve çıkar.
+.TP
+.B \-g, \-\-gunes, \-\-güneş
+Güneşin doğmasına ne kadar süre kaldığını gösterir ve çıkar.
 .TP
 .B \-k, \-\-kerahat
 Bulunduğunuz konum için, bugünün kerahat vakitlerini gösterir ve çıkar.
@@ -77,17 +80,20 @@ Akşam vakti gösterimi için birleşik komuttur.
 .B \-vy, \-\-vy
 Yatsı vakti gösterimi için birleşik komuttur.
 .TP
+.B \-vg, \-\-vg
+Güneş doğuş vakti gösterimi için birleşik komuttur.
+.TP
 .B \-vk, \-\-vk
 Kerahat vakitleri gösterimi için birleşik komuttur.
+.TP
+.B \-vn, \-\-vn
+Nafile namaz vakitleri gösterimi için birleşik komuttur.
 .TP
 .B \-vkb, \-\-vkb
 Kerahat vakitlerini uçbirim yerine bildirim baloncuğunda gösterimi
 için birleşik komuttur.
 Bildirim baloncuğunun ekranda bekleme süresini
 BILGI_GOSTERIM_SURESI değeri belirlemektedir.
-.TP
-.B \-vn, \-\-vn
-Nafile namaz vakitleri gösterimi için birleşik komuttur.
 .TP
 .B \-v7, \-\-v7
 7 günlük vakit gösterimi için birleşik komuttur.
@@ -269,8 +275,7 @@ Sureleri dinlemek için gerekli olan kod numaralarını ve sure adlarını gör�
 Ayet gösteriminde istenen surenin istenen ayet aralığını gösterir.
 .TP
 .B \-\-hutbe
-Son cuma hutbesini indirir ve varsayılan belge açıcıyla belgeyi açar.
-Şu an etkin değildir.
+Diyanet  hutbe sitesini görüntüler.
 
 .SS Arayüz Seçenekleri
 .TP
@@ -293,7 +298,7 @@ Uçbirim ekranında özyinelemeli olarak sıradaki vakti ve vakte ne kadar süre
 .SS Güncelleme ve ayarlar seçenekleri
 .TP
 .B \-\-guncelle, \-\-güncelle
-Ezanveri dosyasını 30 günlük vakitleri içerecek şekilde günceller/oluşturur.
+Ezanveri dosyasını yıllık vakitleri içerecek şekilde günceller/oluşturur.
 Mevcut ezanveri dosyanızın adını ve konumunuzu 'ayarlar'dosyasından okur.
 Ülke ve şehir olarak girilen değerler güncellenme için kullanılan
 dosyalardaki gibi yazılmamışsa, ekrana bulunduğunuz ülke ve şehri soran pencereler çıkar
