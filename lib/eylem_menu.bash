@@ -34,7 +34,7 @@ eylem_menu() {
       g_secim_goster; temizlik ;;
 
     kuran)
-      bilesen_yukle oynatici_yonetici
+      bilesen_yukle kuran_ozel_pen
       arayuz() { ozel_pencere; }
       ozel_pencere ;;
 

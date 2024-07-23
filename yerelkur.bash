@@ -9,18 +9,19 @@
 # Bu betiği kaynak kod dizini içerisinde çalıştırın.
 #
 # Örnek kurulum komutları:
-# export AD=ezanvakti-yerel
+# export AD=ezv
 # bash yerelkur.bash --kur
 #
 # Örnek kaldırma komutları:
-# ezanvakti-yerel adıyla kurulu ise
-# export AD=ezanvakti-yerel
+# ezv adıyla kurulu ise
+# export AD=ezv
 # bash yerelkur.bash --kaldir
+
+
+# AD belirlenmemişse ezv olarak kurar ve
+# kaldırırken de ezv'yi arar.
 #
-# AD belirlenmemişse ezv-yerel olarak kurar ve
-# kaldırırken de ezv-yerel'i arar.
-#
-AD=${AD:-ezv-yerel}
+AD=${AD:-ezv}
 bindir="$HOME/.local/bin"
 
 [[ $(id -u) == 0 ]] && {

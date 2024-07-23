@@ -131,7 +131,7 @@ yad --plug=190707 --tabnum=4 --form \
 "${ARAYUZ_SIMDIKI_VAKIT_RENGI}" "${ARAYUZ_VAKITLER_RENGI}"  \
 "${ARAYUZ_SECILI_VAKIT_RENGI}" "${ARAYUZ_KALAN_SURE_RENGI}" \
 "${ARAYUZ_SECKE_ADLARI_RENGI}" > $ayr4 &
-yad --notebook --key=190707 \
+yad --stack --notebook --key=190707 \
 --title "${AD^} - Yapılandırma Yöneticisi" \
 --tab="Ezanveri" --tab="Ezan" \
 --tab="Bildirim" --tab="Renk" \

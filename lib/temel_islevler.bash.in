@@ -265,7 +265,7 @@ ezanveri_denetle() {
 
 # Bugünün ezan vakitlerini ayıkla ve değerleri vakit değişkenlerine ata.
 bugun() {
-  TARIH=$(date +%d.%m.%Y)
+  TARIH=$(date '+%d.%m.%Y')
   local YTARIH=$(date -d tomorrow '+%d.%m.%Y') SAAT=$(date +%H:%M)
 
   # 08, 09 için oluşan sekizli sayı hatasının önüne geçmek için saatin,

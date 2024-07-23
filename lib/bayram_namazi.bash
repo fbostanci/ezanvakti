@@ -68,7 +68,7 @@ bayram_namazi_vakti() {
   }
 
   printf '%b%b\n' \
-    "${RENK7}${RENK3}${ILCE}${RENK5} için bayram namazı vakitleri ($(date +'%d.%m.%Y %H:%M:%S'))\n\n" \
+    "${RENK7}${RENK3}${ILCE}${RENK5} için bayram namazı vakitleri ($(date +'%d.%m.%Y %T'))\n\n" \
     "${RENK2}${bayram_ad^} Bayramı Namazı ${RENK3}: ${bayram_bt} ${RENK2}${bayram_nv}\n"
 }
 
