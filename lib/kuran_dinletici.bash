@@ -41,6 +41,7 @@ kuran_dinletimi() {
     "Okuyan      : ${RENK3} ${okuyan}${RENK2}" \
     "Süre        : ${RENK3} ${parca_suresi_n}${RENK2}" \
     "Kaynak      : ${RENK3} ${kaynak}${RENK0}"
+
   # (oynatici_yonetici.bash)
   oynatici_calistir "${dinletilecek_sure}"
 }

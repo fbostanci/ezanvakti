@@ -136,7 +136,7 @@ yad --stack --notebook --key=190707 \
 --tab="Ezanveri" --tab="Ezan" \
 --tab="Bildirim" --tab="Renk" \
 --fixed --center --tab-pos=top --buttons-layout='spread' \
---window-icon=${AD} --css="${EZV_CSS4}" \
+--window-icon=${AD} --css="${EZV_CSS4}" --skip-taskbar \
 --button=" Ana Pencere!${VERI_DIZINI}/simgeler/anasayfa.png":171 \
 --button='yad-open:172' --button='yad-save:174' --button='yad-quit:121'
 
