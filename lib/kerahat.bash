@@ -48,7 +48,7 @@ case $1 in
       "Kerahat v3 : $kv_ogle ~ $ogle_n"\
       "Kerahat v4 : $ikindi_n ~ $kv_aksam"\
       "Kerahat v5 : $kv_aksam ~ $aksam_n")" \
-      -i ${AD} -t $BILGI_BILDIRIM_SURESI"000" ;;
+      -a ${AD} -i ${AD} -t $BILGI_BILDIRIM_SURESI"000" ;;
 esac
 }
 

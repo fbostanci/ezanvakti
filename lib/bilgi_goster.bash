@@ -33,7 +33,7 @@ bilgi_goster() {
       ucbirimde_goster ;;
     bildirim)
       notify-send "Bunları biliyor musunuz?" "$(printf "*${alinan_yanit}\n")" \
-        -t $BILGI_BILDIRIM_SURESI"000" ;;
+        -a ${AD} -t $BILGI_BILDIRIM_SURESI"000" ;;
   esac
 }
 
@@ -46,7 +46,7 @@ hadis_goster() {
       ucbirimde_goster ;;
     bildirim)
       notify-send "$secilen. hadis" "$(sed '1d' <<<"${alinan_yanit}")" \
-        -t $HADIS_BILDIRIM_SURESI"000" ;;
+        -a ${AD} -t $HADIS_BILDIRIM_SURESI"000" ;;
   esac
 }
 

@@ -71,7 +71,7 @@ siradaki_vakit() {
     bildirim)
       notify-send "${AD^} - Sıradaki vakit" \
         "$(printf "${siradaki_vakit_adi} : ${siradaki_vakit_kalan}\n" | sed 's:saat:sa:;s:dakika:dk:;s:saniye:sn:')" \
-        -t $BILGI_BILDIRIM_SURESI"000" -i ${AD} ;;
+        -a ${AD} -t $BILGI_BILDIRIM_SURESI"000" -i ${AD} ;;
   esac
 }
 

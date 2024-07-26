@@ -208,7 +208,7 @@ gun_animsat() {
     e) # eğer ozel_ileti boş (null) dönmemişse bildirimi gönder.
        [[ -n ${ozel_ileti} ]] && {
          notify-send "${AD^}" "${ozel_ileti}" \
-           -t $GUN_ANIMSAT"000" -i ${AD}
+           -a ${AD} -t $GUN_ANIMSAT"000" -i ${AD}
        } ;;
     esac
   }
@@ -257,7 +257,7 @@ ezanveri_denetle() {
     [[ ! -f /tmp/.${AD}_eznvrgncldntle_$(date +%d%m%y) ]] && {
       notify-send "${AD^}" \
         "${EZANVERI_ADI} dosyanız\n\t$ksatir gün\nsonra güncelliğini yitirecek." \
-        -i ${AD} -t $GUNCELLEME_BILDIRIM_SURESI"000"
+        -a ${AD} -i ${AD} -t $GUNCELLEME_BILDIRIM_SURESI"000"
       :> /tmp/.${AD}_eznvrgncldntle_$(date +%d%m%y)
     }
   }

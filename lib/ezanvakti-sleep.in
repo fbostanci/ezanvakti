@@ -71,7 +71,7 @@ cuma_selasi() {
 
   notify-send "${ILCE} için" \
     "Cuma Selası (Öğle: $ogle_n)\n Okuyan: ${SELA_OKUYAN}" \
-    -i ezanvakti -t $EZAN_BILDIRIM_SURESI"000"
+    -i ${AD} -a ${AD} -t $EZAN_BILDIRIM_SURESI"000"
 
   if (( OYNATICI_DURAKLAT ))
   then
@@ -99,7 +99,7 @@ ezan_oku() {
 
   notify-send "${ILCE} için" \
     "${simdiki} ${ileti}\n$vakit_saati_n" \
-    -i ${AD} -t $EZAN_BILDIRIM_SURESI"000"
+    -a ${AD} -i ${AD} -t $EZAN_BILDIRIM_SURESI"000"
   # Geçerli vaktin ezanı okunması
   # istenmiyorsa 1 dakikalık bekleme yapıyor.
   # aksi halde 1 dakika boyunca fonksiyon tekrar edecek.
@@ -145,7 +145,7 @@ vakit_animsat() {
     esac
 
     notify-send "${AD^}" "$VAKIT_ANIMSAT dakika sonra $simdiki ${ileti}" \
-      -u critical -t $BILGI_BILDIRIM_SURESI"000" -i ${AD}
+      -t $BILGI_BILDIRIM_SURESI"000" -a ${AD} -i ${AD}
 
     (( SESLI_UYARI )) && oynatici_calistir "${UYARI_SESI}"
     # Tekrardan aynı uyarıyı vermesin diye

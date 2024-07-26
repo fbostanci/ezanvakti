@@ -243,7 +243,7 @@ printf '%b%b' "${RENK7}${RENK8}" \
   "${EZANVERI_ADI} dosyası güncelleniyor...${RENK0}"
 
 printf '#Tarih       Sabah  Güneş  Öğle   İkindi Akşam  Yatsı\n' >> /tmp/ezanveri-$$
-indirici "https://namazvakitleri.diyanet.gov.tr/tr-TR/${ilce_kodu}" | \
+indirici "https://namazvakitleri.diyanet.gov.tr/tr-TR/${ilce_kodu}" |
 sed -n 's:<td>\(.*\)</td>:\1:p' | sed -e 's:^ *::' -e 's:[^[:print:]]: :g' -e \
 's: Ocak :.01.:;s: Şubat :.02.:;
  s: Mart :.03.:;s: Nisan :.04.:;
@@ -280,7 +280,7 @@ then
 
     renk_denetle
     notify-send "${AD^}" "${EZANVERI_ADI} dosyası başarıyla güncellendi." \
-      -i ${AD} -t $GUNCELLEME_BILDIRIM_SURESI"000"
+      -a ${AD} -i ${AD} -t $GUNCELLEME_BILDIRIM_SURESI"000"
     :> /tmp/.${AD}_eznvrgncldntle_$(date +%d%m%y)
 
 else
@@ -289,7 +289,7 @@ else
     printf "${RENK7}${RENK4}\n!!! YENIDEN DENEYIN !!!${RENK0}\n"
 
     notify-send "${AD^}" "${EZANVERI_ADI} dosyasının güncellenmesi başarısız oldu." \
-      -i ${AD} -t $GUNCELLEME_BILDIRIM_SURESI"000"
+      -a ${AD} -i ${AD} -t $GUNCELLEME_BILDIRIM_SURESI"000"
 
     rm -f /tmp/ezanveri-$$ > /dev/null 2>&1
     exit 1
