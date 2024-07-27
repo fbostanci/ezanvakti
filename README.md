@@ -1,4 +1,4 @@
-Son Güncelleme:  Mon, 22 Jul 2024 00:39:18 +0300
+Son Güncelleme:  Sat, 27 Jul 2024 15:10:40 +0300
 
 
 [![GitHub release](https://img.shields.io/github/release/fbostanci/ezanvakti.svg?style=plastic)](https://github.com/fbostanci/ezanvakti)
@@ -113,25 +113,6 @@ KURULUM ve KALDIRMA
 ===
 <br>
 
-**Pardus için Launchpad PPA üzerinden kurulum:**
-
-
-`echo 'deb http://ppa.launchpad.net/fbostanci/pardus/ubuntu bionic main' | sudo tee /etc/apt/sources.list.d/ezanvakti-bionic.list`
-
-`sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 1651E3776FB72115`
-
-`sudo apt update`
-
-`sudo apt install ezanvakti`
-
-Qt arayüzü kullanmak için:
-
-`sudo apt install ezanvakti-qt-gui`
-
-Pardus deposundaki Qt sürümleri, Ubuntu bionic(18.04) ile uyumludur. Bu sebeple bionic deposu seçilmiştir.
-
-<br>
-
 **Archlinux için kurulum:**
 
 [AUR](https://aur.archlinux.org/packages/ezanvakti/) üzerinde uygulama bulunmaktadır.
@@ -187,7 +168,7 @@ Uçbirimde kaynak kod dizini içerisindeyken
 
 `bash yerelkur.bash --kur`
 
-komutunu verin. AD girmezseniz ezv-yerel adıyla kuracaktır.
+komutunu verin. AD girmezseniz ezv adıyla kuracaktır.
 
 İsterseniz farklı bir AD girebilirsiniz.
 Girdiğiniz AD değerini kaldırma işleminde de belirtmeniz gerekmektedir.
