@@ -32,6 +32,7 @@ dbus_sorgu() {
 oynatici_duraklat() {
   local -a OYNATICILAR
   local oynatici
+  DURDURULAN=()
 
   OYNATICILAR=( spotify deadbeef clementine amarok rhythmbox
                 aqualung audacious banshee exaile cmus
@@ -70,9 +71,9 @@ oynatici_duraklat() {
           if dbus_sorgu rhythmbox
           then
               rhythmbox-client --pause  > /dev/null 2>&1
-              DURDURULAN+=('rhytmbox')
+              DURDURULAN+=('rhythmbox')
           fi ;;
-        aqulung)
+        aqualung)
           if dbus_sorgu aqualung
           then
               aqualung --pause > /dev/null 2>&1
@@ -124,7 +125,9 @@ oynatici_duraklat() {
 }
 
 oynatici_devam() {
-  for oynatici in ${DURDURULAN[@]}
+  local oynatici
+
+  for oynatici in "${DURDURULAN[@]}"
   do
     case "${oynatici}" in
       spotify)
@@ -138,7 +141,7 @@ oynatici_devam() {
           amarok --play > /dev/null 2>&1 ;;
       rhythmbox)
           rhythmbox-client --play > /dev/null 2>&1 ;;
-      aqulung)
+      aqualung)
           aqualung --play > /dev/null 2>&1 ;;
       audacious)
           audacious --play > /dev/null 2>&1 ;;
@@ -154,7 +157,7 @@ oynatici_devam() {
           qmmp --play > /dev/null 2>&1 ;;
       juk)
           qdbus org.kde.juk /org/mpris/MediaPlayer2 \
-            org.mpris.MediaPlayer2.Player.Play /dev/null 2>&1 ;;
+            org.mpris.MediaPlayer2.Player.Play > /dev/null 2>&1 ;;
     esac
   done
 }

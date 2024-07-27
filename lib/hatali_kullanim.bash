@@ -16,7 +16,7 @@ hatali_kullanim() {
                  --bayram --nafile)
 
   kuran_uzun=(--secim --rastgele --hatim --gunluk --arayuz)
-  bildirim_uzun=(--bildirim --osd)
+  bildirim_uzun=(--bildirim)
 
   butun_uzun=(--vakitler --conky --iftar --ayet --esma --bilgi
               --hadis --kuran --dinle --arayuz --arayuz2
