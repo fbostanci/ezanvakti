@@ -2,13 +2,13 @@
 
 _pkgname=ezanvakti
 pkgname=ezanvakti-git
-pkgver=v7.4.r11.gd8a59fb
+pkgver=v7.6.r0.g40e168a
 pkgrel=1
 pkgdesc="Islamic Prayer Times bash script for Turkish users"
 arch=('any')
 url="https://gitlab.com/fbostanci/ezanvakti"
 license=('GPL3')
-provides=('ezanvakti=7.5')
+provides=('ezanvakti=7.6')
 conflicts=('ezanvakti')
 # change curl to wget and ffmpeg to mplayer if wanted
 # isteniyorsa curl yerine wget, ffmpeg yerine mplayer yazilabilir.

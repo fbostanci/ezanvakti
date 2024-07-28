@@ -126,6 +126,10 @@ Qt arayüzü kullanmak için:
 
 `trizen -Sa ezanvakti-qt-gui`
 
+Git (geliştirme) sürümünü kullanmak için:
+
+`trizen -Sa ezanvakti-git`
+
 <br>
 
 **Ubuntu için Launchpad PPA üzerinden kurulum:**
