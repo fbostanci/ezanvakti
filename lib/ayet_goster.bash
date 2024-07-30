@@ -5,6 +5,7 @@
 #
 
 ayet_goster() {
+  bilesen_yukle kuran_temel
   renk_denetle; meal_denetle
 
   satir=$(( RANDOM % 6236 + 1 ))

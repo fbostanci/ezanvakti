@@ -16,12 +16,13 @@ bilesen_yukle oynatici_yonetici
 bilesen_yukle hicri
 bilesen_yukle arayuz_vakitler
 
-
+# arayuz Başlatıcı kutucuğu için listemiz.
 tamamlama_listesi='!Ayarlar!Ayet!Sabah!Öğle!İkindi!Akşam!Yatsı!Sela!yapilandirma!Hadis!Esma-ül Hüsna'
 tamamlama_listesi+='!Bilgi!Aylık Vakitler!Haftalık Vakitler!Dini Günler ve Geceler!hakkında'
 tamamlama_listesi+='!Nafile Namaz Vakitleri!about!güncelle!güncelle yeni!yardım!Kerahat!000'
 tamamlama_listesi+="!özel pencere!Bayram Namazı Vakitleri!Cuma Hutbelerini listele!$sure_listesi"
 
+# arayuz Seçimler kutucuğu için listemiz.
 secim_listesi='!Yapılandırma Yöneticisi!Kerahat Vakitleri!Nafile Namaz Vakitleri'
 secim_listesi+='!Haftalık Vakitler!Aylık Vakitler!Bayram Namazı Vakitleri'
 secim_listesi+='!Cuma Hutbelerini listele!Dini Günler ve Geceler!Ayet!Hadis'
@@ -75,8 +76,11 @@ donus=$(echo $?)
 
 declare -x $(echo "$strng" | sed 's:|: :g' | gawk '{print "str="$1 "\nstr2="$2}')
 
+# Yalnızca tek kutucuk içerik seçimine izin var.
+# Birden fazla kutucuk seçili ise arayüze geri dön.
 [[ -n $str2 ]] && arayuz
 
+# arayüz başlık çubuğu -> kapatma düğmesine basılmışsa
 if (( donus == 252 ))
 then exit 0
 
@@ -219,11 +223,12 @@ then
             bilesen_yukle kuran_ozel_pen
             ozel_pencere
         else
+            bilesen_yukle kuran_temel
             # $sure değerini denetleyip
-            # sure_kod değişkenine atayacak. (temel_islevler.bash)
+            # sure_kod değişkenine atayacak. (kuran_temel.bash)
             sure_no_denetle "$sure"
             # okuyan, kaynak, dinletilecek_sure
-            # değerlerini bu fonksiyon gönderiyor. (temel_islevler.bash)
+            # değerlerini bu fonksiyon gönderiyor. (kuran_temel.bash)
             kuran_okuyan_denetle "$sure_kod"
         fi
         [[ ${geri_dugmesi:-0} != 1 ]] && {

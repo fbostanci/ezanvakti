@@ -57,10 +57,8 @@ Genel Özellikleri
     2: ramazan (yalnızca iftar ve imsak vakitlerinde ezan okunur.)
     0: kapalı (arkada çalışmaz.)</pre>
 *  Her vakit için farklı makamda ezan ve ezan duası.
-*  Vakit ezanı okunurken desteklenen müzik oynatıcıyı ezan bitimine kadar duraklatma.<br>
-   <pre>Desteklenen oynatıcılar: Spotify, Deadbeef, Clementine, Amarok, Rhythmbox,
-                            Aqualung, Audacious, Banshee, Exaile, Cmus,
-                            Moc, Qmmp, Juk</pre>
+*  Vakit ezanı okunurken desteklenen oynatıcıyı ezan bitimine kadar duraklatma.<br>
+   <pre>MPRIS destekli tüm uygulamalar desteklenmektedir.</pre>
 *  3 farklı okuyucu seçimli Kuran dinletme. (--kuran <seçenek>)<br>
    Seçenekler:<br>
    <pre>
@@ -96,6 +94,7 @@ BAĞIMLILIKLAR
 *    gawk
 *    grep
 *    libnotify
+*    playerctl
 *    hicolor-icon-theme
 *    ffmpeg ya da mplayer
 *    wget ya da curl

@@ -8,6 +8,8 @@
 kuran_dinletimi() {
   local parca_suresi parca_suresi_n dinletilecek_sure
   local sure_adi sure_ayet_sayisi cuz yer okuyan kaynak
+
+  bilesen_yukle kuran_temel
   trap 'echo;clear;exit 1' SIGINT
 
   # girileni denetleyip
@@ -19,7 +21,7 @@ kuran_dinletimi() {
 
   clear
   # okuyan, kaynak, dinletilecek_sure
-  # değerlerini bu fonksiyon gönderiyor. (temel_islevler.bash)
+  # değerlerini bu fonksiyon gönderiyor. (kuran_temel.bash)
   kuran_okuyan_denetle "$sure_kod"
   printf '%b%b\n\n' \
     "${RENK7}${RENK3}" \

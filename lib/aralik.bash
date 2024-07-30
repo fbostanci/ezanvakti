@@ -5,6 +5,7 @@
 #
 
 ayet_araligi_goster() {
+  bilesen_yukle kuran_temel
   renk_denetle; meal_denetle
   # $1 = sure no = sure_kod
   # $2 = ayet aralığı = ayet_kod
@@ -12,13 +13,14 @@ ayet_araligi_goster() {
   local ayet_baslama ayet_bitis satir sure_adi
   local sure_baslama sure_ayet_sayisi int_ayet_kod
 
+  # $2 = ayet_kod girilmemişse
   if [[ -z ${ayet_kod} ]]
   then
       printf '%s: Kullanım: <sure_no> <ayet_aralığı>\n' "${AD}" >&2
       exit 1
   fi
   # girileni (sure no) denetleyip
-  # sure_kod değişkenine atayacak.(temel_islevler.bash)
+  # sure_kod değişkenine atayacak.(kuran_temel.bash)
   sure_no_denetle "$1"
   # sure_kod ile ilişik surenin bilgilerini ilgili değişkenlere atadık.
   export $(gawk -v sira=$sure_kod '{if(NR==sira) {printf \
