@@ -94,7 +94,7 @@ BAĞIMLILIKLAR
 *    gawk
 *    grep
 *    libnotify
-*    playerctl
+*    playerctl (Yalnızca geliştirme sürümü içindir. 7.6 için gereksizdir.)
 *    hicolor-icon-theme
 *    ffmpeg ya da mplayer
 *    wget ya da curl
