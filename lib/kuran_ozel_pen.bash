@@ -150,3 +150,5 @@ case $donus in
     exit 0 ;;
 esac
 }
+
+# vim: set ft=sh ts=2 sw=2 et:

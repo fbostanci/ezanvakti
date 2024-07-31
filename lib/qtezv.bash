@@ -38,3 +38,5 @@ ezv_qt_basla() {
       e) ezv_qt_ezanlar ;;
   esac
 }
+
+# vim: set ft=sh ts=2 sw=2 et:

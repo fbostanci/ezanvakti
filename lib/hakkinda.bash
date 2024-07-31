@@ -23,7 +23,7 @@ g_hakkinda() {
 Copyright (c) 2010-$(date +%Y) FB
 GPL 3 ile lisanslanmıştır.\n" \
   --title "${AD^} - Hakkında" --fixed --image-on-top \
-  --button='gtk-close' --sticky --center --skip-taskbar \
+  --button='yad-close' --sticky --center --skip-taskbar \
   --image=${AD} --window-icon=${AD}
 }
 

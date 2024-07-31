@@ -251,11 +251,14 @@ sed -n 's:<td>\(.*\)</td>:\1:p' | sed -e 's:^ *::' -e 's:[^[:print:]]: :g' -e \
  s: Temmuz :.07.:;s: Ağustos :.08.:;
  s: Eyl&#252;l :.09.:;s: Ekim :.10.:;
  s: Kasım :.11.:;s: Aralık :.12.:'  \
- -e 's:[[:blank:]]*$::' -e '2~8d' >> /tmp/ezanveri-$$
+ -e 's:[[:blank:]]*$::' >> /tmp/ezanveri-$$
+
+sed -n '3~8p' < /tmp/ezanveri-$$ > /tmp/hicri-$$
+sed -i '1,38d' /tmp/hicri-$$
+sed -i '3~8d' /tmp/ezanveri-$$
 sed -i -r '1!{s:\S+::2;}' /tmp/ezanveri-$$
 sed -i '1!{N;N;N;N;N;N;s:\n:  :g}' /tmp/ezanveri-$$
 sed -i '2,39d' /tmp/ezanveri-$$
-
 
 cat << SON >> /tmp/ezanveri-$$
 
@@ -268,10 +271,10 @@ cat << SON >> /tmp/ezanveri-$$
 # Son güncelleme : $(date +%c)
 SON
 
-
 if (( $(wc -l < /tmp/ezanveri-$$) >= 20 ))
 then
     mv -f /tmp/ezanveri-$$ "${EZANVERI}"
+    mv -f /tmp/hicri-$$ "${EZANVERI}_hicri"
     printf '%b%*b' "${RENK7}${RENK8}" $(( stn - ${#EZANVERI_ADI} - 6 - renksiz_payi )) \
       "[${RENK2}  BAŞARILI  ${RENK8}]${RENK0}\n"
     # ayarlar dosyasındaki konum bilgileri
@@ -292,6 +295,7 @@ else
       -a ${AD} -i ${AD} -t $GUNCELLEME_BILDIRIM_SURESI"000"
 
     rm -f /tmp/ezanveri-$$ > /dev/null 2>&1
+    rm -f /tmp/hicri-$$ > /dev/null 2>&1
     exit 1
 
 fi #}}}

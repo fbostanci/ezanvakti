@@ -70,3 +70,5 @@ meal_denetle() {
       exit 1
   fi
 }
+
+# vim: set ft=sh ts=2 sw=2 et:

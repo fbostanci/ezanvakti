@@ -13,7 +13,6 @@
 arayuz_pid_denetle 1
 
 bilesen_yukle oynatici_yonetici
-bilesen_yukle hicri
 bilesen_yukle arayuz_vakitler
 
 # arayuz Başlatıcı kutucuğu için listemiz.
@@ -49,12 +48,21 @@ do
   elx+="${ARAYUZ_CIZGI_SIMGESI}"
 done
 
+hicri_tarih() {
+  if [[ -f ${EZANVERI}_hicri ]]
+  then
+      head -n $(date +%-j) "${EZANVERI}_hicri" | tail -n 1
+  else
+      date +%d.%m.%Y
+  fi
+}
+
 arayuz() {
   local strng donus str str2 sure oynatici_ileti secim_basligi
   g_vakitleri_al; gun_animsat h
 
 strng=$(yad --form --text "$(printf "${GELISMIS_ARAYUZ_BICIMI}" \
-  "<span foreground=\'${ARAYUZ_TARIH_SAAT_RENGI}\'>$(date +%d.%m.%Y) \($(hicri_tarih_al)\)</span>" \
+  "<span foreground=\'${ARAYUZ_TARIH_SAAT_RENGI}\'>$(date +%d.%m.%Y) \($(hicri_tarih)\)</span>" \
   "<span foreground=\'${ARAYUZ_TARIH_SAAT_RENGI}\'>$(date +%T)</span>" \
   "<span foreground=\'${ARAYUZ_KONUM_RENGI}\'>${ILCE} / ${ULKE}</span>" \
   "<span foreground=\'${ARAYUZ_CIZGI_RENGI}\'>${elx}</span>" \
