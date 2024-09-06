@@ -251,7 +251,7 @@ sed -n 's:<td>\(.*\)</td>:\1:p' | sed -e 's:^ *::' -e 's:[^[:print:]]: :g' -e \
  s: Temmuz :.07.:;s: Ağustos :.08.:;
  s: Eyl&#252;l :.09.:;s: Ekim :.10.:;
  s: Kasım :.11.:;s: Aralık :.12.:'  \
- -e 's:[[:blank:]]*$::' >> /tmp/ezanveri-$$
+ -e 's:[[:blank:]]*$::' 1>> /tmp/ezanveri-$$ 2> /tmp/ezanveri-hata-$$
 
 sed -n '3~8p' < /tmp/ezanveri-$$ > /tmp/hicri-$$
 sed -i '1,38d' /tmp/hicri-$$
@@ -289,6 +289,8 @@ then
 else
     printf '%b%*b' "${RENK7}${RENK8}" $(( stn - ${#EZANVERI_ADI} - 7 - renksiz_payi )) \
       "[${RENK1}  BAŞARISIZ ${RENK8}]${RENK0}"
+    printf "${RENK7}${RENK1}%s\n\n${RENK7}${RENK8}%s${RENK0}\n\n" \
+      "===ALINAN HATA===" "$(< /tmp/ezanveri-hata-$$)"
     printf "${RENK7}${RENK4}\n!!! YENIDEN DENEYIN !!!${RENK0}\n"
 
     notify-send "${AD^}" "${EZANVERI_ADI} dosyasının güncellenmesi başarısız oldu." \
@@ -299,6 +301,7 @@ else
     exit 1
 
 fi #}}}
+rm -f /tmp/ezanveri-hata-$$ > /dev/null 2>&1
 
 # şehir bilgisi değiştiği için ezanvakti-sleep bileşenini
 # yeniden başlat.

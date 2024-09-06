@@ -59,36 +59,6 @@ cikti_dosyasi="/tmp/${AD}-7"
 export RENK_KULLAN=0 RENK=0
 acilisa_baslatici_ekle
 
-# arayüz ve bileşenlerinin
-# çoklu çalışmasını önlemek için
-# denetleme fonksiyonu
-arayuz_pid_denetle() {
-  # p=1: arayuz1
-  # p=2: arayuz2
-  # p=3: arayuz3
-  # p=4: eylem_menu
-  local mpid p="$1" ypid=$$
-
-  case $p in
-    1) p='arayuz1' ;;
-    2) p='arayuz2' ;;
-    3) p='arayuz3' ;;
-    4) p='eylem_menu' ;;
-    *) printf '%s: desteklenmeyen istek: %s\n' "${AD}" "${p}" >&2; return 1 ;;
-  esac
-
-  if [[ -f /tmp/.${AD}_yad_${p}.pid && \
-        -n $(ps -p $( < /tmp/.${AD}_yad_${p}.pid) -o comm=) ]]
-  then
-      mpid="$( < /tmp/.${AD}_yad_${p}.pid)"
-      printf '%s: Yalnızca bir %s örneği çalışabilir. (pid: %d)\n' \
-        "${AD}" "${p}" "$mpid"  >&2
-      exit 1
-  else
-      printf "$ypid" > /tmp/.${AD}_yad_${p}.pid
-  fi
-}
-
 g_secim_goster() {
   yad --title "${AD^} - ${secim_basligi}" --text-info --filename="${cikti_dosyasi}" \
       --width=560 --height=300 --wrap --button='yad-close' --window-icon=${AD} \

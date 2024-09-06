@@ -8,8 +8,8 @@
 . @libdir@/@AD@/arayuz_temel.bash
 
 # Yalnızca bir arayüz2 örneği çalışması için
-# pid denetimi yapılsın. (arayuz_temel.bash)
-arayuz_pid_denetle 2
+# pid denetimi yapılsın. (temel_islevler.bash)
+pid_denetle 2
 
 bilesen_yukle conky
 bilesen_yukle siradaki

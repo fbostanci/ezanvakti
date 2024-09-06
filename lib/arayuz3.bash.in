@@ -8,8 +8,8 @@
 . @libdir@/@AD@/arayuz_temel.bash
 
 # Yalnıca bir arayüz3 örneği çalışması için
-# pid denetimi yapılsın. (arayuz_temel.bash)
-arayuz_pid_denetle 3
+# pid denetimi yapılsın.(temel_islevler.bash)
+pid_denetle 3
 bilesen_yukle arayuz_vakitler
 
 arayuz2() {

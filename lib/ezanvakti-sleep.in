@@ -32,27 +32,6 @@ cikis_yap() {
   exit 0
 }
 
-# ilk çalıştırmada pid dosyası varsa
-# dosya içerisindeki pid değerini denetler.
-#
-# Pid etkinse çıkış yapar, değilse ya da
-# pid dosyası yoksa kendi pid değerini
-# dosyaya yazar çalışmaya başlar.
-ezv_sleep_pid_denetle() {
-  local mpid ypid=$$
-
-  if [[ -f /tmp/.${AD}_sleep.pid && \
-        -n $(ps -p "$( < /tmp/.${AD}_sleep.pid)" -o comm=) ]]
-  then
-      mpid="$( < /tmp/.${AD}_sleep.pid)"
-      printf '%s: Yalnızca bir %s örneği çalışabilir. (pid: %d)\n' \
-        "${AD}" "${AD}-sleep" "$mpid" >&2
-      exit 1
-  else
-      printf "$ypid" > /tmp/.${AD}_sleep.pid
-  fi
-}
-
 cuma_selasi() {
   local sela_vakti
   bugun
@@ -274,7 +253,7 @@ ezanvakti_bekle() {
   ezan_oku; ezanvakti_bekle
 }
 
-ezv_sleep_pid_denetle; ezanveri_denetle
+pid_denetle 0; ezanveri_denetle
 gun_animsat; vakit_animsat &
 # Haftanın 5. günü ve CUMA_SELASI_OKU=1 ise
 (( $(date +%u) == 5 && CUMA_SELASI_OKU )) && cuma_selasi &

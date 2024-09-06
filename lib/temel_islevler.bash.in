@@ -34,6 +34,45 @@ declare -A RADYOLAR TVLER
 EZANVERI="${EZANVAKTI_DIZINI}/${EZANVERI_ADI}"
 declare -A YUKLENEN_BILESENLER
 
+# arayüz ve bileşenlerin
+# çoklu çalışmasını önlemek için
+# denetleme fonksiyonu
+#
+# ilk çalıştırmada pid dosyası varsa
+# dosya içerisindeki pid değerini denetler.
+#
+# Pid etkinse çıkış yapar, değilse ya da
+# pid dosyası yoksa kendi pid değerini
+# dosyaya yazar çalışmaya başlar.
+pid_denetle() {
+  # p=0: ezanvakti-sleep
+  # p=1: arayuz1
+  # p=2: arayuz2
+  # p=3: arayuz3
+  # p=4: eylem_menu
+  local mpid p="$1" ypid=$$
+
+  case $p in
+    0) p='sleep' ;;
+    1) p='yad_arayuz1' ;;
+    2) p='yad_arayuz2' ;;
+    3) p='yad_arayuz3' ;;
+    4) p='yad_eylem_menu' ;;
+    *) printf '%s: desteklenmeyen istek: %s\n' "${AD}" "${p}" >&2; return 1 ;;
+  esac
+
+  if [[ -f /tmp/.${AD}_${p}.pid && \
+        -n $(ps -p $( < /tmp/.${AD}_${p}.pid) -o comm=) ]]
+  then
+      mpid="$( < /tmp/.${AD}_${p}.pid)"
+      printf '%s: Yalnızca bir %s örneği çalışabilir. (pid: %d)\n' \
+        "${AD}" "${p}" "$mpid"  >&2
+      exit 1
+  else
+      printf "$ypid" > /tmp/.${AD}_${p}.pid
+  fi
+}
+
 acilisa_baslatici_ekle() {
   local baslatici_dizini baslatici
 
@@ -235,8 +274,7 @@ bekleme_suresi() {
 internet_erisimi_var_mi() {
   if [[ -x $(type -p wget) ]]
   then
-      wget -q --spider http://google.com > /dev/null
-      if [[ $? -eq 0 ]]
+      if wget -q --spider http://google.com > /dev/null
       then return 0
       else return 1
       fi

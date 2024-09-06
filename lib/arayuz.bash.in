@@ -9,8 +9,8 @@
 . @libdir@/@AD@/arayuz_temel.bash
 
 # Yalnızca bir arayüz örneği çalışması için
-# pid denetimi yapılsın. (arayuz_temel.bash)
-arayuz_pid_denetle 1
+# pid denetimi yapılsın. (temel_islevler.bash)
+pid_denetle 1
 
 bilesen_yukle oynatici_yonetici
 bilesen_yukle arayuz_vakitler
