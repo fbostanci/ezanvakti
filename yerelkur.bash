@@ -23,6 +23,11 @@
 #
 AD=${AD:-ezv}
 bindir="$HOME/.local/bin"
+# bağımlılık denetimi aç/kapa.
+#
+# 1: açık
+# 0: kapalı
+NODEPS=${NODEPS:-1}
 
 [[ $(id -u) == 0 ]] && {
   printf '%s: root haklarıyla çalıştırılamaz.\n' "${0##*/}" >&2
@@ -45,7 +50,7 @@ echo  "\
 exit 1 ;;
 esac
 
-[[ ${eylem} = install ]] && {
+(( NODEPS )) && [[ ${eylem} = install ]] && {
   BAG=('bash' 'sed' 'gawk' 'grep' 'make' 'notify-send' 'yad' 'mplayer|ffmpeg' 'wget|curl')
 
 
